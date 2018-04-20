@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "chevrotain": "3.0.1"
+  },
+  "name": "millan",
+  "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "rollup": "^0.58.1",
+    "rollup-plugin-typescript": "^0.8.1",
+    "typescript": "^2.8.3",
+    "husky": "^0.14.3",
+    "prettier": "^1.12.1"
+  },
+  "scripts": {
+    "precommit": "node ./build/scripts/precommit.js; ./node_modules/rollup/bin/rollup -c; git add ./dist;",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stardog-union/millan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stardog-union/millan/issues"
+  },
+  "homepage": "https://github.com/stardog-union/millan#readme"
+}
