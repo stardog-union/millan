@@ -1,4 +1,5 @@
-import { createToken } from 'chevrotain';
+// @ts-ignore: import types for declarations
+import { createToken, TokenType } from 'chevrotain';
 
 const regex = {
   or(...r: RegExp[]) {

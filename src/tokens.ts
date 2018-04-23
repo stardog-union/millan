@@ -1,4 +1,5 @@
-import { createToken, Lexer } from 'chevrotain';
+// @ts-ignore: import types for declarations
+import { createToken, Lexer, TokenType } from 'chevrotain';
 import { terminals } from './terminals';
 import { keywords } from './keywords';
 

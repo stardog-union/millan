@@ -1,4 +1,5 @@
-import { CstElement, CstNode } from 'chevrotain';
+// @ts-ignore: import types for declarations
+import { CstElement, CstNode, ICstVisitor } from 'chevrotain';
 import { SparqlParser } from './SparqlParser';
 
 export const traverse = (root: CstElement, visit) => {
@@ -16,6 +17,7 @@ export class VariableValidationVisitor extends BaseCstVisitorWithDefaults {
 
     this.validateVisitor();
   }
+  // @ts-ignore
   QueryUnit(ctx) {}
   Var(ctx) {
     console.log(JSON.stringify(ctx, null, 2));
