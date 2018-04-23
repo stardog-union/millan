@@ -1,16 +1,13 @@
 import { tokenMap } from './tokens';
-import {
-  Parser,
-  TokenType,
-  IParserErrorMessageProvider,
-  IToken,
-  Lexer,
-} from 'chevrotain';
+import { Parser, TokenType, IToken, Lexer, IParserConfig } from 'chevrotain';
 import { allTokens } from './tokens';
 
 function log(...args) {
   // console.log(...args);
 }
+
+type Partial<T> = { [P in keyof T]?: T[P] };
+type IParserConfigPartial = Partial<IParserConfig>;
 
 export class SparqlParser extends Parser {
   private lexer = new Lexer(allTokens);
@@ -20,13 +17,20 @@ export class SparqlParser extends Parser {
 
   public parse = (document: string) => {
     this.input = this.lexer.tokenize(document).tokens;
-    return { errors: this.errors, cst: this.Query() };
+    const cst = this.Query();
+    const errors = this.errors;
+    return {
+      errors,
+      cst,
+    };
   };
 
-  constructor(options?: {
-    input?: IToken[];
-    config?: { errorMessageProvider?: IParserErrorMessageProvider };
-  }) {
+  constructor(
+    options: {
+      input?: IToken[];
+      config?: IParserConfigPartial;
+    } = {}
+  ) {
     super(options.input || [], allTokens as TokenType[], {
       recoveryEnabled: true,
       outputCst: true,

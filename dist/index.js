@@ -1201,13 +1201,18 @@ const allTokens = [
 ];
 
 class SparqlParser extends chevrotain.Parser {
-    constructor(options) {
+    constructor(options = {}) {
         super(options.input || [], allTokens, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
         this.lexer = new chevrotain.Lexer(allTokens);
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
         this.parse = (document) => {
             this.input = this.lexer.tokenize(document).tokens;
-            return { errors: this.errors, cst: this.Query() };
+            const cst = this.Query();
+            const errors = this.errors;
+            return {
+                errors,
+                cst,
+            };
         };
         // Grammar Rules
         this.QueryUnit = this.RULE('QueryUnit', () => {
@@ -2789,6 +2794,47 @@ const traverse = (root, visit) => {
 function isCstNode(object) {
     return 'name' in object;
 }
+const BaseCstVisitorWithDefaults = new SparqlParser().getBaseCstVisitorConstructorWithDefaults();
+class VariableValidationVisitor extends BaseCstVisitorWithDefaults {
+    constructor() {
+        super();
+        this.validateVisitor();
+    }
+    QueryUnit(ctx) { }
+    Var(ctx) {
+        console.log(JSON.stringify(ctx, null, 2));
+    }
+}
+const testQuery = `PREFIX fd: <http://www.element-22.com/ontology/foundation#>
+PREFIX gu: <http://www.element-22.com/ontology/geographicunit#>
+PREFIX wgs:      <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX geof:       <http://www.opengis.net/def/function/geosparql/>
+PREFIX qudt:         <http://qudt.org/vocab/unit#>
+PREFIX :   <http://www.element-22.com/ontology/party#> 
+SELECT *
+WHERE {
+    { #pragma group.joins
+        ?party a :NonIndividual ;
+        fd:hasObjectId "172e7e8f-4656-4b54-803c-a22a6f1dcf03" ;
+        :hasRegisteredName ?partyName;
+        wgs:long ?partyLong ;
+        wgs:lat ?partyLat ;
+        :hasCityName ?partyCityName .
+        OPTIONAL { ?party geo:asWKT ?wktParty . }
+        ?competitor a :NonIndividual ;
+        wgs:long ?competitorLong ;
+        wgs:lat ?competitorLat ;
+        :hasRegisteredName ?competitorName ;
+        :hasCityName ?competitorCityName ;
+        ^:isCompetitorOf ?party . 
+    }
+    
+    {   ?distance geof:distance ( ?party ?competitor qudt:MileUSStatute ) . }
+        
+}`;
+const { cst } = new SparqlParser().parse(testQuery);
+const v = new VariableValidationVisitor();
+v.visit(cst);
 class TraverseContext {
     constructor({ node, parentCtx, }) {
         this.node = Object.assign({}, node);
@@ -2831,3 +2877,5 @@ exports.terminals = terminals;
 exports.keywords = keywords;
 exports.traverse = traverse;
 exports.isCstNode = isCstNode;
+exports.BaseCstVisitorWithDefaults = BaseCstVisitorWithDefaults;
+exports.VariableValidationVisitor = VariableValidationVisitor;
