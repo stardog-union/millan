@@ -154,6 +154,122 @@ const terminals = {
     }),
 };
 
+(function (Keywords) {
+    Keywords["SELECT"] = "SELECT";
+    Keywords["CONSTRUCT"] = "CONSTRUCT";
+    Keywords["DISTINCT"] = "DISTINCT";
+    Keywords["AS"] = "AS";
+    Keywords["WHERE"] = "WHERE";
+    Keywords["GroupBy"] = "GROUP BY";
+    Keywords["OrderBy"] = "ORDER BY";
+    Keywords["By"] = "By";
+    Keywords["BASE"] = "BASE";
+    Keywords["PREFIX"] = "PREFIX";
+    Keywords["DESCRIBE"] = "DESCRIBE";
+    Keywords["ASK"] = "ASK";
+    Keywords["FROM"] = "FROM";
+    Keywords["REDUCED"] = "REDUCED";
+    Keywords["NAMED"] = "NAMED";
+    Keywords["HAVING"] = "HAVING";
+    Keywords["ASC"] = "ASC";
+    Keywords["DESC"] = "DESC";
+    Keywords["OFFSET"] = "OFFSET";
+    Keywords["LIMIT"] = "LIMIT";
+    Keywords["VALUES"] = "VALUES";
+    Keywords["LOAD"] = "LOAD";
+    Keywords["SILENT"] = "SILENT";
+    Keywords["INTO"] = "INTO";
+    Keywords["CLEAR"] = "CLEAR";
+    Keywords["DROP"] = "DROP";
+    Keywords["CREATE"] = "CREATE";
+    Keywords["ADD"] = "ADD";
+    Keywords["TO"] = "TO";
+    Keywords["MOVE"] = "MOVE";
+    Keywords["COPY"] = "COPY";
+    Keywords["INSERT_DATA"] = "INSERT DATA";
+    Keywords["DELETE_DATA"] = "DELETE DATA";
+    Keywords["DELETE_WHERE"] = "DELETE WHERE";
+    Keywords["WITH"] = "WITH";
+    Keywords["DELETE"] = "DELETE";
+    Keywords["INSERT"] = "INSERT";
+    Keywords["USING"] = "USING";
+    Keywords["DEFAULT"] = "DEFAULT";
+    Keywords["GRAPH"] = "GRAPH";
+    Keywords["ALL"] = "ALL";
+    Keywords["OPTIONAL"] = "OPTIONAL";
+    Keywords["SERVICE"] = "SERVICE";
+    Keywords["BIND"] = "BIND";
+    Keywords["UNDEF"] = "UNDEF";
+    Keywords["MINUS"] = "MINUS";
+    Keywords["UNION"] = "UNION";
+    Keywords["FILTER"] = "FILTER";
+    Keywords["STR"] = "STR";
+    Keywords["LANG"] = "LANG";
+    Keywords["LANGMATCHERS"] = "LANGMATCHERS";
+    Keywords["DATATYPE"] = "DATATYPE";
+    Keywords["BOUND"] = "BOUND";
+    Keywords["IRI"] = "IRI";
+    Keywords["URI"] = "URI";
+    Keywords["BNODE"] = "BNODE";
+    Keywords["RAND"] = "RAND";
+    Keywords["ABS"] = "ABS";
+    Keywords["CEIL"] = "CEIL";
+    Keywords["FLOOR"] = "FLOOR";
+    Keywords["ROUND"] = "ROUND";
+    Keywords["CONCAT"] = "CONCAT";
+    Keywords["STRLEN"] = "STRLEN";
+    Keywords["UCASE"] = "UCASE";
+    Keywords["LCASE"] = "LCASE";
+    Keywords["ENCODE_FOR_URI"] = "ENCODE_FOR_URI";
+    Keywords["CONTAINS"] = "CONTAINS";
+    Keywords["STRSTARTS"] = "STRSTARTS";
+    Keywords["STRENDS"] = "STRENDS";
+    Keywords["STRBEFORE"] = "STRBEFORE";
+    Keywords["STRAFTER"] = "STRAFTER";
+    Keywords["YEAR"] = "YEAR";
+    Keywords["MONTH"] = "MONTH";
+    Keywords["DAY"] = "DAY";
+    Keywords["HOURS"] = "HOURS";
+    Keywords["MINUTES"] = "MINUTES";
+    Keywords["SECONDS"] = "SECONDS";
+    Keywords["TIMEZONE"] = "TIMEZONE";
+    Keywords["TZ"] = "TZ";
+    Keywords["NOW"] = "NOW";
+    Keywords["UUID"] = "UUID";
+    Keywords["STRUUID"] = "STRUUID";
+    Keywords["MD5"] = "MD5";
+    Keywords["SHA1"] = "SHA1";
+    Keywords["SHA256"] = "SHA256";
+    Keywords["SHA384"] = "SHA384";
+    Keywords["SHA512"] = "SHA512";
+    Keywords["COALESCE"] = "COALESCE";
+    Keywords["IF"] = "IF";
+    Keywords["STRLANG"] = "STRLANG";
+    Keywords["STRDT"] = "STRDT";
+    Keywords["sameTerm"] = "sameTerm";
+    Keywords["isIRI"] = "isIRI";
+    Keywords["isURI"] = "isURI";
+    Keywords["isBlank"] = "isBlank";
+    Keywords["isLiteral"] = "isLiteral";
+    Keywords["isNumeric"] = "isNumeric";
+    Keywords["REGEX"] = "REGEX";
+    Keywords["SUBSTR"] = "SUBSTR";
+    Keywords["REPLACE"] = "REPLACE";
+    Keywords["EXISTS"] = "EXISTS";
+    Keywords["NOT_EXISTS"] = "NOT_EXISTS";
+    Keywords["COUNT"] = "COUNT";
+    Keywords["SUM"] = "SUM";
+    Keywords["MIN"] = "MIN";
+    Keywords["MAX"] = "MAX";
+    Keywords["AVG"] = "AVG";
+    Keywords["SAMPLE"] = "SAMPLE";
+    Keywords["GROUP_CONCAT"] = "GROUP_CONCAT";
+    Keywords["SEPARATOR"] = "SEPARATOR";
+    Keywords["TRUE"] = "TRUE";
+    Keywords["FALSE"] = "FALSE";
+    Keywords["IN"] = "IN";
+    Keywords["NOT_IN"] = "NOT IN";
+})(exports.Keywords || (exports.Keywords = {}));
 const MAX_LENGTH = chevrotain.createToken({
     name: 'MAX_LENGTH',
     pattern: /MAX LENGTH/i,
@@ -906,123 +1022,6 @@ const tokenMap = {
     MAX_LENGTH: keywords.MAX_LENGTH,
     MAX: keywords.MAX,
 };
-var Keywords;
-(function (Keywords) {
-    Keywords["SELECT"] = "SELECT";
-    Keywords["CONSTRUCT"] = "CONSTRUCT";
-    Keywords["DISTINCT"] = "DISTINCT";
-    Keywords["AS"] = "AS";
-    Keywords["WHERE"] = "WHERE";
-    Keywords["GroupBy"] = "GROUP BY";
-    Keywords["OrderBy"] = "ORDER BY";
-    Keywords["By"] = "By";
-    Keywords["BASE"] = "BASE";
-    Keywords["PREFIX"] = "PREFIX";
-    Keywords["DESCRIBE"] = "DESCRIBE";
-    Keywords["ASK"] = "ASK";
-    Keywords["FROM"] = "FROM";
-    Keywords["REDUCED"] = "REDUCED";
-    Keywords["NAMED"] = "NAMED";
-    Keywords["HAVING"] = "HAVING";
-    Keywords["ASC"] = "ASC";
-    Keywords["DESC"] = "DESC";
-    Keywords["OFFSET"] = "OFFSET";
-    Keywords["LIMIT"] = "LIMIT";
-    Keywords["VALUES"] = "VALUES";
-    Keywords["LOAD"] = "LOAD";
-    Keywords["SILENT"] = "SILENT";
-    Keywords["INTO"] = "INTO";
-    Keywords["CLEAR"] = "CLEAR";
-    Keywords["DROP"] = "DROP";
-    Keywords["CREATE"] = "CREATE";
-    Keywords["ADD"] = "ADD";
-    Keywords["TO"] = "TO";
-    Keywords["MOVE"] = "MOVE";
-    Keywords["COPY"] = "COPY";
-    Keywords["INSERT_DATA"] = "INSERT DATA";
-    Keywords["DELETE_DATA"] = "DELETE DATA";
-    Keywords["DELETE_WHERE"] = "DELETE WHERE";
-    Keywords["WITH"] = "WITH";
-    Keywords["DELETE"] = "DELETE";
-    Keywords["INSERT"] = "INSERT";
-    Keywords["USING"] = "USING";
-    Keywords["DEFAULT"] = "DEFAULT";
-    Keywords["GRAPH"] = "GRAPH";
-    Keywords["ALL"] = "ALL";
-    Keywords["OPTIONAL"] = "OPTIONAL";
-    Keywords["SERVICE"] = "SERVICE";
-    Keywords["BIND"] = "BIND";
-    Keywords["UNDEF"] = "UNDEF";
-    Keywords["MINUS"] = "MINUS";
-    Keywords["UNION"] = "UNION";
-    Keywords["FILTER"] = "FILTER";
-    Keywords["STR"] = "STR";
-    Keywords["LANG"] = "LANG";
-    Keywords["LANGMATCHERS"] = "LANGMATCHERS";
-    Keywords["DATATYPE"] = "DATATYPE";
-    Keywords["BOUND"] = "BOUND";
-    Keywords["IRI"] = "IRI";
-    Keywords["URI"] = "URI";
-    Keywords["BNODE"] = "BNODE";
-    Keywords["RAND"] = "RAND";
-    Keywords["ABS"] = "ABS";
-    Keywords["CEIL"] = "CEIL";
-    Keywords["FLOOR"] = "FLOOR";
-    Keywords["ROUND"] = "ROUND";
-    Keywords["CONCAT"] = "CONCAT";
-    Keywords["STRLEN"] = "STRLEN";
-    Keywords["UCASE"] = "UCASE";
-    Keywords["LCASE"] = "LCASE";
-    Keywords["ENCODE_FOR_URI"] = "ENCODE_FOR_URI";
-    Keywords["CONTAINS"] = "CONTAINS";
-    Keywords["STRSTARTS"] = "STRSTARTS";
-    Keywords["STRENDS"] = "STRENDS";
-    Keywords["STRBEFORE"] = "STRBEFORE";
-    Keywords["STRAFTER"] = "STRAFTER";
-    Keywords["YEAR"] = "YEAR";
-    Keywords["MONTH"] = "MONTH";
-    Keywords["DAY"] = "DAY";
-    Keywords["HOURS"] = "HOURS";
-    Keywords["MINUTES"] = "MINUTES";
-    Keywords["SECONDS"] = "SECONDS";
-    Keywords["TIMEZONE"] = "TIMEZONE";
-    Keywords["TZ"] = "TZ";
-    Keywords["NOW"] = "NOW";
-    Keywords["UUID"] = "UUID";
-    Keywords["STRUUID"] = "STRUUID";
-    Keywords["MD5"] = "MD5";
-    Keywords["SHA1"] = "SHA1";
-    Keywords["SHA256"] = "SHA256";
-    Keywords["SHA384"] = "SHA384";
-    Keywords["SHA512"] = "SHA512";
-    Keywords["COALESCE"] = "COALESCE";
-    Keywords["IF"] = "IF";
-    Keywords["STRLANG"] = "STRLANG";
-    Keywords["STRDT"] = "STRDT";
-    Keywords["sameTerm"] = "sameTerm";
-    Keywords["isIRI"] = "isIRI";
-    Keywords["isURI"] = "isURI";
-    Keywords["isBlank"] = "isBlank";
-    Keywords["isLiteral"] = "isLiteral";
-    Keywords["isNumeric"] = "isNumeric";
-    Keywords["REGEX"] = "REGEX";
-    Keywords["SUBSTR"] = "SUBSTR";
-    Keywords["REPLACE"] = "REPLACE";
-    Keywords["EXISTS"] = "EXISTS";
-    Keywords["NOT_EXISTS"] = "NOT EXISTS";
-    Keywords["COUNT"] = "COUNT";
-    Keywords["SUM"] = "SUM";
-    Keywords["MIN"] = "MIN";
-    Keywords["MAX"] = "MAX";
-    Keywords["AVG"] = "AVG";
-    Keywords["SAMPLE"] = "SAMPLE";
-    Keywords["GROUP_CONCAT"] = "GROUP_CONCAT";
-    Keywords["SEPARATOR"] = "SEPARATOR";
-    Keywords["TRUE"] = "TRUE";
-    Keywords["FALSE"] = "FALSE";
-    Keywords["IN"] = "IN";
-    Keywords["NOT_IN"] = "NOT IN";
-})(Keywords || (Keywords = {}));
 const allTokens = [
     tokenMap.NIL,
     tokenMap.ANON,
@@ -1200,23 +1199,22 @@ const allTokens = [
     tokenMap.A,
     tokenMap.Unknown,
 ];
-const lexer = new chevrotain.Lexer(allTokens);
 
 class SparqlParser extends chevrotain.Parser {
-    constructor(input) {
-        super(input, allTokens, {
-            recoveryEnabled: true,
-            outputCst: true,
-            errorMessageProvider: {
-                buildMismatchTokenMessage: (options) => {
-                    return `Expected ${JSON.stringify(options.expected, null, 2)}`;
-                },
-            },
-        });
+    constructor(options = {}) {
+        super(options.input || [], allTokens, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
+        this.lexer = new chevrotain.Lexer(allTokens);
+        this.tokenize = (document) => this.lexer.tokenize(document).tokens;
         this.parse = (document) => {
-            this.input = lexer.tokenize(document).tokens;
-            return { errors: this.errors, cst: this.Query() };
+            this.input = this.lexer.tokenize(document).tokens;
+            const cst = this.Query();
+            const errors = this.errors;
+            return {
+                errors,
+                cst,
+            };
         };
+        // Grammar Rules
         this.QueryUnit = this.RULE('QueryUnit', () => {
             this.SUBRULE(this.Query);
         });
@@ -2788,18 +2786,96 @@ class SparqlParser extends chevrotain.Parser {
         });
         chevrotain.Parser.performSelfAnalysis(this);
     }
-    getTokensMap() {
-        return this.tokensMap;
-    }
 }
 
-const parser = new SparqlParser([]);
-const parse = (document) => {
-    const parseResults = parser.parse(document);
-    return {
-        cst: parseResults,
-        parseErrors: parser.errors,
-    };
+const traverse = (root, visit) => {
+    _traverse(root, null, visit);
+};
+function isCstNode(object) {
+    return 'name' in object;
+}
+const BaseCstVisitorWithDefaults = new SparqlParser().getBaseCstVisitorConstructorWithDefaults();
+class VariableValidationVisitor extends BaseCstVisitorWithDefaults {
+    constructor() {
+        super();
+        this.validateVisitor();
+    }
+    QueryUnit(ctx) { }
+    Var(ctx) {
+        console.log(JSON.stringify(ctx, null, 2));
+    }
+}
+const testQuery = `PREFIX fd: <http://www.element-22.com/ontology/foundation#>
+PREFIX gu: <http://www.element-22.com/ontology/geographicunit#>
+PREFIX wgs:      <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX geof:       <http://www.opengis.net/def/function/geosparql/>
+PREFIX qudt:         <http://qudt.org/vocab/unit#>
+PREFIX :   <http://www.element-22.com/ontology/party#> 
+SELECT *
+WHERE {
+    { #pragma group.joins
+        ?party a :NonIndividual ;
+        fd:hasObjectId "172e7e8f-4656-4b54-803c-a22a6f1dcf03" ;
+        :hasRegisteredName ?partyName;
+        wgs:long ?partyLong ;
+        wgs:lat ?partyLat ;
+        :hasCityName ?partyCityName .
+        OPTIONAL { ?party geo:asWKT ?wktParty . }
+        ?competitor a :NonIndividual ;
+        wgs:long ?competitorLong ;
+        wgs:lat ?competitorLat ;
+        :hasRegisteredName ?competitorName ;
+        :hasCityName ?competitorCityName ;
+        ^:isCompetitorOf ?party . 
+    }
+    
+    {   ?distance geof:distance ( ?party ?competitor qudt:MileUSStatute ) . }
+        
+}`;
+const { cst } = new SparqlParser().parse(testQuery);
+const v = new VariableValidationVisitor();
+v.visit(cst);
+class TraverseContext {
+    constructor({ node, parentCtx, }) {
+        this.node = Object.assign({}, node);
+        this.parentCtx = Object.assign({}, parentCtx);
+    }
+}
+const _traverse = (root, ctx = new TraverseContext({ node: root }), visit) => {
+    if (!isCstNode(root)) {
+        // must be a token
+        // make sure to give user a copy
+        return visit(Object.assign({}, ctx));
+    }
+    // is a grammar rule node
+    const { children } = root;
+    Object.keys(children).forEach((key) => {
+        const childType = children[key];
+        if (!childType.length) {
+            return;
+        }
+        childType.forEach((child) => {
+            const childCtx = new TraverseContext({ node: child, parentCtx: ctx });
+            const afterVisit = (transformedCtx) => {
+                const nextCtx = transformedCtx
+                    ? new TraverseContext({
+                        node: transformedCtx.node,
+                        parentCtx: transformedCtx.parentCtx,
+                    })
+                    : childCtx;
+                _traverse(child, nextCtx, visit);
+            };
+            visit(childCtx, afterVisit);
+        });
+    });
 };
 
-exports.parse = parse;
+exports.SparqlParser = SparqlParser;
+exports.tokenMap = tokenMap;
+exports.allTokens = allTokens;
+exports.terminals = terminals;
+exports.keywords = keywords;
+exports.traverse = traverse;
+exports.isCstNode = isCstNode;
+exports.BaseCstVisitorWithDefaults = BaseCstVisitorWithDefaults;
+exports.VariableValidationVisitor = VariableValidationVisitor;

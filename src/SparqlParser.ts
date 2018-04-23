@@ -1,30 +1,46 @@
 import { tokenMap } from './tokens';
-import { Parser } from 'chevrotain';
-import { allTokens, lexer } from './tokens';
+import { Parser, TokenType, IToken, Lexer, IParserConfig } from 'chevrotain';
+import { allTokens } from './tokens';
 
 function log(...args) {
   // console.log(...args);
 }
 
+type Partial<T> = { [P in keyof T]?: T[P] };
+type IParserConfigPartial = Partial<IParserConfig>;
+
 export class SparqlParser extends Parser {
-  constructor(input) {
-    super(input, allTokens, {
+  private lexer = new Lexer(allTokens);
+
+  public tokenize = (document: string): IToken[] =>
+    this.lexer.tokenize(document).tokens;
+
+  public parse = (document: string) => {
+    this.input = this.lexer.tokenize(document).tokens;
+    const cst = this.Query();
+    const errors = this.errors;
+    return {
+      errors,
+      cst,
+    };
+  };
+
+  constructor(
+    options: {
+      input?: IToken[];
+      config?: IParserConfigPartial;
+    } = {}
+  ) {
+    super(options.input || [], allTokens as TokenType[], {
       recoveryEnabled: true,
       outputCst: true,
-      errorMessageProvider: {
-        buildMismatchTokenMessage: (options) => {
-          return `Expected ${JSON.stringify(options.expected, null, 2)}`;
-        },
-      },
+      ...options.config,
     });
 
     Parser.performSelfAnalysis(this);
   }
 
-  public parse = (document: string) => {
-    this.input = lexer.tokenize(document).tokens;
-    return { errors: this.errors, cst: this.Query() };
-  };
+  // Grammar Rules
 
   QueryUnit = this.RULE('QueryUnit', () => {
     log('QueryUnit');
@@ -1993,8 +2009,4 @@ export class SparqlParser extends Parser {
       { ALT: () => this.CONSUME(tokenMap.ANON) },
     ]);
   });
-
-  getTokensMap() {
-    return this.tokensMap;
-  }
 }
