@@ -2,12 +2,12 @@ import { SparqlParser } from '../../SparqlParser';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
 
-const { parse } = new SparqlParser({ config: {
-  maxLookahead: 200,
-}});
+const { parse } = new SparqlParser();
 
 const parseFile = (path: string) =>
-  parse(readFileSync(join(dirname(__filename), 'syntax-sparql4', path), 'utf8'));
+  parse(
+    readFileSync(join(dirname(__filename), 'syntax-sparql4', path), 'utf8')
+  );
 
 describe('syntax4', () => {
   it('should pass general syntax tests', () => {

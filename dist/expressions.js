@@ -1789,3 +1789,4 @@ class SparqlParser extends chevrotain_1.Parser {
     }
 }
 exports.SparqlParser = SparqlParser;
+//# sourceMappingURL=expressions.js.map

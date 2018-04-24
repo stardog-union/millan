@@ -151,3 +151,4 @@ exports.terminals = {
         pattern: PERCENT,
     }),
 };
+//# sourceMappingURL=terminals.js.map

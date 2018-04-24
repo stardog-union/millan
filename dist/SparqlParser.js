@@ -14,7 +14,7 @@ class SparqlParser extends chevrotain_1.Parser {
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
         this.parse = (document) => {
             this.input = this.lexer.tokenize(document).tokens;
-            const cst = this.Query();
+            const cst = this.SparqlDoc();
             const errors = this.errors;
             return {
                 errors,
@@ -22,13 +22,20 @@ class SparqlParser extends chevrotain_1.Parser {
             };
         };
         // Grammar Rules
+        this.SparqlDoc = this.RULE('SparqlDoc', () => {
+            log('SparqlDoc');
+            this.SUBRULE(this.Prologue);
+            this.OR([
+                { ALT: () => this.SUBRULE(this.QueryUnit) },
+                { ALT: () => this.SUBRULE(this.UpdateUnit) },
+            ]);
+        });
         this.QueryUnit = this.RULE('QueryUnit', () => {
             log('QueryUnit');
             this.SUBRULE(this.Query);
         });
         this.Query = this.RULE('Query', () => {
             log('Query');
-            this.SUBRULE(this.Prologue);
             this.OR([
                 { ALT: () => this.SUBRULE(this.SelectQuery) },
                 { ALT: () => this.SUBRULE(this.ConstructQuery) },
@@ -1788,3 +1795,4 @@ class SparqlParser extends chevrotain_1.Parser {
     }
 }
 exports.SparqlParser = SparqlParser;
+//# sourceMappingURL=SparqlParser.js.map

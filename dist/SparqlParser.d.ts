@@ -10,6 +10,7 @@ export declare class SparqlParser extends Parser {
         input?: IToken[];
         config?: Partial<IParserConfig>;
     });
+    SparqlDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     QueryUnit: (idxInCallingRule?: number, ...args: any[]) => any;
     Query: (idxInCallingRule?: number, ...args: any[]) => any;
     PathQuery: (idxInCallingRule?: number, ...args: any[]) => any;
