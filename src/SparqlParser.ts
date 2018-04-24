@@ -22,7 +22,7 @@ export class SparqlParser extends Parser {
 
   public parse = (document: string) => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.Query();
+    const cst = this.SparqlDoc();
     const errors: IRecognitionException[] = this.errors;
     return {
       errors,
@@ -47,6 +47,15 @@ export class SparqlParser extends Parser {
 
   // Grammar Rules
 
+  SparqlDoc = this.RULE('SparqlDoc', () => {
+    log('SparqlDoc');
+    this.SUBRULE(this.Prologue);
+    this.OR([
+      { ALT: () => this.SUBRULE(this.QueryUnit) },
+      { ALT: () => this.SUBRULE(this.UpdateUnit) },
+    ]);
+  });
+
   QueryUnit = this.RULE('QueryUnit', () => {
     log('QueryUnit');
     this.SUBRULE(this.Query);
@@ -54,7 +63,6 @@ export class SparqlParser extends Parser {
 
   Query = this.RULE('Query', () => {
     log('Query');
-    this.SUBRULE(this.Prologue);
     this.OR([
       { ALT: () => this.SUBRULE(this.SelectQuery) },
       { ALT: () => this.SUBRULE(this.ConstructQuery) },

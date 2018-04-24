@@ -8,6 +8,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "prettier": "^1.12.1",
@@ -16,22 +17,9 @@
     "ts-jest": "^22.4.4",
     "typescript": "^2.8.3"
   },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "/__tests__/.*\\.(test|spec)\\.[tj]sx?$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
-  },
   "scripts": {
-    "precommit": "node ./build/scripts/precommit.js; ./node_modules/typescript/bin/tsc; git add ./dist;",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "precommit": "node ./build/scripts/precommit.js; ./node_modules/rollup/bin/rollup -c; git add ./dist;",
+    "test": "./node_modules/.bin/jest"
   },
   "repository": {
     "type": "git",

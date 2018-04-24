@@ -5,6 +5,7 @@
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "sourceMap": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -13,7 +14,6 @@
     "declarationDir": "./dist",
     "lib": ["es2015", "dom"],
     "jsx": "react",
-    "baseUrl": ".",
     "paths": {
       "*": [
         "src/*"
@@ -22,5 +22,8 @@
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "src/__tests__/**/*"
   ]
 }
