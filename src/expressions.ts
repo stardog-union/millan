@@ -1,51 +1,34 @@
-import { tokenMap } from './tokens';
-import {
-  Parser,
-  TokenType,
-  IToken,
-  Lexer,
-  IParserConfig,
-  IRecognitionException,
-} from 'chevrotain';
-import { allTokens } from './tokens';
+import { tokenMap, allTokens } from './tokens';
+// @ts-ignore: import types for declarations
+import { Parser, Lexer, IRecognitionException } from 'chevrotain';
 
-// @ts-ignore: debug logging
+// @ts-ignore: used for debugging
 function log(...args) {
   // console.log(...args);
 }
 
+const lexer = new Lexer(allTokens);
+
 export class SparqlParser extends Parser {
-  private lexer = new Lexer(allTokens);
-
-  public tokenize = (document: string): IToken[] =>
-    this.lexer.tokenize(document).tokens;
-
-  public parse = (document: string) => {
-    this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.Query();
-    const errors: IRecognitionException[] = this.errors;
-    return {
-      errors,
-      cst,
-    };
-  };
-
-  constructor(
-    options: {
-      input?: IToken[];
-      config?: Partial<IParserConfig>;
-    } = {}
-  ) {
-    super(options.input || [], allTokens as TokenType[], {
+  constructor(input) {
+    super(input, allTokens, {
       recoveryEnabled: true,
       outputCst: true,
-      ...options.config,
+      errorMessageProvider: {
+        buildMismatchTokenMessage: (options) => {
+          return `Expected ${JSON.stringify(options.expected, null, 2)}`;
+        },
+      },
     });
 
     Parser.performSelfAnalysis(this);
   }
 
-  // Grammar Rules
+  public parse = (document: string) => {
+    this.input = lexer.tokenize(document).tokens;
+
+    return { errors: this.errors, cst: this.Query() };
+  };
 
   QueryUnit = this.RULE('QueryUnit', () => {
     log('QueryUnit');

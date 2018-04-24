@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "commonjs",
+    "module": "CommonJS",
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "sourceMap": true,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "stripInternal": true,
     "outDir": "./dist",
+    "declarationDir": "./dist",
     "lib": ["es2015", "dom"],
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "*": [
         "src/*"
-      ]
+      ],
     }
   },
   "include": [

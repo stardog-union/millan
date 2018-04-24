@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "chevrotain": "3.0.1"
+    "chevrotain": "3.0.1",
+    "tslint": "^5.9.1"
   },
   "name": "millan",
   "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",
@@ -29,7 +30,7 @@
     ]
   },
   "scripts": {
-    "precommit": "node ./build/scripts/precommit.js; ./node_modules/rollup/bin/rollup -c; git add ./dist;",
+    "precommit": "node ./build/scripts/precommit.js; ./node_modules/typescript/bin/tsc; git add ./dist;",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
