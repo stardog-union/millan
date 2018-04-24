@@ -140,6 +140,7 @@ export const terminals = {
   IRIREF: createToken({
     name: 'IRIREF',
     pattern: IRIREF,
+    label: '<http://example.com>',
   }),
 
   LANGTAG: createToken({
@@ -211,11 +212,13 @@ export const terminals = {
   NIL: createToken({
     name: 'NIL',
     pattern: NIL,
+    label: '()',
   }),
 
   ANON: createToken({
     name: 'ANON',
     pattern: ANON,
+    label: '[]',
   }),
 
   PNAME_LN: PNAME_LN_TOKEN,
@@ -234,11 +237,13 @@ export const terminals = {
   VAR1: createToken({
     name: 'VAR1',
     pattern: VAR1,
+    label: '?foo',
   }),
 
   VAR2: createToken({
     name: 'VAR2',
     pattern: VAR2,
+    label: '?bar',
   }),
 
   PERCENT: createToken({

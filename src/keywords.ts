@@ -668,8 +668,8 @@ export const keywords = {
     pattern: /EXISTS/i,
   }),
 
-  NOTEXISTS: createToken({
-    name: 'NOTEXISTS',
+  NOT_EXISTS: createToken({
+    name: 'NOT_EXISTS',
     pattern: /NOT EXISTS/i,
   }),
 

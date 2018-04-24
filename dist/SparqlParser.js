@@ -1624,7 +1624,7 @@ class SparqlParser extends chevrotain_1.Parser {
         });
         this.NotExistsFunction = this.RULE('NotExistsFunction', () => {
             log('NotExistsFunction');
-            this.CONSUME(tokens_1.tokenMap.NOTEXISTS);
+            this.CONSUME(tokens_1.tokenMap.NOT_EXISTS);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.Count = this.RULE('Count', () => {

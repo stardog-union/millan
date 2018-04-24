@@ -161,7 +161,7 @@ export declare const tokenMap: {
     SUBSTR: TokenType;
     REPLACE: TokenType;
     EXISTS: TokenType;
-    NOTEXISTS: TokenType;
+    NOT_EXISTS: TokenType;
     COUNT: TokenType;
     SUM: TokenType;
     MIN: TokenType;

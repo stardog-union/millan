@@ -67,6 +67,7 @@ exports.terminals = {
     IRIREF: chevrotain_1.createToken({
         name: 'IRIREF',
         pattern: IRIREF,
+        label: '<http://example.com>',
     }),
     LANGTAG: chevrotain_1.createToken({
         name: 'LANGTAG',
@@ -123,10 +124,12 @@ exports.terminals = {
     NIL: chevrotain_1.createToken({
         name: 'NIL',
         pattern: NIL,
+        label: '()',
     }),
     ANON: chevrotain_1.createToken({
         name: 'ANON',
         pattern: ANON,
+        label: '[]',
     }),
     PNAME_LN: PNAME_LN_TOKEN,
     PNAME_NS: chevrotain_1.createToken({
@@ -141,10 +144,12 @@ exports.terminals = {
     VAR1: chevrotain_1.createToken({
         name: 'VAR1',
         pattern: VAR1,
+        label: '?foo',
     }),
     VAR2: chevrotain_1.createToken({
         name: 'VAR2',
         pattern: VAR2,
+        label: '?bar',
     }),
     PERCENT: chevrotain_1.createToken({
         name: 'PERCENT',

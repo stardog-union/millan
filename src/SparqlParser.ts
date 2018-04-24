@@ -1834,7 +1834,7 @@ export class SparqlParser extends Parser {
 
   NotExistsFunction = this.RULE('NotExistsFunction', () => {
     log('NotExistsFunction');
-    this.CONSUME(tokenMap.NOTEXISTS);
+    this.CONSUME(tokenMap.NOT_EXISTS);
     this.SUBRULE(this.GroupGraphPattern);
   });
 

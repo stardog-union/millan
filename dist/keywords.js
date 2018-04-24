@@ -560,8 +560,8 @@ exports.keywords = {
         name: 'EXISTS',
         pattern: /EXISTS/i,
     }),
-    NOTEXISTS: chevrotain_1.createToken({
-        name: 'NOTEXISTS',
+    NOT_EXISTS: chevrotain_1.createToken({
+        name: 'NOT_EXISTS',
         pattern: /NOT EXISTS/i,
     }),
     COUNT: chevrotain_1.createToken({
