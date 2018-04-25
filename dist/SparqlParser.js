@@ -41,6 +41,7 @@ class SparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.ConstructQuery) },
                 { ALT: () => this.SUBRULE(this.DescribeQuery) },
                 { ALT: () => this.SUBRULE(this.AskQuery) },
+                { ALT: () => this.SUBRULE(this.PathQuery) },
             ]);
             this.SUBRULE(this.ValuesClause);
         });
@@ -65,15 +66,17 @@ class SparqlParser extends chevrotain_1.Parser {
         });
         this.PathTerminal = this.RULE('PathTerminal', () => {
             this.SUBRULE(this.Var);
-            this.OPTION(() => this.OR([
-                {
-                    ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.EQ);
-                        this.SUBRULE(this.Constant);
+            this.OPTION(() => {
+                this.OR([
+                    {
+                        ALT: () => {
+                            this.CONSUME(tokens_1.tokenMap.Equals);
+                            this.SUBRULE(this.iri);
+                        },
                     },
-                },
-                { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-            ]));
+                    { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
+                ]);
+            });
         });
         this.Constant = this.RULE('Constant', () => {
             this.OR([
@@ -88,7 +91,7 @@ class SparqlParser extends chevrotain_1.Parser {
             this.CONSUME(tokens_1.tokenMap.INTEGER);
         });
         this.PathSpec = this.RULE('PathSpec', () => {
-            this.CONSUME(tokens_1.tokenMap.PATH);
+            this.CONSUME(tokens_1.tokenMap.PATHS);
             this.OPTION(() => this.OR([
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.SHORTEST) },
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.ALL) },

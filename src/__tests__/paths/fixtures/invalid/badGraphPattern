@@ -1,0 +1,7 @@
+PREFIX : <urn:test:>
+  paths
+        start ?s { a :Person }
+	         end ?t { ?t a :CompanyInWatchList }
+	         via {
+	           ?s ?p ?t .
+	         }

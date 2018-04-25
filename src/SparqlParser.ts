@@ -68,6 +68,7 @@ export class SparqlParser extends Parser {
       { ALT: () => this.SUBRULE(this.ConstructQuery) },
       { ALT: () => this.SUBRULE(this.DescribeQuery) },
       { ALT: () => this.SUBRULE(this.AskQuery) },
+      { ALT: () => this.SUBRULE(this.PathQuery) },
     ]);
     this.SUBRULE(this.ValuesClause);
   });
@@ -95,17 +96,17 @@ export class SparqlParser extends Parser {
 
   PathTerminal = this.RULE('PathTerminal', () => {
     this.SUBRULE(this.Var);
-    this.OPTION(() =>
+    this.OPTION(() => {
       this.OR([
         {
           ALT: () => {
-            this.CONSUME(tokenMap.EQ);
-            this.SUBRULE(this.Constant);
+            this.CONSUME(tokenMap.Equals);
+            this.SUBRULE(this.iri);
           },
         },
         { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-      ])
-    );
+      ]);
+    });
   });
 
   Constant = this.RULE('Constant', () => {
@@ -123,7 +124,7 @@ export class SparqlParser extends Parser {
   });
 
   PathSpec = this.RULE('PathSpec', () => {
-    this.CONSUME(tokenMap.PATH);
+    this.CONSUME(tokenMap.PATHS);
     this.OPTION(() =>
       this.OR([
         { ALT: () => this.CONSUME(tokenMap.SHORTEST) },

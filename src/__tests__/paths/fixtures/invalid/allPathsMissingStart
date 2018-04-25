@@ -1,0 +1,2 @@
+PATHS ALL ?x = :Alice END ?y = :David
+VIA { {?x ?p ?y} UNION {?y ?p ?x} }

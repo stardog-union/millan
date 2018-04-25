@@ -122,8 +122,7 @@ export declare const keywords: {
     START: TokenType;
     END: TokenType;
     VIA: TokenType;
-    PATH: TokenType;
-    EQ: TokenType;
+    PATHS: TokenType;
     CYCLIC: TokenType;
     SHORTEST: TokenType;
     AS: TokenType;

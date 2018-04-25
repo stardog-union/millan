@@ -148,13 +148,9 @@ exports.keywords = {
         name: 'VIA',
         pattern: /VIA/i,
     }),
-    PATH: chevrotain_1.createToken({
-        name: 'PATH',
-        pattern: /PATH/i,
-    }),
-    EQ: chevrotain_1.createToken({
-        name: 'EQ',
-        pattern: /EQ/i,
+    PATHS: chevrotain_1.createToken({
+        name: 'PATHS',
+        pattern: /PATHS/i,
     }),
     CYCLIC: chevrotain_1.createToken({
         name: 'CYCLIC',

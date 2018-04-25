@@ -154,14 +154,9 @@ export const keywords = {
     pattern: /VIA/i,
   }),
 
-  PATH: createToken({
-    name: 'PATH',
-    pattern: /PATH/i,
-  }),
-
-  EQ: createToken({
-    name: 'EQ',
-    pattern: /EQ/i,
+  PATHS: createToken({
+    name: 'PATHS',
+    pattern: /PATHS/i,
   }),
 
   CYCLIC: createToken({
