@@ -1,12 +1,11 @@
-import { SparqlParser } from '../../../SparqlParser';
+import { SparqlParser } from '../../SparqlParser';
 import { readFileSync } from 'fs';
 import { join, dirname } from 'path';
-import { describe, it, expect } from 'jest';
 
 const { parse } = new SparqlParser();
 
 const parseFile = (path: string) =>
-  parse(readFileSync(join(dirname(__filename), path), 'utf8'));
+  parse(readFileSync(join(dirname(__filename), 'syntax-sparql1', path), 'utf8'));
 
 describe('syntax1', () => {
   it('should pass basic syntax tests', () => {

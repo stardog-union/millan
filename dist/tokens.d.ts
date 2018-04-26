@@ -58,8 +58,7 @@ export declare const tokenMap: {
     START: TokenType;
     END: TokenType;
     VIA: TokenType;
-    PATH: TokenType;
-    EQ: TokenType;
+    PATHS: TokenType;
     CYCLIC: TokenType;
     SHORTEST: TokenType;
     AS: TokenType;
@@ -161,7 +160,7 @@ export declare const tokenMap: {
     SUBSTR: TokenType;
     REPLACE: TokenType;
     EXISTS: TokenType;
-    NOTEXISTS: TokenType;
+    NOT_EXISTS: TokenType;
     COUNT: TokenType;
     SUM: TokenType;
     MIN: TokenType;

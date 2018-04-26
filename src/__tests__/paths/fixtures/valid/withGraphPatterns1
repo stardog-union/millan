@@ -1,0 +1,5 @@
+PATHS START ?x = :Kevin_Bacon END ?y VIA {
+  ?movie a :Film ; :starring ?x , ?y .
+  ?y :birthdate ?date .
+  FILTER (year(?date) - year(now()) >= 80)
+}

@@ -1,0 +1,2 @@
+PATHS START ?x = :Kevin_Bacon END ?y = :Robert_Redford
+VIA { ?movie a :Film ; :starring ?x , ?y  }

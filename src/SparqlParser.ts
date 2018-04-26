@@ -22,7 +22,7 @@ export class SparqlParser extends Parser {
 
   public parse = (document: string) => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.Query();
+    const cst = this.SparqlDoc();
     const errors: IRecognitionException[] = this.errors;
     return {
       errors,
@@ -47,6 +47,15 @@ export class SparqlParser extends Parser {
 
   // Grammar Rules
 
+  SparqlDoc = this.RULE('SparqlDoc', () => {
+    log('SparqlDoc');
+    this.SUBRULE(this.Prologue);
+    this.OR([
+      { ALT: () => this.SUBRULE(this.QueryUnit) },
+      { ALT: () => this.SUBRULE(this.UpdateUnit) },
+    ]);
+  });
+
   QueryUnit = this.RULE('QueryUnit', () => {
     log('QueryUnit');
     this.SUBRULE(this.Query);
@@ -54,12 +63,12 @@ export class SparqlParser extends Parser {
 
   Query = this.RULE('Query', () => {
     log('Query');
-    this.SUBRULE(this.Prologue);
     this.OR([
       { ALT: () => this.SUBRULE(this.SelectQuery) },
       { ALT: () => this.SUBRULE(this.ConstructQuery) },
       { ALT: () => this.SUBRULE(this.DescribeQuery) },
       { ALT: () => this.SUBRULE(this.AskQuery) },
+      { ALT: () => this.SUBRULE(this.PathQuery) },
     ]);
     this.SUBRULE(this.ValuesClause);
   });
@@ -87,17 +96,17 @@ export class SparqlParser extends Parser {
 
   PathTerminal = this.RULE('PathTerminal', () => {
     this.SUBRULE(this.Var);
-    this.OPTION(() =>
+    this.OPTION(() => {
       this.OR([
         {
           ALT: () => {
-            this.CONSUME(tokenMap.EQ);
-            this.SUBRULE(this.Constant);
+            this.CONSUME(tokenMap.Equals);
+            this.SUBRULE(this.iri);
           },
         },
         { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-      ])
-    );
+      ]);
+    });
   });
 
   Constant = this.RULE('Constant', () => {
@@ -115,7 +124,7 @@ export class SparqlParser extends Parser {
   });
 
   PathSpec = this.RULE('PathSpec', () => {
-    this.CONSUME(tokenMap.PATH);
+    this.CONSUME(tokenMap.PATHS);
     this.OPTION(() =>
       this.OR([
         { ALT: () => this.CONSUME(tokenMap.SHORTEST) },
@@ -1826,7 +1835,7 @@ export class SparqlParser extends Parser {
 
   NotExistsFunction = this.RULE('NotExistsFunction', () => {
     log('NotExistsFunction');
-    this.CONSUME(tokenMap.NOTEXISTS);
+    this.CONSUME(tokenMap.NOT_EXISTS);
     this.SUBRULE(this.GroupGraphPattern);
   });
 

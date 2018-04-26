@@ -148,13 +148,9 @@ exports.keywords = {
         name: 'VIA',
         pattern: /VIA/i,
     }),
-    PATH: chevrotain_1.createToken({
-        name: 'PATH',
-        pattern: /PATH/i,
-    }),
-    EQ: chevrotain_1.createToken({
-        name: 'EQ',
-        pattern: /EQ/i,
+    PATHS: chevrotain_1.createToken({
+        name: 'PATHS',
+        pattern: /PATHS/i,
     }),
     CYCLIC: chevrotain_1.createToken({
         name: 'CYCLIC',
@@ -560,8 +556,8 @@ exports.keywords = {
         name: 'EXISTS',
         pattern: /EXISTS/i,
     }),
-    NOTEXISTS: chevrotain_1.createToken({
-        name: 'NOTEXISTS',
+    NOT_EXISTS: chevrotain_1.createToken({
+        name: 'NOT_EXISTS',
         pattern: /NOT EXISTS/i,
     }),
     COUNT: chevrotain_1.createToken({
@@ -615,3 +611,4 @@ exports.keywords = {
         longer_alt: MAX_LENGTH,
     }),
 };
+//# sourceMappingURL=keywords.js.map
