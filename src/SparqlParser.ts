@@ -124,13 +124,11 @@ export class SparqlParser extends Parser {
   });
 
   PathSpec = this.RULE('PathSpec', () => {
-    this.CONSUME(tokenMap.PATHS);
-    this.OPTION(() =>
-      this.OR([
-        { ALT: () => this.CONSUME(tokenMap.SHORTEST) },
-        { ALT: () => this.CONSUME(tokenMap.ALL) },
-      ])
-    );
+    this.OR([
+      { ALT: () => this.CONSUME(tokenMap.PATHS) },
+      { ALT: () => this.CONSUME(tokenMap.PATHS_SHORTEST) },
+      { ALT: () => this.CONSUME(tokenMap.PATHS_ALL) },
+    ]);
     this.OPTION1(() => this.CONSUME(tokenMap.CYCLIC));
   });
 

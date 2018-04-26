@@ -91,11 +91,11 @@ class SparqlParser extends chevrotain_1.Parser {
             this.CONSUME(tokens_1.tokenMap.INTEGER);
         });
         this.PathSpec = this.RULE('PathSpec', () => {
-            this.CONSUME(tokens_1.tokenMap.PATHS);
-            this.OPTION(() => this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.SHORTEST) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.ALL) },
-            ]));
+            this.OR([
+                { ALT: () => this.CONSUME(tokens_1.tokenMap.PATHS) },
+                { ALT: () => this.CONSUME(tokens_1.tokenMap.PATHS_SHORTEST) },
+                { ALT: () => this.CONSUME(tokens_1.tokenMap.PATHS_ALL) },
+            ]);
             this.OPTION1(() => this.CONSUME(tokens_1.tokenMap.CYCLIC));
         });
         this.UpdateUnit = this.RULE('UpdateUnit', () => {
@@ -1798,4 +1798,3 @@ class SparqlParser extends chevrotain_1.Parser {
     }
 }
 exports.SparqlParser = SparqlParser;
-//# sourceMappingURL=SparqlParser.js.map

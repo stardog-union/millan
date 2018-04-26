@@ -8,4 +8,3 @@ __export(require("./tokens"));
 __export(require("./terminals"));
 __export(require("./keywords"));
 __export(require("./helpers"));
-//# sourceMappingURL=index.js.map

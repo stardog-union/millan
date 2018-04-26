@@ -1,0 +1,25 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.9-stretch
+    working_directory: ~/millan
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          # This branch if available
+          - dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          # Default branch if not
+          - dependency-cache-develop-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install node modules
+          command: yarn
+      - save_cache:
+          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+          - ./node_modules
+      - run:
+          name: Run tests
+          command: yarn test
