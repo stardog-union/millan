@@ -703,7 +703,7 @@ class SparqlParser extends chevrotain_1.Parser {
                         this.CONSUME(tokens_1.tokenMap.LParen);
                         this.SUBRULE(this.Expression);
                         this.MANY(() => {
-                            this.CONSUME(tokens_1.tokenMap.Period);
+                            this.CONSUME(tokens_1.tokenMap.Comma);
                             this.SUBRULE1(this.Expression);
                         });
                         this.CONSUME(tokens_1.tokenMap.RParen);
@@ -1577,7 +1577,13 @@ class SparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.RegexExpression) },
                 { ALT: () => this.SUBRULE(this.ExistsFunction) },
                 { ALT: () => this.SUBRULE(this.NotExistsFunction) },
+                { ALT: () => this.SUBRULE(this.StardogFunction) },
             ]);
+        });
+        this.StardogFunction = this.RULE('StardogFunction', () => {
+            log('StardogFunction');
+            this.CONSUME(tokens_1.tokenMap.Unknown);
+            this.SUBRULE(this.ExpressionList);
         });
         this.RegexExpression = this.RULE('RegexExpression', () => {
             log('RegexExpression');

@@ -187,6 +187,7 @@ export declare class SparqlParser extends Parser {
     BuiltInCall_isLiteral: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_isNumeric: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall: (idxInCallingRule?: number, ...args: any[]) => any;
+    StardogFunction: (idxInCallingRule?: number, ...args: any[]) => any;
     RegexExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     SubstringExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     StrReplaceExpression: (idxInCallingRule?: number, ...args: any[]) => any;

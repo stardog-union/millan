@@ -814,7 +814,7 @@ export class SparqlParser extends Parser {
           this.CONSUME(tokenMap.LParen);
           this.SUBRULE(this.Expression);
           this.MANY(() => {
-            this.CONSUME(tokenMap.Period);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
           });
           this.CONSUME(tokenMap.RParen);
@@ -1778,7 +1778,14 @@ export class SparqlParser extends Parser {
       { ALT: () => this.SUBRULE(this.RegexExpression) },
       { ALT: () => this.SUBRULE(this.ExistsFunction) },
       { ALT: () => this.SUBRULE(this.NotExistsFunction) },
+      { ALT: () => this.SUBRULE(this.StardogFunction) },
     ]);
+  });
+
+  StardogFunction = this.RULE('StardogFunction', () => {
+    log('StardogFunction');
+    this.CONSUME(tokenMap.Unknown);
+    this.SUBRULE(this.ExpressionList);
   });
 
   RegexExpression = this.RULE('RegexExpression', () => {
