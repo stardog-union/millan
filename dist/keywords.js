@@ -2,123 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore: import types for declarations
 const chevrotain_1 = require("chevrotain");
-var Keywords;
-(function (Keywords) {
-    Keywords["SELECT"] = "SELECT";
-    Keywords["CONSTRUCT"] = "CONSTRUCT";
-    Keywords["DISTINCT"] = "DISTINCT";
-    Keywords["AS"] = "AS";
-    Keywords["WHERE"] = "WHERE";
-    Keywords["GroupBy"] = "GROUP BY";
-    Keywords["OrderBy"] = "ORDER BY";
-    Keywords["By"] = "By";
-    Keywords["BASE"] = "BASE";
-    Keywords["PREFIX"] = "PREFIX";
-    Keywords["DESCRIBE"] = "DESCRIBE";
-    Keywords["ASK"] = "ASK";
-    Keywords["FROM"] = "FROM";
-    Keywords["REDUCED"] = "REDUCED";
-    Keywords["NAMED"] = "NAMED";
-    Keywords["HAVING"] = "HAVING";
-    Keywords["ASC"] = "ASC";
-    Keywords["DESC"] = "DESC";
-    Keywords["OFFSET"] = "OFFSET";
-    Keywords["LIMIT"] = "LIMIT";
-    Keywords["VALUES"] = "VALUES";
-    Keywords["LOAD"] = "LOAD";
-    Keywords["SILENT"] = "SILENT";
-    Keywords["INTO"] = "INTO";
-    Keywords["CLEAR"] = "CLEAR";
-    Keywords["DROP"] = "DROP";
-    Keywords["CREATE"] = "CREATE";
-    Keywords["ADD"] = "ADD";
-    Keywords["TO"] = "TO";
-    Keywords["MOVE"] = "MOVE";
-    Keywords["COPY"] = "COPY";
-    Keywords["INSERT_DATA"] = "INSERT DATA";
-    Keywords["DELETE_DATA"] = "DELETE DATA";
-    Keywords["DELETE_WHERE"] = "DELETE WHERE";
-    Keywords["WITH"] = "WITH";
-    Keywords["DELETE"] = "DELETE";
-    Keywords["INSERT"] = "INSERT";
-    Keywords["USING"] = "USING";
-    Keywords["DEFAULT"] = "DEFAULT";
-    Keywords["GRAPH"] = "GRAPH";
-    Keywords["ALL"] = "ALL";
-    Keywords["OPTIONAL"] = "OPTIONAL";
-    Keywords["SERVICE"] = "SERVICE";
-    Keywords["BIND"] = "BIND";
-    Keywords["UNDEF"] = "UNDEF";
-    Keywords["MINUS"] = "MINUS";
-    Keywords["UNION"] = "UNION";
-    Keywords["FILTER"] = "FILTER";
-    Keywords["STR"] = "STR";
-    Keywords["LANG"] = "LANG";
-    Keywords["LANGMATCHERS"] = "LANGMATCHERS";
-    Keywords["DATATYPE"] = "DATATYPE";
-    Keywords["BOUND"] = "BOUND";
-    Keywords["IRI"] = "IRI";
-    Keywords["URI"] = "URI";
-    Keywords["BNODE"] = "BNODE";
-    Keywords["RAND"] = "RAND";
-    Keywords["ABS"] = "ABS";
-    Keywords["CEIL"] = "CEIL";
-    Keywords["FLOOR"] = "FLOOR";
-    Keywords["ROUND"] = "ROUND";
-    Keywords["CONCAT"] = "CONCAT";
-    Keywords["STRLEN"] = "STRLEN";
-    Keywords["UCASE"] = "UCASE";
-    Keywords["LCASE"] = "LCASE";
-    Keywords["ENCODE_FOR_URI"] = "ENCODE_FOR_URI";
-    Keywords["CONTAINS"] = "CONTAINS";
-    Keywords["STRSTARTS"] = "STRSTARTS";
-    Keywords["STRENDS"] = "STRENDS";
-    Keywords["STRBEFORE"] = "STRBEFORE";
-    Keywords["STRAFTER"] = "STRAFTER";
-    Keywords["YEAR"] = "YEAR";
-    Keywords["MONTH"] = "MONTH";
-    Keywords["DAY"] = "DAY";
-    Keywords["HOURS"] = "HOURS";
-    Keywords["MINUTES"] = "MINUTES";
-    Keywords["SECONDS"] = "SECONDS";
-    Keywords["TIMEZONE"] = "TIMEZONE";
-    Keywords["TZ"] = "TZ";
-    Keywords["NOW"] = "NOW";
-    Keywords["UUID"] = "UUID";
-    Keywords["STRUUID"] = "STRUUID";
-    Keywords["MD5"] = "MD5";
-    Keywords["SHA1"] = "SHA1";
-    Keywords["SHA256"] = "SHA256";
-    Keywords["SHA384"] = "SHA384";
-    Keywords["SHA512"] = "SHA512";
-    Keywords["COALESCE"] = "COALESCE";
-    Keywords["IF"] = "IF";
-    Keywords["STRLANG"] = "STRLANG";
-    Keywords["STRDT"] = "STRDT";
-    Keywords["sameTerm"] = "sameTerm";
-    Keywords["isIRI"] = "isIRI";
-    Keywords["isURI"] = "isURI";
-    Keywords["isBlank"] = "isBlank";
-    Keywords["isLiteral"] = "isLiteral";
-    Keywords["isNumeric"] = "isNumeric";
-    Keywords["REGEX"] = "REGEX";
-    Keywords["SUBSTR"] = "SUBSTR";
-    Keywords["REPLACE"] = "REPLACE";
-    Keywords["EXISTS"] = "EXISTS";
-    Keywords["NOT_EXISTS"] = "NOT_EXISTS";
-    Keywords["COUNT"] = "COUNT";
-    Keywords["SUM"] = "SUM";
-    Keywords["MIN"] = "MIN";
-    Keywords["MAX"] = "MAX";
-    Keywords["AVG"] = "AVG";
-    Keywords["SAMPLE"] = "SAMPLE";
-    Keywords["GROUP_CONCAT"] = "GROUP_CONCAT";
-    Keywords["SEPARATOR"] = "SEPARATOR";
-    Keywords["TRUE"] = "TRUE";
-    Keywords["FALSE"] = "FALSE";
-    Keywords["IN"] = "IN";
-    Keywords["NOT_IN"] = "NOT IN";
-})(Keywords = exports.Keywords || (exports.Keywords = {}));
 const MAX_LENGTH = chevrotain_1.createToken({
     name: 'MAX_LENGTH',
     pattern: /MAX LENGTH/i,
@@ -152,13 +35,17 @@ exports.keywords = {
         name: 'PATHS',
         pattern: /PATHS/i,
     }),
+    PATHS_ALL: chevrotain_1.createToken({
+        name: 'PATHS_ALL',
+        pattern: /PATHS ALL/i,
+    }),
+    PATHS_SHORTEST: chevrotain_1.createToken({
+        name: 'PATHS_SHORTEST',
+        pattern: /PATHS SHORTEST/i,
+    }),
     CYCLIC: chevrotain_1.createToken({
         name: 'CYCLIC',
         pattern: /CYCLIC/i,
-    }),
-    SHORTEST: chevrotain_1.createToken({
-        name: 'SHORTEST',
-        pattern: /SHORTEST/i,
     }),
     AS: chevrotain_1.createToken({
         name: 'AS',
@@ -611,4 +498,3 @@ exports.keywords = {
         longer_alt: MAX_LENGTH,
     }),
 };
-//# sourceMappingURL=keywords.js.map

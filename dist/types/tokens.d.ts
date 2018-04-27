@@ -58,9 +58,10 @@ export declare const tokenMap: {
     START: TokenType;
     END: TokenType;
     VIA: TokenType;
-    PATHS: TokenType;
     CYCLIC: TokenType;
-    SHORTEST: TokenType;
+    PATHS_SHORTEST: TokenType;
+    PATHS_ALL: TokenType;
+    PATHS: TokenType;
     AS: TokenType;
     WHERE: TokenType;
     A: TokenType;

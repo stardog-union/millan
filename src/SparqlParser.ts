@@ -124,13 +124,11 @@ export class SparqlParser extends Parser {
   });
 
   PathSpec = this.RULE('PathSpec', () => {
-    this.CONSUME(tokenMap.PATHS);
-    this.OPTION(() =>
-      this.OR([
-        { ALT: () => this.CONSUME(tokenMap.SHORTEST) },
-        { ALT: () => this.CONSUME(tokenMap.ALL) },
-      ])
-    );
+    this.OR([
+      { ALT: () => this.CONSUME(tokenMap.PATHS) },
+      { ALT: () => this.CONSUME(tokenMap.PATHS_SHORTEST) },
+      { ALT: () => this.CONSUME(tokenMap.PATHS_ALL) },
+    ]);
     this.OPTION1(() => this.CONSUME(tokenMap.CYCLIC));
   });
 
@@ -816,7 +814,7 @@ export class SparqlParser extends Parser {
           this.CONSUME(tokenMap.LParen);
           this.SUBRULE(this.Expression);
           this.MANY(() => {
-            this.CONSUME(tokenMap.Period);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
           });
           this.CONSUME(tokenMap.RParen);
@@ -1780,7 +1778,14 @@ export class SparqlParser extends Parser {
       { ALT: () => this.SUBRULE(this.RegexExpression) },
       { ALT: () => this.SUBRULE(this.ExistsFunction) },
       { ALT: () => this.SUBRULE(this.NotExistsFunction) },
+      { ALT: () => this.SUBRULE(this.StardogFunction) },
     ]);
+  });
+
+  StardogFunction = this.RULE('StardogFunction', () => {
+    log('StardogFunction');
+    this.CONSUME(tokenMap.Unknown);
+    this.SUBRULE(this.ExpressionList);
   });
 
   RegexExpression = this.RULE('RegexExpression', () => {
