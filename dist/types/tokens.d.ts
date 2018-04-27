@@ -176,4 +176,5 @@ export declare const tokenMap: {
     MAX_LENGTH: TokenType;
     MAX: TokenType;
 };
-export declare const allTokens: TokenType[];
+export declare const baseTokens: TokenType[];
+export declare const pathsTokens: TokenType[];
