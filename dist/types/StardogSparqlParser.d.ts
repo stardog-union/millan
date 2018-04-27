@@ -1,4 +1,4 @@
-import { BaseSparqlParser } from 'BaseSparqlParser';
+import { BaseSparqlParser } from './BaseSparqlParser';
 export declare class StardogSparqlParser extends BaseSparqlParser {
     constructor(options?: any);
     Query: (idxInCallingRule?: number, ...args: any[]) => void;

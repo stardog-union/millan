@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const BaseSparqlParser_1 = require("BaseSparqlParser");
-const tokens_1 = require("tokens");
+const BaseSparqlParser_1 = require("./BaseSparqlParser");
+const tokens_1 = require("./tokens");
 const chevrotain_1 = require("chevrotain");
 const stardogTokens = [...tokens_1.pathsTokens, ...tokens_1.baseTokens];
 class StardogSparqlParser extends BaseSparqlParser_1.BaseSparqlParser {
@@ -125,11 +125,9 @@ class StardogSparqlParser extends BaseSparqlParser_1.BaseSparqlParser {
         });
         this.ConstructTemplate = this.OVERRIDE_RULE('ConstructTemplate', () => {
             this.CONSUME(tokens_1.tokenMap.LCurly);
-            this.OPTION(() => this.OR([
-                { ALT: () => this.SUBRULE(this.ConstructTriples) },
-                // Stardog supports quads in constructs
-                { ALT: () => this.SUBRULE(this.QuadsNotTriples) },
-            ]));
+            this.OPTION(() => 
+            // Stardog supports the request of Quads in a Construct template. See Stardog issue #675
+            this.SUBRULE(this.Quads));
             this.CONSUME(tokens_1.tokenMap.RCurly);
         });
         chevrotain_1.Parser.performSelfAnalysis(this);

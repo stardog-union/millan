@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tokens_1 = require("./tokens");
 const chevrotain_1 = require("chevrotain");
-// import { allTokens } from './tokens';
 // @ts-ignore: debug logging
 function log(...args) {
     // console.log(...args);
@@ -43,39 +42,6 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             ]);
             this.SUBRULE(this.ValuesClause);
         });
-        // PathQuery = this.RULE('PathQuery', () => {
-        //   this.SUBRULE(this.PathSpec);
-        //   this.MANY(() => this.SUBRULE(this.DatasetClause));
-        //   this.CONSUME(tokenMap.START);
-        //   this.SUBRULE(this.PathTerminal);
-        //   this.CONSUME(tokenMap.END);
-        //   this.SUBRULE1(this.PathTerminal);
-        //   this.SUBRULE(this.Via);
-        //   this.OPTION(() => this.SUBRULE(this.MaxLength));
-        //   this.SUBRULE(this.SolutionModifier);
-        // });
-        // Via = this.RULE('Via', () => {
-        //   this.CONSUME(tokenMap.VIA);
-        //   this.OR([
-        //     { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-        //     { ALT: () => this.SUBRULE(this.Var) },
-        //     { ALT: () => this.SUBRULE(this.Path) },
-        //   ]);
-        // });
-        // PathTerminal = this.RULE('PathTerminal', () => {
-        //   this.SUBRULE(this.Var);
-        //   this.OPTION(() => {
-        //     this.OR([
-        //       {
-        //         ALT: () => {
-        //           this.CONSUME(tokenMap.Equals);
-        //           this.SUBRULE(this.iri);
-        //         },
-        //       },
-        //       { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-        //     ]);
-        //   });
-        // });
         this.Constant = this.RULE('Constant', () => {
             this.OR([
                 { ALT: () => this.SUBRULE(this.iri) },
@@ -88,14 +54,6 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             this.CONSUME(tokens_1.tokenMap.MAX_LENGTH);
             this.CONSUME(tokens_1.tokenMap.INTEGER);
         });
-        // PathSpec = this.RULE('PathSpec', () => {
-        //   this.OR([
-        //     { ALT: () => this.CONSUME(tokenMap.PATHS) },
-        //     { ALT: () => this.CONSUME(tokenMap.PATHS_SHORTEST) },
-        //     { ALT: () => this.CONSUME(tokenMap.PATHS_ALL) },
-        //   ]);
-        //   this.OPTION1(() => this.CONSUME(tokenMap.CYCLIC));
-        // });
         this.UpdateUnit = this.RULE('UpdateUnit', () => {
             log('UpdateUnit');
             this.SUBRULE(this.Update);

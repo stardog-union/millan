@@ -7,15 +7,14 @@ import {
   IParserConfig,
   IRecognitionException,
 } from 'chevrotain';
-import { allTokens } from './tokens';
 
 // @ts-ignore: debug logging
 function log(...args) {
   // console.log(...args);
 }
 
-export class SparqlParser extends Parser {
-  private lexer = new Lexer(allTokens);
+export class BaseSparqlParser extends Parser {
+  private lexer: Lexer;
 
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
@@ -34,15 +33,16 @@ export class SparqlParser extends Parser {
     options: {
       input?: IToken[];
       config?: Partial<IParserConfig>;
-    } = {}
+    } = {},
+    tokenVocab: TokenType[]
   ) {
-    super(options.input || [], allTokens as TokenType[], {
+    super(options.input || [], tokenVocab, {
       recoveryEnabled: true,
       outputCst: true,
       ...options.config,
     });
 
-    Parser.performSelfAnalysis(this);
+    this.lexer = new Lexer(tokenVocab);
   }
 
   // Grammar Rules
@@ -68,45 +68,8 @@ export class SparqlParser extends Parser {
       { ALT: () => this.SUBRULE(this.ConstructQuery) },
       { ALT: () => this.SUBRULE(this.DescribeQuery) },
       { ALT: () => this.SUBRULE(this.AskQuery) },
-      { ALT: () => this.SUBRULE(this.PathQuery) },
     ]);
     this.SUBRULE(this.ValuesClause);
-  });
-
-  PathQuery = this.RULE('PathQuery', () => {
-    this.SUBRULE(this.PathSpec);
-    this.MANY(() => this.SUBRULE(this.DatasetClause));
-    this.CONSUME(tokenMap.START);
-    this.SUBRULE(this.PathTerminal);
-    this.CONSUME(tokenMap.END);
-    this.SUBRULE1(this.PathTerminal);
-    this.SUBRULE(this.Via);
-    this.OPTION(() => this.SUBRULE(this.MaxLength));
-    this.SUBRULE(this.SolutionModifier);
-  });
-
-  Via = this.RULE('Via', () => {
-    this.CONSUME(tokenMap.VIA);
-    this.OR([
-      { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-      { ALT: () => this.SUBRULE(this.Var) },
-      { ALT: () => this.SUBRULE(this.Path) },
-    ]);
-  });
-
-  PathTerminal = this.RULE('PathTerminal', () => {
-    this.SUBRULE(this.Var);
-    this.OPTION(() => {
-      this.OR([
-        {
-          ALT: () => {
-            this.CONSUME(tokenMap.Equals);
-            this.SUBRULE(this.iri);
-          },
-        },
-        { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-      ]);
-    });
   });
 
   Constant = this.RULE('Constant', () => {
@@ -121,15 +84,6 @@ export class SparqlParser extends Parser {
   MaxLength = this.RULE('MaxLength', () => {
     this.CONSUME(tokenMap.MAX_LENGTH);
     this.CONSUME(tokenMap.INTEGER);
-  });
-
-  PathSpec = this.RULE('PathSpec', () => {
-    this.OR([
-      { ALT: () => this.CONSUME(tokenMap.PATHS) },
-      { ALT: () => this.CONSUME(tokenMap.PATHS_SHORTEST) },
-      { ALT: () => this.CONSUME(tokenMap.PATHS_ALL) },
-    ]);
-    this.OPTION1(() => this.CONSUME(tokenMap.CYCLIC));
   });
 
   UpdateUnit = this.RULE('UpdateUnit', () => {
@@ -1778,14 +1732,7 @@ export class SparqlParser extends Parser {
       { ALT: () => this.SUBRULE(this.RegexExpression) },
       { ALT: () => this.SUBRULE(this.ExistsFunction) },
       { ALT: () => this.SUBRULE(this.NotExistsFunction) },
-      { ALT: () => this.SUBRULE(this.StardogFunction) },
     ]);
-  });
-
-  StardogFunction = this.RULE('StardogFunction', () => {
-    log('StardogFunction');
-    this.CONSUME(tokenMap.Unknown);
-    this.SUBRULE(this.ExpressionList);
   });
 
   RegexExpression = this.RULE('RegexExpression', () => {
