@@ -1,4 +1,9 @@
 import { TokenType } from 'chevrotain';
+export declare const IRIREF: RegExp;
+export declare const ECHAR: RegExp;
+export declare const PN_LOCAL_ESC: RegExp;
+export declare const PN_PREFIX: RegExp;
+export declare const PN_LOCAL: RegExp;
 export declare const terminals: {
     IRIREF: TokenType;
     LANGTAG: TokenType;

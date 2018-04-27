@@ -1,0 +1,15 @@
+select distinct ?p ?oClass ?rangeClass
+where {
+    ?o a ?anotherOClass . filter ( ?anotherOClass != ?oClass ) .
+    MINUS {
+        { ?s ?p ?o . ?o a ?oClass .
+          ?p rdfs:range ?rangeClass . 
+          ?o a ?anotherOClass . filter ( ?anotherOClass != ?oClass ) . 
+          filter ( ?oClass = ?rangeClass || ?anotherOClass = ?rangeClass ) } 
+        UNION
+        { ?s ?p ?o . ?o a ?oClass . 
+          ?p rdfs:range ?rangeClass . 
+          ?oClass rdfs:subClassOf ?oSuperClass .
+          filter ( ?oSuperClass = ?rangeClass ) }
+   }
+}

@@ -1179,33 +1179,27 @@ export class BaseSparqlParser extends Parser {
       this.OR([
         {
           ALT: () => {
-            this.CONSUME(tokenMap.Plus);
+            this.OR1([
+              { ALT: () => this.CONSUME(tokenMap.Plus) },
+              { ALT: () => this.CONSUME(tokenMap.Minus) },
+            ]);
             this.SUBRULE1(this.MultiplicativeExpression);
           },
         },
         {
           ALT: () => {
-            this.CONSUME(tokenMap.Minus);
-            this.SUBRULE2(this.MultiplicativeExpression);
-          },
-        },
-        {
-          ALT: () => {
-            this.OR1([
+            this.OR2([
               { ALT: () => this.SUBRULE(this.NumericLiteralPositive) },
               { ALT: () => this.SUBRULE(this.NumericLiteralNegative) },
             ]);
             this.MANY1(() =>
-              this.OR2([
+              this.OR3([
                 {
                   ALT: () => {
-                    this.CONSUME(tokenMap.Star);
-                    this.SUBRULE(this.UnaryExpression);
-                  },
-                },
-                {
-                  ALT: () => {
-                    this.CONSUME(tokenMap.ForwardSlash);
+                    this.OR4([
+                      { ALT: () => this.CONSUME(tokenMap.Star) },
+                      { ALT: () => this.CONSUME(tokenMap.ForwardSlash) },
+                    ]);
                     this.SUBRULE1(this.UnaryExpression);
                   },
                 },

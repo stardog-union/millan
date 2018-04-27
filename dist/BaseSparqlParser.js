@@ -1021,32 +1021,26 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             this.MANY(() => this.OR([
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Plus);
+                        this.OR1([
+                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Plus) },
+                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Minus) },
+                        ]);
                         this.SUBRULE1(this.MultiplicativeExpression);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Minus);
-                        this.SUBRULE2(this.MultiplicativeExpression);
-                    },
-                },
-                {
-                    ALT: () => {
-                        this.OR1([
+                        this.OR2([
                             { ALT: () => this.SUBRULE(this.NumericLiteralPositive) },
                             { ALT: () => this.SUBRULE(this.NumericLiteralNegative) },
                         ]);
-                        this.MANY1(() => this.OR2([
+                        this.MANY1(() => this.OR3([
                             {
                                 ALT: () => {
-                                    this.CONSUME(tokens_1.tokenMap.Star);
-                                    this.SUBRULE(this.UnaryExpression);
-                                },
-                            },
-                            {
-                                ALT: () => {
-                                    this.CONSUME(tokens_1.tokenMap.ForwardSlash);
+                                    this.OR4([
+                                        { ALT: () => this.CONSUME(tokens_1.tokenMap.Star) },
+                                        { ALT: () => this.CONSUME(tokens_1.tokenMap.ForwardSlash) },
+                                    ]);
                                     this.SUBRULE1(this.UnaryExpression);
                                 },
                             },
