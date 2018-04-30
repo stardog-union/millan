@@ -1,0 +1,7 @@
+prefix foaf: <http://example.com/foaf> 
+construct { 
+  graph rdfs:Resource { ?s a rdfs:Resource } 
+  graph ?g { ?s a ?g} } 
+where { 
+    ?s a ?g
+}

@@ -284,7 +284,7 @@ export const tokenMap = {
   MAX: keywords.MAX,
 };
 
-export const allTokens = [
+export const baseTokens = [
   tokenMap.NIL,
   tokenMap.ANON,
   tokenMap.LCurly,
@@ -428,13 +428,6 @@ export const allTokens = [
   tokenMap.MIN,
   tokenMap.MAX_LENGTH,
   tokenMap.MAX,
-  tokenMap.START,
-  tokenMap.END,
-  tokenMap.VIA,
-  tokenMap.CYCLIC,
-  tokenMap.PATHS_SHORTEST,
-  tokenMap.PATHS_ALL,
-  tokenMap.PATHS,
   tokenMap.AVG,
   tokenMap.SAMPLE,
   tokenMap.GROUP_CONCAT,
@@ -443,11 +436,11 @@ export const allTokens = [
   tokenMap.FALSE,
   tokenMap.Semicolon,
   tokenMap.Comma,
-  tokenMap.Pipe,
   tokenMap.ForwardSlash,
   tokenMap.DoubleCaret,
   tokenMap.Caret,
   tokenMap.LogicalOr,
+  tokenMap.Pipe,
   tokenMap.LogicalAnd,
   tokenMap.NotEquals,
   tokenMap.Bang,
@@ -460,4 +453,14 @@ export const allTokens = [
   tokenMap.NOT_IN,
   tokenMap.A,
   tokenMap.Unknown,
+];
+
+export const pathsTokens = [
+  tokenMap.START,
+  tokenMap.END,
+  tokenMap.VIA,
+  tokenMap.CYCLIC,
+  tokenMap.PATHS_SHORTEST,
+  tokenMap.PATHS_ALL,
+  tokenMap.PATHS,
 ];

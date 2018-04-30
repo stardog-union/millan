@@ -18,7 +18,7 @@
     "typescript": "^2.8.3"
   },
   "scripts": {
-    "precommit": "node ./build/scripts/precommit.js; ./node_modules/typescript/bin/tsc; git add ./dist;",
+    "precommit": "rm -rf ./dist; node ./build/scripts/precommit.js; ./node_modules/typescript/bin/tsc; git add ./dist;",
     "test": "./node_modules/.bin/jest"
   },
   "repository": {

@@ -1,24 +1,20 @@
-import { Parser, IToken, IParserConfig, IRecognitionException } from 'chevrotain';
-export declare class SparqlParser extends Parser {
+import { Parser, TokenType, IToken, IParserConfig, IRecognitionException } from 'chevrotain';
+export declare class BaseSparqlParser extends Parser {
     private lexer;
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];
         cst: any;
     };
-    constructor(options?: {
+    constructor(options: {
         input?: IToken[];
         config?: Partial<IParserConfig>;
-    });
+    }, tokenVocab: TokenType[]);
     SparqlDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     QueryUnit: (idxInCallingRule?: number, ...args: any[]) => any;
     Query: (idxInCallingRule?: number, ...args: any[]) => any;
-    PathQuery: (idxInCallingRule?: number, ...args: any[]) => any;
-    Via: (idxInCallingRule?: number, ...args: any[]) => any;
-    PathTerminal: (idxInCallingRule?: number, ...args: any[]) => any;
     Constant: (idxInCallingRule?: number, ...args: any[]) => any;
     MaxLength: (idxInCallingRule?: number, ...args: any[]) => any;
-    PathSpec: (idxInCallingRule?: number, ...args: any[]) => any;
     UpdateUnit: (idxInCallingRule?: number, ...args: any[]) => any;
     Prologue: (idxInCallingRule?: number, ...args: any[]) => any;
     BaseDecl: (idxInCallingRule?: number, ...args: any[]) => any;
@@ -187,7 +183,6 @@ export declare class SparqlParser extends Parser {
     BuiltInCall_isLiteral: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_isNumeric: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall: (idxInCallingRule?: number, ...args: any[]) => any;
-    StardogFunction: (idxInCallingRule?: number, ...args: any[]) => any;
     RegexExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     SubstringExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     StrReplaceExpression: (idxInCallingRule?: number, ...args: any[]) => any;

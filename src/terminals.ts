@@ -16,16 +16,16 @@ const regex = {
   },
 };
 
-const IRIREF = /<[^<>\\{}|\^`\u0000-\u0020]*>/;
+export const IRIREF = /<[^<>\\{}|\^`\u0000-\u0020]*>/;
 const PN_CHARS_BASE = /[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
 const LANGTAG = /@[a-zA-Z]+(-[a-zA-Z0-9]+)*/;
 const INTEGER = /\d+/;
 const DECIMAL = /(\d*\.\d+)|(\d+\.\d*)/;
 const EXPONENT = /[eE][+-]?\d+/;
-const ECHAR = /\\[tbnrf"'\\]/;
+export const ECHAR = /\\[tbnrf"'\\]/;
 const WS = /[\u0020\u0009\u000d\u000a]/;
 const HEX = /[0-9A-Fa-f]/;
-const PN_LOCAL_ESC = /\\[_~.\-!\$&'()*+,=\/?#@%;]/;
+export const PN_LOCAL_ESC = /\\[_~.\-!\$&'()*+,=\/?#@%;]/;
 
 const PN_CHARS_U = regex.or(PN_CHARS_BASE, /_/);
 
@@ -38,7 +38,7 @@ const PN_CHARS = regex.or(
   /[\u203f-\u2040]/
 );
 
-const PN_PREFIX = regex.and(
+export const PN_PREFIX = regex.and(
   PN_CHARS_BASE,
   regex.option(regex.and(regex.many(regex.or(PN_CHARS, /\./)), PN_CHARS))
 );
@@ -47,7 +47,7 @@ const PERCENT = regex.and(/%/, HEX, HEX);
 
 const PLX = regex.or(PERCENT, PN_LOCAL_ESC);
 
-const PN_LOCAL = regex.and(
+export const PN_LOCAL = regex.and(
   regex.or(PN_CHARS_U, /:/, /\d/, PLX),
   regex.option(
     regex.and(

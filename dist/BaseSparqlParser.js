@@ -2,15 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tokens_1 = require("./tokens");
 const chevrotain_1 = require("chevrotain");
-const tokens_2 = require("./tokens");
 // @ts-ignore: debug logging
 function log(...args) {
     // console.log(...args);
 }
-class SparqlParser extends chevrotain_1.Parser {
-    constructor(options = {}) {
-        super(options.input || [], tokens_2.allTokens, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
-        this.lexer = new chevrotain_1.Lexer(tokens_2.allTokens);
+class BaseSparqlParser extends chevrotain_1.Parser {
+    constructor(options = {}, tokenVocab) {
+        super(options.input || [], tokenVocab, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
         this.parse = (document) => {
             this.input = this.lexer.tokenize(document).tokens;
@@ -41,42 +39,8 @@ class SparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.ConstructQuery) },
                 { ALT: () => this.SUBRULE(this.DescribeQuery) },
                 { ALT: () => this.SUBRULE(this.AskQuery) },
-                { ALT: () => this.SUBRULE(this.PathQuery) },
             ]);
             this.SUBRULE(this.ValuesClause);
-        });
-        this.PathQuery = this.RULE('PathQuery', () => {
-            this.SUBRULE(this.PathSpec);
-            this.MANY(() => this.SUBRULE(this.DatasetClause));
-            this.CONSUME(tokens_1.tokenMap.START);
-            this.SUBRULE(this.PathTerminal);
-            this.CONSUME(tokens_1.tokenMap.END);
-            this.SUBRULE1(this.PathTerminal);
-            this.SUBRULE(this.Via);
-            this.OPTION(() => this.SUBRULE(this.MaxLength));
-            this.SUBRULE(this.SolutionModifier);
-        });
-        this.Via = this.RULE('Via', () => {
-            this.CONSUME(tokens_1.tokenMap.VIA);
-            this.OR([
-                { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-                { ALT: () => this.SUBRULE(this.Var) },
-                { ALT: () => this.SUBRULE(this.Path) },
-            ]);
-        });
-        this.PathTerminal = this.RULE('PathTerminal', () => {
-            this.SUBRULE(this.Var);
-            this.OPTION(() => {
-                this.OR([
-                    {
-                        ALT: () => {
-                            this.CONSUME(tokens_1.tokenMap.Equals);
-                            this.SUBRULE(this.iri);
-                        },
-                    },
-                    { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
-                ]);
-            });
         });
         this.Constant = this.RULE('Constant', () => {
             this.OR([
@@ -89,14 +53,6 @@ class SparqlParser extends chevrotain_1.Parser {
         this.MaxLength = this.RULE('MaxLength', () => {
             this.CONSUME(tokens_1.tokenMap.MAX_LENGTH);
             this.CONSUME(tokens_1.tokenMap.INTEGER);
-        });
-        this.PathSpec = this.RULE('PathSpec', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PATHS) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PATHS_SHORTEST) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PATHS_ALL) },
-            ]);
-            this.OPTION1(() => this.CONSUME(tokens_1.tokenMap.CYCLIC));
         });
         this.UpdateUnit = this.RULE('UpdateUnit', () => {
             log('UpdateUnit');
@@ -1065,32 +1021,26 @@ class SparqlParser extends chevrotain_1.Parser {
             this.MANY(() => this.OR([
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Plus);
+                        this.OR1([
+                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Plus) },
+                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Minus) },
+                        ]);
                         this.SUBRULE1(this.MultiplicativeExpression);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Minus);
-                        this.SUBRULE2(this.MultiplicativeExpression);
-                    },
-                },
-                {
-                    ALT: () => {
-                        this.OR1([
+                        this.OR2([
                             { ALT: () => this.SUBRULE(this.NumericLiteralPositive) },
                             { ALT: () => this.SUBRULE(this.NumericLiteralNegative) },
                         ]);
-                        this.MANY1(() => this.OR2([
+                        this.MANY1(() => this.OR3([
                             {
                                 ALT: () => {
-                                    this.CONSUME(tokens_1.tokenMap.Star);
-                                    this.SUBRULE(this.UnaryExpression);
-                                },
-                            },
-                            {
-                                ALT: () => {
-                                    this.CONSUME(tokens_1.tokenMap.ForwardSlash);
+                                    this.OR4([
+                                        { ALT: () => this.CONSUME(tokens_1.tokenMap.Star) },
+                                        { ALT: () => this.CONSUME(tokens_1.tokenMap.ForwardSlash) },
+                                    ]);
                                     this.SUBRULE1(this.UnaryExpression);
                                 },
                             },
@@ -1577,13 +1527,7 @@ class SparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.RegexExpression) },
                 { ALT: () => this.SUBRULE(this.ExistsFunction) },
                 { ALT: () => this.SUBRULE(this.NotExistsFunction) },
-                { ALT: () => this.SUBRULE(this.StardogFunction) },
             ]);
-        });
-        this.StardogFunction = this.RULE('StardogFunction', () => {
-            log('StardogFunction');
-            this.CONSUME(tokens_1.tokenMap.Unknown);
-            this.SUBRULE(this.ExpressionList);
         });
         this.RegexExpression = this.RULE('RegexExpression', () => {
             log('RegexExpression');
@@ -1800,7 +1744,7 @@ class SparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.ANON) },
             ]);
         });
-        chevrotain_1.Parser.performSelfAnalysis(this);
+        this.lexer = new chevrotain_1.Lexer(tokenVocab);
     }
 }
-exports.SparqlParser = SparqlParser;
+exports.BaseSparqlParser = BaseSparqlParser;

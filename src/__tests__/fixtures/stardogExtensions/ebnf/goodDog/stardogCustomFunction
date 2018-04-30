@@ -1,0 +1,4 @@
+select * {
+  ?source rdfs:domain :Person
+  bind(localname(?source) as ?sl)
+}

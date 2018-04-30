@@ -1,8 +1,8 @@
-import { readdirSync, readFileSync } from 'fs';
+import { BaseSparqlParser } from '../../';
+import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
-import { SparqlParser } from '../../SparqlParser';
-
-const { parse } = new SparqlParser();
+// @ts-ignore needed to import BaseSparqlParser["parse"] below
+import { IRecognitionException } from 'chevrotain';
 
 export interface FileAndContents {
   name: string;
@@ -17,32 +17,37 @@ export const getAllFileContents = (pathToFiles): FileAndContents[] => {
   }));
   return contentsOfAllFiles;
 };
-export const toParseWithNoErrors = (received: FileAndContents) => {
-  const result = parse(received.contents);
-  const pass = Boolean(!result.errors.length);
-  const message = () =>
-    pass
-      ? `expected "${received.contents}"\nto parse with no errors`
-      : `expected "${received.contents}" from file: "${
-          received.name
-        }"\nto parse with no errors, instead received:\n${JSON.stringify(
-          result.errors,
-          null,
-          2
-        )}`;
 
-  return {
-    message,
-    pass,
-  };
-};
-export const toParseWithErrors = (received: FileAndContents) => {
-  const result = parse(received.contents);
-  const pass = Boolean(result.errors.length);
-  const message = () =>
-    `expected parsing\n"${received.contents}"\nto reveal errors`;
-  return {
-    message,
-    pass,
-  };
-};
+export const makeExpectExtensionForParse = (
+  parse: BaseSparqlParser['parse']
+) => ({
+  toParseWithNoErrors: (received: FileAndContents) => {
+    const result = parse(received.contents);
+    const pass = Boolean(!result.errors.length);
+    const message = () =>
+      pass
+        ? `expected "${received.contents}"\nto parse with no errors`
+        : `expected "${received.contents}" from file: "${
+            received.name
+          }"\nto parse with no errors, instead received:\n${JSON.stringify(
+            result.errors,
+            null,
+            2
+          )}`;
+
+    return {
+      message,
+      pass,
+    };
+  },
+  toParseWithErrors: (received: FileAndContents) => {
+    const result = parse(received.contents);
+    const pass = Boolean(result.errors.length);
+    const message = () =>
+      `expected parsing\n"${received.contents}"\nto reveal errors`;
+    return {
+      message,
+      pass,
+    };
+  },
+});

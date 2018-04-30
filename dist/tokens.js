@@ -259,7 +259,7 @@ exports.tokenMap = {
     MAX_LENGTH: keywords_1.keywords.MAX_LENGTH,
     MAX: keywords_1.keywords.MAX,
 };
-exports.allTokens = [
+exports.baseTokens = [
     exports.tokenMap.NIL,
     exports.tokenMap.ANON,
     exports.tokenMap.LCurly,
@@ -403,13 +403,6 @@ exports.allTokens = [
     exports.tokenMap.MIN,
     exports.tokenMap.MAX_LENGTH,
     exports.tokenMap.MAX,
-    exports.tokenMap.START,
-    exports.tokenMap.END,
-    exports.tokenMap.VIA,
-    exports.tokenMap.CYCLIC,
-    exports.tokenMap.PATHS_SHORTEST,
-    exports.tokenMap.PATHS_ALL,
-    exports.tokenMap.PATHS,
     exports.tokenMap.AVG,
     exports.tokenMap.SAMPLE,
     exports.tokenMap.GROUP_CONCAT,
@@ -418,11 +411,11 @@ exports.allTokens = [
     exports.tokenMap.FALSE,
     exports.tokenMap.Semicolon,
     exports.tokenMap.Comma,
-    exports.tokenMap.Pipe,
     exports.tokenMap.ForwardSlash,
     exports.tokenMap.DoubleCaret,
     exports.tokenMap.Caret,
     exports.tokenMap.LogicalOr,
+    exports.tokenMap.Pipe,
     exports.tokenMap.LogicalAnd,
     exports.tokenMap.NotEquals,
     exports.tokenMap.Bang,
@@ -435,4 +428,13 @@ exports.allTokens = [
     exports.tokenMap.NOT_IN,
     exports.tokenMap.A,
     exports.tokenMap.Unknown,
+];
+exports.pathsTokens = [
+    exports.tokenMap.START,
+    exports.tokenMap.END,
+    exports.tokenMap.VIA,
+    exports.tokenMap.CYCLIC,
+    exports.tokenMap.PATHS_SHORTEST,
+    exports.tokenMap.PATHS_ALL,
+    exports.tokenMap.PATHS,
 ];
