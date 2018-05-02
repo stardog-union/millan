@@ -2,7 +2,9 @@ import { BaseSparqlParser } from './BaseSparqlParser';
 import { tokenMap, baseTokens, pathsTokens } from './tokens';
 import { Parser } from 'chevrotain';
 
-const stardogTokens = [...pathsTokens, ...baseTokens];
+const indexOfSELECT = baseTokens.indexOf(tokenMap.SELECT);
+const stardogTokens = [...baseTokens];
+stardogTokens.splice(indexOfSELECT, 0, ...pathsTokens);
 
 export class StardogSparqlParser extends BaseSparqlParser {
   constructor(options?) {
