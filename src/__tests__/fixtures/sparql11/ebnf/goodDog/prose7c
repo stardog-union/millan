@@ -1,0 +1,12 @@
+DELETE      WHERE 
+  {
+    GRAPH <urn:sparql:tests:delete:where1> 
+      {
+        ?person <http://xmlns.com/foaf/0.1/givenName> 'Fred'  ; 
+                                           ?property1 ?value1 . 
+      }
+    GRAPH <urn:sparql:tests:delete:where2> 
+      {
+        ?person ?property2 ?value2 . 
+      }
+  }

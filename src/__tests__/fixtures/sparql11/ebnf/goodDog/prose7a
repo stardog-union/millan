@@ -1,0 +1,7 @@
+INSERT      DATA
+  { 
+    GRAPH <urn:sparql:tests:insert:data> 
+      { 
+        <#book1> <#price> 42 
+      } 
+  }
