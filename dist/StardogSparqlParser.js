@@ -3,7 +3,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const BaseSparqlParser_1 = require("./BaseSparqlParser");
 const tokens_1 = require("./tokens");
 const chevrotain_1 = require("chevrotain");
-const stardogTokens = [...tokens_1.pathsTokens, ...tokens_1.baseTokens];
+const indexOfSELECT = tokens_1.baseTokens.indexOf(tokens_1.tokenMap.SELECT);
+const stardogTokens = [
+    ...tokens_1.baseTokens.slice(0, indexOfSELECT),
+    ...tokens_1.pathsTokens,
+    ...tokens_1.baseTokens.slice(indexOfSELECT),
+];
 class StardogSparqlParser extends BaseSparqlParser_1.BaseSparqlParser {
     constructor(options) {
         super(options, stardogTokens);
