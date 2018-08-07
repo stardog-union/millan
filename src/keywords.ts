@@ -203,17 +203,17 @@ export const keywords = {
 
   INSERT_DATA: createToken({
     name: 'INSERT_DATA',
-    pattern: /Insert Data/i,
+    pattern: /Insert +Data/i,
   }),
 
   DELETE_DATA: createToken({
     name: 'DELETE_DATA',
-    pattern: /Delete Data/i,
+    pattern: /Delete +Data/i,
   }),
 
   DELETE_WHERE: createToken({
     name: 'DELETE_WHERE',
-    pattern: /Delete Where/i,
+    pattern: /Delete +Where/i,
   }),
 
   WITH: createToken({

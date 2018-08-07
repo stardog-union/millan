@@ -165,15 +165,15 @@ exports.keywords = {
     }),
     INSERT_DATA: chevrotain_1.createToken({
         name: 'INSERT_DATA',
-        pattern: /Insert Data/i,
+        pattern: /Insert +Data/i,
     }),
     DELETE_DATA: chevrotain_1.createToken({
         name: 'DELETE_DATA',
-        pattern: /Delete Data/i,
+        pattern: /Delete +Data/i,
     }),
     DELETE_WHERE: chevrotain_1.createToken({
         name: 'DELETE_WHERE',
-        pattern: /Delete Where/i,
+        pattern: /Delete +Where/i,
     }),
     WITH: chevrotain_1.createToken({
         name: 'WITH',
