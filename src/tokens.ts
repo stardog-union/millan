@@ -30,7 +30,7 @@ export const tokenMap = {
 
   Comment: createToken({
     name: 'Comment',
-    pattern: /\#.+\n/,
+    pattern: /#.*/,
     group: 'comments',
   }),
   LCurly: createToken({ name: 'LCurly', pattern: '{' }),

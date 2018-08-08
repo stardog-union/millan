@@ -30,7 +30,7 @@ exports.tokenMap = {
     PERCENT: terminals_1.terminals.PERCENT,
     Comment: chevrotain_1.createToken({
         name: 'Comment',
-        pattern: /\#.+\n/,
+        pattern: /#.*/,
         group: 'comments',
     }),
     LCurly: chevrotain_1.createToken({ name: 'LCurly', pattern: '{' }),

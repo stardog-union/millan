@@ -1,0 +1,47 @@
+select * {
+    {
+        # Count distinct paths
+        select ?org ?name1 ?ben ?name2 ?s (count(*) as ?c) {
+            {
+                # Group by intermediaries
+                select ?org ?name1 ?ben ?name2 ?t1 ?t2 ?s {
+                    ?org :lastName ?lname1 ;
+                        :firstName ?fname1 ;
+                        :hasAffiliation* ?t1 .
+                    ?t1 :hasBankAccount ?a1 .
+                    ?a1 :originated ?tx .
+                    ?tx :beneficiary ?a2 .
+                    ?t2 :hasBankAccount ?a2 ;
+                        :hasAffiliation* ?ben .
+                    ?ben :lastName ?lname2 ;
+                        :firstName ?fname2 .
+                    {
+                        # Find highest sum of Tx for all paths
+                        # between ?org and ?ben
+                        select ?org ?ben (sum(?m) as ?s) {
+                            ?org a :Person ;
+                                :hasAffiliation* ?t1 .
+                            ?t1 :hasBankAccount ?a1 .
+                            ?a1 :originated ?tx .
+                            ?tx :beneficiary ?a2 ;
+                                :amount ?m .
+                            ?t2 :hasBankAccount ?a2 ;
+                                :hasAffiliation* ?ben .
+                            ?ben a :Person .
+                        }
+                        group by ?org ?ben
+                        order by desc(?s) ?org ?ben
+                        limit 1000
+                    }
+                    bind(concat(?fname1, ' - ', ?lname1) as ?name1)
+                    bind(concat(?fname2, ' - ', ?lname2) as ?name2)
+                }
+                group by ?org ?name1 ?ben ?name2 ?t1 ?t2 ?s
+            }
+        }
+        group by ?org ?ben ?name1 ?name2 ?s
+        order by desc(?s) ?org ?ben
+    }
+    bind(?s * ?c * ?c as ?z)
+}
+order by desc(?z) ?org ?ben
