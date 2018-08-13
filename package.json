@@ -4,7 +4,7 @@
   },
   "name": "millan",
   "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "devDependencies": {
@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/stardog-union/millan/issues"
   },
-  "homepage": "https://github.com/stardog-union/millan#readme"
+  "homepage": "https://github.com/stardog-union/millan#readme",
+  "publishConfig": {
+    "registry": "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/"
+  }
 }
