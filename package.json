@@ -4,7 +4,7 @@
   },
   "name": "millan",
   "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "devDependencies": {
