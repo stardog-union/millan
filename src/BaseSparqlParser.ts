@@ -894,18 +894,10 @@ export class BaseSparqlParser extends Parser {
     });
   });
 
-  VerbPath = this.RULE(
-    'VerbPath',
-    () => {
-      log('VerbPath');
-      this.SUBRULE(this.Path);
-    },
-    {
-      recoveryValueFunc: (...args) => {
-        return 'RECOVery_Value, BABY!';
-      },
-    }
-  );
+  VerbPath = this.RULE('VerbPath', () => {
+    log('VerbPath');
+    this.SUBRULE(this.Path);
+  });
 
   VerbSimple = this.RULE('VerbSimple', () => {
     log('VerbSimple');

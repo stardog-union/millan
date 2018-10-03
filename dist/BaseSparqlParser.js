@@ -774,10 +774,6 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.VerbPath = this.RULE('VerbPath', () => {
             log('VerbPath');
             this.SUBRULE(this.Path);
-        }, {
-            recoveryValueFunc: (...args) => {
-                return 'RECOVery_Value, BABY!';
-            },
         });
         this.VerbSimple = this.RULE('VerbSimple', () => {
             log('VerbSimple');
