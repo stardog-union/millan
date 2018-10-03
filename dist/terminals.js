@@ -2,55 +2,42 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore: import types for declarations
 const chevrotain_1 = require("chevrotain");
-const regex = {
-    or(...r) {
-        return new RegExp(r.map(({ source }) => `(${source})`).join('|'));
-    },
-    and(...r) {
-        return new RegExp(r.map(({ source }) => `(${source})`).join(''));
-    },
-    option(r) {
-        return new RegExp(`(${r.source})?`);
-    },
-    many(r) {
-        return new RegExp(`(${r.source})*`);
-    },
-};
+const utils_1 = require("utils");
 exports.IRIREF = /<[^<>\\{}|\^`\u0000-\u0020]*>/;
-const PN_CHARS_BASE = /[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+exports.PN_CHARS_BASE = /[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
 const LANGTAG = /@[a-zA-Z]+(-[a-zA-Z0-9]+)*/;
 const INTEGER = /\d+/;
 const DECIMAL = /(\d*\.\d+)|(\d+\.\d*)/;
-const EXPONENT = /[eE][+-]?\d+/;
+exports.EXPONENT = /[eE][+-]?\d+/;
 exports.ECHAR = /\\[tbnrf"'\\]/;
 const WS = /[\u0020\u0009\u000d\u000a]/;
-const HEX = /[0-9A-Fa-f]/;
+exports.HEX = /[0-9A-Fa-f]/;
 exports.PN_LOCAL_ESC = /\\[_~.\-!\$&'()*+,=\/?#@%;]/;
-const PN_CHARS_U = regex.or(PN_CHARS_BASE, /_/);
-const PN_CHARS = regex.or(PN_CHARS_U, /-/, /\d/, /\u00b7/, /[\u0300-\u036f]/, /[\u203f-\u2040]/);
-exports.PN_PREFIX = regex.and(PN_CHARS_BASE, regex.option(regex.and(regex.many(regex.or(PN_CHARS, /\./)), PN_CHARS)));
-const PERCENT = regex.and(/%/, HEX, HEX);
-const PLX = regex.or(PERCENT, exports.PN_LOCAL_ESC);
-exports.PN_LOCAL = regex.and(regex.or(PN_CHARS_U, /:/, /\d/, PLX), regex.option(regex.and(regex.many(regex.or(PN_CHARS, /\./, /:/, PLX)), regex.or(PN_CHARS, /:/, PLX))));
-const VARNAME = regex.and(regex.or(PN_CHARS_U, /\d/), regex.many(regex.or(PN_CHARS_U, /\d/, /\u00b7/, /[\u0300-\u036f]/, /[\u203f-\u2040]/)));
-const ANON = regex.and(/\[/, regex.many(WS), /\]/);
-const NIL = regex.and(/\(/, regex.many(WS), /\)/);
-const STRING_LITERAL1 = regex.and(/'/, regex.many(regex.or(/[^\u0027\u005C\u000A\u000D]/, exports.ECHAR)), /'/);
-const STRING_LITERAL2 = regex.and(/"/, regex.many(regex.or(/[^\u0022\u005C\u000A\u000D]/, exports.ECHAR)), /"/);
-const STRING_LITERAL_LONG1 = regex.and(/'''/, regex.many(regex.and(regex.option(regex.or(/'/, /''/)), regex.or(/[^'\\]/, exports.ECHAR))), /'''/);
-const STRING_LITERAL_LONG2 = regex.and(/"""/, regex.many(regex.and(regex.option(regex.or(/"/, /""/)), regex.or(/[^"\\]/, exports.ECHAR))), /"""/);
-const DOUBLE = regex.or(regex.and(/\d+\.\d*/, EXPONENT), regex.and(/\.\d+/, EXPONENT), regex.and(/\d+/, EXPONENT));
-const INTEGER_POSITIVE = regex.and(/\+/, INTEGER);
-const DECIMAL_POSITIVE = regex.and(/\+/, DECIMAL);
-const DOUBLE_POSITIVE = regex.and(/\+/, DOUBLE);
-const INTEGER_NEGATIVE = regex.and(/-/, INTEGER);
-const DECIMAL_NEGATIVE = regex.and(/-/, DECIMAL);
-const DOUBLE_NEGATIVE = regex.and(/-/, DOUBLE);
-const VAR1 = regex.and(/\?/, VARNAME);
-const VAR2 = regex.and(/\$/, VARNAME);
-const BLANK_NODE_LABEL = regex.and(/_:/, regex.or(PN_CHARS_U, /\d/), regex.option(regex.and(regex.many(regex.or(PN_CHARS, /\./)), PN_CHARS)));
-const PNAME_NS = regex.and(regex.option(exports.PN_PREFIX), /:/);
-const PNAME_LN = regex.and(PNAME_NS, exports.PN_LOCAL);
+exports.PN_CHARS_U = utils_1.regex.or(exports.PN_CHARS_BASE, /_/);
+exports.PN_CHARS = utils_1.regex.or(exports.PN_CHARS_U, /-/, /\d/, /\u00b7/, /[\u0300-\u036f]/, /[\u203f-\u2040]/);
+exports.PN_PREFIX = utils_1.regex.and(exports.PN_CHARS_BASE, utils_1.regex.option(utils_1.regex.and(utils_1.regex.many(utils_1.regex.or(exports.PN_CHARS, /\./)), exports.PN_CHARS)));
+exports.PERCENT = utils_1.regex.and(/%/, exports.HEX, exports.HEX);
+exports.PLX = utils_1.regex.or(exports.PERCENT, exports.PN_LOCAL_ESC);
+exports.PN_LOCAL = utils_1.regex.and(utils_1.regex.or(exports.PN_CHARS_U, /:/, /\d/, exports.PLX), utils_1.regex.option(utils_1.regex.and(utils_1.regex.many(utils_1.regex.or(exports.PN_CHARS, /\./, /:/, exports.PLX)), utils_1.regex.or(exports.PN_CHARS, /:/, exports.PLX))));
+const VARNAME = utils_1.regex.and(utils_1.regex.or(exports.PN_CHARS_U, /\d/), utils_1.regex.many(utils_1.regex.or(exports.PN_CHARS_U, /\d/, /\u00b7/, /[\u0300-\u036f]/, /[\u203f-\u2040]/)));
+const ANON = utils_1.regex.and(/\[/, utils_1.regex.many(WS), /\]/);
+const NIL = utils_1.regex.and(/\(/, utils_1.regex.many(WS), /\)/);
+const STRING_LITERAL1 = utils_1.regex.and(/'/, utils_1.regex.many(utils_1.regex.or(/[^\u0027\u005C\u000A\u000D]/, exports.ECHAR)), /'/);
+const STRING_LITERAL2 = utils_1.regex.and(/"/, utils_1.regex.many(utils_1.regex.or(/[^\u0022\u005C\u000A\u000D]/, exports.ECHAR)), /"/);
+const STRING_LITERAL_LONG1 = utils_1.regex.and(/'''/, utils_1.regex.many(utils_1.regex.and(utils_1.regex.option(utils_1.regex.or(/'/, /''/)), utils_1.regex.or(/[^'\\]/, exports.ECHAR))), /'''/);
+const STRING_LITERAL_LONG2 = utils_1.regex.and(/"""/, utils_1.regex.many(utils_1.regex.and(utils_1.regex.option(utils_1.regex.or(/"/, /""/)), utils_1.regex.or(/[^"\\]/, exports.ECHAR))), /"""/);
+const DOUBLE = utils_1.regex.or(utils_1.regex.and(/\d+\.\d*/, exports.EXPONENT), utils_1.regex.and(/\.\d+/, exports.EXPONENT), utils_1.regex.and(/\d+/, exports.EXPONENT));
+const INTEGER_POSITIVE = utils_1.regex.and(/\+/, INTEGER);
+const DECIMAL_POSITIVE = utils_1.regex.and(/\+/, DECIMAL);
+const DOUBLE_POSITIVE = utils_1.regex.and(/\+/, DOUBLE);
+const INTEGER_NEGATIVE = utils_1.regex.and(/-/, INTEGER);
+const DECIMAL_NEGATIVE = utils_1.regex.and(/-/, DECIMAL);
+const DOUBLE_NEGATIVE = utils_1.regex.and(/-/, DOUBLE);
+const VAR1 = utils_1.regex.and(/\?/, VARNAME);
+const VAR2 = utils_1.regex.and(/\$/, VARNAME);
+const BLANK_NODE_LABEL = utils_1.regex.and(/_:/, utils_1.regex.or(exports.PN_CHARS_U, /\d/), utils_1.regex.option(utils_1.regex.and(utils_1.regex.many(utils_1.regex.or(exports.PN_CHARS, /\./)), exports.PN_CHARS)));
+const PNAME_NS = utils_1.regex.and(utils_1.regex.option(exports.PN_PREFIX), /:/);
+const PNAME_LN = utils_1.regex.and(PNAME_NS, exports.PN_LOCAL);
 const STRING_LITERAL_LONG1_TOKEN = chevrotain_1.createToken({
     name: 'STRING_LITERAL_LONG1',
     pattern: STRING_LITERAL_LONG1,
@@ -153,6 +140,6 @@ exports.terminals = {
     }),
     PERCENT: chevrotain_1.createToken({
         name: 'PERCENT',
-        pattern: PERCENT,
+        pattern: exports.PERCENT,
     }),
 };
