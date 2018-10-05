@@ -3,22 +3,7 @@ import { readdir, readFile } from 'fs';
 import { resolve } from 'path';
 import { tokenTypes } from '../../turtle/tokens';
 import { extname } from 'path';
-
-const readDirAsync = (pathName) =>
-  new Promise<string[]>((resolve, reject) => {
-    readdir(pathName, (err, files) => {
-      if (err) reject();
-      resolve(files);
-    });
-  });
-
-const readFileAsync = (filePath) =>
-  new Promise<string>((resolve, reject) => {
-    readFile(filePath, { encoding: 'utf-8' }, (err, document) => {
-      if (err) reject();
-      resolve(document);
-    });
-  });
+import { readDirAsync, readFileAsync } from './utils';
 
 const lexer = new Lexer(tokenTypes);
 
