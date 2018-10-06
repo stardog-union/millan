@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "chevrotain": "3.0.1"
+    "chevrotain": "3.0.1",
+    "to-unicode": "^1.0.2"
   },
   "name": "millan",
   "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",

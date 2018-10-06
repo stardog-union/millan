@@ -60,7 +60,7 @@ describe('turtle tokenizer', () => {
     }
     expect(result.errors).toHaveLength(0);
   });
-  it.skip('produces errors when tokenizing invalid terminals', () => {
+  it('produces errors when tokenizing invalid terminals', () => {
     const terminals = ['d', 'f'];
     terminals.forEach((terminal) => {
       const result = lexer.tokenize(terminal);
@@ -81,7 +81,8 @@ describe('turtle tokenizer', () => {
       if (fileName.startsWith('skip.')) {
         return false;
       }
-      return ext === '.ttl' || ext === '.nt';
+      return fileName === 'IRI_with_eight_digit_numeric_escape.ttl';
+      // return ext === '.ttl' || ext === '.nt';
     });
     await Promise.all(
       files.map(async (fileName) => {
@@ -91,6 +92,7 @@ describe('turtle tokenizer', () => {
         if (!isBad) {
           if (lexingResult.errors.length !== 0) {
             console.log(fileName);
+            console.log(lexingResult.errors);
           }
           expect(lexingResult.errors).toHaveLength(0);
         }

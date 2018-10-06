@@ -4,7 +4,7 @@ const chevrotain_1 = require("chevrotain");
 const tokens_1 = require("tokens");
 const terminals_1 = require("terminals");
 const utils_1 = require("utils");
-const UCHAR = utils_1.regex.or(utils_1.regex.and(/\\u/, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX), utils_1.regex.and(/\\U/, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX));
+const UCHAR = utils_1.regex.or(utils_1.regex.and(/\\u{/, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX), utils_1.regex.and(/\\U/, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX));
 exports.tokenMap = {
     Comment: chevrotain_1.createToken({
         name: 'Comment',
@@ -33,10 +33,6 @@ exports.tokenMap = {
     TTL_BASE: chevrotain_1.createToken({ name: 'TTL_BASE', pattern: /@base/ }),
     TTL_PREFIX: chevrotain_1.createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
     LANGTAG: tokens_1.tokenMap.LANGTAG,
-    IRIREF: chevrotain_1.createToken({
-        name: 'IRIREF',
-        pattern: utils_1.regex.and(/</, utils_1.regex.many(utils_1.regex.or(/[^\u0000-\u0020<>"\\{}|\^`]/, UCHAR)), />/),
-    }),
     INTEGER: chevrotain_1.createToken({
         name: 'INTEGER',
         pattern: utils_1.regex.and(utils_1.regex.option(/[+-]/), /\d+/),
@@ -74,6 +70,10 @@ exports.tokenMap = {
     UCHAR: chevrotain_1.createToken({
         name: 'UCHAR',
         pattern: UCHAR,
+    }),
+    IRIREF: chevrotain_1.createToken({
+        name: 'IRIREF',
+        pattern: utils_1.regex.and(/</, utils_1.regex.many(utils_1.regex.or(/[^\u0000-\u0020<>"\\{}|\^`]/, UCHAR)), />/),
     }),
     PN_CHARS_BASE: chevrotain_1.createToken({ name: 'PN_CHARS_BASE', pattern: terminals_1.PN_CHARS_BASE }),
     PN_CHARS_U: chevrotain_1.createToken({ name: 'PN_CHARS_U', pattern: terminals_1.PN_CHARS_U }),

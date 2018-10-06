@@ -23,7 +23,6 @@ export declare const tokenMap: {
     TTL_BASE: TokenType;
     TTL_PREFIX: TokenType;
     LANGTAG: TokenType;
-    IRIREF: TokenType;
     INTEGER: TokenType;
     DECIMAL: TokenType;
     DOUBLE: TokenType;
@@ -38,6 +37,7 @@ export declare const tokenMap: {
     STRING_LITERAL_QUOTE: TokenType;
     STRING_LITERAL_SINGLE_QUOTE: TokenType;
     UCHAR: TokenType;
+    IRIREF: TokenType;
     PN_CHARS_BASE: TokenType;
     PN_CHARS_U: TokenType;
     PN_CHARS: TokenType;

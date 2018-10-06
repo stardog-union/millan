@@ -15,7 +15,7 @@ import {
 import { regex } from 'utils';
 
 const UCHAR = regex.or(
-  regex.and(/\\u/, HEX, HEX, HEX, HEX),
+  regex.and(/\\u{/, HEX, HEX, HEX, HEX),
   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
 );
 
@@ -47,14 +47,6 @@ export const tokenMap = {
   TTL_BASE: createToken({ name: 'TTL_BASE', pattern: /@base/ }),
   TTL_PREFIX: createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
   LANGTAG: sparqlTokenMap.LANGTAG,
-  IRIREF: createToken({
-    name: 'IRIREF',
-    pattern: regex.and(
-      /</,
-      regex.many(regex.or(/[^\u0000-\u0020<>"\\{}|\^`]/, UCHAR)),
-      />/
-    ),
-  }),
   INTEGER: createToken({
     name: 'INTEGER',
     pattern: regex.and(regex.option(/[+-]/), /\d+/),
@@ -115,6 +107,14 @@ export const tokenMap = {
   UCHAR: createToken({
     name: 'UCHAR',
     pattern: UCHAR,
+  }),
+  IRIREF: createToken({
+    name: 'IRIREF',
+    pattern: regex.and(
+      /</,
+      regex.many(regex.or(/[^\u0000-\u0020<>"\\{}|\^`]/, UCHAR)),
+      />/
+    ),
   }),
   PN_CHARS_BASE: createToken({ name: 'PN_CHARS_BASE', pattern: PN_CHARS_BASE }),
   PN_CHARS_U: createToken({ name: 'PN_CHARS_U', pattern: PN_CHARS_U }),

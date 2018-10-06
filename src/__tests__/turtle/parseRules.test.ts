@@ -9,6 +9,11 @@ export const parse = (doc: string, rule: Function) => {
   const testTokens = turtleLexer.tokenize(doc).tokens;
   parser.input = testTokens;
   const cst = rule.bind(parser)();
+  if (parser.errors.length > 0 && rule.ruleName === 'BlankNode') {
+    // console.log(doc);
+    // console.log(rule.ruleName);
+    // console.log(JSON.stringify(parser.errors, null, 2));
+  }
   return cst;
 };
 
@@ -72,7 +77,7 @@ describe('iri', () => {
   });
   it('parses an IRIREF that has a UCHAR in it', () => {
     const cst = parse(
-      '<http://www.w3.org/2013/TurtleTests/\\u0020>',
+      '<http://www.w3.org/2013/TurtleTests/\\u{0020}>',
       parser.iri
     );
     console.log(JSON.stringify(cst, null, 2));
