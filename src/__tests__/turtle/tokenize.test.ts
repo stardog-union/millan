@@ -81,8 +81,7 @@ describe('turtle tokenizer', () => {
       if (fileName.startsWith('skip.')) {
         return false;
       }
-      return fileName === 'IRI_with_eight_digit_numeric_escape.ttl';
-      // return ext === '.ttl' || ext === '.nt';
+      return ext === '.ttl' || ext === '.nt';
     });
     await Promise.all(
       files.map(async (fileName) => {

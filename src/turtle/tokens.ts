@@ -14,10 +14,80 @@ import {
 } from 'terminals';
 import { regex } from 'utils';
 
+const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
+const escapeReplacements = {
+  '\\': '\\',
+  "'": "'",
+  '"': '"',
+  n: '\n',
+  r: '\r',
+  t: '\t',
+  f: '\f',
+  b: '\b',
+  _: '_',
+  '~': '~',
+  '.': '.',
+  '-': '-',
+  '!': '!',
+  $: '$',
+  '&': '&',
+  '(': '(',
+  ')': ')',
+  '*': '*',
+  '+': '+',
+  ',': ',',
+  ';': ';',
+  '=': '=',
+  '/': '/',
+  '?': '?',
+  '#': '#',
+  '@': '@',
+  '%': '%',
+};
+const unescape = (item: string) => {
+  try {
+    return item.replace(
+      escapeSequence,
+      (_, unicode4, unicode8, escapedChar) => {
+        if (unicode4) {
+          return String.fromCharCode(parseInt(unicode4, 16));
+        } else if (unicode8) {
+          let charCode = parseInt(unicode8, 16);
+          if (charCode <= 0xffff) {
+            return String.fromCharCode(charCode);
+          }
+          return String.fromCharCode(
+            0xd800 + (charCode -= 0x10000) / 0x400,
+            0xdc00 + (charCode & 0x3ff)
+          );
+        } else {
+          const replacement = escapeReplacements[escapedChar];
+          if (!replacement) {
+            throw new Error();
+          }
+          return replacement;
+        }
+      }
+    );
+  } catch (error) {
+    return null;
+  }
+};
+
+const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
+const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
+const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
+
 const UCHAR = regex.or(
-  regex.and(/\\u{/, HEX, HEX, HEX, HEX),
+  regex.and(/\\u/, HEX, HEX, HEX, HEX),
   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
 );
+// Somehow, for reasons not entirely clear to me, the next RegExp matches all
+// of the cases that the UCHAR rule is supposed to match, whereas the above
+// RegExp (`UCHAR`) does not. See this post, which is the source of the RegExp
+// below: https://mathiasbynens.be/notes/javascript-unicode
+// This is a similar resource that might be helpful: https://mathiasbynens.be/notes/es6-unicode-regex
+const unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
 
 export const tokenMap = {
   Comment: createToken({
@@ -106,15 +176,30 @@ export const tokenMap = {
   }),
   UCHAR: createToken({
     name: 'UCHAR',
-    pattern: UCHAR,
+    pattern: (text) => unicodeRegexp.exec(text),
   }),
   IRIREF: createToken({
     name: 'IRIREF',
-    pattern: regex.and(
-      /</,
-      regex.many(regex.or(/[^\u0000-\u0020<>"\\{}|\^`]/, UCHAR)),
-      />/
-    ),
+    pattern: (text: string) => {
+      let match = unescapedIri.exec(text);
+
+      if (match) {
+        return match;
+      }
+
+      match = escapedIri.exec(text);
+      if (!match) {
+        return null;
+      }
+
+      const value = unescape(match[1]);
+
+      if (value === null || illegalIriChars.test(value)) {
+        return null;
+      }
+
+      return match;
+    },
   }),
   PN_CHARS_BASE: createToken({ name: 'PN_CHARS_BASE', pattern: PN_CHARS_BASE }),
   PN_CHARS_U: createToken({ name: 'PN_CHARS_U', pattern: PN_CHARS_U }),
@@ -149,10 +234,10 @@ export const tokenTypes: TokenType[] = [
   tokenMap.TTL_BASE,
   tokenMap.TTL_PREFIX,
   sparqlTokenMap.LANGTAG,
-  tokenMap.UCHAR,
   tokenMap.DOUBLE,
   tokenMap.DECIMAL,
   sparqlTokenMap.Period,
+  tokenMap.UCHAR,
   tokenMap.INTEGER,
   tokenMap.EXPONENT,
   tokenMap.ECHAR,
@@ -163,7 +248,6 @@ export const tokenTypes: TokenType[] = [
   tokenMap.STRING_LITERAL_LONG_QUOTE,
   tokenMap.STRING_LITERAL_QUOTE,
   tokenMap.STRING_LITERAL_SINGLE_QUOTE,
-  tokenMap.UCHAR,
   tokenMap.PN_CHARS_BASE,
   tokenMap.PN_CHARS_U,
   tokenMap.PN_CHARS,

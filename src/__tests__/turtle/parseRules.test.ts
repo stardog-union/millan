@@ -77,7 +77,7 @@ describe('iri', () => {
   });
   it('parses an IRIREF that has a UCHAR in it', () => {
     const cst = parse(
-      '<http://www.w3.org/2013/TurtleTests/\\u{0020}>',
+      '<http://www.w3.org/2013/TurtleTests/\u0021>',
       parser.iri
     );
     console.log(JSON.stringify(cst, null, 2));
@@ -279,7 +279,7 @@ describe('object', () => {
 });
 describe('literal', () => {
   it('parses a BooleanLiteral', () => {
-    const cst = parse('"true', parser.literal);
+    const cst = parse('true', parser.literal);
     expect(parser.errors).toHaveLength(0);
     expect(cst.name).toBe('literal');
     expect(cst.children['BooleanLiteral']).toHaveLength(1);
