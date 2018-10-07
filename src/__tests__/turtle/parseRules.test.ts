@@ -9,11 +9,11 @@ export const parse = (doc: string, rule: Function) => {
   const testTokens = turtleLexer.tokenize(doc).tokens;
   parser.input = testTokens;
   const cst = rule.bind(parser)();
-  if (parser.errors.length > 0 && rule.ruleName === 'BlankNode') {
-    // console.log(doc);
-    // console.log(rule.ruleName);
-    // console.log(JSON.stringify(parser.errors, null, 2));
-  }
+  // if (parser.errors.length > 0 && rule.ruleName === 'RDFLiteral') {
+  //   console.log(doc);
+  //   console.log(rule.ruleName);
+  //   console.log(JSON.stringify(parser.errors, null, 2));
+  // }
   return cst;
 };
 
@@ -80,8 +80,6 @@ describe('iri', () => {
       '<http://www.w3.org/2013/TurtleTests/\u0021>',
       parser.iri
     );
-    console.log(JSON.stringify(cst, null, 2));
-    console.log(JSON.stringify(parser.errors, null, 2));
     expect(parser.errors).toHaveLength(0);
     expect(cst.name).toBe('iri');
     expect(cst.children['IRIREF']).toHaveLength(1);

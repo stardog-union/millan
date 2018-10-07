@@ -74,6 +74,13 @@ const unescape = (item: string) => {
   }
 };
 
+const unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
+const unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
+const stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
+const stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
+const stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
+const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
+
 const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
 const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
@@ -144,50 +151,118 @@ export const tokenMap = {
   HEX: createToken({ name: 'HEX', pattern: HEX }),
   STRING_LITERAL_LONG_SINGLE_QUOTE: createToken({
     name: 'STRING_LITERAL_LONG_SINGLE_QUOTE',
-    pattern: regex.and(
-      /'{3}/,
-      regex.many(regex.and(/'{0,2}/, regex.or(/[^'\\]/, ECHAR, UCHAR))),
-      /'{3}/
-    ),
+    pattern: (text: string, startOffset: number = 0) => {
+      const match = stringLiteralLongSingleQuote.exec(text.slice(startOffset));
+
+      if (!match || unescape(match[1]) === null) {
+        // Bad characters
+        return null;
+      }
+
+      return match;
+    },
+    line_breaks: true, // ?
+    // pattern: regex.and(
+    //   /'{3}/,
+    //   regex.many(regex.and(/'{0,2}/, regex.or(/[^'\\]/, ECHAR, UCHAR))),
+    //   /'{3}/
+    // ),
   }),
   STRING_LITERAL_LONG_QUOTE: createToken({
     name: 'STRING_LITERAL_LONG_QUOTE',
-    pattern: regex.and(
-      /"{3}/,
-      regex.many(regex.and(/"{0,2}/, regex.or(/[^"\\]/, ECHAR, UCHAR))),
-      /"{3}/
-    ),
+    pattern: (text: string, startOffset: number = 0) => {
+      const match = stringLiteralLongQuote.exec(text.slice(startOffset));
+
+      if (!match || unescape(match[1]) === null) {
+        // Bad characters
+        return null;
+      }
+
+      return match;
+    },
+    line_breaks: true, // ?
+    // pattern: regex.and(
+    //   /"{3}/,
+    //   regex.many(regex.and(/"{0,2}/, regex.or(/[^"\\]/, ECHAR, UCHAR))),
+    //   /"{3}/
+    // ),
   }),
   STRING_LITERAL_QUOTE: createToken({
     name: 'STRING_LITERAL_QUOTE',
-    pattern: regex.and(
-      /"/,
-      regex.many(regex.or(/[^\u0022\u005C\u000A\u000D]/, ECHAR, UCHAR)),
-      /"/
-    ),
-  }),
-  STRING_LITERAL_SINGLE_QUOTE: createToken({
-    name: 'STRING_LITERAL_SINGLE_QUOTE',
-    pattern: regex.and(
-      /'/,
-      regex.many(regex.or(/[^\u0027\u005C\u000A\u000D]/, ECHAR, UCHAR)),
-      /'/
-    ),
-  }),
-  UCHAR: createToken({
-    name: 'UCHAR',
-    pattern: (text) => unicodeRegexp.exec(text),
-  }),
-  IRIREF: createToken({
-    name: 'IRIREF',
-    pattern: (text: string) => {
-      let match = unescapedIri.exec(text);
+    pattern: (text: string, startOffset: number = 0) => {
+      const textToMatch = text.slice(startOffset);
+      let match = unescapedStringLiteralQuote.exec(textToMatch);
 
       if (match) {
         return match;
       }
 
-      match = escapedIri.exec(text);
+      match = stringLiteralQuote.exec(textToMatch);
+
+      if (!match) {
+        return null;
+      }
+
+      if (unescape(match[1]) === null) {
+        // Bad characters
+        return null;
+      }
+
+      return match;
+    },
+    line_breaks: false,
+    // regex.and(
+    //   /"/,
+    //   regex.many(regex.or(/[^\u0022\u005C\u000A\u000D]/, ECHAR, UCHAR)),
+    //   /"/
+    // ),
+  }),
+  STRING_LITERAL_SINGLE_QUOTE: createToken({
+    name: 'STRING_LITERAL_SINGLE_QUOTE',
+    pattern: (text: string, startOffset: number = 0) => {
+      const textToMatch = text.slice(startOffset);
+      let match = unescapedStringLiteralSingleQuote.exec(textToMatch);
+
+      if (match) {
+        return match;
+      }
+
+      match = stringLiteralSingleQuote.exec(textToMatch);
+
+      if (!match) {
+        return null;
+      }
+
+      if (unescape(match[1]) === null) {
+        // Bad characters
+        return null;
+      }
+
+      return match;
+    },
+    line_breaks: false,
+    // regex.and(
+    //   /'/,
+    //   regex.many(regex.or(/[^\u0027\u005C\u000A\u000D]/, ECHAR, UCHAR)),
+    //   /'/
+    // ),
+  }),
+  UCHAR: createToken({
+    name: 'UCHAR',
+    pattern: (text, startOffset: number = 0) =>
+      unicodeRegexp.exec(text.slice(startOffset)),
+  }),
+  IRIREF: createToken({
+    name: 'IRIREF',
+    pattern: (text: string, startOffset: number = 0) => {
+      const textToMatch = text.slice(startOffset);
+      let match = unescapedIri.exec(textToMatch);
+
+      if (match) {
+        return match;
+      }
+
+      match = escapedIri.exec(textToMatch);
       if (!match) {
         return null;
       }
@@ -200,6 +275,7 @@ export const tokenMap = {
 
       return match;
     },
+    line_breaks: false,
   }),
   PN_CHARS_BASE: createToken({ name: 'PN_CHARS_BASE', pattern: PN_CHARS_BASE }),
   PN_CHARS_U: createToken({ name: 'PN_CHARS_U', pattern: PN_CHARS_U }),
@@ -219,10 +295,8 @@ export const tokenTypes: TokenType[] = [
   sparqlTokenMap.LParen,
   sparqlTokenMap.RParen,
   sparqlTokenMap.WhiteSpace,
-  tokenMap.IRIREF,
   sparqlTokenMap.TRUE,
   sparqlTokenMap.FALSE,
-  sparqlTokenMap.DoubleCaret,
   sparqlTokenMap.Comma,
   sparqlTokenMap.Semicolon,
   sparqlTokenMap.A,
@@ -237,21 +311,23 @@ export const tokenTypes: TokenType[] = [
   tokenMap.DOUBLE,
   tokenMap.DECIMAL,
   sparqlTokenMap.Period,
-  tokenMap.UCHAR,
-  tokenMap.INTEGER,
-  tokenMap.EXPONENT,
-  tokenMap.ECHAR,
-  tokenMap.PLX,
-  sparqlTokenMap.PERCENT,
-  tokenMap.HEX,
+  sparqlTokenMap.DoubleCaret,
+  tokenMap.IRIREF,
   tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
   tokenMap.STRING_LITERAL_LONG_QUOTE,
   tokenMap.STRING_LITERAL_QUOTE,
   tokenMap.STRING_LITERAL_SINGLE_QUOTE,
+  tokenMap.INTEGER,
+  tokenMap.EXPONENT,
+  tokenMap.PLX,
+  sparqlTokenMap.PERCENT,
+  tokenMap.HEX,
   tokenMap.PN_CHARS_BASE,
   tokenMap.PN_CHARS_U,
   tokenMap.PN_CHARS,
   tokenMap.PN_PREFIX,
   tokenMap.PN_LOCAL,
   tokenMap.PN_LOCAL_ESC,
+  tokenMap.ECHAR,
+  tokenMap.UCHAR,
 ];

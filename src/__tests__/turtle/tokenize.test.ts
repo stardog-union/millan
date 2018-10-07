@@ -71,6 +71,11 @@ describe('turtle tokenizer', () => {
       expect(result.errors).toHaveLength(0);
     });
   });
+  it('tokenizes a string', () => {
+    const result = lexer.tokenize('"fluorescent" ^^<spooky>');
+    console.log(JSON.stringify(result, null, 2));
+    expect(result.errors).toHaveLength(0);
+  });
   it('produces no errors when tokenizing the w3 turtle test suite', async (done) => {
     const pathName = resolve(__dirname, 'fixtures', 'tests-ttl-w3c-20131121');
     const files = (await readDirAsync(pathName)).filter((fileName) => {

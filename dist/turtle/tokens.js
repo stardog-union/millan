@@ -60,6 +60,12 @@ const unescape = (item) => {
         return null;
     }
 };
+const unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
+const unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
+const stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
+const stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
+const stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
+const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
 const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
 const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
@@ -118,32 +124,81 @@ exports.tokenMap = {
     HEX: chevrotain_1.createToken({ name: 'HEX', pattern: terminals_1.HEX }),
     STRING_LITERAL_LONG_SINGLE_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_LONG_SINGLE_QUOTE',
-        pattern: utils_1.regex.and(/'{3}/, utils_1.regex.many(utils_1.regex.and(/'{0,2}/, utils_1.regex.or(/[^'\\]/, terminals_1.ECHAR, UCHAR))), /'{3}/),
+        pattern: (text, startOffset = 0) => {
+            const match = stringLiteralLongSingleQuote.exec(text.slice(startOffset));
+            if (!match || unescape(match[1]) === null) {
+                // Bad characters
+                return null;
+            }
+            return match;
+        },
+        line_breaks: true,
     }),
     STRING_LITERAL_LONG_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_LONG_QUOTE',
-        pattern: utils_1.regex.and(/"{3}/, utils_1.regex.many(utils_1.regex.and(/"{0,2}/, utils_1.regex.or(/[^"\\]/, terminals_1.ECHAR, UCHAR))), /"{3}/),
+        pattern: (text, startOffset = 0) => {
+            const match = stringLiteralLongQuote.exec(text.slice(startOffset));
+            if (!match || unescape(match[1]) === null) {
+                // Bad characters
+                return null;
+            }
+            return match;
+        },
+        line_breaks: true,
     }),
     STRING_LITERAL_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_QUOTE',
-        pattern: utils_1.regex.and(/"/, utils_1.regex.many(utils_1.regex.or(/[^\u0022\u005C\u000A\u000D]/, terminals_1.ECHAR, UCHAR)), /"/),
-    }),
-    STRING_LITERAL_SINGLE_QUOTE: chevrotain_1.createToken({
-        name: 'STRING_LITERAL_SINGLE_QUOTE',
-        pattern: utils_1.regex.and(/'/, utils_1.regex.many(utils_1.regex.or(/[^\u0027\u005C\u000A\u000D]/, terminals_1.ECHAR, UCHAR)), /'/),
-    }),
-    UCHAR: chevrotain_1.createToken({
-        name: 'UCHAR',
-        pattern: (text) => unicodeRegexp.exec(text),
-    }),
-    IRIREF: chevrotain_1.createToken({
-        name: 'IRIREF',
-        pattern: (text) => {
-            let match = unescapedIri.exec(text);
+        pattern: (text, startOffset = 0) => {
+            const textToMatch = text.slice(startOffset);
+            let match = unescapedStringLiteralQuote.exec(textToMatch);
             if (match) {
                 return match;
             }
-            match = escapedIri.exec(text);
+            match = stringLiteralQuote.exec(textToMatch);
+            if (!match) {
+                return null;
+            }
+            if (unescape(match[1]) === null) {
+                // Bad characters
+                return null;
+            }
+            return match;
+        },
+        line_breaks: false,
+    }),
+    STRING_LITERAL_SINGLE_QUOTE: chevrotain_1.createToken({
+        name: 'STRING_LITERAL_SINGLE_QUOTE',
+        pattern: (text, startOffset = 0) => {
+            const textToMatch = text.slice(startOffset);
+            let match = unescapedStringLiteralSingleQuote.exec(textToMatch);
+            if (match) {
+                return match;
+            }
+            match = stringLiteralSingleQuote.exec(textToMatch);
+            if (!match) {
+                return null;
+            }
+            if (unescape(match[1]) === null) {
+                // Bad characters
+                return null;
+            }
+            return match;
+        },
+        line_breaks: false,
+    }),
+    UCHAR: chevrotain_1.createToken({
+        name: 'UCHAR',
+        pattern: (text, startOffset = 0) => unicodeRegexp.exec(text.slice(startOffset)),
+    }),
+    IRIREF: chevrotain_1.createToken({
+        name: 'IRIREF',
+        pattern: (text, startOffset = 0) => {
+            const textToMatch = text.slice(startOffset);
+            let match = unescapedIri.exec(textToMatch);
+            if (match) {
+                return match;
+            }
+            match = escapedIri.exec(textToMatch);
             if (!match) {
                 return null;
             }
@@ -153,6 +208,7 @@ exports.tokenMap = {
             }
             return match;
         },
+        line_breaks: false,
     }),
     PN_CHARS_BASE: chevrotain_1.createToken({ name: 'PN_CHARS_BASE', pattern: terminals_1.PN_CHARS_BASE }),
     PN_CHARS_U: chevrotain_1.createToken({ name: 'PN_CHARS_U', pattern: terminals_1.PN_CHARS_U }),
@@ -171,10 +227,8 @@ exports.tokenTypes = [
     tokens_1.tokenMap.LParen,
     tokens_1.tokenMap.RParen,
     tokens_1.tokenMap.WhiteSpace,
-    exports.tokenMap.IRIREF,
     tokens_1.tokenMap.TRUE,
     tokens_1.tokenMap.FALSE,
-    tokens_1.tokenMap.DoubleCaret,
     tokens_1.tokenMap.Comma,
     tokens_1.tokenMap.Semicolon,
     tokens_1.tokenMap.A,
@@ -189,21 +243,23 @@ exports.tokenTypes = [
     exports.tokenMap.DOUBLE,
     exports.tokenMap.DECIMAL,
     tokens_1.tokenMap.Period,
-    exports.tokenMap.UCHAR,
-    exports.tokenMap.INTEGER,
-    exports.tokenMap.EXPONENT,
-    exports.tokenMap.ECHAR,
-    exports.tokenMap.PLX,
-    tokens_1.tokenMap.PERCENT,
-    exports.tokenMap.HEX,
+    tokens_1.tokenMap.DoubleCaret,
+    exports.tokenMap.IRIREF,
     exports.tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
     exports.tokenMap.STRING_LITERAL_LONG_QUOTE,
     exports.tokenMap.STRING_LITERAL_QUOTE,
     exports.tokenMap.STRING_LITERAL_SINGLE_QUOTE,
+    exports.tokenMap.INTEGER,
+    exports.tokenMap.EXPONENT,
+    exports.tokenMap.PLX,
+    tokens_1.tokenMap.PERCENT,
+    exports.tokenMap.HEX,
     exports.tokenMap.PN_CHARS_BASE,
     exports.tokenMap.PN_CHARS_U,
     exports.tokenMap.PN_CHARS,
     exports.tokenMap.PN_PREFIX,
     exports.tokenMap.PN_LOCAL,
     exports.tokenMap.PN_LOCAL_ESC,
+    exports.tokenMap.ECHAR,
+    exports.tokenMap.UCHAR,
 ];
