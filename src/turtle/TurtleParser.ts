@@ -58,12 +58,20 @@ export class TurtleParser extends Parser {
   });
 
   triples = this.RULE('triples', () => {
-    this.SUBRULE(this.subject);
     this.OR([
-      { ALT: () => this.SUBRULE(this.predicateObjectList) },
-      { ALT: () => this.SUBRULE(this.blankNodePropertyList) },
+      {
+        ALT: () => {
+          this.SUBRULE(this.subject);
+          this.SUBRULE(this.predicateObjectList);
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE(this.blankNodePropertyList);
+          this.OPTION(() => this.SUBRULE1(this.predicateObjectList));
+        },
+      },
     ]);
-    this.OPTION(() => this.SUBRULE1(this.predicateObjectList));
   });
 
   predicateObjectList = this.RULE('predicateObjectList', () => {
