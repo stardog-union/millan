@@ -15,9 +15,13 @@ export class TurtleParser extends Parser {
   statement = this.RULE('statement', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.directive) },
-      { ALT: () => this.SUBRULE(this.triples) },
+      {
+        ALT: () => {
+          this.SUBRULE(this.triples);
+          this.CONSUME(tokenMap.Period);
+        },
+      },
     ]);
-    this.CONSUME(tokenMap.Period);
   });
 
   directive = this.RULE('directive', () => {

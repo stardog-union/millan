@@ -413,20 +413,19 @@ describe('directive', () => {
 describe('statement', () => {
   it('parses a statement', () => {
     const cst = parse(
-      '@prefix spooky: <http://spooky.com> . .',
+      '@prefix :  <http://example.org/ex#> .',
       parser.statement
     );
     expect(parser.errors).toHaveLength(0);
     expect(cst.name).toBe('statement');
     expect(cst.children['directive']).toHaveLength(1);
-    expect(cst.children['Period']).toHaveLength(1);
-    expect(Object.keys(cst.children)).toHaveLength(2);
+    expect(Object.keys(cst.children)).toHaveLength(1);
   });
 });
 describe('turtleDoc', () => {
   it('parses a turtleDoc', () => {
     const cst = parse(
-      '@prefix spooky: <http://spooky.com> . .',
+      '@prefix spooky: <http://spooky.com> .',
       parser.turtleDoc
     );
     expect(parser.errors).toHaveLength(0);

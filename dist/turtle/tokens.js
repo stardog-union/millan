@@ -189,6 +189,7 @@ exports.tokenMap = {
     UCHAR: chevrotain_1.createToken({
         name: 'UCHAR',
         pattern: (text, startOffset = 0) => unicodeRegexp.exec(text.slice(startOffset)),
+        line_breaks: false,
     }),
     IRIREF: chevrotain_1.createToken({
         name: 'IRIREF',

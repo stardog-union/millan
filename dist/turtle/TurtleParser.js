@@ -13,9 +13,13 @@ class TurtleParser extends chevrotain_1.Parser {
         this.statement = this.RULE('statement', () => {
             this.OR([
                 { ALT: () => this.SUBRULE(this.directive) },
-                { ALT: () => this.SUBRULE(this.triples) },
+                {
+                    ALT: () => {
+                        this.SUBRULE(this.triples);
+                        this.CONSUME(tokens_1.tokenMap.Period);
+                    },
+                },
             ]);
-            this.CONSUME(tokens_1.tokenMap.Period);
         });
         this.directive = this.RULE('directive', () => {
             this.OR([

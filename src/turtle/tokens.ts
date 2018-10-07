@@ -251,6 +251,7 @@ export const tokenMap = {
     name: 'UCHAR',
     pattern: (text, startOffset: number = 0) =>
       unicodeRegexp.exec(text.slice(startOffset)),
+    line_breaks: false,
   }),
   IRIREF: createToken({
     name: 'IRIREF',
