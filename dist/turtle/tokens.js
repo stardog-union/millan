@@ -69,7 +69,10 @@ const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)''
 const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
 const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
-const UCHAR = utils_1.regex.or(utils_1.regex.and(/\\u/, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX), utils_1.regex.and(/\\U/, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX, terminals_1.HEX));
+// const UCHAR = regex.or(
+//   regex.and(/\\u/, HEX, HEX, HEX, HEX),
+//   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
+// );
 // Somehow, for reasons not entirely clear to me, the next RegExp matches all
 // of the cases that the UCHAR rule is supposed to match, whereas the above
 // RegExp (`UCHAR`) does not. See this post, which is the source of the RegExp
@@ -232,10 +235,10 @@ exports.tokenTypes = [
     tokens_1.tokenMap.FALSE,
     tokens_1.tokenMap.Comma,
     tokens_1.tokenMap.Semicolon,
+    tokens_1.tokenMap.PNAME_NS,
     tokens_1.tokenMap.A,
     tokens_1.tokenMap.PREFIX,
     tokens_1.tokenMap.BASE,
-    tokens_1.tokenMap.PNAME_NS,
     tokens_1.tokenMap.PNAME_LN,
     tokens_1.tokenMap.BLANK_NODE_LABEL,
     exports.tokenMap.TTL_BASE,

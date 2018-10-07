@@ -397,6 +397,19 @@ describe('prefixID', () => {
     expect(cst.children['Period']).toHaveLength(1);
     expect(Object.keys(cst.children)).toHaveLength(4);
   });
+  it('parses a prefixID where the NS is just "a:"', () => {
+    const cst = parse(
+      '@prefix a: <http://example.org/base2#> .',
+      parser.prefixID
+    );
+    expect(parser.errors).toHaveLength(0);
+    expect(cst.name).toBe('prefixID');
+    expect(cst.children['TTL_PREFIX']).toHaveLength(1);
+    expect(cst.children['PNAME_NS']).toHaveLength(1);
+    expect(cst.children['IRIREF']).toHaveLength(1);
+    expect(cst.children['Period']).toHaveLength(1);
+    expect(Object.keys(cst.children)).toHaveLength(4);
+  });
 });
 describe('directive', () => {
   it('parses a directive', () => {

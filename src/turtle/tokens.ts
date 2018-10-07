@@ -85,10 +85,10 @@ const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
 const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
 
-const UCHAR = regex.or(
-  regex.and(/\\u/, HEX, HEX, HEX, HEX),
-  regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
-);
+// const UCHAR = regex.or(
+//   regex.and(/\\u/, HEX, HEX, HEX, HEX),
+//   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
+// );
 // Somehow, for reasons not entirely clear to me, the next RegExp matches all
 // of the cases that the UCHAR rule is supposed to match, whereas the above
 // RegExp (`UCHAR`) does not. See this post, which is the source of the RegExp
@@ -300,10 +300,10 @@ export const tokenTypes: TokenType[] = [
   sparqlTokenMap.FALSE,
   sparqlTokenMap.Comma,
   sparqlTokenMap.Semicolon,
+  sparqlTokenMap.PNAME_NS,
   sparqlTokenMap.A,
   sparqlTokenMap.PREFIX,
   sparqlTokenMap.BASE,
-  sparqlTokenMap.PNAME_NS,
   sparqlTokenMap.PNAME_LN,
   sparqlTokenMap.BLANK_NODE_LABEL,
   tokenMap.TTL_BASE,
