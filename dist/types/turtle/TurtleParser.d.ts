@@ -1,5 +1,7 @@
 import { Parser } from 'chevrotain';
 export declare class TurtleParser extends Parser {
+    private namespacesMap;
+    semanticErrors: any[];
     constructor();
     turtleDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     statement: (idxInCallingRule?: number, ...args: any[]) => any;

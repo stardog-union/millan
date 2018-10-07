@@ -7,6 +7,13 @@ class TurtleParser extends chevrotain_1.Parser {
         super([], tokens_1.tokenTypes, {
             outputCst: true,
         });
+        // Parsing Turtle requires that the parser keep a map of namespaces in state.
+        // Empty prefixes, for example, are allowed only if the empty prefix has been
+        // added to the namespaces map (for now, that's all this tracks). (TODO: We
+        // might want to use a visitor for this, but I'm doing it quick-and-dirty for
+        // now.)
+        this.namespacesMap = {};
+        this.semanticErrors = [];
         this.turtleDoc = this.RULE('turtleDoc', () => {
             this.MANY(() => this.SUBRULE(this.statement));
         });
@@ -31,8 +38,11 @@ class TurtleParser extends chevrotain_1.Parser {
         });
         this.prefixID = this.RULE('prefixID', () => {
             this.CONSUME(tokens_1.tokenMap.TTL_PREFIX);
-            this.CONSUME(tokens_1.tokenMap.PNAME_NS);
-            this.CONSUME(tokens_1.tokenMap.IRIREF);
+            const pnameNsToken = this.CONSUME(tokens_1.tokenMap.PNAME_NS);
+            const iriToken = this.CONSUME(tokens_1.tokenMap.IRIREF);
+            const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
+            const iriImage = iriToken.image;
+            this.namespacesMap[pnameImageWithoutColon] = iriImage;
             this.CONSUME(tokens_1.tokenMap.Period);
         });
         this.base = this.RULE('base', () => {
@@ -46,8 +56,11 @@ class TurtleParser extends chevrotain_1.Parser {
         });
         this.sparqlPrefix = this.RULE('sparqlPrefix', () => {
             this.CONSUME(tokens_1.tokenMap.PREFIX);
-            this.CONSUME(tokens_1.tokenMap.PNAME_NS);
-            this.CONSUME(tokens_1.tokenMap.IRIREF);
+            const pnameNsToken = this.CONSUME(tokens_1.tokenMap.PNAME_NS);
+            const iriToken = this.CONSUME(tokens_1.tokenMap.IRIREF);
+            const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
+            const iriImage = iriToken.image;
+            this.namespacesMap[pnameImageWithoutColon] = iriImage;
         });
         this.triples = this.RULE('triples', () => {
             this.OR([
@@ -167,10 +180,17 @@ class TurtleParser extends chevrotain_1.Parser {
             ]);
         });
         this.PrefixedName = this.RULE('PrefixedName', () => {
-            this.OR([
+            const prefixedNameToken = this.OR([
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_LN) },
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_NS) },
             ]);
+            const pnameNsImage = prefixedNameToken.image.slice(0, prefixedNameToken.image.indexOf(':'));
+            if (!this.namespacesMap[pnameNsImage]) {
+                // A prefix was used for which there was no namespace defined.
+                this.semanticErrors.push({
+                    message: 'A prefix was used for which there was no namespace defined.',
+                });
+            }
         });
         this.BlankNode = this.RULE('BlankNode', () => {
             this.OR([

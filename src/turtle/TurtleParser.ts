@@ -2,12 +2,21 @@ import { Parser } from 'chevrotain';
 import { tokenTypes, tokenMap } from './tokens';
 
 export class TurtleParser extends Parser {
+  // Parsing Turtle requires that the parser keep a map of namespaces in state.
+  // Empty prefixes, for example, are allowed only if the empty prefix has been
+  // added to the namespaces map (for now, that's all this tracks). (TODO: We
+  // might want to use a visitor for this, but I'm doing it quick-and-dirty for
+  // now.)
+  private namespacesMap = {};
+  public semanticErrors = [];
+
   constructor() {
     super([], tokenTypes, {
       outputCst: true,
     });
     Parser.performSelfAnalysis(this);
   }
+
   turtleDoc = this.RULE('turtleDoc', () => {
     this.MANY(() => this.SUBRULE(this.statement));
   });
@@ -35,8 +44,13 @@ export class TurtleParser extends Parser {
 
   prefixID = this.RULE('prefixID', () => {
     this.CONSUME(tokenMap.TTL_PREFIX);
-    this.CONSUME(tokenMap.PNAME_NS);
-    this.CONSUME(tokenMap.IRIREF);
+
+    const pnameNsToken = this.CONSUME(tokenMap.PNAME_NS);
+    const iriToken = this.CONSUME(tokenMap.IRIREF);
+    const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
+    const iriImage = iriToken.image;
+    this.namespacesMap[pnameImageWithoutColon] = iriImage;
+
     this.CONSUME(tokenMap.Period);
   });
 
@@ -53,8 +67,11 @@ export class TurtleParser extends Parser {
 
   sparqlPrefix = this.RULE('sparqlPrefix', () => {
     this.CONSUME(tokenMap.PREFIX);
-    this.CONSUME(tokenMap.PNAME_NS);
-    this.CONSUME(tokenMap.IRIREF);
+    const pnameNsToken = this.CONSUME(tokenMap.PNAME_NS);
+    const iriToken = this.CONSUME(tokenMap.IRIREF);
+    const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
+    const iriImage = iriToken.image;
+    this.namespacesMap[pnameImageWithoutColon] = iriImage;
   });
 
   triples = this.RULE('triples', () => {
@@ -190,10 +207,20 @@ export class TurtleParser extends Parser {
   });
 
   PrefixedName = this.RULE('PrefixedName', () => {
-    this.OR([
+    const prefixedNameToken = this.OR([
       { ALT: () => this.CONSUME(tokenMap.PNAME_LN) },
       { ALT: () => this.CONSUME(tokenMap.PNAME_NS) },
     ]);
+    const pnameNsImage = prefixedNameToken.image.slice(
+      0,
+      prefixedNameToken.image.indexOf(':')
+    );
+    if (!this.namespacesMap[pnameNsImage]) {
+      // A prefix was used for which there was no namespace defined.
+      this.semanticErrors.push({
+        message: 'A prefix was used for which there was no namespace defined.',
+      });
+    }
   });
 
   BlankNode = this.RULE('BlankNode', () => {

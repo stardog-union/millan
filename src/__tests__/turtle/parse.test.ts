@@ -15,7 +15,7 @@ const turtleLexer = new Lexer(tokenTypes);
 // };
 
 describe('TurtleParser', () => {
-  it.skip('produces no errors when tokenizing the w3 turtle test suite', async (done) => {
+  it('produces no errors when tokenizing the w3 turtle test suite', async (done) => {
     const pathName = resolve(__dirname, 'fixtures', 'tests-ttl-w3c-20131121');
     const files = (await readDirAsync(pathName)).filter((fileName) => {
       const ext = extname(fileName);
@@ -36,14 +36,19 @@ describe('TurtleParser', () => {
         const isBad = fileName.search('-bad-') > -1;
         if (!isBad) {
           if (parser.errors.length > 0) {
-            // console.log(fileName);
+            console.log(fileName);
           }
           expect(parser.errors).toHaveLength(0);
         } else {
-          if (parser.errors.length === 0) {
+          if (
+            parser.errors.length === 0 &&
+            parser.semanticErrors.length === 0
+          ) {
             console.log(fileName);
           }
-          expect(parser.errors).not.toHaveLength(0);
+          expect(
+            Boolean(parser.errors.length || parser.semanticErrors.length)
+          ).toBe(true);
         }
       })
     );
