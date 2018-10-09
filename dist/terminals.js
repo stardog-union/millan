@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chevrotain_1 = require("chevrotain");
 const utils_1 = require("utils");
 exports.IRIREF = /<[^<>\\{}|\^`\u0000-\u0020]*>/;
-exports.PN_CHARS_BASE = /[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+exports.PN_CHARS_BASE = /[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDBFF][\uDC00-\uDFFF]/;
 const LANGTAG = /@[a-zA-Z]+(-[a-zA-Z0-9]+)*/;
 const INTEGER = /\d+/;
 const DECIMAL = /(\d*\.\d+)|(\d+\.\d*)/;

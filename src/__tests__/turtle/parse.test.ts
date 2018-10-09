@@ -7,22 +7,12 @@ import { TurtleParser } from '../../turtle/TurtleParser';
 const parser = new TurtleParser();
 const turtleLexer = new Lexer(tokenTypes);
 
-// export const parse = (doc: string, rule: Function) => {
-//   const testTokens = turtleLexer.tokenize(doc).tokens;
-//   parser.input = testTokens;
-//   const cst = rule.bind(parser)();
-//   return cst;
-// };
-
 describe('TurtleParser', () => {
   it('produces no errors when tokenizing the w3 turtle test suite', async (done) => {
     const pathName = resolve(__dirname, 'fixtures', 'tests-ttl-w3c-20131121');
     const files = (await readDirAsync(pathName)).filter((fileName) => {
       const ext = extname(fileName);
       if (fileName === 'manifest.ttl') {
-        return false;
-      }
-      if (fileName.startsWith('skip.')) {
         return false;
       }
       return ext === '.ttl' || ext === '.nt';
