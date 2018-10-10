@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./BaseSparqlParser"));
 __export(require("./StardogSparqlParser"));
 __export(require("./W3SpecSparqlParser"));
+__export(require("./turtle/TurtleParser"));
 __export(require("./tokens"));
 __export(require("./terminals"));
 __export(require("./keywords"));
