@@ -1,7 +1,16 @@
-import { Parser } from 'chevrotain';
+import {
+  Parser,
+  IParserConfig,
+  Lexer,
+  IToken,
+  IRecognitionException,
+} from 'chevrotain';
 import { tokenTypes, tokenMap } from './tokens';
+import { IStardogParser } from '../types';
 
-export class TurtleParser extends Parser {
+export class TurtleParser extends Parser implements IStardogParser {
+  private lexer: Lexer;
+
   // Parsing Turtle requires that the parser keep a map of namespaces in state.
   // Empty prefixes, for example, are allowed only if the empty prefix has been
   // added to the namespaces map (for now, that's all this tracks). (TODO: We
@@ -10,10 +19,27 @@ export class TurtleParser extends Parser {
   private namespacesMap = {};
   public semanticErrors = [];
 
-  constructor() {
+  public tokenize = (document: string): IToken[] =>
+    this.lexer.tokenize(document).tokens;
+
+  public parse = (document: string) => {
+    this.input = this.lexer.tokenize(document).tokens;
+    const cst = this.turtleDoc();
+    const errors: IRecognitionException[] = this.errors;
+    return {
+      errors,
+      cst,
+    };
+  };
+
+  constructor(config?: Partial<IParserConfig>) {
     super([], tokenTypes, {
       outputCst: true,
+      recoveryEnabled: true,
+      ...config,
     });
+    this.lexer = new Lexer(tokenTypes);
+
     Parser.performSelfAnalysis(this);
   }
 
@@ -94,11 +120,18 @@ export class TurtleParser extends Parser {
   predicateObjectList = this.RULE('predicateObjectList', () => {
     this.SUBRULE(this.verb);
     this.SUBRULE(this.objectList);
-    this.MANY(() => {
+    this.OPTION(() => {
       this.CONSUME(tokenMap.Semicolon);
-      this.OPTION(() => {
+      this.OPTION1(() => {
         this.SUBRULE1(this.verb);
         this.SUBRULE1(this.objectList);
+      });
+    });
+    this.MANY(() => {
+      this.CONSUME1(tokenMap.Semicolon);
+      this.OPTION2(() => {
+        this.SUBRULE2(this.verb);
+        this.SUBRULE2(this.objectList);
       });
     });
   });

@@ -1,5 +1,5 @@
 import { createToken, TokenType } from 'chevrotain';
-import { tokenMap as sparqlTokenMap } from 'tokens';
+import { tokenMap as sparqlTokenMap } from '../tokens';
 import {
   EXPONENT,
   ECHAR,
@@ -11,8 +11,8 @@ import {
   PLX,
   HEX,
   PN_LOCAL_ESC,
-} from 'terminals';
-import { regex } from 'utils';
+} from '../terminals';
+import { regex } from '../utils';
 
 const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
 const escapeReplacements = {

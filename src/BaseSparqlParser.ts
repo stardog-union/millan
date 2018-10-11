@@ -7,13 +7,14 @@ import {
   IParserConfig,
   IRecognitionException,
 } from 'chevrotain';
+import { IStardogParser } from './types';
 
 // @ts-ignore: debug logging
 function log(...args) {
   // console.log(...args);
 }
 
-export class BaseSparqlParser extends Parser {
+export class BaseSparqlParser extends Parser implements IStardogParser {
   private lexer: Lexer;
 
   public tokenize = (document: string): IToken[] =>

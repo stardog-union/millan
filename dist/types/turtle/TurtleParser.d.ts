@@ -1,8 +1,15 @@
-import { Parser } from 'chevrotain';
-export declare class TurtleParser extends Parser {
+import { Parser, IParserConfig, IToken, IRecognitionException } from 'chevrotain';
+import { IStardogParser } from '../types';
+export declare class TurtleParser extends Parser implements IStardogParser {
+    private lexer;
     private namespacesMap;
     semanticErrors: any[];
-    constructor();
+    tokenize: (document: string) => IToken[];
+    parse: (document: string) => {
+        errors: IRecognitionException[];
+        cst: any;
+    };
+    constructor(config?: Partial<IParserConfig>);
     turtleDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     statement: (idxInCallingRule?: number, ...args: any[]) => any;
     directive: (idxInCallingRule?: number, ...args: any[]) => any;

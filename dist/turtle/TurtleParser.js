@@ -3,10 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chevrotain_1 = require("chevrotain");
 const tokens_1 = require("./tokens");
 class TurtleParser extends chevrotain_1.Parser {
-    constructor() {
-        super([], tokens_1.tokenTypes, {
-            outputCst: true,
-        });
+    constructor(config) {
+        super([], tokens_1.tokenTypes, Object.assign({ outputCst: true, recoveryEnabled: true }, config));
         // Parsing Turtle requires that the parser keep a map of namespaces in state.
         // Empty prefixes, for example, are allowed only if the empty prefix has been
         // added to the namespaces map (for now, that's all this tracks). (TODO: We
@@ -14,6 +12,16 @@ class TurtleParser extends chevrotain_1.Parser {
         // now.)
         this.namespacesMap = {};
         this.semanticErrors = [];
+        this.tokenize = (document) => this.lexer.tokenize(document).tokens;
+        this.parse = (document) => {
+            this.input = this.lexer.tokenize(document).tokens;
+            const cst = this.turtleDoc();
+            const errors = this.errors;
+            return {
+                errors,
+                cst,
+            };
+        };
         this.turtleDoc = this.RULE('turtleDoc', () => {
             this.MANY(() => this.SUBRULE(this.statement));
         });
@@ -81,11 +89,18 @@ class TurtleParser extends chevrotain_1.Parser {
         this.predicateObjectList = this.RULE('predicateObjectList', () => {
             this.SUBRULE(this.verb);
             this.SUBRULE(this.objectList);
-            this.MANY(() => {
+            this.OPTION(() => {
                 this.CONSUME(tokens_1.tokenMap.Semicolon);
-                this.OPTION(() => {
+                this.OPTION1(() => {
                     this.SUBRULE1(this.verb);
                     this.SUBRULE1(this.objectList);
+                });
+            });
+            this.MANY(() => {
+                this.CONSUME1(tokens_1.tokenMap.Semicolon);
+                this.OPTION2(() => {
+                    this.SUBRULE2(this.verb);
+                    this.SUBRULE2(this.objectList);
                 });
             });
         });
@@ -198,6 +213,7 @@ class TurtleParser extends chevrotain_1.Parser {
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.ANON) },
             ]);
         });
+        this.lexer = new chevrotain_1.Lexer(tokens_1.tokenTypes);
         chevrotain_1.Parser.performSelfAnalysis(this);
     }
 }

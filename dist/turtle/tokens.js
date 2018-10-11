@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const chevrotain_1 = require("chevrotain");
-const tokens_1 = require("tokens");
-const terminals_1 = require("terminals");
-const utils_1 = require("utils");
+const tokens_1 = require("../tokens");
+const terminals_1 = require("../terminals");
+const utils_1 = require("../utils");
 const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
 const escapeReplacements = {
     '\\': '\\',
