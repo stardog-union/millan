@@ -3,8 +3,6 @@ export declare const tokenMap: {
     Comment: TokenType;
     LBracket: TokenType;
     RBracket: TokenType;
-    LCurly: TokenType;
-    RCurly: TokenType;
     LParen: TokenType;
     RParen: TokenType;
     Period: TokenType;
