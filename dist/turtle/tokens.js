@@ -220,6 +220,10 @@ exports.tokenMap = {
     PN_PREFIX: chevrotain_1.createToken({ name: 'PN_PREFIX', pattern: terminals_1.PN_PREFIX }),
     PN_LOCAL: chevrotain_1.createToken({ name: 'PN_LOCAL', pattern: terminals_1.PN_LOCAL }),
     PN_LOCAL_ESC: chevrotain_1.createToken({ name: 'PN_LOCAL_ESC', pattern: terminals_1.PN_LOCAL_ESC }),
+    Unknown: chevrotain_1.createToken({
+        name: 'Unknown',
+        pattern: /\w+/,
+    }),
 };
 exports.tokenTypes = [
     exports.tokenMap.Comment,
@@ -266,4 +270,5 @@ exports.tokenTypes = [
     exports.tokenMap.PN_LOCAL_ESC,
     exports.tokenMap.ECHAR,
     exports.tokenMap.UCHAR,
+    exports.tokenMap.Unknown,
 ];

@@ -44,5 +44,6 @@ export declare const tokenMap: {
     PN_PREFIX: TokenType;
     PN_LOCAL: TokenType;
     PN_LOCAL_ESC: TokenType;
+    Unknown: TokenType;
 };
 export declare const tokenTypes: TokenType[];

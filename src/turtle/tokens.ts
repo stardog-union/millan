@@ -284,6 +284,10 @@ export const tokenMap = {
   PN_PREFIX: createToken({ name: 'PN_PREFIX', pattern: PN_PREFIX }),
   PN_LOCAL: createToken({ name: 'PN_LOCAL', pattern: PN_LOCAL }),
   PN_LOCAL_ESC: createToken({ name: 'PN_LOCAL_ESC', pattern: PN_LOCAL_ESC }),
+  Unknown: createToken({
+    name: 'Unknown',
+    pattern: /\w+/,
+  }),
 };
 
 export const tokenTypes: TokenType[] = [
@@ -331,4 +335,5 @@ export const tokenTypes: TokenType[] = [
   tokenMap.PN_LOCAL_ESC,
   tokenMap.ECHAR,
   tokenMap.UCHAR,
+  tokenMap.Unknown,
 ];
