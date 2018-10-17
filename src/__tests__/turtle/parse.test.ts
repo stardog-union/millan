@@ -4,7 +4,6 @@ import { Lexer } from 'chevrotain';
 import { tokenTypes } from '../../turtle/tokens';
 import { TurtleParser } from '../../turtle/TurtleParser';
 
-const parser = new TurtleParser();
 const turtleLexer = new Lexer(tokenTypes);
 
 describe('TurtleParser', () => {
@@ -19,16 +18,18 @@ describe('TurtleParser', () => {
     });
     await Promise.all(
       files.map(async (fileName) => {
+        const parser = new TurtleParser(); // since parser has state, need a new one for each test
         const testDocument = await readFileAsync(resolve(pathName, fileName));
         const lexingResult = turtleLexer.tokenize(testDocument);
         parser.input = lexingResult.tokens;
         parser.turtleDoc();
         const isBad = fileName.search('-bad-') > -1;
         if (!isBad) {
-          if (parser.errors.length > 0) {
+          if (parser.errors.length > 0 || parser.semanticErrors.length > 0) {
             console.log(fileName);
           }
           expect(parser.errors).toHaveLength(0);
+          expect(parser.semanticErrors).toHaveLength(0);
         } else {
           if (
             parser.errors.length === 0 &&

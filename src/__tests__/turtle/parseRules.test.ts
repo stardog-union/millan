@@ -9,11 +9,6 @@ export const parse = (doc: string, rule: Function) => {
   const testTokens = turtleLexer.tokenize(doc).tokens;
   parser.input = testTokens;
   const cst = rule.bind(parser)();
-  // if (parser.errors.length > 0 && rule.ruleName === 'RDFLiteral') {
-  //   console.log(doc);
-  //   console.log(rule.ruleName);
-  //   console.log(JSON.stringify(parser.errors, null, 2));
-  // }
   return cst;
 };
 

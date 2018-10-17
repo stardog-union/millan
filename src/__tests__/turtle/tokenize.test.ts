@@ -1,5 +1,4 @@
 import { Lexer } from 'chevrotain';
-import { readdir, readFile } from 'fs';
 import { resolve } from 'path';
 import { tokenTypes } from '../../turtle/tokens';
 import { extname } from 'path';
@@ -43,10 +42,8 @@ describe('turtle tokenizer', () => {
     ];
     terminals.forEach((terminal) => {
       const result = lexer.tokenize(terminal);
-      //console.log(JSON.stringify(result, null, 2));
       if (result.errors.length) {
-        console.log(terminal);
-        // console.log(JSON.stringify(result, null, 2));
+        console.log(JSON.stringify(result, null, 2));
       }
       expect(result.errors).toHaveLength(0);
     });
@@ -56,7 +53,7 @@ describe('turtle tokenizer', () => {
       `<http://a.example/s> <http://a.example/p> "x''y" .`
     );
     if (result.errors) {
-      // console.log(result.errors);
+      console.log(JSON.stringify(result, null, 2));
     }
     expect(result.errors).toHaveLength(0);
   });
@@ -65,8 +62,7 @@ describe('turtle tokenizer', () => {
     terminals.forEach((terminal) => {
       const result = lexer.tokenize(terminal);
       if (result.errors.length) {
-        console.log(terminal);
-        // console.log(JSON.stringify(result, null, 2));
+        console.log(JSON.stringify(result, null, 2));
       }
       expect(result.errors).toHaveLength(0);
     });
