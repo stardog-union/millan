@@ -16,8 +16,16 @@ export class TurtleParser extends Parser implements IStardogParser {
   // added to the namespaces map (for now, that's all this tracks). (TODO: We
   // might want to use a visitor for this, but I'm doing it quick-and-dirty for
   // now.)
+  // See here: https://www.w3.org/TR/turtle/#handle-PNAME_LN
   private namespacesMap = {};
-  public semanticErrors = [];
+  private semanticErrors = [];
+
+  // Clears the state that we have to manage on our own for each parse (see
+  // above for details).
+  private resetManagedState = () => {
+    this.namespacesMap = {};
+    this.semanticErrors = [];
+  };
 
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
@@ -25,9 +33,15 @@ export class TurtleParser extends Parser implements IStardogParser {
   public parse = (document: string) => {
     this.input = this.lexer.tokenize(document).tokens;
     const cst = this.turtleDoc();
-    const errors: IRecognitionException[] = this.errors;
+    // Next two items are copied so that they can be returned/held after parse
+    // state is cleared.
+    const errors: IRecognitionException[] = [...this.errors];
+    const semanticErrors = [...this.semanticErrors];
+    this.resetManagedState();
+
     return {
       errors,
+      semanticErrors,
       cst,
     };
   };
@@ -248,8 +262,7 @@ export class TurtleParser extends Parser implements IStardogParser {
       0,
       prefixedNameToken.image.indexOf(':')
     );
-    if (!this.namespacesMap[pnameNsImage]) {
-      // A prefix was used for which there was no namespace defined.
+    if (!(pnameNsImage in this.namespacesMap)) {
       this.semanticErrors.push({
         message: 'A prefix was used for which there was no namespace defined.',
       });

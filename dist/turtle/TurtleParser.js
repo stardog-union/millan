@@ -10,15 +10,27 @@ class TurtleParser extends chevrotain_1.Parser {
         // added to the namespaces map (for now, that's all this tracks). (TODO: We
         // might want to use a visitor for this, but I'm doing it quick-and-dirty for
         // now.)
+        // See here: https://www.w3.org/TR/turtle/#handle-PNAME_LN
         this.namespacesMap = {};
         this.semanticErrors = [];
+        // Clears the state that we have to manage on our own for each parse (see
+        // above for details).
+        this.resetManagedState = () => {
+            this.namespacesMap = {};
+            this.semanticErrors = [];
+        };
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
         this.parse = (document) => {
             this.input = this.lexer.tokenize(document).tokens;
             const cst = this.turtleDoc();
-            const errors = this.errors;
+            // Next two items are copied so that they can be returned/held after parse
+            // state is cleared.
+            const errors = [...this.errors];
+            const semanticErrors = [...this.semanticErrors];
+            this.resetManagedState();
             return {
                 errors,
+                semanticErrors,
                 cst,
             };
         };
@@ -200,8 +212,7 @@ class TurtleParser extends chevrotain_1.Parser {
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_NS) },
             ]);
             const pnameNsImage = prefixedNameToken.image.slice(0, prefixedNameToken.image.indexOf(':'));
-            if (!this.namespacesMap[pnameNsImage]) {
-                // A prefix was used for which there was no namespace defined.
+            if (!(pnameNsImage in this.namespacesMap)) {
                 this.semanticErrors.push({
                     message: 'A prefix was used for which there was no namespace defined.',
                 });

@@ -3,10 +3,12 @@ import { IStardogParser } from '../types';
 export declare class TurtleParser extends Parser implements IStardogParser {
     private lexer;
     private namespacesMap;
-    semanticErrors: any[];
+    private semanticErrors;
+    private resetManagedState;
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];
+        semanticErrors: any[];
         cst: any;
     };
     constructor(config?: Partial<IParserConfig>);
