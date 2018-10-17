@@ -52,7 +52,7 @@ describe('turtle tokenizer', () => {
     const result = lexer.tokenize(
       `<http://a.example/s> <http://a.example/p> "x''y" .`
     );
-    if (result.errors) {
+    if (result.errors.length) {
       console.log(JSON.stringify(result, null, 2));
     }
     expect(result.errors).toHaveLength(0);
@@ -72,9 +72,6 @@ describe('turtle tokenizer', () => {
     const files = (await readDirAsync(pathName)).filter((fileName) => {
       const ext = extname(fileName);
       if (fileName === 'manifest.ttl') {
-        return false;
-      }
-      if (fileName.startsWith('skip.')) {
         return false;
       }
       return ext === '.ttl' || ext === '.nt';

@@ -18,7 +18,7 @@ export class TurtleParser extends Parser implements IStardogParser {
   // now.)
   // See here: https://www.w3.org/TR/turtle/#handle-PNAME_LN
   private namespacesMap = {};
-  private semanticErrors = [];
+  private semanticErrors: IRecognitionException[] = [];
 
   // Clears the state that we have to manage on our own for each parse (see
   // above for details).
@@ -36,7 +36,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];
-    const semanticErrors = [...this.semanticErrors];
+    const semanticErrors: IRecognitionException[] = [...this.semanticErrors];
     this.resetManagedState();
 
     return {
@@ -264,7 +264,14 @@ export class TurtleParser extends Parser implements IStardogParser {
     );
     if (!(pnameNsImage in this.namespacesMap)) {
       this.semanticErrors.push({
+        name: 'NoNamespacePrefixError',
         message: 'A prefix was used for which there was no namespace defined.',
+        token: prefixedNameToken,
+        context: {
+          ruleStack: this.getHumanReadableRuleStack(),
+          ruleOccurrenceStack: [...this.RULE_OCCURRENCE_STACK],
+        },
+        resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
       });
     }
   });

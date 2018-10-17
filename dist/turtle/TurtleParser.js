@@ -214,7 +214,14 @@ class TurtleParser extends chevrotain_1.Parser {
             const pnameNsImage = prefixedNameToken.image.slice(0, prefixedNameToken.image.indexOf(':'));
             if (!(pnameNsImage in this.namespacesMap)) {
                 this.semanticErrors.push({
+                    name: 'NoNamespacePrefixError',
                     message: 'A prefix was used for which there was no namespace defined.',
+                    token: prefixedNameToken,
+                    context: {
+                        ruleStack: this.getHumanReadableRuleStack(),
+                        ruleOccurrenceStack: [...this.RULE_OCCURRENCE_STACK],
+                    },
+                    resyncedTokens: [],
                 });
             }
         });

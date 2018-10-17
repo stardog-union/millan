@@ -8,7 +8,7 @@ export declare class TurtleParser extends Parser implements IStardogParser {
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];
-        semanticErrors: any[];
+        semanticErrors: IRecognitionException[];
         cst: any;
     };
     constructor(config?: Partial<IParserConfig>);
