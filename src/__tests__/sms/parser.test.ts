@@ -1,8 +1,7 @@
 import { SmsParser } from '../../sms/SmsParser';
-import { tokenTypes } from '../../sms/tokens';
 import { fixtures } from './fixtures';
 
-const parser = new SmsParser({}, tokenTypes);
+const parser = new SmsParser({});
 
 describe('SmsParser', () => {
   it('parses a sql mapping', () => {

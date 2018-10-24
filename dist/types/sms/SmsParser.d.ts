@@ -1,4 +1,4 @@
-import { Parser, IToken, IRecognitionException, IParserConfig, TokenType } from 'chevrotain';
+import { Parser, IToken, IRecognitionException, IParserConfig } from 'chevrotain';
 export declare class SmsParser extends Parser {
     private lexer;
     tokenize: (document: string) => IToken[];
@@ -6,10 +6,7 @@ export declare class SmsParser extends Parser {
         errors: IRecognitionException[];
         cst: any;
     };
-    constructor(options: {
-        input?: IToken[];
-        config?: Partial<IParserConfig>;
-    }, tokenVocab: TokenType[]);
+    constructor(config?: Partial<IParserConfig>);
     MappingDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     MappingClause: (idxInCallingRule?: number, ...args: any[]) => any;
     MappingDecl: (idxInCallingRule?: number, ...args: any[]) => any;

@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chevrotain_1 = require("chevrotain");
 const tokens_1 = require("./tokens");
 class SmsParser extends chevrotain_1.Parser {
-    constructor(options = {}, tokenVocab) {
-        super(options.input || [], tokenVocab, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
+    constructor(config) {
+        super([], tokens_1.tokenTypes, Object.assign({ outputCst: true, recoveryEnabled: true }, config));
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
         this.parse = (document) => {
             this.input = this.lexer.tokenize(document).tokens;
@@ -310,7 +310,7 @@ class SmsParser extends chevrotain_1.Parser {
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG2) },
             ]);
         });
-        this.lexer = new chevrotain_1.Lexer(tokenVocab);
+        this.lexer = new chevrotain_1.Lexer(tokens_1.tokenTypes);
         chevrotain_1.Parser.performSelfAnalysis(this);
     }
 }

@@ -6,7 +6,7 @@ import {
   IParserConfig,
   TokenType,
 } from 'chevrotain';
-import { tokenMap } from './tokens';
+import { tokenTypes, tokenMap } from './tokens';
 
 export class SmsParser extends Parser {
   private lexer: Lexer;
@@ -24,20 +24,13 @@ export class SmsParser extends Parser {
     };
   };
 
-  constructor(
-    options: {
-      input?: IToken[];
-      config?: Partial<IParserConfig>;
-    } = {},
-    tokenVocab: TokenType[]
-  ) {
-    super(options.input || [], tokenVocab, {
-      recoveryEnabled: true,
+  constructor(config?: Partial<IParserConfig>) {
+    super([], tokenTypes, {
       outputCst: true,
-      ...options.config,
+      recoveryEnabled: true,
+      ...config,
     });
-
-    this.lexer = new Lexer(tokenVocab);
+    this.lexer = new Lexer(tokenTypes);
 
     Parser.performSelfAnalysis(this);
   }
