@@ -4,7 +4,6 @@ import {
   IToken,
   IRecognitionException,
   IParserConfig,
-  TokenType,
 } from 'chevrotain';
 import { tokenTypes, tokenMap } from './tokens';
 
