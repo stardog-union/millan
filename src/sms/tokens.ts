@@ -1,11 +1,14 @@
 import { tokenMap as sparqlTokenMap } from '../tokens';
 import { TokenType, createToken, IToken } from 'chevrotain';
 
+const FROM_BLOCK_END_MATCHER = /((?:.|\s)*?)(?:}\s*to)/i;
+const FROM_JSON_BLOCK_END_MATCHER = /((?:.|\s)*?)to\s*{/i;
+
 export const tokenMap = {
-  STRING_LITERAL_1: sparqlTokenMap.STRING_LITERAL1,
-  STRING_LITERAL_2: sparqlTokenMap.STRING_LITERAL2,
-  STRING_LITERAL_LONG_1: sparqlTokenMap.STRING_LITERAL_LONG1,
-  STRING_LITERAL_LONG_2: sparqlTokenMap.STRING_LITERAL_LONG2,
+  STRING_LITERAL1: sparqlTokenMap.STRING_LITERAL1,
+  STRING_LITERAL2: sparqlTokenMap.STRING_LITERAL2,
+  STRING_LITERAL_LONG1: sparqlTokenMap.STRING_LITERAL_LONG1,
+  STRING_LITERAL_LONG2: sparqlTokenMap.STRING_LITERAL_LONG2,
   IRIREF: sparqlTokenMap.IRIREF,
   PNAME_LN: sparqlTokenMap.PNAME_LN,
   PNAME_NS: sparqlTokenMap.PNAME_NS,
@@ -16,10 +19,6 @@ export const tokenMap = {
   BIND: sparqlTokenMap.BIND,
   AS: sparqlTokenMap.AS,
   WHERE: sparqlTokenMap.WHERE,
-  TO: createToken({
-    name: 'TO',
-    pattern: /to/i,
-  }),
   LANGTAG: sparqlTokenMap.LANGTAG,
   INTEGER: sparqlTokenMap.INTEGER,
   DECIMAL: sparqlTokenMap.DECIMAL,
@@ -37,7 +36,6 @@ export const tokenMap = {
   A: sparqlTokenMap.A,
   FROM: sparqlTokenMap.FROM,
   PREFIX: sparqlTokenMap.PREFIX,
-
   Comment: sparqlTokenMap.Comment,
   Period: sparqlTokenMap.Period,
   Comma: sparqlTokenMap.Comma,
@@ -46,14 +44,18 @@ export const tokenMap = {
   LParen: sparqlTokenMap.LParen,
   RParen: sparqlTokenMap.RParen,
   WhiteSpace: sparqlTokenMap.WhiteSpace,
-  Template: createToken({
-    name: 'Template',
-    pattern: /template/i,
-  }),
   DoubleCaret: sparqlTokenMap.DoubleCaret,
   Semicolon: sparqlTokenMap.Semicolon,
   LBracket: sparqlTokenMap.LBracket,
   RBracket: sparqlTokenMap.RBracket,
+  Template: createToken({
+    name: 'Template',
+    pattern: /template/i,
+  }),
+  TO: createToken({
+    name: 'TO',
+    pattern: /to/i,
+  }),
   Sql: createToken({
     name: 'Sql',
     pattern: /sql/i,
@@ -80,28 +82,138 @@ export const tokenMap = {
       const [secondToLastToken, lastToken] = matchedTokensSoFar.slice(-2);
 
       if (
-        secondToLastToken.tokenType !== tokenMap.Sql.tokenName ||
-        lastToken.tokenType !== tokenMap.LCurly.tokenName
+        !secondToLastToken ||
+        !lastToken ||
+        secondToLastToken.tokenType.tokenName !== tokenMap.Sql.tokenName ||
+        lastToken.tokenType.tokenName !== tokenMap.LCurly.tokenName
       ) {
         return null;
       }
 
-      return;
+      const textToMatch = text.slice(startOffset);
+      const match = FROM_BLOCK_END_MATCHER.exec(textToMatch);
+      if (!match) {
+        return null;
+      }
+
+      // We match an end bracket and the "TO" keyword because it's currently our
+      // best (only) heuristic for determining the end of a SQL block, but we still
+      // want chevrotain to tokenize the end bracket and "TO" keyword seperately because
+      // their consumption is required in the parse rules.
+      const capturedMatch = match.slice(1) as RegExpExecArray;
+      return capturedMatch;
     },
+    line_breaks: true,
+  }),
+  JsonBlock: createToken({
+    name: 'JsonBlock',
+    pattern: (
+      text: string,
+      startOffset: number = 0,
+      matchedTokensSoFar: IToken[]
+    ) => {
+      const [lastToken] = matchedTokensSoFar.slice(-1);
+
+      if (
+        !lastToken ||
+        lastToken.tokenType.tokenName !== tokenMap.Json.tokenName
+      ) {
+        return null;
+      }
+
+      const textToMatch = text.slice(startOffset);
+      const match = FROM_JSON_BLOCK_END_MATCHER.exec(textToMatch);
+      if (!match) {
+        return null;
+      }
+
+      const capturedMatch = match.slice(1) as RegExpExecArray;
+      return capturedMatch;
+    },
+    line_breaks: true,
+  }),
+  GraphQlBlock: createToken({
+    name: 'GraphQlBlock',
+    pattern: (
+      text: string,
+      startOffset: number = 0,
+      matchedTokensSoFar: IToken[]
+    ) => {
+      const [secondToLastToken, lastToken] = matchedTokensSoFar.slice(-2);
+
+      if (
+        !secondToLastToken ||
+        !lastToken ||
+        secondToLastToken.tokenType.tokenName !== tokenMap.GraphQl.tokenName ||
+        lastToken.tokenType.tokenName !== tokenMap.LCurly.tokenName
+      ) {
+        return null;
+      }
+
+      const textToMatch = text.slice(startOffset);
+      const match = FROM_BLOCK_END_MATCHER.exec(textToMatch);
+      if (!match) {
+        return null;
+      }
+
+      const capturedMatch = match.slice(1) as RegExpExecArray;
+      return capturedMatch;
+    },
+    line_breaks: true,
   }),
 };
 
 export const tokenTypes: TokenType[] = [
   tokenMap.WhiteSpace,
   tokenMap.Comment,
-  tokenMap.LCurly,
-  tokenMap.RCurly,
   tokenMap.LParen,
   tokenMap.RParen,
   tokenMap.Period,
-  tokenMap.STRING_LITERAL_LONG_1,
-  tokenMap.STRING_LITERAL_LONG_2,
-  tokenMap.STRING_LITERAL_1,
-  tokenMap.STRING_LITERAL_2,
   tokenMap.Template,
+  tokenMap.IRIREF,
+  tokenMap.PNAME_LN,
+  tokenMap.PNAME_NS,
+  tokenMap.NIL,
+  tokenMap.DISTINCT,
+  tokenMap.VAR1,
+  tokenMap.VAR2,
+  tokenMap.BIND,
+  tokenMap.AS,
+  tokenMap.WHERE,
+  tokenMap.TO,
+  tokenMap.LANGTAG,
+  tokenMap.INTEGER,
+  tokenMap.DECIMAL,
+  tokenMap.DOUBLE,
+  tokenMap.INTEGER_POSITIVE,
+  tokenMap.DECIMAL_POSITIVE,
+  tokenMap.DOUBLE_POSITIVE,
+  tokenMap.INTEGER_NEGATIVE,
+  tokenMap.DECIMAL_NEGATIVE,
+  tokenMap.DOUBLE_NEGATIVE,
+  tokenMap.TRUE,
+  tokenMap.FALSE,
+  tokenMap.BLANK_NODE_LABEL,
+  tokenMap.ANON,
+  tokenMap.A,
+  tokenMap.FROM,
+  tokenMap.PREFIX,
+  tokenMap.Comma,
+  tokenMap.DoubleCaret,
+  tokenMap.Semicolon,
+  tokenMap.LBracket,
+  tokenMap.RBracket,
+  tokenMap.Sql,
+  tokenMap.GraphQl,
+  tokenMap.Json,
+  tokenMap.Mapping,
+  tokenMap.SqlBlock,
+  tokenMap.JsonBlock,
+  tokenMap.GraphQlBlock,
+  tokenMap.LCurly,
+  tokenMap.RCurly,
+  tokenMap.STRING_LITERAL1,
+  tokenMap.STRING_LITERAL2,
+  tokenMap.STRING_LITERAL_LONG1,
+  tokenMap.STRING_LITERAL_LONG2,
 ];

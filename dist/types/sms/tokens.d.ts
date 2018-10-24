@@ -1,9 +1,9 @@
 import { TokenType } from 'chevrotain';
 export declare const tokenMap: {
-    STRING_LITERAL_1: TokenType;
-    STRING_LITERAL_2: TokenType;
-    STRING_LITERAL_LONG_1: TokenType;
-    STRING_LITERAL_LONG_2: TokenType;
+    STRING_LITERAL1: TokenType;
+    STRING_LITERAL2: TokenType;
+    STRING_LITERAL_LONG1: TokenType;
+    STRING_LITERAL_LONG2: TokenType;
     IRIREF: TokenType;
     PNAME_LN: TokenType;
     PNAME_NS: TokenType;
@@ -14,7 +14,6 @@ export declare const tokenMap: {
     BIND: TokenType;
     AS: TokenType;
     WHERE: TokenType;
-    TO: TokenType;
     LANGTAG: TokenType;
     INTEGER: TokenType;
     DECIMAL: TokenType;
@@ -40,15 +39,18 @@ export declare const tokenMap: {
     LParen: TokenType;
     RParen: TokenType;
     WhiteSpace: TokenType;
-    Template: TokenType;
     DoubleCaret: TokenType;
     Semicolon: TokenType;
     LBracket: TokenType;
     RBracket: TokenType;
+    Template: TokenType;
+    TO: TokenType;
     Sql: TokenType;
     GraphQl: TokenType;
     Json: TokenType;
     Mapping: TokenType;
     SqlBlock: TokenType;
+    JsonBlock: TokenType;
+    GraphQlBlock: TokenType;
 };
 export declare const tokenTypes: TokenType[];
