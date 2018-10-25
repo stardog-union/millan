@@ -17,8 +17,8 @@ export declare class SmsParser extends Parser {
     ToClause: (idxInCallingRule?: number, ...args: any[]) => any;
     WhereClause: (idxInCallingRule?: number, ...args: any[]) => any;
     Bind: (idxInCallingRule?: number, ...args: any[]) => any;
-    Expression: (idxInCallingRule?: number, ...args: any[]) => any;
-    BuiltInCall: (idxInCallingRule?: number, ...args: any[]) => any;
+    TemplateOrCast: (idxInCallingRule?: number, ...args: any[]) => any;
+    CastFunc: (idxInCallingRule?: number, ...args: any[]) => any;
     TemplateFunc: (idxInCallingRule?: number, ...args: any[]) => any;
     PrefixDecl: (idxInCallingRule?: number, ...args: any[]) => any;
     iri: (idxInCallingRule?: number, ...args: any[]) => any;
@@ -46,7 +46,5 @@ export declare class SmsParser extends Parser {
     BlankNode: (idxInCallingRule?: number, ...args: any[]) => any;
     GraphNode: (idxInCallingRule?: number, ...args: any[]) => any;
     Var: (idxInCallingRule?: number, ...args: any[]) => any;
-    iriOrFunction: (idxInCallingRule?: number, ...args: any[]) => any;
-    ArgList: (idxInCallingRule?: number, ...args: any[]) => any;
     String: (idxInCallingRule?: number, ...args: any[]) => any;
 }
