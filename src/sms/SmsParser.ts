@@ -107,25 +107,28 @@ export class SmsParser extends Parser {
   Bind = this.RULE('Bind', () => {
     this.CONSUME(tokenMap.BIND);
     this.CONSUME(tokenMap.LParen);
-    this.SUBRULE(this.Expression);
+    this.SUBRULE(this.TemplateOrCast);
     this.CONSUME(tokenMap.AS);
     this.SUBRULE(this.Var);
     this.CONSUME(tokenMap.RParen);
   });
 
-  Expression = this.RULE('Expression', () => {
-    this.SUBRULE(this.BuiltInCall);
-  });
-
-  BuiltInCall = this.RULE('BuiltInCall', () => {
+  TemplateOrCast = this.RULE('TemplateOrCast', () => {
     this.OR([
       {
         ALT: () => this.SUBRULE(this.TemplateFunc),
       },
       {
-        ALT: () => this.SUBRULE(this.iriOrFunction),
+        ALT: () => this.SUBRULE(this.CastFunc),
       },
     ]);
+  });
+
+  CastFunc = this.RULE('CastFunc', () => {
+    this.SUBRULE(this.iri);
+    this.CONSUME(tokenMap.LParen);
+    this.SUBRULE(this.Var);
+    this.CONSUME(tokenMap.RParen);
   });
 
   TemplateFunc = this.RULE('TemplateFunc', () => {
@@ -339,29 +342,6 @@ export class SmsParser extends Parser {
     this.OR([
       { ALT: () => this.CONSUME(tokenMap.VAR1) },
       { ALT: () => this.CONSUME(tokenMap.VAR2) },
-    ]);
-  });
-
-  iriOrFunction = this.RULE('iriOrFunction', () => {
-    this.SUBRULE(this.iri);
-    this.OPTION(() => this.SUBRULE(this.ArgList));
-  });
-
-  ArgList = this.RULE('ArgList', () => {
-    this.OR([
-      { ALT: () => this.CONSUME(tokenMap.NIL) },
-      {
-        ALT: () => {
-          this.CONSUME(tokenMap.LParen);
-          this.OPTION(() => this.CONSUME(tokenMap.DISTINCT));
-          this.SUBRULE(this.Expression);
-          this.MANY(() => {
-            this.CONSUME(tokenMap.Comma);
-            this.SUBRULE1(this.Expression);
-          });
-          this.CONSUME(tokenMap.RParen);
-        },
-      },
     ]);
   });
 

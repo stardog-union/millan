@@ -78,23 +78,26 @@ class SmsParser extends chevrotain_1.Parser {
         this.Bind = this.RULE('Bind', () => {
             this.CONSUME(tokens_1.tokenMap.BIND);
             this.CONSUME(tokens_1.tokenMap.LParen);
-            this.SUBRULE(this.Expression);
+            this.SUBRULE(this.TemplateOrCast);
             this.CONSUME(tokens_1.tokenMap.AS);
             this.SUBRULE(this.Var);
             this.CONSUME(tokens_1.tokenMap.RParen);
         });
-        this.Expression = this.RULE('Expression', () => {
-            this.SUBRULE(this.BuiltInCall);
-        });
-        this.BuiltInCall = this.RULE('BuiltInCall', () => {
+        this.TemplateOrCast = this.RULE('TemplateOrCast', () => {
             this.OR([
                 {
                     ALT: () => this.SUBRULE(this.TemplateFunc),
                 },
                 {
-                    ALT: () => this.SUBRULE(this.iriOrFunction),
+                    ALT: () => this.SUBRULE(this.CastFunc),
                 },
             ]);
+        });
+        this.CastFunc = this.RULE('CastFunc', () => {
+            this.SUBRULE(this.iri);
+            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.SUBRULE(this.Var);
+            this.CONSUME(tokens_1.tokenMap.RParen);
         });
         this.TemplateFunc = this.RULE('TemplateFunc', () => {
             this.CONSUME(tokens_1.tokenMap.Template);
@@ -279,27 +282,6 @@ class SmsParser extends chevrotain_1.Parser {
             this.OR([
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.VAR1) },
                 { ALT: () => this.CONSUME(tokens_1.tokenMap.VAR2) },
-            ]);
-        });
-        this.iriOrFunction = this.RULE('iriOrFunction', () => {
-            this.SUBRULE(this.iri);
-            this.OPTION(() => this.SUBRULE(this.ArgList));
-        });
-        this.ArgList = this.RULE('ArgList', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
-                {
-                    ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
-                        this.OPTION(() => this.CONSUME(tokens_1.tokenMap.DISTINCT));
-                        this.SUBRULE(this.Expression);
-                        this.MANY(() => {
-                            this.CONSUME(tokens_1.tokenMap.Comma);
-                            this.SUBRULE1(this.Expression);
-                        });
-                        this.CONSUME(tokens_1.tokenMap.RParen);
-                    },
-                },
             ]);
         });
         this.String = this.RULE('String', () => {
