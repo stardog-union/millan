@@ -2,8 +2,33 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tokens_1 = require("../tokens");
 const chevrotain_1 = require("chevrotain");
-const FROM_BLOCK_END_MATCHER = /((?:.|\s)*?)(?:}\s*to)/i;
+const FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
 const FROM_JSON_BLOCK_END_MATCHER = /((?:.|\s)*?)to\s*{/i;
+// Because the end of `FROM` clauses in SMS are not explicit, tokenizing them
+// using regexes can be incredibly inefficient. This function gives us a bit
+// more control; it scans through the document character by character until
+// it finds a character which is _likely_ to be followed by an ending pattern,
+// and only then does it use a regex to confirm.
+const explicitEndMatcher = (textToMatch, endCandidateChar, // Char which, if found, triggers an exec of endMatcher
+endMatcher // Regex which matches an end pattern
+) => {
+    for (let offset = 0, char; offset < textToMatch.length; offset++) {
+        char = textToMatch[offset];
+        if (char === endCandidateChar) {
+            const blockEndCandidate = textToMatch.slice(offset + 1);
+            const match = endMatcher.exec(blockEndCandidate);
+            if (!match) {
+                continue;
+            }
+            else {
+                const blockText = textToMatch.slice(0, offset);
+                const response = [blockText];
+                return response;
+            }
+        }
+    }
+    return null;
+};
 exports.tokenMap = {
     STRING_LITERAL1: tokens_1.tokenMap.STRING_LITERAL1,
     STRING_LITERAL2: tokens_1.tokenMap.STRING_LITERAL2,
@@ -83,16 +108,7 @@ exports.tokenMap = {
                 return null;
             }
             const textToMatch = text.slice(startOffset);
-            const match = FROM_BLOCK_END_MATCHER.exec(textToMatch);
-            if (!match) {
-                return null;
-            }
-            // We match an end bracket and the "TO" keyword because it's currently our
-            // best (only) heuristic for determining the end of a SQL block, but we still
-            // want chevrotain to tokenize the end bracket and "TO" keyword seperately because
-            // their consumption is required in the parse rules.
-            const capturedMatch = match.slice(1);
-            return capturedMatch;
+            return explicitEndMatcher(textToMatch, '}', FROM_BLOCK_END_MATCHER);
         },
         line_breaks: true,
     }),
@@ -125,12 +141,7 @@ exports.tokenMap = {
                 return null;
             }
             const textToMatch = text.slice(startOffset);
-            const match = FROM_BLOCK_END_MATCHER.exec(textToMatch);
-            if (!match) {
-                return null;
-            }
-            const capturedMatch = match.slice(1);
-            return capturedMatch;
+            return explicitEndMatcher(textToMatch, '}', FROM_BLOCK_END_MATCHER);
         },
         line_breaks: true,
     }),
