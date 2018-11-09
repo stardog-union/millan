@@ -145,4 +145,38 @@ export const fixtures = {
       BIND (template("http://www.imdb.com/name/{actorId}") AS ?actor)
     }
 `,
+  nonTerminatedSqlBlock: `MAPPING 
+  FROM SQL { SELECT *
+  FROM review
+  TO {
+    ?subject <http://api.stardog.com/review#language> ?language .
+    ?subject <http://api.stardog.com/review#nr> ?nr .
+    ?subject <http://api.stardog.com/review#person> ?person .
+    ?subject <http://api.stardog.com/review#producer> ?producer .
+    ?subject <http://api.stardog.com/review#product> ?product .
+    ?subject <http://api.stardog.com/review#publishDate> ?publishDate .
+    ?subject <http://api.stardog.com/review#publisher> ?publisher .
+    ?subject <http://api.stardog.com/review#rating1> ?rating1 .
+    ?subject <http://api.stardog.com/review#rating2> ?rating2 .
+    ?subject <http://api.stardog.com/review#rating3> ?rating3 .
+    ?subject <http://api.stardog.com/review#rating4> ?rating4 .
+    ?subject <http://api.stardog.com/review#reviewDate> ?reviewDate .
+    ?subject <http://api.stardog.com/review#text> ?text .
+    ?subject <http://api.stardog.com/review#title> ?title .
+    ?subject rdf:type :review
+  } WHERE {
+    BIND(template("http://api.stardog.com/review/nr={nr}") AS ?subject)
+    BIND(xsd:date(?publishDate) AS ?publishDate)
+    BIND(xsd:dateTime(?reviewDate) AS ?reviewDate)
+    BIND(xsd:integer(?nr) AS ?nr)
+    BIND(xsd:integer(?person) AS ?person)
+    BIND(xsd:integer(?producer) AS ?producer)
+    BIND(xsd:integer(?product) AS ?product)
+    BIND(xsd:integer(?publisher) AS ?publisher)
+    BIND(xsd:integer(?rating1) AS ?rating1)
+    BIND(xsd:integer(?rating2) AS ?rating2)
+    BIND(xsd:integer(?rating3) AS ?rating3)
+    BIND(xsd:integer(?rating4) AS ?rating4)
+  }
+  `,
 };

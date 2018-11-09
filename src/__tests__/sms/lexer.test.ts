@@ -19,6 +19,10 @@ describe('sms lexer', () => {
       tokenMap.TO.tokenName
     );
   });
+  it('successfully fails to tokenize a sql clause with a missing closing bracket, rather than hanging', () => {
+    const { errors } = lexer.tokenize(fixtures.nonTerminatedSqlBlock);
+    expect(errors).toHaveLength(3);
+  });
   it('tokenizes a json mapping', () => {
     const { tokens, errors } = lexer.tokenize(fixtures.jsonMapping);
     const jsonBlockIdx = tokens.findIndex((tkn) => {
