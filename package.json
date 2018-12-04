@@ -1,32 +1,40 @@
 {
-  "dependencies": {
-    "chevrotain": "3.0.1"
-  },
   "name": "millan",
   "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",
   "version": "1.2.1",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
   "types": "dist/types/index.d.ts",
+  "dependencies": {
+    "chevrotain": "3.0.1"
+  },
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/node": "^9.6.6",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "prettier": "^1.12.1",
+    "rollup": "^0.67.4",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-typescript2": "^0.18.0",
     "ts-jest": "^22.4.4",
     "tslint": "^5.9.1",
     "typescript": "^2.8.3"
   },
   "scripts": {
-    "precommit": "rm -rf ./dist; node ./build/scripts/precommit.js; ./node_modules/typescript/bin/tsc; git add ./dist;",
-    "test": "./node_modules/.bin/jest"
+    "precommit": "node ./build/scripts/precommit.js",
+    "test": "jest",
+    "build": "rollup -c",
+    "dev": "rollup -cw"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stardog-union/millan.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Stardog Union",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/stardog-union/millan/issues"
   },

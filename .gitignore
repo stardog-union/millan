@@ -10,3 +10,5 @@ gradle/
 .project
 .settings
 .vscode
+.rpt2_cache/
+

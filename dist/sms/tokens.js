@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const tokens_1 = require("../tokens");
+const tokens_1 = require("../sparql/tokens");
 const chevrotain_1 = require("chevrotain");
 const FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
 const FROM_JSON_BLOCK_END_MATCHER = /((?:.|\s)*?)to\s*{/i;

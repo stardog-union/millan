@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const chevrotain_1 = require("chevrotain");
-const tokens_1 = require("../tokens");
-const terminals_1 = require("../terminals");
-const utils_1 = require("../utils");
+const tokens_1 = require("../sparql/tokens");
+const terminals_1 = require("../sparql/terminals");
+const regex_1 = require("../helpers/regex");
 const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
 const escapeReplacements = {
     '\\': '\\',
@@ -107,15 +107,15 @@ exports.tokenMap = {
     LANGTAG: tokens_1.tokenMap.LANGTAG,
     INTEGER: chevrotain_1.createToken({
         name: 'INTEGER',
-        pattern: utils_1.regex.and(utils_1.regex.option(/[+-]/), /\d+/),
+        pattern: regex_1.regex.and(regex_1.regex.option(/[+-]/), /\d+/),
     }),
     DECIMAL: chevrotain_1.createToken({
         name: 'DECIMAL',
-        pattern: utils_1.regex.and(utils_1.regex.option(/[+-]/), /(\d*\.\d+)/),
+        pattern: regex_1.regex.and(regex_1.regex.option(/[+-]/), /(\d*\.\d+)/),
     }),
     DOUBLE: chevrotain_1.createToken({
         name: 'DOUBLE',
-        pattern: utils_1.regex.and(utils_1.regex.option(/[+-]/), utils_1.regex.or(utils_1.regex.and(/\d+\.\d*/, terminals_1.EXPONENT), utils_1.regex.and(/\.\d+/, terminals_1.EXPONENT), utils_1.regex.and(/\d+/, terminals_1.EXPONENT))),
+        pattern: regex_1.regex.and(regex_1.regex.option(/[+-]/), regex_1.regex.or(regex_1.regex.and(/\d+\.\d*/, terminals_1.EXPONENT), regex_1.regex.and(/\.\d+/, terminals_1.EXPONENT), regex_1.regex.and(/\d+/, terminals_1.EXPONENT))),
     }),
     EXPONENT: chevrotain_1.createToken({ name: 'EXPONENT', pattern: terminals_1.EXPONENT }),
     ECHAR: chevrotain_1.createToken({ name: 'ECHAR', pattern: terminals_1.ECHAR }),

@@ -1,8 +1,4 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var chevrotain = require('chevrotain');
+import { createToken, Lexer, Parser } from 'chevrotain';
 
 const regex = {
     or(...r) {
@@ -55,604 +51,604 @@ const VAR2 = regex.and(/\$/, VARNAME);
 const BLANK_NODE_LABEL = regex.and(/_:/, regex.or(PN_CHARS_U, /\d/), regex.option(regex.and(regex.many(regex.or(PN_CHARS, /\./)), PN_CHARS)));
 const PNAME_NS = regex.and(regex.option(PN_PREFIX), /:/);
 const PNAME_LN = regex.and(PNAME_NS, PN_LOCAL);
-const STRING_LITERAL_LONG1_TOKEN = chevrotain.createToken({
+const STRING_LITERAL_LONG1_TOKEN = createToken({
     name: 'STRING_LITERAL_LONG1',
     pattern: STRING_LITERAL_LONG1,
 });
-const STRING_LITERAL_LONG2_TOKEN = chevrotain.createToken({
+const STRING_LITERAL_LONG2_TOKEN = createToken({
     name: 'STRING_LITERAL_LONG2',
     pattern: STRING_LITERAL_LONG2,
 });
-const PNAME_LN_TOKEN = chevrotain.createToken({
+const PNAME_LN_TOKEN = createToken({
     name: 'PNAME_LN',
     pattern: PNAME_LN,
 });
 const terminals = {
-    IRIREF: chevrotain.createToken({
+    IRIREF: createToken({
         name: 'IRIREF',
         pattern: IRIREF,
         label: '<http://example.com>',
     }),
-    LANGTAG: chevrotain.createToken({
+    LANGTAG: createToken({
         name: 'LANGTAG',
         pattern: LANGTAG,
     }),
-    INTEGER: chevrotain.createToken({
+    INTEGER: createToken({
         name: 'INTEGER',
         pattern: INTEGER,
     }),
-    DECIMAL: chevrotain.createToken({
+    DECIMAL: createToken({
         name: 'DECIMAL',
         pattern: DECIMAL,
     }),
-    DOUBLE: chevrotain.createToken({
+    DOUBLE: createToken({
         name: 'DOUBLE',
         pattern: DOUBLE,
     }),
-    INTEGER_POSITIVE: chevrotain.createToken({
+    INTEGER_POSITIVE: createToken({
         name: 'INTEGER_POSITIVE',
         pattern: INTEGER_POSITIVE,
     }),
-    DECIMAL_POSITIVE: chevrotain.createToken({
+    DECIMAL_POSITIVE: createToken({
         name: 'DECIMAL_POSITIVE',
         pattern: DECIMAL_POSITIVE,
     }),
-    DOUBLE_POSITIVE: chevrotain.createToken({
+    DOUBLE_POSITIVE: createToken({
         name: 'DOUBLE_POSITIVE',
         pattern: DOUBLE_POSITIVE,
     }),
-    INTEGER_NEGATIVE: chevrotain.createToken({
+    INTEGER_NEGATIVE: createToken({
         name: 'INTEGER_NEGATIVE',
         pattern: INTEGER_NEGATIVE,
     }),
-    DECIMAL_NEGATIVE: chevrotain.createToken({
+    DECIMAL_NEGATIVE: createToken({
         name: 'DECIMAL_NEGATIVE',
         pattern: DECIMAL_NEGATIVE,
     }),
-    DOUBLE_NEGATIVE: chevrotain.createToken({
+    DOUBLE_NEGATIVE: createToken({
         name: 'DOUBLE_NEGATIVE',
         pattern: DOUBLE_NEGATIVE,
     }),
     STRING_LITERAL_LONG1: STRING_LITERAL_LONG1_TOKEN,
     STRING_LITERAL_LONG2: STRING_LITERAL_LONG2_TOKEN,
-    STRING_LITERAL1: chevrotain.createToken({
+    STRING_LITERAL1: createToken({
         name: 'STRING_LITERAL1',
         pattern: STRING_LITERAL1,
         longer_alt: STRING_LITERAL_LONG1_TOKEN,
     }),
-    STRING_LITERAL2: chevrotain.createToken({
+    STRING_LITERAL2: createToken({
         name: 'STRING_LITERAL2',
         pattern: STRING_LITERAL2,
         longer_alt: STRING_LITERAL_LONG2_TOKEN,
     }),
-    NIL: chevrotain.createToken({
+    NIL: createToken({
         name: 'NIL',
         pattern: NIL,
         label: '()',
     }),
-    ANON: chevrotain.createToken({
+    ANON: createToken({
         name: 'ANON',
         pattern: ANON,
         label: '[]',
     }),
     PNAME_LN: PNAME_LN_TOKEN,
-    PNAME_NS: chevrotain.createToken({
+    PNAME_NS: createToken({
         name: 'PNAME_NS',
         pattern: PNAME_NS,
         longer_alt: PNAME_LN_TOKEN,
     }),
-    BLANK_NODE_LABEL: chevrotain.createToken({
+    BLANK_NODE_LABEL: createToken({
         name: 'BLANK_NODE_LABEL',
         pattern: BLANK_NODE_LABEL,
     }),
-    VAR1: chevrotain.createToken({
+    VAR1: createToken({
         name: 'VAR1',
         pattern: VAR1,
         label: '?foo',
     }),
-    VAR2: chevrotain.createToken({
+    VAR2: createToken({
         name: 'VAR2',
         pattern: VAR2,
         label: '?bar',
     }),
-    PERCENT: chevrotain.createToken({
+    PERCENT: createToken({
         name: 'PERCENT',
         pattern: PERCENT,
     }),
 };
 
 // @ts-ignore: import types for declarations
-const MAX_LENGTH = chevrotain.createToken({
+const MAX_LENGTH = createToken({
     name: 'MAX_LENGTH',
     pattern: /MAX LENGTH/i,
 });
 const keywords = {
-    SELECT: chevrotain.createToken({
+    SELECT: createToken({
         name: 'SELECT',
         pattern: /SELECT/i,
     }),
-    CONSTRUCT: chevrotain.createToken({
+    CONSTRUCT: createToken({
         name: 'CONSTRUCT',
         pattern: /CONSTRUCT/i,
     }),
-    DISTINCT: chevrotain.createToken({
+    DISTINCT: createToken({
         name: 'DISTINCT',
         pattern: /DISTINCT/i,
     }),
-    START: chevrotain.createToken({
+    START: createToken({
         name: 'START',
         pattern: /START/i,
     }),
-    END: chevrotain.createToken({
+    END: createToken({
         name: 'END',
         pattern: /END/i,
     }),
-    VIA: chevrotain.createToken({
+    VIA: createToken({
         name: 'VIA',
         pattern: /VIA/i,
     }),
-    PATHS: chevrotain.createToken({
+    PATHS: createToken({
         name: 'PATHS',
         pattern: /PATHS/i,
     }),
-    PATHS_ALL: chevrotain.createToken({
+    PATHS_ALL: createToken({
         name: 'PATHS_ALL',
         pattern: /PATHS ALL/i,
     }),
-    PATHS_SHORTEST: chevrotain.createToken({
+    PATHS_SHORTEST: createToken({
         name: 'PATHS_SHORTEST',
         pattern: /PATHS SHORTEST/i,
     }),
-    CYCLIC: chevrotain.createToken({
+    CYCLIC: createToken({
         name: 'CYCLIC',
         pattern: /CYCLIC/i,
     }),
-    AS: chevrotain.createToken({
+    AS: createToken({
         name: 'AS',
         pattern: /AS/i,
     }),
-    WHERE: chevrotain.createToken({
+    WHERE: createToken({
         name: 'WHERE',
         pattern: /WHERE/i,
     }),
-    A: chevrotain.createToken({
+    A: createToken({
         name: 'A',
         pattern: /a/i,
     }),
-    GroupBy: chevrotain.createToken({
+    GroupBy: createToken({
         name: 'GroupBy',
         pattern: /group by/i,
     }),
-    OrderBy: chevrotain.createToken({
+    OrderBy: createToken({
         name: 'OrderBy',
         pattern: /order by/i,
     }),
-    By: chevrotain.createToken({
+    By: createToken({
         name: 'By',
         pattern: /By/i,
     }),
-    BASE: chevrotain.createToken({
+    BASE: createToken({
         name: 'BASE',
         pattern: /BASE/i,
     }),
-    PREFIX: chevrotain.createToken({
+    PREFIX: createToken({
         name: 'PREFIX',
         pattern: /PREFIX/i,
     }),
-    DESCRIBE: chevrotain.createToken({
+    DESCRIBE: createToken({
         name: 'DESCRIBE',
         pattern: /DESCRIBE/i,
     }),
-    ASK: chevrotain.createToken({
+    ASK: createToken({
         name: 'ASK',
         pattern: /ASK/i,
     }),
-    FROM: chevrotain.createToken({
+    FROM: createToken({
         name: 'FROM',
         pattern: /FROM/i,
     }),
-    REDUCED: chevrotain.createToken({
+    REDUCED: createToken({
         name: 'REDUCED',
         pattern: /REDUCED/i,
     }),
-    NAMED: chevrotain.createToken({
+    NAMED: createToken({
         name: 'NAMED',
         pattern: /NAMED/i,
     }),
-    HAVING: chevrotain.createToken({
+    HAVING: createToken({
         name: 'HAVING',
         pattern: /HAVING/i,
     }),
-    ASC: chevrotain.createToken({
+    ASC: createToken({
         name: 'ASC',
         pattern: /ASC/i,
     }),
-    DESC: chevrotain.createToken({
+    DESC: createToken({
         name: 'DESC',
         pattern: /DESC/i,
     }),
-    OFFSET: chevrotain.createToken({
+    OFFSET: createToken({
         name: 'OFFSET',
         pattern: /OFFSET/i,
     }),
-    LIMIT: chevrotain.createToken({
+    LIMIT: createToken({
         name: 'LIMIT',
         pattern: /LIMIT/i,
     }),
-    VALUES: chevrotain.createToken({
+    VALUES: createToken({
         name: 'VALUES',
         pattern: /VALUES/i,
     }),
-    LOAD: chevrotain.createToken({
+    LOAD: createToken({
         name: 'LOAD',
         pattern: /LOAD/i,
     }),
-    SILENT: chevrotain.createToken({
+    SILENT: createToken({
         name: 'SILENT',
         pattern: /SILENT/i,
     }),
-    INTO: chevrotain.createToken({
+    INTO: createToken({
         name: 'INTO',
         pattern: /INTO/i,
     }),
-    CLEAR: chevrotain.createToken({
+    CLEAR: createToken({
         name: 'CLEAR',
         pattern: /CLEAR/i,
     }),
-    DROP: chevrotain.createToken({
+    DROP: createToken({
         name: 'DROP',
         pattern: /DROP/i,
     }),
-    CREATE: chevrotain.createToken({
+    CREATE: createToken({
         name: 'CREATE',
         pattern: /CREATE/i,
     }),
-    ADD: chevrotain.createToken({
+    ADD: createToken({
         name: 'ADD',
         pattern: /ADD/i,
     }),
-    TO: chevrotain.createToken({
+    TO: createToken({
         name: 'TO',
         pattern: /TO/i,
     }),
-    MOVE: chevrotain.createToken({
+    MOVE: createToken({
         name: 'MOVE',
         pattern: /MOVE/i,
     }),
-    COPY: chevrotain.createToken({
+    COPY: createToken({
         name: 'COPY',
         pattern: /COPY/i,
     }),
-    INSERT_DATA: chevrotain.createToken({
+    INSERT_DATA: createToken({
         name: 'INSERT_DATA',
         pattern: /Insert +Data/i,
     }),
-    DELETE_DATA: chevrotain.createToken({
+    DELETE_DATA: createToken({
         name: 'DELETE_DATA',
         pattern: /Delete +Data/i,
     }),
-    DELETE_WHERE: chevrotain.createToken({
+    DELETE_WHERE: createToken({
         name: 'DELETE_WHERE',
         pattern: /Delete +Where/i,
     }),
-    WITH: chevrotain.createToken({
+    WITH: createToken({
         name: 'WITH',
         pattern: /WITH/i,
     }),
-    DELETE: chevrotain.createToken({
+    DELETE: createToken({
         name: 'DELETE',
         pattern: /DELETE/i,
     }),
-    INSERT: chevrotain.createToken({
+    INSERT: createToken({
         name: 'INSERT',
         pattern: /INSERT/i,
     }),
-    USING: chevrotain.createToken({
+    USING: createToken({
         name: 'USING',
         pattern: /USING/i,
     }),
-    DEFAULT: chevrotain.createToken({
+    DEFAULT: createToken({
         name: 'DEFAULT',
         pattern: /DEFAULT/i,
     }),
-    GRAPH: chevrotain.createToken({
+    GRAPH: createToken({
         name: 'GRAPH',
         pattern: /GRAPH/i,
     }),
-    ALL: chevrotain.createToken({
+    ALL: createToken({
         name: 'ALL',
         pattern: /ALL/i,
     }),
-    OPTIONAL: chevrotain.createToken({
+    OPTIONAL: createToken({
         name: 'OPTIONAL',
         pattern: /OPTIONAL/i,
     }),
-    SERVICE: chevrotain.createToken({
+    SERVICE: createToken({
         name: 'SERVICE',
         pattern: /SERVICE/i,
     }),
-    BIND: chevrotain.createToken({
+    BIND: createToken({
         name: 'BIND',
         pattern: /BIND/i,
     }),
-    UNDEF: chevrotain.createToken({
+    UNDEF: createToken({
         name: 'UNDEF',
         pattern: /UNDEF/i,
     }),
-    MINUS: chevrotain.createToken({
+    MINUS: createToken({
         name: 'MINUS',
         pattern: /MINUS/i,
     }),
-    UNION: chevrotain.createToken({
+    UNION: createToken({
         name: 'UNION',
         pattern: /UNION/i,
     }),
-    FILTER: chevrotain.createToken({
+    FILTER: createToken({
         name: 'FILTER',
         pattern: /FILTER/i,
     }),
-    STR: chevrotain.createToken({
+    STR: createToken({
         name: 'STR',
         pattern: /STR/i,
     }),
-    LANG: chevrotain.createToken({
+    LANG: createToken({
         name: 'LANG',
         pattern: /LANG/i,
     }),
-    LANGMATCHERS: chevrotain.createToken({
+    LANGMATCHERS: createToken({
         name: 'LANGMATCHERS',
         pattern: /LANGMATCHERS/i,
     }),
-    DATATYPE: chevrotain.createToken({
+    DATATYPE: createToken({
         name: 'DATATYPE',
         pattern: /DATATYPE/i,
     }),
-    BOUND: chevrotain.createToken({
+    BOUND: createToken({
         name: 'BOUND',
         pattern: /BOUND/i,
     }),
-    IRI: chevrotain.createToken({
+    IRI: createToken({
         name: 'IRI',
         pattern: /IRI/i,
     }),
-    URI: chevrotain.createToken({
+    URI: createToken({
         name: 'URI',
         pattern: /URI/i,
     }),
-    BNODE: chevrotain.createToken({
+    BNODE: createToken({
         name: 'BNODE',
         pattern: /BNODE/i,
     }),
-    RAND: chevrotain.createToken({
+    RAND: createToken({
         name: 'RAND',
         pattern: /RAND/i,
     }),
-    ABS: chevrotain.createToken({
+    ABS: createToken({
         name: 'ABS',
         pattern: /ABS/i,
     }),
-    CEIL: chevrotain.createToken({
+    CEIL: createToken({
         name: 'CEIL',
         pattern: /CEIL/i,
     }),
-    FLOOR: chevrotain.createToken({
+    FLOOR: createToken({
         name: 'FLOOR',
         pattern: /FLOOR/i,
     }),
-    ROUND: chevrotain.createToken({
+    ROUND: createToken({
         name: 'ROUND',
         pattern: /ROUND/i,
     }),
-    CONCAT: chevrotain.createToken({
+    CONCAT: createToken({
         name: 'CONCAT',
         pattern: /CONCAT/i,
     }),
-    STRLEN: chevrotain.createToken({
+    STRLEN: createToken({
         name: 'STRLEN',
         pattern: /STRLEN/i,
     }),
-    UCASE: chevrotain.createToken({
+    UCASE: createToken({
         name: 'UCASE',
         pattern: /UCASE/i,
     }),
-    LCASE: chevrotain.createToken({
+    LCASE: createToken({
         name: 'LCASE',
         pattern: /LCASE/i,
     }),
-    ENCODE_FOR_URI: chevrotain.createToken({
+    ENCODE_FOR_URI: createToken({
         name: 'ENCODE_FOR_URI',
         pattern: /ENCODE_FOR_URI/i,
     }),
-    CONTAINS: chevrotain.createToken({
+    CONTAINS: createToken({
         name: 'CONTAINS',
         pattern: /CONTAINS/i,
     }),
-    STRSTARTS: chevrotain.createToken({
+    STRSTARTS: createToken({
         name: 'STRSTARTS',
         pattern: /STRSTARTS/i,
     }),
-    STRENDS: chevrotain.createToken({
+    STRENDS: createToken({
         name: 'STRENDS',
         pattern: /STRENDS/i,
     }),
-    STRBEFORE: chevrotain.createToken({
+    STRBEFORE: createToken({
         name: 'STRBEFORE',
         pattern: /STRBEFORE/i,
     }),
-    STRAFTER: chevrotain.createToken({
+    STRAFTER: createToken({
         name: 'STRAFTER',
         pattern: /STRAFTER/i,
     }),
-    YEAR: chevrotain.createToken({
+    YEAR: createToken({
         name: 'YEAR',
         pattern: /YEAR/i,
     }),
-    MONTH: chevrotain.createToken({
+    MONTH: createToken({
         name: 'MONTH',
         pattern: /MONTH/i,
     }),
-    DAY: chevrotain.createToken({
+    DAY: createToken({
         name: 'DAY',
         pattern: /DAY/i,
     }),
-    HOURS: chevrotain.createToken({
+    HOURS: createToken({
         name: 'HOURS',
         pattern: /HOURS/i,
     }),
-    MINUTES: chevrotain.createToken({
+    MINUTES: createToken({
         name: 'MINUTES',
         pattern: /MINUTES/i,
     }),
-    SECONDS: chevrotain.createToken({
+    SECONDS: createToken({
         name: 'SECONDS',
         pattern: /SECONDS/i,
     }),
-    TIMEZONE: chevrotain.createToken({
+    TIMEZONE: createToken({
         name: 'TIMEZONE',
         pattern: /TIMEZONE/i,
     }),
-    TZ: chevrotain.createToken({
+    TZ: createToken({
         name: 'TZ',
         pattern: /TZ/i,
     }),
-    NOW: chevrotain.createToken({
+    NOW: createToken({
         name: 'NOW',
         pattern: /NOW/i,
     }),
-    UUID: chevrotain.createToken({
+    UUID: createToken({
         name: 'UUID',
         pattern: /UUID/i,
     }),
-    STRUUID: chevrotain.createToken({
+    STRUUID: createToken({
         name: 'STRUUID',
         pattern: /STRUUID/i,
     }),
-    MD5: chevrotain.createToken({
+    MD5: createToken({
         name: 'MD5',
         pattern: /MD5/i,
     }),
-    SHA1: chevrotain.createToken({
+    SHA1: createToken({
         name: 'SHA1',
         pattern: /SHA1/i,
     }),
-    SHA256: chevrotain.createToken({
+    SHA256: createToken({
         name: 'SHA256',
         pattern: /SHA256/i,
     }),
-    SHA384: chevrotain.createToken({
+    SHA384: createToken({
         name: 'SHA384',
         pattern: /SHA384/i,
     }),
-    SHA512: chevrotain.createToken({
+    SHA512: createToken({
         name: 'SHA512',
         pattern: /SHA512/i,
     }),
-    COALESCE: chevrotain.createToken({
+    COALESCE: createToken({
         name: 'COALESCE',
         pattern: /COALESCE/i,
     }),
-    IF: chevrotain.createToken({
+    IF: createToken({
         name: 'IF',
         pattern: /IF/i,
     }),
-    STRLANG: chevrotain.createToken({
+    STRLANG: createToken({
         name: 'STRLANG',
         pattern: /STRLANG/i,
     }),
-    STRDT: chevrotain.createToken({
+    STRDT: createToken({
         name: 'STRDT',
         pattern: /STRDT/i,
     }),
-    sameTerm: chevrotain.createToken({
+    sameTerm: createToken({
         name: 'sameTerm',
         pattern: /sameTerm/i,
     }),
-    isIRI: chevrotain.createToken({
+    isIRI: createToken({
         name: 'isIRI',
         pattern: /isIRI/i,
     }),
-    isURI: chevrotain.createToken({
+    isURI: createToken({
         name: 'isURI',
         pattern: /isURI/i,
     }),
-    isBlank: chevrotain.createToken({
+    isBlank: createToken({
         name: 'isBlank',
         pattern: /isBlank/i,
     }),
-    isLiteral: chevrotain.createToken({
+    isLiteral: createToken({
         name: 'isLiteral',
         pattern: /isLiteral/i,
     }),
-    isNumeric: chevrotain.createToken({
+    isNumeric: createToken({
         name: 'isNumeric',
         pattern: /isNumeric/i,
     }),
-    REGEX: chevrotain.createToken({
+    REGEX: createToken({
         name: 'REGEX',
         pattern: /REGEX/i,
     }),
-    SUBSTR: chevrotain.createToken({
+    SUBSTR: createToken({
         name: 'SUBSTR',
         pattern: /SUBSTR/i,
     }),
-    REPLACE: chevrotain.createToken({
+    REPLACE: createToken({
         name: 'REPLACE',
         pattern: /REPLACE/i,
     }),
-    EXISTS: chevrotain.createToken({
+    EXISTS: createToken({
         name: 'EXISTS',
         pattern: /EXISTS/i,
     }),
-    NOT_EXISTS: chevrotain.createToken({
+    NOT_EXISTS: createToken({
         name: 'NOT_EXISTS',
         pattern: /NOT EXISTS/i,
     }),
-    COUNT: chevrotain.createToken({
+    COUNT: createToken({
         name: 'COUNT',
         pattern: /COUNT/i,
     }),
-    SUM: chevrotain.createToken({
+    SUM: createToken({
         name: 'SUM',
         pattern: /SUM/i,
     }),
-    MIN: chevrotain.createToken({
+    MIN: createToken({
         name: 'MIN',
         pattern: /MIN/i,
     }),
-    AVG: chevrotain.createToken({
+    AVG: createToken({
         name: 'AVG',
         pattern: /AVG/i,
     }),
-    SAMPLE: chevrotain.createToken({
+    SAMPLE: createToken({
         name: 'SAMPLE',
         pattern: /SAMPLE/i,
     }),
-    GROUP_CONCAT: chevrotain.createToken({
+    GROUP_CONCAT: createToken({
         name: 'GROUP_CONCAT',
         pattern: /GROUP_CONCAT/i,
     }),
-    SEPARATOR: chevrotain.createToken({
+    SEPARATOR: createToken({
         name: 'SEPARATOR',
         pattern: /SEPARATOR/i,
     }),
-    TRUE: chevrotain.createToken({
+    TRUE: createToken({
         name: 'TRUE',
         pattern: /TRUE/i,
     }),
-    FALSE: chevrotain.createToken({
+    FALSE: createToken({
         name: 'FALSE',
         pattern: /FALSE/i,
     }),
-    IN: chevrotain.createToken({
+    IN: createToken({
         name: 'IN',
         pattern: /IN/i,
     }),
-    NOT_IN: chevrotain.createToken({
+    NOT_IN: createToken({
         name: 'NOT_IN',
         pattern: /NOT IN/i,
     }),
     MAX_LENGTH,
-    MAX: chevrotain.createToken({
+    MAX: createToken({
         name: 'MAX',
         pattern: /MAX/i,
         longer_alt: MAX_LENGTH,
@@ -684,110 +680,110 @@ const tokenMap = {
     VAR1: terminals.VAR1,
     VAR2: terminals.VAR2,
     PERCENT: terminals.PERCENT,
-    Comment: chevrotain.createToken({
+    Comment: createToken({
         name: 'Comment',
         pattern: /#[^\n]*/,
         group: 'comments',
     }),
-    LCurly: chevrotain.createToken({ name: 'LCurly', pattern: '{' }),
-    RCurly: chevrotain.createToken({ name: 'RCurly', pattern: '}' }),
-    LParen: chevrotain.createToken({ name: 'LParen', pattern: '(' }),
-    RParen: chevrotain.createToken({ name: 'RParen', pattern: ')' }),
-    WhiteSpace: chevrotain.createToken({
+    LCurly: createToken({ name: 'LCurly', pattern: '{' }),
+    RCurly: createToken({ name: 'RCurly', pattern: '}' }),
+    LParen: createToken({ name: 'LParen', pattern: '(' }),
+    RParen: createToken({ name: 'RParen', pattern: ')' }),
+    WhiteSpace: createToken({
         name: 'WhiteSpace',
         pattern: /\s+/,
-        group: chevrotain.Lexer.SKIPPED,
+        group: Lexer.SKIPPED,
         line_breaks: true,
     }),
-    Star: chevrotain.createToken({
+    Star: createToken({
         name: 'Star',
         pattern: '*',
     }),
-    Unknown: chevrotain.createToken({
+    Unknown: createToken({
         name: 'Unknown',
         pattern: /\w+/,
     }),
-    Period: chevrotain.createToken({
+    Period: createToken({
         name: 'Period',
         pattern: '.',
     }),
-    QuestionMark: chevrotain.createToken({
+    QuestionMark: createToken({
         name: 'QuestionMark',
         pattern: '?',
     }),
-    Plus: chevrotain.createToken({
+    Plus: createToken({
         name: 'Plus',
         pattern: '+',
     }),
-    Minus: chevrotain.createToken({
+    Minus: createToken({
         name: 'Minus',
         pattern: '-',
     }),
-    LBracket: chevrotain.createToken({
+    LBracket: createToken({
         name: 'LBracket',
         pattern: '[',
     }),
-    RBracket: chevrotain.createToken({
+    RBracket: createToken({
         name: 'RBracket',
         pattern: ']',
     }),
-    Semicolon: chevrotain.createToken({
+    Semicolon: createToken({
         name: 'Semicolon',
         pattern: ';',
     }),
-    Comma: chevrotain.createToken({
+    Comma: createToken({
         name: 'Comma',
         pattern: ',',
     }),
-    Pipe: chevrotain.createToken({
+    Pipe: createToken({
         name: 'Pipe',
         pattern: '|',
     }),
-    ForwardSlash: chevrotain.createToken({
+    ForwardSlash: createToken({
         name: 'ForwardSlash',
         pattern: '/',
     }),
-    Caret: chevrotain.createToken({
+    Caret: createToken({
         name: 'Caret',
         pattern: '^',
     }),
-    DoubleCaret: chevrotain.createToken({
+    DoubleCaret: createToken({
         name: 'DoubleCaret',
         pattern: '^^',
     }),
-    Bang: chevrotain.createToken({
+    Bang: createToken({
         name: 'Bang',
         pattern: '!',
     }),
-    LogicalOr: chevrotain.createToken({
+    LogicalOr: createToken({
         name: 'LogicalOr',
         pattern: '||',
     }),
-    LogicalAnd: chevrotain.createToken({
+    LogicalAnd: createToken({
         name: 'LogicalAnd',
         pattern: '&&',
     }),
-    Equals: chevrotain.createToken({
+    Equals: createToken({
         name: 'Equals',
         pattern: '=',
     }),
-    NotEquals: chevrotain.createToken({
+    NotEquals: createToken({
         name: 'NotEquals',
         pattern: '!=',
     }),
-    LessThan: chevrotain.createToken({
+    LessThan: createToken({
         name: 'LessThan',
         pattern: '<',
     }),
-    GreaterThan: chevrotain.createToken({
+    GreaterThan: createToken({
         name: 'GreaterThan',
         pattern: '>',
     }),
-    LessThanEquals: chevrotain.createToken({
+    LessThanEquals: createToken({
         name: 'LessThanEquals',
         pattern: '<=',
     }),
-    GreaterThanEquals: chevrotain.createToken({
+    GreaterThanEquals: createToken({
         name: 'GreaterThanEquals',
         pattern: '>=',
     }),
@@ -1095,7 +1091,7 @@ const pathsTokens = [
     tokenMap.PATHS,
 ];
 
-class BaseSparqlParser extends chevrotain.Parser {
+class BaseSparqlParser extends Parser {
     constructor(options = {}, tokenVocab) {
         super(options.input || [], tokenVocab, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
@@ -2639,7 +2635,7 @@ class BaseSparqlParser extends chevrotain.Parser {
                 { ALT: () => this.CONSUME(tokenMap.ANON) },
             ]);
         });
-        this.lexer = new chevrotain.Lexer(tokenVocab);
+        this.lexer = new Lexer(tokenVocab);
     }
 }
 
@@ -2775,14 +2771,14 @@ class StardogSparqlParser extends BaseSparqlParser {
             this.SUBRULE(this.Quads));
             this.CONSUME(tokenMap.RCurly);
         });
-        chevrotain.Parser.performSelfAnalysis(this);
+        Parser.performSelfAnalysis(this);
     }
 }
 
 class W3SpecSparqlParser extends BaseSparqlParser {
     constructor(options) {
         super(options, baseTokens);
-        chevrotain.Parser.performSelfAnalysis(this);
+        Parser.performSelfAnalysis(this);
     }
 }
 
@@ -2862,7 +2858,7 @@ const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
 // This is a similar resource that might be helpful: https://mathiasbynens.be/notes/es6-unicode-regex
 const unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
 const tokenMap$1 = {
-    Comment: chevrotain.createToken({
+    Comment: createToken({
         name: 'Comment',
         pattern: /#[^\n]*/,
         group: 'comments',
@@ -2884,28 +2880,28 @@ const tokenMap$1 = {
     PNAME_NS: tokenMap.PNAME_NS,
     PNAME_LN: tokenMap.PNAME_LN,
     BLANK_NODE_LABEL: tokenMap.BLANK_NODE_LABEL,
-    TTL_BASE: chevrotain.createToken({ name: 'TTL_BASE', pattern: /@base/ }),
-    TTL_PREFIX: chevrotain.createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
+    TTL_BASE: createToken({ name: 'TTL_BASE', pattern: /@base/ }),
+    TTL_PREFIX: createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
     LANGTAG: tokenMap.LANGTAG,
-    INTEGER: chevrotain.createToken({
+    INTEGER: createToken({
         name: 'INTEGER',
         pattern: regex.and(regex.option(/[+-]/), /\d+/),
     }),
-    DECIMAL: chevrotain.createToken({
+    DECIMAL: createToken({
         name: 'DECIMAL',
         pattern: regex.and(regex.option(/[+-]/), /(\d*\.\d+)/),
     }),
-    DOUBLE: chevrotain.createToken({
+    DOUBLE: createToken({
         name: 'DOUBLE',
         pattern: regex.and(regex.option(/[+-]/), regex.or(regex.and(/\d+\.\d*/, EXPONENT), regex.and(/\.\d+/, EXPONENT), regex.and(/\d+/, EXPONENT))),
     }),
-    EXPONENT: chevrotain.createToken({ name: 'EXPONENT', pattern: EXPONENT }),
-    ECHAR: chevrotain.createToken({ name: 'ECHAR', pattern: ECHAR }),
+    EXPONENT: createToken({ name: 'EXPONENT', pattern: EXPONENT }),
+    ECHAR: createToken({ name: 'ECHAR', pattern: ECHAR }),
     ANON: tokenMap.ANON,
-    PLX: chevrotain.createToken({ name: 'PLX', pattern: PLX }),
+    PLX: createToken({ name: 'PLX', pattern: PLX }),
     PERCENT: tokenMap.PERCENT,
-    HEX: chevrotain.createToken({ name: 'HEX', pattern: HEX }),
-    STRING_LITERAL_LONG_SINGLE_QUOTE: chevrotain.createToken({
+    HEX: createToken({ name: 'HEX', pattern: HEX }),
+    STRING_LITERAL_LONG_SINGLE_QUOTE: createToken({
         name: 'STRING_LITERAL_LONG_SINGLE_QUOTE',
         pattern: (text, startOffset = 0) => {
             const match = stringLiteralLongSingleQuote.exec(text.slice(startOffset));
@@ -2917,7 +2913,7 @@ const tokenMap$1 = {
         },
         line_breaks: true,
     }),
-    STRING_LITERAL_LONG_QUOTE: chevrotain.createToken({
+    STRING_LITERAL_LONG_QUOTE: createToken({
         name: 'STRING_LITERAL_LONG_QUOTE',
         pattern: (text, startOffset = 0) => {
             const match = stringLiteralLongQuote.exec(text.slice(startOffset));
@@ -2929,7 +2925,7 @@ const tokenMap$1 = {
         },
         line_breaks: true,
     }),
-    STRING_LITERAL_QUOTE: chevrotain.createToken({
+    STRING_LITERAL_QUOTE: createToken({
         name: 'STRING_LITERAL_QUOTE',
         pattern: (text, startOffset = 0) => {
             const textToMatch = text.slice(startOffset);
@@ -2949,7 +2945,7 @@ const tokenMap$1 = {
         },
         line_breaks: false,
     }),
-    STRING_LITERAL_SINGLE_QUOTE: chevrotain.createToken({
+    STRING_LITERAL_SINGLE_QUOTE: createToken({
         name: 'STRING_LITERAL_SINGLE_QUOTE',
         pattern: (text, startOffset = 0) => {
             const textToMatch = text.slice(startOffset);
@@ -2969,12 +2965,12 @@ const tokenMap$1 = {
         },
         line_breaks: false,
     }),
-    UCHAR: chevrotain.createToken({
+    UCHAR: createToken({
         name: 'UCHAR',
         pattern: (text, startOffset = 0) => unicodeRegexp.exec(text.slice(startOffset)),
         line_breaks: false,
     }),
-    IRIREF: chevrotain.createToken({
+    IRIREF: createToken({
         name: 'IRIREF',
         pattern: (text, startOffset = 0) => {
             const textToMatch = text.slice(startOffset);
@@ -2994,13 +2990,13 @@ const tokenMap$1 = {
         },
         line_breaks: false,
     }),
-    PN_CHARS_BASE: chevrotain.createToken({ name: 'PN_CHARS_BASE', pattern: PN_CHARS_BASE }),
-    PN_CHARS_U: chevrotain.createToken({ name: 'PN_CHARS_U', pattern: PN_CHARS_U }),
-    PN_CHARS: chevrotain.createToken({ name: 'PN_CHARS', pattern: PN_CHARS }),
-    PN_PREFIX: chevrotain.createToken({ name: 'PN_PREFIX', pattern: PN_PREFIX }),
-    PN_LOCAL: chevrotain.createToken({ name: 'PN_LOCAL', pattern: PN_LOCAL }),
-    PN_LOCAL_ESC: chevrotain.createToken({ name: 'PN_LOCAL_ESC', pattern: PN_LOCAL_ESC }),
-    Unknown: chevrotain.createToken({
+    PN_CHARS_BASE: createToken({ name: 'PN_CHARS_BASE', pattern: PN_CHARS_BASE }),
+    PN_CHARS_U: createToken({ name: 'PN_CHARS_U', pattern: PN_CHARS_U }),
+    PN_CHARS: createToken({ name: 'PN_CHARS', pattern: PN_CHARS }),
+    PN_PREFIX: createToken({ name: 'PN_PREFIX', pattern: PN_PREFIX }),
+    PN_LOCAL: createToken({ name: 'PN_LOCAL', pattern: PN_LOCAL }),
+    PN_LOCAL_ESC: createToken({ name: 'PN_LOCAL_ESC', pattern: PN_LOCAL_ESC }),
+    Unknown: createToken({
         name: 'Unknown',
         pattern: /\w+/,
     }),
@@ -3051,7 +3047,7 @@ const tokenTypes = [
     tokenMap$1.Unknown,
 ];
 
-class TurtleParser extends chevrotain.Parser {
+class TurtleParser extends Parser {
     constructor(config) {
         super([], tokenTypes, Object.assign({ outputCst: true, recoveryEnabled: true }, config));
         // Parsing Turtle requires that the parser keep a map of namespaces in state.
@@ -3280,8 +3276,8 @@ class TurtleParser extends chevrotain.Parser {
                 { ALT: () => this.CONSUME(tokenMap$1.ANON) },
             ]);
         });
-        this.lexer = new chevrotain.Lexer(tokenTypes);
-        chevrotain.Parser.performSelfAnalysis(this);
+        this.lexer = new Lexer(tokenTypes);
+        Parser.performSelfAnalysis(this);
     }
 }
 
@@ -3356,31 +3352,31 @@ const tokenMap$2 = {
     Semicolon: tokenMap.Semicolon,
     LBracket: tokenMap.LBracket,
     RBracket: tokenMap.RBracket,
-    Template: chevrotain.createToken({
+    Template: createToken({
         name: 'Template',
         pattern: /template/i,
     }),
-    TO: chevrotain.createToken({
+    TO: createToken({
         name: 'TO',
         pattern: /to/i,
     }),
-    Sql: chevrotain.createToken({
+    Sql: createToken({
         name: 'Sql',
         pattern: /sql/i,
     }),
-    GraphQl: chevrotain.createToken({
+    GraphQl: createToken({
         name: 'GraphQl',
         pattern: /graphql/i,
     }),
-    Json: chevrotain.createToken({
+    Json: createToken({
         name: 'Json',
         pattern: /json/i,
     }),
-    Mapping: chevrotain.createToken({
+    Mapping: createToken({
         name: 'Mapping',
         pattern: /mapping/i,
     }),
-    SqlBlock: chevrotain.createToken({
+    SqlBlock: createToken({
         name: 'SqlBlock',
         pattern: (text, startOffset = 0, matchedTokensSoFar) => {
             const [secondToLastToken, lastToken] = matchedTokensSoFar.slice(-2);
@@ -3395,7 +3391,7 @@ const tokenMap$2 = {
         },
         line_breaks: true,
     }),
-    JsonBlock: chevrotain.createToken({
+    JsonBlock: createToken({
         name: 'JsonBlock',
         pattern: (text, startOffset = 0, matchedTokensSoFar) => {
             const [lastToken] = matchedTokensSoFar.slice(-1);
@@ -3413,7 +3409,7 @@ const tokenMap$2 = {
         },
         line_breaks: true,
     }),
-    GraphQlBlock: chevrotain.createToken({
+    GraphQlBlock: createToken({
         name: 'GraphQlBlock',
         pattern: (text, startOffset = 0, matchedTokensSoFar) => {
             const [secondToLastToken, lastToken] = matchedTokensSoFar.slice(-2);
@@ -3484,7 +3480,7 @@ const tokenTypes$1 = [
     tokenMap$2.STRING_LITERAL_LONG2,
 ];
 
-class SmsParser extends chevrotain.Parser {
+class SmsParser extends Parser {
     constructor(config) {
         super([], tokenTypes$1, Object.assign({ outputCst: true, recoveryEnabled: true }, config));
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
@@ -3774,8 +3770,8 @@ class SmsParser extends chevrotain.Parser {
                 { ALT: () => this.CONSUME(tokenMap$2.STRING_LITERAL_LONG2) },
             ]);
         });
-        this.lexer = new chevrotain.Lexer(tokenTypes$1);
-        chevrotain.Parser.performSelfAnalysis(this);
+        this.lexer = new Lexer(tokenTypes$1);
+        Parser.performSelfAnalysis(this);
     }
 }
 
@@ -3820,10 +3816,4 @@ const _traverse = (root, ctx = new TraverseContext({ node: root }), visit) => {
     });
 };
 
-exports.BaseSparqlParser = BaseSparqlParser;
-exports.StardogSparqlParser = StardogSparqlParser;
-exports.W3SpecSparqlParser = W3SpecSparqlParser;
-exports.TurtleParser = TurtleParser;
-exports.SmsParser = SmsParser;
-exports.traverse = traverse;
-exports.isCstNode = isCstNode;
+export { BaseSparqlParser, StardogSparqlParser, W3SpecSparqlParser, TurtleParser, SmsParser, traverse, isCstNode };

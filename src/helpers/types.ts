@@ -6,3 +6,8 @@ export interface IStardogParser {
     document: string
   ) => { errors: IRecognitionException[]; cst: CstNode };
 }
+
+export {
+  IToken,
+  CstNode,
+}

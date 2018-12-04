@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "module": "CommonJS",
+    "module": "es2015",
+    "moduleResolution": "node",
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -11,8 +12,7 @@
     "stripInternal": true,
     "outDir": "./dist",
     "declarationDir": "./dist/types",
-    "lib": ["es2016", "dom"],
-    "jsx": "react",
+    "lib": ["es2016"],
     "baseUrl": ".",
     "paths": {
       "*": [

@@ -6,7 +6,7 @@ import {
   IRecognitionException,
 } from 'chevrotain';
 import { tokenTypes, tokenMap } from './tokens';
-import { IStardogParser } from '../types';
+import { IStardogParser } from '../helpers/types';
 
 export class TurtleParser extends Parser implements IStardogParser {
   private lexer: Lexer;

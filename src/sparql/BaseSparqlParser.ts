@@ -7,7 +7,7 @@ import {
   IParserConfig,
   IRecognitionException,
 } from 'chevrotain';
-import { IStardogParser } from './types';
+import { IStardogParser } from '../helpers/types';
 
 // @ts-ignore: debug logging
 function log(...args) {
