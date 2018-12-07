@@ -26,8 +26,8 @@
   "scripts": {
     "precommit": "node ./build/scripts/precommit.js",
     "test": "jest",
-    "build": "rollup -c",
-    "dev": "rollup -cw"
+    "build": "rollup -c && tsc --emitDeclarationOnly",
+    "dev": "rollup -cw; tsc -w --emitDeclarationOnly"
   },
   "repository": {
     "type": "git",

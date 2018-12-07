@@ -178,3 +178,4 @@ export declare const tokenMap: {
 };
 export declare const baseTokens: TokenType[];
 export declare const pathsTokens: TokenType[];
+export declare const tokenTypes: TokenType[];

@@ -1,129 +1,54 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const chevrotain_1 = require("chevrotain");
-const tokens_1 = require("../sparql/tokens");
-const terminals_1 = require("../sparql/terminals");
-const regex_1 = require("../helpers/regex");
-const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
-const escapeReplacements = {
-    '\\': '\\',
-    "'": "'",
-    '"': '"',
-    n: '\n',
-    r: '\r',
-    t: '\t',
-    f: '\f',
-    b: '\b',
-    _: '_',
-    '~': '~',
-    '.': '.',
-    '-': '-',
-    '!': '!',
-    $: '$',
-    '&': '&',
-    '(': '(',
-    ')': ')',
-    '*': '*',
-    '+': '+',
-    ',': ',',
-    ';': ';',
-    '=': '=',
-    '/': '/',
-    '?': '?',
-    '#': '#',
-    '@': '@',
-    '%': '%',
-};
-const unescape = (item) => {
-    try {
-        return item.replace(escapeSequence, (_, unicode4, unicode8, escapedChar) => {
-            if (unicode4) {
-                return String.fromCharCode(parseInt(unicode4, 16));
-            }
-            else if (unicode8) {
-                let charCode = parseInt(unicode8, 16);
-                if (charCode <= 0xffff) {
-                    return String.fromCharCode(charCode);
-                }
-                return String.fromCharCode(0xd800 + (charCode -= 0x10000) / 0x400, 0xdc00 + (charCode & 0x3ff));
-            }
-            else {
-                const replacement = escapeReplacements[escapedChar];
-                if (!replacement) {
-                    throw new Error();
-                }
-                return replacement;
-            }
-        });
-    }
-    catch (error) {
-        return null;
-    }
-};
-const unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
-const unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
-const stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
-const stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
-const stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
-const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
-const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
-const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
-const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
-// const UCHAR = regex.or(
-//   regex.and(/\\u/, HEX, HEX, HEX, HEX),
-//   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
-// );
-// Somehow, for reasons not entirely clear to me, the next RegExp matches all
-// of the cases that the UCHAR rule is supposed to match, whereas the above
-// RegExp (`UCHAR`) does not. See this post, which is the source of the RegExp
-// below: https://mathiasbynens.be/notes/javascript-unicode
-// This is a similar resource that might be helpful: https://mathiasbynens.be/notes/es6-unicode-regex
+import { createToken } from 'chevrotain';
+import { tokenMap as sparqlTokenMap } from '../sparql/tokens';
+import { regex } from '../helpers/regex';
+import { EXPONENT, ECHAR, PLX, HEX, PN_CHARS_BASE, PN_CHARS_U, PN_CHARS, PN_PREFIX, PN_LOCAL, PN_LOCAL_ESC, } from '../helpers/matchers';
+import { unescape, stringLiteralLongSingleQuote, stringLiteralLongQuote, unescapedStringLiteralQuote, stringLiteralQuote, unescapedStringLiteralSingleQuote, stringLiteralSingleQuote, unescapedIri, escapedIri, illegalIriChars, } from '../helpers/unescape';
 const unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
-exports.tokenMap = {
-    Comment: chevrotain_1.createToken({
+export const tokenMap = {
+    Comment: createToken({
         name: 'Comment',
         pattern: /#[^\n]*/,
         group: 'comments',
     }),
-    LBracket: tokens_1.tokenMap.LBracket,
-    RBracket: tokens_1.tokenMap.RBracket,
-    LParen: tokens_1.tokenMap.LParen,
-    RParen: tokens_1.tokenMap.RParen,
-    Period: tokens_1.tokenMap.Period,
-    WhiteSpace: tokens_1.tokenMap.WhiteSpace,
-    TRUE: tokens_1.tokenMap.TRUE,
-    FALSE: tokens_1.tokenMap.FALSE,
-    DoubleCaret: tokens_1.tokenMap.DoubleCaret,
-    Comma: tokens_1.tokenMap.Comma,
-    Semicolon: tokens_1.tokenMap.Semicolon,
-    A: tokens_1.tokenMap.A,
-    PREFIX: tokens_1.tokenMap.PREFIX,
-    BASE: tokens_1.tokenMap.BASE,
-    PNAME_NS: tokens_1.tokenMap.PNAME_NS,
-    PNAME_LN: tokens_1.tokenMap.PNAME_LN,
-    BLANK_NODE_LABEL: tokens_1.tokenMap.BLANK_NODE_LABEL,
-    TTL_BASE: chevrotain_1.createToken({ name: 'TTL_BASE', pattern: /@base/ }),
-    TTL_PREFIX: chevrotain_1.createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
-    LANGTAG: tokens_1.tokenMap.LANGTAG,
-    INTEGER: chevrotain_1.createToken({
+    LBracket: sparqlTokenMap.LBracket,
+    RBracket: sparqlTokenMap.RBracket,
+    LParen: sparqlTokenMap.LParen,
+    RParen: sparqlTokenMap.RParen,
+    Period: sparqlTokenMap.Period,
+    WhiteSpace: sparqlTokenMap.WhiteSpace,
+    TRUE: sparqlTokenMap.TRUE,
+    FALSE: sparqlTokenMap.FALSE,
+    DoubleCaret: sparqlTokenMap.DoubleCaret,
+    Comma: sparqlTokenMap.Comma,
+    Semicolon: sparqlTokenMap.Semicolon,
+    A: sparqlTokenMap.A,
+    PREFIX: sparqlTokenMap.PREFIX,
+    BASE: sparqlTokenMap.BASE,
+    PNAME_NS: sparqlTokenMap.PNAME_NS,
+    PNAME_LN: sparqlTokenMap.PNAME_LN,
+    BLANK_NODE_LABEL: sparqlTokenMap.BLANK_NODE_LABEL,
+    TTL_BASE: createToken({ name: 'TTL_BASE', pattern: /@base/ }),
+    TTL_PREFIX: createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
+    LANGTAG: sparqlTokenMap.LANGTAG,
+    INTEGER: createToken({
         name: 'INTEGER',
-        pattern: regex_1.regex.and(regex_1.regex.option(/[+-]/), /\d+/),
+        pattern: regex.and(regex.option(/[+-]/), /\d+/),
     }),
-    DECIMAL: chevrotain_1.createToken({
+    DECIMAL: createToken({
         name: 'DECIMAL',
-        pattern: regex_1.regex.and(regex_1.regex.option(/[+-]/), /(\d*\.\d+)/),
+        pattern: regex.and(regex.option(/[+-]/), /(\d*\.\d+)/),
     }),
-    DOUBLE: chevrotain_1.createToken({
+    DOUBLE: createToken({
         name: 'DOUBLE',
-        pattern: regex_1.regex.and(regex_1.regex.option(/[+-]/), regex_1.regex.or(regex_1.regex.and(/\d+\.\d*/, terminals_1.EXPONENT), regex_1.regex.and(/\.\d+/, terminals_1.EXPONENT), regex_1.regex.and(/\d+/, terminals_1.EXPONENT))),
+        pattern: regex.and(regex.option(/[+-]/), regex.or(regex.and(/\d+\.\d*/, EXPONENT), regex.and(/\.\d+/, EXPONENT), regex.and(/\d+/, EXPONENT))),
     }),
-    EXPONENT: chevrotain_1.createToken({ name: 'EXPONENT', pattern: terminals_1.EXPONENT }),
-    ECHAR: chevrotain_1.createToken({ name: 'ECHAR', pattern: terminals_1.ECHAR }),
-    ANON: tokens_1.tokenMap.ANON,
-    PLX: chevrotain_1.createToken({ name: 'PLX', pattern: terminals_1.PLX }),
-    PERCENT: tokens_1.tokenMap.PERCENT,
-    HEX: chevrotain_1.createToken({ name: 'HEX', pattern: terminals_1.HEX }),
-    STRING_LITERAL_LONG_SINGLE_QUOTE: chevrotain_1.createToken({
+    EXPONENT: createToken({ name: 'EXPONENT', pattern: EXPONENT }),
+    ECHAR: createToken({ name: 'ECHAR', pattern: ECHAR }),
+    ANON: sparqlTokenMap.ANON,
+    PLX: createToken({ name: 'PLX', pattern: PLX }),
+    PERCENT: sparqlTokenMap.PERCENT,
+    HEX: createToken({ name: 'HEX', pattern: HEX }),
+    STRING_LITERAL_LONG_SINGLE_QUOTE: createToken({
         name: 'STRING_LITERAL_LONG_SINGLE_QUOTE',
         pattern: (text, startOffset = 0) => {
             const match = stringLiteralLongSingleQuote.exec(text.slice(startOffset));
@@ -135,7 +60,7 @@ exports.tokenMap = {
         },
         line_breaks: true,
     }),
-    STRING_LITERAL_LONG_QUOTE: chevrotain_1.createToken({
+    STRING_LITERAL_LONG_QUOTE: createToken({
         name: 'STRING_LITERAL_LONG_QUOTE',
         pattern: (text, startOffset = 0) => {
             const match = stringLiteralLongQuote.exec(text.slice(startOffset));
@@ -147,7 +72,7 @@ exports.tokenMap = {
         },
         line_breaks: true,
     }),
-    STRING_LITERAL_QUOTE: chevrotain_1.createToken({
+    STRING_LITERAL_QUOTE: createToken({
         name: 'STRING_LITERAL_QUOTE',
         pattern: (text, startOffset = 0) => {
             const textToMatch = text.slice(startOffset);
@@ -167,7 +92,7 @@ exports.tokenMap = {
         },
         line_breaks: false,
     }),
-    STRING_LITERAL_SINGLE_QUOTE: chevrotain_1.createToken({
+    STRING_LITERAL_SINGLE_QUOTE: createToken({
         name: 'STRING_LITERAL_SINGLE_QUOTE',
         pattern: (text, startOffset = 0) => {
             const textToMatch = text.slice(startOffset);
@@ -187,12 +112,12 @@ exports.tokenMap = {
         },
         line_breaks: false,
     }),
-    UCHAR: chevrotain_1.createToken({
+    UCHAR: createToken({
         name: 'UCHAR',
         pattern: (text, startOffset = 0) => unicodeRegexp.exec(text.slice(startOffset)),
         line_breaks: false,
     }),
-    IRIREF: chevrotain_1.createToken({
+    IRIREF: createToken({
         name: 'IRIREF',
         pattern: (text, startOffset = 0) => {
             const textToMatch = text.slice(startOffset);
@@ -212,59 +137,59 @@ exports.tokenMap = {
         },
         line_breaks: false,
     }),
-    PN_CHARS_BASE: chevrotain_1.createToken({ name: 'PN_CHARS_BASE', pattern: terminals_1.PN_CHARS_BASE }),
-    PN_CHARS_U: chevrotain_1.createToken({ name: 'PN_CHARS_U', pattern: terminals_1.PN_CHARS_U }),
-    PN_CHARS: chevrotain_1.createToken({ name: 'PN_CHARS', pattern: terminals_1.PN_CHARS }),
-    PN_PREFIX: chevrotain_1.createToken({ name: 'PN_PREFIX', pattern: terminals_1.PN_PREFIX }),
-    PN_LOCAL: chevrotain_1.createToken({ name: 'PN_LOCAL', pattern: terminals_1.PN_LOCAL }),
-    PN_LOCAL_ESC: chevrotain_1.createToken({ name: 'PN_LOCAL_ESC', pattern: terminals_1.PN_LOCAL_ESC }),
-    Unknown: chevrotain_1.createToken({
+    PN_CHARS_BASE: createToken({ name: 'PN_CHARS_BASE', pattern: PN_CHARS_BASE }),
+    PN_CHARS_U: createToken({ name: 'PN_CHARS_U', pattern: PN_CHARS_U }),
+    PN_CHARS: createToken({ name: 'PN_CHARS', pattern: PN_CHARS }),
+    PN_PREFIX: createToken({ name: 'PN_PREFIX', pattern: PN_PREFIX }),
+    PN_LOCAL: createToken({ name: 'PN_LOCAL', pattern: PN_LOCAL }),
+    PN_LOCAL_ESC: createToken({ name: 'PN_LOCAL_ESC', pattern: PN_LOCAL_ESC }),
+    Unknown: createToken({
         name: 'Unknown',
         pattern: /\w+/,
     }),
 };
-exports.tokenTypes = [
-    exports.tokenMap.Comment,
-    tokens_1.tokenMap.ANON,
-    tokens_1.tokenMap.LBracket,
-    tokens_1.tokenMap.RBracket,
-    tokens_1.tokenMap.LParen,
-    tokens_1.tokenMap.RParen,
-    tokens_1.tokenMap.WhiteSpace,
-    tokens_1.tokenMap.TRUE,
-    tokens_1.tokenMap.FALSE,
-    tokens_1.tokenMap.Comma,
-    tokens_1.tokenMap.Semicolon,
-    tokens_1.tokenMap.PNAME_NS,
-    tokens_1.tokenMap.A,
-    tokens_1.tokenMap.PREFIX,
-    tokens_1.tokenMap.BASE,
-    tokens_1.tokenMap.PNAME_LN,
-    tokens_1.tokenMap.BLANK_NODE_LABEL,
-    exports.tokenMap.TTL_BASE,
-    exports.tokenMap.TTL_PREFIX,
-    tokens_1.tokenMap.LANGTAG,
-    exports.tokenMap.DOUBLE,
-    exports.tokenMap.DECIMAL,
-    tokens_1.tokenMap.Period,
-    tokens_1.tokenMap.DoubleCaret,
-    exports.tokenMap.IRIREF,
-    exports.tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
-    exports.tokenMap.STRING_LITERAL_LONG_QUOTE,
-    exports.tokenMap.STRING_LITERAL_QUOTE,
-    exports.tokenMap.STRING_LITERAL_SINGLE_QUOTE,
-    exports.tokenMap.INTEGER,
-    exports.tokenMap.EXPONENT,
-    exports.tokenMap.PLX,
-    tokens_1.tokenMap.PERCENT,
-    exports.tokenMap.HEX,
-    exports.tokenMap.PN_CHARS_BASE,
-    exports.tokenMap.PN_CHARS_U,
-    exports.tokenMap.PN_CHARS,
-    exports.tokenMap.PN_PREFIX,
-    exports.tokenMap.PN_LOCAL,
-    exports.tokenMap.PN_LOCAL_ESC,
-    exports.tokenMap.ECHAR,
-    exports.tokenMap.UCHAR,
-    exports.tokenMap.Unknown,
+export const tokenTypes = [
+    tokenMap.Comment,
+    sparqlTokenMap.ANON,
+    sparqlTokenMap.LBracket,
+    sparqlTokenMap.RBracket,
+    sparqlTokenMap.LParen,
+    sparqlTokenMap.RParen,
+    sparqlTokenMap.WhiteSpace,
+    sparqlTokenMap.TRUE,
+    sparqlTokenMap.FALSE,
+    sparqlTokenMap.Comma,
+    sparqlTokenMap.Semicolon,
+    sparqlTokenMap.PNAME_NS,
+    sparqlTokenMap.A,
+    sparqlTokenMap.PREFIX,
+    sparqlTokenMap.BASE,
+    sparqlTokenMap.PNAME_LN,
+    sparqlTokenMap.BLANK_NODE_LABEL,
+    tokenMap.TTL_BASE,
+    tokenMap.TTL_PREFIX,
+    sparqlTokenMap.LANGTAG,
+    tokenMap.DOUBLE,
+    tokenMap.DECIMAL,
+    sparqlTokenMap.Period,
+    sparqlTokenMap.DoubleCaret,
+    tokenMap.IRIREF,
+    tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
+    tokenMap.STRING_LITERAL_LONG_QUOTE,
+    tokenMap.STRING_LITERAL_QUOTE,
+    tokenMap.STRING_LITERAL_SINGLE_QUOTE,
+    tokenMap.INTEGER,
+    tokenMap.EXPONENT,
+    tokenMap.PLX,
+    sparqlTokenMap.PERCENT,
+    tokenMap.HEX,
+    tokenMap.PN_CHARS_BASE,
+    tokenMap.PN_CHARS_U,
+    tokenMap.PN_CHARS,
+    tokenMap.PN_PREFIX,
+    tokenMap.PN_LOCAL,
+    tokenMap.PN_LOCAL_ESC,
+    tokenMap.ECHAR,
+    tokenMap.UCHAR,
+    tokenMap.Unknown,
 ];

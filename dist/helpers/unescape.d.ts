@@ -1,0 +1,10 @@
+export declare const unescapedStringLiteralQuote: RegExp;
+export declare const unescapedStringLiteralSingleQuote: RegExp;
+export declare const stringLiteralQuote: RegExp;
+export declare const stringLiteralSingleQuote: RegExp;
+export declare const stringLiteralLongQuote: RegExp;
+export declare const stringLiteralLongSingleQuote: RegExp;
+export declare const illegalIriChars: RegExp;
+export declare const escapedIri: RegExp;
+export declare const unescapedIri: RegExp;
+export declare const unescape: (item: string) => string;

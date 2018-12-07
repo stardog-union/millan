@@ -1,4 +1,4 @@
-import { IToken, IRecognitionException, CstNode } from 'chevrotain';
+import { IToken, IRecognitionException, CstNode, TokenType } from 'chevrotain';
 
 export interface IStardogParser {
   tokenize: (document: string) => IToken[];
@@ -7,7 +7,5 @@ export interface IStardogParser {
   ) => { errors: IRecognitionException[]; cst: CstNode };
 }
 
-export {
-  IToken,
-  CstNode,
-}
+// exported for convenience
+export { IToken, CstNode, TokenType };

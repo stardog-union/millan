@@ -1,12 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const tokens_1 = require("./tokens");
-const chevrotain_1 = require("chevrotain");
+import { tokenMap } from './tokens';
+import { Parser, Lexer, } from 'chevrotain';
 // @ts-ignore: debug logging
 function log(...args) {
     // console.log(...args);
 }
-class BaseSparqlParser extends chevrotain_1.Parser {
+export class BaseSparqlParser extends Parser {
     constructor(options = {}, tokenVocab) {
         super(options.input || [], tokenVocab, Object.assign({ recoveryEnabled: true, outputCst: true }, options.config));
         this.tokenize = (document) => this.lexer.tokenize(document).tokens;
@@ -51,8 +49,8 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             ]);
         });
         this.MaxLength = this.RULE('MaxLength', () => {
-            this.CONSUME(tokens_1.tokenMap.MAX_LENGTH);
-            this.CONSUME(tokens_1.tokenMap.INTEGER);
+            this.CONSUME(tokenMap.MAX_LENGTH);
+            this.CONSUME(tokenMap.INTEGER);
         });
         this.UpdateUnit = this.RULE('UpdateUnit', () => {
             log('UpdateUnit');
@@ -67,14 +65,14 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.BaseDecl = this.RULE('BaseDecl', () => {
             log('BaseDecl');
-            this.CONSUME(tokens_1.tokenMap.BASE);
-            this.CONSUME(tokens_1.tokenMap.IRIREF);
+            this.CONSUME(tokenMap.BASE);
+            this.CONSUME(tokenMap.IRIREF);
         });
         this.PrefixDecl = this.RULE('PrefixDecl', () => {
             log('PrefixDecl');
-            this.CONSUME(tokens_1.tokenMap.PREFIX);
-            this.CONSUME(tokens_1.tokenMap.PNAME_NS);
-            this.CONSUME(tokens_1.tokenMap.IRIREF);
+            this.CONSUME(tokenMap.PREFIX);
+            this.CONSUME(tokenMap.PNAME_NS);
+            this.CONSUME(tokenMap.IRIREF);
         });
         this.SelectQuery = this.RULE('SelectQuery', () => {
             log('SelectQuery');
@@ -92,10 +90,10 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.SelectClause = this.RULE('SelectClause', () => {
             log('SelectClause');
-            this.CONSUME(tokens_1.tokenMap.SELECT);
+            this.CONSUME(tokenMap.SELECT);
             this.OPTION(() => this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DISTINCT) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.REDUCED) },
+                { ALT: () => this.CONSUME(tokenMap.DISTINCT) },
+                { ALT: () => this.CONSUME(tokenMap.REDUCED) },
             ]));
             this.OR1([
                 {
@@ -104,21 +102,21 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                             { ALT: () => this.SUBRULE(this.Var) },
                             {
                                 ALT: () => {
-                                    this.CONSUME(tokens_1.tokenMap.LParen);
+                                    this.CONSUME(tokenMap.LParen);
                                     this.SUBRULE(this.Expression);
-                                    this.CONSUME(tokens_1.tokenMap.AS);
+                                    this.CONSUME(tokenMap.AS);
                                     this.SUBRULE1(this.Var);
-                                    this.CONSUME(tokens_1.tokenMap.RParen);
+                                    this.CONSUME(tokenMap.RParen);
                                 },
                             },
                         ]));
                     },
                 },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.Star) },
+                { ALT: () => this.CONSUME(tokenMap.Star) },
             ]);
         });
         this.ConstructQuery = this.RULE('ConstructQuery', () => {
-            this.CONSUME(tokens_1.tokenMap.CONSTRUCT);
+            this.CONSUME(tokenMap.CONSTRUCT);
             this.OR([
                 {
                     ALT: () => {
@@ -130,10 +128,10 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 {
                     ALT: () => {
                         this.MANY1(() => this.SUBRULE1(this.DatasetClause));
-                        this.CONSUME(tokens_1.tokenMap.WHERE);
-                        this.CONSUME(tokens_1.tokenMap.LCurly);
+                        this.CONSUME(tokenMap.WHERE);
+                        this.CONSUME(tokenMap.LCurly);
                         this.OPTION(() => this.SUBRULE(this.TriplesTemplate));
-                        this.CONSUME(tokens_1.tokenMap.RCurly);
+                        this.CONSUME(tokenMap.RCurly);
                     },
                 },
             ]);
@@ -141,14 +139,14 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.DescribeQuery = this.RULE('DescribeQuery', () => {
             log('DescribeQuery');
-            this.CONSUME(tokens_1.tokenMap.DESCRIBE);
+            this.CONSUME(tokenMap.DESCRIBE);
             this.OR([
                 {
                     ALT: () => {
                         this.AT_LEAST_ONE(() => this.SUBRULE(this.VarOrIri));
                     },
                 },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.Star) },
+                { ALT: () => this.CONSUME(tokenMap.Star) },
             ]);
             this.MANY(() => this.SUBRULE(this.DatasetClause));
             this.OPTION(() => this.SUBRULE(this.WhereClause));
@@ -156,14 +154,14 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.AskQuery = this.RULE('AskQuery', () => {
             log('AskQuery');
-            this.CONSUME(tokens_1.tokenMap.ASK);
+            this.CONSUME(tokenMap.ASK);
             this.MANY(() => this.SUBRULE(this.DatasetClause));
             this.SUBRULE(this.WhereClause);
             this.SUBRULE(this.SolutionModifier);
         });
         this.DatasetClause = this.RULE('DatasetClause', () => {
             log('DatasetClause');
-            this.CONSUME(tokens_1.tokenMap.FROM);
+            this.CONSUME(tokenMap.FROM);
             this.OR([
                 { ALT: () => this.SUBRULE(this.DefaultGraphClause) },
                 { ALT: () => this.SUBRULE(this.NamedGraphClause) },
@@ -175,7 +173,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.NamedGraphClause = this.RULE('NamedGraphClause', () => {
             log('NamedGraphClause');
-            this.CONSUME(tokens_1.tokenMap.NAMED);
+            this.CONSUME(tokenMap.NAMED);
             this.SUBRULE(this.SourceSelector);
         });
         this.SourceSelector = this.RULE('SourceSelector', () => {
@@ -184,7 +182,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.WhereClause = this.RULE('WhereClause', () => {
             log('WhereClause');
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.WHERE));
+            this.OPTION(() => this.CONSUME(tokenMap.WHERE));
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.SolutionModifier = this.RULE('SolutionModifier', () => {
@@ -196,7 +194,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.GroupClause = this.RULE('GroupClause', () => {
             log('GroupClause');
-            this.CONSUME(tokens_1.tokenMap.GroupBy);
+            this.CONSUME(tokenMap.GroupBy);
             this.AT_LEAST_ONE(() => this.SUBRULE(this.GroupCondition));
         });
         this.GroupCondition = this.RULE('GroupCondition', () => {
@@ -206,13 +204,13 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.FunctionCall) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
+                        this.CONSUME(tokenMap.LParen);
                         this.SUBRULE(this.Expression);
                         this.OPTION(() => {
-                            this.CONSUME(tokens_1.tokenMap.AS);
+                            this.CONSUME(tokenMap.AS);
                             this.SUBRULE(this.Var);
                         });
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
                 { ALT: () => this.SUBRULE1(this.Var) },
@@ -220,7 +218,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.HavingClause = this.RULE('HavingClause', () => {
             log('HavingClause');
-            this.CONSUME(tokens_1.tokenMap.HAVING);
+            this.CONSUME(tokenMap.HAVING);
             this.SUBRULE(this.HavingCondition);
         });
         this.HavingCondition = this.RULE('HavingCondition', () => {
@@ -229,7 +227,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.OrderClause = this.RULE('OrderClause', () => {
             log('OrderClause');
-            this.CONSUME(tokens_1.tokenMap.OrderBy);
+            this.CONSUME(tokenMap.OrderBy);
             this.AT_LEAST_ONE(() => this.SUBRULE(this.OrderCondition));
         });
         this.OrderCondition = this.RULE('OrderCondition', () => {
@@ -238,8 +236,8 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 {
                     ALT: () => {
                         this.OR1([
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.ASC) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.DESC) },
+                            { ALT: () => this.CONSUME(tokenMap.ASC) },
+                            { ALT: () => this.CONSUME(tokenMap.DESC) },
                         ]);
                         this.SUBRULE(this.BrackettedExpression);
                     },
@@ -267,18 +265,18 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.OffsetClause = this.RULE('OffsetClause', () => {
             log('OffsetClause');
-            this.CONSUME(tokens_1.tokenMap.OFFSET);
-            this.CONSUME(tokens_1.tokenMap.INTEGER);
+            this.CONSUME(tokenMap.OFFSET);
+            this.CONSUME(tokenMap.INTEGER);
         });
         this.LimitClause = this.RULE('LimitClause', () => {
             log('LimitClause');
-            this.CONSUME(tokens_1.tokenMap.LIMIT);
-            this.CONSUME(tokens_1.tokenMap.INTEGER);
+            this.CONSUME(tokenMap.LIMIT);
+            this.CONSUME(tokenMap.INTEGER);
         });
         this.ValuesClause = this.RULE('ValuesClause', () => {
             log('ValuesClause');
             this.OPTION(() => {
-                this.CONSUME(tokens_1.tokenMap.VALUES);
+                this.CONSUME(tokenMap.VALUES);
                 this.SUBRULE(this.DataBlock);
             });
         });
@@ -288,7 +286,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             this.OPTION(() => {
                 this.SUBRULE(this.Update1);
                 this.OPTION1(() => {
-                    this.CONSUME(tokens_1.tokenMap.Semicolon);
+                    this.CONSUME(tokenMap.Semicolon);
                     this.SUBRULE(this.Update);
                 });
             });
@@ -311,75 +309,75 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.Load = this.RULE('Load', () => {
             log('Load');
-            this.CONSUME(tokens_1.tokenMap.LOAD);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.LOAD);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.iri);
             this.OPTION1(() => {
-                this.CONSUME(tokens_1.tokenMap.INTO);
+                this.CONSUME(tokenMap.INTO);
                 this.SUBRULE(this.GraphRef);
             });
         });
         this.Clear = this.RULE('Clear', () => {
             log('Clear');
-            this.CONSUME(tokens_1.tokenMap.CLEAR);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.CLEAR);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.GraphRefAll);
         });
         this.Drop = this.RULE('Drop', () => {
             log('Drop');
-            this.CONSUME(tokens_1.tokenMap.DROP);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.DROP);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.GraphRefAll);
         });
         this.Create = this.RULE('Create', () => {
             log('Create');
-            this.CONSUME(tokens_1.tokenMap.CREATE);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.CREATE);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.GraphRefAll);
         });
         this.Add = this.RULE('Add', () => {
             log('Add');
-            this.CONSUME(tokens_1.tokenMap.ADD);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.ADD);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.GraphOrDefault);
-            this.CONSUME(tokens_1.tokenMap.TO);
+            this.CONSUME(tokenMap.TO);
             this.SUBRULE1(this.GraphOrDefault);
         });
         this.Move = this.RULE('Move', () => {
             log('Move');
-            this.CONSUME(tokens_1.tokenMap.MOVE);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.MOVE);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.GraphOrDefault);
-            this.CONSUME(tokens_1.tokenMap.TO);
+            this.CONSUME(tokenMap.TO);
             this.SUBRULE1(this.GraphOrDefault);
         });
         this.Copy = this.RULE('Copy', () => {
             log('Copy');
-            this.CONSUME(tokens_1.tokenMap.COPY);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.COPY);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.GraphOrDefault);
-            this.CONSUME(tokens_1.tokenMap.TO);
+            this.CONSUME(tokenMap.TO);
             this.SUBRULE1(this.GraphOrDefault);
         });
         this.InsertData = this.RULE('InsertData', () => {
             log('InsertData');
-            this.CONSUME(tokens_1.tokenMap.INSERT_DATA);
+            this.CONSUME(tokenMap.INSERT_DATA);
             this.SUBRULE(this.QuadData);
         });
         this.DeleteData = this.RULE('DeleteData', () => {
             log('DeleteData');
-            this.CONSUME(tokens_1.tokenMap.DELETE_DATA);
+            this.CONSUME(tokenMap.DELETE_DATA);
             this.SUBRULE(this.QuadData);
         });
         this.DeleteWhere = this.RULE('DeleteWhere', () => {
             log('DeleteWhere');
-            this.CONSUME(tokens_1.tokenMap.DELETE_WHERE);
+            this.CONSUME(tokenMap.DELETE_WHERE);
             this.SUBRULE(this.QuadPattern);
         });
         this.Modify = this.RULE('Modify', () => {
             log('Modify');
             this.OPTION(() => {
-                this.CONSUME(tokens_1.tokenMap.WITH);
+                this.CONSUME(tokenMap.WITH);
                 this.SUBRULE(this.iri);
             });
             this.OR([
@@ -392,27 +390,27 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE1(this.InsertClause) },
             ]);
             this.MANY(() => this.SUBRULE(this.UsingClause));
-            this.CONSUME(tokens_1.tokenMap.WHERE);
+            this.CONSUME(tokenMap.WHERE);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.DeleteClause = this.RULE('DeleteClause', () => {
             log('DeleteClause');
-            this.CONSUME(tokens_1.tokenMap.DELETE);
+            this.CONSUME(tokenMap.DELETE);
             this.SUBRULE(this.QuadPattern);
         });
         this.InsertClause = this.RULE('InsertClause', () => {
             log('InsertClause');
-            this.CONSUME(tokens_1.tokenMap.INSERT);
+            this.CONSUME(tokenMap.INSERT);
             this.SUBRULE(this.QuadPattern);
         });
         this.UsingClause = this.RULE('UsingClause', () => {
             log('UsingClause');
-            this.CONSUME(tokens_1.tokenMap.USING);
+            this.CONSUME(tokenMap.USING);
             this.OR([
                 { ALT: () => this.SUBRULE(this.iri) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.NAMED);
+                        this.CONSUME(tokenMap.NAMED);
                         this.SUBRULE1(this.iri);
                     },
                 },
@@ -421,10 +419,10 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.GraphOrDefault = this.RULE('GraphOrDefault', () => {
             log('GraphOrDefault');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DEFAULT) },
+                { ALT: () => this.CONSUME(tokenMap.DEFAULT) },
                 {
                     ALT: () => {
-                        this.OPTION(() => this.CONSUME(tokens_1.tokenMap.GRAPH));
+                        this.OPTION(() => this.CONSUME(tokenMap.GRAPH));
                         this.SUBRULE(this.iri);
                     },
                 },
@@ -432,70 +430,70 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.GraphRef = this.RULE('GraphRef', () => {
             log('GraphRef');
-            this.CONSUME(tokens_1.tokenMap.GRAPH);
+            this.CONSUME(tokenMap.GRAPH);
             this.SUBRULE(this.iri);
         });
         this.GraphRefAll = this.RULE('GraphRefAll', () => {
             log('GraphRefAll');
             this.OR([
                 { ALT: () => this.SUBRULE(this.GraphRef) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DEFAULT) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NAMED) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.ALL) },
+                { ALT: () => this.CONSUME(tokenMap.DEFAULT) },
+                { ALT: () => this.CONSUME(tokenMap.NAMED) },
+                { ALT: () => this.CONSUME(tokenMap.ALL) },
             ]);
         });
         this.QuadPattern = this.RULE('QuadPattern', () => {
             log('QuadPattern');
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.SUBRULE(this.Quads);
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.QuadData = this.RULE('QuadData', () => {
             log('QuadData');
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.SUBRULE(this.Quads);
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.Quads = this.RULE('Quads', () => {
             log('Quads');
             this.OPTION(() => this.SUBRULE(this.TriplesTemplate));
             this.MANY(() => {
                 this.SUBRULE(this.QuadsNotTriples);
-                this.OPTION1(() => this.CONSUME(tokens_1.tokenMap.Period));
+                this.OPTION1(() => this.CONSUME(tokenMap.Period));
                 this.OPTION2(() => this.SUBRULE1(this.TriplesTemplate));
             });
         });
         this.QuadsNotTriples = this.RULE('QuadsNotTriples', () => {
             log('QuadsNotTriples');
-            this.CONSUME(tokens_1.tokenMap.GRAPH);
+            this.CONSUME(tokenMap.GRAPH);
             this.SUBRULE(this.VarOrIri);
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.OPTION(() => this.SUBRULE(this.TriplesTemplate));
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.TriplesTemplate = this.RULE('TriplesTemplate', () => {
             log('TriplesTemplate');
             this.SUBRULE(this.TriplesSameSubject);
             this.OPTION(() => {
-                this.CONSUME(tokens_1.tokenMap.Period);
+                this.CONSUME(tokenMap.Period);
                 this.OPTION1(() => this.SUBRULE(this.TriplesTemplate));
             });
         });
         this.GroupGraphPattern = this.RULE('GroupGraphPattern', () => {
             log('GroupGraphPattern');
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.OR([
                 { ALT: () => this.SUBRULE(this.SubSelect) },
                 { ALT: () => this.SUBRULE(this.GroupGraphPatternSub) },
             ]);
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.GroupGraphPatternSub = this.RULE('GroupGraphPatternSub', () => {
             log('GroupGraphPatternSub');
             this.OPTION(() => this.SUBRULE(this.TriplesBlock));
             this.MANY(() => {
                 this.SUBRULE(this.GraphPatternNotTriples);
-                this.OPTION1(() => this.CONSUME(tokens_1.tokenMap.Period));
+                this.OPTION1(() => this.CONSUME(tokenMap.Period));
                 this.OPTION2(() => this.SUBRULE1(this.TriplesBlock));
             });
         });
@@ -503,7 +501,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             log('TriplesBlock');
             this.SUBRULE(this.TriplesSameSubjectPath);
             this.OPTION(() => {
-                this.CONSUME(tokens_1.tokenMap.Period);
+                this.CONSUME(tokenMap.Period);
                 this.OPTION1(() => this.SUBRULE(this.TriplesBlock));
             });
         });
@@ -522,34 +520,34 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.OptionalGraphPattern = this.RULE('OptionalGraphPattern', () => {
             log('OptionalGraphPattern');
-            this.CONSUME(tokens_1.tokenMap.OPTIONAL);
+            this.CONSUME(tokenMap.OPTIONAL);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.GraphGraphPattern = this.RULE('GraphGraphPattern', () => {
             log('GraphGraphPattern');
-            this.CONSUME(tokens_1.tokenMap.GRAPH);
+            this.CONSUME(tokenMap.GRAPH);
             this.SUBRULE(this.VarOrIri);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.ServiceGraphPattern = this.RULE('ServiceGraphPattern', () => {
             log('ServiceGraphPattern');
-            this.CONSUME(tokens_1.tokenMap.SERVICE);
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.SILENT));
+            this.CONSUME(tokenMap.SERVICE);
+            this.OPTION(() => this.CONSUME(tokenMap.SILENT));
             this.SUBRULE(this.VarOrIri);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.Bind = this.RULE('Bind', () => {
             log('Bind');
-            this.CONSUME(tokens_1.tokenMap.BIND);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.BIND);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.AS);
+            this.CONSUME(tokenMap.AS);
             this.SUBRULE(this.Var);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.InlineData = this.RULE('InlineData', () => {
             log('InlineData');
-            this.CONSUME(tokens_1.tokenMap.VALUES);
+            this.CONSUME(tokenMap.VALUES);
             this.SUBRULE(this.DataBlock);
         });
         this.DataBlock = this.RULE('DataBlock', () => {
@@ -562,34 +560,34 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.InlineDataOneVar = this.RULE('InlineDataOneVar', () => {
             log('InlineDataOneVar');
             this.SUBRULE(this.Var);
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.MANY(() => this.SUBRULE(this.DataBlockValue));
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.InlineDataFull = this.RULE('InlineDataFull', () => {
             log('InlineDataFull');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
+                { ALT: () => this.CONSUME(tokenMap.NIL) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
+                        this.CONSUME(tokenMap.LParen);
                         this.MANY(() => this.SUBRULE(this.Var));
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
             ]);
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.MANY1(() => this.OR1([
                 {
                     ALT: () => {
-                        this.CONSUME1(tokens_1.tokenMap.LParen);
+                        this.CONSUME1(tokenMap.LParen);
                         this.MANY2(() => this.SUBRULE(this.DataBlockValue));
-                        this.CONSUME1(tokens_1.tokenMap.RParen);
+                        this.CONSUME1(tokenMap.RParen);
                     },
                 },
-                { ALT: () => this.CONSUME1(tokens_1.tokenMap.NIL) },
+                { ALT: () => this.CONSUME1(tokenMap.NIL) },
             ]));
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.DataBlockValue = this.RULE('DataBlockValue', () => {
             log('DataBlockValue');
@@ -598,25 +596,25 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.RDFLiteral) },
                 { ALT: () => this.SUBRULE(this.NumericLiteral) },
                 { ALT: () => this.SUBRULE(this.BooleanLiteral) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.UNDEF) },
+                { ALT: () => this.CONSUME(tokenMap.UNDEF) },
             ]);
         });
         this.MinusGraphPattern = this.RULE('MinusGraphPattern', () => {
             log('MinusGraphPattern');
-            this.CONSUME(tokens_1.tokenMap.MINUS);
+            this.CONSUME(tokenMap.MINUS);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.GroupOrUnionGraphPattern = this.RULE('GroupOrUnionGraphPattern', () => {
             log('GroupOrUnionGraphPattern');
             this.SUBRULE(this.GroupGraphPattern);
             this.MANY(() => {
-                this.CONSUME(tokens_1.tokenMap.UNION);
+                this.CONSUME(tokenMap.UNION);
                 this.SUBRULE1(this.GroupGraphPattern);
             });
         });
         this.Filter = this.RULE('Filter', () => {
             log('Filter');
-            this.CONSUME(tokens_1.tokenMap.FILTER);
+            this.CONSUME(tokenMap.FILTER);
             this.SUBRULE(this.Constraint);
         });
         this.Constraint = this.RULE('Constraint', () => {
@@ -635,17 +633,17 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.ArgList = this.RULE('ArgList', () => {
             log('ArgList');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
+                { ALT: () => this.CONSUME(tokenMap.NIL) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
-                        this.OPTION(() => this.CONSUME(tokens_1.tokenMap.DISTINCT));
+                        this.CONSUME(tokenMap.LParen);
+                        this.OPTION(() => this.CONSUME(tokenMap.DISTINCT));
                         this.SUBRULE(this.Expression);
                         this.MANY(() => {
-                            this.CONSUME(tokens_1.tokenMap.Comma);
+                            this.CONSUME(tokenMap.Comma);
                             this.SUBRULE1(this.Expression);
                         });
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
             ]);
@@ -653,31 +651,31 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.ExpressionList = this.RULE('ExpressionList', () => {
             log('ExpressionList');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
+                { ALT: () => this.CONSUME(tokenMap.NIL) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
+                        this.CONSUME(tokenMap.LParen);
                         this.SUBRULE(this.Expression);
                         this.MANY(() => {
-                            this.CONSUME(tokens_1.tokenMap.Comma);
+                            this.CONSUME(tokenMap.Comma);
                             this.SUBRULE1(this.Expression);
                         });
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
             ]);
         });
         this.ConstructTemplate = this.RULE('ConstructTemplate', () => {
             log('ConstructTemplate');
-            this.CONSUME(tokens_1.tokenMap.LCurly);
+            this.CONSUME(tokenMap.LCurly);
             this.OPTION(() => this.SUBRULE(this.ConstructTriples));
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+            this.CONSUME(tokenMap.RCurly);
         });
         this.ConstructTriples = this.RULE('ConstructTriples', () => {
             log('ConstructTriples');
             this.SUBRULE(this.TriplesSameSubject);
             this.OPTION(() => {
-                this.CONSUME(tokens_1.tokenMap.Period);
+                this.CONSUME(tokenMap.Period);
                 this.OPTION1(() => this.SUBRULE(this.ConstructTriples));
             });
         });
@@ -707,7 +705,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             this.SUBRULE(this.Verb);
             this.SUBRULE(this.ObjectList);
             this.MANY(() => {
-                this.CONSUME(tokens_1.tokenMap.Semicolon);
+                this.CONSUME(tokenMap.Semicolon);
                 this.OPTION(() => {
                     this.SUBRULE1(this.Verb);
                     this.SUBRULE1(this.ObjectList);
@@ -718,13 +716,13 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             log('Verb');
             this.OR([
                 { ALT: () => this.SUBRULE(this.VarOrIri) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.A) },
+                { ALT: () => this.CONSUME(tokenMap.A) },
             ]);
         });
         this.ObjectList = this.RULE('ObjectList', () => {
             log('ObjectList');
             this.AT_LEAST_ONE_SEP({
-                SEP: tokens_1.tokenMap.Comma,
+                SEP: tokenMap.Comma,
                 DEF: () => this.SUBRULE(this.Object),
             });
         });
@@ -761,7 +759,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             ]);
             this.SUBRULE(this.ObjectListPath);
             this.MANY(() => {
-                this.CONSUME(tokens_1.tokenMap.Semicolon);
+                this.CONSUME(tokenMap.Semicolon);
                 this.OPTION(() => {
                     this.OR1([
                         { ALT: () => this.SUBRULE1(this.VerbPath) },
@@ -782,7 +780,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.ObjectListPath = this.RULE('ObjectListPath', () => {
             log('ObjectListPath');
             this.AT_LEAST_ONE_SEP({
-                SEP: tokens_1.tokenMap.Comma,
+                SEP: tokenMap.Comma,
                 DEF: () => this.SUBRULE(this.ObjectPath),
             });
         });
@@ -797,14 +795,14 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.PathAlternative = this.RULE('PathAlternative', () => {
             log('PathAlternative');
             this.AT_LEAST_ONE_SEP({
-                SEP: tokens_1.tokenMap.Pipe,
+                SEP: tokenMap.Pipe,
                 DEF: () => this.SUBRULE(this.PathSequence),
             });
         });
         this.PathSequence = this.RULE('PathSequence', () => {
             log('PathSequence');
             this.AT_LEAST_ONE_SEP({
-                SEP: tokens_1.tokenMap.ForwardSlash,
+                SEP: tokenMap.ForwardSlash,
                 DEF: () => this.SUBRULE(this.PathEltOrInverse),
             });
         });
@@ -815,33 +813,33 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.PathEltOrInverse = this.RULE('PathEltOrInverse', () => {
             log('PathEltOrInverse');
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.Caret));
+            this.OPTION(() => this.CONSUME(tokenMap.Caret));
             this.SUBRULE(this.PathElt);
         });
         this.PathMod = this.RULE('PathMod', () => {
             log('PathMod');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.QuestionMark) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.Star) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.Plus) },
+                { ALT: () => this.CONSUME(tokenMap.QuestionMark) },
+                { ALT: () => this.CONSUME(tokenMap.Star) },
+                { ALT: () => this.CONSUME(tokenMap.Plus) },
             ]);
         });
         this.PathPrimary = this.RULE('PathPrimary', () => {
             log('PathPrimary');
             this.OR([
                 { ALT: () => this.SUBRULE(this.iri) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.A) },
+                { ALT: () => this.CONSUME(tokenMap.A) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Bang);
+                        this.CONSUME(tokenMap.Bang);
                         this.SUBRULE(this.PathNegatedPropertySet);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
+                        this.CONSUME(tokenMap.LParen);
                         this.SUBRULE(this.Path);
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
             ]);
@@ -852,27 +850,27 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.PathOneInPropertySet) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
+                        this.CONSUME(tokenMap.LParen);
                         this.MANY_SEP({
-                            SEP: tokens_1.tokenMap.Pipe,
+                            SEP: tokenMap.Pipe,
                             DEF: () => this.SUBRULE1(this.PathOneInPropertySet),
                         });
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
             ]);
         });
         this.PathOneInPropertySet = this.RULE('PathOneInPropertySet', () => {
             log('PathOneInPropertySet');
-            this.OPTION(() => this.CONSUME(tokens_1.tokenMap.Caret));
+            this.OPTION(() => this.CONSUME(tokenMap.Caret));
             this.OR([
                 { ALT: () => this.SUBRULE(this.iri) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.A) },
+                { ALT: () => this.CONSUME(tokenMap.A) },
             ]);
         });
         this.Integer = this.RULE('Integer', () => {
             log('Integer');
-            this.CONSUME(tokens_1.tokenMap.INTEGER);
+            this.CONSUME(tokenMap.INTEGER);
         });
         this.TriplesNode = this.RULE('TriplesNode', () => {
             log('TriplesNode');
@@ -883,9 +881,9 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.BlankNodePropertyList = this.RULE('BlankNodePropertyList', () => {
             log('BlankNodePropertyList');
-            this.CONSUME(tokens_1.tokenMap.LBracket);
+            this.CONSUME(tokenMap.LBracket);
             this.SUBRULE(this.PropertyListNotEmpty);
-            this.CONSUME(tokens_1.tokenMap.RBracket);
+            this.CONSUME(tokenMap.RBracket);
         });
         this.TriplesNodePath = this.RULE('TriplesNodePath', () => {
             log('TriplesNodePath');
@@ -896,21 +894,21 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.BlankNodePropertyListPath = this.RULE('BlankNodePropertyListPath', () => {
             log('BlankNodePropertyListPath');
-            this.CONSUME(tokens_1.tokenMap.LBracket);
+            this.CONSUME(tokenMap.LBracket);
             this.SUBRULE(this.PropertyListPathNotEmpty);
-            this.CONSUME(tokens_1.tokenMap.RBracket);
+            this.CONSUME(tokenMap.RBracket);
         });
         this.Collection = this.RULE('Collection', () => {
             log('Collection');
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.LParen);
             this.AT_LEAST_ONE(() => this.SUBRULE(this.GraphNode));
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.CollectionPath = this.RULE('CollectionPath', () => {
             log('CollectionPath');
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.LParen);
             this.AT_LEAST_ONE(() => this.SUBRULE(this.GraphNodePath));
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.GraphNode = this.RULE('GraphNode', () => {
             log('GraphNode');
@@ -943,8 +941,8 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.Var = this.RULE('Var', () => {
             log('Var');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.VAR1) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.VAR2) },
+                { ALT: () => this.CONSUME(tokenMap.VAR1) },
+                { ALT: () => this.CONSUME(tokenMap.VAR2) },
             ]);
         });
         this.GraphTerm = this.RULE('GraphTerm', () => {
@@ -955,7 +953,7 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 { ALT: () => this.SUBRULE(this.NumericLiteral) },
                 { ALT: () => this.SUBRULE(this.BooleanLiteral) },
                 { ALT: () => this.SUBRULE(this.BlankNode) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
+                { ALT: () => this.CONSUME(tokenMap.NIL) },
             ]);
         });
         this.Expression = this.RULE('Expression', () => {
@@ -965,14 +963,14 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.ConditionalOrExpression = this.RULE('ConditionalOrExpression', () => {
             log('ConditionalOrExpression');
             this.AT_LEAST_ONE_SEP({
-                SEP: tokens_1.tokenMap.LogicalOr,
+                SEP: tokenMap.LogicalOr,
                 DEF: () => this.SUBRULE(this.ConditionalAndExpression),
             });
         });
         this.ConditionalAndExpression = this.RULE('ConditionalAndExpression', () => {
             log('ConditionalAndExpression');
             this.AT_LEAST_ONE_SEP({
-                SEP: tokens_1.tokenMap.LogicalAnd,
+                SEP: tokenMap.LogicalAnd,
                 DEF: () => this.SUBRULE(this.ValueLogical),
             });
         });
@@ -987,25 +985,25 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 {
                     ALT: () => {
                         this.OR1([
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Equals) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.NotEquals) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.LessThan) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.GreaterThan) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.LessThanEquals) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.GreaterThanEquals) },
+                            { ALT: () => this.CONSUME(tokenMap.Equals) },
+                            { ALT: () => this.CONSUME(tokenMap.NotEquals) },
+                            { ALT: () => this.CONSUME(tokenMap.LessThan) },
+                            { ALT: () => this.CONSUME(tokenMap.GreaterThan) },
+                            { ALT: () => this.CONSUME(tokenMap.LessThanEquals) },
+                            { ALT: () => this.CONSUME(tokenMap.GreaterThanEquals) },
                         ]);
                         this.SUBRULE1(this.NumericExpression);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.IN);
+                        this.CONSUME(tokenMap.IN);
                         this.SUBRULE(this.ExpressionList);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.NOT_IN);
+                        this.CONSUME(tokenMap.NOT_IN);
                         this.SUBRULE1(this.ExpressionList);
                     },
                 },
@@ -1022,8 +1020,8 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                 {
                     ALT: () => {
                         this.OR1([
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Plus) },
-                            { ALT: () => this.CONSUME(tokens_1.tokenMap.Minus) },
+                            { ALT: () => this.CONSUME(tokenMap.Plus) },
+                            { ALT: () => this.CONSUME(tokenMap.Minus) },
                         ]);
                         this.SUBRULE1(this.MultiplicativeExpression);
                     },
@@ -1038,8 +1036,8 @@ class BaseSparqlParser extends chevrotain_1.Parser {
                             {
                                 ALT: () => {
                                     this.OR4([
-                                        { ALT: () => this.CONSUME(tokens_1.tokenMap.Star) },
-                                        { ALT: () => this.CONSUME(tokens_1.tokenMap.ForwardSlash) },
+                                        { ALT: () => this.CONSUME(tokenMap.Star) },
+                                        { ALT: () => this.CONSUME(tokenMap.ForwardSlash) },
                                     ]);
                                     this.SUBRULE1(this.UnaryExpression);
                                 },
@@ -1055,13 +1053,13 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             this.MANY(() => this.OR([
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Star);
+                        this.CONSUME(tokenMap.Star);
                         this.SUBRULE1(this.UnaryExpression);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.ForwardSlash);
+                        this.CONSUME(tokenMap.ForwardSlash);
                         this.SUBRULE2(this.UnaryExpression);
                     },
                 },
@@ -1072,19 +1070,19 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             this.OR([
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Bang);
+                        this.CONSUME(tokenMap.Bang);
                         this.SUBRULE(this.PrimaryExpression);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Plus);
+                        this.CONSUME(tokenMap.Plus);
                         this.SUBRULE1(this.PrimaryExpression);
                     },
                 },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.Minus);
+                        this.CONSUME(tokenMap.Minus);
                         this.SUBRULE2(this.PrimaryExpression);
                     },
                 },
@@ -1105,369 +1103,369 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.BrackettedExpression = this.RULE('BrackettedExpression', () => {
             log('BrackettedExpression');
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STR = this.RULE('BuiltInCall_STR', () => {
             log('BuiltInCall_STR');
-            this.CONSUME(tokens_1.tokenMap.STR);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STR);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_LANG = this.RULE('BuiltInCall_LANG', () => {
             log('BuiltInCall_LANG');
-            this.CONSUME(tokens_1.tokenMap.LANG);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.LANG);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_LANGMATCHERS = this.RULE('BuiltInCall_LANGMATCHERS', () => {
             log('BuiltInCall_LANGMATCHERS');
-            this.CONSUME(tokens_1.tokenMap.LANGMATCHERS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.LANGMATCHERS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_DATATYPE = this.RULE('BuiltInCall_DATATYPE', () => {
             log('BuiltInCall_DATATYPE');
-            this.CONSUME(tokens_1.tokenMap.DATATYPE);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.DATATYPE);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_BOUND = this.RULE('BuiltInCall_BOUND', () => {
             log('BuiltInCall_BOUND');
-            this.CONSUME(tokens_1.tokenMap.BOUND);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.BOUND);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Var);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_IRI = this.RULE('BuiltInCall_IRI', () => {
             log('BuiltInCall_IRI');
-            this.CONSUME(tokens_1.tokenMap.IRI);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.IRI);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_URI = this.RULE('BuiltInCall_URI', () => {
             log('BuiltInCall_URI');
-            this.CONSUME(tokens_1.tokenMap.URI);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.URI);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_BNODE = this.RULE('BuiltInCall_BNODE', () => {
             log('BuiltInCall_BNODE');
-            this.CONSUME(tokens_1.tokenMap.BNODE);
+            this.CONSUME(tokenMap.BNODE);
             this.OR([
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.LParen);
+                        this.CONSUME(tokenMap.LParen);
                         this.SUBRULE(this.Expression);
-                        this.CONSUME(tokens_1.tokenMap.RParen);
+                        this.CONSUME(tokenMap.RParen);
                     },
                 },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
+                { ALT: () => this.CONSUME(tokenMap.NIL) },
             ]);
         });
         this.BuiltInCall_RAND = this.RULE('BuiltInCall_RAND', () => {
             log('BuiltInCall_RAND');
-            this.CONSUME(tokens_1.tokenMap.RAND);
-            this.CONSUME(tokens_1.tokenMap.NIL);
+            this.CONSUME(tokenMap.RAND);
+            this.CONSUME(tokenMap.NIL);
         });
         this.BuiltInCall_ABS = this.RULE('BuiltInCall_ABS', () => {
             log('BuiltInCall_ABS');
-            this.CONSUME(tokens_1.tokenMap.ABS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.ABS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_CEIL = this.RULE('BuiltInCall_CEIL', () => {
             log('BuiltInCall_CEIL');
-            this.CONSUME(tokens_1.tokenMap.CEIL);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.CEIL);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_FLOOR = this.RULE('BuiltInCall_FLOOR', () => {
             log('BuiltInCall_FLOOR');
-            this.CONSUME(tokens_1.tokenMap.FLOOR);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.FLOOR);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_ROUND = this.RULE('BuiltInCall_ROUND', () => {
             log('BuiltInCall_ROUND');
-            this.CONSUME(tokens_1.tokenMap.ROUND);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.ROUND);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_CONCAT = this.RULE('BuiltInCall_CONCAT', () => {
             log('BuiltInCall_CONCAT');
-            this.CONSUME(tokens_1.tokenMap.CONCAT);
+            this.CONSUME(tokenMap.CONCAT);
             this.SUBRULE(this.ExpressionList);
         });
         this.BuiltInCall_STRLEN = this.RULE('BuiltInCall_STRLEN', () => {
             log('BuiltInCall_STRLEN');
-            this.CONSUME(tokens_1.tokenMap.STRLEN);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRLEN);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_UCASE = this.RULE('BuiltInCall_UCASE', () => {
             log('BuiltInCall_UCASE');
-            this.CONSUME(tokens_1.tokenMap.UCASE);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.UCASE);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_LCASE = this.RULE('BuiltInCall_LCASE', () => {
             log('BuiltInCall_LCASE');
-            this.CONSUME(tokens_1.tokenMap.LCASE);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.LCASE);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_ENCODE_FOR_URI = this.RULE('BuiltInCall_ENCODE_FOR_URI', () => {
             log('BuiltInCall_ENCODE_FOR_URI');
-            this.CONSUME(tokens_1.tokenMap.ENCODE_FOR_URI);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.ENCODE_FOR_URI);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_CONTAINS = this.RULE('BuiltInCall_CONTAINS', () => {
             log('BuiltInCall_CONTAINS');
-            this.CONSUME(tokens_1.tokenMap.CONTAINS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.CONTAINS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STRSTARTS = this.RULE('BuiltInCall_STRSTARTS', () => {
             log('BuiltInCall_STRSTARTS');
-            this.CONSUME(tokens_1.tokenMap.STRSTARTS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRSTARTS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STRENDS = this.RULE('BuiltInCall_STRENDS', () => {
             log('BuiltInCall_STRENDS');
-            this.CONSUME(tokens_1.tokenMap.STRENDS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRENDS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STRBEFORE = this.RULE('BuiltInCall_STRBEFORE', () => {
             log('BuiltInCall_STRBEFORE');
-            this.CONSUME(tokens_1.tokenMap.STRBEFORE);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRBEFORE);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STRAFTER = this.RULE('BuiltInCall_STRAFTER', () => {
             log('BuiltInCall_STRAFTER');
-            this.CONSUME(tokens_1.tokenMap.STRAFTER);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRAFTER);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_YEAR = this.RULE('BuiltInCall_YEAR', () => {
             log('BuiltInCall_YEAR');
-            this.CONSUME(tokens_1.tokenMap.YEAR);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.YEAR);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_MONTH = this.RULE('BuiltInCall_MONTH', () => {
             log('BuiltInCall_MONTH');
-            this.CONSUME(tokens_1.tokenMap.MONTH);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.MONTH);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_DAY = this.RULE('BuiltInCall_DAY', () => {
             log('BuiltInCall_DAY');
-            this.CONSUME(tokens_1.tokenMap.DAY);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.DAY);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_HOURS = this.RULE('BuiltInCall_HOURS', () => {
             log('BuiltInCall_HOURS');
-            this.CONSUME(tokens_1.tokenMap.HOURS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.HOURS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_MINUTES = this.RULE('BuiltInCall_MINUTES', () => {
             log('BuiltInCall_MINUTES');
-            this.CONSUME(tokens_1.tokenMap.MINUTES);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.MINUTES);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_SECONDS = this.RULE('BuiltInCall_SECONDS', () => {
             log('BuiltInCall_SECONDS');
-            this.CONSUME(tokens_1.tokenMap.SECONDS);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.SECONDS);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_TIMEZONE = this.RULE('BuiltInCall_TIMEZONE', () => {
             log('BuiltInCall_TIMEZONE');
-            this.CONSUME(tokens_1.tokenMap.TIMEZONE);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.TIMEZONE);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_TZ = this.RULE('BuiltInCall_TZ', () => {
             log('BuiltInCall_TZ');
-            this.CONSUME(tokens_1.tokenMap.TZ);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.TZ);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_NOW = this.RULE('BuiltInCall_NOW', () => {
             log('BuiltInCall_NOW');
-            this.CONSUME(tokens_1.tokenMap.NOW);
-            this.CONSUME(tokens_1.tokenMap.NIL);
+            this.CONSUME(tokenMap.NOW);
+            this.CONSUME(tokenMap.NIL);
         });
         this.BuiltInCall_UUID = this.RULE('BuiltInCall_UUID', () => {
             log('BuiltInCall_UUID');
-            this.CONSUME(tokens_1.tokenMap.UUID);
-            this.CONSUME(tokens_1.tokenMap.NIL);
+            this.CONSUME(tokenMap.UUID);
+            this.CONSUME(tokenMap.NIL);
         });
         this.BuiltInCall_STRUUID = this.RULE('BuiltInCall_STRUUID', () => {
             log('BuiltInCall_STRUUID');
-            this.CONSUME(tokens_1.tokenMap.STRUUID);
-            this.CONSUME(tokens_1.tokenMap.NIL);
+            this.CONSUME(tokenMap.STRUUID);
+            this.CONSUME(tokenMap.NIL);
         });
         this.BuiltInCall_MD5 = this.RULE('BuiltInCall_MD5', () => {
             log('BuiltInCall_MD5');
-            this.CONSUME(tokens_1.tokenMap.MD5);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.MD5);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_SHA1 = this.RULE('BuiltInCall_SHA1', () => {
             log('BuiltInCall_SHA1');
-            this.CONSUME(tokens_1.tokenMap.SHA1);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.SHA1);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_SHA256 = this.RULE('BuiltInCall_SHA256', () => {
             log('BuiltInCall_SHA256');
-            this.CONSUME(tokens_1.tokenMap.SHA256);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.SHA256);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_SHA384 = this.RULE('BuiltInCall_SHA384', () => {
             log('BuiltInCall_SHA384');
-            this.CONSUME(tokens_1.tokenMap.SHA384);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.SHA384);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_SHA512 = this.RULE('BuiltInCall_SHA512', () => {
             log('BuiltInCall_SHA512');
-            this.CONSUME(tokens_1.tokenMap.SHA512);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.SHA512);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_COALESCE = this.RULE('BuiltInCall_COALESCE', () => {
             log('BuiltInCall_COALESCE');
-            this.CONSUME(tokens_1.tokenMap.COALESCE);
+            this.CONSUME(tokenMap.COALESCE);
             this.SUBRULE(this.ExpressionList);
         });
         this.BuiltInCall_IF = this.RULE('BuiltInCall_IF', () => {
             log('BuiltInCall_IF');
-            this.CONSUME(tokens_1.tokenMap.IF);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.IF);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME1(tokens_1.tokenMap.Comma);
+            this.CONSUME1(tokenMap.Comma);
             this.SUBRULE2(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STRLANG = this.RULE('BuiltInCall_STRLANG', () => {
             log('BuiltInCall_STRLANG');
-            this.CONSUME(tokens_1.tokenMap.STRLANG);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRLANG);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_STRDT = this.RULE('BuiltInCall_STRDT', () => {
             log('BuiltInCall_STRDT');
-            this.CONSUME(tokens_1.tokenMap.STRDT);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.STRDT);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_sameTerm = this.RULE('BuiltInCall_sameTerm', () => {
             log('BuiltInCall_sameTerm');
-            this.CONSUME(tokens_1.tokenMap.sameTerm);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.sameTerm);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_isIRI = this.RULE('BuiltInCall_isIRI', () => {
             log('BuiltInCall_isIRI');
-            this.CONSUME(tokens_1.tokenMap.isIRI);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.isIRI);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_isURI = this.RULE('BuiltInCall_isURI', () => {
             log('BuiltInCall_isURI');
-            this.CONSUME(tokens_1.tokenMap.isURI);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.isURI);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_isBlank = this.RULE('BuiltInCall_isBlank', () => {
             log('BuiltInCall_isBlank');
-            this.CONSUME(tokens_1.tokenMap.isBlank);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.isBlank);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_isLiteral = this.RULE('BuiltInCall_isLiteral', () => {
             log('BuiltInCall_isLiteral');
-            this.CONSUME(tokens_1.tokenMap.isLiteral);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.isLiteral);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall_isNumeric = this.RULE('BuiltInCall_isNumeric', () => {
             log('BuiltInCall_isNumeric');
-            this.CONSUME(tokens_1.tokenMap.isNumeric);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.isNumeric);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.BuiltInCall = this.RULE('BuiltInCall', () => {
             log('BuiltInCall');
@@ -1531,119 +1529,119 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         });
         this.RegexExpression = this.RULE('RegexExpression', () => {
             log('RegexExpression');
-            this.CONSUME(tokens_1.tokenMap.REGEX);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.REGEX);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
             this.OPTION(() => {
-                this.CONSUME1(tokens_1.tokenMap.Comma);
+                this.CONSUME1(tokenMap.Comma);
                 this.SUBRULE2(this.Expression);
             });
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.SubstringExpression = this.RULE('SubstringExpression', () => {
             log('SubstringExpression');
-            this.CONSUME(tokens_1.tokenMap.SUBSTR);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.SUBSTR);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
             this.OPTION(() => {
-                this.CONSUME1(tokens_1.tokenMap.Comma);
+                this.CONSUME1(tokenMap.Comma);
                 this.SUBRULE2(this.Expression);
             });
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.StrReplaceExpression = this.RULE('StrReplaceExpression', () => {
             log('StrReplaceExpression');
-            this.CONSUME(tokens_1.tokenMap.REPLACE);
-            this.CONSUME(tokens_1.tokenMap.LParen);
+            this.CONSUME(tokenMap.REPLACE);
+            this.CONSUME(tokenMap.LParen);
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.Comma);
+            this.CONSUME(tokenMap.Comma);
             this.SUBRULE1(this.Expression);
-            this.CONSUME1(tokens_1.tokenMap.Comma);
+            this.CONSUME1(tokenMap.Comma);
             this.SUBRULE2(this.Expression);
             this.OPTION(() => {
-                this.CONSUME2(tokens_1.tokenMap.Comma);
+                this.CONSUME2(tokenMap.Comma);
                 this.SUBRULE3(this.Expression);
             });
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.ExistsFunction = this.RULE('ExistsFunction', () => {
             log('ExistsFunction');
-            this.CONSUME(tokens_1.tokenMap.EXISTS);
+            this.CONSUME(tokenMap.EXISTS);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.NotExistsFunction = this.RULE('NotExistsFunction', () => {
             log('NotExistsFunction');
-            this.CONSUME(tokens_1.tokenMap.NOT_EXISTS);
+            this.CONSUME(tokenMap.NOT_EXISTS);
             this.SUBRULE(this.GroupGraphPattern);
         });
         this.Count = this.RULE('Count', () => {
             log('Count');
-            this.CONSUME(tokens_1.tokenMap.COUNT);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.COUNT);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.OR([
-                { ALT: () => this.CONSUME3(tokens_1.tokenMap.Star) },
+                { ALT: () => this.CONSUME3(tokenMap.Star) },
                 { ALT: () => this.SUBRULE(this.Expression) },
             ]);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.Sum = this.RULE('Sum', () => {
             log('Sum');
-            this.CONSUME(tokens_1.tokenMap.SUM);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.SUM);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.Min = this.RULE('Min', () => {
             log('Min');
-            this.CONSUME(tokens_1.tokenMap.MIN);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.MIN);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.Max = this.RULE('Max', () => {
             log('Max');
-            this.CONSUME(tokens_1.tokenMap.MAX);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.MAX);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.Avg = this.RULE('Avg', () => {
             log('Avg');
-            this.CONSUME(tokens_1.tokenMap.AVG);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.AVG);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.Sample = this.RULE('Sample', () => {
             log('Sample');
-            this.CONSUME(tokens_1.tokenMap.SAMPLE);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.SAMPLE);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.SUBRULE(this.Expression);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.GroupConcat = this.RULE('GroupConcat', () => {
             log('GroupConcat');
-            this.CONSUME(tokens_1.tokenMap.GROUP_CONCAT);
-            this.CONSUME1(tokens_1.tokenMap.LParen);
-            this.OPTION(() => this.CONSUME2(tokens_1.tokenMap.DISTINCT));
+            this.CONSUME(tokenMap.GROUP_CONCAT);
+            this.CONSUME1(tokenMap.LParen);
+            this.OPTION(() => this.CONSUME2(tokenMap.DISTINCT));
             this.SUBRULE(this.Expression);
             this.OPTION1(() => {
-                this.CONSUME(tokens_1.tokenMap.Semicolon);
-                this.CONSUME(tokens_1.tokenMap.SEPARATOR);
-                this.CONSUME(tokens_1.tokenMap.Equals);
+                this.CONSUME(tokenMap.Semicolon);
+                this.CONSUME(tokenMap.SEPARATOR);
+                this.CONSUME(tokenMap.Equals);
                 this.SUBRULE(this.String);
             });
-            this.CONSUME(tokens_1.tokenMap.RParen);
+            this.CONSUME(tokenMap.RParen);
         });
         this.Aggregate = this.RULE('Aggregate', () => {
             log('Aggregate');
@@ -1666,10 +1664,10 @@ class BaseSparqlParser extends chevrotain_1.Parser {
             log('RDFLiteral');
             this.SUBRULE(this.String);
             this.OPTION(() => this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.LANGTAG) },
+                { ALT: () => this.CONSUME(tokenMap.LANGTAG) },
                 {
                     ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.DoubleCaret);
+                        this.CONSUME(tokenMap.DoubleCaret);
                         this.SUBRULE(this.iri);
                     },
                 },
@@ -1686,65 +1684,64 @@ class BaseSparqlParser extends chevrotain_1.Parser {
         this.NumericLiteralUnsigned = this.RULE('NumericLiteralUnsigned', () => {
             log('NumericLiteralUnsigned');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.INTEGER) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DECIMAL) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DOUBLE) },
+                { ALT: () => this.CONSUME(tokenMap.INTEGER) },
+                { ALT: () => this.CONSUME(tokenMap.DECIMAL) },
+                { ALT: () => this.CONSUME(tokenMap.DOUBLE) },
             ]);
         });
         this.NumericLiteralPositive = this.RULE('NumericLiteralPositive', () => {
             log('NumericLiteralPositive');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.INTEGER_POSITIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DECIMAL_POSITIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DOUBLE_POSITIVE) },
+                { ALT: () => this.CONSUME(tokenMap.INTEGER_POSITIVE) },
+                { ALT: () => this.CONSUME(tokenMap.DECIMAL_POSITIVE) },
+                { ALT: () => this.CONSUME(tokenMap.DOUBLE_POSITIVE) },
             ]);
         });
         this.NumericLiteralNegative = this.RULE('NumericLiteralNegative', () => {
             log('NumericLiteralNegative');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.INTEGER_NEGATIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DECIMAL_NEGATIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DOUBLE_NEGATIVE) },
+                { ALT: () => this.CONSUME(tokenMap.INTEGER_NEGATIVE) },
+                { ALT: () => this.CONSUME(tokenMap.DECIMAL_NEGATIVE) },
+                { ALT: () => this.CONSUME(tokenMap.DOUBLE_NEGATIVE) },
             ]);
         });
         this.BooleanLiteral = this.RULE('BooleanLiteral', () => {
             log('BooleanLiteral');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.TRUE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.FALSE) },
+                { ALT: () => this.CONSUME(tokenMap.TRUE) },
+                { ALT: () => this.CONSUME(tokenMap.FALSE) },
             ]);
         });
         this.String = this.RULE('String', () => {
             log('String');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL1) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL2) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG1) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG2) },
+                { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL1) },
+                { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL2) },
+                { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL_LONG1) },
+                { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL_LONG2) },
             ]);
         });
         this.iri = this.RULE('iri', () => {
             log('iri');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.IRIREF) },
+                { ALT: () => this.CONSUME(tokenMap.IRIREF) },
                 { ALT: () => this.SUBRULE(this.PrefixedName) },
             ]);
         });
         this.PrefixedName = this.RULE('PrefixedName', () => {
             log('PrefixedName');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_LN) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_NS) },
+                { ALT: () => this.CONSUME(tokenMap.PNAME_LN) },
+                { ALT: () => this.CONSUME(tokenMap.PNAME_NS) },
             ]);
         });
         this.BlankNode = this.RULE('BlankNode', () => {
             log('BlankNode');
             this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.BLANK_NODE_LABEL) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.ANON) },
+                { ALT: () => this.CONSUME(tokenMap.BLANK_NODE_LABEL) },
+                { ALT: () => this.CONSUME(tokenMap.ANON) },
             ]);
         });
-        this.lexer = new chevrotain_1.Lexer(tokenVocab);
+        this.lexer = new Lexer(tokenVocab);
     }
 }
-exports.BaseSparqlParser = BaseSparqlParser;

@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.regex = {
+export const regex = {
     or(...r) {
         return new RegExp(r.map(({ source }) => `(${source})`).join('|'));
     },

@@ -464,3 +464,5 @@ export const pathsTokens = [
   tokenMap.PATHS_ALL,
   tokenMap.PATHS,
 ];
+
+export const tokenTypes = [...baseTokens, ...pathsTokens];

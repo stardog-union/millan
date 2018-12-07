@@ -3,6 +3,18 @@ import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
 
+const typescriptConfig = {
+  typescript: require('typescript'),
+  tsconfigOverride: {
+    compilerOptions: {
+      // Don't have rollup generate declarations -- the plugin doesn't do
+      // it right, seemingly because there are multiple compilations.
+      // Possibly related issue: https://github.com/ezolenko/rollup-plugin-typescript2/issues/72
+      declaration: false,
+    },
+  },
+};
+
 export default [
   {
     input: 'src/index.ts',
@@ -15,11 +27,7 @@ export default [
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
     ],
-    plugins: [
-      typescript(),
-      commonjs(),
-      resolve()
-    ],
+    plugins: [typescript(typescriptConfig), commonjs(), resolve()],
   },
   {
     input: 'src/index.ts',
@@ -37,10 +45,6 @@ export default [
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
     ],
-    plugins: [
-      typescript({
-        typescript: require('typescript'),
-      }),
-    ],
+    plugins: [typescript(typescriptConfig)],
   },
 ];

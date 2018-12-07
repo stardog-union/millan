@@ -1,4 +1,4 @@
-import { IToken, IRecognitionException, CstNode } from 'chevrotain';
+import { IToken, IRecognitionException, CstNode, TokenType } from 'chevrotain';
 export interface IStardogParser {
   tokenize: (document: string) => IToken[];
   parse: (
@@ -8,4 +8,4 @@ export interface IStardogParser {
     cst: CstNode;
   };
 }
-export { IToken, CstNode };
+export { IToken, CstNode, TokenType };

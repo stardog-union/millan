@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.traverse = (root, visit) => {
+export const traverse = (root, visit) => {
     _traverse(root, null, visit);
 };
-function isCstNode(object) {
+export function isCstNode(object) {
     return 'name' in object;
 }
-exports.isCstNode = isCstNode;
 class TraverseContext {
     constructor({ node, parentCtx, }) {
         this.node = Object.assign({}, node);
