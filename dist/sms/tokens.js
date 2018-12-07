@@ -1,28 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const tokens_1 = require("../tokens");
-const chevrotain_1 = require("chevrotain");
-const FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
-const FROM_JSON_BLOCK_END_MATCHER = /((?:.|\s)*?)to\s*{/i;
+var tokens_1 = require("../tokens");
+var chevrotain_1 = require("chevrotain");
+var FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
+var FROM_JSON_BLOCK_END_MATCHER = /((?:.|\s)*?)to\s*{/i;
 // Because the end of `FROM` clauses in SMS are not explicit, tokenizing them
 // using regexes can be incredibly inefficient. This function gives us a bit
 // more control; it scans through the document character by character until
 // it finds a character which is _likely_ to be followed by an ending pattern,
 // and only then does it use a regex to confirm.
-const explicitEndMatcher = (textToMatch, endCandidateChar, // Char which, if found, triggers an exec of endMatcher
+var explicitEndMatcher = function (textToMatch, endCandidateChar, // Char which, if found, triggers an exec of endMatcher
 endMatcher // Regex which matches an end pattern
-) => {
-    for (let offset = 0, char; offset < textToMatch.length; offset++) {
+) {
+    for (var offset = 0, char = void 0; offset < textToMatch.length; offset++) {
         char = textToMatch[offset];
         if (char === endCandidateChar) {
-            const blockEndCandidate = textToMatch.slice(offset + 1);
-            const match = endMatcher.exec(blockEndCandidate);
+            var blockEndCandidate = textToMatch.slice(offset + 1);
+            var match = endMatcher.exec(blockEndCandidate);
             if (!match) {
                 continue;
             }
             else {
-                const blockText = textToMatch.slice(0, offset);
-                const response = [blockText];
+                var blockText = textToMatch.slice(0, offset);
+                var response = [blockText];
                 return response;
             }
         }
@@ -99,48 +99,51 @@ exports.tokenMap = {
     }),
     SqlBlock: chevrotain_1.createToken({
         name: 'SqlBlock',
-        pattern: (text, startOffset = 0, matchedTokensSoFar) => {
-            const [secondToLastToken, lastToken] = matchedTokensSoFar.slice(-2);
+        pattern: function (text, startOffset, matchedTokensSoFar) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var _a = matchedTokensSoFar.slice(-2), secondToLastToken = _a[0], lastToken = _a[1];
             if (!secondToLastToken ||
                 !lastToken ||
                 secondToLastToken.tokenType.tokenName !== exports.tokenMap.Sql.tokenName ||
                 lastToken.tokenType.tokenName !== exports.tokenMap.LCurly.tokenName) {
                 return null;
             }
-            const textToMatch = text.slice(startOffset);
+            var textToMatch = text.slice(startOffset);
             return explicitEndMatcher(textToMatch, '}', FROM_BLOCK_END_MATCHER);
         },
         line_breaks: true,
     }),
     JsonBlock: chevrotain_1.createToken({
         name: 'JsonBlock',
-        pattern: (text, startOffset = 0, matchedTokensSoFar) => {
-            const [lastToken] = matchedTokensSoFar.slice(-1);
+        pattern: function (text, startOffset, matchedTokensSoFar) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var lastToken = matchedTokensSoFar.slice(-1)[0];
             if (!lastToken ||
                 lastToken.tokenType.tokenName !== exports.tokenMap.Json.tokenName) {
                 return null;
             }
-            const textToMatch = text.slice(startOffset);
-            const match = FROM_JSON_BLOCK_END_MATCHER.exec(textToMatch);
+            var textToMatch = text.slice(startOffset);
+            var match = FROM_JSON_BLOCK_END_MATCHER.exec(textToMatch);
             if (!match) {
                 return null;
             }
-            const capturedMatch = match.slice(1);
+            var capturedMatch = match.slice(1);
             return capturedMatch;
         },
         line_breaks: true,
     }),
     GraphQlBlock: chevrotain_1.createToken({
         name: 'GraphQlBlock',
-        pattern: (text, startOffset = 0, matchedTokensSoFar) => {
-            const [secondToLastToken, lastToken] = matchedTokensSoFar.slice(-2);
+        pattern: function (text, startOffset, matchedTokensSoFar) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var _a = matchedTokensSoFar.slice(-2), secondToLastToken = _a[0], lastToken = _a[1];
             if (!secondToLastToken ||
                 !lastToken ||
                 secondToLastToken.tokenType.tokenName !== exports.tokenMap.GraphQl.tokenName ||
                 lastToken.tokenType.tokenName !== exports.tokenMap.LCurly.tokenName) {
                 return null;
             }
-            const textToMatch = text.slice(startOffset);
+            var textToMatch = text.slice(startOffset);
             return explicitEndMatcher(textToMatch, '}', FROM_BLOCK_END_MATCHER);
         },
         line_breaks: true,

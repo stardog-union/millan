@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore: import types for declarations
-const chevrotain_1 = require("chevrotain");
-const terminals_1 = require("./terminals");
-const keywords_1 = require("./keywords");
+var chevrotain_1 = require("chevrotain");
+var terminals_1 = require("./terminals");
+var keywords_1 = require("./keywords");
 exports.tokenMap = {
     IRIREF: terminals_1.terminals.IRIREF,
     LANGTAG: terminals_1.terminals.LANGTAG,

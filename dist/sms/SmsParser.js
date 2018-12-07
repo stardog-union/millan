@@ -1,299 +1,324 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const chevrotain_1 = require("chevrotain");
-const tokens_1 = require("./tokens");
-class SmsParser extends chevrotain_1.Parser {
-    constructor(config) {
-        super([], tokens_1.tokenTypes, Object.assign({ outputCst: true, recoveryEnabled: true }, config));
-        this.tokenize = (document) => this.lexer.tokenize(document).tokens;
-        this.parse = (document) => {
-            this.input = this.lexer.tokenize(document).tokens;
-            const cst = this.MappingDoc();
-            const errors = this.errors;
+var chevrotain_1 = require("chevrotain");
+var tokens_1 = require("./tokens");
+var SmsParser = /** @class */ (function (_super) {
+    __extends(SmsParser, _super);
+    function SmsParser(config) {
+        var _this = _super.call(this, [], tokens_1.tokenTypes, __assign({ outputCst: true, recoveryEnabled: true }, config)) || this;
+        _this.tokenize = function (document) {
+            return _this.lexer.tokenize(document).tokens;
+        };
+        _this.parse = function (document) {
+            _this.input = _this.lexer.tokenize(document).tokens;
+            var cst = _this.MappingDoc();
+            var errors = _this.errors;
             return {
-                errors,
-                cst,
+                errors: errors,
+                cst: cst,
             };
         };
-        this.MappingDoc = this.RULE('MappingDoc', () => {
-            this.MANY(() => this.SUBRULE(this.PrefixDecl));
-            this.SUBRULE(this.MappingClause);
-            this.MANY1(() => {
-                this.CONSUME(tokens_1.tokenMap.Semicolon);
-                this.SUBRULE1(this.MappingClause);
+        _this.MappingDoc = _this.RULE('MappingDoc', function () {
+            _this.MANY(function () { return _this.SUBRULE(_this.PrefixDecl); });
+            _this.SUBRULE(_this.MappingClause);
+            _this.MANY1(function () {
+                _this.CONSUME(tokens_1.tokenMap.Semicolon);
+                _this.SUBRULE1(_this.MappingClause);
             });
         });
-        this.MappingClause = this.RULE('MappingClause', () => {
-            this.SUBRULE(this.MappingDecl);
-            this.SUBRULE(this.FromClause);
-            this.SUBRULE(this.ToClause);
-            this.SUBRULE(this.WhereClause);
+        _this.MappingClause = _this.RULE('MappingClause', function () {
+            _this.SUBRULE(_this.MappingDecl);
+            _this.SUBRULE(_this.FromClause);
+            _this.SUBRULE(_this.ToClause);
+            _this.SUBRULE(_this.WhereClause);
         });
-        this.MappingDecl = this.RULE('MappingDecl', () => {
-            this.CONSUME(tokens_1.tokenMap.Mapping);
-            this.OPTION(() => this.SUBRULE(this.iri));
+        _this.MappingDecl = _this.RULE('MappingDecl', function () {
+            _this.CONSUME(tokens_1.tokenMap.Mapping);
+            _this.OPTION(function () { return _this.SUBRULE(_this.iri); });
         });
-        this.FromClause = this.RULE('FromClause', () => {
-            this.CONSUME(tokens_1.tokenMap.FROM);
-            this.OR([
+        _this.FromClause = _this.RULE('FromClause', function () {
+            _this.CONSUME(tokens_1.tokenMap.FROM);
+            _this.OR([
                 {
-                    ALT: () => this.SUBRULE(this.SqlClause),
+                    ALT: function () { return _this.SUBRULE(_this.SqlClause); },
                 },
                 {
-                    ALT: () => this.SUBRULE(this.JsonClause),
+                    ALT: function () { return _this.SUBRULE(_this.JsonClause); },
                 },
                 {
-                    ALT: () => this.SUBRULE(this.GraphQlClause),
+                    ALT: function () { return _this.SUBRULE(_this.GraphQlClause); },
                 },
             ]);
         });
-        this.JsonClause = this.RULE('JsonClause', () => {
-            this.CONSUME(tokens_1.tokenMap.Json);
+        _this.JsonClause = _this.RULE('JsonClause', function () {
+            _this.CONSUME(tokens_1.tokenMap.Json);
             // this.CONSUME(tokenMap.LCurly);
-            this.CONSUME(tokens_1.tokenMap.JsonBlock);
+            _this.CONSUME(tokens_1.tokenMap.JsonBlock);
             // this.CONSUME(tokenMap.RCurly);
         });
-        this.GraphQlClause = this.RULE('GraphQlClause', () => {
-            this.CONSUME(tokens_1.tokenMap.GraphQl);
-            this.CONSUME(tokens_1.tokenMap.LCurly);
-            this.CONSUME(tokens_1.tokenMap.GraphQlBlock);
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+        _this.GraphQlClause = _this.RULE('GraphQlClause', function () {
+            _this.CONSUME(tokens_1.tokenMap.GraphQl);
+            _this.CONSUME(tokens_1.tokenMap.LCurly);
+            _this.CONSUME(tokens_1.tokenMap.GraphQlBlock);
+            _this.CONSUME(tokens_1.tokenMap.RCurly);
         });
-        this.SqlClause = this.RULE('SqlClause', () => {
-            this.CONSUME(tokens_1.tokenMap.Sql);
-            this.CONSUME(tokens_1.tokenMap.LCurly);
-            this.CONSUME(tokens_1.tokenMap.SqlBlock);
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+        _this.SqlClause = _this.RULE('SqlClause', function () {
+            _this.CONSUME(tokens_1.tokenMap.Sql);
+            _this.CONSUME(tokens_1.tokenMap.LCurly);
+            _this.CONSUME(tokens_1.tokenMap.SqlBlock);
+            _this.CONSUME(tokens_1.tokenMap.RCurly);
         });
-        this.ToClause = this.RULE('ToClause', () => {
-            this.CONSUME(tokens_1.tokenMap.TO);
-            this.SUBRULE(this.ConstructTemplate);
+        _this.ToClause = _this.RULE('ToClause', function () {
+            _this.CONSUME(tokens_1.tokenMap.TO);
+            _this.SUBRULE(_this.ConstructTemplate);
         });
-        this.WhereClause = this.RULE('WhereClause', () => {
-            this.CONSUME(tokens_1.tokenMap.WHERE);
-            this.CONSUME(tokens_1.tokenMap.LCurly);
-            this.MANY(() => this.SUBRULE(this.Bind));
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+        _this.WhereClause = _this.RULE('WhereClause', function () {
+            _this.CONSUME(tokens_1.tokenMap.WHERE);
+            _this.CONSUME(tokens_1.tokenMap.LCurly);
+            _this.MANY(function () { return _this.SUBRULE(_this.Bind); });
+            _this.CONSUME(tokens_1.tokenMap.RCurly);
         });
-        this.Bind = this.RULE('Bind', () => {
-            this.CONSUME(tokens_1.tokenMap.BIND);
-            this.CONSUME(tokens_1.tokenMap.LParen);
-            this.SUBRULE(this.TemplateOrCast);
-            this.CONSUME(tokens_1.tokenMap.AS);
-            this.SUBRULE(this.Var);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+        _this.Bind = _this.RULE('Bind', function () {
+            _this.CONSUME(tokens_1.tokenMap.BIND);
+            _this.CONSUME(tokens_1.tokenMap.LParen);
+            _this.SUBRULE(_this.TemplateOrCast);
+            _this.CONSUME(tokens_1.tokenMap.AS);
+            _this.SUBRULE(_this.Var);
+            _this.CONSUME(tokens_1.tokenMap.RParen);
         });
-        this.TemplateOrCast = this.RULE('TemplateOrCast', () => {
-            this.OR([
+        _this.TemplateOrCast = _this.RULE('TemplateOrCast', function () {
+            _this.OR([
                 {
-                    ALT: () => this.SUBRULE(this.TemplateFunc),
+                    ALT: function () { return _this.SUBRULE(_this.TemplateFunc); },
                 },
                 {
-                    ALT: () => this.SUBRULE(this.CastFunc),
+                    ALT: function () { return _this.SUBRULE(_this.CastFunc); },
                 },
             ]);
         });
-        this.CastFunc = this.RULE('CastFunc', () => {
-            this.SUBRULE(this.iri);
-            this.CONSUME(tokens_1.tokenMap.LParen);
-            this.SUBRULE(this.Var);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+        _this.CastFunc = _this.RULE('CastFunc', function () {
+            _this.SUBRULE(_this.iri);
+            _this.CONSUME(tokens_1.tokenMap.LParen);
+            _this.SUBRULE(_this.Var);
+            _this.CONSUME(tokens_1.tokenMap.RParen);
         });
-        this.TemplateFunc = this.RULE('TemplateFunc', () => {
-            this.CONSUME(tokens_1.tokenMap.Template);
-            this.CONSUME(tokens_1.tokenMap.LParen);
-            this.SUBRULE(this.String);
-            this.CONSUME(tokens_1.tokenMap.RParen);
+        _this.TemplateFunc = _this.RULE('TemplateFunc', function () {
+            _this.CONSUME(tokens_1.tokenMap.Template);
+            _this.CONSUME(tokens_1.tokenMap.LParen);
+            _this.SUBRULE(_this.String);
+            _this.CONSUME(tokens_1.tokenMap.RParen);
         });
         //
         // Dupes from Sparql
         //
-        this.PrefixDecl = this.RULE('PrefixDecl', () => {
-            this.CONSUME(tokens_1.tokenMap.PREFIX);
-            this.CONSUME(tokens_1.tokenMap.PNAME_NS);
-            this.CONSUME(tokens_1.tokenMap.IRIREF);
+        _this.PrefixDecl = _this.RULE('PrefixDecl', function () {
+            _this.CONSUME(tokens_1.tokenMap.PREFIX);
+            _this.CONSUME(tokens_1.tokenMap.PNAME_NS);
+            _this.CONSUME(tokens_1.tokenMap.IRIREF);
         });
-        this.iri = this.RULE('iri', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.IRIREF) },
-                { ALT: () => this.SUBRULE(this.PrefixedName) },
+        _this.iri = _this.RULE('iri', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.IRIREF); } },
+                { ALT: function () { return _this.SUBRULE(_this.PrefixedName); } },
             ]);
         });
-        this.PrefixedName = this.RULE('PrefixedName', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_LN) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.PNAME_NS) },
+        _this.PrefixedName = _this.RULE('PrefixedName', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.PNAME_LN); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.PNAME_NS); } },
             ]);
         });
-        this.ConstructTemplate = this.RULE('ConstructTemplate', () => {
-            this.CONSUME(tokens_1.tokenMap.LCurly);
-            this.OPTION(() => this.SUBRULE(this.ConstructTriples));
-            this.CONSUME(tokens_1.tokenMap.RCurly);
+        _this.ConstructTemplate = _this.RULE('ConstructTemplate', function () {
+            _this.CONSUME(tokens_1.tokenMap.LCurly);
+            _this.OPTION(function () { return _this.SUBRULE(_this.ConstructTriples); });
+            _this.CONSUME(tokens_1.tokenMap.RCurly);
         });
-        this.ConstructTriples = this.RULE('ConstructTriples', () => {
-            this.SUBRULE(this.TriplesSameSubject);
-            this.OPTION(() => {
-                this.CONSUME(tokens_1.tokenMap.Period);
-                this.OPTION1(() => this.SUBRULE(this.ConstructTriples));
+        _this.ConstructTriples = _this.RULE('ConstructTriples', function () {
+            _this.SUBRULE(_this.TriplesSameSubject);
+            _this.OPTION(function () {
+                _this.CONSUME(tokens_1.tokenMap.Period);
+                _this.OPTION1(function () { return _this.SUBRULE(_this.ConstructTriples); });
             });
         });
-        this.TriplesSameSubject = this.RULE('TriplesSameSubject', () => {
-            this.OR([
+        _this.TriplesSameSubject = _this.RULE('TriplesSameSubject', function () {
+            _this.OR([
                 {
-                    ALT: () => {
-                        this.SUBRULE(this.VarOrTerm);
-                        this.SUBRULE(this.PropertyListNotEmpty);
+                    ALT: function () {
+                        _this.SUBRULE(_this.VarOrTerm);
+                        _this.SUBRULE(_this.PropertyListNotEmpty);
                     },
                 },
                 {
-                    ALT: () => {
-                        this.SUBRULE(this.TriplesNode);
-                        this.SUBRULE(this.PropertyList);
+                    ALT: function () {
+                        _this.SUBRULE(_this.TriplesNode);
+                        _this.SUBRULE(_this.PropertyList);
                     },
                 },
             ]);
         });
-        this.VarOrTerm = this.RULE('VarOrTerm', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.Var) },
-                { ALT: () => this.SUBRULE(this.GraphTerm) },
+        _this.VarOrTerm = _this.RULE('VarOrTerm', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.Var); } },
+                { ALT: function () { return _this.SUBRULE(_this.GraphTerm); } },
             ]);
         });
-        this.PropertyListNotEmpty = this.RULE('PropertyListNotEmpty', () => {
-            this.SUBRULE(this.Verb);
-            this.SUBRULE(this.ObjectList);
-            this.MANY(() => {
-                this.CONSUME(tokens_1.tokenMap.Semicolon);
-                this.OPTION(() => {
-                    this.SUBRULE1(this.Verb);
-                    this.SUBRULE1(this.ObjectList);
+        _this.PropertyListNotEmpty = _this.RULE('PropertyListNotEmpty', function () {
+            _this.SUBRULE(_this.Verb);
+            _this.SUBRULE(_this.ObjectList);
+            _this.MANY(function () {
+                _this.CONSUME(tokens_1.tokenMap.Semicolon);
+                _this.OPTION(function () {
+                    _this.SUBRULE1(_this.Verb);
+                    _this.SUBRULE1(_this.ObjectList);
                 });
             });
         });
-        this.TriplesNode = this.RULE('TriplesNode', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.Collection) },
-                { ALT: () => this.SUBRULE(this.BlankNodePropertyList) },
+        _this.TriplesNode = _this.RULE('TriplesNode', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.Collection); } },
+                { ALT: function () { return _this.SUBRULE(_this.BlankNodePropertyList); } },
             ]);
         });
-        this.PropertyList = this.RULE('PropertyList', () => {
-            this.OPTION(() => this.SUBRULE(this.PropertyListNotEmpty));
+        _this.PropertyList = _this.RULE('PropertyList', function () {
+            _this.OPTION(function () { return _this.SUBRULE(_this.PropertyListNotEmpty); });
         });
-        this.GraphTerm = this.RULE('GraphTerm', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.iri) },
-                { ALT: () => this.SUBRULE(this.RDFLiteral) },
-                { ALT: () => this.SUBRULE(this.NumericLiteral) },
-                { ALT: () => this.SUBRULE(this.BooleanLiteral) },
-                { ALT: () => this.SUBRULE(this.BlankNode) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.NIL) },
+        _this.GraphTerm = _this.RULE('GraphTerm', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.iri); } },
+                { ALT: function () { return _this.SUBRULE(_this.RDFLiteral); } },
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteral); } },
+                { ALT: function () { return _this.SUBRULE(_this.BooleanLiteral); } },
+                { ALT: function () { return _this.SUBRULE(_this.BlankNode); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.NIL); } },
             ]);
         });
-        this.Verb = this.RULE('Verb', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.VarOrIri) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.A) },
+        _this.Verb = _this.RULE('Verb', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.VarOrIri); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.A); } },
             ]);
         });
-        this.ObjectList = this.RULE('ObjectList', () => {
-            this.AT_LEAST_ONE_SEP({
+        _this.ObjectList = _this.RULE('ObjectList', function () {
+            _this.AT_LEAST_ONE_SEP({
                 SEP: tokens_1.tokenMap.Comma,
-                DEF: () => this.SUBRULE(this.Object),
+                DEF: function () { return _this.SUBRULE(_this.Object); },
             });
         });
-        this.Object = this.RULE('Object', () => {
-            this.SUBRULE(this.GraphNode);
+        _this.Object = _this.RULE('Object', function () {
+            _this.SUBRULE(_this.GraphNode);
         });
-        this.Collection = this.RULE('Collection', () => {
-            this.CONSUME(tokens_1.tokenMap.LParen);
-            this.AT_LEAST_ONE(() => this.SUBRULE(this.GraphNode));
-            this.CONSUME(tokens_1.tokenMap.RParen);
+        _this.Collection = _this.RULE('Collection', function () {
+            _this.CONSUME(tokens_1.tokenMap.LParen);
+            _this.AT_LEAST_ONE(function () { return _this.SUBRULE(_this.GraphNode); });
+            _this.CONSUME(tokens_1.tokenMap.RParen);
         });
-        this.BlankNodePropertyList = this.RULE('BlankNodePropertyList', () => {
-            this.CONSUME(tokens_1.tokenMap.LBracket);
-            this.SUBRULE(this.PropertyListNotEmpty);
-            this.CONSUME(tokens_1.tokenMap.RBracket);
+        _this.BlankNodePropertyList = _this.RULE('BlankNodePropertyList', function () {
+            _this.CONSUME(tokens_1.tokenMap.LBracket);
+            _this.SUBRULE(_this.PropertyListNotEmpty);
+            _this.CONSUME(tokens_1.tokenMap.RBracket);
         });
-        this.VarOrIri = this.RULE('VarOrIri', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.Var) },
-                { ALT: () => this.SUBRULE(this.iri) },
+        _this.VarOrIri = _this.RULE('VarOrIri', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.Var); } },
+                { ALT: function () { return _this.SUBRULE(_this.iri); } },
             ]);
         });
-        this.RDFLiteral = this.RULE('RDFLiteral', () => {
-            this.SUBRULE(this.String);
-            this.OPTION(() => this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.LANGTAG) },
-                {
-                    ALT: () => {
-                        this.CONSUME(tokens_1.tokenMap.DoubleCaret);
-                        this.SUBRULE(this.iri);
+        _this.RDFLiteral = _this.RULE('RDFLiteral', function () {
+            _this.SUBRULE(_this.String);
+            _this.OPTION(function () {
+                return _this.OR([
+                    { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.LANGTAG); } },
+                    {
+                        ALT: function () {
+                            _this.CONSUME(tokens_1.tokenMap.DoubleCaret);
+                            _this.SUBRULE(_this.iri);
+                        },
                     },
-                },
-            ]));
+                ]);
+            });
         });
-        this.NumericLiteral = this.RULE('NumericLiteral', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.NumericLiteralUnsigned) },
-                { ALT: () => this.SUBRULE(this.NumericLiteralPositive) },
-                { ALT: () => this.SUBRULE(this.NumericLiteralNegative) },
+        _this.NumericLiteral = _this.RULE('NumericLiteral', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteralUnsigned); } },
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteralPositive); } },
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteralNegative); } },
             ]);
         });
-        this.NumericLiteralUnsigned = this.RULE('NumericLiteralUnsigned', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.INTEGER) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DECIMAL) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DOUBLE) },
+        _this.NumericLiteralUnsigned = _this.RULE('NumericLiteralUnsigned', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.INTEGER); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.DECIMAL); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.DOUBLE); } },
             ]);
         });
-        this.NumericLiteralPositive = this.RULE('NumericLiteralPositive', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.INTEGER_POSITIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DECIMAL_POSITIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DOUBLE_POSITIVE) },
+        _this.NumericLiteralPositive = _this.RULE('NumericLiteralPositive', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.INTEGER_POSITIVE); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.DECIMAL_POSITIVE); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.DOUBLE_POSITIVE); } },
             ]);
         });
-        this.NumericLiteralNegative = this.RULE('NumericLiteralNegative', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.INTEGER_NEGATIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DECIMAL_NEGATIVE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.DOUBLE_NEGATIVE) },
+        _this.NumericLiteralNegative = _this.RULE('NumericLiteralNegative', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.INTEGER_NEGATIVE); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.DECIMAL_NEGATIVE); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.DOUBLE_NEGATIVE); } },
             ]);
         });
-        this.BooleanLiteral = this.RULE('BooleanLiteral', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.TRUE) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.FALSE) },
+        _this.BooleanLiteral = _this.RULE('BooleanLiteral', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.TRUE); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.FALSE); } },
             ]);
         });
-        this.BlankNode = this.RULE('BlankNode', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.BLANK_NODE_LABEL) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.ANON) },
+        _this.BlankNode = _this.RULE('BlankNode', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.BLANK_NODE_LABEL); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.ANON); } },
             ]);
         });
-        this.GraphNode = this.RULE('GraphNode', () => {
-            this.OR([
-                { ALT: () => this.SUBRULE(this.VarOrTerm) },
-                { ALT: () => this.SUBRULE(this.TriplesNode) },
+        _this.GraphNode = _this.RULE('GraphNode', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.VarOrTerm); } },
+                { ALT: function () { return _this.SUBRULE(_this.TriplesNode); } },
             ]);
         });
-        this.Var = this.RULE('Var', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.VAR1) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.VAR2) },
+        _this.Var = _this.RULE('Var', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.VAR1); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.VAR2); } },
             ]);
         });
-        this.String = this.RULE('String', () => {
-            this.OR([
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL1) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL2) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG1) },
-                { ALT: () => this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG2) },
+        _this.String = _this.RULE('String', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.STRING_LITERAL1); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.STRING_LITERAL2); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG1); } },
+                { ALT: function () { return _this.CONSUME(tokens_1.tokenMap.STRING_LITERAL_LONG2); } },
             ]);
         });
-        this.lexer = new chevrotain_1.Lexer(tokens_1.tokenTypes);
-        chevrotain_1.Parser.performSelfAnalysis(this);
+        _this.lexer = new chevrotain_1.Lexer(tokens_1.tokenTypes);
+        chevrotain_1.Parser.performSelfAnalysis(_this);
+        return _this;
     }
-}
+    return SmsParser;
+}(chevrotain_1.Parser));
 exports.SmsParser = SmsParser;

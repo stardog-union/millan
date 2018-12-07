@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // @ts-ignore: import types for declarations
-const chevrotain_1 = require("chevrotain");
-const MAX_LENGTH = chevrotain_1.createToken({
+var chevrotain_1 = require("chevrotain");
+var MAX_LENGTH = chevrotain_1.createToken({
     name: 'MAX_LENGTH',
     pattern: /MAX LENGTH/i,
 });
@@ -491,7 +491,7 @@ exports.keywords = {
         name: 'NOT_IN',
         pattern: /NOT IN/i,
     }),
-    MAX_LENGTH,
+    MAX_LENGTH: MAX_LENGTH,
     MAX: chevrotain_1.createToken({
         name: 'MAX',
         pattern: /MAX/i,

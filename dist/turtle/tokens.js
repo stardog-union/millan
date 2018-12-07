@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const chevrotain_1 = require("chevrotain");
-const tokens_1 = require("../tokens");
-const terminals_1 = require("../terminals");
-const utils_1 = require("../utils");
-const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
-const escapeReplacements = {
+var chevrotain_1 = require("chevrotain");
+var tokens_1 = require("../tokens");
+var terminals_1 = require("../terminals");
+var utils_1 = require("../utils");
+var escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
+var escapeReplacements = {
     '\\': '\\',
     "'": "'",
     '"': '"',
@@ -34,21 +34,21 @@ const escapeReplacements = {
     '@': '@',
     '%': '%',
 };
-const unescape = (item) => {
+var unescape = function (item) {
     try {
-        return item.replace(escapeSequence, (_, unicode4, unicode8, escapedChar) => {
+        return item.replace(escapeSequence, function (_, unicode4, unicode8, escapedChar) {
             if (unicode4) {
                 return String.fromCharCode(parseInt(unicode4, 16));
             }
             else if (unicode8) {
-                let charCode = parseInt(unicode8, 16);
+                var charCode = parseInt(unicode8, 16);
                 if (charCode <= 0xffff) {
                     return String.fromCharCode(charCode);
                 }
                 return String.fromCharCode(0xd800 + (charCode -= 0x10000) / 0x400, 0xdc00 + (charCode & 0x3ff));
             }
             else {
-                const replacement = escapeReplacements[escapedChar];
+                var replacement = escapeReplacements[escapedChar];
                 if (!replacement) {
                     throw new Error();
                 }
@@ -60,15 +60,15 @@ const unescape = (item) => {
         return null;
     }
 };
-const unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
-const unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
-const stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
-const stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
-const stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
-const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
-const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
-const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
-const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
+var unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
+var unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
+var stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
+var stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
+var stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
+var stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
+var illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
+var escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
+var unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
 // const UCHAR = regex.or(
 //   regex.and(/\\u/, HEX, HEX, HEX, HEX),
 //   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
@@ -78,7 +78,7 @@ const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
 // RegExp (`UCHAR`) does not. See this post, which is the source of the RegExp
 // below: https://mathiasbynens.be/notes/javascript-unicode
 // This is a similar resource that might be helpful: https://mathiasbynens.be/notes/es6-unicode-regex
-const unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
+var unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
 exports.tokenMap = {
     Comment: chevrotain_1.createToken({
         name: 'Comment',
@@ -125,8 +125,9 @@ exports.tokenMap = {
     HEX: chevrotain_1.createToken({ name: 'HEX', pattern: terminals_1.HEX }),
     STRING_LITERAL_LONG_SINGLE_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_LONG_SINGLE_QUOTE',
-        pattern: (text, startOffset = 0) => {
-            const match = stringLiteralLongSingleQuote.exec(text.slice(startOffset));
+        pattern: function (text, startOffset) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var match = stringLiteralLongSingleQuote.exec(text.slice(startOffset));
             if (!match || unescape(match[1]) === null) {
                 // Bad characters
                 return null;
@@ -137,8 +138,9 @@ exports.tokenMap = {
     }),
     STRING_LITERAL_LONG_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_LONG_QUOTE',
-        pattern: (text, startOffset = 0) => {
-            const match = stringLiteralLongQuote.exec(text.slice(startOffset));
+        pattern: function (text, startOffset) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var match = stringLiteralLongQuote.exec(text.slice(startOffset));
             if (!match || unescape(match[1]) === null) {
                 // Bad characters
                 return null;
@@ -149,9 +151,10 @@ exports.tokenMap = {
     }),
     STRING_LITERAL_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_QUOTE',
-        pattern: (text, startOffset = 0) => {
-            const textToMatch = text.slice(startOffset);
-            let match = unescapedStringLiteralQuote.exec(textToMatch);
+        pattern: function (text, startOffset) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var textToMatch = text.slice(startOffset);
+            var match = unescapedStringLiteralQuote.exec(textToMatch);
             if (match) {
                 return match;
             }
@@ -169,9 +172,10 @@ exports.tokenMap = {
     }),
     STRING_LITERAL_SINGLE_QUOTE: chevrotain_1.createToken({
         name: 'STRING_LITERAL_SINGLE_QUOTE',
-        pattern: (text, startOffset = 0) => {
-            const textToMatch = text.slice(startOffset);
-            let match = unescapedStringLiteralSingleQuote.exec(textToMatch);
+        pattern: function (text, startOffset) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var textToMatch = text.slice(startOffset);
+            var match = unescapedStringLiteralSingleQuote.exec(textToMatch);
             if (match) {
                 return match;
             }
@@ -189,14 +193,18 @@ exports.tokenMap = {
     }),
     UCHAR: chevrotain_1.createToken({
         name: 'UCHAR',
-        pattern: (text, startOffset = 0) => unicodeRegexp.exec(text.slice(startOffset)),
+        pattern: function (text, startOffset) {
+            if (startOffset === void 0) { startOffset = 0; }
+            return unicodeRegexp.exec(text.slice(startOffset));
+        },
         line_breaks: false,
     }),
     IRIREF: chevrotain_1.createToken({
         name: 'IRIREF',
-        pattern: (text, startOffset = 0) => {
-            const textToMatch = text.slice(startOffset);
-            let match = unescapedIri.exec(textToMatch);
+        pattern: function (text, startOffset) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var textToMatch = text.slice(startOffset);
+            var match = unescapedIri.exec(textToMatch);
             if (match) {
                 return match;
             }
@@ -204,7 +212,7 @@ exports.tokenMap = {
             if (!match) {
                 return null;
             }
-            const value = unescape(match[1]);
+            var value = unescape(match[1]);
             if (value === null || illegalIriChars.test(value)) {
                 return null;
             }
