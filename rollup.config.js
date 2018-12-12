@@ -1,50 +1,76 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
+import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
-const typescriptConfig = {
-  typescript: require('typescript'),
-  tsconfigOverride: {
-    compilerOptions: {
-      // Don't have rollup generate declarations -- the plugin doesn't do
-      // it right, seemingly because there are multiple compilations.
-      // Possibly related issue: https://github.com/ezolenko/rollup-plugin-typescript2/issues/72
-      declaration: false,
-    },
+const onwarn = (warning) => {
+  // Silence overly noisy circular dependency warnings for node_modules
+  if (
+    warning.code === 'CIRCULAR_DEPENDENCY' &&
+    warning.importer.indexOf('node_modules') === 0
+  ) {
+    return;
+  }
+
+  console.warn(`(!) ${warning.message}`);
+};
+
+const commonBuildConfig = {
+  input: 'src/index.ts',
+  onwarn,
+  output: {
+    name: 'millan',
   },
+  external: Object.keys(pkg.peerDependencies || {}),
+  plugins: [
+    commonjs({
+      namedExports: {
+        // https://github.com/rollup/rollup-plugin-commonjs#custom-named-exports
+        'node_modules/chevrotain/lib/src/api.js': [
+          'Parser',
+          'Lexer',
+          'createToken',
+        ],
+      },
+    }),
+    resolve(),
+    typescript({
+      typescript: require('typescript'), // use local typescript
+    }),
+  ],
+  treeshake: true,
 };
 
 export default [
+  { file: pkg.browser, format: 'umd' },
   {
-    input: 'src/index.ts',
-    output: {
-      name: 'millan',
-      file: pkg.browser,
-      format: 'umd',
+    file: pkg.main,
+    format: 'cjs',
+  },
+  {
+    file: pkg.module,
+    format: 'es',
+  },
+].reduce(
+  (fullConfigs, partialConfig) => [
+    ...fullConfigs,
+    {
+      ...commonBuildConfig,
+      output: {
+        ...commonBuildConfig.output,
+        ...partialConfig,
+      },
     },
-    external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
-    ],
-    plugins: [typescript(typescriptConfig), commonjs(), resolve()],
-  },
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: pkg.main,
-        format: 'cjs',
+    {
+      ...commonBuildConfig,
+      output: {
+        ...commonBuildConfig.output,
+        ...partialConfig,
+        file: partialConfig.file.replace(/\.(\w+)$/, '.min.$1'),
       },
-      {
-        file: pkg.module,
-        format: 'es',
-      },
-    ],
-    external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
-    ],
-    plugins: [typescript(typescriptConfig)],
-  },
-];
+      plugins: [...commonBuildConfig.plugins, terser()],
+    },
+  ],
+  []
+);

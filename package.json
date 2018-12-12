@@ -18,6 +18,7 @@
     "rollup": "^0.67.4",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^3.0.0",
     "rollup-plugin-typescript2": "^0.18.0",
     "ts-jest": "^22.4.4",
     "tslint": "^5.9.1",
@@ -26,8 +27,8 @@
   "scripts": {
     "precommit": "node ./build/scripts/precommit.js",
     "test": "jest",
-    "build": "rollup -c && tsc --emitDeclarationOnly",
-    "dev": "rollup -cw; tsc -w --emitDeclarationOnly"
+    "build": "rollup -c",
+    "dev": "rollup -cw"
   },
   "repository": {
     "type": "git",
