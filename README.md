@@ -86,7 +86,7 @@ sparqlParser.tokenize(`
 
 Result:
 
-```json
+```
 [
   {
     "image": "PREFIX",
@@ -126,7 +126,7 @@ sparqlParser.parse(`
 
 Result:
 
-```json
+```
 {
   "errors": [],
   "cst": {
@@ -186,7 +186,7 @@ sparqlParser.parse(`
 
 Result:
 
-```json
+```
 {
   "errors": [
     {
