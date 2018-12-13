@@ -5,7 +5,7 @@ import {
   IToken,
   IRecognitionException,
 } from 'chevrotain';
-import { tokenTypes, tokenMap } from './tokens';
+import { turtleTokenTypes, turtleTokenMap } from './tokens';
 import { IStardogParser } from '../helpers/types';
 
 export class TurtleParser extends Parser implements IStardogParser {
@@ -47,12 +47,12 @@ export class TurtleParser extends Parser implements IStardogParser {
   };
 
   constructor(config?: Partial<IParserConfig>) {
-    super([], tokenTypes, {
+    super([], turtleTokenTypes, {
       outputCst: true,
       recoveryEnabled: true,
       ...config,
     });
-    this.lexer = new Lexer(tokenTypes);
+    this.lexer = new Lexer(turtleTokenTypes);
 
     Parser.performSelfAnalysis(this);
   }
@@ -67,7 +67,7 @@ export class TurtleParser extends Parser implements IStardogParser {
       {
         ALT: () => {
           this.SUBRULE(this.triples);
-          this.CONSUME(tokenMap.Period);
+          this.CONSUME(turtleTokenMap.Period);
         },
       },
     ]);
@@ -83,32 +83,32 @@ export class TurtleParser extends Parser implements IStardogParser {
   });
 
   prefixID = this.RULE('prefixID', () => {
-    this.CONSUME(tokenMap.TTL_PREFIX);
+    this.CONSUME(turtleTokenMap.TTL_PREFIX);
 
-    const pnameNsToken = this.CONSUME(tokenMap.PNAME_NS);
-    const iriToken = this.CONSUME(tokenMap.IRIREF);
+    const pnameNsToken = this.CONSUME(turtleTokenMap.PNAME_NS);
+    const iriToken = this.CONSUME(turtleTokenMap.IRIREF);
     const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
     const iriImage = iriToken.image;
     this.namespacesMap[pnameImageWithoutColon] = iriImage;
 
-    this.CONSUME(tokenMap.Period);
+    this.CONSUME(turtleTokenMap.Period);
   });
 
   base = this.RULE('base', () => {
-    this.CONSUME(tokenMap.TTL_BASE);
-    this.CONSUME(tokenMap.IRIREF);
-    this.CONSUME(tokenMap.Period);
+    this.CONSUME(turtleTokenMap.TTL_BASE);
+    this.CONSUME(turtleTokenMap.IRIREF);
+    this.CONSUME(turtleTokenMap.Period);
   });
 
   sparqlBase = this.RULE('sparqlBase', () => {
-    this.CONSUME(tokenMap.BASE);
-    this.CONSUME(tokenMap.IRIREF);
+    this.CONSUME(turtleTokenMap.BASE);
+    this.CONSUME(turtleTokenMap.IRIREF);
   });
 
   sparqlPrefix = this.RULE('sparqlPrefix', () => {
-    this.CONSUME(tokenMap.PREFIX);
-    const pnameNsToken = this.CONSUME(tokenMap.PNAME_NS);
-    const iriToken = this.CONSUME(tokenMap.IRIREF);
+    this.CONSUME(turtleTokenMap.PREFIX);
+    const pnameNsToken = this.CONSUME(turtleTokenMap.PNAME_NS);
+    const iriToken = this.CONSUME(turtleTokenMap.IRIREF);
     const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
     const iriImage = iriToken.image;
     this.namespacesMap[pnameImageWithoutColon] = iriImage;
@@ -135,14 +135,14 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.SUBRULE(this.verb);
     this.SUBRULE(this.objectList);
     this.OPTION(() => {
-      this.CONSUME(tokenMap.Semicolon);
+      this.CONSUME(turtleTokenMap.Semicolon);
       this.OPTION1(() => {
         this.SUBRULE1(this.verb);
         this.SUBRULE1(this.objectList);
       });
     });
     this.MANY(() => {
-      this.CONSUME1(tokenMap.Semicolon);
+      this.CONSUME1(turtleTokenMap.Semicolon);
       this.OPTION2(() => {
         this.SUBRULE2(this.verb);
         this.SUBRULE2(this.objectList);
@@ -165,7 +165,7 @@ export class TurtleParser extends Parser implements IStardogParser {
   objectList = this.RULE('objectList', () => {
     this.SUBRULE(this.object);
     this.MANY(() => {
-      this.CONSUME(tokenMap.Comma);
+      this.CONSUME(turtleTokenMap.Comma);
       this.SUBRULE1(this.object);
     });
   });
@@ -173,7 +173,7 @@ export class TurtleParser extends Parser implements IStardogParser {
   verb = this.RULE('verb', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.predicate) },
-      { ALT: () => this.CONSUME(tokenMap.A) },
+      { ALT: () => this.CONSUME(turtleTokenMap.A) },
     ]);
   });
 
@@ -186,9 +186,9 @@ export class TurtleParser extends Parser implements IStardogParser {
   });
 
   blankNodePropertyList = this.RULE('blankNodePropertyList', () => {
-    this.CONSUME(tokenMap.LBracket);
+    this.CONSUME(turtleTokenMap.LBracket);
     this.SUBRULE(this.predicateObjectList);
-    this.CONSUME(tokenMap.RBracket);
+    this.CONSUME(turtleTokenMap.RBracket);
   });
 
   object = this.RULE('object', () => {
@@ -202,16 +202,16 @@ export class TurtleParser extends Parser implements IStardogParser {
   });
 
   collection = this.RULE('collection', () => {
-    this.CONSUME(tokenMap.LParen);
+    this.CONSUME(turtleTokenMap.LParen);
     this.MANY(() => this.SUBRULE(this.object));
-    this.CONSUME(tokenMap.RParen);
+    this.CONSUME(turtleTokenMap.RParen);
   });
 
   NumericLiteral = this.RULE('NumericLiteral', () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokenMap.INTEGER) },
-      { ALT: () => this.CONSUME(tokenMap.DECIMAL) },
-      { ALT: () => this.CONSUME(tokenMap.DOUBLE) },
+      { ALT: () => this.CONSUME(turtleTokenMap.INTEGER) },
+      { ALT: () => this.CONSUME(turtleTokenMap.DECIMAL) },
+      { ALT: () => this.CONSUME(turtleTokenMap.DOUBLE) },
     ]);
   });
 
@@ -219,10 +219,10 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.SUBRULE(this.String);
     this.OPTION(() => {
       this.OR([
-        { ALT: () => this.CONSUME(tokenMap.LANGTAG) },
+        { ALT: () => this.CONSUME(turtleTokenMap.LANGTAG) },
         {
           ALT: () => {
-            this.CONSUME(tokenMap.DoubleCaret);
+            this.CONSUME(turtleTokenMap.DoubleCaret);
             this.SUBRULE(this.iri);
           },
         },
@@ -232,31 +232,34 @@ export class TurtleParser extends Parser implements IStardogParser {
 
   BooleanLiteral = this.RULE('BooleanLiteral', () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokenMap.TRUE) },
-      { ALT: () => this.CONSUME(tokenMap.FALSE) },
+      { ALT: () => this.CONSUME(turtleTokenMap.TRUE) },
+      { ALT: () => this.CONSUME(turtleTokenMap.FALSE) },
     ]);
   });
 
   String = this.RULE('String', () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL_QUOTE) },
-      { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL_SINGLE_QUOTE) },
-      { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE) },
-      { ALT: () => this.CONSUME(tokenMap.STRING_LITERAL_LONG_QUOTE) },
+      { ALT: () => this.CONSUME(turtleTokenMap.STRING_LITERAL_QUOTE) },
+      { ALT: () => this.CONSUME(turtleTokenMap.STRING_LITERAL_SINGLE_QUOTE) },
+      {
+        ALT: () =>
+          this.CONSUME(turtleTokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE),
+      },
+      { ALT: () => this.CONSUME(turtleTokenMap.STRING_LITERAL_LONG_QUOTE) },
     ]);
   });
 
   iri = this.RULE('iri', () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokenMap.IRIREF) },
+      { ALT: () => this.CONSUME(turtleTokenMap.IRIREF) },
       { ALT: () => this.SUBRULE(this.PrefixedName) },
     ]);
   });
 
   PrefixedName = this.RULE('PrefixedName', () => {
     const prefixedNameToken = this.OR([
-      { ALT: () => this.CONSUME(tokenMap.PNAME_LN) },
-      { ALT: () => this.CONSUME(tokenMap.PNAME_NS) },
+      { ALT: () => this.CONSUME(turtleTokenMap.PNAME_LN) },
+      { ALT: () => this.CONSUME(turtleTokenMap.PNAME_NS) },
     ]);
     const pnameNsImage = prefixedNameToken.image.slice(
       0,
@@ -278,8 +281,8 @@ export class TurtleParser extends Parser implements IStardogParser {
 
   BlankNode = this.RULE('BlankNode', () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokenMap.BLANK_NODE_LABEL) },
-      { ALT: () => this.CONSUME(tokenMap.ANON) },
+      { ALT: () => this.CONSUME(turtleTokenMap.BLANK_NODE_LABEL) },
+      { ALT: () => this.CONSUME(turtleTokenMap.ANON) },
     ]);
   });
 }

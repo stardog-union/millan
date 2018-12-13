@@ -11,4 +11,5 @@ gradle/
 .settings
 .vscode
 .rpt2_cache/
+yarn-error.log
 

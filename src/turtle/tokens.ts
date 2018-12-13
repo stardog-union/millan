@@ -1,5 +1,5 @@
 import { createToken, TokenType } from 'chevrotain';
-import { tokenMap as sparqlTokenMap } from '../sparql/tokens';
+import { sparqlTokenMap } from '../sparql/tokens';
 import { regex } from '../helpers/regex';
 import {
   EXPONENT,
@@ -28,7 +28,7 @@ import {
 
 const unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
 
-export const tokenMap = {
+export const turtleTokenMap = {
   Comment: createToken({
     name: 'Comment',
     pattern: /#[^\n]*/,
@@ -200,8 +200,8 @@ export const tokenMap = {
   }),
 };
 
-export const tokenTypes: TokenType[] = [
-  tokenMap.Comment,
+export const turtleTokenTypes: TokenType[] = [
+  turtleTokenMap.Comment,
   sparqlTokenMap.ANON,
   sparqlTokenMap.LBracket,
   sparqlTokenMap.RBracket,
@@ -218,30 +218,30 @@ export const tokenTypes: TokenType[] = [
   sparqlTokenMap.BASE,
   sparqlTokenMap.PNAME_LN,
   sparqlTokenMap.BLANK_NODE_LABEL,
-  tokenMap.TTL_BASE,
-  tokenMap.TTL_PREFIX,
+  turtleTokenMap.TTL_BASE,
+  turtleTokenMap.TTL_PREFIX,
   sparqlTokenMap.LANGTAG,
-  tokenMap.DOUBLE,
-  tokenMap.DECIMAL,
+  turtleTokenMap.DOUBLE,
+  turtleTokenMap.DECIMAL,
   sparqlTokenMap.Period,
   sparqlTokenMap.DoubleCaret,
-  tokenMap.IRIREF,
-  tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
-  tokenMap.STRING_LITERAL_LONG_QUOTE,
-  tokenMap.STRING_LITERAL_QUOTE,
-  tokenMap.STRING_LITERAL_SINGLE_QUOTE,
-  tokenMap.INTEGER,
-  tokenMap.EXPONENT,
-  tokenMap.PLX,
+  turtleTokenMap.IRIREF,
+  turtleTokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
+  turtleTokenMap.STRING_LITERAL_LONG_QUOTE,
+  turtleTokenMap.STRING_LITERAL_QUOTE,
+  turtleTokenMap.STRING_LITERAL_SINGLE_QUOTE,
+  turtleTokenMap.INTEGER,
+  turtleTokenMap.EXPONENT,
+  turtleTokenMap.PLX,
   sparqlTokenMap.PERCENT,
-  tokenMap.HEX,
-  tokenMap.PN_CHARS_BASE,
-  tokenMap.PN_CHARS_U,
-  tokenMap.PN_CHARS,
-  tokenMap.PN_PREFIX,
-  tokenMap.PN_LOCAL,
-  tokenMap.PN_LOCAL_ESC,
-  tokenMap.ECHAR,
-  tokenMap.UCHAR,
-  tokenMap.Unknown,
+  turtleTokenMap.HEX,
+  turtleTokenMap.PN_CHARS_BASE,
+  turtleTokenMap.PN_CHARS_U,
+  turtleTokenMap.PN_CHARS,
+  turtleTokenMap.PN_PREFIX,
+  turtleTokenMap.PN_LOCAL,
+  turtleTokenMap.PN_LOCAL_ESC,
+  turtleTokenMap.ECHAR,
+  turtleTokenMap.UCHAR,
+  turtleTokenMap.Unknown,
 ];
