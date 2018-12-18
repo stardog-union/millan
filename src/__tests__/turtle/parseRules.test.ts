@@ -1,9 +1,9 @@
 import { TurtleParser } from '../../turtle/TurtleParser';
-import { tokenTypes as vocabulary } from '../../turtle/tokens';
+import { turtleTokenTypes } from '../../turtle/tokens';
 import { Lexer } from 'chevrotain';
 
 const parser = new TurtleParser();
-const turtleLexer = new Lexer(vocabulary);
+const turtleLexer = new Lexer(turtleTokenTypes);
 
 export const parse = (doc: string, rule: Function) => {
   const testTokens = turtleLexer.tokenize(doc).tokens;

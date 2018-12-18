@@ -37,7 +37,6 @@ const _traverse = (
 ) => {
   if (!isCstNode(root)) {
     // must be a token
-
     // make sure to give user a copy
     return visit({ ...ctx });
   }

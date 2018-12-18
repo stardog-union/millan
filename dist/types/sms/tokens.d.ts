@@ -1,5 +1,5 @@
 import { TokenType } from 'chevrotain';
-export declare const tokenMap: {
+export declare const smsTokenMap: {
     STRING_LITERAL1: TokenType;
     STRING_LITERAL2: TokenType;
     STRING_LITERAL_LONG1: TokenType;
@@ -53,4 +53,4 @@ export declare const tokenMap: {
     JsonBlock: TokenType;
     GraphQlBlock: TokenType;
 };
-export declare const tokenTypes: TokenType[];
+export declare const smsTokenTypes: TokenType[];

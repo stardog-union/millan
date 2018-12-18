@@ -1,32 +1,99 @@
 {
+  "name": "millan",
+  "version": "2.0.0",
+  "description": "The Stardog Whisperer (error-tolerant parsers for languages used with Stardog)",
+  "keywords": [
+    "stardog",
+    "sparql",
+    "rdf",
+    "turtle",
+    "query",
+    "knowledge graph",
+    "linked data",
+    "semantic web"
+  ],
+  "main": "dist/millan.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist/",
+    "docs/"
+  ],
+  "author": {
+    "name": "Stardog Union",
+    "url": "https://stardog.com"
+  },
+  "license": "Apache-2.0",
+  "contributors": [
+    {
+      "name": "Jason Rogers",
+      "email": "jason@stardog.com"
+    },
+    {
+      "name": "Matt Scandalis",
+      "email": "scandalis.matthew@gmail.com"
+    },
+    {
+      "name": "Ty Soehngen",
+      "email": "ty@stardog.com"
+    },
+    {
+      "name": "Sandra Gonzales",
+      "email": "sandy@stardog.com"
+    }
+  ],
   "dependencies": {
     "chevrotain": "3.0.1"
   },
-  "name": "millan",
-  "description": "The (Star)dog Whisperer (node.js-based parsers for Stardog)",
-  "version": "1.2.2",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/node": "^9.6.6",
+    "chalk": "^2.4.1",
+    "del": "^3.0.0",
+    "fork-ts-checker-webpack-plugin": "^0.5.2",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
+    "lint-staged": "^8.1.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.12.1",
+    "terser-webpack-plugin": "^1.1.0",
     "ts-jest": "^22.4.4",
+    "ts-loader": "^5.3.1",
     "tslint": "^5.9.1",
-    "typescript": "^2.8.3"
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-loader": "^3.5.4",
+    "typedoc": "^0.13.0",
+    "typescript": "^2.8.3",
+    "watch": "^1.0.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "scripts": {
-    "precommit": "rm -rf ./dist; node ./build/scripts/precommit.js; ./node_modules/typescript/bin/tsc; git add ./dist;",
-    "test": "./node_modules/.bin/jest"
+    "precommit": "lint-staged",
+    "lint": "tslint --project tsconfig.json",
+    "test": "yarn lint && jest",
+    "pack": "webpack",
+    "build": "run-s test pack types",
+    "dev": "webpack -w",
+    "format": "prettier 'src/**/*.[tj]s' -- write",
+    "docs": "typedoc --exclude '__tests__/**/*' --target ES5  --mode file --out ./docs ./src",
+    "types": "tsc --emitDeclarationOnly"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.[tj]s": [
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stardog-union/millan.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/stardog-union/millan/issues"
   },

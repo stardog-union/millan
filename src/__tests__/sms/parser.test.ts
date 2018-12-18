@@ -5,27 +5,27 @@ const parser = new SmsParser({});
 
 describe('SmsParser', () => {
   it('parses a sql mapping', () => {
-    const { cst, errors } = parser.parse(fixtures.sqlMapping);
+    const { errors } = parser.parse(fixtures.sqlMapping);
     expect(errors).toHaveLength(0);
   });
   it('parses a json mapping', () => {
-    const { cst, errors } = parser.parse(fixtures.jsonMapping);
+    const { errors } = parser.parse(fixtures.jsonMapping);
     expect(errors).toHaveLength(0);
   });
   it('parses a graphql mapping', () => {
-    const { cst, errors } = parser.parse(fixtures.graphQlMapping);
+    const { errors } = parser.parse(fixtures.graphQlMapping);
     expect(errors).toHaveLength(0);
   });
   it('parses multiple json mappings with comments and prefixes', () => {
-    const { cst, errors } = parser.parse(fixtures.multipleJsonWithComments);
+    const { errors } = parser.parse(fixtures.multipleJsonWithComments);
     expect(errors).toHaveLength(0);
   });
   it('parses prefixDecls', () => {
-    const { cst, errors } = parser.parse(fixtures.prefixDecls);
+    const { errors } = parser.parse(fixtures.prefixDecls);
     expect(errors).toHaveLength(0);
   });
   it('parses comments', () => {
-    const { cst, errors } = parser.parse(fixtures.comments);
+    const { errors } = parser.parse(fixtures.comments);
     expect(errors).toHaveLength(0);
   });
 });

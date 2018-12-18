@@ -1,10 +1,10 @@
 import { Lexer } from 'chevrotain';
 import { resolve } from 'path';
-import { tokenTypes } from '../../turtle/tokens';
+import { turtleTokenTypes } from '../../turtle/tokens';
 import { extname } from 'path';
 import { readDirAsync, readFileAsync } from './utils';
 
-const lexer = new Lexer(tokenTypes);
+const lexer = new Lexer(turtleTokenTypes);
 
 describe('turtle tokenizer', () => {
   it('produces no errors when tokenizing valid terminals', () => {

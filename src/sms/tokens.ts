@@ -1,4 +1,4 @@
-import { tokenMap as sparqlTokenMap } from '../tokens';
+import { sparqlTokenMap } from '../sparql/tokens';
 import { TokenType, createToken, IToken } from 'chevrotain';
 
 const FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
@@ -31,7 +31,7 @@ const explicitEndMatcher = (
   return null;
 };
 
-export const tokenMap = {
+export const smsTokenMap = {
   STRING_LITERAL1: sparqlTokenMap.STRING_LITERAL1,
   STRING_LITERAL2: sparqlTokenMap.STRING_LITERAL2,
   STRING_LITERAL_LONG1: sparqlTokenMap.STRING_LITERAL_LONG1,
@@ -111,8 +111,8 @@ export const tokenMap = {
       if (
         !secondToLastToken ||
         !lastToken ||
-        secondToLastToken.tokenType.tokenName !== tokenMap.Sql.tokenName ||
-        lastToken.tokenType.tokenName !== tokenMap.LCurly.tokenName
+        secondToLastToken.tokenType.tokenName !== smsTokenMap.Sql.tokenName ||
+        lastToken.tokenType.tokenName !== smsTokenMap.LCurly.tokenName
       ) {
         return null;
       }
@@ -133,7 +133,7 @@ export const tokenMap = {
 
       if (
         !lastToken ||
-        lastToken.tokenType.tokenName !== tokenMap.Json.tokenName
+        lastToken.tokenType.tokenName !== smsTokenMap.Json.tokenName
       ) {
         return null;
       }
@@ -161,8 +161,9 @@ export const tokenMap = {
       if (
         !secondToLastToken ||
         !lastToken ||
-        secondToLastToken.tokenType.tokenName !== tokenMap.GraphQl.tokenName ||
-        lastToken.tokenType.tokenName !== tokenMap.LCurly.tokenName
+        secondToLastToken.tokenType.tokenName !==
+          smsTokenMap.GraphQl.tokenName ||
+        lastToken.tokenType.tokenName !== smsTokenMap.LCurly.tokenName
       ) {
         return null;
       }
@@ -174,57 +175,57 @@ export const tokenMap = {
   }),
 };
 
-export const tokenTypes: TokenType[] = [
-  tokenMap.WhiteSpace,
-  tokenMap.Comment,
-  tokenMap.LParen,
-  tokenMap.RParen,
-  tokenMap.Period,
-  tokenMap.Template,
-  tokenMap.IRIREF,
-  tokenMap.PNAME_LN,
-  tokenMap.PNAME_NS,
-  tokenMap.NIL,
-  tokenMap.DISTINCT,
-  tokenMap.VAR1,
-  tokenMap.VAR2,
-  tokenMap.BIND,
-  tokenMap.AS,
-  tokenMap.WHERE,
-  tokenMap.TO,
-  tokenMap.LANGTAG,
-  tokenMap.INTEGER,
-  tokenMap.DECIMAL,
-  tokenMap.DOUBLE,
-  tokenMap.INTEGER_POSITIVE,
-  tokenMap.DECIMAL_POSITIVE,
-  tokenMap.DOUBLE_POSITIVE,
-  tokenMap.INTEGER_NEGATIVE,
-  tokenMap.DECIMAL_NEGATIVE,
-  tokenMap.DOUBLE_NEGATIVE,
-  tokenMap.TRUE,
-  tokenMap.FALSE,
-  tokenMap.BLANK_NODE_LABEL,
-  tokenMap.ANON,
-  tokenMap.A,
-  tokenMap.FROM,
-  tokenMap.PREFIX,
-  tokenMap.Comma,
-  tokenMap.DoubleCaret,
-  tokenMap.Semicolon,
-  tokenMap.LBracket,
-  tokenMap.RBracket,
-  tokenMap.Sql,
-  tokenMap.GraphQl,
-  tokenMap.Json,
-  tokenMap.Mapping,
-  tokenMap.SqlBlock,
-  tokenMap.JsonBlock,
-  tokenMap.GraphQlBlock,
-  tokenMap.LCurly,
-  tokenMap.RCurly,
-  tokenMap.STRING_LITERAL1,
-  tokenMap.STRING_LITERAL2,
-  tokenMap.STRING_LITERAL_LONG1,
-  tokenMap.STRING_LITERAL_LONG2,
+export const smsTokenTypes: TokenType[] = [
+  smsTokenMap.WhiteSpace,
+  smsTokenMap.Comment,
+  smsTokenMap.LParen,
+  smsTokenMap.RParen,
+  smsTokenMap.Period,
+  smsTokenMap.Template,
+  smsTokenMap.IRIREF,
+  smsTokenMap.PNAME_LN,
+  smsTokenMap.PNAME_NS,
+  smsTokenMap.NIL,
+  smsTokenMap.DISTINCT,
+  smsTokenMap.VAR1,
+  smsTokenMap.VAR2,
+  smsTokenMap.BIND,
+  smsTokenMap.AS,
+  smsTokenMap.WHERE,
+  smsTokenMap.TO,
+  smsTokenMap.LANGTAG,
+  smsTokenMap.INTEGER,
+  smsTokenMap.DECIMAL,
+  smsTokenMap.DOUBLE,
+  smsTokenMap.INTEGER_POSITIVE,
+  smsTokenMap.DECIMAL_POSITIVE,
+  smsTokenMap.DOUBLE_POSITIVE,
+  smsTokenMap.INTEGER_NEGATIVE,
+  smsTokenMap.DECIMAL_NEGATIVE,
+  smsTokenMap.DOUBLE_NEGATIVE,
+  smsTokenMap.TRUE,
+  smsTokenMap.FALSE,
+  smsTokenMap.BLANK_NODE_LABEL,
+  smsTokenMap.ANON,
+  smsTokenMap.A,
+  smsTokenMap.FROM,
+  smsTokenMap.PREFIX,
+  smsTokenMap.Comma,
+  smsTokenMap.DoubleCaret,
+  smsTokenMap.Semicolon,
+  smsTokenMap.LBracket,
+  smsTokenMap.RBracket,
+  smsTokenMap.Sql,
+  smsTokenMap.GraphQl,
+  smsTokenMap.Json,
+  smsTokenMap.Mapping,
+  smsTokenMap.SqlBlock,
+  smsTokenMap.JsonBlock,
+  smsTokenMap.GraphQlBlock,
+  smsTokenMap.LCurly,
+  smsTokenMap.RCurly,
+  smsTokenMap.STRING_LITERAL1,
+  smsTokenMap.STRING_LITERAL2,
+  smsTokenMap.STRING_LITERAL_LONG1,
+  smsTokenMap.STRING_LITERAL_LONG2,
 ];

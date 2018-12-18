@@ -1,5 +1,5 @@
 import { Parser, TokenType, IToken, IParserConfig, IRecognitionException } from 'chevrotain';
-import { IStardogParser } from './types';
+import { IStardogParser } from '../helpers/types';
 export declare class BaseSparqlParser extends Parser implements IStardogParser {
     private lexer;
     tokenize: (document: string) => IToken[];

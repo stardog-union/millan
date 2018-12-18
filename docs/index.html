@@ -1,0 +1,657 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>millan</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">millan</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> millan</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="millan">Millan</h1>
+				<p>Millan is the Stardog whisperer -- a set of parsers for languages used with
+				Stardog (currently SPARQL, Turtle, and Stardog Mapping Syntax 2 (SMS)).</p>
+				<h2 id="features">Features</h2>
+				<ul>
+					<li>Error-tolerant parsing for W3C-compliant SPARQL and SPARQL with Stardog
+					extensions</li>
+					<li>Error-tolerant parsing for W3C-compliant Turtle</li>
+					<li>Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)</li>
+					<li>Exported token matchers (regular expressions) and token sets for all of the
+					above languages</li>
+					<li>Available as an ES Module, a CommonJS module, and a UMD module (both
+					minified and unminified in all cases)</li>
+					<li>Tested against W3C test suites</li>
+					<li>Small and fast</li>
+					<li>Written in TypeScript, compiled to JS (and usable in either environment, with
+					type declarations provided for TypeScript)</li>
+					<li>Used in production at Stardog in support of Stardog Studio language servers</li>
+				</ul>
+				<h2 id="installation">Installation</h2>
+				<p>Simply run:</p>
+				<pre><code class="language-bash">npm install --save millan</code></pre>
+				<p>You can then import Millan in Node.js or in the browser, using any preferred
+				module format or bundler.</p>
+				<p>In Node/CommonJS:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> millan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'millan'</span>);</code></pre>
+				<p>In the browser:</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/index.umd.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<p>As an ES module:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> millan <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;</code></pre>
+				<p><strong>NOTE</strong>: When using Millan in the browser, you will also have to install and
+				include its single dependency, chevrotain.</p>
+				<h2 id="basic-usage">Basic Usage</h2>
+				<p>Import Millan or the specific parts of Millan that you need, e.g.:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { W3CSpecSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;</code></pre>
+				<p>Parsing a document requires a parser instance, so you should get one:</p>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sparqlParser = <span class="hljs-keyword">new</span> W3CSpecSparqlParser();</code></pre>
+				<p>Every parser instance has exactly the same API. They are all instances of the
+				Parser base class from <code>chevrotain</code>.</p>
+				<p>The two parser methods you&#39;ll use most often are <code>parse</code> and <code>tokenize</code>. Use
+					<code>tokenize</code> only when you want the parser instance to <em>lex</em> (tokenize) the
+				provided text:</p>
+				<pre><code class="language-javascript">sparqlParser.tokenize(<span class="hljs-string">`
+  PREFIX : &lt;http://example.org/ns#&gt; 
+  SELECT *
+  WHERE { ?x ?y ?z }
+`</span>);</code></pre>
+				<p>Result:</p>
+				<pre><code class="language-json">[
+  {
+    <span class="hljs-attr">"image"</span>: <span class="hljs-string">"PREFIX"</span>,
+    <span class="hljs-attr">"startOffset"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">"endOffset"</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-attr">"startLine"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"endLine"</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">"startColumn"</span>: <span class="hljs-number">3</span>,
+    <span class="hljs-attr">"endColumn"</span>: <span class="hljs-number">8</span>,
+    <span class="hljs-attr">"tokenTypeIdx"</span>: <span class="hljs-number">43</span>,
+    <span class="hljs-attr">"tokenType"</span>: {
+      <span class="hljs-attr">"PATTERN"</span>: {},
+      <span class="hljs-attr">"tokenTypeIdx"</span>: <span class="hljs-number">43</span>,
+      <span class="hljs-attr">"CATEGORIES"</span>: [],
+      <span class="hljs-attr">"categoryMatches"</span>: [],
+      <span class="hljs-attr">"categoryMatchesMap"</span>: {},
+      <span class="hljs-attr">"tokenName"</span>: <span class="hljs-string">"PREFIX"</span>,
+      <span class="hljs-attr">"isParent"</span>: <span class="hljs-literal">false</span>
+    }
+  },
+  /* . . . */
+]</code></pre>
+				<p>Use <code>parse</code> when you want the full parsing experience. Note that, because
+					Millan&#39;s parsers are error-tolerant, the <code>parse</code> method returns an object
+				that contains both a concrete syntax tree (CST) <em>and</em> an array of any errors:</p>
+				<pre><code class="language-javascript">sparqlParser.parse(<span class="hljs-string">`
+  PREFIX : &lt;http://example.org/ns#&gt;
+  SELECT *
+  WHERE { ?x ?y ?z }
+`</span>);</code></pre>
+				<p>Result:</p>
+				<pre><code class="language-json">{
+  &quot;errors&quot;: [],
+  &quot;cst&quot;: {
+    &quot;name&quot;: &quot;SparqlDoc&quot;,
+    &quot;children&quot;: {
+      &quot;Prologue&quot;: [
+        {
+          &quot;name&quot;: &quot;Prologue&quot;,
+          &quot;children&quot;: {
+            &quot;PrefixDecl&quot;: [
+              {
+                &quot;name&quot;: &quot;PrefixDecl&quot;,
+                &quot;children&quot;: {
+                  &quot;PREFIX&quot;: [
+                    {
+                      &quot;image&quot;: &quot;PREFIX&quot;,
+                      &quot;startOffset&quot;: 3,
+                      &quot;endOffset&quot;: 8,
+                      &quot;startLine&quot;: 2,
+                      &quot;endLine&quot;: 2,
+                      &quot;startColumn&quot;: 3,
+                      &quot;endColumn&quot;: 8,
+                      &quot;tokenTypeIdx&quot;: 43,
+                      &quot;tokenType&quot;: {
+                        &quot;PATTERN&quot;: {},
+                        &quot;tokenTypeIdx&quot;: 43,
+                        &quot;CATEGORIES&quot;: [],
+                        &quot;categoryMatches&quot;: [],
+                        &quot;categoryMatchesMap&quot;: {},
+                        &quot;tokenName&quot;: &quot;PREFIX&quot;,
+                        &quot;isParent&quot;: false
+                      }
+                    }
+                  ],
+                  &quot;PNAME_NS&quot;: [ /* . . . */ ],
+                  /* . . . etc. . . . */</code></pre>
+				<p>Helpfully, the <code>name</code> fields in the CSTs returned by Millan&#39;s parsers exactly
+					match, in <em>nearly</em> every case (we&#39;ve removed some redundancy), the names of the
+					rules in the official EBNF for the corresponding grammar (e.g., <code>SparqlDoc</code>,
+				<code>Prologue</code>, <code>PrefixDecl</code>, etc.).</p>
+				<p>When there are errors in parsing, Millan&#39;s parsers still return a best-effort
+					CST, as well as information including the spot where the error occurred, what
+					the parser expected to find at that spot, what the parser actually found in
+					that spot, the &quot;context&quot; (i.e., the position in the grammar&#39;s &quot;rule stack&quot;),
+				and more:</p>
+				<pre><code class="language-javascript">sparqlParser.parse(<span class="hljs-string">`
+  PREFIX : &lt;http://example.org/ns#&gt;
+  SELECT 1
+  WHERE { ?x ?y ?z }
+`</span>);</code></pre>
+				<p>Result:</p>
+				<pre><code class="language-json">{
+  &quot;errors&quot;: [
+    {
+      &quot;name&quot;: &quot;NoViableAltException&quot;,
+      &quot;message&quot;: &quot;Expecting: one of these possible Token sequences:\n  1. [?foo]\n  2. [?bar]\n  3. [LParen]\n  4. [Star]\nbut found: &#39;1&#39;&quot;,
+      &quot;token&quot;: {
+        &quot;image&quot;: &quot;1&quot;,
+        &quot;startOffset&quot;: 47,
+        &quot;endOffset&quot;: 47,
+        &quot;startLine&quot;: 3,
+        &quot;endLine&quot;: 3,
+        &quot;startColumn&quot;: 10,
+        &quot;endColumn&quot;: 10,
+        &quot;tokenTypeIdx&quot;: 7,
+        &quot;tokenType&quot;: {
+          &quot;PATTERN&quot;: {},
+          &quot;tokenTypeIdx&quot;: 7,
+          &quot;CATEGORIES&quot;: [],
+          &quot;categoryMatches&quot;: [],
+          &quot;categoryMatchesMap&quot;: {},
+          &quot;tokenName&quot;: &quot;INTEGER&quot;,
+          &quot;isParent&quot;: false
+        }
+      },
+      &quot;resyncedTokens&quot;: [],
+      &quot;context&quot;: {
+        &quot;ruleStack&quot;: [
+          &quot;SparqlDoc&quot;,
+          &quot;QueryUnit&quot;,
+          &quot;Query&quot;,
+          &quot;SelectQuery&quot;,
+          &quot;SelectClause&quot;
+        ],
+        &quot;ruleOccurrenceStack&quot;: [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  &quot;cst&quot;: {
+    &quot;name&quot;: &quot;SparqlDoc&quot;,
+    &quot;children&quot;: {
+      &quot;Prologue&quot;: [
+        {
+          &quot;name&quot;: &quot;Prologue&quot;,
+          &quot;children&quot;: {
+            &quot;PrefixDecl&quot;: [
+              {
+                &quot;name&quot;: &quot;PrefixDecl&quot;,
+                /* . . . etc. . . . */</code></pre>
+				<p>Full types are available for all APIs, so feel free to consult them (and also
+				the <code>chevrotain</code> docs) for more information.</p>
+				<h2 id="contributing">Contributing</h2>
+				<h3 id="prerequisites">Prerequisites</h3>
+				<ul>
+					<li><a href="https://nodejs.org/">Node.js</a> 8+.</li>
+					<li><a href="https://yarnpkg.com/en/">Yarn</a> 1.0.0+.</li>
+				</ul>
+				<h3 id="installing">Installing</h3>
+				<p>After cloning the repo, in the project&#39;s root, run:</p>
+				<pre><code class="language-bash">yarn install</code></pre>
+				<h3 id="developing">Developing</h3>
+				<p>All development-relevant code, including tests, is located in the repo&#39;s <code>src/</code>
+					directory. All of this code should be written in TypeScript. After making
+				changes, you will want to run our test scripts (run by Jest), like so:</p>
+				<pre><code class="language-bash">yarn <span class="hljs-built_in">test</span></code></pre>
+				<p>Stylistic conventions and formatting are enforced via <code>tslint</code> and <code>prettier</code>,
+					which means you don&#39;t really need to worry about those things yourself
+					(both the linter and <code>prettier</code> will check and format your code automatically
+					on any commit). If you&#39;d like to force <code>prettier</code> to format your code (a la
+				<code>gofmt</code>), just run:</p>
+				<pre><code class="language-bash">yarn format</code></pre>
+				<p>To have the project run a lint check, tests, and compilation while you make
+				changes, simply run (and leave running):</p>
+				<pre><code class="language-bash">yarn dev</code></pre>
+				<h3 id="pull-requests">Pull Requests</h3>
+				<p>The preferred way of making a pull request is as follows:</p>
+				<ol>
+					<li>Create an issue for the PR, if there isn&#39;t one already.</li>
+					<li>Branch off of master with a branch name that begins with either &#39;feature/&#39;
+						or &#39;bug/&#39;, and make the rest of the branch name include the issue number and
+					a brief description of the branch (e.g., <code>bug/104-turtle-prefix-error</code>).</li>
+					<li>Do your work on that branch, push the branch when it is ready, and create
+					a PR.</li>
+				</ol>
+				<p>If you don&#39;t have contributor rights, you will need to fork the repo before
+				doing steps 2 and 3, and then submit the PR from your fork.</p>
+				<h2 id="license">License</h2>
+				<p>Copyright 2018 Stardog Union</p>
+				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+					you may not use this file except in compliance with the License.
+				You may obtain a copy of the License at</p>
+				<pre><code><span class="hljs-symbol">http:</span>//www.apache<span class="hljs-meta">.org</span>/licenses/LICENSE<span class="hljs-number">-2.0</span></code></pre><p>Unless required by applicable law or agreed to in writing, software
+					distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+					WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+					See the License for the specific language governing permissions and
+				limitations under the License.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/basesparqlparser.html" class="tsd-kind-icon">Base<wbr>Sparql<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/smsparser.html" class="tsd-kind-icon">Sms<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/stardogsparqlparser.html" class="tsd-kind-icon">Stardog<wbr>Sparql<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-not-exported">
+						<a href="classes/traversecontext.html" class="tsd-kind-icon">Traverse<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/turtleparser.html" class="tsd-kind-icon">Turtle<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/w3specsparqlparser.html" class="tsd-kind-icon">W3<wbr>Spec<wbr>Sparql<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/fileandcontents.html" class="tsd-kind-icon">File<wbr>And<wbr>Contents</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istardogparser.html" class="tsd-kind-icon">IStardog<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/itraversecontext.html" class="tsd-kind-icon">ITraverse<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#anon" class="tsd-kind-icon">ANON</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#blank_node_label" class="tsd-kind-icon">BLANK_<wbr>NODE_<wbr>LABEL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#decimal" class="tsd-kind-icon">DECIMAL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#decimal_negative" class="tsd-kind-icon">DECIMAL_<wbr>NEGATIVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#decimal_positive" class="tsd-kind-icon">DECIMAL_<wbr>POSITIVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#double" class="tsd-kind-icon">DOUBLE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#double_negative" class="tsd-kind-icon">DOUBLE_<wbr>NEGATIVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#double_positive" class="tsd-kind-icon">DOUBLE_<wbr>POSITIVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#echar" class="tsd-kind-icon">ECHAR</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#exponent" class="tsd-kind-icon">EXPONENT</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#from_block_end_matcher" class="tsd-kind-icon">FROM_<wbr>BLOCK_<wbr>END_<wbr>MATCHER</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#from_json_block_end_matcher" class="tsd-kind-icon">FROM_<wbr>JSON_<wbr>BLOCK_<wbr>END_<wbr>MATCHER</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#hex" class="tsd-kind-icon">HEX</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#integer" class="tsd-kind-icon">INTEGER</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#integer_negative" class="tsd-kind-icon">INTEGER_<wbr>NEGATIVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#integer_positive" class="tsd-kind-icon">INTEGER_<wbr>POSITIVE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#iriref" class="tsd-kind-icon">IRIREF</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#langtag" class="tsd-kind-icon">LANGTAG</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#max_length" class="tsd-kind-icon">MAX_<wbr>LENGTH</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#nil" class="tsd-kind-icon">NIL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#percent" class="tsd-kind-icon">PERCENT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#plx" class="tsd-kind-icon">PLX</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pname_ln" class="tsd-kind-icon">PNAME_<wbr>LN</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pname_ln_token" class="tsd-kind-icon">PNAME_<wbr>LN_<wbr>TOKEN</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pname_ns" class="tsd-kind-icon">PNAME_<wbr>NS</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pn_chars" class="tsd-kind-icon">PN_<wbr>CHARS</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pn_chars_base" class="tsd-kind-icon">PN_<wbr>CHARS_<wbr>BASE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pn_chars_u" class="tsd-kind-icon">PN_<wbr>CHARS_<wbr>U</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pn_local" class="tsd-kind-icon">PN_<wbr>LOCAL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pn_local_esc" class="tsd-kind-icon">PN_<wbr>LOCAL_<wbr>ESC</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pn_prefix" class="tsd-kind-icon">PN_<wbr>PREFIX</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#string_literal1" class="tsd-kind-icon">STRING_<wbr>LITERAL1</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#string_literal2" class="tsd-kind-icon">STRING_<wbr>LITERAL2</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#string_literal_long1" class="tsd-kind-icon">STRING_<wbr>LITERAL_<wbr>LONG1</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#string_literal_long1_token" class="tsd-kind-icon">STRING_<wbr>LITERAL_<wbr>LONG1_<wbr>TOKEN</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#string_literal_long2" class="tsd-kind-icon">STRING_<wbr>LITERAL_<wbr>LONG2</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#string_literal_long2_token" class="tsd-kind-icon">STRING_<wbr>LITERAL_<wbr>LONG2_<wbr>TOKEN</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#var1" class="tsd-kind-icon">VAR1</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#var2" class="tsd-kind-icon">VAR2</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#varname" class="tsd-kind-icon">VARNAME</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#ws" class="tsd-kind-icon">WS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#allinvalidqueries" class="tsd-kind-icon">all<wbr>Invalid<wbr>Queries</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#allvalidqueries" class="tsd-kind-icon">all<wbr>Valid<wbr>Queries</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#basetokens" class="tsd-kind-icon">base<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#escapesequence" class="tsd-kind-icon">escape<wbr>Sequence</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#escapediri" class="tsd-kind-icon">escaped<wbr>Iri</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#illegalirichars" class="tsd-kind-icon">illegal<wbr>Iri<wbr>Chars</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#indexofselect" class="tsd-kind-icon">index<wbr>OfSELECT</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#lexer" class="tsd-kind-icon">lexer</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#parser" class="tsd-kind-icon">parser</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pathstokens" class="tsd-kind-icon">paths<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#smstokentypes" class="tsd-kind-icon">sms<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#sparqltokentypes" class="tsd-kind-icon">sparql<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#stardogtokens" class="tsd-kind-icon">stardog<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#stringliterallongquote" class="tsd-kind-icon">string<wbr>Literal<wbr>Long<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#stringliterallongsinglequote" class="tsd-kind-icon">string<wbr>Literal<wbr>Long<wbr>Single<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#stringliteralquote" class="tsd-kind-icon">string<wbr>Literal<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#stringliteralsinglequote" class="tsd-kind-icon">string<wbr>Literal<wbr>Single<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#turtlelexer" class="tsd-kind-icon">turtle<wbr>Lexer</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#turtletokentypes" class="tsd-kind-icon">turtle<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#unescapediri" class="tsd-kind-icon">unescaped<wbr>Iri</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#unescapedstringliteralquote" class="tsd-kind-icon">unescaped<wbr>String<wbr>Literal<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#unescapedstringliteralsinglequote" class="tsd-kind-icon">unescaped<wbr>String<wbr>Literal<wbr>Single<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#unicoderegexp" class="tsd-kind-icon">unicode<wbr>Regexp</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#_traverse" class="tsd-kind-icon">_traverse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#explicitendmatcher" class="tsd-kind-icon">explicit<wbr>End<wbr>Matcher</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getallfilecontents" class="tsd-kind-icon">get<wbr>All<wbr>File<wbr>Contents</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#iscstnode" class="tsd-kind-icon">is<wbr>Cst<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#log" class="tsd-kind-icon">log</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#makeexpectextensionforparse" class="tsd-kind-icon">make<wbr>Expect<wbr>Extension<wbr>For<wbr>Parse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#parse" class="tsd-kind-icon">parse</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#readdirasync" class="tsd-kind-icon">read<wbr>Dir<wbr>Async</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#readfileasync" class="tsd-kind-icon">read<wbr>File<wbr>Async</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#traverse" class="tsd-kind-icon">traverse</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#unescape" class="tsd-kind-icon">unescape</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#escapereplacements" class="tsd-kind-icon">escape<wbr>Replacements</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#fixtures" class="tsd-kind-icon">fixtures</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#keywords" class="tsd-kind-icon">keywords</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#regex" class="tsd-kind-icon">regex</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#smstokenmap" class="tsd-kind-icon">sms<wbr>Token<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#sparqltokenmap" class="tsd-kind-icon">sparql<wbr>Token<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#terminals" class="tsd-kind-icon">terminals</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#turtletokenmap" class="tsd-kind-icon">turtle<wbr>Token<wbr>Map</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import { TokenType } from 'chevrotain';
-export declare const tokenMap: {
+export declare const sparqlTokenMap: {
     IRIREF: TokenType;
     LANGTAG: TokenType;
     INTEGER: TokenType;
@@ -178,3 +178,4 @@ export declare const tokenMap: {
 };
 export declare const baseTokens: TokenType[];
 export declare const pathsTokens: TokenType[];
+export declare const sparqlTokenTypes: TokenType[];

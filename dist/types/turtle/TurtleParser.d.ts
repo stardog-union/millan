@@ -1,5 +1,5 @@
 import { Parser, IParserConfig, IToken, IRecognitionException } from 'chevrotain';
-import { IStardogParser } from '../types';
+import { IStardogParser } from '../helpers/types';
 export declare class TurtleParser extends Parser implements IStardogParser {
     private lexer;
     private namespacesMap;

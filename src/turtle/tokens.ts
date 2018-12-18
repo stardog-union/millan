@@ -1,102 +1,34 @@
 import { createToken, TokenType } from 'chevrotain';
-import { tokenMap as sparqlTokenMap } from '../tokens';
+import { sparqlTokenMap } from '../sparql/tokens';
+import { regex } from '../helpers/regex';
 import {
   EXPONENT,
   ECHAR,
+  PLX,
+  HEX,
   PN_CHARS_BASE,
   PN_CHARS_U,
   PN_CHARS,
   PN_PREFIX,
   PN_LOCAL,
-  PLX,
-  HEX,
   PN_LOCAL_ESC,
-} from '../terminals';
-import { regex } from '../utils';
+} from '../helpers/matchers';
+import {
+  unescape,
+  stringLiteralLongSingleQuote,
+  stringLiteralLongQuote,
+  unescapedStringLiteralQuote,
+  stringLiteralQuote,
+  unescapedStringLiteralSingleQuote,
+  stringLiteralSingleQuote,
+  unescapedIri,
+  escapedIri,
+  illegalIriChars,
+} from '../helpers/unescape';
 
-const escapeSequence = /\\u([a-fA-F0-9]{4})|\\U([a-fA-F0-9]{8})|\\[uU]|\\(.)/g;
-const escapeReplacements = {
-  '\\': '\\',
-  "'": "'",
-  '"': '"',
-  n: '\n',
-  r: '\r',
-  t: '\t',
-  f: '\f',
-  b: '\b',
-  _: '_',
-  '~': '~',
-  '.': '.',
-  '-': '-',
-  '!': '!',
-  $: '$',
-  '&': '&',
-  '(': '(',
-  ')': ')',
-  '*': '*',
-  '+': '+',
-  ',': ',',
-  ';': ';',
-  '=': '=',
-  '/': '/',
-  '?': '?',
-  '#': '#',
-  '@': '@',
-  '%': '%',
-};
-const unescape = (item: string) => {
-  try {
-    return item.replace(
-      escapeSequence,
-      (_, unicode4, unicode8, escapedChar) => {
-        if (unicode4) {
-          return String.fromCharCode(parseInt(unicode4, 16));
-        } else if (unicode8) {
-          let charCode = parseInt(unicode8, 16);
-          if (charCode <= 0xffff) {
-            return String.fromCharCode(charCode);
-          }
-          return String.fromCharCode(
-            0xd800 + (charCode -= 0x10000) / 0x400,
-            0xdc00 + (charCode & 0x3ff)
-          );
-        } else {
-          const replacement = escapeReplacements[escapedChar];
-          if (!replacement) {
-            throw new Error();
-          }
-          return replacement;
-        }
-      }
-    );
-  } catch (error) {
-    return null;
-  }
-};
-
-const unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty string without escape sequences
-const unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
-const stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
-const stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
-const stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
-const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
-
-const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
-const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;
-const unescapedIri = /^<([^\x00-\x20<>\\"\{\}\|\^\`]*)>[ \t]*/;
-
-// const UCHAR = regex.or(
-//   regex.and(/\\u/, HEX, HEX, HEX, HEX),
-//   regex.and(/\\U/, HEX, HEX, HEX, HEX, HEX, HEX, HEX, HEX)
-// );
-// Somehow, for reasons not entirely clear to me, the next RegExp matches all
-// of the cases that the UCHAR rule is supposed to match, whereas the above
-// RegExp (`UCHAR`) does not. See this post, which is the source of the RegExp
-// below: https://mathiasbynens.be/notes/javascript-unicode
-// This is a similar resource that might be helpful: https://mathiasbynens.be/notes/es6-unicode-regex
 const unicodeRegexp = /[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
 
-export const tokenMap = {
+export const turtleTokenMap = {
   Comment: createToken({
     name: 'Comment',
     pattern: /#[^\n]*/,
@@ -159,12 +91,7 @@ export const tokenMap = {
 
       return match;
     },
-    line_breaks: true, // ?
-    // pattern: regex.and(
-    //   /'{3}/,
-    //   regex.many(regex.and(/'{0,2}/, regex.or(/[^'\\]/, ECHAR, UCHAR))),
-    //   /'{3}/
-    // ),
+    line_breaks: true,
   }),
   STRING_LITERAL_LONG_QUOTE: createToken({
     name: 'STRING_LITERAL_LONG_QUOTE',
@@ -178,12 +105,7 @@ export const tokenMap = {
 
       return match;
     },
-    line_breaks: true, // ?
-    // pattern: regex.and(
-    //   /"{3}/,
-    //   regex.many(regex.and(/"{0,2}/, regex.or(/[^"\\]/, ECHAR, UCHAR))),
-    //   /"{3}/
-    // ),
+    line_breaks: true,
   }),
   STRING_LITERAL_QUOTE: createToken({
     name: 'STRING_LITERAL_QUOTE',
@@ -209,11 +131,6 @@ export const tokenMap = {
       return match;
     },
     line_breaks: false,
-    // regex.and(
-    //   /"/,
-    //   regex.many(regex.or(/[^\u0022\u005C\u000A\u000D]/, ECHAR, UCHAR)),
-    //   /"/
-    // ),
   }),
   STRING_LITERAL_SINGLE_QUOTE: createToken({
     name: 'STRING_LITERAL_SINGLE_QUOTE',
@@ -239,11 +156,6 @@ export const tokenMap = {
       return match;
     },
     line_breaks: false,
-    // regex.and(
-    //   /'/,
-    //   regex.many(regex.or(/[^\u0027\u005C\u000A\u000D]/, ECHAR, UCHAR)),
-    //   /'/
-    // ),
   }),
   UCHAR: createToken({
     name: 'UCHAR',
@@ -288,8 +200,8 @@ export const tokenMap = {
   }),
 };
 
-export const tokenTypes: TokenType[] = [
-  tokenMap.Comment,
+export const turtleTokenTypes: TokenType[] = [
+  turtleTokenMap.Comment,
   sparqlTokenMap.ANON,
   sparqlTokenMap.LBracket,
   sparqlTokenMap.RBracket,
@@ -306,30 +218,30 @@ export const tokenTypes: TokenType[] = [
   sparqlTokenMap.BASE,
   sparqlTokenMap.PNAME_LN,
   sparqlTokenMap.BLANK_NODE_LABEL,
-  tokenMap.TTL_BASE,
-  tokenMap.TTL_PREFIX,
+  turtleTokenMap.TTL_BASE,
+  turtleTokenMap.TTL_PREFIX,
   sparqlTokenMap.LANGTAG,
-  tokenMap.DOUBLE,
-  tokenMap.DECIMAL,
+  turtleTokenMap.DOUBLE,
+  turtleTokenMap.DECIMAL,
   sparqlTokenMap.Period,
   sparqlTokenMap.DoubleCaret,
-  tokenMap.IRIREF,
-  tokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
-  tokenMap.STRING_LITERAL_LONG_QUOTE,
-  tokenMap.STRING_LITERAL_QUOTE,
-  tokenMap.STRING_LITERAL_SINGLE_QUOTE,
-  tokenMap.INTEGER,
-  tokenMap.EXPONENT,
-  tokenMap.PLX,
+  turtleTokenMap.IRIREF,
+  turtleTokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE,
+  turtleTokenMap.STRING_LITERAL_LONG_QUOTE,
+  turtleTokenMap.STRING_LITERAL_QUOTE,
+  turtleTokenMap.STRING_LITERAL_SINGLE_QUOTE,
+  turtleTokenMap.INTEGER,
+  turtleTokenMap.EXPONENT,
+  turtleTokenMap.PLX,
   sparqlTokenMap.PERCENT,
-  tokenMap.HEX,
-  tokenMap.PN_CHARS_BASE,
-  tokenMap.PN_CHARS_U,
-  tokenMap.PN_CHARS,
-  tokenMap.PN_PREFIX,
-  tokenMap.PN_LOCAL,
-  tokenMap.PN_LOCAL_ESC,
-  tokenMap.ECHAR,
-  tokenMap.UCHAR,
-  tokenMap.Unknown,
+  turtleTokenMap.HEX,
+  turtleTokenMap.PN_CHARS_BASE,
+  turtleTokenMap.PN_CHARS_U,
+  turtleTokenMap.PN_CHARS,
+  turtleTokenMap.PN_PREFIX,
+  turtleTokenMap.PN_LOCAL,
+  turtleTokenMap.PN_LOCAL_ESC,
+  turtleTokenMap.ECHAR,
+  turtleTokenMap.UCHAR,
+  turtleTokenMap.Unknown,
 ];

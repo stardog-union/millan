@@ -1,9 +1,9 @@
 import { readdir, readFile } from 'fs';
 import { Lexer } from 'chevrotain';
-import { tokenTypes } from '../../turtle/tokens';
+import { turtleTokenTypes } from '../../turtle/tokens';
 import { TurtleParser } from '../../turtle/TurtleParser';
 
-const turtleLexer = new Lexer(tokenTypes);
+const turtleLexer = new Lexer(turtleTokenTypes);
 const parser = new TurtleParser();
 
 export const readDirAsync = (pathName) =>

@@ -1,8 +1,8 @@
 import { BaseSparqlParser } from './BaseSparqlParser';
-import { tokenMap, baseTokens, pathsTokens } from './tokens';
+import { sparqlTokenMap, baseTokens, pathsTokens } from './tokens';
 import { Parser } from 'chevrotain';
 
-const indexOfSELECT = baseTokens.indexOf(tokenMap.SELECT);
+const indexOfSELECT = baseTokens.indexOf(sparqlTokenMap.SELECT);
 const stardogTokens = [
   ...baseTokens.slice(0, indexOfSELECT),
   ...pathsTokens,
@@ -29,9 +29,9 @@ export class StardogSparqlParser extends BaseSparqlParser {
   PathQuery = this.RULE('PathQuery', () => {
     this.SUBRULE(this.PathSpec);
     this.MANY(() => this.SUBRULE(this.DatasetClause));
-    this.CONSUME(tokenMap.START);
+    this.CONSUME(sparqlTokenMap.START);
     this.SUBRULE(this.PathTerminal);
-    this.CONSUME(tokenMap.END);
+    this.CONSUME(sparqlTokenMap.END);
     this.SUBRULE1(this.PathTerminal);
     this.SUBRULE(this.Via);
     this.OPTION(() => this.SUBRULE(this.MaxLength));
@@ -39,7 +39,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
   });
 
   Via = this.RULE('Via', () => {
-    this.CONSUME(tokenMap.VIA);
+    this.CONSUME(sparqlTokenMap.VIA);
     this.OR([
       { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
       { ALT: () => this.SUBRULE(this.Var) },
@@ -53,7 +53,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
       this.OR([
         {
           ALT: () => {
-            this.CONSUME(tokenMap.Equals);
+            this.CONSUME(sparqlTokenMap.Equals);
             this.SUBRULE(this.iri);
           },
         },
@@ -64,11 +64,11 @@ export class StardogSparqlParser extends BaseSparqlParser {
 
   PathSpec = this.RULE('PathSpec', () => {
     this.OR([
-      { ALT: () => this.CONSUME(tokenMap.PATHS) },
-      { ALT: () => this.CONSUME(tokenMap.PATHS_SHORTEST) },
-      { ALT: () => this.CONSUME(tokenMap.PATHS_ALL) },
+      { ALT: () => this.CONSUME(sparqlTokenMap.PATHS) },
+      { ALT: () => this.CONSUME(sparqlTokenMap.PATHS_SHORTEST) },
+      { ALT: () => this.CONSUME(sparqlTokenMap.PATHS_ALL) },
     ]);
-    this.OPTION1(() => this.CONSUME(tokenMap.CYCLIC));
+    this.OPTION1(() => this.CONSUME(sparqlTokenMap.CYCLIC));
   });
 
   BuiltInCall = this.OVERRIDE_RULE('BuiltInCall', () => {
@@ -134,16 +134,16 @@ export class StardogSparqlParser extends BaseSparqlParser {
   });
 
   StardogOrCustomFunction = this.RULE('StardogOrCustomFunction', () => {
-    this.CONSUME(tokenMap.Unknown);
+    this.CONSUME(sparqlTokenMap.Unknown);
     this.SUBRULE(this.ExpressionList);
   });
 
   ConstructTemplate = this.OVERRIDE_RULE('ConstructTemplate', () => {
-    this.CONSUME(tokenMap.LCurly);
+    this.CONSUME(sparqlTokenMap.LCurly);
     this.OPTION(() =>
       // Stardog supports the request of Quads in a Construct template. See Stardog issue #675
       this.SUBRULE(this.Quads)
     );
-    this.CONSUME(tokenMap.RCurly);
+    this.CONSUME(sparqlTokenMap.RCurly);
   });
 }

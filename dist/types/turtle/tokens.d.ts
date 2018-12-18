@@ -1,5 +1,5 @@
 import { TokenType } from 'chevrotain';
-export declare const tokenMap: {
+export declare const turtleTokenMap: {
     Comment: TokenType;
     LBracket: TokenType;
     RBracket: TokenType;
@@ -44,4 +44,4 @@ export declare const tokenMap: {
     PN_LOCAL_ESC: TokenType;
     Unknown: TokenType;
 };
-export declare const tokenTypes: TokenType[];
+export declare const turtleTokenTypes: TokenType[];
