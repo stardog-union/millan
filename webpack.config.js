@@ -42,14 +42,6 @@ module.exports = {
     modules: [SRC_DIR, 'node_modules'],
     extensions: ['.ts', '.js'],
   },
-  externals: {
-    chevrotain: {
-      commonjs: 'chevrotain',
-      commonjs2: 'chevrotain',
-      amd: 'chevrotain',
-      root: 'chevrotain',
-    }
-  },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
       tsconfig: path.resolve(__dirname, 'tsconfig.json'),
