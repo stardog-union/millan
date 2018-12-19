@@ -70,7 +70,7 @@ const sparqlParser = new W3CSpecSparqlParser();
 ```
 
 Every parser instance has exactly the same API. They are all instances of the
-Parser base class from `chevrotain`, and they all implement the [IStardogParser](docs/interfaces/istardogparser.html) interface.
+Parser base class from `chevrotain`, and they all implement the [IStardogParser](https://stardog-union.github.io/millan/interfaces/istardogparser.html) interface.
 
 The two parser methods you'll use most often are `parse` and `tokenize`. Use
 `tokenize` only when you want the parser instance to _lex_ (tokenize) the
@@ -245,7 +245,7 @@ Result:
 
 ## Full API
 
-Check out our comprehensive [API docs](docs/index.html) for more information.
+Check out our comprehensive [API docs](https://stardog-union.github.io/millan/) for more information.
 
 ## Contributing
 
