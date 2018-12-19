@@ -13,13 +13,11 @@ for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wik
 - Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)
 - Exported token matchers (regular expressions) and token sets for all of the
 above languages
-- Available as an ES Module, a CommonJS module, and a UMD module (both
-minified and unminified in all cases)
+- Universally usable (both in nodejs and the browser)
 - Tested against W3C test suites
 - Small and fast
 - Written in [TypeScript](https://www.typescriptlang.org/), compiled to JS
-(and usable in either environment, with type declarations provided for
-TypeScript)
+(with type declarations provided TypeScript)
 - Used in production at Stardog in support of [Stardog Studio](https://www.stardog.com/studio/)
 language servers
 
