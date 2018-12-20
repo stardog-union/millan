@@ -20,7 +20,7 @@
 
 "@fimbul/bifrost@^0.15.0":
   version "0.15.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@fimbul/bifrost/-/bifrost-0.15.0.tgz#f3a48dee3046681e926c1f970f0b1a67e29e088e"
+  resolved "https://registry.yarnpkg.com/@fimbul/bifrost/-/bifrost-0.15.0.tgz#f3a48dee3046681e926c1f970f0b1a67e29e088e"
   integrity sha1-86SN7jBGaB6SbB+XDwsaZ+KeCI4=
   dependencies:
     "@fimbul/ymir" "^0.15.0"
@@ -30,7 +30,7 @@
 
 "@fimbul/ymir@^0.15.0":
   version "0.15.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@fimbul/ymir/-/ymir-0.15.0.tgz#944c881b14fadf7b43d1ae00b445e42261bb407f"
+  resolved "https://registry.yarnpkg.com/@fimbul/ymir/-/ymir-0.15.0.tgz#944c881b14fadf7b43d1ae00b445e42261bb407f"
   integrity sha1-lEyIGxT633tD0a4AtEXkImG7QH8=
   dependencies:
     inversify "^5.0.0"
@@ -39,7 +39,7 @@
 
 "@iamstarkov/listr-update-renderer@0.4.1":
   version "0.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@iamstarkov/listr-update-renderer/-/listr-update-renderer-0.4.1.tgz#d7c48092a2dcf90fd672b6c8b458649cb350c77e"
+  resolved "https://registry.yarnpkg.com/@iamstarkov/listr-update-renderer/-/listr-update-renderer-0.4.1.tgz#d7c48092a2dcf90fd672b6c8b458649cb350c77e"
   integrity sha1-18SAkqLc+Q/WcrbItFhknLNQx34=
   dependencies:
     chalk "^1.1.3"
@@ -53,26 +53,26 @@
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
+  resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
   integrity sha1-7N9I1TLFjqR3rPyrgDSEJPjQZi8=
   dependencies:
     any-observable "^0.3.0"
 
 "@types/events@*":
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
   integrity sha1-gaZzHOTfQ2GeXIyUU4Oz5iqJ6oY=
 
 "@types/fs-extra@^5.0.3":
   version "5.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/fs-extra/-/fs-extra-5.0.4.tgz#b971134d162cc0497d221adde3dbb67502225599"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-5.0.4.tgz#b971134d162cc0497d221adde3dbb67502225599"
   integrity sha1-uXETTRYswEl9Ihrd49u2dQIiVZk=
   dependencies:
     "@types/node" "*"
 
 "@types/glob@*":
   version "7.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
+  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
   integrity sha1-qlmhxuP7xCHgfM0xqUTDDrpSFXU=
   dependencies:
     "@types/events" "*"
@@ -81,12 +81,12 @@
 
 "@types/handlebars@^4.0.38":
   version "4.0.39"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/handlebars/-/handlebars-4.0.39.tgz#961fb54db68030890942e6aeffe9f93a957807bd"
+  resolved "https://registry.yarnpkg.com/@types/handlebars/-/handlebars-4.0.39.tgz#961fb54db68030890942e6aeffe9f93a957807bd"
   integrity sha1-lh+1TbaAMIkJQuau/+n5OpV4B70=
 
 "@types/highlight.js@^9.12.3":
   version "9.12.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/highlight.js/-/highlight.js-9.12.3.tgz#b672cfaac25cbbc634a0fd92c515f66faa18dbca"
+  resolved "https://registry.yarnpkg.com/@types/highlight.js/-/highlight.js-9.12.3.tgz#b672cfaac25cbbc634a0fd92c515f66faa18dbca"
   integrity sha1-tnLPqsJcu8Y0oP2SxRX2b6oY28o=
 
 "@types/jest@^22.2.3":
@@ -96,22 +96,22 @@
 
 "@types/lodash@^4.14.110":
   version "4.14.119"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
   integrity sha1-voR+X0vD415G0EHDlOrYtgOtizk=
 
 "@types/marked@^0.4.0":
   version "0.4.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/marked/-/marked-0.4.2.tgz#64a89e53ea37f61cc0f3ee1732c555c2dbf6452f"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.4.2.tgz#64a89e53ea37f61cc0f3ee1732c555c2dbf6452f"
   integrity sha1-ZKieU+o39hzA8+4XMsVVwtv2RS8=
 
 "@types/minimatch@*", "@types/minimatch@3.0.3":
   version "3.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
+  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha1-PcoOPzOyAPx9ETnAzZbBJoyt/Z0=
 
 "@types/node@*":
   version "10.12.12"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.12.tgz#e15a9d034d9210f00320ef718a50c4a799417c47"
   integrity sha1-4VqdA02SEPADIO9xilDEp5lBfEc=
 
 "@types/node@^9.6.6":
@@ -121,7 +121,7 @@
 
 "@types/shelljs@^0.8.0":
   version "0.8.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@types/shelljs/-/shelljs-0.8.1.tgz#133e874b5fb816a2e1c8647839c82d76760b1191"
+  resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.8.1.tgz#133e874b5fb816a2e1c8647839c82d76760b1191"
   integrity sha1-Ez6HS1+4FqLhyGR4OcgtdnYLEZE=
   dependencies:
     "@types/glob" "*"
@@ -129,7 +129,7 @@
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
   integrity sha1-uYhYLK+7Kwlei1VlJvMMkNBXys4=
   dependencies:
     "@webassemblyjs/helper-module-context" "1.7.11"
@@ -138,44 +138,44 @@
 
 "@webassemblyjs/floating-point-hex-parser@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/floating-point-hex-parser/-/floating-point-hex-parser-1.7.11.tgz#a69f0af6502eb9a3c045555b1a6129d3d3f2e313"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/floating-point-hex-parser/-/floating-point-hex-parser-1.7.11.tgz#a69f0af6502eb9a3c045555b1a6129d3d3f2e313"
   integrity sha1-pp8K9lAuuaPARVVbGmEp09Py4xM=
 
 "@webassemblyjs/helper-api-error@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-api-error/-/helper-api-error-1.7.11.tgz#c7b6bb8105f84039511a2b39ce494f193818a32a"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-api-error/-/helper-api-error-1.7.11.tgz#c7b6bb8105f84039511a2b39ce494f193818a32a"
   integrity sha1-x7a7gQX4QDlRGis5zklPGTgYoyo=
 
 "@webassemblyjs/helper-buffer@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-buffer/-/helper-buffer-1.7.11.tgz#3122d48dcc6c9456ed982debe16c8f37101df39b"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-buffer/-/helper-buffer-1.7.11.tgz#3122d48dcc6c9456ed982debe16c8f37101df39b"
   integrity sha1-MSLUjcxslFbtmC3r4WyPNxAd85s=
 
 "@webassemblyjs/helper-code-frame@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-code-frame/-/helper-code-frame-1.7.11.tgz#cf8f106e746662a0da29bdef635fcd3d1248364b"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-code-frame/-/helper-code-frame-1.7.11.tgz#cf8f106e746662a0da29bdef635fcd3d1248364b"
   integrity sha1-z48QbnRmYqDaKb3vY1/NPRJINks=
   dependencies:
     "@webassemblyjs/wast-printer" "1.7.11"
 
 "@webassemblyjs/helper-fsm@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-fsm/-/helper-fsm-1.7.11.tgz#df38882a624080d03f7503f93e3f17ac5ac01181"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-fsm/-/helper-fsm-1.7.11.tgz#df38882a624080d03f7503f93e3f17ac5ac01181"
   integrity sha1-3ziIKmJAgNA/dQP5Pj8XrFrAEYE=
 
 "@webassemblyjs/helper-module-context@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-module-context/-/helper-module-context-1.7.11.tgz#d874d722e51e62ac202476935d649c802fa0e209"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-module-context/-/helper-module-context-1.7.11.tgz#d874d722e51e62ac202476935d649c802fa0e209"
   integrity sha1-2HTXIuUeYqwgJHaTXWScgC+g4gk=
 
 "@webassemblyjs/helper-wasm-bytecode@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-wasm-bytecode/-/helper-wasm-bytecode-1.7.11.tgz#dd9a1e817f1c2eb105b4cf1013093cb9f3c9cb06"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-wasm-bytecode/-/helper-wasm-bytecode-1.7.11.tgz#dd9a1e817f1c2eb105b4cf1013093cb9f3c9cb06"
   integrity sha1-3ZoegX8cLrEFtM8QEwk8ufPJywY=
 
 "@webassemblyjs/helper-wasm-section@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/helper-wasm-section/-/helper-wasm-section-1.7.11.tgz#9c9ac41ecf9fbcfffc96f6d2675e2de33811e68a"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/helper-wasm-section/-/helper-wasm-section-1.7.11.tgz#9c9ac41ecf9fbcfffc96f6d2675e2de33811e68a"
   integrity sha1-nJrEHs+fvP/8lvbSZ14t4zgR5oo=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -185,26 +185,26 @@
 
 "@webassemblyjs/ieee754@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/ieee754/-/ieee754-1.7.11.tgz#c95839eb63757a31880aaec7b6512d4191ac640b"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/ieee754/-/ieee754-1.7.11.tgz#c95839eb63757a31880aaec7b6512d4191ac640b"
   integrity sha1-yVg562N1ejGICq7HtlEtQZGsZAs=
   dependencies:
     "@xtuc/ieee754" "^1.2.0"
 
 "@webassemblyjs/leb128@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/leb128/-/leb128-1.7.11.tgz#d7267a1ee9c4594fd3f7e37298818ec65687db63"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/leb128/-/leb128-1.7.11.tgz#d7267a1ee9c4594fd3f7e37298818ec65687db63"
   integrity sha1-1yZ6HunEWU/T9+NymIGOxlaH22M=
   dependencies:
     "@xtuc/long" "4.2.1"
 
 "@webassemblyjs/utf8@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/utf8/-/utf8-1.7.11.tgz#06d7218ea9fdc94a6793aa92208160db3d26ee82"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/utf8/-/utf8-1.7.11.tgz#06d7218ea9fdc94a6793aa92208160db3d26ee82"
   integrity sha1-Btchjqn9yUpnk6qSIIFg2z0m7oI=
 
 "@webassemblyjs/wasm-edit@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/wasm-edit/-/wasm-edit-1.7.11.tgz#8c74ca474d4f951d01dbae9bd70814ee22a82005"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wasm-edit/-/wasm-edit-1.7.11.tgz#8c74ca474d4f951d01dbae9bd70814ee22a82005"
   integrity sha1-jHTKR01PlR0B266b1wgU7iKoIAU=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -218,7 +218,7 @@
 
 "@webassemblyjs/wasm-gen@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/wasm-gen/-/wasm-gen-1.7.11.tgz#9bbba942f22375686a6fb759afcd7ac9c45da1a8"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wasm-gen/-/wasm-gen-1.7.11.tgz#9bbba942f22375686a6fb759afcd7ac9c45da1a8"
   integrity sha1-m7upQvIjdWhqb7dZr816ycRdoag=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -229,7 +229,7 @@
 
 "@webassemblyjs/wasm-opt@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/wasm-opt/-/wasm-opt-1.7.11.tgz#b331e8e7cef8f8e2f007d42c3a36a0580a7d6ca7"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wasm-opt/-/wasm-opt-1.7.11.tgz#b331e8e7cef8f8e2f007d42c3a36a0580a7d6ca7"
   integrity sha1-szHo5874+OLwB9QsOjagWAp9bKc=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -239,7 +239,7 @@
 
 "@webassemblyjs/wasm-parser@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/wasm-parser/-/wasm-parser-1.7.11.tgz#6e3d20fa6a3519f6b084ef9391ad58211efb0a1a"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wasm-parser/-/wasm-parser-1.7.11.tgz#6e3d20fa6a3519f6b084ef9391ad58211efb0a1a"
   integrity sha1-bj0g+mo1GfawhO+Tka1YIR77Cho=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -251,7 +251,7 @@
 
 "@webassemblyjs/wast-parser@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/wast-parser/-/wast-parser-1.7.11.tgz#25bd117562ca8c002720ff8116ef9072d9ca869c"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wast-parser/-/wast-parser-1.7.11.tgz#25bd117562ca8c002720ff8116ef9072d9ca869c"
   integrity sha1-Jb0RdWLKjAAnIP+BFu+QctnKhpw=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -263,7 +263,7 @@
 
 "@webassemblyjs/wast-printer@1.7.11":
   version "1.7.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@webassemblyjs/wast-printer/-/wast-printer-1.7.11.tgz#c4245b6de242cb50a2cc950174fdbf65c78d7813"
+  resolved "https://registry.yarnpkg.com/@webassemblyjs/wast-printer/-/wast-printer-1.7.11.tgz#c4245b6de242cb50a2cc950174fdbf65c78d7813"
   integrity sha1-xCRbbeJCy1CizJUBdP2/ZceNeBM=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -272,12 +272,12 @@
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
+  resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
   integrity sha1-7vAUoxRa5Hehy8AM0eVSM23Ot5A=
 
 "@xtuc/long@4.2.1":
   version "4.2.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
+  resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha1-XIXWYvdvodNFdXZsXc1mFavNMNg=
 
 abab@^1.0.4:
@@ -292,7 +292,7 @@ abbrev@1:
 
 acorn-dynamic-import@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/acorn-dynamic-import/-/acorn-dynamic-import-3.0.0.tgz#901ceee4c7faaef7e07ad2a47e890675da50a278"
+  resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-3.0.0.tgz#901ceee4c7faaef7e07ad2a47e890675da50a278"
   integrity sha1-kBzu5Mf6rvfgetKkfokGddpQong=
   dependencies:
     acorn "^5.0.0"
@@ -311,17 +311,17 @@ acorn@^5.0.0, acorn@^5.3.0:
 
 acorn@^5.6.2:
   version "5.7.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
   integrity sha1-Z6ojG/iBKXS4UjWpZ3Hra9B+onk=
 
 ajv-errors@^1.0.0:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
+  resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
   integrity sha1-81mGrOuRr63sQQL72FAUlQzvpk0=
 
 ajv-keywords@^3.1.0:
   version "3.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
+  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.2.0.tgz#e86b819c602cf8821ad637413698f1dec021847a"
   integrity sha1-6GuBnGAs+IIa1jdBNpjx3sAhhHo=
 
 ajv@^5.1.0:
@@ -336,7 +336,7 @@ ajv@^5.1.0:
 
 ajv@^6.1.0:
   version "6.6.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
   integrity sha1-Y2D17Q2A8jLMKylMNi1dwuU43WE=
   dependencies:
     fast-deep-equal "^2.0.1"
@@ -387,7 +387,7 @@ ansi-styles@^3.2.0, ansi-styles@^3.2.1:
 
 any-observable@^0.3.0:
   version "0.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/any-observable/-/any-observable-0.3.0.tgz#af933475e5806a67d0d7df090dd5e8bef65d119b"
+  resolved "https://registry.yarnpkg.com/any-observable/-/any-observable-0.3.0.tgz#af933475e5806a67d0d7df090dd5e8bef65d119b"
   integrity sha1-r5M0deWAamfQ198JDdXovvZdEZs=
 
 anymatch@^1.3.0:
@@ -477,14 +477,14 @@ array-reduce@~0.0.0:
 
 array-union@^1.0.1:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/array-union/-/array-union-1.0.2.tgz#9a34410e4f4e3da23dea375be5be70f24778ec39"
+  resolved "https://registry.yarnpkg.com/array-union/-/array-union-1.0.2.tgz#9a34410e4f4e3da23dea375be5be70f24778ec39"
   integrity sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=
   dependencies:
     array-uniq "^1.0.1"
 
 array-uniq@^1.0.1:
   version "1.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
+  resolved "https://registry.yarnpkg.com/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
   integrity sha1-r2rId6Jcx/dOBYiUdThY39sk/bY=
 
 array-unique@^0.2.1:
@@ -504,7 +504,7 @@ arrify@^1.0.1:
 
 asn1.js@^4.0.0:
   version "4.10.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/asn1.js/-/asn1.js-4.10.1.tgz#b9c2bf5805f1e64aadeed6df3a2bfafb5a73f5a0"
+  resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.10.1.tgz#b9c2bf5805f1e64aadeed6df3a2bfafb5a73f5a0"
   integrity sha1-ucK/WAXx5kqt7tbfOiv6+1pz9aA=
   dependencies:
     bn.js "^4.0.0"
@@ -523,7 +523,7 @@ assert-plus@1.0.0, assert-plus@^1.0.0:
 
 assert@^1.1.1:
   version "1.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/assert/-/assert-1.4.1.tgz#99912d591836b5a6f5b345c0f07eefc08fc65d91"
+  resolved "https://registry.yarnpkg.com/assert/-/assert-1.4.1.tgz#99912d591836b5a6f5b345c0f07eefc08fc65d91"
   integrity sha1-mZEtWRg2tab1s0XA8H7vwI/GXZE=
   dependencies:
     util "0.10.3"
@@ -562,7 +562,7 @@ async@^2.1.4:
 
 async@^2.5.0:
   version "2.6.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
   integrity sha1-skWiPKcZMAROxT+kaqAKPofGphA=
   dependencies:
     lodash "^4.17.10"
@@ -773,7 +773,7 @@ balanced-match@^1.0.0:
 
 base64-js@^1.0.2:
   version "1.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
   integrity sha1-yrHmEY8FEJXli1KBrqjBzSK/wOM=
 
 base@^0.11.1:
@@ -798,7 +798,7 @@ bcrypt-pbkdf@^1.0.0:
 
 big.js@^3.1.3:
   version "3.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
   integrity sha1-pfwpi4G54Nyi5FiCR4S2XFK6WI4=
 
 binary-extensions@^1.0.0:
@@ -808,12 +808,12 @@ binary-extensions@^1.0.0:
 
 bluebird@^3.5.1:
   version "3.5.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
   integrity sha1-fQHG+WFsmlGrD4xUmnnf5uwz76c=
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   version "4.11.8"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   integrity sha1-LN4J617jQfSEdGuwMJsyU7GxRC8=
 
 boom@4.x.x:
@@ -865,7 +865,7 @@ braces@^2.3.0, braces@^2.3.1:
 
 brorand@^1.0.1:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
+  resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
 browser-process-hrtime@^0.1.2:
@@ -882,7 +882,7 @@ browser-resolve@^1.11.2:
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
+  resolved "https://registry.yarnpkg.com/browserify-aes/-/browserify-aes-1.2.0.tgz#326734642f403dabc3003209853bb70ad428ef48"
   integrity sha1-Mmc0ZC9APavDADIJhTu3CtQo70g=
   dependencies:
     buffer-xor "^1.0.3"
@@ -894,7 +894,7 @@ browserify-aes@^1.0.0, browserify-aes@^1.0.4:
 
 browserify-cipher@^1.0.0:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/browserify-cipher/-/browserify-cipher-1.0.1.tgz#8d6474c1b870bfdabcd3bcfcc1934a10e94f15f0"
+  resolved "https://registry.yarnpkg.com/browserify-cipher/-/browserify-cipher-1.0.1.tgz#8d6474c1b870bfdabcd3bcfcc1934a10e94f15f0"
   integrity sha1-jWR0wbhwv9q807z8wZNKEOlPFfA=
   dependencies:
     browserify-aes "^1.0.4"
@@ -903,7 +903,7 @@ browserify-cipher@^1.0.0:
 
 browserify-des@^1.0.0:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/browserify-des/-/browserify-des-1.0.2.tgz#3af4f1f59839403572f1c66204375f7a7f703e9c"
+  resolved "https://registry.yarnpkg.com/browserify-des/-/browserify-des-1.0.2.tgz#3af4f1f59839403572f1c66204375f7a7f703e9c"
   integrity sha1-OvTx9Zg5QDVy8cZiBDdfen9wPpw=
   dependencies:
     cipher-base "^1.0.1"
@@ -913,7 +913,7 @@ browserify-des@^1.0.0:
 
 browserify-rsa@^4.0.0:
   version "4.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/browserify-rsa/-/browserify-rsa-4.0.1.tgz#21e0abfaf6f2029cf2fafb133567a701d4135524"
+  resolved "https://registry.yarnpkg.com/browserify-rsa/-/browserify-rsa-4.0.1.tgz#21e0abfaf6f2029cf2fafb133567a701d4135524"
   integrity sha1-IeCr+vbyApzy+vsTNWenAdQTVSQ=
   dependencies:
     bn.js "^4.1.0"
@@ -921,7 +921,7 @@ browserify-rsa@^4.0.0:
 
 browserify-sign@^4.0.0:
   version "4.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/browserify-sign/-/browserify-sign-4.0.4.tgz#aa4eb68e5d7b658baa6bf6a57e630cbd7a93d298"
+  resolved "https://registry.yarnpkg.com/browserify-sign/-/browserify-sign-4.0.4.tgz#aa4eb68e5d7b658baa6bf6a57e630cbd7a93d298"
   integrity sha1-qk62jl17ZYuqa/alfmMMvXqT0pg=
   dependencies:
     bn.js "^4.1.1"
@@ -934,7 +934,7 @@ browserify-sign@^4.0.0:
 
 browserify-zlib@^0.2.0:
   version "0.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/browserify-zlib/-/browserify-zlib-0.2.0.tgz#2869459d9aa3be245fe8fe2ca1f46e2e7f54d73f"
+  resolved "https://registry.yarnpkg.com/browserify-zlib/-/browserify-zlib-0.2.0.tgz#2869459d9aa3be245fe8fe2ca1f46e2e7f54d73f"
   integrity sha1-KGlFnZqjviRf6P4sofRuLn9U1z8=
   dependencies:
     pako "~1.0.5"
@@ -948,17 +948,17 @@ bser@^2.0.0:
 
 buffer-from@^1.0.0:
   version "1.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha1-MnE7wCj3XAL9txDXx7zsHyxgcO8=
 
 buffer-xor@^1.0.3:
   version "1.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
+  resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
   integrity sha1-JuYe0UIvtw3ULm42cp7VHYVf6Nk=
 
 buffer@^4.3.0:
   version "4.9.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/buffer/-/buffer-4.9.1.tgz#6d1bb601b07a4efced97094132093027c95bc298"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-4.9.1.tgz#6d1bb601b07a4efced97094132093027c95bc298"
   integrity sha1-bRu2AbB6TvztlwlBMgkwJ8lbwpg=
   dependencies:
     base64-js "^1.0.2"
@@ -972,12 +972,12 @@ builtin-modules@^1.0.0, builtin-modules@^1.1.1:
 
 builtin-status-codes@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
+  resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
 cacache@^11.0.2:
   version "11.3.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cacache/-/cacache-11.3.1.tgz#d09d25f6c4aca7a6d305d141ae332613aa1d515f"
+  resolved "https://registry.yarnpkg.com/cacache/-/cacache-11.3.1.tgz#d09d25f6c4aca7a6d305d141ae332613aa1d515f"
   integrity sha1-0J0l9sSsp6bTBdFBrjMmE6odUV8=
   dependencies:
     bluebird "^3.5.1"
@@ -1027,7 +1027,7 @@ camelcase@^4.1.0:
 
 camelcase@^5.0.0:
   version "5.0.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/camelcase/-/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
   integrity sha1-AylVJ9WL081Kp1Nj81sujZe+L0I=
 
 caseless@~0.12.0:
@@ -1065,7 +1065,7 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0:
 
 chalk@^2.3.1, chalk@^2.4.1:
   version "2.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
   integrity sha1-GMSasWoDe26wFSzIPjRxM4IVtm4=
   dependencies:
     ansi-styles "^3.2.1"
@@ -1095,7 +1095,7 @@ chokidar@^1.6.0:
 
 chokidar@^2.0.2, chokidar@^2.0.4:
   version "2.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.0.4.tgz#356ff4e2b0e8e43e322d18a372460bbcf3accd26"
   integrity sha1-NW/04rDo5D4yLRijckYLvPOszSY=
   dependencies:
     anymatch "^2.0.0"
@@ -1120,7 +1120,7 @@ chownr@^1.0.1:
 
 chrome-trace-event@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/chrome-trace-event/-/chrome-trace-event-1.0.0.tgz#45a91bd2c20c9411f0963b5aaeb9a1b95e09cc48"
+  resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-1.0.0.tgz#45a91bd2c20c9411f0963b5aaeb9a1b95e09cc48"
   integrity sha1-Rakb0sIMlBHwljtarrmhuV4JzEg=
   dependencies:
     tslib "^1.9.0"
@@ -1132,7 +1132,7 @@ ci-info@^1.0.0:
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
+  resolved "https://registry.yarnpkg.com/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
   integrity sha1-h2Dk7MJy9MNjUy+SbYdKriwTl94=
   dependencies:
     inherits "^2.0.1"
@@ -1150,14 +1150,14 @@ class-utils@^0.3.5:
 
 cli-cursor@^2.0.0, cli-cursor@^2.1.0:
   version "2.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
+  resolved "https://registry.yarnpkg.com/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
   integrity sha1-s12sN2R5+sw+lHR9QdDQ9SOP/LU=
   dependencies:
     restore-cursor "^2.0.0"
 
 cli-truncate@^0.2.1:
   version "0.2.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cli-truncate/-/cli-truncate-0.2.1.tgz#9f15cfbb0705005369216c626ac7d05ab90dd574"
+  resolved "https://registry.yarnpkg.com/cli-truncate/-/cli-truncate-0.2.1.tgz#9f15cfbb0705005369216c626ac7d05ab90dd574"
   integrity sha1-nxXPuwcFAFNpIWxiasfQWrkN1XQ=
   dependencies:
     slice-ansi "0.0.4"
@@ -1225,17 +1225,17 @@ commander@^2.12.1:
 
 commander@^2.14.1, commander@^2.9.0:
   version "2.19.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
   integrity sha1-9hmKqE5bg8RgVLlN3tv+1e6f8So=
 
 commander@~2.17.1:
   version "2.17.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha1-vXerfebelCBc6sxy8XFtKfIKd78=
 
 commondir@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
+  resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
 
 compare-versions@^3.1.0:
@@ -1255,7 +1255,7 @@ concat-map@0.0.1:
 
 concat-stream@^1.5.0:
   version "1.6.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
+  resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
   integrity sha1-kEvfGUzTEi/Gdcd/xKw9T/D9GjQ=
   dependencies:
     buffer-from "^1.0.0"
@@ -1265,7 +1265,7 @@ concat-stream@^1.5.0:
 
 console-browserify@^1.1.0:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/console-browserify/-/console-browserify-1.1.0.tgz#f0241c45730a9fc6323b206dbf38edc741d0bb10"
+  resolved "https://registry.yarnpkg.com/console-browserify/-/console-browserify-1.1.0.tgz#f0241c45730a9fc6323b206dbf38edc741d0bb10"
   integrity sha1-8CQcRXMKn8YyOyBtvzjtx0HQuxA=
   dependencies:
     date-now "^0.1.4"
@@ -1277,7 +1277,7 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
 
 constants-browserify@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
+  resolved "https://registry.yarnpkg.com/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
   integrity sha1-wguW2MYXdIqvHBYCF2DNJ/y4y3U=
 
 convert-source-map@^1.4.0, convert-source-map@^1.5.0:
@@ -1287,7 +1287,7 @@ convert-source-map@^1.4.0, convert-source-map@^1.5.0:
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/copy-concurrently/-/copy-concurrently-1.0.5.tgz#92297398cae34937fcafd6ec8139c18051f0b5e0"
+  resolved "https://registry.yarnpkg.com/copy-concurrently/-/copy-concurrently-1.0.5.tgz#92297398cae34937fcafd6ec8139c18051f0b5e0"
   integrity sha1-kilzmMrjSTf8r9bsgTnBgFHwteA=
   dependencies:
     aproba "^1.1.1"
@@ -1314,7 +1314,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
 
 cosmiconfig@5.0.6:
   version "5.0.6"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cosmiconfig/-/cosmiconfig-5.0.6.tgz#dca6cf680a0bd03589aff684700858c81abeeb39"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-5.0.6.tgz#dca6cf680a0bd03589aff684700858c81abeeb39"
   integrity sha1-3KbPaAoL0DWJr/aEcAhYyBq+6zk=
   dependencies:
     is-directory "^0.3.1"
@@ -1340,7 +1340,7 @@ cpx@^1.5.0:
 
 create-ecdh@^4.0.0:
   version "4.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
+  resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.3.tgz#c9111b6f33045c4697f144787f9254cdc77c45ff"
   integrity sha1-yREbbzMEXEaX8UR4f5JUzcd8Rf8=
   dependencies:
     bn.js "^4.1.0"
@@ -1348,7 +1348,7 @@ create-ecdh@^4.0.0:
 
 create-hash@^1.1.0, create-hash@^1.1.2:
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/create-hash/-/create-hash-1.2.0.tgz#889078af11a63756bcfb59bd221996be3a9ef196"
+  resolved "https://registry.yarnpkg.com/create-hash/-/create-hash-1.2.0.tgz#889078af11a63756bcfb59bd221996be3a9ef196"
   integrity sha1-iJB4rxGmN1a8+1m9IhmWvjqe8ZY=
   dependencies:
     cipher-base "^1.0.1"
@@ -1359,7 +1359,7 @@ create-hash@^1.1.0, create-hash@^1.1.2:
 
 create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
   version "1.1.7"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/create-hmac/-/create-hmac-1.1.7.tgz#69170c78b3ab957147b2b8b04572e47ead2243ff"
+  resolved "https://registry.yarnpkg.com/create-hmac/-/create-hmac-1.1.7.tgz#69170c78b3ab957147b2b8b04572e47ead2243ff"
   integrity sha1-aRcMeLOrlXFHsriwRXLkfq0iQ/8=
   dependencies:
     cipher-base "^1.0.3"
@@ -1380,7 +1380,7 @@ cross-spawn@^5.0.1:
 
 cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
   integrity sha1-Sl7Hxk364iw6FBJNus3uhG2Ay8Q=
   dependencies:
     nice-try "^1.0.4"
@@ -1398,7 +1398,7 @@ cryptiles@3.x.x:
 
 crypto-browserify@^3.11.0:
   version "3.12.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/crypto-browserify/-/crypto-browserify-3.12.0.tgz#396cf9f3137f03e4b8e532c58f698254e00f80ec"
+  resolved "https://registry.yarnpkg.com/crypto-browserify/-/crypto-browserify-3.12.0.tgz#396cf9f3137f03e4b8e532c58f698254e00f80ec"
   integrity sha1-OWz58xN/A+S45TLFj2mCVOAPgOw=
   dependencies:
     browserify-cipher "^1.0.0"
@@ -1427,7 +1427,7 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
 
 cyclist@~0.2.2:
   version "0.2.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
+  resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
 dashdash@^1.12.0:
@@ -1448,12 +1448,12 @@ data-urls@^1.0.0:
 
 date-fns@^1.27.2:
   version "1.30.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha1-LnG/CxGRU9u0zE6I2epaz7UNwFw=
 
 date-now@^0.1.4:
   version "0.1.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
+  resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
 debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
@@ -1472,7 +1472,7 @@ debug@^3.1.0:
 
 debug@^4.0.1:
   version "4.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
   integrity sha1-NzaHv/pnizixzZH4YbY4UANd3Ic=
   dependencies:
     ms "^2.1.1"
@@ -1489,12 +1489,12 @@ decode-uri-component@^0.2.0:
 
 dedent@^0.7.0:
   version "0.7.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
+  resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.7.0.tgz#2495ddbaf6eb874abb0e1be9df22d2e5a544326c"
   integrity sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=
 
 deep-extend@^0.6.0:
   version "0.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
+  resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha1-xPp8lUBKF6nD6Mp+FTcxK3NjMKw=
 
 deep-extend@~0.4.0:
@@ -1546,7 +1546,7 @@ define-property@^2.0.2:
 
 del@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/del/-/del-3.0.0.tgz#53ecf699ffcbcb39637691ab13baf160819766e5"
+  resolved "https://registry.yarnpkg.com/del/-/del-3.0.0.tgz#53ecf699ffcbcb39637691ab13baf160819766e5"
   integrity sha1-U+z2mf/LyzljdpGrE7rxYIGXZuU=
   dependencies:
     globby "^6.1.0"
@@ -1568,7 +1568,7 @@ delegates@^1.0.0:
 
 des.js@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/des.js/-/des.js-1.0.0.tgz#c074d2e2aa6a8a9a07dbd61f9a15c2cd83ec8ecc"
+  resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.0.tgz#c074d2e2aa6a8a9a07dbd61f9a15c2cd83ec8ecc"
   integrity sha1-wHTS4qpqipoH29YfmhXCzYPsjsw=
   dependencies:
     inherits "^2.0.1"
@@ -1598,7 +1598,7 @@ diff@^3.2.0:
 
 diffie-hellman@^5.0.0:
   version "5.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
+  resolved "https://registry.yarnpkg.com/diffie-hellman/-/diffie-hellman-5.0.3.tgz#40e8ee98f55a2149607146921c63e1ae5f3d2875"
   integrity sha1-QOjumPVaIUlgcUaSHGPhrl89KHU=
   dependencies:
     bn.js "^4.1.0"
@@ -1607,7 +1607,7 @@ diffie-hellman@^5.0.0:
 
 doctrine@0.7.2:
   version "0.7.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/doctrine/-/doctrine-0.7.2.tgz#7cb860359ba3be90e040b26b729ce4bfa654c523"
+  resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-0.7.2.tgz#7cb860359ba3be90e040b26b729ce4bfa654c523"
   integrity sha1-fLhgNZujvpDgQLJrcpzkv6ZUxSM=
   dependencies:
     esutils "^1.1.6"
@@ -1615,7 +1615,7 @@ doctrine@0.7.2:
 
 domain-browser@^1.1.1:
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
+  resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha1-PTH1AZGmdJ3RN1p/Ui6CPULlTto=
 
 domexception@^1.0.0:
@@ -1632,7 +1632,7 @@ duplexer@^0.1.1:
 
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/duplexify/-/duplexify-3.6.1.tgz#b1a7a29c4abfd639585efaecce80d666b1e34125"
+  resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.6.1.tgz#b1a7a29c4abfd639585efaecce80d666b1e34125"
   integrity sha1-saeinEq/1jlYXvrszoDWZrHjQSU=
   dependencies:
     end-of-stream "^1.0.0"
@@ -1649,12 +1649,12 @@ ecc-jsbn@~0.1.1:
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
+  resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
   integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
 
 elliptic@^6.0.0:
   version "6.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/elliptic/-/elliptic-6.4.1.tgz#c2d0b7776911b86722c632c3c06c60f2f819939a"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.1.tgz#c2d0b7776911b86722c632c3c06c60f2f819939a"
   integrity sha1-wtC3d2kRuGcixjLDwGxg8vgZk5o=
   dependencies:
     bn.js "^4.4.0"
@@ -1667,19 +1667,19 @@ elliptic@^6.0.0:
 
 emojis-list@^2.0.0:
   version "2.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
+  resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/end-of-stream/-/end-of-stream-1.4.1.tgz#ed29634d19baba463b6ce6b80a37213eab71ec43"
+  resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.1.tgz#ed29634d19baba463b6ce6b80a37213eab71ec43"
   integrity sha1-7SljTRm6ukY7bOa4CjchPqtx7EM=
   dependencies:
     once "^1.4.0"
 
 enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
   version "4.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/enhanced-resolve/-/enhanced-resolve-4.1.0.tgz#41c7e0bfdfe74ac1ffe1e57ad6a5c6c9f3742a7f"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-4.1.0.tgz#41c7e0bfdfe74ac1ffe1e57ad6a5c6c9f3742a7f"
   integrity sha1-Qcfgv9/nSsH/4eV61qXGyfN0Kn8=
   dependencies:
     graceful-fs "^4.1.2"
@@ -1688,7 +1688,7 @@ enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0:
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/errno/-/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
+  resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
   integrity sha1-RoTXF3mtOa8Xfj8AeZb3xnyFJhg=
   dependencies:
     prr "~1.0.1"
@@ -1702,14 +1702,14 @@ error-ex@^1.2.0:
 
 error-ex@^1.3.1:
   version "1.3.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/error-ex/-/error-ex-1.3.2.tgz#b4ac40648107fdcdcfae242f428bea8a14d4f1bf"
+  resolved "https://registry.yarnpkg.com/error-ex/-/error-ex-1.3.2.tgz#b4ac40648107fdcdcfae242f428bea8a14d4f1bf"
   integrity sha1-tKxAZIEH/c3PriQvQovqihTU8b8=
   dependencies:
     is-arrayish "^0.2.1"
 
 es-abstract@^1.4.3:
   version "1.12.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/es-abstract/-/es-abstract-1.12.0.tgz#9dbbdd27c6856f0001421ca18782d786bf8a6165"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.12.0.tgz#9dbbdd27c6856f0001421ca18782d786bf8a6165"
   integrity sha1-nbvdJ8aFbwABQhyhh4LXhr+KYWU=
   dependencies:
     es-to-primitive "^1.1.1"
@@ -1757,7 +1757,7 @@ escodegen@^1.9.0:
 
 eslint-scope@^4.0.0:
   version "4.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/eslint-scope/-/eslint-scope-4.0.0.tgz#50bf3071e9338bcdc43331794a0cb533f0136172"
+  resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.0.tgz#50bf3071e9338bcdc43331794a0cb533f0136172"
   integrity sha1-UL8wcekzi83EMzF5Sgy1M/ATYXI=
   dependencies:
     esrecurse "^4.1.0"
@@ -1775,7 +1775,7 @@ esprima@^4.0.0:
 
 esrecurse@^4.1.0:
   version "4.2.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/esrecurse/-/esrecurse-4.2.1.tgz#007a3b9fdbc2b3bb87e4879ea19c92fdbd3942cf"
+  resolved "https://registry.yarnpkg.com/esrecurse/-/esrecurse-4.2.1.tgz#007a3b9fdbc2b3bb87e4879ea19c92fdbd3942cf"
   integrity sha1-AHo7n9vCs7uH5IeeoZyS/b05Qs8=
   dependencies:
     estraverse "^4.1.0"
@@ -1787,7 +1787,7 @@ estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
 
 esutils@^1.1.6:
   version "1.1.6"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/esutils/-/esutils-1.1.6.tgz#c01ccaa9ae4b897c6d0c3e210ae52f3c7a844375"
+  resolved "https://registry.yarnpkg.com/esutils/-/esutils-1.1.6.tgz#c01ccaa9ae4b897c6d0c3e210ae52f3c7a844375"
   integrity sha1-wBzKqa5LiXxtDD4hCuUvPHqEQ3U=
 
 esutils@^2.0.2:
@@ -1797,12 +1797,12 @@ esutils@^2.0.2:
 
 events@^1.0.0:
   version "1.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
+  resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
   integrity sha1-nr23Y1rQmccNzEwqH1AEKI6L2SQ=
 
 evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
   version "1.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/evp_bytestokey/-/evp_bytestokey-1.0.3.tgz#7fcbdb198dc71959432efe13842684e0525acb02"
+  resolved "https://registry.yarnpkg.com/evp_bytestokey/-/evp_bytestokey-1.0.3.tgz#7fcbdb198dc71959432efe13842684e0525acb02"
   integrity sha1-f8vbGY3HGVlDLv4ThCaE4FJaywI=
   dependencies:
     md5.js "^1.3.4"
@@ -1817,7 +1817,7 @@ exec-sh@^0.2.0:
 
 execa@^0.10.0:
   version "0.10.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
   integrity sha1-/0Vqj1P5D47MxxqW0Rvfx/CCy1A=
   dependencies:
     cross-spawn "^6.0.0"
@@ -1843,7 +1843,7 @@ execa@^0.7.0:
 
 execa@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
   integrity sha1-xiNqW7TfbW8V6I5/AXeYIWdJ3dg=
   dependencies:
     cross-spawn "^6.0.0"
@@ -1956,7 +1956,7 @@ fast-deep-equal@^1.0.0:
 
 fast-deep-equal@^2.0.1:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
   integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
 
 fast-json-stable-stringify@^2.0.0:
@@ -1978,12 +1978,12 @@ fb-watchman@^2.0.0:
 
 figgy-pudding@^3.1.0, figgy-pudding@^3.5.1:
   version "3.5.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
+  resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
   integrity sha1-hiRwESkBxyeg5JWoB0S9W6odZ5A=
 
 figures@^1.7.0:
   version "1.7.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
+  resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
   integrity sha1-y+Hjr/zxzUS4DK3+0o3Hk6lwHS4=
   dependencies:
     escape-string-regexp "^1.0.5"
@@ -1991,7 +1991,7 @@ figures@^1.7.0:
 
 figures@^2.0.0:
   version "2.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
+  resolved "https://registry.yarnpkg.com/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
   integrity sha1-OrGi0qYsi/tDGgyUy3l6L84nyWI=
   dependencies:
     escape-string-regexp "^1.0.5"
@@ -2032,7 +2032,7 @@ fill-range@^4.0.0:
 
 find-cache-dir@^2.0.0:
   version "2.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/find-cache-dir/-/find-cache-dir-2.0.0.tgz#4c1faed59f45184530fb9d7fa123a4d04a98472d"
+  resolved "https://registry.yarnpkg.com/find-cache-dir/-/find-cache-dir-2.0.0.tgz#4c1faed59f45184530fb9d7fa123a4d04a98472d"
   integrity sha1-TB+u1Z9FGEUw+51/oSOk0EqYRy0=
   dependencies:
     commondir "^1.0.1"
@@ -2046,7 +2046,7 @@ find-index@^0.1.1:
 
 find-parent-dir@^0.3.0:
   version "0.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/find-parent-dir/-/find-parent-dir-0.3.0.tgz#33c44b429ab2b2f0646299c5f9f718f376ff8d54"
+  resolved "https://registry.yarnpkg.com/find-parent-dir/-/find-parent-dir-0.3.0.tgz#33c44b429ab2b2f0646299c5f9f718f376ff8d54"
   integrity sha1-M8RLQpqysvBkYpnF+fcY83b/jVQ=
 
 find-up@^1.0.0:
@@ -2066,14 +2066,14 @@ find-up@^2.1.0:
 
 find-up@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/find-up/-/find-up-3.0.0.tgz#49169f1d7993430646da61ecc5ae355c21c97b73"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-3.0.0.tgz#49169f1d7993430646da61ecc5ae355c21c97b73"
   integrity sha1-SRafHXmTQwZG2mHsxa41XCHJe3M=
   dependencies:
     locate-path "^3.0.0"
 
 flush-write-stream@^1.0.0:
   version "1.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/flush-write-stream/-/flush-write-stream-1.0.3.tgz#c5d586ef38af6097650b49bc41b55fabb19f35bd"
+  resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.0.3.tgz#c5d586ef38af6097650b49bc41b55fabb19f35bd"
   integrity sha1-xdWG7zivYJdlC0m8QbVfq7GfNb0=
   dependencies:
     inherits "^2.0.1"
@@ -2103,7 +2103,7 @@ forever-agent@~0.6.1:
 
 fork-ts-checker-webpack-plugin@^0.5.2:
   version "0.5.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-0.5.2.tgz#a73b3630bd0a69409a6e4824e54c03a62fe82d8f"
+  resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-0.5.2.tgz#a73b3630bd0a69409a6e4824e54c03a62fe82d8f"
   integrity sha1-pzs2ML0KaUCabkgk5UwDpi/oLY8=
   dependencies:
     babel-code-frame "^6.22.0"
@@ -2131,7 +2131,7 @@ fragment-cache@^0.2.1:
 
 from2@^2.1.0:
   version "2.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
+  resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
   integrity sha1-i/tVAr3kpNNs/e6gB/zKIdfjgq8=
   dependencies:
     inherits "^2.0.1"
@@ -2148,7 +2148,7 @@ fs-extra@4.0.3:
 
 fs-extra@^7.0.0:
   version "7.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha1-TxicRKoSO4lfcigE9V6iPq3DSOk=
   dependencies:
     graceful-fs "^4.1.2"
@@ -2164,7 +2164,7 @@ fs-minipass@^1.2.5:
 
 fs-write-stream-atomic@^1.0.8:
   version "1.0.10"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/fs-write-stream-atomic/-/fs-write-stream-atomic-1.0.10.tgz#b47df53493ef911df75731e70a9ded0189db40c9"
+  resolved "https://registry.yarnpkg.com/fs-write-stream-atomic/-/fs-write-stream-atomic-1.0.10.tgz#b47df53493ef911df75731e70a9ded0189db40c9"
   integrity sha1-tH31NJPvkR33VzHnCp3tAYnbQMk=
   dependencies:
     graceful-fs "^4.1.2"
@@ -2187,7 +2187,7 @@ fsevents@^1.0.0, fsevents@^1.1.1:
 
 fsevents@^1.2.2:
   version "1.2.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.4.tgz#f41dcb1af2582af3692da36fc55cbd8e1041c426"
   integrity sha1-9B3LGvJYKvNpLaNvxVy9jhBBxCY=
   dependencies:
     nan "^2.9.2"
@@ -2200,7 +2200,7 @@ function-bind@^1.0.2, function-bind@^1.1.1:
 
 g-status@^2.0.2:
   version "2.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/g-status/-/g-status-2.0.2.tgz#270fd32119e8fc9496f066fe5fe88e0a6bc78b97"
+  resolved "https://registry.yarnpkg.com/g-status/-/g-status-2.0.2.tgz#270fd32119e8fc9496f066fe5fe88e0a6bc78b97"
   integrity sha1-Jw/TIRno/JSW8Gb+X+iOCmvHi5c=
   dependencies:
     arrify "^1.0.1"
@@ -2228,12 +2228,12 @@ get-caller-file@^1.0.1:
 
 get-caller-file@^2.0.0:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/get-caller-file/-/get-caller-file-2.0.1.tgz#25835260d3a2b9665fcdbb08cb039a7bbf7011c0"
+  resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.1.tgz#25835260d3a2b9665fcdbb08cb039a7bbf7011c0"
   integrity sha1-JYNSYNOiuWZfzbsIywOae79wEcA=
 
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.0.tgz#b877b49a5c16aefac3655f2ed2ea5b684df8d203"
+  resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.0.tgz#b877b49a5c16aefac3655f2ed2ea5b684df8d203"
   integrity sha1-uHe0mlwWrvrDZV8u0upbaE340gM=
 
 get-stream@^3.0.0:
@@ -2243,7 +2243,7 @@ get-stream@^3.0.0:
 
 get-stream@^4.0.0:
   version "4.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
+  resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
   integrity sha1-wbJVV189wh1Zv8ec09K0axw6VLU=
   dependencies:
     pump "^3.0.0"
@@ -2277,7 +2277,7 @@ glob-parent@^2.0.0:
 
 glob-parent@^3.1.0:
   version "3.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
+  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
   integrity sha1-nmr2KZ2NO9K9QEMIMr0RPfkGxa4=
   dependencies:
     is-glob "^3.1.0"
@@ -2292,7 +2292,7 @@ glob2base@^0.0.12:
 
 glob@^7.0.0:
   version "7.1.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
   integrity sha1-OWCDLT8VdBCDQtr9OmezMsCWnfE=
   dependencies:
     fs.realpath "^1.0.0"
@@ -2316,7 +2316,7 @@ glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
 
 global-modules-path@^2.3.0:
   version "2.3.1"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/global-modules-path/-/global-modules-path-2.3.1.tgz#e541f4c800a1a8514a990477b267ac67525b9931"
+  resolved "https://registry.yarnpkg.com/global-modules-path/-/global-modules-path-2.3.1.tgz#e541f4c800a1a8514a990477b267ac67525b9931"
   integrity sha1-5UH0yAChqFFKmQR3smesZ1JbmTE=
 
 globals@^9.18.0:
@@ -2326,7 +2326,7 @@ globals@^9.18.0:
 
 globby@^6.1.0:
   version "6.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
   integrity sha1-9abXDoOV4hyFj7BInWTfAkJNUGw=
   dependencies:
     array-union "^1.0.1"
@@ -2358,7 +2358,7 @@ handlebars@^4.0.3:
 
 handlebars@^4.0.6:
   version "4.0.12"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/handlebars/-/handlebars-4.0.12.tgz#2c15c8a96d46da5e266700518ba8cb8d919d5bc5"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.12.tgz#2c15c8a96d46da5e266700518ba8cb8d919d5bc5"
   integrity sha1-LBXIqW1G2l4mZwBRi6jLjZGdW8U=
   dependencies:
     async "^2.5.0"
@@ -2442,7 +2442,7 @@ has@^1.0.1:
 
 hash-base@^3.0.0:
   version "3.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/hash-base/-/hash-base-3.0.4.tgz#5fc8686847ecd73499403319a6b0a3f3f6ae4918"
+  resolved "https://registry.yarnpkg.com/hash-base/-/hash-base-3.0.4.tgz#5fc8686847ecd73499403319a6b0a3f3f6ae4918"
   integrity sha1-X8hoaEfs1zSZQDMZprCj8/auSRg=
   dependencies:
     inherits "^2.0.1"
@@ -2450,7 +2450,7 @@ hash-base@^3.0.0:
 
 hash.js@^1.0.0, hash.js@^1.0.3:
   version "1.1.7"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
   integrity sha1-C6vKU46NTuSg+JiNaIZlN6ADz0I=
   dependencies:
     inherits "^2.0.3"
@@ -2468,12 +2468,12 @@ hawk@~6.0.2:
 
 highlight.js@^9.0.0:
   version "9.13.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
   integrity sha1-BUWG1TpoYzERaEiKD1jWxQXOZB4=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
+  resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
   integrity sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
   dependencies:
     hash.js "^1.0.3"
@@ -2516,7 +2516,7 @@ http-signature@~1.2.0:
 
 https-browserify@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
+  resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
 husky@^0.14.3:
@@ -2542,12 +2542,12 @@ iconv-lite@^0.4.4:
 
 ieee754@^1.1.4:
   version "1.1.12"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"
   integrity sha1-UL8k5bnIu5ivSWTJQc2wkY2ntgs=
 
 iferr@^0.1.5:
   version "0.1.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
+  resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
 
 ignore-walk@^3.0.1:
@@ -2567,7 +2567,7 @@ import-local@^1.0.0:
 
 import-local@^2.0.0:
   version "2.0.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/import-local/-/import-local-2.0.0.tgz#55070be38a5993cf18ef6db7e961f5bee5c5a09d"
+  resolved "https://registry.yarnpkg.com/import-local/-/import-local-2.0.0.tgz#55070be38a5993cf18ef6db7e961f5bee5c5a09d"
   integrity sha1-VQcL44pZk88Y72236WH1vuXFoJ0=
   dependencies:
     pkg-dir "^3.0.0"
@@ -2580,12 +2580,12 @@ imurmurhash@^0.1.4:
 
 indent-string@^3.0.0:
   version "3.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
+  resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
   integrity sha1-Sl/W0nzDMvN+VBmlBNu4NxBckok=
 
 indexof@0.0.1:
   version "0.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
+  resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
   integrity sha1-gtwzbSMrkGIXnQWrMpOmYFn9Q10=
 
 inflight@^1.0.4:
@@ -2603,7 +2603,7 @@ inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.1, i
 
 inherits@2.0.1:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
   integrity sha1-sX0I0ya0Qj5Wjv9xn5GwscvfafE=
 
 ini@~1.3.0:
@@ -2613,7 +2613,7 @@ ini@~1.3.0:
 
 interpret@^1.0.0, interpret@^1.1.0:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
+  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
   integrity sha1-ftGxQQxqDg94z5XTuEQMY/eLhhQ=
 
 invariant@^2.2.2:
@@ -2625,7 +2625,7 @@ invariant@^2.2.2:
 
 inversify@^5.0.0:
   version "5.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/inversify/-/inversify-5.0.1.tgz#500d709b1434896ce5a0d58915c4a4210e34fb6e"
+  resolved "https://registry.yarnpkg.com/inversify/-/inversify-5.0.1.tgz#500d709b1434896ce5a0d58915c4a4210e34fb6e"
   integrity sha1-UA1wmxQ0iWzloNWJFcSkIQ40+24=
 
 invert-kv@^1.0.0:
@@ -2635,7 +2635,7 @@ invert-kv@^1.0.0:
 
 invert-kv@^2.0.0:
   version "2.0.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
+  resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha1-c5P1r6Weyf9fZ6J2INEcIm4+7AI=
 
 is-accessor-descriptor@^0.1.6:
@@ -2727,7 +2727,7 @@ is-descriptor@^1.0.0, is-descriptor@^1.0.2:
 
 is-directory@^0.3.1:
   version "0.3.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-directory/-/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
+  resolved "https://registry.yarnpkg.com/is-directory/-/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
   integrity sha1-YTObbyR1/Hcv2cnYP1yFddwVSuE=
 
 is-dotfile@^1.0.0:
@@ -2761,7 +2761,7 @@ is-extglob@^1.0.0:
 
 is-extglob@^2.1.0, is-extglob@^2.1.1:
   version "2.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
+  resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
   integrity sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=
 
 is-finite@^1.0.0:
@@ -2797,14 +2797,14 @@ is-glob@^2.0.0, is-glob@^2.0.1:
 
 is-glob@^3.1.0:
   version "3.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-glob/-/is-glob-3.1.0.tgz#7ba5ae24217804ac70707b96922567486cc3e84a"
+  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-3.1.0.tgz#7ba5ae24217804ac70707b96922567486cc3e84a"
   integrity sha1-e6WuJCF4BKxwcHuWkiVnSGzD6Eo=
   dependencies:
     is-extglob "^2.1.0"
 
 is-glob@^4.0.0:
   version "4.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-glob/-/is-glob-4.0.0.tgz#9521c76845cc2610a85203ddf080a958c2ffabc0"
+  resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.0.tgz#9521c76845cc2610a85203ddf080a958c2ffabc0"
   integrity sha1-lSHHaEXMJhCoUgPd8ICpWML/q8A=
   dependencies:
     is-extglob "^2.1.1"
@@ -2830,12 +2830,12 @@ is-number@^4.0.0:
 
 is-obj@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
   integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
 
 is-observable@^1.1.0:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-observable/-/is-observable-1.1.0.tgz#b3e986c8f44de950867cab5403f5a3465005975e"
+  resolved "https://registry.yarnpkg.com/is-observable/-/is-observable-1.1.0.tgz#b3e986c8f44de950867cab5403f5a3465005975e"
   integrity sha1-s+mGyPRN6VCGfKtUA/WjRlAFl14=
   dependencies:
     symbol-observable "^1.1.0"
@@ -2849,19 +2849,19 @@ is-odd@^2.0.0:
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-path-cwd/-/is-path-cwd-1.0.0.tgz#d225ec23132e89edd38fda767472e62e65f1106d"
+  resolved "https://registry.yarnpkg.com/is-path-cwd/-/is-path-cwd-1.0.0.tgz#d225ec23132e89edd38fda767472e62e65f1106d"
   integrity sha1-0iXsIxMuie3Tj9p2dHLmLmXxEG0=
 
 is-path-in-cwd@^1.0.0:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-path-in-cwd/-/is-path-in-cwd-1.0.1.tgz#5ac48b345ef675339bd6c7a48a912110b241cf52"
+  resolved "https://registry.yarnpkg.com/is-path-in-cwd/-/is-path-in-cwd-1.0.1.tgz#5ac48b345ef675339bd6c7a48a912110b241cf52"
   integrity sha1-WsSLNF72dTOb1sekipEhELJBz1I=
   dependencies:
     is-path-inside "^1.0.0"
 
 is-path-inside@^1.0.0:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-path-inside/-/is-path-inside-1.0.1.tgz#8ef5b7de50437a3fdca6b4e865ef7aa55cb48036"
+  resolved "https://registry.yarnpkg.com/is-path-inside/-/is-path-inside-1.0.1.tgz#8ef5b7de50437a3fdca6b4e865ef7aa55cb48036"
   integrity sha1-jvW33lBDej/cprToZe96pVy0gDY=
   dependencies:
     path-is-inside "^1.0.1"
@@ -2885,7 +2885,7 @@ is-primitive@^2.0.0:
 
 is-promise@^2.1.0:
   version "2.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
+  resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
   integrity sha1-eaKp7OfwlugPNtKy87wWwf9L8/o=
 
 is-regex@^1.0.4:
@@ -2897,7 +2897,7 @@ is-regex@^1.0.4:
 
 is-regexp@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
+  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
   integrity sha1-/S2INUXEa6xaYz57mgnof6LLUGk=
 
 is-stream@^1.1.0:
@@ -2927,7 +2927,7 @@ is-windows@^1.0.2:
 
 isarray@0.0.1:
   version "0.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+  resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
   integrity sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=
 
 isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
@@ -3310,7 +3310,7 @@ jest-validate@^22.4.3:
 
 jest-validate@^23.5.0:
   version "23.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/jest-validate/-/jest-validate-23.6.0.tgz#36761f99d1ed33fcd425b4e4c5595d62b6597474"
+  resolved "https://registry.yarnpkg.com/jest-validate/-/jest-validate-23.6.0.tgz#36761f99d1ed33fcd425b4e4c5595d62b6597474"
   integrity sha1-NnYfmdHtM/zUJbTkxVldYrZZdHQ=
   dependencies:
     chalk "^2.0.1"
@@ -3348,7 +3348,7 @@ js-yaml@^3.7.0:
 
 js-yaml@^3.9.0:
   version "3.12.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/js-yaml/-/js-yaml-3.12.0.tgz#eaed656ec8344f10f527c6bfa1b6e2244de167d1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.0.tgz#eaed656ec8344f10f527c6bfa1b6e2244de167d1"
   integrity sha1-6u1lbsg0TxD1J8a/obbiJE3hZ9E=
   dependencies:
     argparse "^1.0.7"
@@ -3398,7 +3398,7 @@ jsesc@^1.3.0:
 
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
+  resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
   integrity sha1-u4Z8+zRQ5pEHwTHRxRS6s9yLyqk=
 
 json-schema-traverse@^0.3.0:
@@ -3408,7 +3408,7 @@ json-schema-traverse@^0.3.0:
 
 json-schema-traverse@^0.4.1:
   version "0.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
+  resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
   integrity sha1-afaofZUTq4u4/mO9sJecRI5oRmA=
 
 json-schema@0.2.3:
@@ -3493,7 +3493,7 @@ lcid@^1.0.0:
 
 lcid@^2.0.0:
   version "2.0.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
+  resolved "https://registry.yarnpkg.com/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
   integrity sha1-bvXS32DlL4LrIopMNz6NHzlyU88=
   dependencies:
     invert-kv "^2.0.0"
@@ -3518,7 +3518,7 @@ levn@~0.3.0:
 
 lint-staged@^8.1.0:
   version "8.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/lint-staged/-/lint-staged-8.1.0.tgz#dbc3ae2565366d8f20efb9f9799d076da64863f2"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-8.1.0.tgz#dbc3ae2565366d8f20efb9f9799d076da64863f2"
   integrity sha1-28OuJWU2bY8g77n5eZ0HbaZIY/I=
   dependencies:
     "@iamstarkov/listr-update-renderer" "0.4.1"
@@ -3549,12 +3549,12 @@ lint-staged@^8.1.0:
 
 listr-silent-renderer@^1.1.1:
   version "1.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/listr-silent-renderer/-/listr-silent-renderer-1.1.1.tgz#924b5a3757153770bf1a8e3fbf74b8bbf3f9242e"
+  resolved "https://registry.yarnpkg.com/listr-silent-renderer/-/listr-silent-renderer-1.1.1.tgz#924b5a3757153770bf1a8e3fbf74b8bbf3f9242e"
   integrity sha1-kktaN1cVN3C/Go4/v3S4u/P5JC4=
 
 listr-update-renderer@^0.5.0:
   version "0.5.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/listr-update-renderer/-/listr-update-renderer-0.5.0.tgz#4ea8368548a7b8aecb7e06d8c95cb45ae2ede6a2"
+  resolved "https://registry.yarnpkg.com/listr-update-renderer/-/listr-update-renderer-0.5.0.tgz#4ea8368548a7b8aecb7e06d8c95cb45ae2ede6a2"
   integrity sha1-Tqg2hUinuK7LfgbYyVy0WuLt5qI=
   dependencies:
     chalk "^1.1.3"
@@ -3568,7 +3568,7 @@ listr-update-renderer@^0.5.0:
 
 listr-verbose-renderer@^0.5.0:
   version "0.5.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/listr-verbose-renderer/-/listr-verbose-renderer-0.5.0.tgz#f1132167535ea4c1261102b9f28dac7cba1e03db"
+  resolved "https://registry.yarnpkg.com/listr-verbose-renderer/-/listr-verbose-renderer-0.5.0.tgz#f1132167535ea4c1261102b9f28dac7cba1e03db"
   integrity sha1-8RMhZ1NepMEmEQK58o2sfLoeA9s=
   dependencies:
     chalk "^2.4.1"
@@ -3578,7 +3578,7 @@ listr-verbose-renderer@^0.5.0:
 
 listr@^0.14.2:
   version "0.14.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/listr/-/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
+  resolved "https://registry.yarnpkg.com/listr/-/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
   integrity sha1-L+qQlgTkNL5GTFC926DUlpKPpYY=
   dependencies:
     "@samverschueren/stream-to-observable" "^0.3.0"
@@ -3604,7 +3604,7 @@ load-json-file@^1.0.0:
 
 load-json-file@^4.0.0:
   version "4.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/load-json-file/-/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"
+  resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"
   integrity sha1-L19Fq5HjMhYjT9U62rZo607AmTs=
   dependencies:
     graceful-fs "^4.1.2"
@@ -3614,12 +3614,12 @@ load-json-file@^4.0.0:
 
 loader-runner@^2.3.0:
   version "2.3.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/loader-runner/-/loader-runner-2.3.1.tgz#026f12fe7c3115992896ac02ba022ba92971b979"
+  resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.3.1.tgz#026f12fe7c3115992896ac02ba022ba92971b979"
   integrity sha1-Am8S/nwxFZkolqwCugIrqSlxuXk=
 
 loader-utils@^1.0.2, loader-utils@^1.1.0:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
   integrity sha1-yYrvSIvM7aL/teLeZG1qdUQp9c0=
   dependencies:
     big.js "^3.1.3"
@@ -3636,7 +3636,7 @@ locate-path@^2.0.0:
 
 locate-path@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
   integrity sha1-2+w7OrdZdYBxtY/ln8QYca8hQA4=
   dependencies:
     p-locate "^3.0.0"
@@ -3644,7 +3644,7 @@ locate-path@^3.0.0:
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash.sortby@^4.7.0:
@@ -3659,26 +3659,26 @@ lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.4:
 
 lodash@^4.17.10, lodash@^4.17.5:
   version "4.17.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
 
 log-symbols@^1.0.2:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
+  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
   integrity sha1-N2/3tY6jCGoPCfrMdGF+ylAeGhg=
   dependencies:
     chalk "^1.0.0"
 
 log-symbols@^2.2.0:
   version "2.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
+  resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
   integrity sha1-V0Dhxdbw39pK2TI7UzIQfva0xAo=
   dependencies:
     chalk "^2.0.1"
 
 log-update@^2.3.0:
   version "2.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/log-update/-/log-update-2.3.0.tgz#88328fd7d1ce7938b29283746f0b1bc126b24708"
+  resolved "https://registry.yarnpkg.com/log-update/-/log-update-2.3.0.tgz#88328fd7d1ce7938b29283746f0b1bc126b24708"
   integrity sha1-iDKP19HOeTiykoN0bwsbwSayRwg=
   dependencies:
     ansi-escapes "^3.0.0"
@@ -3707,7 +3707,7 @@ lru-cache@^4.0.1:
 
 lru-cache@^4.1.3:
   version "4.1.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   integrity sha1-i75Q6oW+1ZvJ4z3KuCNe6bz0Q80=
   dependencies:
     pseudomap "^1.0.2"
@@ -3715,7 +3715,7 @@ lru-cache@^4.1.3:
 
 make-dir@^1.0.0:
   version "1.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
+  resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
   integrity sha1-ecEDO4BRW9bSTsmTPoYMp17ifww=
   dependencies:
     pify "^3.0.0"
@@ -3729,7 +3729,7 @@ makeerror@1.0.x:
 
 map-age-cleaner@^0.1.1:
   version "0.1.3"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/map-age-cleaner/-/map-age-cleaner-0.1.3.tgz#7d583a7306434c055fe474b0f45078e6e1b4b92a"
+  resolved "https://registry.yarnpkg.com/map-age-cleaner/-/map-age-cleaner-0.1.3.tgz#7d583a7306434c055fe474b0f45078e6e1b4b92a"
   integrity sha1-fVg6cwZDTAVf5HSw9FB45uG0uSo=
   dependencies:
     p-defer "^1.0.0"
@@ -3748,19 +3748,19 @@ map-visit@^1.0.0:
 
 marked@^0.4.0:
   version "0.4.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/marked/-/marked-0.4.0.tgz#9ad2c2a7a1791f10a852e0112f77b571dce10c66"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.4.0.tgz#9ad2c2a7a1791f10a852e0112f77b571dce10c66"
   integrity sha1-mtLCp6F5HxCoUuARL3e1cdzhDGY=
 
 matcher@^1.0.0:
   version "1.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/matcher/-/matcher-1.1.1.tgz#51d8301e138f840982b338b116bb0c09af62c1c2"
+  resolved "https://registry.yarnpkg.com/matcher/-/matcher-1.1.1.tgz#51d8301e138f840982b338b116bb0c09af62c1c2"
   integrity sha1-UdgwHhOPhAmCszixFrsMCa9iwcI=
   dependencies:
     escape-string-regexp "^1.0.4"
 
 md5.js@^1.3.4:
   version "1.3.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
+  resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
   integrity sha1-tdB7jjIW4+J81yjXL3DR5qNCAF8=
   dependencies:
     hash-base "^3.0.0"
@@ -3776,7 +3776,7 @@ mem@^1.1.0:
 
 mem@^4.0.0:
   version "4.0.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/mem/-/mem-4.0.0.tgz#6437690d9471678f6cc83659c00cbafcd6b0cdaf"
+  resolved "https://registry.yarnpkg.com/mem/-/mem-4.0.0.tgz#6437690d9471678f6cc83659c00cbafcd6b0cdaf"
   integrity sha1-ZDdpDZRxZ49syDZZwAy6/Nawza8=
   dependencies:
     map-age-cleaner "^0.1.1"
@@ -3785,7 +3785,7 @@ mem@^4.0.0:
 
 memory-fs@^0.4.0, memory-fs@~0.4.1:
   version "0.4.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
+  resolved "https://registry.yarnpkg.com/memory-fs/-/memory-fs-0.4.1.tgz#3a9a20b8462523e447cfbc7e8bb80ed667bfc552"
   integrity sha1-OpoguEYlI+RHz7x+i7gO1me/xVI=
   dependencies:
     errno "^0.1.3"
@@ -3793,7 +3793,7 @@ memory-fs@^0.4.0, memory-fs@~0.4.1:
 
 memorystream@^0.3.1:
   version "0.3.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/memorystream/-/memorystream-0.3.1.tgz#86d7090b30ce455d63fbae12dda51a47ddcaf9b2"
+  resolved "https://registry.yarnpkg.com/memorystream/-/memorystream-0.3.1.tgz#86d7090b30ce455d63fbae12dda51a47ddcaf9b2"
   integrity sha1-htcJCzDORV1j+64S3aUaR93K+bI=
 
 merge-stream@^1.0.1:
@@ -3848,7 +3848,7 @@ micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
 
 miller-rabin@^4.0.0:
   version "4.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/miller-rabin/-/miller-rabin-4.0.1.tgz#f080351c865b0dc562a8462966daa53543c78a4d"
+  resolved "https://registry.yarnpkg.com/miller-rabin/-/miller-rabin-4.0.1.tgz#f080351c865b0dc562a8462966daa53543c78a4d"
   integrity sha1-8IA1HIZbDcViqEYpZtqlNUPHik0=
   dependencies:
     bn.js "^4.0.0"
@@ -3873,12 +3873,12 @@ mimic-fn@^1.0.0:
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
+  resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
   integrity sha1-LhlN4ERibUoQ5/f7wAznPoPk1cc=
 
 minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
+  resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
 minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
@@ -3920,7 +3920,7 @@ minizlib@^1.1.0:
 
 mississippi@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/mississippi/-/mississippi-3.0.0.tgz#ea0a3291f97e0b5e8776b363d5f0a12d94c67022"
+  resolved "https://registry.yarnpkg.com/mississippi/-/mississippi-3.0.0.tgz#ea0a3291f97e0b5e8776b363d5f0a12d94c67022"
   integrity sha1-6goykfl+C16HdrNj1fChLZTGcCI=
   dependencies:
     concat-stream "^1.5.0"
@@ -3951,7 +3951,7 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
 
 move-concurrently@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
+  resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
   integrity sha1-viwAX9oy4LKa8fBdfEszIUxwH5I=
   dependencies:
     aproba "^1.1.1"
@@ -3968,7 +3968,7 @@ ms@2.0.0:
 
 ms@^2.1.1:
   version "2.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha1-MKWGTrPrsKZvLr5tcnrwagnYbgo=
 
 nan@^2.9.2:
@@ -4010,7 +4010,7 @@ needle@^2.2.0:
 
 needle@^2.2.1:
   version "2.2.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/needle/-/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
+  resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
   integrity sha1-UZMb/4JTOxkot9HWngHxsA/9Kk4=
   dependencies:
     debug "^2.1.2"
@@ -4019,12 +4019,12 @@ needle@^2.2.1:
 
 neo-async@^2.5.0:
   version "2.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
+  resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha1-udFeTXHGdikIZUtRg+04t1M0CDU=
 
 nice-try@^1.0.4:
   version "1.0.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
+  resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha1-ozeKdpbOfSI+iPybdkvX7xCJ42Y=
 
 node-int64@^0.4.0:
@@ -4034,7 +4034,7 @@ node-int64@^0.4.0:
 
 node-libs-browser@^2.0.0:
   version "2.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/node-libs-browser/-/node-libs-browser-2.1.0.tgz#5f94263d404f6e44767d726901fff05478d600df"
+  resolved "https://registry.yarnpkg.com/node-libs-browser/-/node-libs-browser-2.1.0.tgz#5f94263d404f6e44767d726901fff05478d600df"
   integrity sha1-X5QmPUBPbkR2fXJpAf/wVHjWAN8=
   dependencies:
     assert "^1.1.1"
@@ -4073,7 +4073,7 @@ node-notifier@^5.2.1:
 
 node-pre-gyp@^0.10.0:
   version "0.10.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/node-pre-gyp/-/node-pre-gyp-0.10.3.tgz#3070040716afdc778747b61b6887bf78880b80fc"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.10.3.tgz#3070040716afdc778747b61b6887bf78880b80fc"
   integrity sha1-MHAEBxav3HeHR7YbaIe/eIgLgPw=
   dependencies:
     detect-libc "^1.0.2"
@@ -4148,14 +4148,14 @@ npm-packlist@^1.1.6:
 
 npm-path@^2.0.2:
   version "2.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/npm-path/-/npm-path-2.0.4.tgz#c641347a5ff9d6a09e4d9bce5580c4f505278e64"
+  resolved "https://registry.yarnpkg.com/npm-path/-/npm-path-2.0.4.tgz#c641347a5ff9d6a09e4d9bce5580c4f505278e64"
   integrity sha1-xkE0el/51qCeTZvOVYDE9QUnjmQ=
   dependencies:
     which "^1.2.10"
 
 npm-run-all@^4.1.5:
   version "4.1.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/npm-run-all/-/npm-run-all-4.1.5.tgz#04476202a15ee0e2e214080861bff12a51d98fba"
+  resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-4.1.5.tgz#04476202a15ee0e2e214080861bff12a51d98fba"
   integrity sha1-BEdiAqFe4OLiFAgIYb/xKlHZj7o=
   dependencies:
     ansi-styles "^3.2.1"
@@ -4177,7 +4177,7 @@ npm-run-path@^2.0.0:
 
 npm-which@^3.0.1:
   version "3.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/npm-which/-/npm-which-3.0.1.tgz#9225f26ec3a285c209cae67c3b11a6b4ab7140aa"
+  resolved "https://registry.yarnpkg.com/npm-which/-/npm-which-3.0.1.tgz#9225f26ec3a285c209cae67c3b11a6b4ab7140aa"
   integrity sha1-kiXybsOihcIJyuZ8OxGmtKtxQKo=
   dependencies:
     commander "^2.9.0"
@@ -4267,7 +4267,7 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
 
 onetime@^2.0.0:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
+  resolved "https://registry.yarnpkg.com/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
   integrity sha1-BnQoIw/WdEOyeUsiu6UotoZ5YtQ=
   dependencies:
     mimic-fn "^1.0.0"
@@ -4294,7 +4294,7 @@ optionator@^0.8.1:
 
 os-browserify@^0.3.0:
   version "0.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
+  resolved "https://registry.yarnpkg.com/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
   integrity sha1-hUNzx/XCMVkU/Jv8a9gjj92h7Cc=
 
 os-homedir@^1.0.0:
@@ -4313,7 +4313,7 @@ os-locale@^2.0.0:
 
 os-locale@^3.0.0:
   version "3.0.1"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/os-locale/-/os-locale-3.0.1.tgz#3b014fbf01d87f60a1e5348d80fe870dc82c4620"
+  resolved "https://registry.yarnpkg.com/os-locale/-/os-locale-3.0.1.tgz#3b014fbf01d87f60a1e5348d80fe870dc82c4620"
   integrity sha1-OwFPvwHYf2Ch5TSNgP6HDcgsRiA=
   dependencies:
     execa "^0.10.0"
@@ -4335,7 +4335,7 @@ osenv@^0.1.4:
 
 p-defer@^1.0.0:
   version "1.0.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-defer/-/p-defer-1.0.0.tgz#9f6eb182f6c9aa8cd743004a7d4f96b196b0fb0c"
+  resolved "https://registry.yarnpkg.com/p-defer/-/p-defer-1.0.0.tgz#9f6eb182f6c9aa8cd743004a7d4f96b196b0fb0c"
   integrity sha1-n26xgvbJqozXQwBKfU+WsZaw+ww=
 
 p-finally@^1.0.0:
@@ -4345,7 +4345,7 @@ p-finally@^1.0.0:
 
 p-is-promise@^1.1.0:
   version "1.1.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-is-promise/-/p-is-promise-1.1.0.tgz#9c9456989e9f6588017b0434d56097675c3da05e"
+  resolved "https://registry.yarnpkg.com/p-is-promise/-/p-is-promise-1.1.0.tgz#9c9456989e9f6588017b0434d56097675c3da05e"
   integrity sha1-nJRWmJ6fZYgBewQ01WCXZ1w9oF4=
 
 p-limit@^1.1.0:
@@ -4357,7 +4357,7 @@ p-limit@^1.1.0:
 
 p-limit@^2.0.0:
   version "2.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-limit/-/p-limit-2.0.0.tgz#e624ed54ee8c460a778b3c9f3670496ff8a57aec"
+  resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.0.0.tgz#e624ed54ee8c460a778b3c9f3670496ff8a57aec"
   integrity sha1-5iTtVO6MRgp3izyfNnBJb/ileuw=
   dependencies:
     p-try "^2.0.0"
@@ -4371,19 +4371,19 @@ p-locate@^2.0.0:
 
 p-locate@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
+  resolved "https://registry.yarnpkg.com/p-locate/-/p-locate-3.0.0.tgz#322d69a05c0264b25997d9f40cd8a891ab0064a4"
   integrity sha1-Mi1poFwCZLJZl9n0DNiokasAZKQ=
   dependencies:
     p-limit "^2.0.0"
 
 p-map@^1.1.1:
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-map/-/p-map-1.2.0.tgz#e4e94f311eabbc8633a1e79908165fca26241b6b"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-1.2.0.tgz#e4e94f311eabbc8633a1e79908165fca26241b6b"
   integrity sha1-5OlPMR6rvIYzoeeZCBZfyiYkG2s=
 
 p-map@^2.0.0:
   version "2.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-map/-/p-map-2.0.0.tgz#be18c5a5adeb8e156460651421aceca56c213a50"
+  resolved "https://registry.yarnpkg.com/p-map/-/p-map-2.0.0.tgz#be18c5a5adeb8e156460651421aceca56c213a50"
   integrity sha1-vhjFpa3rjhVkYGUUIazspWwhOlA=
 
 p-try@^1.0.0:
@@ -4393,17 +4393,17 @@ p-try@^1.0.0:
 
 p-try@^2.0.0:
   version "2.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
+  resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.0.0.tgz#85080bb87c64688fa47996fe8f7dfbe8211760b1"
   integrity sha1-hQgLuHxkaI+keZb+j3376CEXYLE=
 
 pako@~1.0.5:
   version "1.0.7"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pako/-/pako-1.0.7.tgz#2473439021b57f1516c82f58be7275ad8ef1bb27"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.7.tgz#2473439021b57f1516c82f58be7275ad8ef1bb27"
   integrity sha1-JHNDkCG1fxUWyC9YvnJ1rY7xuyc=
 
 parallel-transform@^1.1.0:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/parallel-transform/-/parallel-transform-1.1.0.tgz#d410f065b05da23081fcd10f28854c29bda33b06"
+  resolved "https://registry.yarnpkg.com/parallel-transform/-/parallel-transform-1.1.0.tgz#d410f065b05da23081fcd10f28854c29bda33b06"
   integrity sha1-1BDwZbBdojCB/NEPKIVMKb2jOwY=
   dependencies:
     cyclist "~0.2.2"
@@ -4412,7 +4412,7 @@ parallel-transform@^1.1.0:
 
 parse-asn1@^5.0.0:
   version "5.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/parse-asn1/-/parse-asn1-5.1.1.tgz#f6bf293818332bd0dab54efb16087724745e6ca8"
+  resolved "https://registry.yarnpkg.com/parse-asn1/-/parse-asn1-5.1.1.tgz#f6bf293818332bd0dab54efb16087724745e6ca8"
   integrity sha1-9r8pOBgzK9DatU77Fgh3JHRebKg=
   dependencies:
     asn1.js "^4.0.0"
@@ -4440,7 +4440,7 @@ parse-json@^2.2.0:
 
 parse-json@^4.0.0:
   version "4.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/parse-json/-/parse-json-4.0.0.tgz#be35f5425be1f7f6c747184f98a788cb99477ee0"
+  resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-4.0.0.tgz#be35f5425be1f7f6c747184f98a788cb99477ee0"
   integrity sha1-vjX1Qlvh9/bHRxhPmKeIy5lHfuA=
   dependencies:
     error-ex "^1.3.1"
@@ -4458,12 +4458,12 @@ pascalcase@^0.1.1:
 
 path-browserify@0.0.0:
   version "0.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
+  resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
   integrity sha1-oLhwcpquIUAFt9UDLsLLuw+0RRo=
 
 path-dirname@^1.0.0:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
+  resolved "https://registry.yarnpkg.com/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
   integrity sha1-zDPSTVJeCZpTiMAzbG4yuRYGCeA=
 
 path-exists@^2.0.0:
@@ -4485,7 +4485,7 @@ path-is-absolute@^1.0.0, path-is-absolute@^1.0.1:
 
 path-is-inside@^1.0.1, path-is-inside@^1.0.2:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
+  resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
   integrity sha1-NlQX3t5EQw0cEa9hAn+s8HS9/FM=
 
 path-key@^2.0.0, path-key@^2.0.1:
@@ -4509,14 +4509,14 @@ path-type@^1.0.0:
 
 path-type@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/path-type/-/path-type-3.0.0.tgz#cef31dc8e0a1a3bb0d105c0cd97cf3bf47f4e36f"
+  resolved "https://registry.yarnpkg.com/path-type/-/path-type-3.0.0.tgz#cef31dc8e0a1a3bb0d105c0cd97cf3bf47f4e36f"
   integrity sha1-zvMdyOCho7sNEFwM2Xzzv0f0428=
   dependencies:
     pify "^3.0.0"
 
 pbkdf2@^3.0.3:
   version "3.0.17"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"
+  resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"
   integrity sha1-l2wgZTBhexTrsyEUI597CTNuk6Y=
   dependencies:
     create-hash "^1.1.2"
@@ -4532,7 +4532,7 @@ performance-now@^2.1.0:
 
 pidtree@^0.3.0:
   version "0.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pidtree/-/pidtree-0.3.0.tgz#f6fada10fccc9f99bf50e90d0b23d72c9ebc2e6b"
+  resolved "https://registry.yarnpkg.com/pidtree/-/pidtree-0.3.0.tgz#f6fada10fccc9f99bf50e90d0b23d72c9ebc2e6b"
   integrity sha1-9vraEPzMn5m/UOkNCyPXLJ68Lms=
 
 pify@^2.0.0:
@@ -4542,7 +4542,7 @@ pify@^2.0.0:
 
 pify@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
 pinkie-promise@^2.0.0:
@@ -4566,14 +4566,14 @@ pkg-dir@^2.0.0:
 
 pkg-dir@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pkg-dir/-/pkg-dir-3.0.0.tgz#2749020f239ed990881b1f71210d51eb6523bea3"
+  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-3.0.0.tgz#2749020f239ed990881b1f71210d51eb6523bea3"
   integrity sha1-J0kCDyOe2ZCIGx9xIQ1R62UjvqM=
   dependencies:
     find-up "^3.0.0"
 
 please-upgrade-node@^3.0.2:
   version "3.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/please-upgrade-node/-/please-upgrade-node-3.1.1.tgz#ed320051dfcc5024fae696712c8288993595e8ac"
+  resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.1.1.tgz#ed320051dfcc5024fae696712c8288993595e8ac"
   integrity sha1-7TIAUd/MUCT65pZxLIKImTWV6Kw=
   dependencies:
     semver-compare "^1.0.0"
@@ -4613,7 +4613,7 @@ pretty-format@^22.4.3:
 
 pretty-format@^23.6.0:
   version "23.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pretty-format/-/pretty-format-23.6.0.tgz#5eaac8eeb6b33b987b7fe6097ea6a8a146ab5760"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-23.6.0.tgz#5eaac8eeb6b33b987b7fe6097ea6a8a146ab5760"
   integrity sha1-XqrI7razO5h7f+YJfqaooUarV2A=
   dependencies:
     ansi-regex "^3.0.0"
@@ -4631,22 +4631,22 @@ process-nextick-args@~2.0.0:
 
 process@^0.11.10:
   version "0.11.10"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
+  resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
 
 progress@^2.0.0:
   version "2.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
+  resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha1-foz42PW48jnBvGi+tOt4Vn1XLvg=
 
 promise-inflight@^1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
+  resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
   integrity sha1-mEcocL8igTL8vdhoEputEsPAKeM=
 
 prr@~1.0.1:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
+  resolved "https://registry.yarnpkg.com/prr/-/prr-1.0.1.tgz#d3fc114ba06995a45ec6893f484ceb1d78f5f476"
   integrity sha1-0/wRS6BplaRexok/SEzrHXj19HY=
 
 pseudomap@^1.0.2:
@@ -4656,7 +4656,7 @@ pseudomap@^1.0.2:
 
 public-encrypt@^4.0.0:
   version "4.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/public-encrypt/-/public-encrypt-4.0.3.tgz#4fcc9d77a07e48ba7527e7cbe0de33d0701331e0"
+  resolved "https://registry.yarnpkg.com/public-encrypt/-/public-encrypt-4.0.3.tgz#4fcc9d77a07e48ba7527e7cbe0de33d0701331e0"
   integrity sha1-T8ydd6B+SLp1J+fL4N4z0HATMeA=
   dependencies:
     bn.js "^4.1.0"
@@ -4668,7 +4668,7 @@ public-encrypt@^4.0.0:
 
 pump@^2.0.0:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pump/-/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"
+  resolved "https://registry.yarnpkg.com/pump/-/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"
   integrity sha1-Ejma3W5M91Jtlzy8i1zi4pCLOQk=
   dependencies:
     end-of-stream "^1.1.0"
@@ -4676,7 +4676,7 @@ pump@^2.0.0:
 
 pump@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
+  resolved "https://registry.yarnpkg.com/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
   integrity sha1-tKIRaBW94vTh6mAjVOjHVWUQemQ=
   dependencies:
     end-of-stream "^1.1.0"
@@ -4684,7 +4684,7 @@ pump@^3.0.0:
 
 pumpify@^1.3.3:
   version "1.5.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/pumpify/-/pumpify-1.5.1.tgz#36513be246ab27570b1a374a5ce278bfd74370ce"
+  resolved "https://registry.yarnpkg.com/pumpify/-/pumpify-1.5.1.tgz#36513be246ab27570b1a374a5ce278bfd74370ce"
   integrity sha1-NlE74karJ1cLGjdKXOJ4v9dDcM4=
   dependencies:
     duplexify "^3.6.0"
@@ -4693,7 +4693,7 @@ pumpify@^1.3.3:
 
 punycode@1.3.2:
   version "1.3.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
+  resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
   integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
 
 punycode@^1.2.4, punycode@^1.4.1:
@@ -4713,12 +4713,12 @@ qs@~6.5.1:
 
 querystring-es3@^0.2.0:
   version "0.2.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
+  resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
   integrity sha1-nsYfeQSYdXB9aUFFlv2Qek1xHnM=
 
 querystring@0.2.0:
   version "0.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
+  resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 randomatic@^1.1.3:
@@ -4731,14 +4731,14 @@ randomatic@^1.1.3:
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.0.6"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/randombytes/-/randombytes-2.0.6.tgz#d302c522948588848a8d300c932b44c24231da80"
+  resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.0.6.tgz#d302c522948588848a8d300c932b44c24231da80"
   integrity sha1-0wLFIpSFiISKjTAMkytEwkIx2oA=
   dependencies:
     safe-buffer "^5.1.0"
 
 randomfill@^1.0.3:
   version "1.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/randomfill/-/randomfill-1.0.4.tgz#c92196fc86ab42be983f1bf31778224931d61458"
+  resolved "https://registry.yarnpkg.com/randomfill/-/randomfill-1.0.4.tgz#c92196fc86ab42be983f1bf31778224931d61458"
   integrity sha1-ySGW/IarQr6YPxvzF3giSTHWFFg=
   dependencies:
     randombytes "^2.0.5"
@@ -4756,7 +4756,7 @@ rc@^1.1.7:
 
 rc@^1.2.7:
   version "1.2.8"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
+  resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
   integrity sha1-zZJL9SAKB1uDwYjNa54hG3/A0+0=
   dependencies:
     deep-extend "^0.6.0"
@@ -4783,7 +4783,7 @@ read-pkg@^1.0.0:
 
 read-pkg@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/read-pkg/-/read-pkg-3.0.0.tgz#9cbc686978fee65d16c00e2b19c237fcf6e38389"
+  resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-3.0.0.tgz#9cbc686978fee65d16c00e2b19c237fcf6e38389"
   integrity sha1-nLxoaXj+5l0WwA4rGcI3/Pbjg4k=
   dependencies:
     load-json-file "^4.0.0"
@@ -4822,14 +4822,14 @@ realpath-native@^1.0.0:
 
 rechoir@^0.6.2:
   version "0.6.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
+  resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
   integrity sha1-hSBLVNuoLVdC4oyWdW70OvUOM4Q=
   dependencies:
     resolve "^1.1.6"
 
 reflect-metadata@^0.1.12:
   version "0.1.12"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.12.tgz#311bf0c6b63cd782f228a81abe146a2bfa9c56f2"
   integrity sha1-MRvwxrY814LyKKgavhRqK/qcVvI=
 
 regenerator-runtime@^0.11.0:
@@ -4952,7 +4952,7 @@ resolve@1.1.7:
 
 resolve@^1.1.6:
   version "1.8.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/resolve/-/resolve-1.8.1.tgz#82f1ec19a423ac1fbd080b0bab06ba36e84a7a26"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.8.1.tgz#82f1ec19a423ac1fbd080b0bab06ba36e84a7a26"
   integrity sha1-gvHsGaQjrB+9CAsLqwa6NuhKeiY=
   dependencies:
     path-parse "^1.0.5"
@@ -4966,7 +4966,7 @@ resolve@^1.1.7, resolve@^1.3.2:
 
 restore-cursor@^2.0.0:
   version "2.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"
+  resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"
   integrity sha1-n37ih/gv0ybU/RYpI9YhKe7g368=
   dependencies:
     onetime "^2.0.0"
@@ -4993,7 +4993,7 @@ rimraf@^2.2.8, rimraf@^2.4.4, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
 
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ripemd160/-/ripemd160-2.0.2.tgz#a1c1a6f624751577ba5d07914cbc92850585890c"
+  resolved "https://registry.yarnpkg.com/ripemd160/-/ripemd160-2.0.2.tgz#a1c1a6f624751577ba5d07914cbc92850585890c"
   integrity sha1-ocGm9iR1FXe6XQeRTLyShQWFiQw=
   dependencies:
     hash-base "^3.0.0"
@@ -5001,14 +5001,14 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
+  resolved "https://registry.yarnpkg.com/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
   integrity sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec=
   dependencies:
     aproba "^1.1.1"
 
 rxjs@^6.3.3:
   version "6.3.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   integrity sha1-PGp/pCDoRKgTkPsRWKnsYU9LrVU=
   dependencies:
     tslib "^1.9.0"
@@ -5020,7 +5020,7 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
 
 safe-buffer@^5.1.0, safe-buffer@^5.1.2:
   version "5.1.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
   integrity sha1-mR7GnSluAxN0fVm9/St0XDX4go0=
 
 safe-regex@^1.1.0:
@@ -5057,7 +5057,7 @@ sax@^1.2.4:
 
 schema-utils@^0.4.4:
   version "0.4.7"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
   integrity sha1-unT1l9K+LqiAExdG7hfQoJPGgYc=
   dependencies:
     ajv "^6.1.0"
@@ -5065,7 +5065,7 @@ schema-utils@^0.4.4:
 
 schema-utils@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
   integrity sha1-C3mpMgTXtgDUsoUNH2bCo0lRx3A=
   dependencies:
     ajv "^6.1.0"
@@ -5074,7 +5074,7 @@ schema-utils@^1.0.0:
 
 semver-compare@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
+  resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
   integrity sha1-De4hahyUGrN+nvsXiPavxf9VN/w=
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1:
@@ -5084,12 +5084,12 @@ semver-compare@^1.0.0:
 
 semver@^5.0.1, semver@^5.5.0:
   version "5.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha1-fnQlb7qknHWqfHogXMInmcrIAAQ=
 
 serialize-javascript@^1.4.0:
   version "1.5.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/serialize-javascript/-/serialize-javascript-1.5.0.tgz#1aa336162c88a890ddad5384baebc93a655161fe"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-1.5.0.tgz#1aa336162c88a890ddad5384baebc93a655161fe"
   integrity sha1-GqM2FiyIqJDdrVOEuuvJOmVRYf4=
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
@@ -5124,12 +5124,12 @@ set-value@^2.0.0:
 
 setimmediate@^1.0.4:
   version "1.0.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
+  resolved "https://registry.yarnpkg.com/setimmediate/-/setimmediate-1.0.5.tgz#290cbb232e306942d7d7ea9b83732ab7856f8285"
   integrity sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=
 
 sha.js@^2.4.0, sha.js@^2.4.8:
   version "2.4.11"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/sha.js/-/sha.js-2.4.11.tgz#37a5cf0b81ecbc6943de109ba2960d1b26584ae7"
+  resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.11.tgz#37a5cf0b81ecbc6943de109ba2960d1b26584ae7"
   integrity sha1-N6XPC4HsvGlD3hCbopYNGyZYSuc=
   dependencies:
     inherits "^2.0.1"
@@ -5159,7 +5159,7 @@ shell-quote@^1.6.1:
 
 shelljs@^0.8.2:
   version "0.8.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/shelljs/-/shelljs-0.8.3.tgz#a7f3319520ebf09ee81275b2368adb286659b097"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.3.tgz#a7f3319520ebf09ee81275b2368adb286659b097"
   integrity sha1-p/MxlSDr8J7oEnWyNorbKGZZsJc=
   dependencies:
     glob "^7.0.0"
@@ -5178,7 +5178,7 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
 
 simple-git@^1.85.0:
   version "1.107.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/simple-git/-/simple-git-1.107.0.tgz#12cffaf261c14d6f450f7fdb86c21ccee968b383"
+  resolved "https://registry.yarnpkg.com/simple-git/-/simple-git-1.107.0.tgz#12cffaf261c14d6f450f7fdb86c21ccee968b383"
   integrity sha1-Es/68mHBTW9FD3/bhsIczulos4M=
   dependencies:
     debug "^4.0.1"
@@ -5190,7 +5190,7 @@ slash@^1.0.0:
 
 slice-ansi@0.0.4:
   version "0.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
+  resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
   integrity sha1-7b+JA/ZvfOL46v1s7tZeJkyDGzU=
 
 snapdragon-node@^2.0.1:
@@ -5232,7 +5232,7 @@ sntp@2.x.x:
 
 source-list-map@^2.0.0:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
+  resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
   integrity sha1-OZO9hzv8SEecyp6jpUeDXHwVSzQ=
 
 source-map-resolve@^0.5.0:
@@ -5262,7 +5262,7 @@ source-map-support@^0.5.0:
 
 source-map-support@~0.5.6:
   version "0.5.9"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/source-map-support/-/source-map-support-0.5.9.tgz#41bc953b2534267ea2d605bccfa7bfa3111ced5f"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.9.tgz#41bc953b2534267ea2d605bccfa7bfa3111ced5f"
   integrity sha1-QbyVOyU0Jn6i1gW8z6e/oxEc7V8=
   dependencies:
     buffer-from "^1.0.0"
@@ -5345,7 +5345,7 @@ sshpk@^1.7.0:
 
 ssri@^6.0.0:
   version "6.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
   integrity sha1-KjxBso3UW2K2Nnbst0ABJlrp7dg=
   dependencies:
     figgy-pudding "^3.5.1"
@@ -5357,7 +5357,7 @@ stack-utils@^1.0.1:
 
 staged-git-files@1.1.2:
   version "1.1.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/staged-git-files/-/staged-git-files-1.1.2.tgz#4326d33886dc9ecfa29a6193bf511ba90a46454b"
+  resolved "https://registry.yarnpkg.com/staged-git-files/-/staged-git-files-1.1.2.tgz#4326d33886dc9ecfa29a6193bf511ba90a46454b"
   integrity sha1-QybTOIbcns+immGTv1EbqQpGRUs=
 
 static-extend@^0.1.1:
@@ -5375,7 +5375,7 @@ stealthy-require@^1.1.0:
 
 stream-browserify@^2.0.1:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/stream-browserify/-/stream-browserify-2.0.1.tgz#66266ee5f9bdb9940a4e4514cafb43bb71e5c9db"
+  resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.1.tgz#66266ee5f9bdb9940a4e4514cafb43bb71e5c9db"
   integrity sha1-ZiZu5fm9uZQKTkUUyvtDu3Hlyds=
   dependencies:
     inherits "~2.0.1"
@@ -5383,7 +5383,7 @@ stream-browserify@^2.0.1:
 
 stream-each@^1.1.0:
   version "1.2.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/stream-each/-/stream-each-1.2.3.tgz#ebe27a0c389b04fbcc233642952e10731afa9bae"
+  resolved "https://registry.yarnpkg.com/stream-each/-/stream-each-1.2.3.tgz#ebe27a0c389b04fbcc233642952e10731afa9bae"
   integrity sha1-6+J6DDibBPvMIzZClS4Qcxr6m64=
   dependencies:
     end-of-stream "^1.1.0"
@@ -5391,7 +5391,7 @@ stream-each@^1.1.0:
 
 stream-http@^2.7.2:
   version "2.8.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/stream-http/-/stream-http-2.8.3.tgz#b2d242469288a5a27ec4fe8933acf623de6514fc"
+  resolved "https://registry.yarnpkg.com/stream-http/-/stream-http-2.8.3.tgz#b2d242469288a5a27ec4fe8933acf623de6514fc"
   integrity sha1-stJCRpKIpaJ+xP6JM6z2I95lFPw=
   dependencies:
     builtin-status-codes "^3.0.0"
@@ -5402,12 +5402,12 @@ stream-http@^2.7.2:
 
 stream-shift@^1.0.0:
   version "1.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/stream-shift/-/stream-shift-1.0.0.tgz#d5c752825e5367e786f78e18e445ea223a155952"
+  resolved "https://registry.yarnpkg.com/stream-shift/-/stream-shift-1.0.0.tgz#d5c752825e5367e786f78e18e445ea223a155952"
   integrity sha1-1cdSgl5TZ+eG944Y5EXqIjoVWVI=
 
 string-argv@^0.0.2:
   version "0.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/string-argv/-/string-argv-0.0.2.tgz#dac30408690c21f3c3630a3ff3a05877bdcbd736"
+  resolved "https://registry.yarnpkg.com/string-argv/-/string-argv-0.0.2.tgz#dac30408690c21f3c3630a3ff3a05877bdcbd736"
   integrity sha1-2sMECGkMIfPDYwo/86BYd73L1zY=
 
 string-length@^2.0.0:
@@ -5437,7 +5437,7 @@ string-width@^2.0.0, string-width@^2.1.1:
 
 string.prototype.padend@^3.0.0:
   version "3.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/string.prototype.padend/-/string.prototype.padend-3.0.0.tgz#f3aaef7c1719f170c5eab1c32bf780d96e21f2f0"
+  resolved "https://registry.yarnpkg.com/string.prototype.padend/-/string.prototype.padend-3.0.0.tgz#f3aaef7c1719f170c5eab1c32bf780d96e21f2f0"
   integrity sha1-86rvfBcZ8XDF6rHDK/eA2W4h8vA=
   dependencies:
     define-properties "^1.1.2"
@@ -5446,7 +5446,7 @@ string.prototype.padend@^3.0.0:
 
 string_decoder@^1.0.0:
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/string_decoder/-/string_decoder-1.2.0.tgz#fe86e738b19544afe70469243b2a1ee9240eae8d"
+  resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-1.2.0.tgz#fe86e738b19544afe70469243b2a1ee9240eae8d"
   integrity sha1-/obnOLGVRK/nBGkkOyoe6SQOro0=
   dependencies:
     safe-buffer "~5.1.0"
@@ -5460,7 +5460,7 @@ string_decoder@~1.1.1:
 
 stringify-object@^3.2.2:
   version "3.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/stringify-object/-/stringify-object-3.3.0.tgz#703065aefca19300d3ce88af4f5b3956d7556629"
+  resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.3.0.tgz#703065aefca19300d3ce88af4f5b3956d7556629"
   integrity sha1-cDBlrvyhkwDTzoivT1s5VtdVZik=
   dependencies:
     get-own-enumerable-property-symbols "^3.0.0"
@@ -5541,14 +5541,14 @@ supports-color@^5.3.0:
 
 supports-color@^5.5.0:
   version "5.5.0"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
   integrity sha1-4uaaRKyHcveKHsCzW2id9lMO/I8=
   dependencies:
     has-flag "^3.0.0"
 
 symbol-observable@^1.1.0:
   version "1.2.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
+  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ=
 
 symbol-tree@^3.2.2:
@@ -5558,7 +5558,7 @@ symbol-tree@^3.2.2:
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tapable/-/tapable-1.1.1.tgz#4d297923c5a72a42360de2ab52dadfaaec00018e"
+  resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.1.tgz#4d297923c5a72a42360de2ab52dadfaaec00018e"
   integrity sha1-TSl5I8WnKkI2DeKrUtrfquwAAY4=
 
 tar@^4:
@@ -5576,7 +5576,7 @@ tar@^4:
 
 terser-webpack-plugin@^1.1.0:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/terser-webpack-plugin/-/terser-webpack-plugin-1.1.0.tgz#cf7c25a1eee25bf121f4a587bb9e004e3f80e528"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-1.1.0.tgz#cf7c25a1eee25bf121f4a587bb9e004e3f80e528"
   integrity sha1-z3wloe7iW/Eh9KWHu54ATj+A5Sg=
   dependencies:
     cacache "^11.0.2"
@@ -5590,7 +5590,7 @@ terser-webpack-plugin@^1.1.0:
 
 terser@^3.8.1:
   version "3.11.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/terser/-/terser-3.11.0.tgz#60782893e1f4d6788acc696351f40636d0e37af0"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-3.11.0.tgz#60782893e1f4d6788acc696351f40636d0e37af0"
   integrity sha1-YHgok+H01niKzGljUfQGNtDjevA=
   dependencies:
     commander "~2.17.1"
@@ -5615,7 +5615,7 @@ throat@^4.0.0:
 
 through2@^2.0.0:
   version "2.0.5"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
+  resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
   integrity sha1-AcHjnrMdB8t9A6lqcIIyYLIxMs0=
   dependencies:
     readable-stream "~2.3.6"
@@ -5623,7 +5623,7 @@ through2@^2.0.0:
 
 timers-browserify@^2.0.4:
   version "2.0.10"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/timers-browserify/-/timers-browserify-2.0.10.tgz#1d28e3d2aadf1d5a5996c4e9f95601cd053480ae"
+  resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.10.tgz#1d28e3d2aadf1d5a5996c4e9f95601cd053480ae"
   integrity sha1-HSjj0qrfHVpZlsTp+VYBzQU0gK4=
   dependencies:
     setimmediate "^1.0.4"
@@ -5635,7 +5635,7 @@ tmpl@1.0.x:
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz#7d229b1fcc637e466ca081180836a7aabff83f43"
+  resolved "https://registry.yarnpkg.com/to-arraybuffer/-/to-arraybuffer-1.0.1.tgz#7d229b1fcc637e466ca081180836a7aabff83f43"
   integrity sha1-fSKbH8xjfkZsoIEYCDanqr/4P0M=
 
 to-fast-properties@^1.0.3:
@@ -5704,7 +5704,7 @@ ts-jest@^22.4.4:
 
 ts-loader@^5.3.1:
   version "5.3.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/ts-loader/-/ts-loader-5.3.1.tgz#70614c8ec4354a9c8b89c9f97b2becb7a98a3980"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-5.3.1.tgz#70614c8ec4354a9c8b89c9f97b2becb7a98a3980"
   integrity sha1-cGFMjsQ1SpyLicn5eyvst6mKOYA=
   dependencies:
     chalk "^2.3.0"
@@ -5720,12 +5720,12 @@ tslib@1.9.0, tslib@^1.8.0, tslib@^1.8.1:
 
 tslib@^1.7.1, tslib@^1.9.0:
   version "1.9.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=
 
 tslint-config-airbnb@^5.11.1:
   version "5.11.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslint-config-airbnb/-/tslint-config-airbnb-5.11.1.tgz#51a27fbb8bf24c144d064a274a71da47e7ece617"
+  resolved "https://registry.yarnpkg.com/tslint-config-airbnb/-/tslint-config-airbnb-5.11.1.tgz#51a27fbb8bf24c144d064a274a71da47e7ece617"
   integrity sha1-UaJ/u4vyTBRNBkonSnHaR+fs5hc=
   dependencies:
     tslint-consistent-codestyle "^1.14.1"
@@ -5734,12 +5734,12 @@ tslint-config-airbnb@^5.11.1:
 
 tslint-config-prettier@^1.17.0:
   version "1.17.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslint-config-prettier/-/tslint-config-prettier-1.17.0.tgz#946ed6117f98f3659a65848279156d87628c33dc"
+  resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.17.0.tgz#946ed6117f98f3659a65848279156d87628c33dc"
   integrity sha1-lG7WEX+Y82WaZYSCeRVth2KMM9w=
 
 tslint-consistent-codestyle@^1.14.1:
   version "1.14.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.14.1.tgz#8555f1b05ccbf093166a73347f41eb101731a522"
+  resolved "https://registry.yarnpkg.com/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.14.1.tgz#8555f1b05ccbf093166a73347f41eb101731a522"
   integrity sha1-hVXxsFzL8JMWanM0f0HrEBcxpSI=
   dependencies:
     "@fimbul/bifrost" "^0.15.0"
@@ -5748,7 +5748,7 @@ tslint-consistent-codestyle@^1.14.1:
 
 tslint-eslint-rules@^5.4.0:
   version "5.4.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslint-eslint-rules/-/tslint-eslint-rules-5.4.0.tgz#e488cc9181bf193fe5cd7bfca213a7695f1737b5"
+  resolved "https://registry.yarnpkg.com/tslint-eslint-rules/-/tslint-eslint-rules-5.4.0.tgz#e488cc9181bf193fe5cd7bfca213a7695f1737b5"
   integrity sha1-5IjMkYG/GT/lzXv8ohOnaV8XN7U=
   dependencies:
     doctrine "0.7.2"
@@ -5757,7 +5757,7 @@ tslint-eslint-rules@^5.4.0:
 
 tslint-loader@^3.5.4:
   version "3.5.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslint-loader/-/tslint-loader-3.5.4.tgz#052af7f0772434451ea1b247bb55407f878a4c40"
+  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.5.4.tgz#052af7f0772434451ea1b247bb55407f878a4c40"
   integrity sha1-BSr38HckNEUeobJHu1VAf4eKTEA=
   dependencies:
     loader-utils "^1.0.2"
@@ -5768,7 +5768,7 @@ tslint-loader@^3.5.4:
 
 tslint-microsoft-contrib@~5.2.1:
   version "5.2.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.2.1.tgz#a6286839f800e2591d041ea2800c77487844ad81"
+  resolved "https://registry.yarnpkg.com/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.2.1.tgz#a6286839f800e2591d041ea2800c77487844ad81"
   integrity sha1-pihoOfgA4lkdBB6igAx3SHhErYE=
   dependencies:
     tsutils "^2.27.2 <2.29.0"
@@ -5800,28 +5800,28 @@ tsutils@^2.12.1:
 
 "tsutils@^2.27.2 <2.29.0":
   version "2.28.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tsutils/-/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.28.0.tgz#6bd71e160828f9d019b6f4e844742228f85169a1"
   integrity sha1-a9ceFggo+dAZtvToRHQiKPhRaaE=
   dependencies:
     tslib "^1.8.1"
 
 tsutils@^2.29.0:
   version "2.29.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tsutils/-/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.29.0.tgz#32b488501467acbedd4b85498673a0812aca0b99"
   integrity sha1-MrSIUBRnrL7dS4VJhnOggSrKC5k=
   dependencies:
     tslib "^1.8.1"
 
 tsutils@^3.0.0, tsutils@^3.1.0:
   version "3.5.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tsutils/-/tsutils-3.5.2.tgz#6fd3c2d5a731e83bb21b070a173ec0faf3a8f6d3"
+  resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-3.5.2.tgz#6fd3c2d5a731e83bb21b070a173ec0faf3a8f6d3"
   integrity sha1-b9PC1acx6DuyGwcKFz7A+vOo9tM=
   dependencies:
     tslib "^1.8.1"
 
 tty-browserify@0.0.0:
   version "0.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
+  resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
 tunnel-agent@^0.6.0:
@@ -5845,17 +5845,17 @@ type-check@~0.3.2:
 
 typedarray@^0.0.6:
   version "0.0.6"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+  resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typedoc-default-themes@^0.5.0:
   version "0.5.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/typedoc-default-themes/-/typedoc-default-themes-0.5.0.tgz#6dc2433e78ed8bea8e887a3acde2f31785bd6227"
+  resolved "https://registry.yarnpkg.com/typedoc-default-themes/-/typedoc-default-themes-0.5.0.tgz#6dc2433e78ed8bea8e887a3acde2f31785bd6227"
   integrity sha1-bcJDPnjti+qOiHo6zeLzF4W9Yic=
 
 typedoc@^0.13.0:
   version "0.13.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/typedoc/-/typedoc-0.13.0.tgz#9efdf352bd54873955cd161bd4b75f24a8c59dde"
+  resolved "https://registry.yarnpkg.com/typedoc/-/typedoc-0.13.0.tgz#9efdf352bd54873955cd161bd4b75f24a8c59dde"
   integrity sha1-nv3zUr1UhzlVzRYb1LdfJKjFnd4=
   dependencies:
     "@types/fs-extra" "^5.0.3"
@@ -5878,7 +5878,7 @@ typedoc@^0.13.0:
 
 typescript@3.1.x:
   version "3.1.6"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.1.6.tgz#b6543a83cfc8c2befb3f4c8fba6896f5b0c9be68"
   integrity sha1-tlQ6g8/Iwr77P0yPumiW9bDJvmg=
 
 typescript@^2.8.3:
@@ -5898,7 +5898,7 @@ uglify-js@^2.6:
 
 uglify-js@^3.1.4:
   version "3.4.9"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/uglify-js/-/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.4.9.tgz#af02f180c1207d76432e473ed24a28f4a782bae3"
   integrity sha1-rwLxgMEgfXZDLkc+0koo9KeCuuM=
   dependencies:
     commander "~2.17.1"
@@ -5921,14 +5921,14 @@ union-value@^1.0.0:
 
 unique-filename@^1.1.0:
   version "1.1.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/unique-filename/-/unique-filename-1.1.1.tgz#1d69769369ada0583103a1e6ae87681b56573230"
+  resolved "https://registry.yarnpkg.com/unique-filename/-/unique-filename-1.1.1.tgz#1d69769369ada0583103a1e6ae87681b56573230"
   integrity sha1-HWl2k2mtoFgxA6HmrodoG1ZXMjA=
   dependencies:
     unique-slug "^2.0.0"
 
 unique-slug@^2.0.0:
   version "2.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/unique-slug/-/unique-slug-2.0.1.tgz#5e9edc6d1ce8fb264db18a507ef9bd8544451ca6"
+  resolved "https://registry.yarnpkg.com/unique-slug/-/unique-slug-2.0.1.tgz#5e9edc6d1ce8fb264db18a507ef9bd8544451ca6"
   integrity sha1-Xp7cbRzo+yZNsYpQfvm9hURFHKY=
   dependencies:
     imurmurhash "^0.1.4"
@@ -5948,12 +5948,12 @@ unset-value@^1.0.0:
 
 upath@^1.0.5:
   version "1.1.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/upath/-/upath-1.1.0.tgz#35256597e46a581db4793d0ce47fa9aebfc9fabd"
+  resolved "https://registry.yarnpkg.com/upath/-/upath-1.1.0.tgz#35256597e46a581db4793d0ce47fa9aebfc9fabd"
   integrity sha1-NSVll+RqWB20eT0M5H+prr/J+r0=
 
 uri-js@^4.2.2:
   version "4.2.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/uri-js/-/uri-js-4.2.2.tgz#94c540e1ff772956e2299507c010aea6c8838eb0"
+  resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.2.2.tgz#94c540e1ff772956e2299507c010aea6c8838eb0"
   integrity sha1-lMVA4f93KVbiKZUHwBCupsiDjrA=
   dependencies:
     punycode "^2.1.0"
@@ -5965,7 +5965,7 @@ urix@^0.1.0:
 
 url@^0.11.0:
   version "0.11.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
+  resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
   integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
   dependencies:
     punycode "1.3.2"
@@ -5993,14 +5993,14 @@ util.promisify@^1.0.0:
 
 util@0.10.3:
   version "0.10.3"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
+  resolved "https://registry.yarnpkg.com/util/-/util-0.10.3.tgz#7afb1afe50805246489e3db7fe0ed379336ac0f9"
   integrity sha1-evsa/lCAUkZInj23/g7TeTNqwPk=
   dependencies:
     inherits "2.0.1"
 
 util@^0.10.3:
   version "0.10.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/util/-/util-0.10.4.tgz#3aa0125bfe668a4672de58857d3ace27ecb76901"
+  resolved "https://registry.yarnpkg.com/util/-/util-0.10.4.tgz#3aa0125bfe668a4672de58857d3ace27ecb76901"
   integrity sha1-OqASW/5mikZy3liFfTrOJ+y3aQE=
   dependencies:
     inherits "2.0.3"
@@ -6012,7 +6012,7 @@ uuid@^3.1.0:
 
 v8-compile-cache@^2.0.2:
   version "2.0.2"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
+  resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
   integrity sha1-pCiyi7JnkHNMT8i8n6EG/M6/amw=
 
 validate-npm-package-license@^3.0.1:
@@ -6034,7 +6034,7 @@ verror@1.10.0:
 
 vm-browserify@0.0.4:
   version "0.0.4"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
+  resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   integrity sha1-XX6kW7755Kb/ZflUOOCofDV9WnM=
   dependencies:
     indexof "0.0.1"
@@ -6055,7 +6055,7 @@ walker@~1.0.5:
 
 watch@^1.0.2:
   version "1.0.2"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/watch/-/watch-1.0.2.tgz#340a717bde765726fa0aa07d721e0147a551df0c"
+  resolved "https://registry.yarnpkg.com/watch/-/watch-1.0.2.tgz#340a717bde765726fa0aa07d721e0147a551df0c"
   integrity sha1-NApxe952Vyb6CqB9ch4BR6VR3ww=
   dependencies:
     exec-sh "^0.2.0"
@@ -6071,7 +6071,7 @@ watch@~0.18.0:
 
 watchpack@^1.5.0:
   version "1.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/watchpack/-/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
+  resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.6.0.tgz#4bc12c2ebe8aa277a71f1d3f14d685c7b446cd00"
   integrity sha1-S8EsLr6KonenHx0/FNaFx7RGzQA=
   dependencies:
     chokidar "^2.0.2"
@@ -6085,7 +6085,7 @@ webidl-conversions@^4.0.2:
 
 webpack-cli@^3.1.2:
   version "3.1.2"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/webpack-cli/-/webpack-cli-3.1.2.tgz#17d7e01b77f89f884a2bbf9db545f0f6a648e746"
+  resolved "https://registry.yarnpkg.com/webpack-cli/-/webpack-cli-3.1.2.tgz#17d7e01b77f89f884a2bbf9db545f0f6a648e746"
   integrity sha1-F9fgG3f4n4hKK7+dtUXw9qZI50Y=
   dependencies:
     chalk "^2.4.1"
@@ -6101,7 +6101,7 @@ webpack-cli@^3.1.2:
 
 webpack-sources@^1.1.0, webpack-sources@^1.3.0:
   version "1.3.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/webpack-sources/-/webpack-sources-1.3.0.tgz#2a28dcb9f1f45fe960d8f1493252b5ee6530fa85"
+  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-1.3.0.tgz#2a28dcb9f1f45fe960d8f1493252b5ee6530fa85"
   integrity sha1-KijcufH0X+lg2PFJMlK17mUw+oU=
   dependencies:
     source-list-map "^2.0.0"
@@ -6109,7 +6109,7 @@ webpack-sources@^1.1.0, webpack-sources@^1.3.0:
 
 webpack@^4.27.1:
   version "4.27.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/webpack/-/webpack-4.27.1.tgz#5f2e2db446d2266376fa15d7d2277a1a9c2e12bb"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-4.27.1.tgz#5f2e2db446d2266376fa15d7d2277a1a9c2e12bb"
   integrity sha1-Xy4ttEbSJmN2+hXX0id6GpwuErs=
   dependencies:
     "@webassemblyjs/ast" "1.7.11"
@@ -6165,7 +6165,7 @@ which-module@^2.0.0:
 
 which@^1.2.10:
   version "1.3.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/which/-/which-1.3.1.tgz#a45043d54f5805316da8d62f9f50918d3da70b0a"
+  resolved "https://registry.yarnpkg.com/which/-/which-1.3.1.tgz#a45043d54f5805316da8d62f9f50918d3da70b0a"
   integrity sha1-pFBD1U9YBTFtqNYvn1CRjT2nCwo=
   dependencies:
     isexe "^2.0.0"
@@ -6206,7 +6206,7 @@ wordwrap@~1.0.0:
 
 worker-farm@^1.5.2:
   version "1.6.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
+  resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
   integrity sha1-rsxAWXb6talVJhgIRvDboojzpKA=
   dependencies:
     errno "~0.1.7"
@@ -6221,7 +6221,7 @@ wrap-ansi@^2.0.0:
 
 wrap-ansi@^3.0.1:
   version "3.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
   integrity sha1-KIoE2H7aXChuBg3+jxNc6NAH+Lo=
   dependencies:
     string-width "^2.1.1"
@@ -6256,7 +6256,7 @@ xml-name-validator@^3.0.0:
 
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
+  resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
   integrity sha1-pcbVMr5lbiPbgg77lDofBJmNY68=
 
 y18n@^3.2.1:
@@ -6266,7 +6266,7 @@ y18n@^3.2.1:
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
-  resolved "https://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
   integrity sha1-le+U+F7MgdAHwmThkKEg8KPIVms=
 
 yallist@^2.1.2:
@@ -6281,7 +6281,7 @@ yallist@^3.0.0, yallist@^3.0.2:
 
 yargs-parser@^11.1.1:
   version "11.1.1"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/yargs-parser/-/yargs-parser-11.1.1.tgz#879a0865973bca9f6bab5cbdf3b1c67ec7d3bcf4"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-11.1.1.tgz#879a0865973bca9f6bab5cbdf3b1c67ec7d3bcf4"
   integrity sha1-h5oIZZc7yp9rq1y987HGfsfTvPQ=
   dependencies:
     camelcase "^5.0.0"
@@ -6339,7 +6339,7 @@ yargs@^11.0.0:
 
 yargs@^12.0.2:
   version "12.0.5"
-  resolved "http://complexible.jfrog.io/complexible/api/npm/stardog-npm-virtual/yargs/-/yargs-12.0.5.tgz#05f5997b609647b64f66b81e3b4b10a368e7ad13"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.5.tgz#05f5997b609647b64f66b81e3b4b10a368e7ad13"
   integrity sha1-BfWZe2CWR7ZPZrgeO0sQo2jnrRM=
   dependencies:
     cliui "^4.0.0"
