@@ -1,6 +1,6 @@
 import { resolve, extname } from 'path';
-import { readDirAsync, readFileAsync } from './utils';
 import { TurtleParser } from '../../turtle/TurtleParser';
+import { readDirAsync, readFileAsync } from '../utils';
 
 const parser = new TurtleParser();
 

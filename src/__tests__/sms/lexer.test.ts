@@ -1,5 +1,5 @@
+const { smsTokenTypes, smsTokenMap } = require('../../sms/tokens');
 import { Lexer } from 'chevrotain';
-import { smsTokenTypes, smsTokenMap } from '../../sms/tokens';
 import { fixtures } from './fixtures';
 
 const lexer = new Lexer(smsTokenTypes);

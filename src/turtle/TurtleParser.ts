@@ -1,15 +1,17 @@
+const { turtleTokenTypes, turtleTokenMap } = require('./tokens');
 import {
   Parser,
   IParserConfig,
   Lexer,
   IToken,
   IRecognitionException,
+  IMultiModeLexerDefinition,
+  TokenType,
 } from 'chevrotain';
-import { turtleTokenTypes, turtleTokenMap } from './tokens';
 import { IStardogParser } from '../helpers/types';
 
 export class TurtleParser extends Parser implements IStardogParser {
-  private lexer: Lexer;
+  protected lexer: Lexer;
 
   // Parsing Turtle requires that the parser keep a map of namespaces in state.
   // Empty prefixes, for example, are allowed only if the empty prefix has been
@@ -17,12 +19,12 @@ export class TurtleParser extends Parser implements IStardogParser {
   // might want to use a visitor for this, but I'm doing it quick-and-dirty for
   // now.)
   // See here: https://www.w3.org/TR/turtle/#handle-PNAME_LN
-  private namespacesMap = {};
-  private semanticErrors: IRecognitionException[] = [];
+  protected namespacesMap = {};
+  protected semanticErrors: IRecognitionException[] = [];
 
   // Clears the state that we have to manage on our own for each parse (see
   // above for details).
-  private resetManagedState = () => {
+  protected resetManagedState = () => {
     this.namespacesMap = {};
     this.semanticErrors = [];
   };
@@ -30,7 +32,13 @@ export class TurtleParser extends Parser implements IStardogParser {
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
-  public parse = (document: string) => {
+  public parse = (
+    document: string
+  ): {
+    errors: IRecognitionException[];
+    semanticErrors: IRecognitionException[];
+    cst: any;
+  } => {
     this.input = this.lexer.tokenize(document).tokens;
     const cst = this.turtleDoc();
     // Next two items are copied so that they can be returned/held after parse
@@ -46,15 +54,22 @@ export class TurtleParser extends Parser implements IStardogParser {
     };
   };
 
-  constructor(config?: Partial<IParserConfig>) {
-    super([], turtleTokenTypes, {
+  constructor(
+    config?: Partial<IParserConfig>,
+    tokens = turtleTokenTypes,
+    lexerDefinition: TokenType[] | IMultiModeLexerDefinition = tokens,
+    performSelfAnalysis = true
+  ) {
+    super([], tokens, {
       outputCst: true,
       recoveryEnabled: true,
       ...config,
     });
-    this.lexer = new Lexer(turtleTokenTypes);
+    this.lexer = new Lexer(lexerDefinition);
 
-    Parser.performSelfAnalysis(this);
+    if (performSelfAnalysis) {
+      Parser.performSelfAnalysis(this);
+    }
   }
 
   turtleDoc = this.RULE('turtleDoc', () => {

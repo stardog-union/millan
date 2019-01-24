@@ -1,15 +1,25 @@
 // @ts-ignore: import types for declarations
 import { CstElement, CstNode, ICstVisitor } from 'chevrotain';
 
-export const traverse = (root: CstElement, visit) => {
+export const traverse = (
+  root: CstElement,
+  visit: Parameters<typeof _traverse>[2]
+) => {
   _traverse(root, null, visit);
 };
 
+export const unsafeTraverse = (
+  root: CstElement,
+  visit: Parameters<typeof _traverse>[2]
+) => {
+  _traverse(root, null, visit, false);
+};
+
 export function isCstNode(object: CstElement): object is CstNode {
-  return 'name' in object;
+  return Boolean(object && 'name' in object);
 }
 
-interface ITraverseContext {
+export interface ITraverseContext {
   node: CstElement;
   parentCtx: TraverseContext;
   [s: string]: any;
@@ -32,14 +42,15 @@ class TraverseContext implements ITraverseContext {
 
 const _traverse = (
   root: CstElement,
-  ctx: TraverseContext = new TraverseContext({ node: root }),
-  visit: (ctx: TraverseContext, next?: (nextCtx) => void) => void
+  ctx: ITraverseContext = new TraverseContext({ node: root }),
+  visit: (ctx: ITraverseContext, next?: (nextCtx?) => void) => void,
+  visitSafely = true
 ) => {
   if (!isCstNode(root)) {
     // must be a token
-    // make sure to give user a copy
-    return visit({ ...ctx });
+    return visit(visitSafely ? { ...ctx } : ctx);
   }
+
   // is a grammar rule node
   const { children } = root;
   Object.keys(children).forEach((key) => {
@@ -48,15 +59,25 @@ const _traverse = (
       return;
     }
     childType.forEach((child) => {
-      const childCtx = new TraverseContext({ node: child, parentCtx: ctx });
+      const childCtx = visitSafely
+        ? new TraverseContext({ node: child, parentCtx: ctx })
+        : { node: child, parentCtx: ctx };
       const afterVisit = (transformedCtx?) => {
-        const nextCtx = transformedCtx
-          ? new TraverseContext({
-              node: transformedCtx.node,
-              parentCtx: transformedCtx.parentCtx,
-            })
-          : childCtx;
-        _traverse(child, nextCtx, visit);
+        let nextCtx = childCtx;
+
+        if (transformedCtx) {
+          nextCtx = visitSafely
+            ? new TraverseContext({
+                node: transformedCtx.node,
+                parentCtx: transformedCtx.parentCtx,
+              })
+            : {
+                node: transformedCtx.node,
+                parentCtx: transformedCtx.parentCtx,
+              };
+        }
+
+        _traverse(child, nextCtx, visit, visitSafely);
       };
       visit(childCtx, afterVisit);
     });

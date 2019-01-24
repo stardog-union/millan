@@ -296,9 +296,9 @@ export const keywords = {
     pattern: /LANG/i,
   }),
 
-  LANGMATCHERS: createToken({
-    name: 'LANGMATCHERS',
-    pattern: /LANGMATCHERS/i,
+  LANGMATCHES: createToken({
+    name: 'LANGMATCHES',
+    pattern: /LANGMATCHES/i,
   }),
 
   DATATYPE: createToken({

@@ -1,5 +1,5 @@
+const { sparqlTokenMap } = require('../sparql/tokens');
 import { createToken, TokenType } from 'chevrotain';
-import { sparqlTokenMap } from '../sparql/tokens';
 import { regex } from '../helpers/regex';
 import {
   EXPONENT,

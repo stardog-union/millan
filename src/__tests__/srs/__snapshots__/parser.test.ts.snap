@@ -1,0 +1,2349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`srs parser parses a basic isolated SRS document 1`] = `
+Object {
+  "cst": Object {
+    "children": Object {
+      "RuleDoc": Array [
+        Object {
+          "children": Object {
+            "IfClause": Array [
+              Object {
+                "children": Object {
+                  "GroupGraphPattern": Array [
+                    Object {
+                      "children": Object {
+                        "GroupGraphPatternSub": Array [
+                          Object {
+                            "children": Object {
+                              "GraphPatternNotTriples": Array [
+                                Object {
+                                  "children": Object {
+                                    "Filter": Array [
+                                      Object {
+                                        "children": Object {
+                                          "Constraint": Array [
+                                            Object {
+                                              "children": Object {
+                                                "BrackettedExpression": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "Expression": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "ConditionalOrExpression": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "ConditionalAndExpression": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "ValueLogical": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "RelationalExpression": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "ExpressionList": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "Comma": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 64,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 63,
+                                                                                              "image": ",",
+                                                                                              "startColumn": 64,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 63,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": ",",
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "Comma",
+                                                                                                "tokenTypeIdx": 163,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 163,
+                                                                                            },
+                                                                                          ],
+                                                                                          "Expression": Array [
+                                                                                            Object {
+                                                                                              "children": Object {
+                                                                                                "ConditionalOrExpression": Array [
+                                                                                                  Object {
+                                                                                                    "children": Object {
+                                                                                                      "ConditionalAndExpression": Array [
+                                                                                                        Object {
+                                                                                                          "children": Object {
+                                                                                                            "ValueLogical": Array [
+                                                                                                              Object {
+                                                                                                                "children": Object {
+                                                                                                                  "RelationalExpression": Array [
+                                                                                                                    Object {
+                                                                                                                      "children": Object {
+                                                                                                                        "NumericExpression": Array [
+                                                                                                                          Object {
+                                                                                                                            "children": Object {
+                                                                                                                              "AdditiveExpression": Array [
+                                                                                                                                Object {
+                                                                                                                                  "children": Object {
+                                                                                                                                    "MultiplicativeExpression": Array [
+                                                                                                                                      Object {
+                                                                                                                                        "children": Object {
+                                                                                                                                          "UnaryExpression": Array [
+                                                                                                                                            Object {
+                                                                                                                                              "children": Object {
+                                                                                                                                                "PrimaryExpression": Array [
+                                                                                                                                                  Object {
+                                                                                                                                                    "children": Object {
+                                                                                                                                                      "iriOrFunction": Array [
+                                                                                                                                                        Object {
+                                                                                                                                                          "children": Object {
+                                                                                                                                                            "iri": Array [
+                                                                                                                                                              Object {
+                                                                                                                                                                "children": Object {
+                                                                                                                                                                  "IRIREF": Array [
+                                                                                                                                                                    Object {
+                                                                                                                                                                      "endColumn": 63,
+                                                                                                                                                                      "endLine": 1,
+                                                                                                                                                                      "endOffset": 62,
+                                                                                                                                                                      "image": "<urn:a>",
+                                                                                                                                                                      "startColumn": 57,
+                                                                                                                                                                      "startLine": 1,
+                                                                                                                                                                      "startOffset": 56,
+                                                                                                                                                                      "tokenType": Object {
+                                                                                                                                                                        "CATEGORIES": Array [],
+                                                                                                                                                                        "LABEL": "<http://example.com>",
+                                                                                                                                                                        "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                                                                                                        "categoryMatches": Array [],
+                                                                                                                                                                        "categoryMatchesMap": Object {},
+                                                                                                                                                                        "isParent": false,
+                                                                                                                                                                        "tokenName": "IRIREF",
+                                                                                                                                                                        "tokenTypeIdx": 5,
+                                                                                                                                                                      },
+                                                                                                                                                                      "tokenTypeIdx": 5,
+                                                                                                                                                                    },
+                                                                                                                                                                  ],
+                                                                                                                                                                },
+                                                                                                                                                                "name": "iri",
+                                                                                                                                                              },
+                                                                                                                                                            ],
+                                                                                                                                                          },
+                                                                                                                                                          "name": "iriOrFunction",
+                                                                                                                                                        },
+                                                                                                                                                      ],
+                                                                                                                                                    },
+                                                                                                                                                    "name": "PrimaryExpression",
+                                                                                                                                                  },
+                                                                                                                                                ],
+                                                                                                                                              },
+                                                                                                                                              "name": "UnaryExpression",
+                                                                                                                                            },
+                                                                                                                                          ],
+                                                                                                                                        },
+                                                                                                                                        "name": "MultiplicativeExpression",
+                                                                                                                                      },
+                                                                                                                                    ],
+                                                                                                                                  },
+                                                                                                                                  "name": "AdditiveExpression",
+                                                                                                                                },
+                                                                                                                              ],
+                                                                                                                            },
+                                                                                                                            "name": "NumericExpression",
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                      },
+                                                                                                                      "name": "RelationalExpression",
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                                },
+                                                                                                                "name": "ValueLogical",
+                                                                                                              },
+                                                                                                            ],
+                                                                                                          },
+                                                                                                          "name": "ConditionalAndExpression",
+                                                                                                        },
+                                                                                                      ],
+                                                                                                    },
+                                                                                                    "name": "ConditionalOrExpression",
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                              "name": "Expression",
+                                                                                            },
+                                                                                            Object {
+                                                                                              "children": Object {
+                                                                                                "ConditionalOrExpression": Array [
+                                                                                                  Object {
+                                                                                                    "children": Object {
+                                                                                                      "ConditionalAndExpression": Array [
+                                                                                                        Object {
+                                                                                                          "children": Object {
+                                                                                                            "ValueLogical": Array [
+                                                                                                              Object {
+                                                                                                                "children": Object {
+                                                                                                                  "RelationalExpression": Array [
+                                                                                                                    Object {
+                                                                                                                      "children": Object {
+                                                                                                                        "NumericExpression": Array [
+                                                                                                                          Object {
+                                                                                                                            "children": Object {
+                                                                                                                              "AdditiveExpression": Array [
+                                                                                                                                Object {
+                                                                                                                                  "children": Object {
+                                                                                                                                    "MultiplicativeExpression": Array [
+                                                                                                                                      Object {
+                                                                                                                                        "children": Object {
+                                                                                                                                          "UnaryExpression": Array [
+                                                                                                                                            Object {
+                                                                                                                                              "children": Object {
+                                                                                                                                                "PrimaryExpression": Array [
+                                                                                                                                                  Object {
+                                                                                                                                                    "children": Object {
+                                                                                                                                                      "iriOrFunction": Array [
+                                                                                                                                                        Object {
+                                                                                                                                                          "children": Object {
+                                                                                                                                                            "iri": Array [
+                                                                                                                                                              Object {
+                                                                                                                                                                "children": Object {
+                                                                                                                                                                  "IRIREF": Array [
+                                                                                                                                                                    Object {
+                                                                                                                                                                      "endColumn": 72,
+                                                                                                                                                                      "endLine": 1,
+                                                                                                                                                                      "endOffset": 71,
+                                                                                                                                                                      "image": "<urn:b>",
+                                                                                                                                                                      "startColumn": 66,
+                                                                                                                                                                      "startLine": 1,
+                                                                                                                                                                      "startOffset": 65,
+                                                                                                                                                                      "tokenType": Object {
+                                                                                                                                                                        "CATEGORIES": Array [],
+                                                                                                                                                                        "LABEL": "<http://example.com>",
+                                                                                                                                                                        "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                                                                                                        "categoryMatches": Array [],
+                                                                                                                                                                        "categoryMatchesMap": Object {},
+                                                                                                                                                                        "isParent": false,
+                                                                                                                                                                        "tokenName": "IRIREF",
+                                                                                                                                                                        "tokenTypeIdx": 5,
+                                                                                                                                                                      },
+                                                                                                                                                                      "tokenTypeIdx": 5,
+                                                                                                                                                                    },
+                                                                                                                                                                  ],
+                                                                                                                                                                },
+                                                                                                                                                                "name": "iri",
+                                                                                                                                                              },
+                                                                                                                                                            ],
+                                                                                                                                                          },
+                                                                                                                                                          "name": "iriOrFunction",
+                                                                                                                                                        },
+                                                                                                                                                      ],
+                                                                                                                                                    },
+                                                                                                                                                    "name": "PrimaryExpression",
+                                                                                                                                                  },
+                                                                                                                                                ],
+                                                                                                                                              },
+                                                                                                                                              "name": "UnaryExpression",
+                                                                                                                                            },
+                                                                                                                                          ],
+                                                                                                                                        },
+                                                                                                                                        "name": "MultiplicativeExpression",
+                                                                                                                                      },
+                                                                                                                                    ],
+                                                                                                                                  },
+                                                                                                                                  "name": "AdditiveExpression",
+                                                                                                                                },
+                                                                                                                              ],
+                                                                                                                            },
+                                                                                                                            "name": "NumericExpression",
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                      },
+                                                                                                                      "name": "RelationalExpression",
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                                },
+                                                                                                                "name": "ValueLogical",
+                                                                                                              },
+                                                                                                            ],
+                                                                                                          },
+                                                                                                          "name": "ConditionalAndExpression",
+                                                                                                        },
+                                                                                                      ],
+                                                                                                    },
+                                                                                                    "name": "ConditionalOrExpression",
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                              "name": "Expression",
+                                                                                            },
+                                                                                          ],
+                                                                                          "LParen": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 56,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 55,
+                                                                                              "image": "(",
+                                                                                              "startColumn": 56,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 55,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": "(",
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "LParen",
+                                                                                                "tokenTypeIdx": 151,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 151,
+                                                                                            },
+                                                                                          ],
+                                                                                          "RParen": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 73,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 72,
+                                                                                              "image": ")",
+                                                                                              "startColumn": 73,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 72,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": ")",
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "RParen",
+                                                                                                "tokenTypeIdx": 152,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 152,
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "ExpressionList",
+                                                                                      },
+                                                                                    ],
+                                                                                    "NOT_IN": Array [
+                                                                                      Object {
+                                                                                        "endColumn": 54,
+                                                                                        "endLine": 1,
+                                                                                        "endOffset": 53,
+                                                                                        "image": "NOT IN",
+                                                                                        "startColumn": 49,
+                                                                                        "startLine": 1,
+                                                                                        "startOffset": 48,
+                                                                                        "tokenType": Object {
+                                                                                          "CATEGORIES": Array [],
+                                                                                          "PATTERN": /NOT IN/i,
+                                                                                          "categoryMatches": Array [],
+                                                                                          "categoryMatchesMap": Object {},
+                                                                                          "isParent": false,
+                                                                                          "tokenName": "NOT_IN",
+                                                                                          "tokenTypeIdx": 146,
+                                                                                        },
+                                                                                        "tokenTypeIdx": 146,
+                                                                                      },
+                                                                                    ],
+                                                                                    "NumericExpression": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "AdditiveExpression": Array [
+                                                                                            Object {
+                                                                                              "children": Object {
+                                                                                                "MultiplicativeExpression": Array [
+                                                                                                  Object {
+                                                                                                    "children": Object {
+                                                                                                      "UnaryExpression": Array [
+                                                                                                        Object {
+                                                                                                          "children": Object {
+                                                                                                            "PrimaryExpression": Array [
+                                                                                                              Object {
+                                                                                                                "children": Object {
+                                                                                                                  "Var": Array [
+                                                                                                                    Object {
+                                                                                                                      "children": Object {
+                                                                                                                        "VAR1": Array [
+                                                                                                                          Object {
+                                                                                                                            "endColumn": 47,
+                                                                                                                            "endLine": 1,
+                                                                                                                            "endOffset": 46,
+                                                                                                                            "image": "?x",
+                                                                                                                            "startColumn": 46,
+                                                                                                                            "startLine": 1,
+                                                                                                                            "startOffset": 45,
+                                                                                                                            "tokenType": Object {
+                                                                                                                              "CATEGORIES": Array [],
+                                                                                                                              "LABEL": "?foo",
+                                                                                                                              "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                                                                                              "categoryMatches": Array [],
+                                                                                                                              "categoryMatchesMap": Object {},
+                                                                                                                              "isParent": false,
+                                                                                                                              "tokenName": "VAR1",
+                                                                                                                              "tokenTypeIdx": 22,
+                                                                                                                            },
+                                                                                                                            "tokenTypeIdx": 22,
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                      },
+                                                                                                                      "name": "Var",
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                                },
+                                                                                                                "name": "PrimaryExpression",
+                                                                                                              },
+                                                                                                            ],
+                                                                                                          },
+                                                                                                          "name": "UnaryExpression",
+                                                                                                        },
+                                                                                                      ],
+                                                                                                    },
+                                                                                                    "name": "MultiplicativeExpression",
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                              "name": "AdditiveExpression",
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "NumericExpression",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "RelationalExpression",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "ValueLogical",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "ConditionalAndExpression",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "ConditionalOrExpression",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "Expression",
+                                                        },
+                                                      ],
+                                                      "LParen": Array [
+                                                        Object {
+                                                          "endColumn": 45,
+                                                          "endLine": 1,
+                                                          "endOffset": 44,
+                                                          "image": "(",
+                                                          "startColumn": 45,
+                                                          "startLine": 1,
+                                                          "startOffset": 44,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "PATTERN": "(",
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "LParen",
+                                                            "tokenTypeIdx": 151,
+                                                          },
+                                                          "tokenTypeIdx": 151,
+                                                        },
+                                                      ],
+                                                      "RParen": Array [
+                                                        Object {
+                                                          "endColumn": 74,
+                                                          "endLine": 1,
+                                                          "endOffset": 73,
+                                                          "image": ")",
+                                                          "startColumn": 74,
+                                                          "startLine": 1,
+                                                          "startOffset": 73,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "PATTERN": ")",
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "RParen",
+                                                            "tokenTypeIdx": 152,
+                                                          },
+                                                          "tokenTypeIdx": 152,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "BrackettedExpression",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "Constraint",
+                                            },
+                                          ],
+                                          "FILTER": Array [
+                                            Object {
+                                              "endColumn": 44,
+                                              "endLine": 1,
+                                              "endOffset": 43,
+                                              "image": "FILTER",
+                                              "startColumn": 39,
+                                              "startLine": 1,
+                                              "startOffset": 38,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "PATTERN": /FILTER/i,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "FILTER",
+                                                "tokenTypeIdx": 81,
+                                              },
+                                              "tokenTypeIdx": 81,
+                                            },
+                                          ],
+                                        },
+                                        "name": "Filter",
+                                      },
+                                    ],
+                                  },
+                                  "name": "GraphPatternNotTriples",
+                                },
+                              ],
+                              "TriplesBlock": Array [
+                                Object {
+                                  "children": Object {
+                                    "Period": Array [
+                                      Object {
+                                        "endColumn": 37,
+                                        "endLine": 1,
+                                        "endOffset": 36,
+                                        "image": ".",
+                                        "startColumn": 37,
+                                        "startLine": 1,
+                                        "startOffset": 36,
+                                        "tokenType": Object {
+                                          "CATEGORIES": Array [],
+                                          "PATTERN": ".",
+                                          "categoryMatches": Array [],
+                                          "categoryMatchesMap": Object {},
+                                          "isParent": false,
+                                          "tokenName": "Period",
+                                          "tokenTypeIdx": 156,
+                                        },
+                                        "tokenTypeIdx": 156,
+                                      },
+                                    ],
+                                    "TriplesSameSubjectPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "PropertyListPathNotEmpty": Array [
+                                            Object {
+                                              "children": Object {
+                                                "ObjectListPath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "ObjectPath": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphNodePath": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "VarOrTerm": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "GraphTerm": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "iri": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "IRIREF": Array [
+                                                                                      Object {
+                                                                                        "endColumn": 35,
+                                                                                        "endLine": 1,
+                                                                                        "endOffset": 34,
+                                                                                        "image": "<http://example.org/Male>",
+                                                                                        "startColumn": 11,
+                                                                                        "startLine": 1,
+                                                                                        "startOffset": 10,
+                                                                                        "tokenType": Object {
+                                                                                          "CATEGORIES": Array [],
+                                                                                          "LABEL": "<http://example.com>",
+                                                                                          "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                          "categoryMatches": Array [],
+                                                                                          "categoryMatchesMap": Object {},
+                                                                                          "isParent": false,
+                                                                                          "tokenName": "IRIREF",
+                                                                                          "tokenTypeIdx": 5,
+                                                                                        },
+                                                                                        "tokenTypeIdx": 5,
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "iri",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "GraphTerm",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "VarOrTerm",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphNodePath",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "ObjectPath",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "ObjectListPath",
+                                                  },
+                                                ],
+                                                "VerbPath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "Path": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "PathAlternative": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "PathSequence": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "PathEltOrInverse": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "PathElt": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "PathPrimary": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "A": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 9,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 8,
+                                                                                              "image": "a",
+                                                                                              "startColumn": 9,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 8,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": /a/i,
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "A",
+                                                                                                "tokenTypeIdx": 38,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 38,
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "PathPrimary",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "PathElt",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "PathEltOrInverse",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "PathSequence",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "PathAlternative",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "Path",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "VerbPath",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "PropertyListPathNotEmpty",
+                                            },
+                                          ],
+                                          "VarOrTerm": Array [
+                                            Object {
+                                              "children": Object {
+                                                "Var": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "VAR1": Array [
+                                                        Object {
+                                                          "endColumn": 7,
+                                                          "endLine": 1,
+                                                          "endOffset": 6,
+                                                          "image": "?x",
+                                                          "startColumn": 6,
+                                                          "startLine": 1,
+                                                          "startOffset": 5,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "LABEL": "?foo",
+                                                            "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "VAR1",
+                                                            "tokenTypeIdx": 22,
+                                                          },
+                                                          "tokenTypeIdx": 22,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "Var",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "VarOrTerm",
+                                            },
+                                          ],
+                                        },
+                                        "name": "TriplesSameSubjectPath",
+                                      },
+                                    ],
+                                  },
+                                  "name": "TriplesBlock",
+                                },
+                              ],
+                            },
+                            "name": "GroupGraphPatternSub",
+                          },
+                        ],
+                        "LCurly": Array [
+                          Object {
+                            "endColumn": 4,
+                            "endLine": 1,
+                            "endOffset": 3,
+                            "image": "{",
+                            "startColumn": 4,
+                            "startLine": 1,
+                            "startOffset": 3,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": "{",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "LCurly",
+                              "tokenTypeIdx": 149,
+                            },
+                            "tokenTypeIdx": 149,
+                          },
+                        ],
+                        "RCurly": Array [
+                          Object {
+                            "endColumn": 75,
+                            "endLine": 1,
+                            "endOffset": 74,
+                            "image": "}",
+                            "startColumn": 75,
+                            "startLine": 1,
+                            "startOffset": 74,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": "}",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "RCurly",
+                              "tokenTypeIdx": 150,
+                            },
+                            "tokenTypeIdx": 150,
+                          },
+                        ],
+                      },
+                      "name": "GroupGraphPattern",
+                    },
+                  ],
+                  "If": Array [
+                    Object {
+                      "endColumn": 2,
+                      "endLine": 1,
+                      "endOffset": 1,
+                      "image": "IF",
+                      "startColumn": 1,
+                      "startLine": 1,
+                      "startOffset": 0,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /if/i,
+                        "PUSH_MODE": "ifclause",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "If",
+                        "tokenTypeIdx": 201,
+                      },
+                      "tokenTypeIdx": 201,
+                    },
+                  ],
+                },
+                "name": "IfClause",
+              },
+            ],
+            "ThenClause": Array [
+              Object {
+                "children": Object {
+                  "EndThen": Array [
+                    Object {
+                      "endColumn": 118,
+                      "endLine": 1,
+                      "endOffset": 117,
+                      "image": "}",
+                      "startColumn": 118,
+                      "startLine": 1,
+                      "startOffset": 117,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "}",
+                        "POP_MODE": true,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "EndThen",
+                        "tokenTypeIdx": 203,
+                      },
+                      "tokenTypeIdx": 203,
+                    },
+                  ],
+                  "LCurly": Array [
+                    Object {
+                      "endColumn": 81,
+                      "endLine": 1,
+                      "endOffset": 80,
+                      "image": "{",
+                      "startColumn": 81,
+                      "startLine": 1,
+                      "startOffset": 80,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "{",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "LCurly",
+                        "tokenTypeIdx": 149,
+                      },
+                      "tokenTypeIdx": 149,
+                    },
+                  ],
+                  "Then": Array [
+                    Object {
+                      "endColumn": 79,
+                      "endLine": 1,
+                      "endOffset": 78,
+                      "image": "THEN",
+                      "startColumn": 76,
+                      "startLine": 1,
+                      "startOffset": 75,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /then/i,
+                        "PUSH_MODE": "thenclause",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "Then",
+                        "tokenTypeIdx": 202,
+                      },
+                      "tokenTypeIdx": 202,
+                    },
+                  ],
+                  "TriplesBlock": Array [
+                    Object {
+                      "children": Object {
+                        "Period": Array [
+                          Object {
+                            "endColumn": 116,
+                            "endLine": 1,
+                            "endOffset": 115,
+                            "image": ".",
+                            "startColumn": 116,
+                            "startLine": 1,
+                            "startOffset": 115,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": ".",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "Period",
+                              "tokenTypeIdx": 156,
+                            },
+                            "tokenTypeIdx": 156,
+                          },
+                        ],
+                        "TriplesSameSubjectPath": Array [
+                          Object {
+                            "children": Object {
+                              "PropertyListPathNotEmpty": Array [
+                                Object {
+                                  "children": Object {
+                                    "ObjectListPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "ObjectPath": Array [
+                                            Object {
+                                              "children": Object {
+                                                "GraphNodePath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "VarOrTerm": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphTerm": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "iri": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "IRIREF": Array [
+                                                                          Object {
+                                                                            "endColumn": 114,
+                                                                            "endLine": 1,
+                                                                            "endOffset": 113,
+                                                                            "image": "<http://example.org/Father>",
+                                                                            "startColumn": 88,
+                                                                            "startLine": 1,
+                                                                            "startOffset": 87,
+                                                                            "tokenType": Object {
+                                                                              "CATEGORIES": Array [],
+                                                                              "LABEL": "<http://example.com>",
+                                                                              "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                              "categoryMatches": Array [],
+                                                                              "categoryMatchesMap": Object {},
+                                                                              "isParent": false,
+                                                                              "tokenName": "IRIREF",
+                                                                              "tokenTypeIdx": 5,
+                                                                            },
+                                                                            "tokenTypeIdx": 5,
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "iri",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphTerm",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "VarOrTerm",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "GraphNodePath",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "ObjectPath",
+                                            },
+                                          ],
+                                        },
+                                        "name": "ObjectListPath",
+                                      },
+                                    ],
+                                    "VerbPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "Path": Array [
+                                            Object {
+                                              "children": Object {
+                                                "PathAlternative": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "PathSequence": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "PathEltOrInverse": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "PathElt": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "PathPrimary": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "A": Array [
+                                                                                Object {
+                                                                                  "endColumn": 86,
+                                                                                  "endLine": 1,
+                                                                                  "endOffset": 85,
+                                                                                  "image": "a",
+                                                                                  "startColumn": 86,
+                                                                                  "startLine": 1,
+                                                                                  "startOffset": 85,
+                                                                                  "tokenType": Object {
+                                                                                    "CATEGORIES": Array [],
+                                                                                    "PATTERN": /a/i,
+                                                                                    "categoryMatches": Array [],
+                                                                                    "categoryMatchesMap": Object {},
+                                                                                    "isParent": false,
+                                                                                    "tokenName": "A",
+                                                                                    "tokenTypeIdx": 38,
+                                                                                  },
+                                                                                  "tokenTypeIdx": 38,
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "PathPrimary",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "PathElt",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "PathEltOrInverse",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "PathSequence",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "PathAlternative",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "Path",
+                                            },
+                                          ],
+                                        },
+                                        "name": "VerbPath",
+                                      },
+                                    ],
+                                  },
+                                  "name": "PropertyListPathNotEmpty",
+                                },
+                              ],
+                              "VarOrTerm": Array [
+                                Object {
+                                  "children": Object {
+                                    "Var": Array [
+                                      Object {
+                                        "children": Object {
+                                          "VAR1": Array [
+                                            Object {
+                                              "endColumn": 84,
+                                              "endLine": 1,
+                                              "endOffset": 83,
+                                              "image": "?x",
+                                              "startColumn": 83,
+                                              "startLine": 1,
+                                              "startOffset": 82,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "LABEL": "?foo",
+                                                "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "VAR1",
+                                                "tokenTypeIdx": 22,
+                                              },
+                                              "tokenTypeIdx": 22,
+                                            },
+                                          ],
+                                        },
+                                        "name": "Var",
+                                      },
+                                    ],
+                                  },
+                                  "name": "VarOrTerm",
+                                },
+                              ],
+                            },
+                            "name": "TriplesSameSubjectPath",
+                          },
+                        ],
+                      },
+                      "name": "TriplesBlock",
+                    },
+                  ],
+                },
+                "name": "ThenClause",
+              },
+            ],
+          },
+          "name": "RuleDoc",
+        },
+      ],
+      "turtleDoc": Array [
+        Object {
+          "children": Object {},
+          "name": "turtleDoc",
+        },
+      ],
+    },
+    "name": "SrsDoc",
+  },
+  "errors": Array [],
+  "semanticErrors": Array [],
+}
+`;
+
+exports[`srs parser parses a basic turtle + SRS document 1`] = `
+Object {
+  "cst": Object {
+    "children": Object {
+      "Period": Array [
+        Object {
+          "endColumn": 13,
+          "endLine": 11,
+          "endOffset": 294,
+          "image": ".",
+          "startColumn": 13,
+          "startLine": 11,
+          "startOffset": 294,
+          "tokenType": Object {
+            "CATEGORIES": Array [],
+            "PATTERN": ".",
+            "categoryMatches": Array [],
+            "categoryMatchesMap": Object {},
+            "isParent": false,
+            "tokenName": "Period",
+            "tokenTypeIdx": 156,
+          },
+          "tokenTypeIdx": 156,
+        },
+      ],
+      "RuleDoc": Array [
+        Object {
+          "children": Object {
+            "IfClause": Array [
+              Object {
+                "children": Object {
+                  "GroupGraphPattern": Array [
+                    Object {
+                      "children": Object {
+                        "GroupGraphPatternSub": Array [
+                          Object {
+                            "children": Object {
+                              "TriplesBlock": Array [
+                                Object {
+                                  "children": Object {
+                                    "Period": Array [
+                                      Object {
+                                        "endColumn": 65,
+                                        "endLine": 5,
+                                        "endOffset": 176,
+                                        "image": ".",
+                                        "startColumn": 65,
+                                        "startLine": 5,
+                                        "startOffset": 176,
+                                        "tokenType": Object {
+                                          "CATEGORIES": Array [],
+                                          "PATTERN": ".",
+                                          "categoryMatches": Array [],
+                                          "categoryMatchesMap": Object {},
+                                          "isParent": false,
+                                          "tokenName": "Period",
+                                          "tokenTypeIdx": 156,
+                                        },
+                                        "tokenTypeIdx": 156,
+                                      },
+                                    ],
+                                    "TriplesSameSubjectPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "PropertyListPathNotEmpty": Array [
+                                            Object {
+                                              "children": Object {
+                                                "ObjectListPath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "Comma": Array [
+                                                        Object {
+                                                          "endColumn": 35,
+                                                          "endLine": 5,
+                                                          "endOffset": 146,
+                                                          "image": ",",
+                                                          "startColumn": 35,
+                                                          "startLine": 5,
+                                                          "startOffset": 146,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "PATTERN": ",",
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "Comma",
+                                                            "tokenTypeIdx": 163,
+                                                          },
+                                                          "tokenTypeIdx": 163,
+                                                        },
+                                                      ],
+                                                      "ObjectPath": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphNodePath": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "VarOrTerm": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "GraphTerm": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "iri": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "IRIREF": Array [
+                                                                                      Object {
+                                                                                        "endColumn": 33,
+                                                                                        "endLine": 5,
+                                                                                        "endOffset": 144,
+                                                                                        "image": "<http://example.org/Male>",
+                                                                                        "startColumn": 9,
+                                                                                        "startLine": 5,
+                                                                                        "startOffset": 120,
+                                                                                        "tokenType": Object {
+                                                                                          "CATEGORIES": Array [],
+                                                                                          "LABEL": "<http://example.com>",
+                                                                                          "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                          "categoryMatches": Array [],
+                                                                                          "categoryMatchesMap": Object {},
+                                                                                          "isParent": false,
+                                                                                          "tokenName": "IRIREF",
+                                                                                          "tokenTypeIdx": 5,
+                                                                                        },
+                                                                                        "tokenTypeIdx": 5,
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "iri",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "GraphTerm",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "VarOrTerm",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphNodePath",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "ObjectPath",
+                                                        },
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphNodePath": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "VarOrTerm": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "GraphTerm": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "iri": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "IRIREF": Array [
+                                                                                      Object {
+                                                                                        "endColumn": 63,
+                                                                                        "endLine": 5,
+                                                                                        "endOffset": 174,
+                                                                                        "image": "<http://example.org/Parent>",
+                                                                                        "startColumn": 37,
+                                                                                        "startLine": 5,
+                                                                                        "startOffset": 148,
+                                                                                        "tokenType": Object {
+                                                                                          "CATEGORIES": Array [],
+                                                                                          "LABEL": "<http://example.com>",
+                                                                                          "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                          "categoryMatches": Array [],
+                                                                                          "categoryMatchesMap": Object {},
+                                                                                          "isParent": false,
+                                                                                          "tokenName": "IRIREF",
+                                                                                          "tokenTypeIdx": 5,
+                                                                                        },
+                                                                                        "tokenTypeIdx": 5,
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "iri",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "GraphTerm",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "VarOrTerm",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphNodePath",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "ObjectPath",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "ObjectListPath",
+                                                  },
+                                                ],
+                                                "VerbPath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "Path": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "PathAlternative": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "PathSequence": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "PathEltOrInverse": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "PathElt": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "PathPrimary": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "A": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 7,
+                                                                                              "endLine": 5,
+                                                                                              "endOffset": 118,
+                                                                                              "image": "a",
+                                                                                              "startColumn": 7,
+                                                                                              "startLine": 5,
+                                                                                              "startOffset": 118,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": /a/i,
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "A",
+                                                                                                "tokenTypeIdx": 38,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 38,
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "PathPrimary",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "PathElt",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "PathEltOrInverse",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "PathSequence",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "PathAlternative",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "Path",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "VerbPath",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "PropertyListPathNotEmpty",
+                                            },
+                                          ],
+                                          "VarOrTerm": Array [
+                                            Object {
+                                              "children": Object {
+                                                "Var": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "VAR1": Array [
+                                                        Object {
+                                                          "endColumn": 5,
+                                                          "endLine": 5,
+                                                          "endOffset": 116,
+                                                          "image": "?x",
+                                                          "startColumn": 4,
+                                                          "startLine": 5,
+                                                          "startOffset": 115,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "LABEL": "?foo",
+                                                            "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "VAR1",
+                                                            "tokenTypeIdx": 22,
+                                                          },
+                                                          "tokenTypeIdx": 22,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "Var",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "VarOrTerm",
+                                            },
+                                          ],
+                                        },
+                                        "name": "TriplesSameSubjectPath",
+                                      },
+                                    ],
+                                  },
+                                  "name": "TriplesBlock",
+                                },
+                              ],
+                            },
+                            "name": "GroupGraphPatternSub",
+                          },
+                        ],
+                        "LCurly": Array [
+                          Object {
+                            "endColumn": 4,
+                            "endLine": 4,
+                            "endOffset": 110,
+                            "image": "{",
+                            "startColumn": 4,
+                            "startLine": 4,
+                            "startOffset": 110,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": "{",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "LCurly",
+                              "tokenTypeIdx": 149,
+                            },
+                            "tokenTypeIdx": 149,
+                          },
+                        ],
+                        "RCurly": Array [
+                          Object {
+                            "endColumn": 1,
+                            "endLine": 6,
+                            "endOffset": 178,
+                            "image": "}",
+                            "startColumn": 1,
+                            "startLine": 6,
+                            "startOffset": 178,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": "}",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "RCurly",
+                              "tokenTypeIdx": 150,
+                            },
+                            "tokenTypeIdx": 150,
+                          },
+                        ],
+                      },
+                      "name": "GroupGraphPattern",
+                    },
+                  ],
+                  "If": Array [
+                    Object {
+                      "endColumn": 2,
+                      "endLine": 4,
+                      "endOffset": 108,
+                      "image": "IF",
+                      "startColumn": 1,
+                      "startLine": 4,
+                      "startOffset": 107,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /if/i,
+                        "PUSH_MODE": "ifclause",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "If",
+                        "tokenTypeIdx": 201,
+                      },
+                      "tokenTypeIdx": 201,
+                    },
+                  ],
+                },
+                "name": "IfClause",
+              },
+            ],
+            "RuleClause": Array [
+              Object {
+                "children": Object {
+                  "Rule": Array [
+                    Object {
+                      "endColumn": 4,
+                      "endLine": 3,
+                      "endOffset": 93,
+                      "image": "RULE",
+                      "startColumn": 1,
+                      "startLine": 3,
+                      "startOffset": 90,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /rule/i,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "Rule",
+                        "tokenTypeIdx": 200,
+                      },
+                      "tokenTypeIdx": 200,
+                    },
+                  ],
+                  "iri": Array [
+                    Object {
+                      "children": Object {
+                        "PrefixedName": Array [
+                          Object {
+                            "children": Object {
+                              "PNAME_LN": Array [
+                                Object {
+                                  "endColumn": 16,
+                                  "endLine": 3,
+                                  "endOffset": 105,
+                                  "image": ":FatherRule",
+                                  "startColumn": 6,
+                                  "startLine": 3,
+                                  "startOffset": 95,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "PNAME_LN",
+                                    "tokenTypeIdx": 4,
+                                  },
+                                  "tokenTypeIdx": 4,
+                                },
+                              ],
+                            },
+                            "name": "PrefixedName",
+                          },
+                        ],
+                      },
+                      "name": "iri",
+                    },
+                  ],
+                },
+                "name": "RuleClause",
+              },
+            ],
+            "ThenClause": Array [
+              Object {
+                "children": Object {
+                  "EndThen": Array [
+                    Object {
+                      "endColumn": 1,
+                      "endLine": 9,
+                      "endOffset": 225,
+                      "image": "}",
+                      "startColumn": 1,
+                      "startLine": 9,
+                      "startOffset": 225,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "}",
+                        "POP_MODE": true,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "EndThen",
+                        "tokenTypeIdx": 203,
+                      },
+                      "tokenTypeIdx": 203,
+                    },
+                  ],
+                  "LCurly": Array [
+                    Object {
+                      "endColumn": 6,
+                      "endLine": 7,
+                      "endOffset": 185,
+                      "image": "{",
+                      "startColumn": 6,
+                      "startLine": 7,
+                      "startOffset": 185,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "{",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "LCurly",
+                        "tokenTypeIdx": 149,
+                      },
+                      "tokenTypeIdx": 149,
+                    },
+                  ],
+                  "Then": Array [
+                    Object {
+                      "endColumn": 4,
+                      "endLine": 7,
+                      "endOffset": 183,
+                      "image": "THEN",
+                      "startColumn": 1,
+                      "startLine": 7,
+                      "startOffset": 180,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /then/i,
+                        "PUSH_MODE": "thenclause",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "Then",
+                        "tokenTypeIdx": 202,
+                      },
+                      "tokenTypeIdx": 202,
+                    },
+                  ],
+                  "TriplesBlock": Array [
+                    Object {
+                      "children": Object {
+                        "Period": Array [
+                          Object {
+                            "endColumn": 34,
+                            "endLine": 8,
+                            "endOffset": 223,
+                            "image": ".",
+                            "startColumn": 34,
+                            "startLine": 8,
+                            "startOffset": 223,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": ".",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "Period",
+                              "tokenTypeIdx": 156,
+                            },
+                            "tokenTypeIdx": 156,
+                          },
+                        ],
+                        "TriplesSameSubjectPath": Array [
+                          Object {
+                            "children": Object {
+                              "PropertyListPathNotEmpty": Array [
+                                Object {
+                                  "children": Object {
+                                    "ObjectListPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "ObjectPath": Array [
+                                            Object {
+                                              "children": Object {
+                                                "GraphNodePath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "VarOrTerm": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphTerm": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "iri": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "IRIREF": Array [
+                                                                          Object {
+                                                                            "endColumn": 32,
+                                                                            "endLine": 8,
+                                                                            "endOffset": 221,
+                                                                            "image": "<http://example.org/Father>",
+                                                                            "startColumn": 6,
+                                                                            "startLine": 8,
+                                                                            "startOffset": 195,
+                                                                            "tokenType": Object {
+                                                                              "CATEGORIES": Array [],
+                                                                              "LABEL": "<http://example.com>",
+                                                                              "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                              "categoryMatches": Array [],
+                                                                              "categoryMatchesMap": Object {},
+                                                                              "isParent": false,
+                                                                              "tokenName": "IRIREF",
+                                                                              "tokenTypeIdx": 5,
+                                                                            },
+                                                                            "tokenTypeIdx": 5,
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "iri",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphTerm",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "VarOrTerm",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "GraphNodePath",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "ObjectPath",
+                                            },
+                                          ],
+                                        },
+                                        "name": "ObjectListPath",
+                                      },
+                                    ],
+                                    "VerbPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "Path": Array [
+                                            Object {
+                                              "children": Object {
+                                                "PathAlternative": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "PathSequence": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "PathEltOrInverse": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "PathElt": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "PathPrimary": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "A": Array [
+                                                                                Object {
+                                                                                  "endColumn": 4,
+                                                                                  "endLine": 8,
+                                                                                  "endOffset": 193,
+                                                                                  "image": "a",
+                                                                                  "startColumn": 4,
+                                                                                  "startLine": 8,
+                                                                                  "startOffset": 193,
+                                                                                  "tokenType": Object {
+                                                                                    "CATEGORIES": Array [],
+                                                                                    "PATTERN": /a/i,
+                                                                                    "categoryMatches": Array [],
+                                                                                    "categoryMatchesMap": Object {},
+                                                                                    "isParent": false,
+                                                                                    "tokenName": "A",
+                                                                                    "tokenTypeIdx": 38,
+                                                                                  },
+                                                                                  "tokenTypeIdx": 38,
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "PathPrimary",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "PathElt",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "PathEltOrInverse",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "PathSequence",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "PathAlternative",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "Path",
+                                            },
+                                          ],
+                                        },
+                                        "name": "VerbPath",
+                                      },
+                                    ],
+                                  },
+                                  "name": "PropertyListPathNotEmpty",
+                                },
+                              ],
+                              "VarOrTerm": Array [
+                                Object {
+                                  "children": Object {
+                                    "Var": Array [
+                                      Object {
+                                        "children": Object {
+                                          "VAR1": Array [
+                                            Object {
+                                              "endColumn": 2,
+                                              "endLine": 8,
+                                              "endOffset": 191,
+                                              "image": "?x",
+                                              "startColumn": 1,
+                                              "startLine": 8,
+                                              "startOffset": 190,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "LABEL": "?foo",
+                                                "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "VAR1",
+                                                "tokenTypeIdx": 22,
+                                              },
+                                              "tokenTypeIdx": 22,
+                                            },
+                                          ],
+                                        },
+                                        "name": "Var",
+                                      },
+                                    ],
+                                  },
+                                  "name": "VarOrTerm",
+                                },
+                              ],
+                            },
+                            "name": "TriplesSameSubjectPath",
+                          },
+                        ],
+                      },
+                      "name": "TriplesBlock",
+                    },
+                  ],
+                },
+                "name": "ThenClause",
+              },
+            ],
+          },
+          "name": "RuleDoc",
+        },
+      ],
+      "triples": Array [
+        Object {
+          "children": Object {
+            "predicateObjectList": Array [
+              Object {
+                "children": Object {
+                  "Semicolon": Array [
+                    Object {
+                      "endColumn": 54,
+                      "endLine": 10,
+                      "endOffset": 280,
+                      "image": ";",
+                      "startColumn": 54,
+                      "startLine": 10,
+                      "startOffset": 280,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": ";",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "Semicolon",
+                        "tokenTypeIdx": 162,
+                      },
+                      "tokenTypeIdx": 162,
+                    },
+                  ],
+                  "objectList": Array [
+                    Object {
+                      "children": Object {
+                        "object": Array [
+                          Object {
+                            "children": Object {
+                              "literal": Array [
+                                Object {
+                                  "children": Object {
+                                    "RDFLiteral": Array [
+                                      Object {
+                                        "children": Object {
+                                          "String": Array [
+                                            Object {
+                                              "children": Object {
+                                                "STRING_LITERAL_QUOTE": Array [
+                                                  Object {
+                                                    "endColumn": 52,
+                                                    "endLine": 10,
+                                                    "endOffset": 278,
+                                                    "image": "\\"This rule defines fathers\\"",
+                                                    "startColumn": 26,
+                                                    "startLine": 10,
+                                                    "startOffset": 252,
+                                                    "tokenType": Object {
+                                                      "CATEGORIES": Array [],
+                                                      "LINE_BREAKS": false,
+                                                      "PATTERN": [Function],
+                                                      "categoryMatches": Array [],
+                                                      "categoryMatchesMap": Object {},
+                                                      "isParent": false,
+                                                      "tokenName": "STRING_LITERAL_QUOTE",
+                                                      "tokenTypeIdx": 189,
+                                                    },
+                                                    "tokenTypeIdx": 189,
+                                                  },
+                                                ],
+                                              },
+                                              "name": "String",
+                                            },
+                                          ],
+                                        },
+                                        "name": "RDFLiteral",
+                                      },
+                                    ],
+                                  },
+                                  "name": "literal",
+                                },
+                              ],
+                            },
+                            "name": "object",
+                          },
+                        ],
+                      },
+                      "name": "objectList",
+                    },
+                    Object {
+                      "children": Object {
+                        "object": Array [
+                          Object {
+                            "children": Object {
+                              "iri": Array [
+                                Object {
+                                  "children": Object {
+                                    "PrefixedName": Array [
+                                      Object {
+                                        "children": Object {
+                                          "PNAME_LN": Array [
+                                            Object {
+                                              "endColumn": 11,
+                                              "endLine": 11,
+                                              "endOffset": 292,
+                                              "image": ":MyRule",
+                                              "startColumn": 5,
+                                              "startLine": 11,
+                                              "startOffset": 286,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "PNAME_LN",
+                                                "tokenTypeIdx": 4,
+                                              },
+                                              "tokenTypeIdx": 4,
+                                            },
+                                          ],
+                                        },
+                                        "name": "PrefixedName",
+                                      },
+                                    ],
+                                  },
+                                  "name": "iri",
+                                },
+                              ],
+                            },
+                            "name": "object",
+                          },
+                        ],
+                      },
+                      "name": "objectList",
+                    },
+                  ],
+                  "verb": Array [
+                    Object {
+                      "children": Object {
+                        "predicate": Array [
+                          Object {
+                            "children": Object {
+                              "iri": Array [
+                                Object {
+                                  "children": Object {
+                                    "PrefixedName": Array [
+                                      Object {
+                                        "children": Object {
+                                          "PNAME_LN": Array [
+                                            Object {
+                                              "endColumn": 24,
+                                              "endLine": 10,
+                                              "endOffset": 250,
+                                              "image": "rdfs:comment",
+                                              "startColumn": 13,
+                                              "startLine": 10,
+                                              "startOffset": 239,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "PNAME_LN",
+                                                "tokenTypeIdx": 4,
+                                              },
+                                              "tokenTypeIdx": 4,
+                                            },
+                                          ],
+                                        },
+                                        "name": "PrefixedName",
+                                      },
+                                    ],
+                                  },
+                                  "name": "iri",
+                                },
+                              ],
+                            },
+                            "name": "predicate",
+                          },
+                        ],
+                      },
+                      "name": "verb",
+                    },
+                    Object {
+                      "children": Object {
+                        "A": Array [
+                          Object {
+                            "endColumn": 3,
+                            "endLine": 11,
+                            "endOffset": 284,
+                            "image": "a",
+                            "startColumn": 3,
+                            "startLine": 11,
+                            "startOffset": 284,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": /a/i,
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "A",
+                              "tokenTypeIdx": 38,
+                            },
+                            "tokenTypeIdx": 38,
+                          },
+                        ],
+                      },
+                      "name": "verb",
+                    },
+                  ],
+                },
+                "name": "predicateObjectList",
+              },
+            ],
+            "subject": Array [
+              Object {
+                "children": Object {
+                  "iri": Array [
+                    Object {
+                      "children": Object {
+                        "PrefixedName": Array [
+                          Object {
+                            "children": Object {
+                              "PNAME_LN": Array [
+                                Object {
+                                  "endColumn": 11,
+                                  "endLine": 10,
+                                  "endOffset": 237,
+                                  "image": ":FatherRule",
+                                  "startColumn": 1,
+                                  "startLine": 10,
+                                  "startOffset": 227,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "PNAME_LN",
+                                    "tokenTypeIdx": 4,
+                                  },
+                                  "tokenTypeIdx": 4,
+                                },
+                              ],
+                            },
+                            "name": "PrefixedName",
+                          },
+                        ],
+                      },
+                      "name": "iri",
+                    },
+                  ],
+                },
+                "name": "subject",
+              },
+            ],
+          },
+          "name": "triples",
+        },
+      ],
+      "turtleDoc": Array [
+        Object {
+          "children": Object {
+            "statement": Array [
+              Object {
+                "children": Object {
+                  "directive": Array [
+                    Object {
+                      "children": Object {
+                        "prefixID": Array [
+                          Object {
+                            "children": Object {
+                              "IRIREF": Array [
+                                Object {
+                                  "endColumn": 32,
+                                  "endLine": 1,
+                                  "endOffset": 31,
+                                  "image": "<http://example.org/> ",
+                                  "startColumn": 11,
+                                  "startLine": 1,
+                                  "startOffset": 10,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "LINE_BREAKS": false,
+                                    "PATTERN": [Function],
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "IRIREF",
+                                    "tokenTypeIdx": 192,
+                                  },
+                                  "tokenTypeIdx": 192,
+                                },
+                              ],
+                              "PNAME_NS": Array [
+                                Object {
+                                  "endColumn": 9,
+                                  "endLine": 1,
+                                  "endOffset": 8,
+                                  "image": ":",
+                                  "startColumn": 9,
+                                  "startLine": 1,
+                                  "startOffset": 8,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "LONGER_ALT": Object {
+                                      "CATEGORIES": Array [],
+                                      "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
+                                      "categoryMatches": Array [],
+                                      "categoryMatchesMap": Object {},
+                                      "isParent": false,
+                                      "tokenName": "PNAME_LN",
+                                      "tokenTypeIdx": 4,
+                                    },
+                                    "PATTERN": /\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)/,
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "PNAME_NS",
+                                    "tokenTypeIdx": 20,
+                                  },
+                                  "tokenTypeIdx": 20,
+                                },
+                              ],
+                              "Period": Array [
+                                Object {
+                                  "endColumn": 33,
+                                  "endLine": 1,
+                                  "endOffset": 32,
+                                  "image": ".",
+                                  "startColumn": 33,
+                                  "startLine": 1,
+                                  "startOffset": 32,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "PATTERN": ".",
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "Period",
+                                    "tokenTypeIdx": 156,
+                                  },
+                                  "tokenTypeIdx": 156,
+                                },
+                              ],
+                              "TTL_PREFIX": Array [
+                                Object {
+                                  "endColumn": 7,
+                                  "endLine": 1,
+                                  "endOffset": 6,
+                                  "image": "@prefix",
+                                  "startColumn": 1,
+                                  "startLine": 1,
+                                  "startOffset": 0,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "PATTERN": /@prefix/,
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "TTL_PREFIX",
+                                    "tokenTypeIdx": 179,
+                                  },
+                                  "tokenTypeIdx": 179,
+                                },
+                              ],
+                            },
+                            "name": "prefixID",
+                          },
+                        ],
+                      },
+                      "name": "directive",
+                    },
+                  ],
+                },
+                "name": "statement",
+              },
+              Object {
+                "children": Object {
+                  "directive": Array [
+                    Object {
+                      "children": Object {
+                        "prefixID": Array [
+                          Object {
+                            "children": Object {
+                              "IRIREF": Array [
+                                Object {
+                                  "endColumn": 54,
+                                  "endLine": 2,
+                                  "endOffset": 87,
+                                  "image": "<http://www.w3.org/2000/01/rdf-schema#> ",
+                                  "startColumn": 15,
+                                  "startLine": 2,
+                                  "startOffset": 48,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "LINE_BREAKS": false,
+                                    "PATTERN": [Function],
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "IRIREF",
+                                    "tokenTypeIdx": 192,
+                                  },
+                                  "tokenTypeIdx": 192,
+                                },
+                              ],
+                              "PNAME_NS": Array [
+                                Object {
+                                  "endColumn": 13,
+                                  "endLine": 2,
+                                  "endOffset": 46,
+                                  "image": "rdfs:",
+                                  "startColumn": 9,
+                                  "startLine": 2,
+                                  "startOffset": 42,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "LONGER_ALT": Object {
+                                      "CATEGORIES": Array [],
+                                      "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
+                                      "categoryMatches": Array [],
+                                      "categoryMatchesMap": Object {},
+                                      "isParent": false,
+                                      "tokenName": "PNAME_LN",
+                                      "tokenTypeIdx": 4,
+                                    },
+                                    "PATTERN": /\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)/,
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "PNAME_NS",
+                                    "tokenTypeIdx": 20,
+                                  },
+                                  "tokenTypeIdx": 20,
+                                },
+                              ],
+                              "Period": Array [
+                                Object {
+                                  "endColumn": 55,
+                                  "endLine": 2,
+                                  "endOffset": 88,
+                                  "image": ".",
+                                  "startColumn": 55,
+                                  "startLine": 2,
+                                  "startOffset": 88,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "PATTERN": ".",
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "Period",
+                                    "tokenTypeIdx": 156,
+                                  },
+                                  "tokenTypeIdx": 156,
+                                },
+                              ],
+                              "TTL_PREFIX": Array [
+                                Object {
+                                  "endColumn": 7,
+                                  "endLine": 2,
+                                  "endOffset": 40,
+                                  "image": "@prefix",
+                                  "startColumn": 1,
+                                  "startLine": 2,
+                                  "startOffset": 34,
+                                  "tokenType": Object {
+                                    "CATEGORIES": Array [],
+                                    "PATTERN": /@prefix/,
+                                    "categoryMatches": Array [],
+                                    "categoryMatchesMap": Object {},
+                                    "isParent": false,
+                                    "tokenName": "TTL_PREFIX",
+                                    "tokenTypeIdx": 179,
+                                  },
+                                  "tokenTypeIdx": 179,
+                                },
+                              ],
+                            },
+                            "name": "prefixID",
+                          },
+                        ],
+                      },
+                      "name": "directive",
+                    },
+                  ],
+                },
+                "name": "statement",
+              },
+            ],
+          },
+          "name": "turtleDoc",
+        },
+      ],
+    },
+    "name": "SrsDoc",
+  },
+  "errors": Array [],
+  "semanticErrors": Array [],
+}
+`;

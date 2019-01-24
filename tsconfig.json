@@ -8,6 +8,7 @@
     "noUnusedParameters": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "stripInternal": true,
     "outDir": "./dist",
     "declaration": true,

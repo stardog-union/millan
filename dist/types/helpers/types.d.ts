@@ -6,4 +6,7 @@ export interface IStardogParser {
         cst: CstNode;
     };
 }
+export interface ITokensMap {
+    [key: string]: IToken[];
+}
 export { IToken, CstNode, TokenType };

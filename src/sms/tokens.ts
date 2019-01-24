@@ -1,4 +1,4 @@
-import { sparqlTokenMap } from '../sparql/tokens';
+const { sparqlTokenMap } = require('../sparql/tokens');
 import { TokenType, createToken, IToken } from 'chevrotain';
 
 const FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;

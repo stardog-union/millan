@@ -1,3 +1,4 @@
+const { smsTokenTypes, smsTokenMap } = require('./tokens');
 import {
   Parser,
   Lexer,
@@ -5,7 +6,6 @@ import {
   IRecognitionException,
   IParserConfig,
 } from 'chevrotain';
-import { smsTokenTypes, smsTokenMap } from './tokens';
 
 export class SmsParser extends Parser {
   private lexer: Lexer;

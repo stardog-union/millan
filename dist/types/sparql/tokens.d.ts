@@ -110,7 +110,7 @@ export declare const sparqlTokenMap: {
     FILTER: TokenType;
     STR: TokenType;
     LANG: TokenType;
-    LANGMATCHERS: TokenType;
+    LANGMATCHES: TokenType;
     DATATYPE: TokenType;
     BOUND: TokenType;
     IRI: TokenType;

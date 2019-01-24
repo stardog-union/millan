@@ -1,8 +1,6 @@
 import { BaseSparqlParser } from '../../..';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
-// @ts-ignore needed to import BaseSparqlParser["parse"] below
-import { IRecognitionException } from 'chevrotain';
 
 export interface FileAndContents {
   name: string;

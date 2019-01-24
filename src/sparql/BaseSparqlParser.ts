@@ -1,4 +1,4 @@
-import { sparqlTokenMap } from './tokens';
+const { sparqlTokenMap } = require('./tokens');
 import {
   Parser,
   TokenType,
@@ -20,15 +20,21 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
-  public parse = (document: string) => {
+  public parse = (document: string, entryRule = this.SparqlDoc) => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.SparqlDoc();
+    const cst = entryRule.call(this);
     const errors: IRecognitionException[] = this.errors;
     return {
       errors,
       cst,
     };
   };
+
+  public parseGroupGraphPattern = (document: string) =>
+    this.parse(document, this.GroupGraphPattern);
+
+  public parseTriplesBlock = (document: string) =>
+    this.parse(document, this.TriplesBlock);
 
   constructor(
     options: {
@@ -45,8 +51,6 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
     this.lexer = new Lexer(tokenVocab);
   }
-
-  // Grammar Rules
 
   SparqlDoc = this.RULE('SparqlDoc', () => {
     log('SparqlDoc');
@@ -1199,7 +1203,9 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
                   ALT: () => {
                     this.OR4([
                       { ALT: () => this.CONSUME(sparqlTokenMap.Star) },
-                      { ALT: () => this.CONSUME(sparqlTokenMap.ForwardSlash) },
+                      {
+                        ALT: () => this.CONSUME(sparqlTokenMap.ForwardSlash),
+                      },
                     ]);
                     this.SUBRULE1(this.UnaryExpression);
                   },
@@ -1292,9 +1298,9 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     this.SUBRULE(this.Expression);
     this.CONSUME(sparqlTokenMap.RParen);
   });
-  BuiltInCall_LANGMATCHERS = this.RULE('BuiltInCall_LANGMATCHERS', () => {
-    log('BuiltInCall_LANGMATCHERS');
-    this.CONSUME(sparqlTokenMap.LANGMATCHERS);
+  BuiltInCall_LANGMATCHES = this.RULE('BuiltInCall_LANGMATCHES', () => {
+    log('BuiltInCall_LANGMATCHES');
+    this.CONSUME(sparqlTokenMap.LANGMATCHES);
     this.CONSUME(sparqlTokenMap.LParen);
     this.SUBRULE(this.Expression);
     this.CONSUME(sparqlTokenMap.Comma);
@@ -1675,7 +1681,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
       { ALT: () => this.SUBRULE(this.Aggregate) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_STR) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_LANG) },
-      { ALT: () => this.SUBRULE(this.BuiltInCall_LANGMATCHERS) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_LANGMATCHES) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_DATATYPE) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_BOUND) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_IRI) },

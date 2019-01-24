@@ -11,6 +11,7 @@
     ],
     "object-shorthand-properties-first": false,
     "no-increment-decrement": false,
-    "no-else-after-return": false
+    "no-else-after-return": false,
+    "prefer-template": false
   }
 }
