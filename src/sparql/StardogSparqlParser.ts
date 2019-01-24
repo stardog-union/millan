@@ -76,7 +76,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
       { ALT: () => this.SUBRULE(this.Aggregate) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_STR) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_LANG) },
-      { ALT: () => this.SUBRULE(this.BuiltInCall_LANGMATCHERS) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_LANGMATCHES) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_DATATYPE) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_BOUND) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_IRI) },

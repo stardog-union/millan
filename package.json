@@ -42,10 +42,12 @@
     }
   ],
   "dependencies": {
-    "chevrotain": "3.0.1"
+    "chevrotain": "3.0.1",
+    "lodash.uniqby": "^4.7.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
+    "@types/lodash.uniqby": "^4.7.4",
     "@types/node": "^9.6.6",
     "chalk": "^2.4.1",
     "del": "^3.0.0",
