@@ -15,7 +15,7 @@ const ungeneratedFixtures = {
       ':FatherRule rdfs:comment "This rule defines fathers" ;\n' +
       '  a :MyRule .',
     basicIsolated:
-      'IF { ?x a <http://example.org/Male> }' +
+      'IF { ?x a <http://example.org/Male> . FILTER(?x NOT IN (<urn:a>, <urn:b>))}' +
       'THEN { ?x a <http://example.org/Father> . }',
     unionOptional:
       'PREFIX : <http://test.com/test/0.1/>\n' +
@@ -32,6 +32,14 @@ const ungeneratedFixtures = {
       'THEN {\n' +
       '  ?x :specialPrice ?p ;\n' +
       '     :specialItem ?y ;\n' +
+      '}\n' +
+      ':FatherRule rdfs:comment "This rule defines fathers" ;\n' +
+      '  a :MyRule .\n' +
+      'IF {\n' +
+      '   ?x a <http://example.org/Male> , <http://example.org/Parent> .\n' +
+      '}\n' +
+      'THEN {\n' +
+      '   ?x a <http://example.org/Father> .\n' +
       '}\n',
     propertyPath: 'IF {\n' + '  ?a :b+ :c .\n' + '} THEN {\n' + '?a :c :d }',
     filterIn:

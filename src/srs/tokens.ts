@@ -1,11 +1,11 @@
 import {
   createToken,
-  IToken,
-  TokenType,
+  // IToken,
+  // TokenType,
   IMultiModeLexerDefinition,
 } from 'chevrotain';
 import { turtleTokenTypes } from 'turtle/tokens';
-import { sparqlTokenMap, sparqlTokenTypes } from 'sparql/tokens';
+import { sparqlTokenMap } from 'sparql/tokens';
 
 enum LexerMode {
   TURTLE = 'turtle',
@@ -13,134 +13,51 @@ enum LexerMode {
   THENCLAUSE = 'thenclause',
 }
 
-const ClosingBraceMatcher = /\}/;
+// const ClosingBraceMatcher = /\}/;
 
-const getClosingBraceMatcherPatternForToken = (token: TokenType) => (
-  text: string,
-  startOffset = 0,
-  matchedTokensSoFar: IToken[]
-) => {
-  const lastBraceMatch = ClosingBraceMatcher.exec(
-    text.slice(startOffset, startOffset + 1)
-  );
+// const getClosingBraceMatcherPatternForToken = (token: TokenType) => (
+//   text: string,
+//   startOffset = 0,
+//   matchedTokensSoFar: IToken[]
+// ) => {
+//   console.log(startOffset);
+//   const lastBraceMatch = ClosingBraceMatcher.exec(
+//     text.slice(startOffset, startOffset + 1)
+//   );
 
-  // Text does not end in a closing brace; bail early.
-  if (lastBraceMatch === null) {
-    return null;
-  }
+//   // Text does not end in a closing brace; bail early.
+//   if (lastBraceMatch === null) {
+//     return null;
+//   }
 
-  const numMatchedTokens = matchedTokensSoFar.length;
-  let indexOfNearestToken;
+//   const numMatchedTokens = matchedTokensSoFar.length;
+//   let endOffsetOfNearestToken;
 
-  // Locate the innermost `If` token, for example.
-  for (let i = numMatchedTokens - 1; i >= 0; i--) {
-    if (matchedTokensSoFar[i].tokenType.tokenName === token.tokenName) {
-      indexOfNearestToken = i;
-      break;
-    }
-  }
+//   // Locate the innermost `If` token, for example.
+//   for (let i = numMatchedTokens - 1; i >= 0; i--) {
+//     if (matchedTokensSoFar[i].tokenType.tokenName === token.tokenName) {
+//       endOffsetOfNearestToken = matchedTokensSoFar[i].endOffset + 1;
+//       break;
+//     }
+//   }
 
-  // If no innermost `If` token (e.g.), this isn't an `EndIf`; bail early.
-  if (typeof indexOfNearestToken !== 'number') {
-    return null;
-  }
+//   // If no innermost `If` token (e.g.), this isn't an `EndIf`; bail early.
+//   if (typeof endOffsetOfNearestToken !== 'number') {
+//     return null;
+//   }
 
-  const tokensAfterToken = matchedTokensSoFar.slice(indexOfNearestToken + 1);
-  let braceCount = 0;
+//   const remainingText = text.slice(endOffsetOfNearestToken, startOffset);
+//   console.log(remainingText);
+//   const numOpeningBraces = remainingText.split('{').length - 1;
+//   const numClosingBraces = remainingText.split('}').length - 1;
 
-  // Match opening and closing braces.
-  for (let i = 0; i < tokensAfterToken.length; i++) {
-    if (tokensAfterToken[i].tokenType.PATTERN === '{') {
-      braceCount++;
-    }
+//   console.log(numClosingBraces, numOpeningBraces);
+//   if (numOpeningBraces !== numClosingBraces) {
+//     return null;
+//   }
 
-    if (tokensAfterToken[i].tokenType.PATTERN === '}') {
-      braceCount--;
-    }
-  }
-
-  // If this closing brace doesn't close the `If` (e.g.) opening brace, no match.
-  if (braceCount !== 1) {
-    return null;
-  }
-
-  return lastBraceMatch;
-};
-
-const disallowedSparqlTokens = [
-  sparqlTokenMap.CONSTRUCT,
-  sparqlTokenMap.DESCRIBE,
-  sparqlTokenMap.ASK,
-  sparqlTokenMap.NOW,
-  sparqlTokenMap.EXISTS,
-  sparqlTokenMap.NOT_EXISTS,
-  sparqlTokenMap.PATHS,
-  sparqlTokenMap.PATHS_ALL,
-  sparqlTokenMap.PATHS_SHORTEST,
-  sparqlTokenMap.CYCLIC,
-  sparqlTokenMap.START,
-  sparqlTokenMap.END,
-  sparqlTokenMap.VIA,
-  sparqlTokenMap.BASE,
-  sparqlTokenMap.PREFIX,
-  sparqlTokenMap.CLEAR,
-  sparqlTokenMap.DROP,
-  sparqlTokenMap.CREATE,
-  sparqlTokenMap.ADD,
-  sparqlTokenMap.TO,
-  sparqlTokenMap.MOVE,
-  sparqlTokenMap.COPY,
-  sparqlTokenMap.INSERT_DATA,
-  sparqlTokenMap.DELETE_DATA,
-  sparqlTokenMap.DELETE_WHERE,
-  sparqlTokenMap.WITH,
-  sparqlTokenMap.DELETE,
-  sparqlTokenMap.INSERT,
-  sparqlTokenMap.USING,
-  sparqlTokenMap.DEFAULT,
-  sparqlTokenMap.Unknown,
-];
-
-const thenClauseTokens = [
-  sparqlTokenMap.NIL,
-  sparqlTokenMap.ANON,
-  sparqlTokenMap.LCurly,
-  sparqlTokenMap.RCurly,
-  sparqlTokenMap.LParen,
-  sparqlTokenMap.RParen,
-  sparqlTokenMap.WhiteSpace,
-  sparqlTokenMap.IRIREF,
-  sparqlTokenMap.LANGTAG,
-  sparqlTokenMap.INTEGER,
-  sparqlTokenMap.DECIMAL,
-  sparqlTokenMap.DOUBLE,
-  sparqlTokenMap.INTEGER_POSITIVE,
-  sparqlTokenMap.DECIMAL_POSITIVE,
-  sparqlTokenMap.DOUBLE_POSITIVE,
-  sparqlTokenMap.INTEGER_NEGATIVE,
-  sparqlTokenMap.DECIMAL_NEGATIVE,
-  sparqlTokenMap.DOUBLE_NEGATIVE,
-  sparqlTokenMap.STRING_LITERAL1,
-  sparqlTokenMap.STRING_LITERAL2,
-  sparqlTokenMap.STRING_LITERAL_LONG1,
-  sparqlTokenMap.STRING_LITERAL_LONG2,
-  sparqlTokenMap.PNAME_NS,
-  sparqlTokenMap.PNAME_LN,
-  sparqlTokenMap.BLANK_NODE_LABEL,
-  sparqlTokenMap.VAR1,
-  sparqlTokenMap.VAR2,
-  sparqlTokenMap.Comment,
-  sparqlTokenMap.Period,
-  sparqlTokenMap.LBracket,
-  sparqlTokenMap.RBracket,
-  sparqlTokenMap.TRUE,
-  sparqlTokenMap.FALSE,
-  sparqlTokenMap.Semicolon,
-  sparqlTokenMap.Comma,
-  sparqlTokenMap.DoubleCaret,
-  sparqlTokenMap.A,
-  sparqlTokenMap.Unknown,
-];
+//   return lastBraceMatch;
+// };
 
 const Rule = createToken({
   name: 'Rule',
@@ -148,35 +65,51 @@ const Rule = createToken({
 });
 const If = createToken({
   name: 'If',
-  pattern: /if/i,
+  pattern: /if\s*{/i,
   push_mode: LexerMode.IFCLAUSE,
 });
 const EndIf = createToken({
   name: 'EndIf',
   pop_mode: true,
-  pattern: getClosingBraceMatcherPatternForToken(If),
+  pattern: '}',
 });
 const Then = createToken({
   name: 'Then',
-  pattern: /then/i,
+  pattern: /then\s*{/i,
   push_mode: LexerMode.THENCLAUSE,
 });
 const EndThen = createToken({
   name: 'EndThen',
   pop_mode: true,
-  pattern: getClosingBraceMatcherPatternForToken(Then),
+  pattern: '}',
+});
+const AnythingButBraces = createToken({
+  name: 'AnythingButBraces',
+  pattern: (text: string, startOffset = 0) => {
+    let unclosedBraceCount = 1;
+    let cursor;
+
+    for (
+      cursor = startOffset;
+      cursor < text.length && unclosedBraceCount > 0;
+      cursor++
+    ) {
+      if (text[cursor] === '{') {
+        unclosedBraceCount++;
+      } else if (text[cursor] === '}') {
+        unclosedBraceCount--;
+      }
+    }
+
+    return /.*/s.exec(text.slice(startOffset, cursor - 1));
+  },
 });
 
 export const multiModeLexerDefinition: IMultiModeLexerDefinition = {
   modes: {
     [LexerMode.TURTLE]: [Rule, If, Then, ...turtleTokenTypes],
-    [LexerMode.IFCLAUSE]: [EndIf, ...sparqlTokenTypes].filter(
-      (token) =>
-        !disallowedSparqlTokens.some(
-          (disallowedToken) => disallowedToken === token
-        )
-    ),
-    [LexerMode.THENCLAUSE]: [EndThen, ...thenClauseTokens],
+    [LexerMode.IFCLAUSE]: [EndIf, AnythingButBraces],
+    [LexerMode.THENCLAUSE]: [EndThen, AnythingButBraces],
   },
   defaultMode: LexerMode.TURTLE,
 };
@@ -187,4 +120,17 @@ export const srsTokenMap = {
   EndIf,
   Then,
   EndThen,
+  AnythingButBraces,
 };
+
+export const srsTokens = [
+  Rule,
+  If,
+  EndIf,
+  Then,
+  EndThen,
+  sparqlTokenMap.LCurly,
+  sparqlTokenMap.RCurly,
+  ...turtleTokenTypes,
+  AnythingButBraces,
+];
