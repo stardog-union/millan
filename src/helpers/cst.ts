@@ -19,7 +19,7 @@ export function isCstNode(object: CstElement): object is CstNode {
   return 'name' in object;
 }
 
-interface ITraverseContext {
+export interface ITraverseContext {
   node: CstElement;
   parentCtx: TraverseContext;
   [s: string]: any;

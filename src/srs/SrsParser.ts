@@ -12,7 +12,12 @@ import { srsTokenMap, srsTokens, multiModeLexerDefinition } from './tokens';
 import { TurtleParser } from 'turtle/TurtleParser';
 import { sparqlTokenMap } from 'sparql/tokens';
 import { W3SpecSparqlParser } from 'sparql/W3SpecSparqlParser';
-import { isCstNode, unsafeTraverse, traverse } from 'helpers/cst';
+import {
+  isCstNode,
+  unsafeTraverse,
+  traverse,
+  ITraverseContext,
+} from 'helpers/cst';
 
 interface SparqlSrsVisitorItem {
   parseResult: {
@@ -21,6 +26,10 @@ interface SparqlSrsVisitorItem {
   };
   originalToken: IToken;
 }
+
+type CstNodeTraverseContext = ITraverseContext & {
+  node: CstNode;
+};
 
 const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
   class SparqlSrsVisitor extends BaseVisitor<any, any> {
@@ -72,11 +81,14 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
   return new SparqlSrsVisitor();
 };
 
-const disallowedSparqlTokens = [
-  sparqlTokenMap.EXISTS,
-  sparqlTokenMap.NOT_EXISTS,
-  sparqlTokenMap.NOW,
-];
+const disallowedSparqlTokenNameToRuleMap = {
+  [sparqlTokenMap.EXISTS.tokenName]: 'ExistsFunction',
+  [sparqlTokenMap.NOT_EXISTS.tokenName]: 'NotExistsFunction',
+  [sparqlTokenMap.NOW.tokenName]: 'BuiltInCall_NOW',
+};
+const disallowedSparqlTokenNames = Object.keys(
+  disallowedSparqlTokenNameToRuleMap
+);
 
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor;
@@ -191,42 +203,79 @@ export class SrsParser extends TurtleParser {
           ];
           delete parentNode.children.AnythingButBraces;
 
-          traverse(matchingGroupGraphPattern.parseResult.cst, (ctx, next) => {
-            const { node, parentCtx } = ctx;
+          traverse(
+            matchingGroupGraphPattern.parseResult.cst,
+            (innerCtx, next) => {
+              const { node: innerNode, parentCtx: innerParentCtx } = innerCtx;
 
-            if (isCstNode(node)) {
-              return next();
-            }
+              if (isCstNode(innerNode)) {
+                return next();
+              }
 
-            if (
-              disallowedSparqlTokens.some(
-                (token) => token.tokenName === node.tokenType.tokenName
-              )
-            ) {
-              const grandParentNode = parentCtx.parentCtx.node as CstNode;
-              const error: Pick<
-                IRecognitionException,
-                'message' | 'token' | 'context'
-              > = {
-                message: `Token ${
-                  node.tokenType.tokenName
-                } cannot be used in Stardog Rules`,
-                token: node,
-                context: {
-                  ruleStack: [
-                    // @ts-ignore
-                    parentCtx.parentCtx.parentCtx.node.name,
-                    // @ts-ignore
-                    grandParentNode.name,
-                    // @ts-ignore
-                    parentCtx.node.name,
-                  ],
-                  ruleOccurrenceStack: [],
-                },
-              };
-              errors.push(error as IRecognitionException);
+              if (
+                disallowedSparqlTokenNames.some(
+                  (tokenName) => tokenName === innerNode.tokenType.tokenName
+                )
+              ) {
+                const ruleStack = [];
+                let stackUnwindingPointer: CstNodeTraverseContext = innerParentCtx as CstNodeTraverseContext;
+
+                while (
+                  stackUnwindingPointer &&
+                  stackUnwindingPointer.node.name !==
+                    disallowedSparqlTokenNameToRuleMap[
+                      innerNode.tokenType.tokenName
+                    ]
+                ) {
+                  stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+                }
+
+                while (
+                  (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext)
+                ) {
+                  if (
+                    stackUnwindingPointer.node &&
+                    stackUnwindingPointer.node.name
+                  ) {
+                    ruleStack.unshift(stackUnwindingPointer.node.name);
+                  }
+                }
+
+                ruleStack.unshift('GroupGraphPattern');
+
+                stackUnwindingPointer = ctx as CstNodeTraverseContext;
+
+                while (stackUnwindingPointer) {
+                  if (
+                    stackUnwindingPointer.node &&
+                    stackUnwindingPointer.node.name
+                  ) {
+                    ruleStack.unshift(stackUnwindingPointer.node.name);
+                  }
+                  stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+                }
+
+                const error: Pick<
+                  IRecognitionException,
+                  'message' | 'token' | 'context'
+                > = {
+                  message: `Token ${
+                    innerNode.tokenType.tokenName
+                  } cannot be used in Stardog Rules`,
+                  token: innerNode,
+                  context: {
+                    ruleStack: ['SrsDoc', ...ruleStack],
+                    // `ruleOccurrenceStack` is meaningless to us as it just
+                    // records the number used when the chevrotain rule is
+                    // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
+                    // or care about that here
+                    ruleOccurrenceStack: [],
+                  },
+                };
+                errors.push(error as IRecognitionException);
+              }
             }
-          });
+          );
         }
       } else if (parentNode.name === 'ThenClause') {
         const matchingTriplesBlock = triplesBlocks.find(
