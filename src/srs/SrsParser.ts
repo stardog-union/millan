@@ -5,6 +5,7 @@ import {
   IToken,
   IRecognitionException,
   IParserConfig,
+  CstElement,
   CstNode,
   CstVisitorConstructor,
 } from 'chevrotain';
@@ -90,6 +91,100 @@ const disallowedSparqlTokenNames = Object.keys(
   disallowedSparqlTokenNameToRuleMap
 );
 
+function _reduceVisitorItemErrors(
+  acc: IRecognitionException[],
+  item: SparqlSrsVisitorItem
+) {
+  return acc.concat(item.parseResult.errors);
+}
+
+function _findAndSwapAnythingButBraces(
+  node: IToken,
+  parentNode: CstNode,
+  visitorItems: SparqlSrsVisitorItem[],
+  key: string
+) {
+  const matchingVisiorItem = visitorItems.find(
+    (visitorItem: SparqlSrsVisitorItem) => visitorItem.originalToken === node
+  );
+
+  if (matchingVisiorItem) {
+    parentNode.children[key] = [matchingVisiorItem.parseResult.cst];
+    delete parentNode.children.AnythingButBraces;
+  }
+
+  return matchingVisiorItem;
+}
+
+function _addIfClauseErrorsToErrors(
+  fullCtx: ITraverseContext,
+  errors: IRecognitionException[],
+  cst: CstElement
+) {
+  traverse(cst, (ctx, next) => {
+    const { node, parentCtx } = ctx;
+
+    if (isCstNode(node)) {
+      return next();
+    }
+
+    if (
+      disallowedSparqlTokenNames.some(
+        (tokenName) => tokenName === node.tokenType.tokenName
+      )
+    ) {
+      const ruleStack = [];
+      let stackUnwindingPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
+
+      while (
+        stackUnwindingPointer &&
+        stackUnwindingPointer.node.name !==
+          disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]
+      ) {
+        stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+      }
+
+      while (
+        (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext)
+      ) {
+        if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
+          ruleStack.unshift(stackUnwindingPointer.node.name);
+        }
+      }
+
+      ruleStack.unshift('GroupGraphPattern');
+
+      stackUnwindingPointer = fullCtx as CstNodeTraverseContext;
+
+      while (stackUnwindingPointer) {
+        if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
+          ruleStack.unshift(stackUnwindingPointer.node.name);
+        }
+        stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+      }
+
+      const error: Pick<
+        IRecognitionException,
+        'message' | 'token' | 'context'
+      > = {
+        message: `Token ${
+          node.tokenType.tokenName
+        } cannot be used in Stardog Rules`,
+        token: node,
+        context: {
+          ruleStack: ['SrsDoc', ...ruleStack],
+          // `ruleOccurrenceStack` is meaningless to us as it just
+          // records the number used when the chevrotain rule is
+          // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
+          // or care about that here
+          ruleOccurrenceStack: [],
+        },
+      };
+      errors.push(error as IRecognitionException);
+    }
+  });
+}
+
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor;
   protected lexer: Lexer;
@@ -163,18 +258,12 @@ export class SrsParser extends TurtleParser {
 
     const groupGraphPatterns = this.sparqlSrsVisitor.$getGroupGraphPatterns();
     const triplesBlocks = this.sparqlSrsVisitor.$getTriplesBlocks();
+
+    // Pull visitor errorrs
     const errors: IRecognitionException[] = [
       ...this.errors,
-      ...groupGraphPatterns.reduce(
-        (acc, item: SparqlSrsVisitorItem) =>
-          acc.concat(item.parseResult.errors),
-        []
-      ),
-      ...triplesBlocks.reduce(
-        (acc, item: SparqlSrsVisitorItem) =>
-          acc.concat(item.parseResult.errors),
-        []
-      ),
+      ...groupGraphPatterns.reduce(_reduceVisitorItemErrors, []),
+      ...triplesBlocks.reduce(_reduceVisitorItemErrors, []),
     ];
 
     // Replace `AnythingButBraces` cst nodes with cst nodes returned by
@@ -194,99 +283,27 @@ export class SrsParser extends TurtleParser {
       const parentNode = parentCtx.node as CstNode;
 
       if (parentNode.name === 'IfClause') {
-        const matchingGroupGraphPattern = groupGraphPatterns.find(
-          (ggp: SparqlSrsVisitorItem) => ggp.originalToken === node
+        const matchingVisitorItem = _findAndSwapAnythingButBraces(
+          node,
+          parentNode,
+          groupGraphPatterns,
+          'GroupGraphPattern'
         );
-        if (matchingGroupGraphPattern) {
-          parentNode.children.GroupGraphPattern = [
-            matchingGroupGraphPattern.parseResult.cst,
-          ];
-          delete parentNode.children.AnythingButBraces;
 
-          traverse(
-            matchingGroupGraphPattern.parseResult.cst,
-            (innerCtx, next) => {
-              const { node: innerNode, parentCtx: innerParentCtx } = innerCtx;
-
-              if (isCstNode(innerNode)) {
-                return next();
-              }
-
-              if (
-                disallowedSparqlTokenNames.some(
-                  (tokenName) => tokenName === innerNode.tokenType.tokenName
-                )
-              ) {
-                const ruleStack = [];
-                let stackUnwindingPointer: CstNodeTraverseContext = innerParentCtx as CstNodeTraverseContext;
-
-                while (
-                  stackUnwindingPointer &&
-                  stackUnwindingPointer.node.name !==
-                    disallowedSparqlTokenNameToRuleMap[
-                      innerNode.tokenType.tokenName
-                    ]
-                ) {
-                  stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
-                }
-
-                while (
-                  (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext)
-                ) {
-                  if (
-                    stackUnwindingPointer.node &&
-                    stackUnwindingPointer.node.name
-                  ) {
-                    ruleStack.unshift(stackUnwindingPointer.node.name);
-                  }
-                }
-
-                ruleStack.unshift('GroupGraphPattern');
-
-                stackUnwindingPointer = ctx as CstNodeTraverseContext;
-
-                while (stackUnwindingPointer) {
-                  if (
-                    stackUnwindingPointer.node &&
-                    stackUnwindingPointer.node.name
-                  ) {
-                    ruleStack.unshift(stackUnwindingPointer.node.name);
-                  }
-                  stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
-                }
-
-                const error: Pick<
-                  IRecognitionException,
-                  'message' | 'token' | 'context'
-                > = {
-                  message: `Token ${
-                    innerNode.tokenType.tokenName
-                  } cannot be used in Stardog Rules`,
-                  token: innerNode,
-                  context: {
-                    ruleStack: ['SrsDoc', ...ruleStack],
-                    // `ruleOccurrenceStack` is meaningless to us as it just
-                    // records the number used when the chevrotain rule is
-                    // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
-                    // or care about that here
-                    ruleOccurrenceStack: [],
-                  },
-                };
-                errors.push(error as IRecognitionException);
-              }
-            }
+        if (matchingVisitorItem) {
+          _addIfClauseErrorsToErrors(
+            ctx,
+            errors,
+            matchingVisitorItem.parseResult.cst
           );
         }
       } else if (parentNode.name === 'ThenClause') {
-        const matchingTriplesBlock = triplesBlocks.find(
-          (tb: SparqlSrsVisitorItem) => tb.originalToken === node
+        _findAndSwapAnythingButBraces(
+          node,
+          parentNode,
+          triplesBlocks,
+          'TriplesBlock'
         );
-        if (matchingTriplesBlock) {
-          parentNode.children.TriplesBlock = [
-            matchingTriplesBlock.parseResult.cst,
-          ];
-          delete parentNode.children.AnythingButBraces;
-        }
       }
     });
 
