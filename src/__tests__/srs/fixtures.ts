@@ -298,6 +298,9 @@ const ungeneratedFixtures = {
       //   '  ?x test:discount ?discount \n' +
       //   '  BIND (?p - ?realprice AS ?discount) .\n' + // Includes Bind
       //   '}\n',
+      unsupportedSPARQLInIfClause:
+        'IF { ?x a <http://example.org/Male> . FILTER EXISTS {}}\n' +
+        'THEN { ?x a <http://example.org/Father> . }',
     },
   },
 };

@@ -14,6 +14,29 @@ describe('srs parser', () => {
     console.log(JSON.stringify(errors, null, 2));
     expect(true).toBe(true);
   });
+
+  it('parses valid SRS documents with no errors', () => {
+    const validDocuments = fixtures.valid;
+    Object.keys(validDocuments).forEach((docKey) => {
+      const { errors } = parser.parse(validDocuments[docKey]);
+
+      if (errors.length > 0) {
+        console.log('Error in', docKey);
+      }
+
+      expect(errors).toHaveLength(0);
+    });
+  });
+
+  it('recognizes invalid SPARQL in the If clause', () => {
+    const { errors } = parser.parse(
+      fixtures.invalid.parse.unsupportedSPARQLInIfClause
+    );
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toBe(
+      'Token EXISTS cannot be used in Stardog Rules'
+    );
+  });
 });
 
 /**
