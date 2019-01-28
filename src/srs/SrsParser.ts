@@ -32,6 +32,10 @@ type CstNodeTraverseContext = ITraverseContext & {
   node: CstNode;
 };
 
+// Returns a custom visitor that extends the BaseVisitor for the SRS parser.
+// When the visitor encounters an SRS `IfClause` or an SRS `ThenClause`, it
+// delegates parsing of the block to the existing SPARQL parser's relevant
+// sub-rule (GroupGraphPattern or TriplesBlock).
 const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
   class SparqlSrsVisitor extends BaseVisitor<any, any> {
     private sparqlParser: W3SpecSparqlParser;
@@ -44,6 +48,8 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
       this.validateVisitor();
     }
 
+    // Swap `AnythingButBraces` inside of the `IfClause` with the SPARQL CST
+    // for `GroupGraphPattern`.
     IfClause(ctx: { [key: string]: IToken[] }) {
       const { AnythingButBraces } = ctx;
       this.groupGraphPatterns.push({
@@ -54,6 +60,8 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
       });
     }
 
+    // Swap `AnythingButBraces` inside of the `ThenClause` with the SPARQL CST
+    // for `TriplesBlock`.
     ThenClause(ctx: { [key: string]: IToken[] }) {
       const { AnythingButBraces } = ctx;
       this.triplesBlocks.push({
@@ -82,6 +90,7 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
   return new SparqlSrsVisitor();
 };
 
+// Tokens that are allowed in SPARQL but not inside the `IfClause` of SRS.
 const disallowedSparqlTokenNameToRuleMap = {
   [sparqlTokenMap.EXISTS.tokenName]: 'ExistsFunction',
   [sparqlTokenMap.NOT_EXISTS.tokenName]: 'NotExistsFunction',
@@ -98,24 +107,30 @@ function _reduceVisitorItemErrors(
   return acc.concat(item.parseResult.errors);
 }
 
+// `AnythingButBraces` is a placeholder token for unparsed blocks of SPARQL
+// inside of an SRS `IfClause` or `ThenClause`. This method swaps out those
+// placeholders with the actual SPARQL CST created by the SparqlSrsVisitor.
 function _findAndSwapAnythingButBraces(
   node: IToken,
   parentNode: CstNode,
   visitorItems: SparqlSrsVisitorItem[],
   key: string
 ) {
-  const matchingVisiorItem = visitorItems.find(
+  const matchingVisitorItem = visitorItems.find(
     (visitorItem: SparqlSrsVisitorItem) => visitorItem.originalToken === node
   );
 
-  if (matchingVisiorItem) {
-    parentNode.children[key] = [matchingVisiorItem.parseResult.cst];
+  if (matchingVisitorItem) {
+    parentNode.children[key] = [matchingVisitorItem.parseResult.cst];
     delete parentNode.children.AnythingButBraces;
   }
 
-  return matchingVisiorItem;
+  return matchingVisitorItem;
 }
 
+// Since the SRS parser delegates to the SPARQL parser inside of
+// an SRS `IfClause`, and SPARQL allows certain constructs that SRS does not,
+// we need to create our own errors for SRS-specific restrictions here.
 function _addIfClauseErrorsToErrors(
   fullCtx: ITraverseContext,
   errors: IRecognitionException[],
@@ -129,59 +144,63 @@ function _addIfClauseErrorsToErrors(
     }
 
     if (
-      disallowedSparqlTokenNames.some(
+      !disallowedSparqlTokenNames.some(
         (tokenName) => tokenName === node.tokenType.tokenName
       )
     ) {
-      const ruleStack = [];
-      let stackUnwindingPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
-
-      while (
-        stackUnwindingPointer &&
-        stackUnwindingPointer.node.name !==
-          disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]
-      ) {
-        stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
-      }
-
-      while (
-        (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext)
-      ) {
-        if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
-          ruleStack.unshift(stackUnwindingPointer.node.name);
-        }
-      }
-
-      ruleStack.unshift('GroupGraphPattern');
-
-      stackUnwindingPointer = fullCtx as CstNodeTraverseContext;
-
-      while (stackUnwindingPointer) {
-        if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
-          ruleStack.unshift(stackUnwindingPointer.node.name);
-        }
-        stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
-      }
-
-      const error: Pick<
-        IRecognitionException,
-        'message' | 'token' | 'context'
-      > = {
-        message: `Token ${
-          node.tokenType.tokenName
-        } cannot be used in Stardog Rules`,
-        token: node,
-        context: {
-          ruleStack: ['SrsDoc', ...ruleStack],
-          // `ruleOccurrenceStack` is meaningless to us as it just
-          // records the number used when the chevrotain rule is
-          // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
-          // or care about that here
-          ruleOccurrenceStack: [],
-        },
-      };
-      errors.push(error as IRecognitionException);
+      return;
     }
+
+    const ruleStack = [];
+    let stackUnwindingPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
+
+    // Walk back up the tree to construct the rule stack, starting from the
+    // first rule that is allowed in SPARQL but not allowed in SRS.
+    while (
+      stackUnwindingPointer &&
+      stackUnwindingPointer.node.name !==
+        disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]
+    ) {
+      stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+    }
+
+    while (
+      (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext)
+    ) {
+      if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
+        ruleStack.unshift(stackUnwindingPointer.node.name);
+      }
+    }
+
+    ruleStack.unshift('GroupGraphPattern');
+
+    stackUnwindingPointer = fullCtx as CstNodeTraverseContext;
+
+    while (stackUnwindingPointer) {
+      if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
+        ruleStack.unshift(stackUnwindingPointer.node.name);
+      }
+      stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+    }
+
+    const error: Pick<
+      IRecognitionException,
+      'message' | 'token' | 'context'
+    > = {
+      message: `Token ${
+        node.tokenType.tokenName
+      } cannot be used in Stardog Rules`,
+      token: node,
+      context: {
+        ruleStack: ['SrsDoc', ...ruleStack],
+        // `ruleOccurrenceStack` is meaningless to us as it just
+        // records the number used when the chevrotain rule is
+        // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
+        // or care about that here
+        ruleOccurrenceStack: [],
+      },
+    };
+    errors.push(error as IRecognitionException);
   });
 }
 
@@ -247,6 +266,7 @@ export class SrsParser extends TurtleParser {
     this.input = this.lexer.tokenize(document).tokens;
     const cst = this.SrsDoc();
 
+    // To save resources while parsing, the sparqlSrsVisitor is a singleton.
     if (!this.sparqlSrsVisitor) {
       const BaseSrsVisitor = this.getBaseCstVisitorConstructorWithDefaults();
       this.sparqlSrsVisitor = getSparqlSrsVisitor(BaseSrsVisitor);

@@ -11,7 +11,6 @@ describe('srs parser', () => {
 
   it('parses a basic turtle + SRS document', () => {
     const { cst, errors } = parser.parse(fixtures.valid.basic);
-    console.log(JSON.stringify(errors, null, 2));
     expect(true).toBe(true);
   });
 
