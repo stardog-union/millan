@@ -130,13 +130,13 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y\n' +
         '}\n',
-      // noLiteralRuleSubjects:
-      //   'IF {\n' +
-      //   '   BIND ("literal" AS ?x)\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '   ?x a owl:Thing .\n' +
-      //   '}',
+      noLiteralRuleSubjects:
+        'IF {\n' +
+        '   BIND ("literal" AS ?x)\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?x a owl:Thing .\n' +
+        '}',
       // noLiteralRuleSubjects2:
       //   'IF {\n' +
       //   '   BIND ("literal" AS ?x)\n' +

@@ -58,7 +58,7 @@ export declare const keywords: {
     FILTER: TokenType;
     STR: TokenType;
     LANG: TokenType;
-    LANGMATCHERS: TokenType;
+    LANGMATCHES: TokenType;
     DATATYPE: TokenType;
     BOUND: TokenType;
     IRI: TokenType;

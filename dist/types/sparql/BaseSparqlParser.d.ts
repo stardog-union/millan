@@ -3,7 +3,15 @@ import { IStardogParser } from '../helpers/types';
 export declare class BaseSparqlParser extends Parser implements IStardogParser {
     private lexer;
     tokenize: (document: string) => IToken[];
-    parse: (document: string) => {
+    parse: (document: string, entryRule?: (idxInCallingRule?: number, ...args: any[]) => any) => {
+        errors: IRecognitionException[];
+        cst: any;
+    };
+    parseGroupGraphPattern: (document: string) => {
+        errors: IRecognitionException[];
+        cst: any;
+    };
+    parseTriplesBlock: (document: string) => {
         errors: IRecognitionException[];
         cst: any;
     };
@@ -136,7 +144,7 @@ export declare class BaseSparqlParser extends Parser implements IStardogParser {
     BrackettedExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_STR: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_LANG: (idxInCallingRule?: number, ...args: any[]) => any;
-    BuiltInCall_LANGMATCHERS: (idxInCallingRule?: number, ...args: any[]) => any;
+    BuiltInCall_LANGMATCHES: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_DATATYPE: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_BOUND: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_IRI: (idxInCallingRule?: number, ...args: any[]) => any;

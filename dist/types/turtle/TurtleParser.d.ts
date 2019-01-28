@@ -1,17 +1,17 @@
-import { Parser, IParserConfig, IToken, IRecognitionException } from 'chevrotain';
+import { Parser, IParserConfig, Lexer, IToken, IRecognitionException, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
 import { IStardogParser } from '../helpers/types';
 export declare class TurtleParser extends Parser implements IStardogParser {
-    private lexer;
+    protected lexer: Lexer;
     private namespacesMap;
     private semanticErrors;
     private resetManagedState;
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];
-        semanticErrors: IRecognitionException[];
+        semanticErrors?: IRecognitionException[];
         cst: any;
     };
-    constructor(config?: Partial<IParserConfig>);
+    constructor(config?: Partial<IParserConfig>, tokens?: TokenType[], lexerDefinition?: TokenType[] | IMultiModeLexerDefinition, performSelfAnalysis?: boolean);
     turtleDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     statement: (idxInCallingRule?: number, ...args: any[]) => any;
     directive: (idxInCallingRule?: number, ...args: any[]) => any;

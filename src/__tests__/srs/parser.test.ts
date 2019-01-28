@@ -10,8 +10,8 @@ describe('srs parser', () => {
   });
 
   it('parses a basic turtle + SRS document', () => {
-    const { cst, errors } = parser.parse(fixtures.valid.basic);
-    expect(true).toBe(true);
+    const result = parser.parse(fixtures.valid.basic);
+    expect(result).toMatchSnapshot();
   });
 
   it('parses valid SRS documents with no errors', () => {
@@ -27,7 +27,7 @@ describe('srs parser', () => {
     });
   });
 
-  it('recognizes invalid SPARQL in the If clause', () => {
+  it('recognizes restricted SPARQL calls in the If clause', () => {
     const { errors } = parser.parse(
       fixtures.invalid.parse.unsupportedSPARQLInIfClause
     );
