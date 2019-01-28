@@ -130,29 +130,29 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y\n' +
         '}\n',
-      noLiteralRuleSubjects:
-        'IF {\n' +
-        '   BIND ("literal" AS ?x)\n' +
-        '}\n' +
-        'THEN {\n' +
-        '   ?x a owl:Thing .\n' +
-        '}',
-      noLiteralRuleSubjects2:
-        'IF {\n' +
-        '   BIND ("literal" AS ?x)\n' +
-        '   BIND ("literal" AS ?y)\n' +
-        '}\n' +
-        'THEN {\n' +
-        '   ?x a owl:Thing .\n' +
-        '   ?y a owl:Thing .\n' +
-        '}',
-      noLiteralRuleSubjects3:
-        'IF {\n' +
-        '   ?s ?p ?o' +
-        '}\n' +
-        'THEN {\n' +
-        '   "literal" a owl:Thing .\n' +
-        '}',
+      // noLiteralRuleSubjects:
+      //   'IF {\n' +
+      //   '   BIND ("literal" AS ?x)\n' +
+      //   '}\n' +
+      //   'THEN {\n' +
+      //   '   ?x a owl:Thing .\n' +
+      //   '}',
+      // noLiteralRuleSubjects2:
+      //   'IF {\n' +
+      //   '   BIND ("literal" AS ?x)\n' +
+      //   '   BIND ("literal" AS ?y)\n' +
+      //   '}\n' +
+      //   'THEN {\n' +
+      //   '   ?x a owl:Thing .\n' +
+      //   '   ?y a owl:Thing .\n' +
+      //   '}',
+      // noLiteralRuleSubjects3:
+      //   'IF {\n' +
+      //   '   ?s ?p ?o' +
+      //   '}\n' +
+      //   'THEN {\n' +
+      //   '   "literal" a owl:Thing .\n' +
+      //   '}',
       wrongPrefix4:
         'PREFIX test: <http://test.com/test/0.1/\n' + // Omit >
         'IF {\n' +
@@ -280,24 +280,24 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '\t\n' + // Empty (Tab)
         '}\n',
-      wrongThenContent8:
-        'PREFIX test: <http://test.com/test/0.1/>\n' +
-        'IF {\n' +
-        ' ?X a test:OldMan\n' +
-        '}\n' +
-        'THEN {\n' +
-        '  ?X test:age ?Y. FILTER (?Y > 50) .\n' + // Includes Filter
-        '}\n',
-      wrongThenContent9:
-        'PREFIX test: <http://test.com/test/0.1/>\n' +
-        'IF {\n' +
-        ' ?X rdf:type test:GoodDeal\n' +
-        '}\n' +
-        'THEN {\n' +
-        '  ?x test:price ?p .\n' +
-        '  ?x test:discount ?discount \n' +
-        '  BIND (?p - ?realprice AS ?discount) .\n' + // Includes Bind
-        '}\n',
+      // wrongThenContent8:
+      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
+      //   'IF {\n' +
+      //   ' ?X a test:OldMan\n' +
+      //   '}\n' +
+      //   'THEN {\n' +
+      //   '  ?X test:age ?Y. FILTER (?Y > 50) .\n' + // Includes Filter
+      //   '}\n',
+      // wrongThenContent9:
+      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
+      //   'IF {\n' +
+      //   ' ?X rdf:type test:GoodDeal\n' +
+      //   '}\n' +
+      //   'THEN {\n' +
+      //   '  ?x test:price ?p .\n' +
+      //   '  ?x test:discount ?discount \n' +
+      //   '  BIND (?p - ?realprice AS ?discount) .\n' + // Includes Bind
+      //   '}\n',
     },
   },
 };

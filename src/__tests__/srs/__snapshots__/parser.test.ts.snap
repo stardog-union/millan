@@ -1,0 +1,1098 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`srs parser parses a basic isolated SRS document 1`] = `
+Object {
+  "cst": Object {
+    "children": Object {
+      "RuleDoc": Array [
+        Object {
+          "children": Object {
+            "IfClause": Array [
+              Object {
+                "children": Object {
+                  "EndIf": Array [
+                    Object {
+                      "endColumn": 75,
+                      "endLine": 1,
+                      "endOffset": 74,
+                      "image": "}",
+                      "startColumn": 75,
+                      "startLine": 1,
+                      "startOffset": 74,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "}",
+                        "POP_MODE": true,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "EndIf",
+                        "tokenTypeIdx": 202,
+                      },
+                      "tokenTypeIdx": 202,
+                    },
+                  ],
+                  "GroupGraphPattern": Array [
+                    Object {
+                      "children": Object {
+                        "GroupGraphPatternSub": Array [
+                          Object {
+                            "children": Object {
+                              "GraphPatternNotTriples": Array [
+                                Object {
+                                  "children": Object {
+                                    "Filter": Array [
+                                      Object {
+                                        "children": Object {
+                                          "Constraint": Array [
+                                            Object {
+                                              "children": Object {
+                                                "BrackettedExpression": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "Expression": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "ConditionalOrExpression": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "ConditionalAndExpression": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "ValueLogical": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "RelationalExpression": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "ExpressionList": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "Comma": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 62,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 61,
+                                                                                              "image": ",",
+                                                                                              "startColumn": 62,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 61,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": ",",
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "Comma",
+                                                                                                "tokenTypeIdx": 163,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 163,
+                                                                                            },
+                                                                                          ],
+                                                                                          "Expression": Array [
+                                                                                            Object {
+                                                                                              "children": Object {
+                                                                                                "ConditionalOrExpression": Array [
+                                                                                                  Object {
+                                                                                                    "children": Object {
+                                                                                                      "ConditionalAndExpression": Array [
+                                                                                                        Object {
+                                                                                                          "children": Object {
+                                                                                                            "ValueLogical": Array [
+                                                                                                              Object {
+                                                                                                                "children": Object {
+                                                                                                                  "RelationalExpression": Array [
+                                                                                                                    Object {
+                                                                                                                      "children": Object {
+                                                                                                                        "NumericExpression": Array [
+                                                                                                                          Object {
+                                                                                                                            "children": Object {
+                                                                                                                              "AdditiveExpression": Array [
+                                                                                                                                Object {
+                                                                                                                                  "children": Object {
+                                                                                                                                    "MultiplicativeExpression": Array [
+                                                                                                                                      Object {
+                                                                                                                                        "children": Object {
+                                                                                                                                          "UnaryExpression": Array [
+                                                                                                                                            Object {
+                                                                                                                                              "children": Object {
+                                                                                                                                                "PrimaryExpression": Array [
+                                                                                                                                                  Object {
+                                                                                                                                                    "children": Object {
+                                                                                                                                                      "iriOrFunction": Array [
+                                                                                                                                                        Object {
+                                                                                                                                                          "children": Object {
+                                                                                                                                                            "iri": Array [
+                                                                                                                                                              Object {
+                                                                                                                                                                "children": Object {
+                                                                                                                                                                  "IRIREF": Array [
+                                                                                                                                                                    Object {
+                                                                                                                                                                      "endColumn": 61,
+                                                                                                                                                                      "endLine": 1,
+                                                                                                                                                                      "endOffset": 60,
+                                                                                                                                                                      "image": "<urn:a>",
+                                                                                                                                                                      "startColumn": 55,
+                                                                                                                                                                      "startLine": 1,
+                                                                                                                                                                      "startOffset": 54,
+                                                                                                                                                                      "tokenType": Object {
+                                                                                                                                                                        "CATEGORIES": Array [],
+                                                                                                                                                                        "LABEL": "<http://example.com>",
+                                                                                                                                                                        "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                                                                                                        "categoryMatches": Array [],
+                                                                                                                                                                        "categoryMatchesMap": Object {},
+                                                                                                                                                                        "isParent": false,
+                                                                                                                                                                        "tokenName": "IRIREF",
+                                                                                                                                                                        "tokenTypeIdx": 5,
+                                                                                                                                                                      },
+                                                                                                                                                                      "tokenTypeIdx": 5,
+                                                                                                                                                                    },
+                                                                                                                                                                  ],
+                                                                                                                                                                },
+                                                                                                                                                                "name": "iri",
+                                                                                                                                                              },
+                                                                                                                                                            ],
+                                                                                                                                                          },
+                                                                                                                                                          "name": "iriOrFunction",
+                                                                                                                                                        },
+                                                                                                                                                      ],
+                                                                                                                                                    },
+                                                                                                                                                    "name": "PrimaryExpression",
+                                                                                                                                                  },
+                                                                                                                                                ],
+                                                                                                                                              },
+                                                                                                                                              "name": "UnaryExpression",
+                                                                                                                                            },
+                                                                                                                                          ],
+                                                                                                                                        },
+                                                                                                                                        "name": "MultiplicativeExpression",
+                                                                                                                                      },
+                                                                                                                                    ],
+                                                                                                                                  },
+                                                                                                                                  "name": "AdditiveExpression",
+                                                                                                                                },
+                                                                                                                              ],
+                                                                                                                            },
+                                                                                                                            "name": "NumericExpression",
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                      },
+                                                                                                                      "name": "RelationalExpression",
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                                },
+                                                                                                                "name": "ValueLogical",
+                                                                                                              },
+                                                                                                            ],
+                                                                                                          },
+                                                                                                          "name": "ConditionalAndExpression",
+                                                                                                        },
+                                                                                                      ],
+                                                                                                    },
+                                                                                                    "name": "ConditionalOrExpression",
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                              "name": "Expression",
+                                                                                            },
+                                                                                            Object {
+                                                                                              "children": Object {
+                                                                                                "ConditionalOrExpression": Array [
+                                                                                                  Object {
+                                                                                                    "children": Object {
+                                                                                                      "ConditionalAndExpression": Array [
+                                                                                                        Object {
+                                                                                                          "children": Object {
+                                                                                                            "ValueLogical": Array [
+                                                                                                              Object {
+                                                                                                                "children": Object {
+                                                                                                                  "RelationalExpression": Array [
+                                                                                                                    Object {
+                                                                                                                      "children": Object {
+                                                                                                                        "NumericExpression": Array [
+                                                                                                                          Object {
+                                                                                                                            "children": Object {
+                                                                                                                              "AdditiveExpression": Array [
+                                                                                                                                Object {
+                                                                                                                                  "children": Object {
+                                                                                                                                    "MultiplicativeExpression": Array [
+                                                                                                                                      Object {
+                                                                                                                                        "children": Object {
+                                                                                                                                          "UnaryExpression": Array [
+                                                                                                                                            Object {
+                                                                                                                                              "children": Object {
+                                                                                                                                                "PrimaryExpression": Array [
+                                                                                                                                                  Object {
+                                                                                                                                                    "children": Object {
+                                                                                                                                                      "iriOrFunction": Array [
+                                                                                                                                                        Object {
+                                                                                                                                                          "children": Object {
+                                                                                                                                                            "iri": Array [
+                                                                                                                                                              Object {
+                                                                                                                                                                "children": Object {
+                                                                                                                                                                  "IRIREF": Array [
+                                                                                                                                                                    Object {
+                                                                                                                                                                      "endColumn": 70,
+                                                                                                                                                                      "endLine": 1,
+                                                                                                                                                                      "endOffset": 69,
+                                                                                                                                                                      "image": "<urn:b>",
+                                                                                                                                                                      "startColumn": 64,
+                                                                                                                                                                      "startLine": 1,
+                                                                                                                                                                      "startOffset": 63,
+                                                                                                                                                                      "tokenType": Object {
+                                                                                                                                                                        "CATEGORIES": Array [],
+                                                                                                                                                                        "LABEL": "<http://example.com>",
+                                                                                                                                                                        "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                                                                                                        "categoryMatches": Array [],
+                                                                                                                                                                        "categoryMatchesMap": Object {},
+                                                                                                                                                                        "isParent": false,
+                                                                                                                                                                        "tokenName": "IRIREF",
+                                                                                                                                                                        "tokenTypeIdx": 5,
+                                                                                                                                                                      },
+                                                                                                                                                                      "tokenTypeIdx": 5,
+                                                                                                                                                                    },
+                                                                                                                                                                  ],
+                                                                                                                                                                },
+                                                                                                                                                                "name": "iri",
+                                                                                                                                                              },
+                                                                                                                                                            ],
+                                                                                                                                                          },
+                                                                                                                                                          "name": "iriOrFunction",
+                                                                                                                                                        },
+                                                                                                                                                      ],
+                                                                                                                                                    },
+                                                                                                                                                    "name": "PrimaryExpression",
+                                                                                                                                                  },
+                                                                                                                                                ],
+                                                                                                                                              },
+                                                                                                                                              "name": "UnaryExpression",
+                                                                                                                                            },
+                                                                                                                                          ],
+                                                                                                                                        },
+                                                                                                                                        "name": "MultiplicativeExpression",
+                                                                                                                                      },
+                                                                                                                                    ],
+                                                                                                                                  },
+                                                                                                                                  "name": "AdditiveExpression",
+                                                                                                                                },
+                                                                                                                              ],
+                                                                                                                            },
+                                                                                                                            "name": "NumericExpression",
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                      },
+                                                                                                                      "name": "RelationalExpression",
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                                },
+                                                                                                                "name": "ValueLogical",
+                                                                                                              },
+                                                                                                            ],
+                                                                                                          },
+                                                                                                          "name": "ConditionalAndExpression",
+                                                                                                        },
+                                                                                                      ],
+                                                                                                    },
+                                                                                                    "name": "ConditionalOrExpression",
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                              "name": "Expression",
+                                                                                            },
+                                                                                          ],
+                                                                                          "LParen": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 54,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 53,
+                                                                                              "image": "(",
+                                                                                              "startColumn": 54,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 53,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": "(",
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "LParen",
+                                                                                                "tokenTypeIdx": 151,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 151,
+                                                                                            },
+                                                                                          ],
+                                                                                          "RParen": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 71,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 70,
+                                                                                              "image": ")",
+                                                                                              "startColumn": 71,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 70,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": ")",
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "RParen",
+                                                                                                "tokenTypeIdx": 152,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 152,
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "ExpressionList",
+                                                                                      },
+                                                                                    ],
+                                                                                    "NOT_IN": Array [
+                                                                                      Object {
+                                                                                        "endColumn": 52,
+                                                                                        "endLine": 1,
+                                                                                        "endOffset": 51,
+                                                                                        "image": "NOT IN",
+                                                                                        "startColumn": 47,
+                                                                                        "startLine": 1,
+                                                                                        "startOffset": 46,
+                                                                                        "tokenType": Object {
+                                                                                          "CATEGORIES": Array [],
+                                                                                          "PATTERN": /NOT IN/i,
+                                                                                          "categoryMatches": Array [],
+                                                                                          "categoryMatchesMap": Object {},
+                                                                                          "isParent": false,
+                                                                                          "tokenName": "NOT_IN",
+                                                                                          "tokenTypeIdx": 146,
+                                                                                        },
+                                                                                        "tokenTypeIdx": 146,
+                                                                                      },
+                                                                                    ],
+                                                                                    "NumericExpression": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "AdditiveExpression": Array [
+                                                                                            Object {
+                                                                                              "children": Object {
+                                                                                                "MultiplicativeExpression": Array [
+                                                                                                  Object {
+                                                                                                    "children": Object {
+                                                                                                      "UnaryExpression": Array [
+                                                                                                        Object {
+                                                                                                          "children": Object {
+                                                                                                            "PrimaryExpression": Array [
+                                                                                                              Object {
+                                                                                                                "children": Object {
+                                                                                                                  "Var": Array [
+                                                                                                                    Object {
+                                                                                                                      "children": Object {
+                                                                                                                        "VAR1": Array [
+                                                                                                                          Object {
+                                                                                                                            "endColumn": 45,
+                                                                                                                            "endLine": 1,
+                                                                                                                            "endOffset": 44,
+                                                                                                                            "image": "?x",
+                                                                                                                            "startColumn": 44,
+                                                                                                                            "startLine": 1,
+                                                                                                                            "startOffset": 43,
+                                                                                                                            "tokenType": Object {
+                                                                                                                              "CATEGORIES": Array [],
+                                                                                                                              "LABEL": "?foo",
+                                                                                                                              "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                                                                                              "categoryMatches": Array [],
+                                                                                                                              "categoryMatchesMap": Object {},
+                                                                                                                              "isParent": false,
+                                                                                                                              "tokenName": "VAR1",
+                                                                                                                              "tokenTypeIdx": 22,
+                                                                                                                            },
+                                                                                                                            "tokenTypeIdx": 22,
+                                                                                                                          },
+                                                                                                                        ],
+                                                                                                                      },
+                                                                                                                      "name": "Var",
+                                                                                                                    },
+                                                                                                                  ],
+                                                                                                                },
+                                                                                                                "name": "PrimaryExpression",
+                                                                                                              },
+                                                                                                            ],
+                                                                                                          },
+                                                                                                          "name": "UnaryExpression",
+                                                                                                        },
+                                                                                                      ],
+                                                                                                    },
+                                                                                                    "name": "MultiplicativeExpression",
+                                                                                                  },
+                                                                                                ],
+                                                                                              },
+                                                                                              "name": "AdditiveExpression",
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "NumericExpression",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "RelationalExpression",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "ValueLogical",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "ConditionalAndExpression",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "ConditionalOrExpression",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "Expression",
+                                                        },
+                                                      ],
+                                                      "LParen": Array [
+                                                        Object {
+                                                          "endColumn": 43,
+                                                          "endLine": 1,
+                                                          "endOffset": 42,
+                                                          "image": "(",
+                                                          "startColumn": 43,
+                                                          "startLine": 1,
+                                                          "startOffset": 42,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "PATTERN": "(",
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "LParen",
+                                                            "tokenTypeIdx": 151,
+                                                          },
+                                                          "tokenTypeIdx": 151,
+                                                        },
+                                                      ],
+                                                      "RParen": Array [
+                                                        Object {
+                                                          "endColumn": 72,
+                                                          "endLine": 1,
+                                                          "endOffset": 71,
+                                                          "image": ")",
+                                                          "startColumn": 72,
+                                                          "startLine": 1,
+                                                          "startOffset": 71,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "PATTERN": ")",
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "RParen",
+                                                            "tokenTypeIdx": 152,
+                                                          },
+                                                          "tokenTypeIdx": 152,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "BrackettedExpression",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "Constraint",
+                                            },
+                                          ],
+                                          "FILTER": Array [
+                                            Object {
+                                              "endColumn": 42,
+                                              "endLine": 1,
+                                              "endOffset": 41,
+                                              "image": "FILTER",
+                                              "startColumn": 37,
+                                              "startLine": 1,
+                                              "startOffset": 36,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "PATTERN": /FILTER/i,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "FILTER",
+                                                "tokenTypeIdx": 81,
+                                              },
+                                              "tokenTypeIdx": 81,
+                                            },
+                                          ],
+                                        },
+                                        "name": "Filter",
+                                      },
+                                    ],
+                                  },
+                                  "name": "GraphPatternNotTriples",
+                                },
+                              ],
+                              "TriplesBlock": Array [
+                                Object {
+                                  "children": Object {
+                                    "Period": Array [
+                                      Object {
+                                        "endColumn": 35,
+                                        "endLine": 1,
+                                        "endOffset": 34,
+                                        "image": ".",
+                                        "startColumn": 35,
+                                        "startLine": 1,
+                                        "startOffset": 34,
+                                        "tokenType": Object {
+                                          "CATEGORIES": Array [],
+                                          "PATTERN": ".",
+                                          "categoryMatches": Array [],
+                                          "categoryMatchesMap": Object {},
+                                          "isParent": false,
+                                          "tokenName": "Period",
+                                          "tokenTypeIdx": 156,
+                                        },
+                                        "tokenTypeIdx": 156,
+                                      },
+                                    ],
+                                    "TriplesSameSubjectPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "PropertyListPathNotEmpty": Array [
+                                            Object {
+                                              "children": Object {
+                                                "ObjectListPath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "ObjectPath": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphNodePath": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "VarOrTerm": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "GraphTerm": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "iri": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "IRIREF": Array [
+                                                                                      Object {
+                                                                                        "endColumn": 33,
+                                                                                        "endLine": 1,
+                                                                                        "endOffset": 32,
+                                                                                        "image": "<http://example.org/Male>",
+                                                                                        "startColumn": 9,
+                                                                                        "startLine": 1,
+                                                                                        "startOffset": 8,
+                                                                                        "tokenType": Object {
+                                                                                          "CATEGORIES": Array [],
+                                                                                          "LABEL": "<http://example.com>",
+                                                                                          "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                                          "categoryMatches": Array [],
+                                                                                          "categoryMatchesMap": Object {},
+                                                                                          "isParent": false,
+                                                                                          "tokenName": "IRIREF",
+                                                                                          "tokenTypeIdx": 5,
+                                                                                        },
+                                                                                        "tokenTypeIdx": 5,
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "iri",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "GraphTerm",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "VarOrTerm",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphNodePath",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "ObjectPath",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "ObjectListPath",
+                                                  },
+                                                ],
+                                                "VerbPath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "Path": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "PathAlternative": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "PathSequence": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "PathEltOrInverse": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "PathElt": Array [
+                                                                                Object {
+                                                                                  "children": Object {
+                                                                                    "PathPrimary": Array [
+                                                                                      Object {
+                                                                                        "children": Object {
+                                                                                          "A": Array [
+                                                                                            Object {
+                                                                                              "endColumn": 7,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 6,
+                                                                                              "image": "a",
+                                                                                              "startColumn": 7,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 6,
+                                                                                              "tokenType": Object {
+                                                                                                "CATEGORIES": Array [],
+                                                                                                "PATTERN": /a/i,
+                                                                                                "categoryMatches": Array [],
+                                                                                                "categoryMatchesMap": Object {},
+                                                                                                "isParent": false,
+                                                                                                "tokenName": "A",
+                                                                                                "tokenTypeIdx": 38,
+                                                                                              },
+                                                                                              "tokenTypeIdx": 38,
+                                                                                            },
+                                                                                          ],
+                                                                                        },
+                                                                                        "name": "PathPrimary",
+                                                                                      },
+                                                                                    ],
+                                                                                  },
+                                                                                  "name": "PathElt",
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "PathEltOrInverse",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "PathSequence",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "PathAlternative",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "Path",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "VerbPath",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "PropertyListPathNotEmpty",
+                                            },
+                                          ],
+                                          "VarOrTerm": Array [
+                                            Object {
+                                              "children": Object {
+                                                "Var": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "VAR1": Array [
+                                                        Object {
+                                                          "endColumn": 5,
+                                                          "endLine": 1,
+                                                          "endOffset": 4,
+                                                          "image": "?x",
+                                                          "startColumn": 4,
+                                                          "startLine": 1,
+                                                          "startOffset": 3,
+                                                          "tokenType": Object {
+                                                            "CATEGORIES": Array [],
+                                                            "LABEL": "?foo",
+                                                            "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                            "categoryMatches": Array [],
+                                                            "categoryMatchesMap": Object {},
+                                                            "isParent": false,
+                                                            "tokenName": "VAR1",
+                                                            "tokenTypeIdx": 22,
+                                                          },
+                                                          "tokenTypeIdx": 22,
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "Var",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "VarOrTerm",
+                                            },
+                                          ],
+                                        },
+                                        "name": "TriplesSameSubjectPath",
+                                      },
+                                    ],
+                                  },
+                                  "name": "TriplesBlock",
+                                },
+                              ],
+                            },
+                            "name": "GroupGraphPatternSub",
+                          },
+                        ],
+                        "LCurly": Array [
+                          Object {
+                            "endColumn": 1,
+                            "endLine": 1,
+                            "endOffset": 0,
+                            "image": "{",
+                            "startColumn": 1,
+                            "startLine": 1,
+                            "startOffset": 0,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": "{",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "LCurly",
+                              "tokenTypeIdx": 149,
+                            },
+                            "tokenTypeIdx": 149,
+                          },
+                        ],
+                        "RCurly": Array [
+                          Object {
+                            "endColumn": 74,
+                            "endLine": 1,
+                            "endOffset": 73,
+                            "image": "}",
+                            "startColumn": 74,
+                            "startLine": 1,
+                            "startOffset": 73,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": "}",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "RCurly",
+                              "tokenTypeIdx": 150,
+                            },
+                            "tokenTypeIdx": 150,
+                          },
+                        ],
+                      },
+                      "name": "GroupGraphPattern",
+                    },
+                  ],
+                  "If": Array [
+                    Object {
+                      "endColumn": 4,
+                      "endLine": 1,
+                      "endOffset": 3,
+                      "image": "IF {",
+                      "startColumn": 1,
+                      "startLine": 1,
+                      "startOffset": 0,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /if\\\\s\\*\\{/i,
+                        "PUSH_MODE": "ifclause",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "If",
+                        "tokenTypeIdx": 201,
+                      },
+                      "tokenTypeIdx": 201,
+                    },
+                  ],
+                },
+                "name": "IfClause",
+              },
+            ],
+            "ThenClause": Array [
+              Object {
+                "children": Object {
+                  "EndThen": Array [
+                    Object {
+                      "endColumn": 118,
+                      "endLine": 1,
+                      "endOffset": 117,
+                      "image": "}",
+                      "startColumn": 118,
+                      "startLine": 1,
+                      "startOffset": 117,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "}",
+                        "POP_MODE": true,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "EndThen",
+                        "tokenTypeIdx": 204,
+                      },
+                      "tokenTypeIdx": 204,
+                    },
+                  ],
+                  "Then": Array [
+                    Object {
+                      "endColumn": 81,
+                      "endLine": 1,
+                      "endOffset": 80,
+                      "image": "THEN {",
+                      "startColumn": 76,
+                      "startLine": 1,
+                      "startOffset": 75,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": /then\\\\s\\*\\{/i,
+                        "PUSH_MODE": "thenclause",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "Then",
+                        "tokenTypeIdx": 203,
+                      },
+                      "tokenTypeIdx": 203,
+                    },
+                  ],
+                  "TriplesBlock": Array [
+                    Object {
+                      "children": Object {
+                        "Period": Array [
+                          Object {
+                            "endColumn": 35,
+                            "endLine": 1,
+                            "endOffset": 34,
+                            "image": ".",
+                            "startColumn": 35,
+                            "startLine": 1,
+                            "startOffset": 34,
+                            "tokenType": Object {
+                              "CATEGORIES": Array [],
+                              "PATTERN": ".",
+                              "categoryMatches": Array [],
+                              "categoryMatchesMap": Object {},
+                              "isParent": false,
+                              "tokenName": "Period",
+                              "tokenTypeIdx": 156,
+                            },
+                            "tokenTypeIdx": 156,
+                          },
+                        ],
+                        "TriplesSameSubjectPath": Array [
+                          Object {
+                            "children": Object {
+                              "PropertyListPathNotEmpty": Array [
+                                Object {
+                                  "children": Object {
+                                    "ObjectListPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "ObjectPath": Array [
+                                            Object {
+                                              "children": Object {
+                                                "GraphNodePath": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "VarOrTerm": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "GraphTerm": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "iri": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "IRIREF": Array [
+                                                                          Object {
+                                                                            "endColumn": 33,
+                                                                            "endLine": 1,
+                                                                            "endOffset": 32,
+                                                                            "image": "<http://example.org/Father>",
+                                                                            "startColumn": 7,
+                                                                            "startLine": 1,
+                                                                            "startOffset": 6,
+                                                                            "tokenType": Object {
+                                                                              "CATEGORIES": Array [],
+                                                                              "LABEL": "<http://example.com>",
+                                                                              "PATTERN": /<\\[\\^<>\\\\\\\\\\{\\}\\|\\\\\\^\`\\\\u0000-\\\\u0020\\]\\*>/,
+                                                                              "categoryMatches": Array [],
+                                                                              "categoryMatchesMap": Object {},
+                                                                              "isParent": false,
+                                                                              "tokenName": "IRIREF",
+                                                                              "tokenTypeIdx": 5,
+                                                                            },
+                                                                            "tokenTypeIdx": 5,
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "iri",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "GraphTerm",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "VarOrTerm",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "GraphNodePath",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "ObjectPath",
+                                            },
+                                          ],
+                                        },
+                                        "name": "ObjectListPath",
+                                      },
+                                    ],
+                                    "VerbPath": Array [
+                                      Object {
+                                        "children": Object {
+                                          "Path": Array [
+                                            Object {
+                                              "children": Object {
+                                                "PathAlternative": Array [
+                                                  Object {
+                                                    "children": Object {
+                                                      "PathSequence": Array [
+                                                        Object {
+                                                          "children": Object {
+                                                            "PathEltOrInverse": Array [
+                                                              Object {
+                                                                "children": Object {
+                                                                  "PathElt": Array [
+                                                                    Object {
+                                                                      "children": Object {
+                                                                        "PathPrimary": Array [
+                                                                          Object {
+                                                                            "children": Object {
+                                                                              "A": Array [
+                                                                                Object {
+                                                                                  "endColumn": 5,
+                                                                                  "endLine": 1,
+                                                                                  "endOffset": 4,
+                                                                                  "image": "a",
+                                                                                  "startColumn": 5,
+                                                                                  "startLine": 1,
+                                                                                  "startOffset": 4,
+                                                                                  "tokenType": Object {
+                                                                                    "CATEGORIES": Array [],
+                                                                                    "PATTERN": /a/i,
+                                                                                    "categoryMatches": Array [],
+                                                                                    "categoryMatchesMap": Object {},
+                                                                                    "isParent": false,
+                                                                                    "tokenName": "A",
+                                                                                    "tokenTypeIdx": 38,
+                                                                                  },
+                                                                                  "tokenTypeIdx": 38,
+                                                                                },
+                                                                              ],
+                                                                            },
+                                                                            "name": "PathPrimary",
+                                                                          },
+                                                                        ],
+                                                                      },
+                                                                      "name": "PathElt",
+                                                                    },
+                                                                  ],
+                                                                },
+                                                                "name": "PathEltOrInverse",
+                                                              },
+                                                            ],
+                                                          },
+                                                          "name": "PathSequence",
+                                                        },
+                                                      ],
+                                                    },
+                                                    "name": "PathAlternative",
+                                                  },
+                                                ],
+                                              },
+                                              "name": "Path",
+                                            },
+                                          ],
+                                        },
+                                        "name": "VerbPath",
+                                      },
+                                    ],
+                                  },
+                                  "name": "PropertyListPathNotEmpty",
+                                },
+                              ],
+                              "VarOrTerm": Array [
+                                Object {
+                                  "children": Object {
+                                    "Var": Array [
+                                      Object {
+                                        "children": Object {
+                                          "VAR1": Array [
+                                            Object {
+                                              "endColumn": 3,
+                                              "endLine": 1,
+                                              "endOffset": 2,
+                                              "image": "?x",
+                                              "startColumn": 2,
+                                              "startLine": 1,
+                                              "startOffset": 1,
+                                              "tokenType": Object {
+                                                "CATEGORIES": Array [],
+                                                "LABEL": "?foo",
+                                                "PATTERN": /\\(\\\\\\?\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\*\\)\\)/,
+                                                "categoryMatches": Array [],
+                                                "categoryMatchesMap": Object {},
+                                                "isParent": false,
+                                                "tokenName": "VAR1",
+                                                "tokenTypeIdx": 22,
+                                              },
+                                              "tokenTypeIdx": 22,
+                                            },
+                                          ],
+                                        },
+                                        "name": "Var",
+                                      },
+                                    ],
+                                  },
+                                  "name": "VarOrTerm",
+                                },
+                              ],
+                            },
+                            "name": "TriplesSameSubjectPath",
+                          },
+                        ],
+                      },
+                      "name": "TriplesBlock",
+                    },
+                  ],
+                },
+                "name": "ThenClause",
+              },
+            ],
+          },
+          "name": "RuleDoc",
+        },
+      ],
+      "turtleDoc": Array [
+        Object {
+          "children": Object {},
+          "name": "turtleDoc",
+        },
+      ],
+    },
+    "name": "SrsDoc",
+  },
+  "errors": Array [],
+}
+`;

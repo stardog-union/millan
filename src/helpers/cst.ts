@@ -10,9 +10,9 @@ export const traverse = (
 
 export const unsafeTraverse = (
   root: CstElement,
-  visit: Parameters<typeof _unsafeTraverse>[2]
+  visit: Parameters<typeof _traverse>[2]
 ) => {
-  _unsafeTraverse(root, null, visit);
+  _traverse(root, null, visit, false);
 };
 
 export function isCstNode(object: CstElement): object is CstNode {
@@ -42,47 +42,15 @@ class TraverseContext implements ITraverseContext {
 
 const _traverse = (
   root: CstElement,
-  ctx: TraverseContext = new TraverseContext({ node: root }),
-  visit: (ctx: TraverseContext, next?: (nextCtx?) => void) => void
+  ctx: ITraverseContext = new TraverseContext({ node: root }),
+  visit: (ctx: ITraverseContext, next?: (nextCtx?) => void) => void,
+  visitSafely = true
 ) => {
   if (!isCstNode(root)) {
     // must be a token
-    // make sure to give user a copy
-    return visit({ ...ctx });
+    return visit(visitSafely ? { ...ctx } : ctx);
   }
-  // is a grammar rule node
-  const { children } = root;
-  Object.keys(children).forEach((key) => {
-    const childType = children[key];
-    if (!childType.length) {
-      return;
-    }
-    childType.forEach((child) => {
-      const childCtx = new TraverseContext({ node: child, parentCtx: ctx });
-      const afterVisit = (transformedCtx?) => {
-        const nextCtx = transformedCtx
-          ? new TraverseContext({
-              node: transformedCtx.node,
-              parentCtx: transformedCtx.parentCtx,
-            })
-          : childCtx;
-        _traverse(child, nextCtx, visit);
-      };
-      visit(childCtx, afterVisit);
-    });
-  });
-};
 
-const _unsafeTraverse = (
-  root: CstElement,
-  ctx: ITraverseContext,
-  visit: (ctx: ITraverseContext, next?: (nextCtx?) => void) => void
-) => {
-  if (!isCstNode(root)) {
-    // must be a token
-    // make sure to give user a copy
-    return visit(ctx);
-  }
   // is a grammar rule node
   const { children } = root;
   Object.keys(children).forEach((key) => {
@@ -91,15 +59,25 @@ const _unsafeTraverse = (
       return;
     }
     childType.forEach((child) => {
-      const childCtx = { node: child, parentCtx: ctx };
+      const childCtx = visitSafely
+        ? new TraverseContext({ node: child, parentCtx: ctx })
+        : { node: child, parentCtx: ctx };
       const afterVisit = (transformedCtx?) => {
-        const nextCtx = transformedCtx
-          ? {
-              node: transformedCtx.node,
-              parentCtx: transformedCtx.parentCtx,
-            }
-          : childCtx;
-        _unsafeTraverse(child, nextCtx, visit);
+        let nextCtx = childCtx;
+
+        if (transformedCtx) {
+          nextCtx = visitSafely
+            ? new TraverseContext({
+                node: transformedCtx.node,
+                parentCtx: transformedCtx.parentCtx,
+              })
+            : {
+                node: transformedCtx.node,
+                parentCtx: transformedCtx.parentCtx,
+              };
+        }
+
+        _traverse(child, nextCtx, visit, visitSafely);
       };
       visit(childCtx, afterVisit);
     });

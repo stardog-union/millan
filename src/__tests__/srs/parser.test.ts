@@ -5,10 +5,14 @@ const parser = new SrsParser();
 
 describe('srs parser', () => {
   it('parses a basic isolated SRS document', () => {
-    const { errors, cst, ggpCst } = parser.parse(fixtures.valid.unionOptional);
-    console.log(JSON.stringify(cst, null, 2));
-    console.log(JSON.stringify(ggpCst, null, 2));
-    expect(errors).toHaveLength(0);
+    const result = parser.parse(fixtures.valid.basicIsolated);
+    expect(result).toMatchSnapshot();
+  });
+
+  it('parses a basic turtle + SRS document', () => {
+    const { cst, errors } = parser.parse(fixtures.valid.basic);
+    console.log(JSON.stringify(errors, null, 2));
+    expect(true).toBe(true);
   });
 });
 
