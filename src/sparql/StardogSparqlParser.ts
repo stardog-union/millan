@@ -1,5 +1,5 @@
+const { sparqlTokenMap, baseTokens, pathsTokens } = require('./tokens');
 import { BaseSparqlParser } from './BaseSparqlParser';
-import { sparqlTokenMap, baseTokens, pathsTokens } from './tokens';
 import { Parser } from 'chevrotain';
 
 const indexOfSELECT = baseTokens.indexOf(sparqlTokenMap.SELECT);

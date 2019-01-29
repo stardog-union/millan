@@ -10,7 +10,8 @@
     "query",
     "knowledge graph",
     "linked data",
-    "semantic web"
+    "semantic web",
+    "rules"
   ],
   "main": "dist/millan.js",
   "types": "dist/types/index.d.ts",

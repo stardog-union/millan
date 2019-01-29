@@ -1,5 +1,5 @@
+const { turtleTokenTypes } = require('../../turtle/tokens');
 import { TurtleParser } from '../../turtle/TurtleParser';
-import { turtleTokenTypes } from '../../turtle/tokens';
 import { Lexer } from 'chevrotain';
 
 const parser = new TurtleParser();

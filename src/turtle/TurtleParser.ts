@@ -1,3 +1,4 @@
+const { turtleTokenTypes, turtleTokenMap } = require('./tokens');
 import {
   Parser,
   IParserConfig,
@@ -7,7 +8,6 @@ import {
   IMultiModeLexerDefinition,
   TokenType,
 } from 'chevrotain';
-import { turtleTokenTypes, turtleTokenMap } from './tokens';
 import { IStardogParser } from '../helpers/types';
 
 export class TurtleParser extends Parser implements IStardogParser {

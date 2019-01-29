@@ -8,9 +8,11 @@ export * from './helpers/cst';
 export * from './helpers/types';
 
 // Convenience imports/exports that aren't core functionality:
-import * as sparqlTokens from './sparql/tokens';
-import * as turtleTokens from './turtle/tokens';
-import * as smsTokens from './sms/tokens';
+// NOTE: Tokens MUST be imported using CommonJS syntax; see here: https://github.com/SAP/chevrotain/issues/345
+const sparqlTokens = require('./sparql/tokens');
+const turtleTokens = require('./turtle/tokens');
+const smsTokens = require('./sms/tokens');
+const srsTokens = require('./srs/tokens');
 import { keywords as sparqlKeywords } from './sparql/keywords';
 import { terminals as sparqlTerminals } from './sparql/terminals';
 import * as matchers from './helpers/matchers';
@@ -18,6 +20,7 @@ export {
   sparqlTokens,
   turtleTokens,
   smsTokens,
+  srsTokens,
   sparqlKeywords,
   sparqlTerminals,
   matchers,

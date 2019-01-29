@@ -1,4 +1,10 @@
 // tslint:disable:function-name
+const { sparqlTokenMap } = require('../sparql/tokens');
+const {
+  srsTokenMap,
+  srsTokenTypes,
+  multiModeLexerDefinition,
+} = require('./tokens');
 import {
   Parser,
   Lexer,
@@ -9,16 +15,14 @@ import {
   CstNode,
   CstVisitorConstructor,
 } from 'chevrotain';
-import { srsTokenMap, srsTokens, multiModeLexerDefinition } from './tokens';
-import { TurtleParser } from 'turtle/TurtleParser';
-import { sparqlTokenMap } from 'sparql/tokens';
-import { W3SpecSparqlParser } from 'sparql/W3SpecSparqlParser';
+import { TurtleParser } from '../turtle/TurtleParser';
+import { W3SpecSparqlParser } from '../sparql/W3SpecSparqlParser';
 import {
   isCstNode,
   unsafeTraverse,
   traverse,
   ITraverseContext,
-} from 'helpers/cst';
+} from '../helpers/cst';
 
 interface SparqlSrsVisitorItem {
   parseResult: {
@@ -52,6 +56,15 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
     // for `GroupGraphPattern`.
     IfClause(ctx: { [key: string]: IToken[] }) {
       const { AnythingButBraces } = ctx;
+
+      if (
+        !AnythingButBraces ||
+        !AnythingButBraces[0] ||
+        !AnythingButBraces[0].image
+      ) {
+        return;
+      }
+
       this.groupGraphPatterns.push({
         parseResult: this.sparqlParser.parseGroupGraphPattern(
           `{ ${AnythingButBraces[0].image} }`
@@ -64,6 +77,15 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
     // for `TriplesBlock`.
     ThenClause(ctx: { [key: string]: IToken[] }) {
       const { AnythingButBraces } = ctx;
+
+      if (
+        !AnythingButBraces ||
+        !AnythingButBraces[0] ||
+        !AnythingButBraces[0].image
+      ) {
+        return;
+      }
+
       this.triplesBlocks.push({
         parseResult: this.sparqlParser.parseTriplesBlock(
           AnythingButBraces[0].image
@@ -215,7 +237,7 @@ export class SrsParser extends TurtleParser {
         recoveryEnabled: true,
         ...config,
       },
-      srsTokens,
+      srsTokenTypes,
       multiModeLexerDefinition,
       false
     );
@@ -279,7 +301,7 @@ export class SrsParser extends TurtleParser {
     const groupGraphPatterns = this.sparqlSrsVisitor.$getGroupGraphPatterns();
     const triplesBlocks = this.sparqlSrsVisitor.$getTriplesBlocks();
 
-    // Pull visitor errorrs
+    // Pull visitor errors
     const errors: IRecognitionException[] = [
       ...this.errors,
       ...groupGraphPatterns.reduce(_reduceVisitorItemErrors, []),

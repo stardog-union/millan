@@ -1,63 +1,11 @@
-import {
-  createToken,
-  // IToken,
-  // TokenType,
-  IMultiModeLexerDefinition,
-} from 'chevrotain';
-import { turtleTokenTypes } from 'turtle/tokens';
-import { sparqlTokenMap } from 'sparql/tokens';
+const { turtleTokenTypes } = require('../turtle/tokens');
+import { createToken, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
 
 enum LexerMode {
   TURTLE = 'turtle',
   IFCLAUSE = 'ifclause',
   THENCLAUSE = 'thenclause',
 }
-
-// const ClosingBraceMatcher = /\}/;
-
-// const getClosingBraceMatcherPatternForToken = (token: TokenType) => (
-//   text: string,
-//   startOffset = 0,
-//   matchedTokensSoFar: IToken[]
-// ) => {
-//   console.log(startOffset);
-//   const lastBraceMatch = ClosingBraceMatcher.exec(
-//     text.slice(startOffset, startOffset + 1)
-//   );
-
-//   // Text does not end in a closing brace; bail early.
-//   if (lastBraceMatch === null) {
-//     return null;
-//   }
-
-//   const numMatchedTokens = matchedTokensSoFar.length;
-//   let endOffsetOfNearestToken;
-
-//   // Locate the innermost `If` token, for example.
-//   for (let i = numMatchedTokens - 1; i >= 0; i--) {
-//     if (matchedTokensSoFar[i].tokenType.tokenName === token.tokenName) {
-//       endOffsetOfNearestToken = matchedTokensSoFar[i].endOffset + 1;
-//       break;
-//     }
-//   }
-
-//   // If no innermost `If` token (e.g.), this isn't an `EndIf`; bail early.
-//   if (typeof endOffsetOfNearestToken !== 'number') {
-//     return null;
-//   }
-
-//   const remainingText = text.slice(endOffsetOfNearestToken, startOffset);
-//   console.log(remainingText);
-//   const numOpeningBraces = remainingText.split('{').length - 1;
-//   const numClosingBraces = remainingText.split('}').length - 1;
-
-//   console.log(numClosingBraces, numOpeningBraces);
-//   if (numOpeningBraces !== numClosingBraces) {
-//     return null;
-//   }
-
-//   return lastBraceMatch;
-// };
 
 const Rule = createToken({
   name: 'Rule',
@@ -85,7 +33,7 @@ const EndThen = createToken({
 });
 const AnythingButBraces = createToken({
   name: 'AnythingButBraces',
-  pattern: (text: string, startOffset = 0) => {
+  pattern: (text, startOffset = 0) => {
     let unclosedBraceCount = 1;
     let cursor;
 
@@ -101,7 +49,7 @@ const AnythingButBraces = createToken({
       }
     }
 
-    return /.*/s.exec(text.slice(startOffset, cursor - 1));
+    return /.+/s.exec(text.slice(startOffset, cursor - 1));
   },
 });
 
@@ -123,14 +71,12 @@ export const srsTokenMap = {
   AnythingButBraces,
 };
 
-export const srsTokens = [
+export const srsTokenTypes: TokenType[] = [
   Rule,
   If,
   EndIf,
   Then,
   EndThen,
-  sparqlTokenMap.LCurly,
-  sparqlTokenMap.RCurly,
   ...turtleTokenTypes,
   AnythingButBraces,
 ];

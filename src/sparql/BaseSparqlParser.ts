@@ -1,4 +1,4 @@
-import { sparqlTokenMap } from './tokens';
+const { sparqlTokenMap } = require('./tokens');
 import {
   Parser,
   TokenType,
