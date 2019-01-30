@@ -4,6 +4,35 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const SRC_DIR = path.join(__dirname, 'src');
 
+// At _least_ these tokens need to be preserved in order for chevrotain to
+// work correctly after minification. See here: https://sap.github.io/chevrotain/docs/FAQ.html#MINIFIED.
+// The ones that are commented out may be needed at some point, so may as
+// well leave them there for people who look here in the future.
+const reserved = [
+  'BaseSparqlParser',
+  'W3SpecSparqlParser',
+  'StardogSparqlParser',
+  'SrsParser',
+  'SmsParser',
+  'TurtleParser',
+  'Parser',
+  // 'srsTokenTypes',
+  // 'srsTokenMap',
+  // 'multiModeLexerDefinition',
+  // 'turtleTokenTypes',
+  // 'turtleTokenMap',
+  // 'smsTokenTypes',
+  // 'smsTokenMap',
+  // 'sparqlTokenTypes',
+  // 'pathTokens',
+  // 'baseTokens',
+  // 'sparqlTokenMap',
+  // 'terminals',
+  // 'keywords',
+  // 'sparqlKeywords',
+  // 'sparqlTerminals',
+];
+
 module.exports = {
   mode: 'production',
   entry: path.join(SRC_DIR, 'index.ts'),
@@ -54,16 +83,12 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true,
-        parallel: true,
+        sourceMap: true,
         terserOptions: {
-          // Chevrotain does not cooperate with webpack mangling. We could
-          // eventually do better than this by using the `reserved` property of
-          // `mangle`, but because not all of our tokens' `tokenName`
-          // properties match our variable names, we can't quite do it in the
-          // recommended way (see here: https://sap.github.io/chevrotain/docs/FAQ.html#MINIFIED).
-          // For now, this is good enough.
-          mangle: false,
+          // Chevrotain does not cooperate with webpack mangling (see here: https://sap.github.io/chevrotain/docs/FAQ.html#MINIFIED).
+          mangle: {
+            reserved,
+          },
         },
       }),
     ],
