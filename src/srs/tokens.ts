@@ -1,5 +1,6 @@
 const { turtleTokenTypes } = require('../turtle/tokens');
 import { createToken, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
+import { CATCH_ALL_AT_LEAST_ONE } from 'helpers/matchers';
 
 enum LexerMode {
   TURTLE = 'turtle',
@@ -49,7 +50,7 @@ const AnythingButBraces = createToken({
       }
     }
 
-    return /.+/s.exec(text.slice(startOffset, cursor - 1));
+    return CATCH_ALL_AT_LEAST_ONE.exec(text.slice(startOffset, cursor - 1));
   },
 });
 

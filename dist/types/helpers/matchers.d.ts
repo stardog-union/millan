@@ -1,3 +1,5 @@
+export declare const CATCH_ALL: RegExp;
+export declare const CATCH_ALL_AT_LEAST_ONE: RegExp;
 export declare const IRIREF: RegExp;
 export declare const PN_CHARS_BASE: RegExp;
 export declare const LANGTAG: RegExp;
