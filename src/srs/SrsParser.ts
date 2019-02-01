@@ -54,38 +54,54 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
 
     // Get and store the SPARQL `GroupGraphPattern` that should replace the
     // `AnythingButBraces` token inside of an SRS `IfClause`.
-    IfClause(ctx: { [key: string]: IToken[] }) {
+    IfClause = (ctx: { [key: string]: IToken[] }, cstInputTokens: IToken[]) => {
       const { AnythingButBraces } = ctx;
-      this.$storePlaceholderTokenReplacement(
-        this.groupGraphPatterns,
-        AnythingButBraces,
-        this.sparqlParser.parseGroupGraphPattern.bind(this.sparqlParser),
-        ['{', '}']
-      );
-    }
+      this.$storePlaceholderTokenReplacement({
+        tokenStore: this.groupGraphPatterns,
+        originalTokenContext: AnythingButBraces,
+        subParserRule: this.sparqlParser.parseGroupGraphPattern.bind(
+          this.sparqlParser
+        ),
+        cstInputTokens,
+      });
+    };
 
     // Get and store the SPARQL `TriplesBlock` that should replace the
     // `AnythingButBraces` token inside of an SRS `ThenClause`.
-    ThenClause(ctx: { [key: string]: IToken[] }) {
+    ThenClause = (
+      ctx: { [key: string]: IToken[] },
+      cstInputTokens: IToken[]
+    ) => {
       const { AnythingButBraces } = ctx;
-      this.$storePlaceholderTokenReplacement(
-        this.triplesBlocks,
-        AnythingButBraces,
-        this.sparqlParser.parseTriplesBlock.bind(this.sparqlParser)
-      );
-    }
+      this.$storePlaceholderTokenReplacement({
+        tokenStore: this.triplesBlocks,
+        originalTokenContext: AnythingButBraces,
+        subParserRule: this.sparqlParser.parseTriplesBlock.bind(
+          this.sparqlParser
+        ),
+        cstInputTokens,
+        stripWrappers: true,
+      });
+    };
 
     // Utility methods ('$' prefix is necessary to prevent chevrotain's
     // `validateVisitor` method from complaining that these are not grammar
     // rules):
-    private $storePlaceholderTokenReplacement(
-      tokenStore: SparqlSrsVisitorItem[],
-      originalTokenContext: IToken[] = [],
+    private $storePlaceholderTokenReplacement = ({
+      tokenStore,
+      originalTokenContext = [],
+      subParserRule,
+      cstInputTokens,
+      stripWrappers,
+    }: {
+      tokenStore: SparqlSrsVisitorItem[];
+      originalTokenContext: IToken[];
       subParserRule: (
         document: string
-      ) => { errors: IRecognitionException[]; cst: any },
-      imageWrappers?: string[]
-    ) {
+      ) => { errors: IRecognitionException[]; cst: any };
+      cstInputTokens: IToken[];
+      stripWrappers?: boolean;
+    }) => {
       const [originalToken] = originalTokenContext;
 
       if (!originalToken || typeof originalToken.image !== 'string') {
@@ -95,50 +111,90 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
       const replacement = this.$getPlaceholderTokenReplacement(
         originalToken,
         subParserRule,
-        imageWrappers
+        cstInputTokens,
+        stripWrappers
       );
 
       tokenStore.push({
         parseResult: replacement,
         originalToken,
       });
-    }
+    };
 
-    private $getPlaceholderTokenReplacement(
+    private $getPlaceholderTokenReplacement = (
       originalToken: IToken,
       subParserRule: (
         document: string
       ) => { errors: IRecognitionException[]; cst: any },
-      imageWrappers?: string[]
-    ) {
+      cstInputTokens: IToken[],
+      stripWrappers = false
+    ) => {
       // Because we are replacing tokens by delegating the parsing of parts
       // of the original document to sub-parsers, we add some empty padding to
       // the part that is passed to the sub-parser, where the amount of padding
       // matches the start line and offset of the token we are replacing. This
       // ensures that all tokens have the right positions in the resulting CST
       // (otherwise, the sub-parsers assume that the text starts at offset 0).
-      const { startOffset, startLine, image } = originalToken;
-      const frontPadding =
-        '\n'.repeat(startLine - 1) + ' '.repeat(startOffset - 1);
-      const parseImage = imageWrappers
-        ? `${imageWrappers[0]}${image}${imageWrappers[1]}`
-        : image;
+      const { image } = originalToken;
+      let frontPadding = '';
+      let latestEndOffset = 0;
+      let latestEndLine = 0;
 
+      // Traditional `for` loop because we need to `break`.
+      for (let i = 0; i < cstInputTokens.length; i++) {
+        const token = cstInputTokens[i];
+
+        if (i > 0) {
+          // Account for whitespace between this token and the previous one.
+          const linesBetweenTokens = token.startLine - latestEndLine;
+          const untokenizedSpaceBetweenTokens =
+            token.startOffset - 1 - latestEndOffset - linesBetweenTokens;
+
+          if (linesBetweenTokens > 0) {
+            frontPadding += '\n'.repeat(linesBetweenTokens - 1);
+            frontPadding += ' '.repeat(untokenizedSpaceBetweenTokens) + '\n';
+          } else {
+            frontPadding += ' '.repeat(untokenizedSpaceBetweenTokens);
+          }
+        }
+
+        if (token === originalToken) {
+          break;
+        }
+
+        // We haven't hit the token we're replacing yet, so we need to continue
+        // accumulating padding by adding the newlines _inside_ the current
+        // token, and replacing all non-newline characters inside the current
+        // token with spaces.
+        const newlinesInToken = token.image.split('\n');
+        newlinesInToken.forEach((line, idx) => {
+          if (idx > 0) {
+            frontPadding += '\n';
+          }
+          frontPadding += ' '.repeat(line.length);
+        });
+
+        // Track where the current token ends, in case the next token starts
+        // much later (meaning that there was untokenized stuff (e.g.,
+        // whitespace) in between) that needs to be accounted for.
+        latestEndOffset = token.endOffset;
+        latestEndLine = token.endLine;
+      }
+
+      // Finally, if we're stripping the wrappers (e.g., braces), replace them
+      // with whitespace.
+      const parseImage = stripWrappers ? ` ${image.slice(1, -1)} ` : image;
       return subParserRule(`${frontPadding}${parseImage}`);
-    }
+    };
 
-    $getGroupGraphPatterns() {
-      return this.groupGraphPatterns;
-    }
+    $getGroupGraphPatterns = () => this.groupGraphPatterns;
 
-    $getTriplesBlocks() {
-      return this.triplesBlocks;
-    }
+    $getTriplesBlocks = () => this.triplesBlocks;
 
-    $resetState() {
+    $resetState = () => {
       this.groupGraphPatterns = [];
       this.triplesBlocks = [];
-    }
+    };
   }
 
   return new SparqlSrsVisitor();
@@ -259,7 +315,7 @@ function _addIfClauseErrorsToErrors(
 }
 
 export class SrsParser extends TurtleParser {
-  private sparqlSrsVisitor;
+  private sparqlSrsVisitor: ReturnType<typeof getSparqlSrsVisitor>;
   protected lexer: Lexer;
 
   constructor(config?: Partial<IParserConfig>) {
@@ -304,13 +360,11 @@ export class SrsParser extends TurtleParser {
   IfClause = this.RULE('IfClause', () => {
     this.CONSUME(srsTokenMap.If);
     this.CONSUME(srsTokenMap.AnythingButBraces);
-    this.CONSUME(srsTokenMap.EndIf);
   });
 
   ThenClause = this.RULE('ThenClause', () => {
     this.CONSUME(srsTokenMap.Then);
     this.CONSUME(srsTokenMap.AnythingButBraces);
-    this.CONSUME(srsTokenMap.EndThen);
   });
 
   public tokenize = (document: string): IToken[] =>
@@ -328,7 +382,7 @@ export class SrsParser extends TurtleParser {
       this.sparqlSrsVisitor.$resetState();
     }
 
-    this.sparqlSrsVisitor.visit(cst);
+    this.sparqlSrsVisitor.visit(cst, this.input);
 
     const groupGraphPatterns = this.sparqlSrsVisitor.$getGroupGraphPatterns();
     const triplesBlocks = this.sparqlSrsVisitor.$getTriplesBlocks();

@@ -8,17 +8,13 @@ describe('srs lexer', () => {
   it('correctly lexes a basic isolated rule', () => {
     const { errors, tokens } = lexer.tokenize(fixtures.valid.basicIsolated);
     expect(errors).toHaveLength(0);
-    expect(tokens[0].image).toBe('IF {');
+    expect(tokens[0].image).toBe('IF');
     expect(tokens[0].tokenType.tokenName).toBe('If');
-    expect(tokens.some((token) => token.tokenType.tokenName === 'EndIf')).toBe(
-      true
+    const thenToken = tokens.find(
+      (token) => token.tokenType.tokenName === 'Then'
     );
-    expect(tokens.some((token) => token.tokenType.tokenName === 'Then')).toBe(
-      true
-    );
-    expect(
-      tokens.some((token) => token.tokenType.tokenName === 'EndThen')
-    ).toBe(true);
+    expect(thenToken).toBeTruthy;
+    expect(thenToken.image).toBe('THEN');
   });
 
   it('correctly lexes a basic rule with surrounding Turtle', () => {
@@ -29,15 +25,14 @@ describe('srs lexer', () => {
     expect(tokens.some((token) => token.tokenType.tokenName === 'If')).toBe(
       true
     );
-    expect(tokens.some((token) => token.tokenType.tokenName === 'EndIf')).toBe(
-      true
-    );
     expect(tokens.some((token) => token.tokenType.tokenName === 'Then')).toBe(
       true
     );
     expect(
-      tokens.some((token) => token.tokenType.tokenName === 'EndThen')
-    ).toBe(true);
+      tokens.filter(
+        (token) => token.tokenType.tokenName === 'AnythingButBraces'
+      )
+    ).toHaveLength(2);
   });
 
   it('parses valid SRS documents with no errors', () => {

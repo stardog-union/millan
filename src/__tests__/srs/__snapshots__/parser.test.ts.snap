@@ -10,28 +10,6 @@ Object {
             "IfClause": Array [
               Object {
                 "children": Object {
-                  "EndIf": Array [
-                    Object {
-                      "endColumn": 75,
-                      "endLine": 1,
-                      "endOffset": 74,
-                      "image": "}",
-                      "startColumn": 75,
-                      "startLine": 1,
-                      "startOffset": 74,
-                      "tokenType": Object {
-                        "CATEGORIES": Array [],
-                        "PATTERN": "}",
-                        "POP_MODE": true,
-                        "categoryMatches": Array [],
-                        "categoryMatchesMap": Object {},
-                        "isParent": false,
-                        "tokenName": "EndIf",
-                        "tokenTypeIdx": 202,
-                      },
-                      "tokenTypeIdx": 202,
-                    },
-                  ],
                   "GroupGraphPattern": Array [
                     Object {
                       "children": Object {
@@ -793,16 +771,17 @@ Object {
                   ],
                   "If": Array [
                     Object {
-                      "endColumn": 4,
+                      "endColumn": 2,
                       "endLine": 1,
-                      "endOffset": 3,
-                      "image": "IF {",
+                      "endOffset": 1,
+                      "image": "IF",
                       "startColumn": 1,
                       "startLine": 1,
                       "startOffset": 0,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "PATTERN": /if\\\\s\\*\\{/i,
+                        "LINE_BREAKS": true,
+                        "PATTERN": [Function],
                         "PUSH_MODE": "ifclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
@@ -820,48 +799,27 @@ Object {
             "ThenClause": Array [
               Object {
                 "children": Object {
-                  "EndThen": Array [
-                    Object {
-                      "endColumn": 118,
-                      "endLine": 1,
-                      "endOffset": 117,
-                      "image": "}",
-                      "startColumn": 118,
-                      "startLine": 1,
-                      "startOffset": 117,
-                      "tokenType": Object {
-                        "CATEGORIES": Array [],
-                        "PATTERN": "}",
-                        "POP_MODE": true,
-                        "categoryMatches": Array [],
-                        "categoryMatchesMap": Object {},
-                        "isParent": false,
-                        "tokenName": "EndThen",
-                        "tokenTypeIdx": 204,
-                      },
-                      "tokenTypeIdx": 204,
-                    },
-                  ],
                   "Then": Array [
                     Object {
-                      "endColumn": 81,
+                      "endColumn": 79,
                       "endLine": 1,
-                      "endOffset": 80,
-                      "image": "THEN {",
+                      "endOffset": 78,
+                      "image": "THEN",
                       "startColumn": 76,
                       "startLine": 1,
                       "startOffset": 75,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "PATTERN": /then\\\\s\\*\\{/i,
+                        "LINE_BREAKS": true,
+                        "PATTERN": [Function],
                         "PUSH_MODE": "thenclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
                         "isParent": false,
                         "tokenName": "Then",
-                        "tokenTypeIdx": 203,
+                        "tokenTypeIdx": 202,
                       },
-                      "tokenTypeIdx": 203,
+                      "tokenTypeIdx": 202,
                     },
                   ],
                   "TriplesBlock": Array [
@@ -869,13 +827,13 @@ Object {
                       "children": Object {
                         "Period": Array [
                           Object {
-                            "endColumn": 115,
+                            "endColumn": 116,
                             "endLine": 1,
-                            "endOffset": 114,
+                            "endOffset": 115,
                             "image": ".",
-                            "startColumn": 115,
+                            "startColumn": 116,
                             "startLine": 1,
-                            "startOffset": 114,
+                            "startOffset": 115,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": ".",
@@ -914,13 +872,13 @@ Object {
                                                                       "children": Object {
                                                                         "IRIREF": Array [
                                                                           Object {
-                                                                            "endColumn": 113,
+                                                                            "endColumn": 114,
                                                                             "endLine": 1,
-                                                                            "endOffset": 112,
+                                                                            "endOffset": 113,
                                                                             "image": "<http://example.org/Father>",
-                                                                            "startColumn": 87,
+                                                                            "startColumn": 88,
                                                                             "startLine": 1,
-                                                                            "startOffset": 86,
+                                                                            "startOffset": 87,
                                                                             "tokenType": Object {
                                                                               "CATEGORIES": Array [],
                                                                               "LABEL": "<http://example.com>",
@@ -981,13 +939,13 @@ Object {
                                                                             "children": Object {
                                                                               "A": Array [
                                                                                 Object {
-                                                                                  "endColumn": 85,
+                                                                                  "endColumn": 86,
                                                                                   "endLine": 1,
-                                                                                  "endOffset": 84,
+                                                                                  "endOffset": 85,
                                                                                   "image": "a",
-                                                                                  "startColumn": 85,
+                                                                                  "startColumn": 86,
                                                                                   "startLine": 1,
-                                                                                  "startOffset": 84,
+                                                                                  "startOffset": 85,
                                                                                   "tokenType": Object {
                                                                                     "CATEGORIES": Array [],
                                                                                     "PATTERN": /a/i,
@@ -1040,13 +998,13 @@ Object {
                                         "children": Object {
                                           "VAR1": Array [
                                             Object {
-                                              "endColumn": 83,
+                                              "endColumn": 84,
                                               "endLine": 1,
-                                              "endOffset": 82,
+                                              "endOffset": 83,
                                               "image": "?x",
-                                              "startColumn": 82,
+                                              "startColumn": 83,
                                               "startLine": 1,
-                                              "startOffset": 81,
+                                              "startOffset": 82,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
                                                 "LABEL": "?foo",
@@ -1104,11 +1062,11 @@ Object {
       "Period": Array [
         Object {
           "endColumn": 13,
-          "endLine": 7,
+          "endLine": 11,
           "endOffset": 294,
           "image": ".",
           "startColumn": 13,
-          "startLine": 7,
+          "startLine": 11,
           "startOffset": 294,
           "tokenType": Object {
             "CATEGORIES": Array [],
@@ -1128,28 +1086,6 @@ Object {
             "IfClause": Array [
               Object {
                 "children": Object {
-                  "EndIf": Array [
-                    Object {
-                      "endColumn": 72,
-                      "endLine": 4,
-                      "endOffset": 178,
-                      "image": "}",
-                      "startColumn": 72,
-                      "startLine": 4,
-                      "startOffset": 178,
-                      "tokenType": Object {
-                        "CATEGORIES": Array [],
-                        "PATTERN": "}",
-                        "POP_MODE": true,
-                        "categoryMatches": Array [],
-                        "categoryMatchesMap": Object {},
-                        "isParent": false,
-                        "tokenName": "EndIf",
-                        "tokenTypeIdx": 202,
-                      },
-                      "tokenTypeIdx": 202,
-                    },
-                  ],
                   "GroupGraphPattern": Array [
                     Object {
                       "children": Object {
@@ -1163,11 +1099,11 @@ Object {
                                       Object {
                                         "endColumn": 65,
                                         "endLine": 5,
-                                        "endOffset": 179,
+                                        "endOffset": 176,
                                         "image": ".",
                                         "startColumn": 65,
                                         "startLine": 5,
-                                        "startOffset": 179,
+                                        "startOffset": 176,
                                         "tokenType": Object {
                                           "CATEGORIES": Array [],
                                           "PATTERN": ".",
@@ -1193,11 +1129,11 @@ Object {
                                                         Object {
                                                           "endColumn": 35,
                                                           "endLine": 5,
-                                                          "endOffset": 149,
+                                                          "endOffset": 146,
                                                           "image": ",",
                                                           "startColumn": 35,
                                                           "startLine": 5,
-                                                          "startOffset": 149,
+                                                          "startOffset": 146,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "PATTERN": ",",
@@ -1229,11 +1165,11 @@ Object {
                                                                                       Object {
                                                                                         "endColumn": 33,
                                                                                         "endLine": 5,
-                                                                                        "endOffset": 147,
+                                                                                        "endOffset": 144,
                                                                                         "image": "<http://example.org/Male>",
                                                                                         "startColumn": 9,
                                                                                         "startLine": 5,
-                                                                                        "startOffset": 123,
+                                                                                        "startOffset": 120,
                                                                                         "tokenType": Object {
                                                                                           "CATEGORIES": Array [],
                                                                                           "LABEL": "<http://example.com>",
@@ -1284,11 +1220,11 @@ Object {
                                                                                       Object {
                                                                                         "endColumn": 63,
                                                                                         "endLine": 5,
-                                                                                        "endOffset": 177,
+                                                                                        "endOffset": 174,
                                                                                         "image": "<http://example.org/Parent>",
                                                                                         "startColumn": 37,
                                                                                         "startLine": 5,
-                                                                                        "startOffset": 151,
+                                                                                        "startOffset": 148,
                                                                                         "tokenType": Object {
                                                                                           "CATEGORIES": Array [],
                                                                                           "LABEL": "<http://example.com>",
@@ -1351,11 +1287,11 @@ Object {
                                                                                             Object {
                                                                                               "endColumn": 7,
                                                                                               "endLine": 5,
-                                                                                              "endOffset": 121,
+                                                                                              "endOffset": 118,
                                                                                               "image": "a",
                                                                                               "startColumn": 7,
                                                                                               "startLine": 5,
-                                                                                              "startOffset": 121,
+                                                                                              "startOffset": 118,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
                                                                                                 "PATTERN": /a/i,
@@ -1410,11 +1346,11 @@ Object {
                                                         Object {
                                                           "endColumn": 5,
                                                           "endLine": 5,
-                                                          "endOffset": 119,
+                                                          "endOffset": 116,
                                                           "image": "?x",
                                                           "startColumn": 4,
                                                           "startLine": 5,
-                                                          "startOffset": 118,
+                                                          "startOffset": 115,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "LABEL": "?foo",
@@ -1450,13 +1386,13 @@ Object {
                         ],
                         "LCurly": Array [
                           Object {
-                            "endColumn": 111,
+                            "endColumn": 4,
                             "endLine": 4,
-                            "endOffset": 113,
+                            "endOffset": 110,
                             "image": "{",
-                            "startColumn": 111,
+                            "startColumn": 4,
                             "startLine": 4,
-                            "startOffset": 113,
+                            "startOffset": 110,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": "{",
@@ -1473,11 +1409,11 @@ Object {
                           Object {
                             "endColumn": 1,
                             "endLine": 6,
-                            "endOffset": 181,
+                            "endOffset": 178,
                             "image": "}",
                             "startColumn": 1,
                             "startLine": 6,
-                            "startOffset": 181,
+                            "startOffset": 178,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": "}",
@@ -1496,16 +1432,17 @@ Object {
                   ],
                   "If": Array [
                     Object {
-                      "endColumn": 4,
+                      "endColumn": 2,
                       "endLine": 4,
-                      "endOffset": 110,
-                      "image": "IF {",
+                      "endOffset": 108,
+                      "image": "IF",
                       "startColumn": 1,
                       "startLine": 4,
                       "startOffset": 107,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "PATTERN": /if\\\\s\\*\\{/i,
+                        "LINE_BREAKS": true,
+                        "PATTERN": [Function],
                         "PUSH_MODE": "ifclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
@@ -1586,48 +1523,27 @@ Object {
             "ThenClause": Array [
               Object {
                 "children": Object {
-                  "EndThen": Array [
-                    Object {
-                      "endColumn": 46,
-                      "endLine": 5,
-                      "endOffset": 225,
-                      "image": "}",
-                      "startColumn": 46,
-                      "startLine": 5,
-                      "startOffset": 225,
-                      "tokenType": Object {
-                        "CATEGORIES": Array [],
-                        "PATTERN": "}",
-                        "POP_MODE": true,
-                        "categoryMatches": Array [],
-                        "categoryMatchesMap": Object {},
-                        "isParent": false,
-                        "tokenName": "EndThen",
-                        "tokenTypeIdx": 204,
-                      },
-                      "tokenTypeIdx": 204,
-                    },
-                  ],
                   "Then": Array [
                     Object {
-                      "endColumn": 6,
-                      "endLine": 5,
-                      "endOffset": 185,
-                      "image": "THEN {",
+                      "endColumn": 4,
+                      "endLine": 7,
+                      "endOffset": 183,
+                      "image": "THEN",
                       "startColumn": 1,
-                      "startLine": 5,
+                      "startLine": 7,
                       "startOffset": 180,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "PATTERN": /then\\\\s\\*\\{/i,
+                        "LINE_BREAKS": true,
+                        "PATTERN": [Function],
                         "PUSH_MODE": "thenclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
                         "isParent": false,
                         "tokenName": "Then",
-                        "tokenTypeIdx": 203,
+                        "tokenTypeIdx": 202,
                       },
-                      "tokenTypeIdx": 203,
+                      "tokenTypeIdx": 202,
                     },
                   ],
                   "TriplesBlock": Array [
@@ -1636,12 +1552,12 @@ Object {
                         "Period": Array [
                           Object {
                             "endColumn": 37,
-                            "endLine": 6,
-                            "endOffset": 226,
+                            "endLine": 8,
+                            "endOffset": 223,
                             "image": ".",
                             "startColumn": 37,
-                            "startLine": 6,
-                            "startOffset": 226,
+                            "startLine": 8,
+                            "startOffset": 223,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": ".",
@@ -1681,12 +1597,12 @@ Object {
                                                                         "IRIREF": Array [
                                                                           Object {
                                                                             "endColumn": 35,
-                                                                            "endLine": 6,
-                                                                            "endOffset": 224,
+                                                                            "endLine": 8,
+                                                                            "endOffset": 221,
                                                                             "image": "<http://example.org/Father>",
                                                                             "startColumn": 9,
-                                                                            "startLine": 6,
-                                                                            "startOffset": 198,
+                                                                            "startLine": 8,
+                                                                            "startOffset": 195,
                                                                             "tokenType": Object {
                                                                               "CATEGORIES": Array [],
                                                                               "LABEL": "<http://example.com>",
@@ -1748,12 +1664,12 @@ Object {
                                                                               "A": Array [
                                                                                 Object {
                                                                                   "endColumn": 7,
-                                                                                  "endLine": 6,
-                                                                                  "endOffset": 196,
+                                                                                  "endLine": 8,
+                                                                                  "endOffset": 193,
                                                                                   "image": "a",
                                                                                   "startColumn": 7,
-                                                                                  "startLine": 6,
-                                                                                  "startOffset": 196,
+                                                                                  "startLine": 8,
+                                                                                  "startOffset": 193,
                                                                                   "tokenType": Object {
                                                                                     "CATEGORIES": Array [],
                                                                                     "PATTERN": /a/i,
@@ -1807,12 +1723,12 @@ Object {
                                           "VAR1": Array [
                                             Object {
                                               "endColumn": 5,
-                                              "endLine": 6,
-                                              "endOffset": 194,
+                                              "endLine": 8,
+                                              "endOffset": 191,
                                               "image": "?x",
                                               "startColumn": 4,
-                                              "startLine": 6,
-                                              "startOffset": 193,
+                                              "startLine": 8,
+                                              "startOffset": 190,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
                                                 "LABEL": "?foo",
@@ -1859,11 +1775,11 @@ Object {
                   "Semicolon": Array [
                     Object {
                       "endColumn": 54,
-                      "endLine": 6,
+                      "endLine": 10,
                       "endOffset": 280,
                       "image": ";",
                       "startColumn": 54,
-                      "startLine": 6,
+                      "startLine": 10,
                       "startOffset": 280,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
@@ -1895,11 +1811,11 @@ Object {
                                                 "STRING_LITERAL_QUOTE": Array [
                                                   Object {
                                                     "endColumn": 52,
-                                                    "endLine": 6,
+                                                    "endLine": 10,
                                                     "endOffset": 278,
                                                     "image": "\\"This rule defines fathers\\"",
                                                     "startColumn": 26,
-                                                    "startLine": 6,
+                                                    "startLine": 10,
                                                     "startOffset": 252,
                                                     "tokenType": Object {
                                                       "CATEGORIES": Array [],
@@ -1947,11 +1863,11 @@ Object {
                                           "PNAME_LN": Array [
                                             Object {
                                               "endColumn": 11,
-                                              "endLine": 7,
+                                              "endLine": 11,
                                               "endOffset": 292,
                                               "image": ":MyRule",
                                               "startColumn": 5,
-                                              "startLine": 7,
+                                              "startLine": 11,
                                               "startOffset": 286,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
@@ -1996,11 +1912,11 @@ Object {
                                           "PNAME_LN": Array [
                                             Object {
                                               "endColumn": 24,
-                                              "endLine": 6,
+                                              "endLine": 10,
                                               "endOffset": 250,
                                               "image": "rdfs:comment",
                                               "startColumn": 13,
-                                              "startLine": 6,
+                                              "startLine": 10,
                                               "startOffset": 239,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
@@ -2034,11 +1950,11 @@ Object {
                         "A": Array [
                           Object {
                             "endColumn": 3,
-                            "endLine": 7,
+                            "endLine": 11,
                             "endOffset": 284,
                             "image": "a",
                             "startColumn": 3,
-                            "startLine": 7,
+                            "startLine": 11,
                             "startOffset": 284,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
@@ -2072,11 +1988,11 @@ Object {
                               "PNAME_LN": Array [
                                 Object {
                                   "endColumn": 11,
-                                  "endLine": 6,
+                                  "endLine": 10,
                                   "endOffset": 237,
                                   "image": ":FatherRule",
                                   "startColumn": 1,
-                                  "startLine": 6,
+                                  "startLine": 10,
                                   "startOffset": 227,
                                   "tokenType": Object {
                                     "CATEGORIES": Array [],

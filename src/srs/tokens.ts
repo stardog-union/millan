@@ -1,6 +1,7 @@
 const { turtleTokenTypes } = require('../turtle/tokens');
 import { createToken, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
 import { CATCH_ALL_AT_LEAST_ONE } from 'helpers/matchers';
+import { turtleTokenMap } from 'turtle/tokens';
 
 enum LexerMode {
   TURTLE = 'turtle',
@@ -14,32 +15,44 @@ const Rule = createToken({
 });
 const If = createToken({
   name: 'If',
-  pattern: /if\s*{/i,
+  pattern: (text, startOffset = 0) => {
+    const match = /^(if)\s*{/i.exec(text.substring(startOffset));
+
+    if (!match) {
+      return null;
+    }
+
+    return [match[1]] as RegExpExecArray;
+  },
+  line_breaks: true,
   push_mode: LexerMode.IFCLAUSE,
-});
-const EndIf = createToken({
-  name: 'EndIf',
-  pop_mode: true,
-  pattern: '}',
 });
 const Then = createToken({
   name: 'Then',
-  pattern: /then\s*{/i,
+  pattern: (text, startOffset = 0) => {
+    const match = /^(then)\s*{/i.exec(text.substring(startOffset));
+
+    if (!match) {
+      return null;
+    }
+
+    return [match[1]] as RegExpExecArray;
+  },
+  line_breaks: true,
   push_mode: LexerMode.THENCLAUSE,
-});
-const EndThen = createToken({
-  name: 'EndThen',
-  pop_mode: true,
-  pattern: '}',
 });
 const AnythingButBraces = createToken({
   name: 'AnythingButBraces',
   pattern: (text, startOffset = 0) => {
+    if (text[startOffset] !== '{') {
+      return null;
+    }
+
     let unclosedBraceCount = 1;
     let cursor;
 
     for (
-      cursor = startOffset;
+      cursor = startOffset + 1;
       cursor < text.length && unclosedBraceCount > 0;
       cursor++
     ) {
@@ -50,15 +63,21 @@ const AnythingButBraces = createToken({
       }
     }
 
-    return CATCH_ALL_AT_LEAST_ONE.exec(text.slice(startOffset, cursor - 1));
+    if (unclosedBraceCount > 0) {
+      return null;
+    }
+
+    return CATCH_ALL_AT_LEAST_ONE.exec(text.slice(startOffset, cursor));
   },
+  line_breaks: true,
+  pop_mode: true,
 });
 
 export const multiModeLexerDefinition: IMultiModeLexerDefinition = {
   modes: {
     [LexerMode.TURTLE]: [Rule, If, Then, ...turtleTokenTypes],
-    [LexerMode.IFCLAUSE]: [EndIf, AnythingButBraces],
-    [LexerMode.THENCLAUSE]: [EndThen, AnythingButBraces],
+    [LexerMode.IFCLAUSE]: [turtleTokenMap.WhiteSpace, AnythingButBraces],
+    [LexerMode.THENCLAUSE]: [turtleTokenMap.WhiteSpace, AnythingButBraces],
   },
   defaultMode: LexerMode.TURTLE,
 };
@@ -66,18 +85,14 @@ export const multiModeLexerDefinition: IMultiModeLexerDefinition = {
 export const srsTokenMap = {
   Rule,
   If,
-  EndIf,
   Then,
-  EndThen,
   AnythingButBraces,
 };
 
 export const srsTokenTypes: TokenType[] = [
   Rule,
   If,
-  EndIf,
   Then,
-  EndThen,
   ...turtleTokenTypes,
   AnythingButBraces,
 ];
