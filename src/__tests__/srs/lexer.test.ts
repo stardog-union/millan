@@ -30,9 +30,12 @@ describe('srs lexer', () => {
     );
     expect(
       tokens.filter(
-        (token) => token.tokenType.tokenName === 'AnythingButBraces'
+        (token) => token.tokenType.tokenName === 'GroupGraphPattern'
       )
-    ).toHaveLength(2);
+    ).toHaveLength(1);
+    expect(
+      tokens.filter((token) => token.tokenType.tokenName === 'TriplesBlock')
+    ).toHaveLength(1);
   });
 
   it('parses valid SRS documents with no errors', () => {

@@ -780,8 +780,7 @@ Object {
                       "startOffset": 0,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "LINE_BREAKS": true,
-                        "PATTERN": [Function],
+                        "PATTERN": /if/i,
                         "PUSH_MODE": "ifclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
@@ -799,6 +798,49 @@ Object {
             "ThenClause": Array [
               Object {
                 "children": Object {
+                  "EndThen": Array [
+                    Object {
+                      "endColumn": 118,
+                      "endLine": 1,
+                      "endOffset": 117,
+                      "image": "}",
+                      "startColumn": 118,
+                      "startLine": 1,
+                      "startOffset": 117,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "}",
+                        "POP_MODE": true,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "EndThen",
+                        "tokenTypeIdx": 203,
+                      },
+                      "tokenTypeIdx": 203,
+                    },
+                  ],
+                  "LCurly": Array [
+                    Object {
+                      "endColumn": 81,
+                      "endLine": 1,
+                      "endOffset": 80,
+                      "image": "{",
+                      "startColumn": 81,
+                      "startLine": 1,
+                      "startOffset": 80,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "{",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "LCurly",
+                        "tokenTypeIdx": 149,
+                      },
+                      "tokenTypeIdx": 149,
+                    },
+                  ],
                   "Then": Array [
                     Object {
                       "endColumn": 79,
@@ -810,8 +852,7 @@ Object {
                       "startOffset": 75,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "LINE_BREAKS": true,
-                        "PATTERN": [Function],
+                        "PATTERN": /then/i,
                         "PUSH_MODE": "thenclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
@@ -1441,8 +1482,7 @@ Object {
                       "startOffset": 107,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "LINE_BREAKS": true,
-                        "PATTERN": [Function],
+                        "PATTERN": /if/i,
                         "PUSH_MODE": "ifclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
@@ -1523,6 +1563,49 @@ Object {
             "ThenClause": Array [
               Object {
                 "children": Object {
+                  "EndThen": Array [
+                    Object {
+                      "endColumn": 1,
+                      "endLine": 9,
+                      "endOffset": 225,
+                      "image": "}",
+                      "startColumn": 1,
+                      "startLine": 9,
+                      "startOffset": 225,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "}",
+                        "POP_MODE": true,
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "EndThen",
+                        "tokenTypeIdx": 203,
+                      },
+                      "tokenTypeIdx": 203,
+                    },
+                  ],
+                  "LCurly": Array [
+                    Object {
+                      "endColumn": 6,
+                      "endLine": 7,
+                      "endOffset": 185,
+                      "image": "{",
+                      "startColumn": 6,
+                      "startLine": 7,
+                      "startOffset": 185,
+                      "tokenType": Object {
+                        "CATEGORIES": Array [],
+                        "PATTERN": "{",
+                        "categoryMatches": Array [],
+                        "categoryMatchesMap": Object {},
+                        "isParent": false,
+                        "tokenName": "LCurly",
+                        "tokenTypeIdx": 149,
+                      },
+                      "tokenTypeIdx": 149,
+                    },
+                  ],
                   "Then": Array [
                     Object {
                       "endColumn": 4,
@@ -1534,8 +1617,7 @@ Object {
                       "startOffset": 180,
                       "tokenType": Object {
                         "CATEGORIES": Array [],
-                        "LINE_BREAKS": true,
-                        "PATTERN": [Function],
+                        "PATTERN": /then/i,
                         "PUSH_MODE": "thenclause",
                         "categoryMatches": Array [],
                         "categoryMatchesMap": Object {},
@@ -1551,11 +1633,11 @@ Object {
                       "children": Object {
                         "Period": Array [
                           Object {
-                            "endColumn": 37,
+                            "endColumn": 34,
                             "endLine": 8,
                             "endOffset": 223,
                             "image": ".",
-                            "startColumn": 37,
+                            "startColumn": 34,
                             "startLine": 8,
                             "startOffset": 223,
                             "tokenType": Object {
@@ -1596,11 +1678,11 @@ Object {
                                                                       "children": Object {
                                                                         "IRIREF": Array [
                                                                           Object {
-                                                                            "endColumn": 35,
+                                                                            "endColumn": 32,
                                                                             "endLine": 8,
                                                                             "endOffset": 221,
                                                                             "image": "<http://example.org/Father>",
-                                                                            "startColumn": 9,
+                                                                            "startColumn": 6,
                                                                             "startLine": 8,
                                                                             "startOffset": 195,
                                                                             "tokenType": Object {
@@ -1663,11 +1745,11 @@ Object {
                                                                             "children": Object {
                                                                               "A": Array [
                                                                                 Object {
-                                                                                  "endColumn": 7,
+                                                                                  "endColumn": 4,
                                                                                   "endLine": 8,
                                                                                   "endOffset": 193,
                                                                                   "image": "a",
-                                                                                  "startColumn": 7,
+                                                                                  "startColumn": 4,
                                                                                   "startLine": 8,
                                                                                   "startOffset": 193,
                                                                                   "tokenType": Object {
@@ -1722,11 +1804,11 @@ Object {
                                         "children": Object {
                                           "VAR1": Array [
                                             Object {
-                                              "endColumn": 5,
+                                              "endColumn": 2,
                                               "endLine": 8,
                                               "endOffset": 191,
                                               "image": "?x",
-                                              "startColumn": 4,
+                                              "startColumn": 1,
                                               "startLine": 8,
                                               "startOffset": 190,
                                               "tokenType": Object {

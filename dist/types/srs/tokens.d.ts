@@ -4,6 +4,8 @@ export declare const srsTokenMap: {
     Rule: TokenType;
     If: TokenType;
     Then: TokenType;
-    AnythingButBraces: TokenType;
+    EndThen: TokenType;
+    GroupGraphPattern: TokenType;
+    TriplesBlock: TokenType;
 };
 export declare const srsTokenTypes: TokenType[];

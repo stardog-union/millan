@@ -2,6 +2,7 @@ const { turtleTokenTypes } = require('../turtle/tokens');
 import { createToken, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
 import { CATCH_ALL_AT_LEAST_ONE } from 'helpers/matchers';
 import { turtleTokenMap } from 'turtle/tokens';
+import { sparqlTokenMap } from 'sparql/tokens';
 
 enum LexerMode {
   TURTLE = 'turtle',
@@ -15,35 +16,26 @@ const Rule = createToken({
 });
 const If = createToken({
   name: 'If',
-  pattern: (text, startOffset = 0) => {
-    const match = /^(if)\s*{/i.exec(text.substring(startOffset));
-
-    if (!match) {
-      return null;
-    }
-
-    return [match[1]] as RegExpExecArray;
-  },
-  line_breaks: true,
+  pattern: /if/i,
   push_mode: LexerMode.IFCLAUSE,
 });
 const Then = createToken({
   name: 'Then',
-  pattern: (text, startOffset = 0) => {
-    const match = /^(then)\s*{/i.exec(text.substring(startOffset));
-
-    if (!match) {
-      return null;
-    }
-
-    return [match[1]] as RegExpExecArray;
-  },
-  line_breaks: true,
+  pattern: /then/i,
   push_mode: LexerMode.THENCLAUSE,
 });
-const AnythingButBraces = createToken({
-  name: 'AnythingButBraces',
+const EndThen = createToken({
+  name: 'EndThen',
+  pattern: '}',
+  pop_mode: true,
+});
+// NOTE: Not a SPARQL GroupGraphPattern. Rather, a placeholder for one. We have
+// to let the SRS parser create this token, then replace with a token returned
+// by the SPARQL sub-parser.
+const GroupGraphPattern = createToken({
+  name: 'GroupGraphPattern', // This name is useful for error messages in real-time parsing
   pattern: (text, startOffset = 0) => {
+    // Capture a single brace and then anything up to its closing brace.
     if (text[startOffset] !== '{') {
       return null;
     }
@@ -72,12 +64,25 @@ const AnythingButBraces = createToken({
   line_breaks: true,
   pop_mode: true,
 });
+// NOTE: Not a SPARQL TriplesBlock. Rather, a placeholder for one. We have
+// to let the SRS parser create this token, then replace with a token returned
+// by the SPARQL sub-parser.
+const TriplesBlock = createToken({
+  name: 'TriplesBlock', // This name is useful for error messages in real-time parsing
+  pattern: /[^{}]+/,
+  line_breaks: true,
+});
 
 export const multiModeLexerDefinition: IMultiModeLexerDefinition = {
   modes: {
     [LexerMode.TURTLE]: [Rule, If, Then, ...turtleTokenTypes],
-    [LexerMode.IFCLAUSE]: [turtleTokenMap.WhiteSpace, AnythingButBraces],
-    [LexerMode.THENCLAUSE]: [turtleTokenMap.WhiteSpace, AnythingButBraces],
+    [LexerMode.IFCLAUSE]: [turtleTokenMap.WhiteSpace, GroupGraphPattern],
+    [LexerMode.THENCLAUSE]: [
+      turtleTokenMap.WhiteSpace,
+      sparqlTokenMap.LCurly,
+      EndThen,
+      TriplesBlock,
+    ],
   },
   defaultMode: LexerMode.TURTLE,
 };
@@ -86,13 +91,18 @@ export const srsTokenMap = {
   Rule,
   If,
   Then,
-  AnythingButBraces,
+  EndThen,
+  GroupGraphPattern,
+  TriplesBlock,
 };
 
 export const srsTokenTypes: TokenType[] = [
   Rule,
   If,
   Then,
+  EndThen,
+  sparqlTokenMap.LCurly,
   ...turtleTokenTypes,
-  AnythingButBraces,
+  GroupGraphPattern,
+  TriplesBlock,
 ];

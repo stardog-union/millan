@@ -53,12 +53,12 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
     }
 
     // Get and store the SPARQL `GroupGraphPattern` that should replace the
-    // `AnythingButBraces` token inside of an SRS `IfClause`.
+    // SRS placeholder `GroupGraphPattern` token inside of an SRS `IfClause`.
     IfClause = (ctx: { [key: string]: IToken[] }, cstInputTokens: IToken[]) => {
-      const { AnythingButBraces } = ctx;
+      const { GroupGraphPattern } = ctx;
       this.$storePlaceholderTokenReplacement({
         tokenStore: this.groupGraphPatterns,
-        originalTokenContext: AnythingButBraces,
+        originalTokenContext: GroupGraphPattern,
         subParserRule: this.sparqlParser.parseGroupGraphPattern.bind(
           this.sparqlParser
         ),
@@ -67,20 +67,19 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
     };
 
     // Get and store the SPARQL `TriplesBlock` that should replace the
-    // `AnythingButBraces` token inside of an SRS `ThenClause`.
+    // SRS placeholder `TriplesBlock` token inside of an SRS `ThenClause`.
     ThenClause = (
       ctx: { [key: string]: IToken[] },
       cstInputTokens: IToken[]
     ) => {
-      const { AnythingButBraces } = ctx;
+      const { TriplesBlock } = ctx;
       this.$storePlaceholderTokenReplacement({
         tokenStore: this.triplesBlocks,
-        originalTokenContext: AnythingButBraces,
+        originalTokenContext: TriplesBlock,
         subParserRule: this.sparqlParser.parseTriplesBlock.bind(
           this.sparqlParser
         ),
         cstInputTokens,
-        stripWrappers: true,
       });
     };
 
@@ -152,9 +151,12 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
 
           if (linesBetweenTokens > 0) {
             frontPadding += '\n'.repeat(linesBetweenTokens - 1);
-            frontPadding += ' '.repeat(untokenizedSpaceBetweenTokens) + '\n';
+            frontPadding +=
+              ' '.repeat(Math.max(untokenizedSpaceBetweenTokens, 0)) + '\n';
           } else {
-            frontPadding += ' '.repeat(untokenizedSpaceBetweenTokens);
+            frontPadding += ' '.repeat(
+              Math.max(untokenizedSpaceBetweenTokens, 0)
+            );
           }
         }
 
@@ -217,10 +219,10 @@ function _reduceVisitorItemErrors(
   return acc.concat(item.parseResult.errors);
 }
 
-// `AnythingButBraces` is a placeholder token for unparsed blocks of SPARQL
+// The SRS cst contains placeholder tokens for unparsed blocks of SPARQL
 // inside of an SRS `IfClause` or `ThenClause`. This method swaps out those
 // placeholders with the actual SPARQL CST created by the SparqlSrsVisitor.
-function _findAndSwapAnythingButBraces(
+function _findAndSwapPlacholders(
   node: IToken,
   parentNode: CstNode,
   visitorItems: SparqlSrsVisitorItem[],
@@ -232,7 +234,6 @@ function _findAndSwapAnythingButBraces(
 
   if (matchingVisitorItem) {
     parentNode.children[key] = [matchingVisitorItem.parseResult.cst];
-    delete parentNode.children.AnythingButBraces;
   }
 
   return matchingVisitorItem;
@@ -359,12 +360,14 @@ export class SrsParser extends TurtleParser {
 
   IfClause = this.RULE('IfClause', () => {
     this.CONSUME(srsTokenMap.If);
-    this.CONSUME(srsTokenMap.AnythingButBraces);
+    this.CONSUME(srsTokenMap.GroupGraphPattern);
   });
 
   ThenClause = this.RULE('ThenClause', () => {
     this.CONSUME(srsTokenMap.Then);
-    this.CONSUME(srsTokenMap.AnythingButBraces);
+    this.CONSUME(sparqlTokenMap.LCurly);
+    this.CONSUME(srsTokenMap.TriplesBlock);
+    this.CONSUME(srsTokenMap.EndThen);
   });
 
   public tokenize = (document: string): IToken[] =>
@@ -394,8 +397,7 @@ export class SrsParser extends TurtleParser {
       ...triplesBlocks.reduce(_reduceVisitorItemErrors, []),
     ];
 
-    // Replace `AnythingButBraces` cst nodes with cst nodes returned by
-    // sub-parsers.
+    // Replace `Placeholder` cst nodes with cst nodes returned by sub-parsers.
     unsafeTraverse(cst, (ctx, next) => {
       const { node, parentCtx } = ctx;
 
@@ -405,13 +407,16 @@ export class SrsParser extends TurtleParser {
 
       const currentTokenName = node.tokenType.tokenName;
 
-      if (currentTokenName !== 'AnythingButBraces') {
+      if (
+        currentTokenName !== 'GroupGraphPattern' &&
+        currentTokenName !== 'TriplesBlock'
+      ) {
         return;
       }
       const parentNode = parentCtx.node as CstNode;
 
       if (parentNode.name === 'IfClause') {
-        const matchingVisitorItem = _findAndSwapAnythingButBraces(
+        const matchingVisitorItem = _findAndSwapPlacholders(
           node,
           parentNode,
           groupGraphPatterns,
@@ -426,7 +431,7 @@ export class SrsParser extends TurtleParser {
           );
         }
       } else if (parentNode.name === 'ThenClause') {
-        _findAndSwapAnythingButBraces(
+        _findAndSwapPlacholders(
           node,
           parentNode,
           triplesBlocks,
