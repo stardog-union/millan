@@ -51,7 +51,7 @@ describe('srs lexer', () => {
     });
   });
 
-  it.skip('catches errors in invalid SRS documents', () => {
+  it('catches errors in invalid SRS documents', () => {
     const invalidLex = fixtures.invalid.lex;
     Object.keys(invalidLex).forEach((key) => {
       const { errors } = lexer.tokenize(invalidLex[key]);

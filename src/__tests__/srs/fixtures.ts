@@ -75,13 +75,6 @@ const ungeneratedFixtures = {
         'THEN {\n' + // one less }
         '  ?X ?P ?Z\n' +
         '}\n',
-      wrongBraceMatch4:
-        'IF {\n' +
-        '  ?X ?P ?Y. ?Y ?P ?Z\n' +
-        '\n' +
-        ' THEN \n' + // No } {
-        '  ?X ?P ?Z\n' +
-        '}\n',
     },
     parse: {
       wrongBraceMatch2:
@@ -89,6 +82,13 @@ const ungeneratedFixtures = {
         '  ?X ?P ?Y. ?Y ?P ?Z\n' +
         '}}\n' +
         'THEN {\n' +
+        '  ?X ?P ?Z\n' +
+        '}\n',
+      wrongBraceMatch4:
+        'IF {\n' +
+        '  ?X ?P ?Y. ?Y ?P ?Z\n' +
+        '\n' +
+        ' THEN \n' + // No } {
         '  ?X ?P ?Z\n' +
         '}\n',
       wrongKeyword:
