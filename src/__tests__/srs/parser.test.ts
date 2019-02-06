@@ -35,8 +35,14 @@ describe('srs parser', () => {
     );
     expect(errors).toHaveLength(1);
     expect(errors[0].message).toBe(
-      'Token EXISTS cannot be used in Stardog Rules'
+      'Token EXISTS cannot be used in Stardog Rules.'
     );
+  });
+
+  it('recognizes empty GroupGraphPatterns in the If clause', () => {
+    const { errors } = parser.parse(fixtures.invalid.parse.wrongIfContent6);
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toBe('IFClause cannot be empty.');
   });
 
   it('catches errors in invalid SRS documents', () => {

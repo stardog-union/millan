@@ -247,6 +247,47 @@ function _addIfClauseErrorsToErrors(
   errors: IRecognitionException[],
   cst: CstElement
 ) {
+  // check for empty GroupGraphPatternSub
+  const groupGraphPatternNode = isCstNode(cst) && cst;
+  const groupGraphPatternSubNode =
+    groupGraphPatternNode &&
+    groupGraphPatternNode.children.GroupGraphPatternSub &&
+    groupGraphPatternNode.children.GroupGraphPatternSub[0];
+  const lCurlyToken =
+    groupGraphPatternNode &&
+    groupGraphPatternNode.children.LCurly &&
+    groupGraphPatternNode.children.LCurly[0];
+
+  if (
+    isCstNode(groupGraphPatternSubNode) &&
+    !Object.keys(groupGraphPatternSubNode.children).length &&
+    !isCstNode(lCurlyToken)
+  ) {
+    const ruleStack = [];
+    let stackUnwindingPointer: CstNodeTraverseContext = fullCtx as CstNodeTraverseContext;
+
+    while (stackUnwindingPointer) {
+      if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
+        ruleStack.unshift(stackUnwindingPointer.node.name);
+      }
+      stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+    }
+
+    const error: Pick<
+      IRecognitionException,
+      'message' | 'token' | 'context'
+    > = {
+      message: 'IFClause cannot be empty',
+      token: lCurlyToken,
+      context: {
+        ruleStack: ['SrsDoc', ...ruleStack],
+        ruleOccurrenceStack: [],
+      },
+    };
+    errors.push(error as IRecognitionException);
+    return;
+  }
+
   traverse(cst, (ctx, next) => {
     const { node, parentCtx } = ctx;
 
