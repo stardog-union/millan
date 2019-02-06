@@ -280,24 +280,24 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '\t\n' + // Empty (Tab)
         '}\n',
-      // wrongThenContent8:
-      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
-      //   'IF {\n' +
-      //   ' ?X a test:OldMan\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '  ?X test:age ?Y. FILTER (?Y > 50) .\n' + // Includes Filter
-      //   '}\n',
-      // wrongThenContent9:
-      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
-      //   'IF {\n' +
-      //   ' ?X rdf:type test:GoodDeal\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '  ?x test:price ?p .\n' +
-      //   '  ?x test:discount ?discount \n' +
-      //   '  BIND (?p - ?realprice AS ?discount) .\n' + // Includes Bind
-      //   '}\n',
+      wrongThenContent8:
+        'PREFIX test: <http://test.com/test/0.1/>\n' +
+        'IF {\n' +
+        ' ?X a test:OldMan\n' +
+        '}\n' +
+        'THEN {\n' +
+        '  ?X test:age ?Y. FILTER (?Y > 50) .\n' + // Includes Filter
+        '}\n',
+      wrongThenContent9:
+        'PREFIX test: <http://test.com/test/0.1/>\n' +
+        'IF {\n' +
+        ' ?X rdf:type test:GoodDeal\n' +
+        '}\n' +
+        'THEN {\n' +
+        '  ?x test:price ?p .\n' +
+        '  ?x test:discount ?discount \n' +
+        '  BIND (?p - ?realprice AS ?discount) .\n' + // Includes Bind
+        '}\n',
       unsupportedSPARQLInIfClause:
         'IF { ?x a <http://example.org/Male> . FILTER EXISTS {}}\n' +
         'THEN { ?x a <http://example.org/Father> . }',
