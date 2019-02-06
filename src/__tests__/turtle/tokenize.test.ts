@@ -1,7 +1,7 @@
 const { turtleTokenTypes } = require('../../turtle/tokens');
 import { Lexer } from 'chevrotain';
 import { resolve, extname } from 'path';
-import { readDirAsync, readFileAsync } from './utils';
+import { readDirAsync, readFileAsync } from '../utils';
 
 const lexer = new Lexer(turtleTokenTypes);
 

@@ -20,11 +20,11 @@ export class TurtleParser extends Parser implements IStardogParser {
   // now.)
   // See here: https://www.w3.org/TR/turtle/#handle-PNAME_LN
   private namespacesMap = {};
-  private semanticErrors: IRecognitionException[] = [];
+  protected semanticErrors: IRecognitionException[] = [];
 
   // Clears the state that we have to manage on our own for each parse (see
   // above for details).
-  private resetManagedState = () => {
+  protected resetManagedState = () => {
     this.namespacesMap = {};
     this.semanticErrors = [];
   };

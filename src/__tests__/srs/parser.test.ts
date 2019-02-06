@@ -1,5 +1,7 @@
+import * as path from 'path';
 import { SrsParser } from '../../srs/SrsParser';
 import { fixtures } from './fixtures';
+import { readDirAsync, readFileAsync } from '../utils';
 
 const parser = new SrsParser();
 
@@ -52,6 +54,48 @@ describe('srs parser', () => {
 
       expect(errors).not.toHaveLength(0);
     });
+  });
+
+  it('produces no errors when parsing the w3 turtle test suite', async (done) => {
+    const pathName = path.resolve(
+      __dirname,
+      '..',
+      'turtle',
+      'fixtures',
+      'tests-ttl-w3c-20131121'
+    );
+    const files = (await readDirAsync(pathName)).filter((fileName) => {
+      const ext = path.extname(fileName);
+      if (fileName === 'manifest.ttl') {
+        return false;
+      }
+      return ext === '.ttl' || ext === '.nt';
+    });
+    await Promise.all(
+      files.map(async (fileName) => {
+        const testDocument = await readFileAsync(
+          path.resolve(pathName, fileName)
+        );
+        const { errors, semanticErrors } = parser.parse(testDocument);
+        const isBad = fileName.search('-bad-') > -1;
+        if (!isBad) {
+          if (errors.length > 0 || semanticErrors.length > 0) {
+            console.log(fileName);
+          }
+          expect(errors).toHaveLength(0);
+          if (semanticErrors.length > 0) {
+            console.log(JSON.stringify(semanticErrors, null, 2));
+          }
+          expect(semanticErrors).toHaveLength(0);
+        } else {
+          if (errors.length === 0 && semanticErrors.length === 0) {
+            console.log(fileName);
+          }
+          expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
+        }
+      })
+    );
+    done();
   });
 });
 

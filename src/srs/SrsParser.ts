@@ -373,7 +373,8 @@ export class SrsParser extends TurtleParser {
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
-  public parse = (document: string) => {
+  public parse = (document: string): ReturnType<TurtleParser['parse']> => {
+    this.resetManagedState();
     this.input = this.lexer.tokenize(document).tokens;
     const cst = this.SrsDoc();
 
@@ -441,6 +442,7 @@ export class SrsParser extends TurtleParser {
     });
 
     return {
+      semanticErrors: [...this.semanticErrors], // copy so that it can be held onto after state is reset
       errors,
       cst,
     };

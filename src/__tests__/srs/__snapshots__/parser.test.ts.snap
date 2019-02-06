@@ -1093,6 +1093,7 @@ Object {
     "name": "SrsDoc",
   },
   "errors": Array [],
+  "semanticErrors": Array [],
 }
 `;
 
@@ -2343,5 +2344,6 @@ Object {
     "name": "SrsDoc",
   },
   "errors": Array [],
+  "semanticErrors": Array [],
 }
 `;
