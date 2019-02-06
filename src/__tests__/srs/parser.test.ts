@@ -35,7 +35,7 @@ describe('srs parser', () => {
     );
     expect(errors).toHaveLength(1);
     expect(errors[0].message).toBe(
-      'Token EXISTS cannot be used in Stardog Rules'
+      'Token EXISTS cannot be used in Stardog Rules.'
     );
   });
 

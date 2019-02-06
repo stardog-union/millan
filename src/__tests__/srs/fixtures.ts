@@ -138,15 +138,6 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y\n' +
         '}\n',
-      // wrongPrefix5:
-      //   'PREFIX test: <.com/test/0.1/>\n' + // Invalid URI
-      //   'IF {\n' +
-      //   '  ?X test:hasSibling ?Y. ?Y rdf:type test:Man\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '  ?X test:hasBrother ?Y\n' +
-      //   '}\n',
-
       // noLiteralRuleSubjects:
       //   'IF {\n' +
       //   '   BIND ("literal" AS ?x)\n' +
@@ -209,22 +200,6 @@ const ungeneratedFixtures = {
       // "THEN {\n" +
       // "  ?X test:hasBrother ?Y\n" +
       // "}\n",
-      // wrongIfContent6:
-      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
-      //   'IF {\n' +
-      //   '\n' + // Empty
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '  ?X test:hasBrother ?Y\n' +
-      //   '}\n',
-      // wrongIfContent7:
-      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
-      //   'IF {\n' +
-      //   '\t\n' + // Empty (Tab)
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '  ?X test:hasBrother ?Y\n' +
-      //   '}\n',
       wrongThenContent:
         'PREFIX test: <http://test.com/test/0.1/>\n' +
         'IF {\n' +

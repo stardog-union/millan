@@ -300,7 +300,7 @@ function _addIfClauseErrorsToErrors(
     > = {
       message: `Token ${
         node.tokenType.tokenName
-      } cannot be used in Stardog Rules`,
+      } cannot be used in Stardog Rules.`,
       token: node,
       context: {
         ruleStack: ['SrsDoc', ...ruleStack],
