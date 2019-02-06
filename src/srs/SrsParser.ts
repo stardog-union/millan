@@ -277,7 +277,7 @@ function _addIfClauseErrorsToErrors(
       IRecognitionException,
       'message' | 'token' | 'context'
     > = {
-      message: 'IFClause cannot be empty',
+      message: 'IFClause cannot be empty.',
       token: lCurlyToken,
       context: {
         ruleStack: ['SrsDoc', ...ruleStack],
@@ -341,7 +341,7 @@ function _addIfClauseErrorsToErrors(
     > = {
       message: `Token ${
         node.tokenType.tokenName
-      } cannot be used in Stardog Rules`,
+      } cannot be used in Stardog Rules.`,
       token: node,
       context: {
         ruleStack: ['SrsDoc', ...ruleStack],
