@@ -36,6 +36,23 @@ describe('srs parser', () => {
       'Token EXISTS cannot be used in Stardog Rules'
     );
   });
+
+  it('catches errors in invalid SRS documents', () => {
+    const invalidDocs = {
+      // only pull wrongBraceMatch3 for now as wrongBraceMatch isn't catching errors
+      wrongBraceMatch3: fixtures.invalid.lex.wrongBraceMatch3,
+      ...fixtures.invalid.parse,
+    };
+    Object.keys(invalidDocs).forEach((key) => {
+      const { errors } = parser.parse(invalidDocs[key]);
+
+      if (errors.length === 0) {
+        console.log('No errors caught in', key);
+      }
+
+      expect(errors).not.toHaveLength(0);
+    });
+  });
 });
 
 /**
