@@ -39,6 +39,26 @@ describe('srs parser', () => {
     );
   });
 
+  it('recognizes restricted literals in the If clause', () => {
+    const { errors } = parser.parse(
+      fixtures.invalid.parse.noLiteralRuleSubjects
+    );
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toBe(
+      'Token STRING_LITERAL2 cannot be used in as the subject of a Expression.'
+    );
+  });
+
+  it('recognizes restricted literals in the Then clause', () => {
+    const { errors } = parser.parse(
+      fixtures.invalid.parse.noLiteralRuleSubjects4
+    );
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toBe(
+      'Token STRING_LITERAL2 cannot be used in as the subject of a TriplesSameSubjectPath.'
+    );
+  });
+
   it('catches errors in invalid SRS documents', () => {
     const invalidDocs = {
       // only pull wrongBraceMatch3 for now as wrongBraceMatch isn't catching errors

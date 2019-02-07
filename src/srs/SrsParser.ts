@@ -212,6 +212,22 @@ const disallowedSparqlTokenNames = Object.keys(
   disallowedSparqlTokenNameToRuleMap
 );
 
+const disallowedSparqlLiteralTokenNames = [
+  sparqlTokenMap.DOUBLE,
+  sparqlTokenMap.DECIMAL,
+  sparqlTokenMap.INTEGER,
+  sparqlTokenMap.DOUBLE_POSITIVE,
+  sparqlTokenMap.DECIMAL_POSITIVE,
+  sparqlTokenMap.INTEGER_POSITIVE,
+  sparqlTokenMap.DOUBLE_NEGATIVE,
+  sparqlTokenMap.DECIMAL_NEGATIVE,
+  sparqlTokenMap.INTEGER_NEGATIVE,
+  sparqlTokenMap.STRING_LITERAL1,
+  sparqlTokenMap.STRING_LITERAL2,
+  sparqlTokenMap.STRING_LITERAL_LONG1,
+  sparqlTokenMap.STRING_LITERAL_LONG2,
+].map((token) => token.tokenName);
+
 function _reduceVisitorItemErrors(
   acc: IRecognitionException[],
   item: SparqlSrsVisitorItem
@@ -239,6 +255,20 @@ function _findAndSwapPlacholders(
   return matchingVisitorItem;
 }
 
+function _unwindStackOntoRuleStack(
+  ctx: CstNodeTraverseContext,
+  ruleStack: string[]
+) {
+  let pointer = ctx;
+
+  while (pointer) {
+    if (pointer.node && pointer.node.name) {
+      ruleStack.unshift(pointer.node.name);
+    }
+    pointer = pointer.parentCtx as CstNodeTraverseContext;
+  }
+}
+
 // Since the SRS parser delegates to the SPARQL parser inside of
 // an SRS `IfClause`, and SPARQL allows certain constructs that SRS does not,
 // we need to create our own errors for SRS-specific restrictions here.
@@ -254,53 +284,78 @@ function _addIfClauseErrorsToErrors(
       return next();
     }
 
+    let errorMsg: string;
+    let stackPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
+
     if (
-      !disallowedSparqlTokenNames.some(
+      disallowedSparqlTokenNames.some(
         (tokenName) => tokenName === node.tokenType.tokenName
       )
     ) {
+      // Walk back up the tree to set the first rule that is allowed in
+      // SPARQL but not allowed in SRS as the beginning of the error stack.
+      while (
+        stackPointer &&
+        stackPointer.node.name !==
+          disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]
+      ) {
+        stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
+      }
+
+      // set the error message and parent as point from which to create the rule stack
+      errorMsg = `Token ${
+        node.tokenType.tokenName
+      } cannot be used in Stardog Rules.`;
+      stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
+    } else if (
+      disallowedSparqlLiteralTokenNames.some(
+        (tokenName) => tokenName === node.tokenType.tokenName
+      )
+    ) {
+      let propteryListPathNotEmptyCtx: CstNodeTraverseContext;
+      // Walk back up the tree to determine whether the literal is
+      // being used within an Expression or TriplesBlock
+      while (
+        stackPointer &&
+        stackPointer.node.name !== 'Expression' &&
+        stackPointer.node.name !== 'TriplesBlock'
+      ) {
+        if (stackPointer.node.name === 'PropertyListPathNotEmpty') {
+          propteryListPathNotEmptyCtx = stackPointer;
+        }
+        stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
+      }
+
+      if (
+        (stackPointer.node.name === 'Expression' &&
+          (<CstNode>stackPointer.parentCtx.node).name === 'Bind') ||
+        (stackPointer.node.name === 'TriplesBlock' &&
+          (!propteryListPathNotEmptyCtx ||
+            (<CstNode>propteryListPathNotEmptyCtx.parentCtx.node).name !==
+              'TriplesSameSubjectPath'))
+      ) {
+        errorMsg = `Token ${
+          node.tokenType.tokenName
+        } cannot be used in as the subject of a ${stackPointer.node.name}.`;
+      }
+    }
+
+    if (!errorMsg) {
       return;
     }
 
+    // if there's an error, we need to build the rule stack
+    // from the stack pointer and the rest of the document
     const ruleStack = [];
-    let stackUnwindingPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
-
-    // Walk back up the tree to construct the rule stack, starting from the
-    // first rule that is allowed in SPARQL but not allowed in SRS.
-    while (
-      stackUnwindingPointer &&
-      stackUnwindingPointer.node.name !==
-        disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]
-    ) {
-      stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
-    }
-
-    while (
-      (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext)
-    ) {
-      if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
-        ruleStack.unshift(stackUnwindingPointer.node.name);
-      }
-    }
-
+    _unwindStackOntoRuleStack(stackPointer, ruleStack);
     ruleStack.unshift('GroupGraphPattern');
-
-    stackUnwindingPointer = fullCtx as CstNodeTraverseContext;
-
-    while (stackUnwindingPointer) {
-      if (stackUnwindingPointer.node && stackUnwindingPointer.node.name) {
-        ruleStack.unshift(stackUnwindingPointer.node.name);
-      }
-      stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
-    }
+    _unwindStackOntoRuleStack(fullCtx as CstNodeTraverseContext, ruleStack);
 
     const error: Pick<
       IRecognitionException,
       'message' | 'token' | 'context'
     > = {
-      message: `Token ${
-        node.tokenType.tokenName
-      } cannot be used in Stardog Rules.`,
+      message: errorMsg,
       token: node,
       context: {
         ruleStack: ['SrsDoc', ...ruleStack],
@@ -308,6 +363,74 @@ function _addIfClauseErrorsToErrors(
         // records the number used when the chevrotain rule is
         // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
         // or care about that here
+        ruleOccurrenceStack: [],
+      },
+    };
+    errors.push(error as IRecognitionException);
+  });
+}
+
+// Do the same for the ThenClause
+function _addThenClauseErrorsToErrors(
+  fullCtx: ITraverseContext,
+  errors: IRecognitionException[],
+  cst: CstElement
+) {
+  traverse(cst, (ctx, next) => {
+    const { node, parentCtx } = ctx;
+
+    if (isCstNode(node)) {
+      return next();
+    }
+
+    let errorMsg: string;
+    let stackPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
+
+    if (
+      disallowedSparqlLiteralTokenNames.some(
+        (tokenName) => tokenName === node.tokenType.tokenName
+      )
+    ) {
+      let propteryListPathNotEmptyCtx: CstNodeTraverseContext;
+      while (
+        stackPointer &&
+        stackPointer.node.name !== 'TriplesSameSubjectPath'
+      ) {
+        if (stackPointer.node.name === 'PropertyListPathNotEmpty') {
+          propteryListPathNotEmptyCtx = stackPointer;
+        }
+        stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
+      }
+
+      if (
+        stackPointer.node.name === 'TriplesSameSubjectPath' &&
+        (!propteryListPathNotEmptyCtx ||
+          (<CstNode>propteryListPathNotEmptyCtx.parentCtx.node).name !==
+            'TriplesSameSubjectPath')
+      ) {
+        errorMsg = `Token ${
+          node.tokenType.tokenName
+        } cannot be used in as the subject of a ${stackPointer.node.name}.`;
+      }
+    }
+
+    if (!errorMsg) {
+      return;
+    }
+
+    const ruleStack = [];
+    _unwindStackOntoRuleStack(stackPointer, ruleStack);
+    ruleStack.unshift('TriplesBlock');
+    _unwindStackOntoRuleStack(fullCtx as CstNodeTraverseContext, ruleStack);
+
+    const error: Pick<
+      IRecognitionException,
+      'message' | 'token' | 'context'
+    > = {
+      message: errorMsg,
+      token: node,
+      context: {
+        ruleStack: ['SrsDoc', ...ruleStack],
         ruleOccurrenceStack: [],
       },
     };
@@ -432,12 +555,20 @@ export class SrsParser extends TurtleParser {
           );
         }
       } else if (parentNode.name === 'ThenClause') {
-        _findAndSwapPlacholders(
+        const matchingVisitorItem = _findAndSwapPlacholders(
           node,
           parentNode,
           triplesBlocks,
           'TriplesBlock'
         );
+
+        if (matchingVisitorItem) {
+          _addThenClauseErrorsToErrors(
+            ctx,
+            errors,
+            matchingVisitorItem.parseResult.cst
+          );
+        }
       }
     });
 

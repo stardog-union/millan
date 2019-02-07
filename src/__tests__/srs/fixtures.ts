@@ -138,29 +138,44 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y\n' +
         '}\n',
-      // noLiteralRuleSubjects:
-      //   'IF {\n' +
-      //   '   BIND ("literal" AS ?x)\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '   ?x a owl:Thing .\n' +
-      //   '}',
-      // noLiteralRuleSubjects2:
-      //   'IF {\n' +
-      //   '   BIND ("literal" AS ?x)\n' +
-      //   '   BIND ("literal" AS ?y)\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '   ?x a owl:Thing .\n' +
-      //   '   ?y a owl:Thing .\n' +
-      //   '}',
-      // noLiteralRuleSubjects3:
-      //   'IF {\n' +
-      //   '   ?s ?p ?o' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '   "literal" a owl:Thing .\n' +
-      //   '}',
+      noLiteralRuleSubjects:
+        'IF {\n' +
+        '   BIND ("literal" AS ?x)\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?x a owl:Thing .\n' +
+        '}',
+      noLiteralRuleSubjects2:
+        'IF {\n' +
+        '   BIND ("literal" AS ?x)\n' +
+        '   BIND ("literal" AS ?y)\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?x a owl:Thing .\n' +
+        '   ?y a owl:Thing .\n' +
+        '}',
+      noLiteralRuleSubjects3:
+        'IF {\n' +
+        '   "sLit" ?p "oLit"' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?s a owl:Thing .\n' +
+        '}',
+      noLiteralRuleSubjects4:
+        'IF {\n' +
+        '   ?s ?p ?o' +
+        '}\n' +
+        'THEN {\n' +
+        '   "literal" a owl:Thing .\n' +
+        '}',
+      // TODO: IDK If this is actually invalid
+      noLiteralRuleSubjects5:
+        'IF {\n' +
+        '   ?s ?p ?o' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?s a owl:Thing . "literal" a owl:Thing .\n' +
+        '}',
       wrongIfContent:
         'PREFIX test: <http://test.com/test/0.1/>\n' +
         'IF {\n' +
@@ -193,7 +208,8 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y\n' +
         '}\n',
-      // wrongIfContent5: 		"PREFIX test: <http://test.com/test/0.1/>\n" +
+      // wrongIfContent5:
+      // "PREFIX test: <http://test.com/test/0.1/>\n" +
       // "IF {\n" +
       // " ?X test2:hasSibling ?Y . ?Y rdf:type test:Man\n" + // Undefined prefix
       // "}\n" +
