@@ -2,9 +2,9 @@ import { Parser, IParserConfig, Lexer, IToken, IRecognitionException, IMultiMode
 import { IStardogParser } from '../helpers/types';
 export declare class TurtleParser extends Parser implements IStardogParser {
     protected lexer: Lexer;
-    private namespacesMap;
-    private semanticErrors;
-    private resetManagedState;
+    protected namespacesMap: {};
+    protected semanticErrors: IRecognitionException[];
+    protected resetManagedState: () => void;
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];

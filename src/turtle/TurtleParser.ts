@@ -19,7 +19,7 @@ export class TurtleParser extends Parser implements IStardogParser {
   // might want to use a visitor for this, but I'm doing it quick-and-dirty for
   // now.)
   // See here: https://www.w3.org/TR/turtle/#handle-PNAME_LN
-  private namespacesMap = {};
+  protected namespacesMap = {};
   protected semanticErrors: IRecognitionException[] = [];
 
   // Clears the state that we have to manage on our own for each parse (see
@@ -36,7 +36,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     document: string
   ): {
     errors: IRecognitionException[];
-    semanticErrors?: IRecognitionException[];
+    semanticErrors: IRecognitionException[];
     cst: any;
   } => {
     this.input = this.lexer.tokenize(document).tokens;

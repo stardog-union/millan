@@ -168,7 +168,6 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '   "literal" a owl:Thing .\n' +
         '}',
-      // TODO: IDK If this is actually invalid
       noLiteralRuleSubjects5:
         'IF {\n' +
         '   ?s ?p ?o' +
@@ -208,14 +207,14 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y\n' +
         '}\n',
-      // wrongIfContent5:
-      // "PREFIX test: <http://test.com/test/0.1/>\n" +
-      // "IF {\n" +
-      // " ?X test2:hasSibling ?Y . ?Y rdf:type test:Man\n" + // Undefined prefix
-      // "}\n" +
-      // "THEN {\n" +
-      // "  ?X test:hasBrother ?Y\n" +
-      // "}\n",
+      wrongIfContent5:
+        'PREFIX test: <http://test.com/test/0.1/>\n' +
+        'IF {\n' +
+        ' ?X test2:hasSibling ?Y . ?Y rdf:type test:Man\n' + // Undefined prefix
+        '}\n' +
+        'THEN {\n' +
+        '  ?X test:hasBrother ?Y\n' +
+        '}\n',
       wrongThenContent:
         'PREFIX test: <http://test.com/test/0.1/>\n' +
         'IF {\n' +
@@ -248,14 +247,14 @@ const ungeneratedFixtures = {
         'THEN {\n' +
         '  ?X test:hasBrother ?Y ?Y test:hasSibling ?X\n' + // No .
         '}\n',
-      // wrongThenContent5:
-      //   'PREFIX test: <http://test.com/test/0.1/>\n' +
-      //   'IF {\n' +
-      //   ' ?X test:hasSibling ?Y . ?Y rdf:type test:Man\n' +
-      //   '}\n' +
-      //   'THEN {\n' +
-      //   '  ?X test22:hasBrother ?Y\n' + // Undefined prefix
-      //   '}\n',
+      wrongThenContent5:
+        'PREFIX test: <http://test.com/test/0.1/>\n' +
+        'IF {\n' +
+        ' ?X test:hasSibling ?Y . ?Y rdf:type test:Man\n' +
+        '}\n' +
+        'THEN {\n' +
+        '  ?X test22:hasBrother ?Y\n' + // Undefined prefix
+        '}\n',
       wrongThenContent6:
         'PREFIX test: <http://test.com/test/0.1/>\n' +
         'IF {\n' +

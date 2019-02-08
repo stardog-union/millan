@@ -23,6 +23,7 @@ import {
   traverse,
   ITraverseContext,
 } from '../helpers/cst';
+import { defaultNamespacesMap } from 'turtle/defaultNamespaces';
 
 interface SparqlSrsVisitorItem {
   parseResult: {
@@ -36,6 +37,8 @@ type CstNodeTraverseContext = ITraverseContext & {
   node: CstNode;
 };
 
+const defaultEarlyExitTest = () => false;
+
 // Returns a custom visitor that extends the BaseVisitor for the SRS parser.
 // When the visitor encounters an SRS `IfClause` or an SRS `ThenClause`, it
 // delegates parsing of the block to the existing SPARQL parser's relevant
@@ -45,6 +48,7 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
     private sparqlParser: W3SpecSparqlParser;
     private groupGraphPatterns: SparqlSrsVisitorItem[] = [];
     private triplesBlocks: SparqlSrsVisitorItem[] = [];
+    private usedPrefixes: { [prefix: string]: IToken } = {};
 
     constructor() {
       super();
@@ -56,7 +60,7 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
     // SRS placeholder `GroupGraphPattern` token inside of an SRS `IfClause`.
     IfClause = (ctx: { [key: string]: IToken[] }, cstInputTokens: IToken[]) => {
       const { GroupGraphPattern } = ctx;
-      this.$storePlaceholderTokenReplacement({
+      const srsVisitorItem = this.$storePlaceholderTokenReplacement({
         tokenStore: this.groupGraphPatterns,
         originalTokenContext: GroupGraphPattern,
         subParserRule: this.sparqlParser.parseGroupGraphPattern.bind(
@@ -64,6 +68,11 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
         ),
         cstInputTokens,
       });
+
+      if (srsVisitorItem) {
+        // Store the found prefixed names within this GGP.
+        this.$storePrefix(srsVisitorItem.parseResult.cst);
+      }
     };
 
     // Get and store the SPARQL `TriplesBlock` that should replace the
@@ -73,7 +82,7 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
       cstInputTokens: IToken[]
     ) => {
       const { TriplesBlock } = ctx;
-      this.$storePlaceholderTokenReplacement({
+      const srsVisitorItem = this.$storePlaceholderTokenReplacement({
         tokenStore: this.triplesBlocks,
         originalTokenContext: TriplesBlock,
         subParserRule: this.sparqlParser.parseTriplesBlock.bind(
@@ -81,11 +90,33 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
         ),
         cstInputTokens,
       });
+
+      if (srsVisitorItem) {
+        // Store the found prefixed names within this TriplesBlock.
+        this.$storePrefix(srsVisitorItem.parseResult.cst);
+      }
     };
 
     // Utility methods ('$' prefix is necessary to prevent chevrotain's
     // `validateVisitor` method from complaining that these are not grammar
     // rules):
+    private $storePrefix = (cst) => {
+      traverse(cst, (ctx, next) => {
+        const { node } = ctx;
+
+        if (isCstNode(node)) {
+          return next();
+        }
+
+        const { tokenName } = node.tokenType;
+
+        if (tokenName === 'PNAME_NS' || tokenName === 'PNAME_LN') {
+          const prefix = node.image.split(':').shift();
+          this.usedPrefixes[prefix] = node;
+        }
+      });
+    };
+
     private $storePlaceholderTokenReplacement = ({
       tokenStore,
       originalTokenContext = [],
@@ -113,11 +144,13 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
         cstInputTokens,
         stripWrappers
       );
-
-      tokenStore.push({
+      const srsVisitorItem = {
         parseResult: replacement,
         originalToken,
-      });
+      };
+
+      tokenStore.push(srsVisitorItem);
+      return srsVisitorItem;
     };
 
     private $getPlaceholderTokenReplacement = (
@@ -193,9 +226,12 @@ const getSparqlSrsVisitor = (BaseVisitor: CstVisitorConstructor) => {
 
     $getTriplesBlocks = () => this.triplesBlocks;
 
+    $getUsedPrefixes = () => this.usedPrefixes;
+
     $resetState = () => {
       this.groupGraphPatterns = [];
       this.triplesBlocks = [];
+      this.usedPrefixes = {};
     };
   }
 
@@ -255,28 +291,207 @@ function _findAndSwapPlacholders(
   return matchingVisitorItem;
 }
 
-function _unwindStackOntoRuleStack(
-  ctx: CstNodeTraverseContext,
-  ruleStack: string[]
+// Walk back up the tree to construct the rule stack, starting from the
+// first rule that is allowed in SPARQL but not allowed in SRS.
+function _getCustomErrorRuleStack(
+  traverseCtx: CstNodeTraverseContext,
+  fullCtx: ITraverseContext,
+  startRuleNames: string[],
+  topLevelSubParserRuleName?: string,
+  earlyExitTest: Function = defaultEarlyExitTest
 ) {
-  let pointer = ctx;
+  const ruleStack = [];
 
-  while (pointer) {
-    if (pointer.node && pointer.node.name) {
-      ruleStack.unshift(pointer.node.name);
-    }
-    pointer = pointer.parentCtx as CstNodeTraverseContext;
+  if (!traverseCtx) {
+    return ruleStack; // early exit
   }
+
+  let stackUnwindingPointer = traverseCtx;
+
+  // Move up from current context to the first rule that should "start" the stack.
+  while (
+    stackUnwindingPointer &&
+    isCstNode(stackUnwindingPointer.node) &&
+    !startRuleNames.includes(stackUnwindingPointer.node.name)
+  ) {
+    if (earlyExitTest(stackUnwindingPointer)) {
+      return [];
+    }
+    stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+  }
+
+  // Now start adding all found rules to the stack as we move upward.
+  while (
+    (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext) &&
+    isCstNode(stackUnwindingPointer.node)
+  ) {
+    ruleStack.unshift(stackUnwindingPointer.node.name);
+    if (earlyExitTest(stackUnwindingPointer)) {
+      return [];
+    }
+  }
+
+  // If the rule stack of the sub-parser doesn't get all the way up to the
+  // relevant top-level rule, this will force the top-level rule to be put onto
+  // the stack before proceeding.
+  if (typeof topLevelSubParserRuleName === 'string') {
+    ruleStack.unshift(topLevelSubParserRuleName);
+  }
+
+  // Now that we've got the sub-parser's rule stack, we trace the remaining
+  // outer parser's stack to get to the true bottom of the stack.
+  stackUnwindingPointer = fullCtx as CstNodeTraverseContext;
+
+  while (stackUnwindingPointer) {
+    if (isCstNode(stackUnwindingPointer.node)) {
+      ruleStack.unshift(stackUnwindingPointer.node.name);
+      if (earlyExitTest(stackUnwindingPointer)) {
+        return [];
+      }
+    }
+    stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+  }
+
+  return ['SrsDoc', ...ruleStack];
+}
+
+function _getNoPrefixError(
+  node: IToken,
+  parentCtx: CstNodeTraverseContext,
+  fullCtx: ITraverseContext,
+  subParserRuleName: string
+) {
+  return {
+    name: 'NoNamespacePrefixError',
+    message: 'A prefix was used for which there was no namespace defined.',
+    token: node,
+    context: {
+      ruleStack: _getCustomErrorRuleStack(
+        parentCtx,
+        fullCtx,
+        ['PrefixedName'],
+        subParserRuleName
+      ),
+      // `ruleOccurrenceStack` is meaningless to us as it just
+      // records the number used when the chevrotain rule is
+      // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
+      // or care about that here
+      ruleOccurrenceStack: [],
+    },
+    resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
+  };
+}
+
+function _getDisallowedTokenError(
+  node: IToken,
+  parentCtx: CstNodeTraverseContext,
+  fullCtx: ITraverseContext
+) {
+  return {
+    name: 'DisallowedTokenError',
+    message: `Token ${
+      node.tokenType.tokenName
+    } cannot be used in Stardog Rules.`,
+    token: node,
+    context: {
+      ruleStack: _getCustomErrorRuleStack(
+        parentCtx,
+        fullCtx,
+        [disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]],
+        'GroupGraphPattern'
+      ),
+      // `ruleOccurrenceStack` is meaningless to us as it just
+      // records the number used when the chevrotain rule is
+      // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
+      // or care about that here
+      ruleOccurrenceStack: [],
+    },
+    resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
+  };
+}
+
+function _getDisallowedLiteralError(
+  node: IToken,
+  parentCtx: CstNodeTraverseContext,
+  fullCtx: ITraverseContext,
+  subParserRuleName: string
+) {
+  let foundPropertyListPathNotEmptyCtx = null;
+  const errorRuleStack = _getCustomErrorRuleStack(
+    parentCtx,
+    fullCtx,
+    ['Expression', 'TriplesBlock'],
+    subParserRuleName,
+    (stackCtx: CstNodeTraverseContext) => {
+      if (stackCtx.node.name === 'PropertyListPathNotEmpty') {
+        foundPropertyListPathNotEmptyCtx = stackCtx;
+        return false;
+      }
+
+      const { node, parentCtx } = stackCtx;
+      const isExpression = node.name === 'Expression';
+      const isTriplesBlock = node.name === 'TriplesBlock';
+
+      if (!isExpression && !isTriplesBlock) {
+        return false;
+      }
+
+      const isBoundExpression =
+        isExpression && (<CstNode>parentCtx.node).name === 'Bind';
+      const isTriplesBlockSubject =
+        isTriplesBlock &&
+        (!foundPropertyListPathNotEmptyCtx ||
+          (<CstNode>foundPropertyListPathNotEmptyCtx.parentCtx.node).name !==
+            'TriplesSameSubjectPath');
+
+      if (isBoundExpression || isTriplesBlockSubject) {
+        return false;
+      }
+
+      // We got to the Expression or TriplesBlock containing the literal, but
+      // the literal wasn't in the subject position (i.e., was not the lead
+      // Expression inside of Bind and was not the subject of
+      // TriplesSameSubjectPath), so we can bail early here.
+      return true;
+    }
+  );
+
+  if (errorRuleStack.length === 0) {
+    return;
+  }
+
+  return {
+    name: 'DisallowedLiteralError',
+    message: 'Literals cannot be used as subjects in Stardog Rules.',
+    token: node,
+    context: {
+      ruleStack: errorRuleStack,
+      // `ruleOccurrenceStack` is meaningless to us as it just
+      // records the number used when the chevrotain rule is
+      // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
+      // or care about that here
+      ruleOccurrenceStack: [],
+    },
+    resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
+  };
 }
 
 // Since the SRS parser delegates to the SPARQL parser inside of
 // an SRS `IfClause`, and SPARQL allows certain constructs that SRS does not,
 // we need to create our own errors for SRS-specific restrictions here.
-function _addIfClauseErrorsToErrors(
-  fullCtx: ITraverseContext,
-  errors: IRecognitionException[],
-  cst: CstElement
-) {
+function _addIfClauseErrorsToErrors({
+  cst,
+  namespacesMap,
+  fullCtx,
+  errors,
+  semanticErrors,
+}: {
+  cst: CstElement;
+  namespacesMap: TurtleParser['namespacesMap'];
+  fullCtx: ITraverseContext;
+  errors: IRecognitionException[];
+  semanticErrors: IRecognitionException[];
+}) {
   traverse(cst, (ctx, next) => {
     const { node, parentCtx } = ctx;
 
@@ -284,98 +499,66 @@ function _addIfClauseErrorsToErrors(
       return next();
     }
 
-    let errorMsg: string;
-    let stackPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
+    const { tokenName } = node.tokenType;
+
+    if (disallowedSparqlTokenNames.some((name) => name === tokenName)) {
+      errors.push(_getDisallowedTokenError(
+        node,
+        parentCtx as CstNodeTraverseContext,
+        fullCtx
+      ) as IRecognitionException);
+    }
 
     if (
-      disallowedSparqlTokenNames.some(
-        (tokenName) => tokenName === node.tokenType.tokenName
-      )
-    ) {
-      // Walk back up the tree to set the first rule that is allowed in
-      // SPARQL but not allowed in SRS as the beginning of the error stack.
-      while (
-        stackPointer &&
-        stackPointer.node.name !==
-          disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]
-      ) {
-        stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
-      }
-
-      // set the error message and parent as point from which to create the rule stack
-      errorMsg = `Token ${
-        node.tokenType.tokenName
-      } cannot be used in Stardog Rules.`;
-      stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
-    } else if (
       disallowedSparqlLiteralTokenNames.some(
         (tokenName) => tokenName === node.tokenType.tokenName
       )
     ) {
-      let propteryListPathNotEmptyCtx: CstNodeTraverseContext;
-      // Walk back up the tree to determine whether the literal is
-      // being used within an Expression or TriplesBlock
-      while (
-        stackPointer &&
-        stackPointer.node.name !== 'Expression' &&
-        stackPointer.node.name !== 'TriplesBlock'
-      ) {
-        if (stackPointer.node.name === 'PropertyListPathNotEmpty') {
-          propteryListPathNotEmptyCtx = stackPointer;
-        }
-        stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
-      }
+      const error = _getDisallowedLiteralError(
+        node,
+        parentCtx as CstNodeTraverseContext,
+        fullCtx,
+        'GroupGraphPattern'
+      );
 
-      if (
-        (stackPointer.node.name === 'Expression' &&
-          (<CstNode>stackPointer.parentCtx.node).name === 'Bind') ||
-        (stackPointer.node.name === 'TriplesBlock' &&
-          (!propteryListPathNotEmptyCtx ||
-            (<CstNode>propteryListPathNotEmptyCtx.parentCtx.node).name !==
-              'TriplesSameSubjectPath'))
-      ) {
-        errorMsg = `Token ${
-          node.tokenType.tokenName
-        } cannot be used in as the subject of a ${stackPointer.node.name}.`;
+      if (error) {
+        semanticErrors.push(error as IRecognitionException);
       }
     }
 
-    if (!errorMsg) {
-      return;
+    if (tokenName === 'PNAME_NS' || tokenName === 'PNAME_LN') {
+      const prefix = node.image.split(':').shift();
+
+      if (!namespacesMap[prefix]) {
+        semanticErrors.push(
+          _getNoPrefixError(
+            node,
+            parentCtx as CstNodeTraverseContext,
+            fullCtx,
+            'GroupGraphPattern'
+          )
+        );
+      }
     }
-
-    // if there's an error, we need to build the rule stack
-    // from the stack pointer and the rest of the document
-    const ruleStack = [];
-    _unwindStackOntoRuleStack(stackPointer, ruleStack);
-    ruleStack.unshift('GroupGraphPattern');
-    _unwindStackOntoRuleStack(fullCtx as CstNodeTraverseContext, ruleStack);
-
-    const error: Pick<
-      IRecognitionException,
-      'message' | 'token' | 'context'
-    > = {
-      message: errorMsg,
-      token: node,
-      context: {
-        ruleStack: ['SrsDoc', ...ruleStack],
-        // `ruleOccurrenceStack` is meaningless to us as it just
-        // records the number used when the chevrotain rule is
-        // created (e.g., SUBRULE1 vs SUBRULE2); we can't know that
-        // or care about that here
-        ruleOccurrenceStack: [],
-      },
-    };
-    errors.push(error as IRecognitionException);
   });
+
+  return {
+    errors,
+    semanticErrors,
+  };
 }
 
-// Do the same for the ThenClause
-function _addThenClauseErrorsToErrors(
-  fullCtx: ITraverseContext,
-  errors: IRecognitionException[],
-  cst: CstElement
-) {
+function _addThenClauseErrorsToErrors({
+  cst,
+  namespacesMap,
+  semanticErrors,
+  fullCtx,
+}: {
+  semanticErrors: IRecognitionException[];
+  fullCtx: ITraverseContext;
+  namespacesMap: TurtleParser['namespacesMap'];
+  cst: CstElement;
+}) {
   traverse(cst, (ctx, next) => {
     const { node, parentCtx } = ctx;
 
@@ -383,64 +566,52 @@ function _addThenClauseErrorsToErrors(
       return next();
     }
 
-    let errorMsg: string;
-    let stackPointer: CstNodeTraverseContext = parentCtx as CstNodeTraverseContext;
+    const { tokenName } = node.tokenType;
 
     if (
       disallowedSparqlLiteralTokenNames.some(
         (tokenName) => tokenName === node.tokenType.tokenName
       )
     ) {
-      let propteryListPathNotEmptyCtx: CstNodeTraverseContext;
-      while (
-        stackPointer &&
-        stackPointer.node.name !== 'TriplesSameSubjectPath'
-      ) {
-        if (stackPointer.node.name === 'PropertyListPathNotEmpty') {
-          propteryListPathNotEmptyCtx = stackPointer;
-        }
-        stackPointer = stackPointer.parentCtx as CstNodeTraverseContext;
-      }
+      const error = _getDisallowedLiteralError(
+        node,
+        parentCtx as CstNodeTraverseContext,
+        fullCtx,
+        'GroupGraphPattern'
+      );
 
-      if (
-        stackPointer.node.name === 'TriplesSameSubjectPath' &&
-        (!propteryListPathNotEmptyCtx ||
-          (<CstNode>propteryListPathNotEmptyCtx.parentCtx.node).name !==
-            'TriplesSameSubjectPath')
-      ) {
-        errorMsg = `Token ${
-          node.tokenType.tokenName
-        } cannot be used in as the subject of a ${stackPointer.node.name}.`;
+      if (error) {
+        semanticErrors.push(error as IRecognitionException);
       }
     }
 
-    if (!errorMsg) {
-      return;
+    if (tokenName === 'PNAME_NS' || tokenName === 'PNAME_LN') {
+      const prefix = node.image.split(':').shift();
+
+      if (!namespacesMap[prefix]) {
+        semanticErrors.push(
+          _getNoPrefixError(
+            node,
+            parentCtx as CstNodeTraverseContext,
+            fullCtx,
+            'TriplesBlock'
+          )
+        );
+      }
     }
-
-    const ruleStack = [];
-    _unwindStackOntoRuleStack(stackPointer, ruleStack);
-    ruleStack.unshift('TriplesBlock');
-    _unwindStackOntoRuleStack(fullCtx as CstNodeTraverseContext, ruleStack);
-
-    const error: Pick<
-      IRecognitionException,
-      'message' | 'token' | 'context'
-    > = {
-      message: errorMsg,
-      token: node,
-      context: {
-        ruleStack: ['SrsDoc', ...ruleStack],
-        ruleOccurrenceStack: [],
-      },
-    };
-    errors.push(error as IRecognitionException);
   });
+
+  return {
+    semanticErrors,
+  };
 }
 
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor: ReturnType<typeof getSparqlSrsVisitor>;
   protected lexer: Lexer;
+  protected namespacesMap = {
+    ...defaultNamespacesMap,
+  };
 
   constructor(config?: Partial<IParserConfig>) {
     super(
@@ -493,6 +664,13 @@ export class SrsParser extends TurtleParser {
     this.CONSUME(srsTokenMap.EndThen);
   });
 
+  protected resetManagedState = () => {
+    this.namespacesMap = {
+      ...defaultNamespacesMap,
+    };
+    this.semanticErrors = [];
+  };
+
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
@@ -520,6 +698,7 @@ export class SrsParser extends TurtleParser {
       ...groupGraphPatterns.reduce(_reduceVisitorItemErrors, []),
       ...triplesBlocks.reduce(_reduceVisitorItemErrors, []),
     ];
+    const semanticErrors: IRecognitionException[] = [...this.semanticErrors];
 
     // Replace `Placeholder` cst nodes with cst nodes returned by sub-parsers.
     unsafeTraverse(cst, (ctx, next) => {
@@ -548,11 +727,13 @@ export class SrsParser extends TurtleParser {
         );
 
         if (matchingVisitorItem) {
-          _addIfClauseErrorsToErrors(
-            ctx,
+          _addIfClauseErrorsToErrors({
+            fullCtx: ctx,
+            namespacesMap: this.namespacesMap,
+            cst: matchingVisitorItem.parseResult.cst,
             errors,
-            matchingVisitorItem.parseResult.cst
-          );
+            semanticErrors,
+          });
         }
       } else if (parentNode.name === 'ThenClause') {
         const matchingVisitorItem = _findAndSwapPlacholders(
@@ -563,17 +744,18 @@ export class SrsParser extends TurtleParser {
         );
 
         if (matchingVisitorItem) {
-          _addThenClauseErrorsToErrors(
-            ctx,
-            errors,
-            matchingVisitorItem.parseResult.cst
-          );
+          _addThenClauseErrorsToErrors({
+            fullCtx: ctx,
+            namespacesMap: this.namespacesMap,
+            cst: matchingVisitorItem.parseResult.cst,
+            semanticErrors,
+          });
         }
       }
     });
 
     return {
-      semanticErrors: [...this.semanticErrors], // copy so that it can be held onto after state is reset
+      semanticErrors,
       errors,
       cst,
     };

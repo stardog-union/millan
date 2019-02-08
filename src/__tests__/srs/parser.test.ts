@@ -40,39 +40,43 @@ describe('srs parser', () => {
   });
 
   it('recognizes restricted literals in the If clause', () => {
-    const { errors } = parser.parse(
+    const { semanticErrors } = parser.parse(
       fixtures.invalid.parse.noLiteralRuleSubjects
     );
-    expect(errors).toHaveLength(1);
-    expect(errors[0].message).toBe(
+    expect(semanticErrors).toHaveLength(1);
+    expect(semanticErrors[0].message).toBe(
       'Token STRING_LITERAL2 cannot be used in as the subject of a Expression.'
     );
   });
 
   it('recognizes restricted literals in the Then clause', () => {
-    const { errors } = parser.parse(
+    const { semanticErrors } = parser.parse(
       fixtures.invalid.parse.noLiteralRuleSubjects4
     );
-    expect(errors).toHaveLength(1);
-    expect(errors[0].message).toBe(
+    expect(semanticErrors).toHaveLength(1);
+    expect(semanticErrors[0].message).toBe(
       'Token STRING_LITERAL2 cannot be used in as the subject of a TriplesSameSubjectPath.'
     );
   });
 
-  it('catches errors in invalid SRS documents', () => {
+  it.only('catches errors in invalid SRS documents', () => {
     const invalidDocs = {
       // only pull wrongBraceMatch3 for now as wrongBraceMatch isn't catching errors
       wrongBraceMatch3: fixtures.invalid.lex.wrongBraceMatch3,
       ...fixtures.invalid.parse,
     };
     Object.keys(invalidDocs).forEach((key) => {
-      const { errors } = parser.parse(invalidDocs[key]);
+      const { errors, semanticErrors } = parser.parse(invalidDocs[key]);
 
-      if (errors.length === 0) {
+      if (errors.length === 0 && semanticErrors.length === 0) {
         console.log('No errors caught in', key);
       }
 
-      expect(errors).not.toHaveLength(0);
+      if (errors.length === 0) {
+        expect(semanticErrors).not.toHaveLength(0);
+      } else if (semanticErrors.length === 0) {
+        expect(errors).not.toHaveLength(0);
+      }
     });
   });
 
@@ -86,7 +90,14 @@ describe('srs parser', () => {
     );
     const files = (await readDirAsync(pathName)).filter((fileName) => {
       const ext = path.extname(fileName);
-      if (fileName === 'manifest.ttl') {
+      if (
+        fileName === 'manifest.ttl' ||
+        fileName === 'turtle-syntax-bad-prefix-01.ttl' ||
+        fileName === 'turtle-syntax-bad-prefix-02.ttl'
+      ) {
+        // In addition to the manifest, the two above turtle tests are skipped
+        // for the SRS parser because the SRS parser assumes some default
+        // namespaces, including the empty namespace.
         return false;
       }
       return ext === '.ttl' || ext === '.nt';
@@ -118,30 +129,3 @@ describe('srs parser', () => {
     done();
   });
 });
-
-/**
-    unionOptional:
-      'PREFIX : <http://test.com/test/0.1/>\n' +
-      'IF {\n' +
-      '  ?x a :Product ; :price ?p .\n' +
-      '  OPTIONAL {\n' +
-      '     ?x :contains ?y \n' +
-      '     { ?y a :OnSale  }\n' +
-      '     UNION \n' +
-      '     { ?y a :Discontinued }\n' +
-      '  }\n' +
-      '  OPTIONAL { ?x :producer ?producer } ' +
-      '}\n' +
-      ':FatherRule rdfs:comment "This rule defines fathers" ;\n' +
-      '  a :MyRule .\n' +
-      'THEN {\n' +
-      '  ?x :specialPrice ?p ;\n' +
-      '     :specialItem ?y ;\n' +
-      '}\n' +
-      'IF {\n' +
-      '   ?x a <http://example.org/Male> , <http://example.org/Parent> .\n' +
-      '}\n' +
-      'THEN {\n' +
-      '   ?x a <http://example.org/Father> .\n' +
-      '}\n',
- */

@@ -16,7 +16,7 @@ export const unsafeTraverse = (
 };
 
 export function isCstNode(object: CstElement): object is CstNode {
-  return 'name' in object;
+  return Boolean(object && 'name' in object);
 }
 
 export interface ITraverseContext {
