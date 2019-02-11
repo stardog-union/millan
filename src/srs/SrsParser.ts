@@ -300,17 +300,15 @@ function _getCustomErrorRuleStack(
   topLevelSubParserRuleName?: string,
   earlyExitTest: Function = defaultEarlyExitTest
 ) {
-  const ruleStack = [];
-
   if (!traverseCtx) {
-    return ruleStack; // early exit
+    return []; // forced early exit
   }
 
+  const ruleStack = [];
   let stackUnwindingPointer = traverseCtx;
 
   // Move up from current context to the first rule that should "start" the stack.
   while (
-    stackUnwindingPointer &&
     isCstNode(stackUnwindingPointer.node) &&
     !startRuleNames.includes(stackUnwindingPointer.node.name)
   ) {
@@ -321,14 +319,12 @@ function _getCustomErrorRuleStack(
   }
 
   // Now start adding all found rules to the stack as we move upward.
-  while (
-    (stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext) &&
-    isCstNode(stackUnwindingPointer.node)
-  ) {
+  while (isCstNode(stackUnwindingPointer.node)) {
     ruleStack.unshift(stackUnwindingPointer.node.name);
     if (earlyExitTest(stackUnwindingPointer)) {
       return [];
     }
+    stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
   }
 
   // If the rule stack of the sub-parser doesn't get all the way up to the
@@ -363,7 +359,9 @@ function _getNoPrefixError(
 ) {
   return {
     name: 'NoNamespacePrefixError',
-    message: 'A prefix was used for which there was no namespace defined.',
+    message: `A prefix ("${
+      node.image
+    }") was used for which there was no namespace defined.`,
     token: node,
     context: {
       ruleStack: _getCustomErrorRuleStack(
@@ -417,10 +415,11 @@ function _getDisallowedLiteralError(
   subParserRuleName: string
 ) {
   let foundPropertyListPathNotEmptyCtx = null;
+  let errorContext = null;
   const errorRuleStack = _getCustomErrorRuleStack(
     parentCtx,
     fullCtx,
-    ['Expression', 'TriplesBlock'],
+    ['Expression', 'TriplesSameSubjectPath'],
     subParserRuleName,
     (stackCtx: CstNodeTraverseContext) => {
       if (stackCtx.node.name === 'PropertyListPathNotEmpty') {
@@ -430,7 +429,7 @@ function _getDisallowedLiteralError(
 
       const { node, parentCtx } = stackCtx;
       const isExpression = node.name === 'Expression';
-      const isTriplesBlock = node.name === 'TriplesBlock';
+      const isTriplesBlock = node.name === 'TriplesSameSubjectPath';
 
       if (!isExpression && !isTriplesBlock) {
         return false;
@@ -445,6 +444,7 @@ function _getDisallowedLiteralError(
             'TriplesSameSubjectPath');
 
       if (isBoundExpression || isTriplesBlockSubject) {
+        errorContext = isBoundExpression ? 'Bind' : 'TriplesBlock';
         return false;
       }
 
@@ -462,7 +462,9 @@ function _getDisallowedLiteralError(
 
   return {
     name: 'DisallowedLiteralError',
-    message: 'Literals cannot be used as subjects in Stardog Rules.',
+    message: `Token ${node.tokenType.tokenName} (${
+      node.image
+    }) cannot be used as a subject inside of a ${errorContext} in Stardog Rules Syntax.`,
     token: node,
     context: {
       ruleStack: errorRuleStack,

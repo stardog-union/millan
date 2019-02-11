@@ -45,7 +45,7 @@ describe('srs parser', () => {
     );
     expect(semanticErrors).toHaveLength(1);
     expect(semanticErrors[0].message).toBe(
-      'Token STRING_LITERAL2 cannot be used in as the subject of a Expression.'
+      'Token STRING_LITERAL2 ("literal") cannot be used as a subject inside of a Bind in Stardog Rules Syntax.'
     );
   });
 
@@ -55,11 +55,11 @@ describe('srs parser', () => {
     );
     expect(semanticErrors).toHaveLength(1);
     expect(semanticErrors[0].message).toBe(
-      'Token STRING_LITERAL2 cannot be used in as the subject of a TriplesSameSubjectPath.'
+      'Token STRING_LITERAL2 ("literal") cannot be used as a subject inside of a TriplesBlock in Stardog Rules Syntax.'
     );
   });
 
-  it.only('catches errors in invalid SRS documents', () => {
+  it('catches errors in invalid SRS documents', () => {
     const invalidDocs = {
       // only pull wrongBraceMatch3 for now as wrongBraceMatch isn't catching errors
       wrongBraceMatch3: fixtures.invalid.lex.wrongBraceMatch3,
