@@ -7,5 +7,9 @@ export interface IStardogParser {
   ) => { errors: IRecognitionException[]; cst: CstNode };
 }
 
+export interface ITokensMap {
+  [key: string]: IToken[];
+}
+
 // exported for convenience
 export { IToken, CstNode, TokenType };

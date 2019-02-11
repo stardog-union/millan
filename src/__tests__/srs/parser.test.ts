@@ -40,21 +40,21 @@ describe('srs parser', () => {
   });
 
   it('recognizes restricted literals in the If clause', () => {
-    const { semanticErrors } = parser.parse(
+    const { errors } = parser.parse(
       fixtures.invalid.parse.noLiteralRuleSubjects
     );
-    expect(semanticErrors).toHaveLength(1);
-    expect(semanticErrors[0].message).toBe(
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toBe(
       'Token STRING_LITERAL2 ("literal") cannot be used as a subject inside of a Bind in Stardog Rules Syntax.'
     );
   });
 
   it('recognizes restricted literals in the Then clause', () => {
-    const { semanticErrors } = parser.parse(
+    const { errors } = parser.parse(
       fixtures.invalid.parse.noLiteralRuleSubjects4
     );
-    expect(semanticErrors).toHaveLength(1);
-    expect(semanticErrors[0].message).toBe(
+    expect(errors).toHaveLength(1);
+    expect(errors[0].message).toBe(
       'Token STRING_LITERAL2 ("literal") cannot be used as a subject inside of a TriplesBlock in Stardog Rules Syntax.'
     );
   });
@@ -102,6 +102,7 @@ describe('srs parser', () => {
       }
       return ext === '.ttl' || ext === '.nt';
     });
+
     await Promise.all(
       files.map(async (fileName) => {
         const testDocument = await readFileAsync(
