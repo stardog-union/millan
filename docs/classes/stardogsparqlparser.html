@@ -127,7 +127,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_if" class="tsd-kind-icon">Built<wbr>InCall_<wbr>IF</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_iri" class="tsd-kind-icon">Built<wbr>InCall_<wbr>IRI</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_lang" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LANG</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_langmatchers" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHERS</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_langmatches" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHES</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_lcase" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LCASE</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_md5" class="tsd-kind-icon">Built<wbr>InCall_<wbr>MD5</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#builtincall_minutes" class="tsd-kind-icon">Built<wbr>InCall_<wbr>MINUTES</a></li>
@@ -430,6 +430,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="stardogsparqlparser.html#nestedrulefinallystateupdate" class="tsd-kind-icon">nested<wbr>Rule<wbr>Finally<wbr>State<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="stardogsparqlparser.html#nestedruleinvocationstateupdate" class="tsd-kind-icon">nested<wbr>Rule<wbr>Invocation<wbr>State<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#parsegroupgraphpattern" class="tsd-kind-icon">parse<wbr>Group<wbr>Graph<wbr>Pattern</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#parsetriplesblock" class="tsd-kind-icon">parse<wbr>Triples<wbr>Block</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="stardogsparqlparser.html#reset" class="tsd-kind-icon">reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="stardogsparqlparser.html#resetlexerstate" class="tsd-kind-icon">reset<wbr>Lexer<wbr>State</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="stardogsparqlparser.html#rulefinallystateupdate" class="tsd-kind-icon">rule<wbr>Finally<wbr>State<wbr>Update</a></li>
@@ -456,7 +458,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L12">sparql/StardogSparqlParser.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L12">sparql/StardogSparqlParser.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -479,7 +481,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#add">Add</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L411">sparql/BaseSparqlParser.ts:411</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L415">sparql/BaseSparqlParser.ts:415</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -513,11 +515,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="additiveexpression" class="tsd-anchor"></a>
 					<h3>Additive<wbr>Expression</h3>
-					<div class="tsd-signature tsd-kind-icon">Additive<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;AdditiveExpression&#x27;, () &#x3D;&gt; {log(&#x27;AdditiveExpression&#x27;);this.SUBRULE(this.MultiplicativeExpression);this.MANY(() &#x3D;&gt;this.OR([{ALT: () &#x3D;&gt; {this.OR1([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Plus) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Minus) },]);this.SUBRULE1(this.MultiplicativeExpression);},},{ALT: () &#x3D;&gt; {this.OR2([{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralPositive) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralNegative) },]);this.MANY1(() &#x3D;&gt;this.OR3([{ALT: () &#x3D;&gt; {this.OR4([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Star) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.ForwardSlash) },]);this.SUBRULE1(this.UnaryExpression);},},]));},},]));})</span></div>
+					<div class="tsd-signature tsd-kind-icon">Additive<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;AdditiveExpression&#x27;, () &#x3D;&gt; {log(&#x27;AdditiveExpression&#x27;);this.SUBRULE(this.MultiplicativeExpression);this.MANY(() &#x3D;&gt;this.OR([{ALT: () &#x3D;&gt; {this.OR1([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Plus) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Minus) },]);this.SUBRULE1(this.MultiplicativeExpression);},},{ALT: () &#x3D;&gt; {this.OR2([{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralPositive) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralNegative) },]);this.MANY1(() &#x3D;&gt;this.OR3([{ALT: () &#x3D;&gt; {this.OR4([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Star) },{ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.ForwardSlash),},]);this.SUBRULE1(this.UnaryExpression);},},]));},},]));})</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#additiveexpression">AdditiveExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1176">sparql/BaseSparqlParser.ts:1176</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1180">sparql/BaseSparqlParser.ts:1180</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -555,7 +557,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#aggregate">Aggregate</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1861">sparql/BaseSparqlParser.ts:1861</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1867">sparql/BaseSparqlParser.ts:1867</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -593,7 +595,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#arglist">ArgList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L744">sparql/BaseSparqlParser.ts:744</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L748">sparql/BaseSparqlParser.ts:748</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -631,7 +633,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#askquery">AskQuery</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L205">sparql/BaseSparqlParser.ts:205</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L209">sparql/BaseSparqlParser.ts:209</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -669,7 +671,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#avg">Avg</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1828">sparql/BaseSparqlParser.ts:1828</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1834">sparql/BaseSparqlParser.ts:1834</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -707,7 +709,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#basedecl">BaseDecl</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L105">sparql/BaseSparqlParser.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L109">sparql/BaseSparqlParser.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -745,7 +747,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#bind">Bind</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L637">sparql/BaseSparqlParser.ts:637</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L641">sparql/BaseSparqlParser.ts:641</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -783,7 +785,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#blanknode">BlankNode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1966">sparql/BaseSparqlParser.ts:1966</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1972">sparql/BaseSparqlParser.ts:1972</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -821,7 +823,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#blanknodepropertylist">BlankNodePropertyList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1023">sparql/BaseSparqlParser.ts:1023</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1027">sparql/BaseSparqlParser.ts:1027</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -859,7 +861,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#blanknodepropertylistpath">BlankNodePropertyListPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1038">sparql/BaseSparqlParser.ts:1038</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1042">sparql/BaseSparqlParser.ts:1042</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -897,7 +899,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#booleanliteral">BooleanLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1932">sparql/BaseSparqlParser.ts:1932</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1938">sparql/BaseSparqlParser.ts:1938</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -935,7 +937,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#brackettedexpression">BrackettedExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1274">sparql/BaseSparqlParser.ts:1274</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1280">sparql/BaseSparqlParser.ts:1280</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -969,11 +971,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="builtincall" class="tsd-anchor"></a>
 					<h3>Built<wbr>InCall</h3>
-					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.OVERRIDE_RULE(&#x27;BuiltInCall&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Aggregate) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LANG) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LANGMATCHERS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_DATATYPE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_BOUND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_IRI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_URI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_BNODE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_RAND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ABS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CEIL) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_FLOOR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ROUND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CONCAT) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.SubstringExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRLEN) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.StrReplaceExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_UCASE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LCASE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ENCODE_FOR_URI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CONTAINS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRSTARTS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRENDS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRBEFORE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRAFTER) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_YEAR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MONTH) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_DAY) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_HOURS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MINUTES) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SECONDS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_TIMEZONE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_TZ) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_NOW) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_UUID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRUUID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MD5) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA1) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA256) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA384) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA512) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_COALESCE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_IF) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRLANG) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRDT) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_sameTerm) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isIRI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isURI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isBlank) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isNumeric) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RegexExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ExistsFunction) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NotExistsFunction) },// Stardog has some additional built-in functions, and supports user-defined custom functions{ ALT: () &#x3D;&gt; this.SUBRULE(this.StardogOrCustomFunction) },]);})</span></div>
+					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.OVERRIDE_RULE(&#x27;BuiltInCall&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Aggregate) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LANG) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LANGMATCHES) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_DATATYPE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_BOUND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_IRI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_URI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_BNODE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_RAND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ABS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CEIL) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_FLOOR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ROUND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CONCAT) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.SubstringExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRLEN) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.StrReplaceExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_UCASE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LCASE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ENCODE_FOR_URI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CONTAINS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRSTARTS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRENDS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRBEFORE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRAFTER) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_YEAR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MONTH) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_DAY) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_HOURS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MINUTES) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SECONDS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_TIMEZONE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_TZ) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_NOW) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_UUID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRUUID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MD5) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA1) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA256) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA384) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA512) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_COALESCE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_IF) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRLANG) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRDT) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_sameTerm) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isIRI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isURI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isBlank) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isNumeric) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RegexExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ExistsFunction) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NotExistsFunction) },// Stardog has some additional built-in functions, and supports user-defined custom functions{ ALT: () &#x3D;&gt; this.SUBRULE(this.StardogOrCustomFunction) },]);})</span></div>
 					<aside class="tsd-sources">
 						<p>Overrides <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall">BuiltInCall</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L74">sparql/StardogSparqlParser.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L74">sparql/StardogSparqlParser.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1008,7 +1010,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_abs">BuiltInCall_ABS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1351">sparql/BaseSparqlParser.ts:1351</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1357">sparql/BaseSparqlParser.ts:1357</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1046,7 +1048,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_bnode">BuiltInCall_BNODE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1332">sparql/BaseSparqlParser.ts:1332</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1338">sparql/BaseSparqlParser.ts:1338</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1084,7 +1086,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_bound">BuiltInCall_BOUND</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1311">sparql/BaseSparqlParser.ts:1311</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1317">sparql/BaseSparqlParser.ts:1317</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1122,7 +1124,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_ceil">BuiltInCall_CEIL</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1358">sparql/BaseSparqlParser.ts:1358</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1364">sparql/BaseSparqlParser.ts:1364</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1160,7 +1162,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_coalesce">BuiltInCall_COALESCE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1584">sparql/BaseSparqlParser.ts:1584</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1590">sparql/BaseSparqlParser.ts:1590</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1198,7 +1200,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_concat">BuiltInCall_CONCAT</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1379">sparql/BaseSparqlParser.ts:1379</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1385">sparql/BaseSparqlParser.ts:1385</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1236,7 +1238,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_contains">BuiltInCall_CONTAINS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1412">sparql/BaseSparqlParser.ts:1412</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1418">sparql/BaseSparqlParser.ts:1418</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1274,7 +1276,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_datatype">BuiltInCall_DATATYPE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1304">sparql/BaseSparqlParser.ts:1304</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1310">sparql/BaseSparqlParser.ts:1310</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1312,7 +1314,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_day">BuiltInCall_DAY</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1478">sparql/BaseSparqlParser.ts:1478</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1484">sparql/BaseSparqlParser.ts:1484</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1350,7 +1352,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_encode_for_uri">BuiltInCall_ENCODE_FOR_URI</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1405">sparql/BaseSparqlParser.ts:1405</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1411">sparql/BaseSparqlParser.ts:1411</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1388,7 +1390,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_floor">BuiltInCall_FLOOR</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1365">sparql/BaseSparqlParser.ts:1365</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1371">sparql/BaseSparqlParser.ts:1371</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1426,7 +1428,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_hours">BuiltInCall_HOURS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1486">sparql/BaseSparqlParser.ts:1486</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1492">sparql/BaseSparqlParser.ts:1492</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1464,7 +1466,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_if">BuiltInCall_IF</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1590">sparql/BaseSparqlParser.ts:1590</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1596">sparql/BaseSparqlParser.ts:1596</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1502,7 +1504,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_iri">BuiltInCall_IRI</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1318">sparql/BaseSparqlParser.ts:1318</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1324">sparql/BaseSparqlParser.ts:1324</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1540,7 +1542,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_lang">BuiltInCall_LANG</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1288">sparql/BaseSparqlParser.ts:1288</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1294">sparql/BaseSparqlParser.ts:1294</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1572,13 +1574,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="builtincall_langmatchers" class="tsd-anchor"></a>
-					<h3>Built<wbr>InCall_<wbr>LANGMATCHERS</h3>
-					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHERS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_LANGMATCHERS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_LANGMATCHERS&#x27;);this.CONSUME(sparqlTokenMap.LANGMATCHERS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
+					<a name="builtincall_langmatches" class="tsd-anchor"></a>
+					<h3>Built<wbr>InCall_<wbr>LANGMATCHES</h3>
+					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_LANGMATCHES&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_LANGMATCHES&#x27;);this.CONSUME(sparqlTokenMap.LANGMATCHES);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_langmatchers">BuiltInCall_LANGMATCHERS</a></p>
+						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_langmatches">BuiltInCall_LANGMATCHES</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1295">sparql/BaseSparqlParser.ts:1295</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1301">sparql/BaseSparqlParser.ts:1301</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1616,7 +1618,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_lcase">BuiltInCall_LCASE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1398">sparql/BaseSparqlParser.ts:1398</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1404">sparql/BaseSparqlParser.ts:1404</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1654,7 +1656,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_md5">BuiltInCall_MD5</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1544">sparql/BaseSparqlParser.ts:1544</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1550">sparql/BaseSparqlParser.ts:1550</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1692,7 +1694,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_minutes">BuiltInCall_MINUTES</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1494">sparql/BaseSparqlParser.ts:1494</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1500">sparql/BaseSparqlParser.ts:1500</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1730,7 +1732,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_month">BuiltInCall_MONTH</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1470">sparql/BaseSparqlParser.ts:1470</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1476">sparql/BaseSparqlParser.ts:1476</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1768,7 +1770,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_now">BuiltInCall_NOW</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1526">sparql/BaseSparqlParser.ts:1526</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1532">sparql/BaseSparqlParser.ts:1532</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1806,7 +1808,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_rand">BuiltInCall_RAND</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1346">sparql/BaseSparqlParser.ts:1346</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1352">sparql/BaseSparqlParser.ts:1352</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1844,7 +1846,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_round">BuiltInCall_ROUND</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1372">sparql/BaseSparqlParser.ts:1372</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1378">sparql/BaseSparqlParser.ts:1378</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1882,7 +1884,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_seconds">BuiltInCall_SECONDS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1502">sparql/BaseSparqlParser.ts:1502</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1508">sparql/BaseSparqlParser.ts:1508</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1920,7 +1922,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_sha1">BuiltInCall_SHA1</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1552">sparql/BaseSparqlParser.ts:1552</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1558">sparql/BaseSparqlParser.ts:1558</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1958,7 +1960,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_sha256">BuiltInCall_SHA256</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1560">sparql/BaseSparqlParser.ts:1560</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1566">sparql/BaseSparqlParser.ts:1566</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1996,7 +1998,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_sha384">BuiltInCall_SHA384</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1568">sparql/BaseSparqlParser.ts:1568</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1574">sparql/BaseSparqlParser.ts:1574</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2034,7 +2036,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_sha512">BuiltInCall_SHA512</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1576">sparql/BaseSparqlParser.ts:1576</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1582">sparql/BaseSparqlParser.ts:1582</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2072,7 +2074,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_str">BuiltInCall_STR</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1281">sparql/BaseSparqlParser.ts:1281</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1287">sparql/BaseSparqlParser.ts:1287</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2110,7 +2112,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strafter">BuiltInCall_STRAFTER</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1452">sparql/BaseSparqlParser.ts:1452</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1458">sparql/BaseSparqlParser.ts:1458</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2148,7 +2150,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strbefore">BuiltInCall_STRBEFORE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1442">sparql/BaseSparqlParser.ts:1442</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1448">sparql/BaseSparqlParser.ts:1448</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2186,7 +2188,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strdt">BuiltInCall_STRDT</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1612">sparql/BaseSparqlParser.ts:1612</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1618">sparql/BaseSparqlParser.ts:1618</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2224,7 +2226,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strends">BuiltInCall_STRENDS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1432">sparql/BaseSparqlParser.ts:1432</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1438">sparql/BaseSparqlParser.ts:1438</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2262,7 +2264,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strlang">BuiltInCall_STRLANG</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1602">sparql/BaseSparqlParser.ts:1602</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1608">sparql/BaseSparqlParser.ts:1608</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2300,7 +2302,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strlen">BuiltInCall_STRLEN</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1384">sparql/BaseSparqlParser.ts:1384</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1390">sparql/BaseSparqlParser.ts:1390</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2338,7 +2340,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_strstarts">BuiltInCall_STRSTARTS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1422">sparql/BaseSparqlParser.ts:1422</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1428">sparql/BaseSparqlParser.ts:1428</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2376,7 +2378,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_struuid">BuiltInCall_STRUUID</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1538">sparql/BaseSparqlParser.ts:1538</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1544">sparql/BaseSparqlParser.ts:1544</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2414,7 +2416,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_timezone">BuiltInCall_TIMEZONE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1510">sparql/BaseSparqlParser.ts:1510</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1516">sparql/BaseSparqlParser.ts:1516</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2452,7 +2454,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_tz">BuiltInCall_TZ</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1518">sparql/BaseSparqlParser.ts:1518</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1524">sparql/BaseSparqlParser.ts:1524</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2490,7 +2492,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_ucase">BuiltInCall_UCASE</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1391">sparql/BaseSparqlParser.ts:1391</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1397">sparql/BaseSparqlParser.ts:1397</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2528,7 +2530,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_uri">BuiltInCall_URI</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1325">sparql/BaseSparqlParser.ts:1325</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1331">sparql/BaseSparqlParser.ts:1331</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2566,7 +2568,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_uuid">BuiltInCall_UUID</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1532">sparql/BaseSparqlParser.ts:1532</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1538">sparql/BaseSparqlParser.ts:1538</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2604,7 +2606,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_year">BuiltInCall_YEAR</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1462">sparql/BaseSparqlParser.ts:1462</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1468">sparql/BaseSparqlParser.ts:1468</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2642,7 +2644,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_isblank">BuiltInCall_isBlank</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1648">sparql/BaseSparqlParser.ts:1648</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1654">sparql/BaseSparqlParser.ts:1654</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2680,7 +2682,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_isiri">BuiltInCall_isIRI</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1632">sparql/BaseSparqlParser.ts:1632</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1638">sparql/BaseSparqlParser.ts:1638</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2718,7 +2720,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_isliteral">BuiltInCall_isLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1656">sparql/BaseSparqlParser.ts:1656</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1662">sparql/BaseSparqlParser.ts:1662</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2756,7 +2758,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_isnumeric">BuiltInCall_isNumeric</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1664">sparql/BaseSparqlParser.ts:1664</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1670">sparql/BaseSparqlParser.ts:1670</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2794,7 +2796,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_isuri">BuiltInCall_isURI</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1640">sparql/BaseSparqlParser.ts:1640</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1646">sparql/BaseSparqlParser.ts:1646</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2832,7 +2834,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#builtincall_sameterm">BuiltInCall_sameTerm</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1622">sparql/BaseSparqlParser.ts:1622</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1628">sparql/BaseSparqlParser.ts:1628</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2881,7 +2883,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#clear">Clear</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L390">sparql/BaseSparqlParser.ts:390</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L394">sparql/BaseSparqlParser.ts:394</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2919,7 +2921,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#collection">Collection</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1045">sparql/BaseSparqlParser.ts:1045</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1049">sparql/BaseSparqlParser.ts:1049</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2957,7 +2959,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#collectionpath">CollectionPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1052">sparql/BaseSparqlParser.ts:1052</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1056">sparql/BaseSparqlParser.ts:1056</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2995,7 +2997,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#conditionalandexpression">ConditionalAndExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1124">sparql/BaseSparqlParser.ts:1124</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1128">sparql/BaseSparqlParser.ts:1128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3033,7 +3035,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#conditionalorexpression">ConditionalOrExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1116">sparql/BaseSparqlParser.ts:1116</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1120">sparql/BaseSparqlParser.ts:1120</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3071,7 +3073,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#constant">Constant</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L76">sparql/BaseSparqlParser.ts:76</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L80">sparql/BaseSparqlParser.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3109,7 +3111,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#constraint">Constraint</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L729">sparql/BaseSparqlParser.ts:729</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L733">sparql/BaseSparqlParser.ts:733</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3147,7 +3149,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#constructquery">ConstructQuery</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L166">sparql/BaseSparqlParser.ts:166</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L170">sparql/BaseSparqlParser.ts:170</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3185,7 +3187,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#constructtemplate">ConstructTemplate</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L141">sparql/StardogSparqlParser.ts:141</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L141">sparql/StardogSparqlParser.ts:141</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3220,7 +3222,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#constructtriples">ConstructTriples</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L788">sparql/BaseSparqlParser.ts:788</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L792">sparql/BaseSparqlParser.ts:792</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3258,7 +3260,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#copy">Copy</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L429">sparql/BaseSparqlParser.ts:429</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L433">sparql/BaseSparqlParser.ts:433</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3296,7 +3298,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#count">Count</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1789">sparql/BaseSparqlParser.ts:1789</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1795">sparql/BaseSparqlParser.ts:1795</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3334,7 +3336,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#create">Create</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L404">sparql/BaseSparqlParser.ts:404</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L408">sparql/BaseSparqlParser.ts:408</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3372,7 +3374,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#datablock">DataBlock</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L653">sparql/BaseSparqlParser.ts:653</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L657">sparql/BaseSparqlParser.ts:657</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3410,7 +3412,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#datablockvalue">DataBlockValue</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L697">sparql/BaseSparqlParser.ts:697</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L701">sparql/BaseSparqlParser.ts:701</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3448,7 +3450,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#datasetclause">DatasetClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L213">sparql/BaseSparqlParser.ts:213</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L217">sparql/BaseSparqlParser.ts:217</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3486,7 +3488,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#defaultgraphclause">DefaultGraphClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L222">sparql/BaseSparqlParser.ts:222</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L226">sparql/BaseSparqlParser.ts:226</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3524,7 +3526,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#deleteclause">DeleteClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L476">sparql/BaseSparqlParser.ts:476</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L480">sparql/BaseSparqlParser.ts:480</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3562,7 +3564,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#deletedata">DeleteData</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L444">sparql/BaseSparqlParser.ts:444</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L448">sparql/BaseSparqlParser.ts:448</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3600,7 +3602,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#deletewhere">DeleteWhere</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L450">sparql/BaseSparqlParser.ts:450</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L454">sparql/BaseSparqlParser.ts:454</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3638,7 +3640,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#describequery">DescribeQuery</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L189">sparql/BaseSparqlParser.ts:189</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L193">sparql/BaseSparqlParser.ts:193</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3676,7 +3678,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#drop">Drop</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L397">sparql/BaseSparqlParser.ts:397</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L401">sparql/BaseSparqlParser.ts:401</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3714,7 +3716,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#existsfunction">ExistsFunction</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1777">sparql/BaseSparqlParser.ts:1777</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1783">sparql/BaseSparqlParser.ts:1783</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3752,7 +3754,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#expression">Expression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1111">sparql/BaseSparqlParser.ts:1111</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1115">sparql/BaseSparqlParser.ts:1115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3790,7 +3792,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#expressionlist">ExpressionList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L763">sparql/BaseSparqlParser.ts:763</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L767">sparql/BaseSparqlParser.ts:767</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3828,7 +3830,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#filter">Filter</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L723">sparql/BaseSparqlParser.ts:723</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L727">sparql/BaseSparqlParser.ts:727</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3866,7 +3868,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#functioncall">FunctionCall</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L738">sparql/BaseSparqlParser.ts:738</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L742">sparql/BaseSparqlParser.ts:742</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3904,7 +3906,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphgraphpattern">GraphGraphPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L622">sparql/BaseSparqlParser.ts:622</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L626">sparql/BaseSparqlParser.ts:626</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3942,7 +3944,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphnode">GraphNode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1059">sparql/BaseSparqlParser.ts:1059</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1063">sparql/BaseSparqlParser.ts:1063</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3980,7 +3982,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphnodepath">GraphNodePath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1067">sparql/BaseSparqlParser.ts:1067</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1071">sparql/BaseSparqlParser.ts:1071</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4018,7 +4020,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphordefault">GraphOrDefault</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L502">sparql/BaseSparqlParser.ts:502</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L506">sparql/BaseSparqlParser.ts:506</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4056,7 +4058,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphpatternnottriples">GraphPatternNotTriples</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L602">sparql/BaseSparqlParser.ts:602</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L606">sparql/BaseSparqlParser.ts:606</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4094,7 +4096,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphref">GraphRef</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L515">sparql/BaseSparqlParser.ts:515</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L519">sparql/BaseSparqlParser.ts:519</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4132,7 +4134,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphrefall">GraphRefAll</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L521">sparql/BaseSparqlParser.ts:521</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L525">sparql/BaseSparqlParser.ts:525</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4170,7 +4172,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#graphterm">GraphTerm</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1099">sparql/BaseSparqlParser.ts:1099</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1103">sparql/BaseSparqlParser.ts:1103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4208,7 +4210,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#groupclause">GroupClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L252">sparql/BaseSparqlParser.ts:252</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L256">sparql/BaseSparqlParser.ts:256</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4246,7 +4248,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#groupconcat">GroupConcat</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1846">sparql/BaseSparqlParser.ts:1846</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1852">sparql/BaseSparqlParser.ts:1852</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4284,7 +4286,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#groupcondition">GroupCondition</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L258">sparql/BaseSparqlParser.ts:258</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L262">sparql/BaseSparqlParser.ts:262</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4322,7 +4324,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#groupgraphpattern">GroupGraphPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L573">sparql/BaseSparqlParser.ts:573</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L577">sparql/BaseSparqlParser.ts:577</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4360,7 +4362,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#groupgraphpatternsub">GroupGraphPatternSub</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L583">sparql/BaseSparqlParser.ts:583</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L587">sparql/BaseSparqlParser.ts:587</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4398,7 +4400,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#grouporuniongraphpattern">GroupOrUnionGraphPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L714">sparql/BaseSparqlParser.ts:714</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L718">sparql/BaseSparqlParser.ts:718</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4436,7 +4438,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#havingclause">HavingClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L278">sparql/BaseSparqlParser.ts:278</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L282">sparql/BaseSparqlParser.ts:282</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4474,7 +4476,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#havingcondition">HavingCondition</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L284">sparql/BaseSparqlParser.ts:284</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L288">sparql/BaseSparqlParser.ts:288</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4512,7 +4514,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#inlinedata">InlineData</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L647">sparql/BaseSparqlParser.ts:647</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L651">sparql/BaseSparqlParser.ts:651</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4550,7 +4552,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#inlinedatafull">InlineDataFull</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L669">sparql/BaseSparqlParser.ts:669</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L673">sparql/BaseSparqlParser.ts:673</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4588,7 +4590,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#inlinedataonevar">InlineDataOneVar</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L661">sparql/BaseSparqlParser.ts:661</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L665">sparql/BaseSparqlParser.ts:665</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4626,7 +4628,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#insertclause">InsertClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L482">sparql/BaseSparqlParser.ts:482</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L486">sparql/BaseSparqlParser.ts:486</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4664,7 +4666,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#insertdata">InsertData</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L438">sparql/BaseSparqlParser.ts:438</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L442">sparql/BaseSparqlParser.ts:442</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4702,7 +4704,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#integer">Integer</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1010">sparql/BaseSparqlParser.ts:1010</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1014">sparql/BaseSparqlParser.ts:1014</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4740,7 +4742,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#limitclause">LimitClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L336">sparql/BaseSparqlParser.ts:336</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L340">sparql/BaseSparqlParser.ts:340</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4778,7 +4780,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#limitoffsetclause">LimitOffsetClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L312">sparql/BaseSparqlParser.ts:312</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L316">sparql/BaseSparqlParser.ts:316</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4816,7 +4818,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#load">Load</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L379">sparql/BaseSparqlParser.ts:379</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L383">sparql/BaseSparqlParser.ts:383</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4854,7 +4856,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#max">Max</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1819">sparql/BaseSparqlParser.ts:1819</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1825">sparql/BaseSparqlParser.ts:1825</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4892,7 +4894,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#maxlength">MaxLength</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L85">sparql/BaseSparqlParser.ts:85</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L89">sparql/BaseSparqlParser.ts:89</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4930,7 +4932,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#min">Min</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1810">sparql/BaseSparqlParser.ts:1810</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1816">sparql/BaseSparqlParser.ts:1816</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4968,7 +4970,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#minusgraphpattern">MinusGraphPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L708">sparql/BaseSparqlParser.ts:708</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L712">sparql/BaseSparqlParser.ts:712</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5006,7 +5008,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#modify">Modify</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L456">sparql/BaseSparqlParser.ts:456</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L460">sparql/BaseSparqlParser.ts:460</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5044,7 +5046,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#move">Move</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L420">sparql/BaseSparqlParser.ts:420</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L424">sparql/BaseSparqlParser.ts:424</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5082,7 +5084,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#multiplicativeexpression">MultiplicativeExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1215">sparql/BaseSparqlParser.ts:1215</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1221">sparql/BaseSparqlParser.ts:1221</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5120,7 +5122,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#namedgraphclause">NamedGraphClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L227">sparql/BaseSparqlParser.ts:227</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L231">sparql/BaseSparqlParser.ts:231</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5158,7 +5160,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#notexistsfunction">NotExistsFunction</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1783">sparql/BaseSparqlParser.ts:1783</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1789">sparql/BaseSparqlParser.ts:1789</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5196,7 +5198,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#numericexpression">NumericExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1171">sparql/BaseSparqlParser.ts:1171</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1175">sparql/BaseSparqlParser.ts:1175</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5234,7 +5236,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#numericliteral">NumericLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1896">sparql/BaseSparqlParser.ts:1896</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1902">sparql/BaseSparqlParser.ts:1902</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5272,7 +5274,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#numericliteralnegative">NumericLiteralNegative</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1923">sparql/BaseSparqlParser.ts:1923</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1929">sparql/BaseSparqlParser.ts:1929</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5310,7 +5312,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#numericliteralpositive">NumericLiteralPositive</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1914">sparql/BaseSparqlParser.ts:1914</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1920">sparql/BaseSparqlParser.ts:1920</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5348,7 +5350,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#numericliteralunsigned">NumericLiteralUnsigned</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1905">sparql/BaseSparqlParser.ts:1905</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1911">sparql/BaseSparqlParser.ts:1911</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5386,7 +5388,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#object">Object</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L850">sparql/BaseSparqlParser.ts:850</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L854">sparql/BaseSparqlParser.ts:854</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5424,7 +5426,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#objectlist">ObjectList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L842">sparql/BaseSparqlParser.ts:842</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L846">sparql/BaseSparqlParser.ts:846</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5462,7 +5464,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#objectlistpath">ObjectListPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L908">sparql/BaseSparqlParser.ts:908</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L912">sparql/BaseSparqlParser.ts:912</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5500,7 +5502,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#objectpath">ObjectPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L916">sparql/BaseSparqlParser.ts:916</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L920">sparql/BaseSparqlParser.ts:920</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5538,7 +5540,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#offsetclause">OffsetClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L330">sparql/BaseSparqlParser.ts:330</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L334">sparql/BaseSparqlParser.ts:334</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5576,7 +5578,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#optionalgraphpattern">OptionalGraphPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L616">sparql/BaseSparqlParser.ts:616</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L620">sparql/BaseSparqlParser.ts:620</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5614,7 +5616,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#orderclause">OrderClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L289">sparql/BaseSparqlParser.ts:289</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L293">sparql/BaseSparqlParser.ts:293</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5652,7 +5654,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#ordercondition">OrderCondition</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L295">sparql/BaseSparqlParser.ts:295</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L299">sparql/BaseSparqlParser.ts:299</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5690,7 +5692,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#path">Path</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L921">sparql/BaseSparqlParser.ts:921</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L925">sparql/BaseSparqlParser.ts:925</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5728,7 +5730,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathalternative">PathAlternative</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L926">sparql/BaseSparqlParser.ts:926</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L930">sparql/BaseSparqlParser.ts:930</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5766,7 +5768,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathelt">PathElt</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L942">sparql/BaseSparqlParser.ts:942</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L946">sparql/BaseSparqlParser.ts:946</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5804,7 +5806,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#patheltorinverse">PathEltOrInverse</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L948">sparql/BaseSparqlParser.ts:948</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L952">sparql/BaseSparqlParser.ts:952</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5842,7 +5844,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathmod">PathMod</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L954">sparql/BaseSparqlParser.ts:954</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L958">sparql/BaseSparqlParser.ts:958</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5880,7 +5882,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathnegatedpropertyset">PathNegatedPropertySet</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L984">sparql/BaseSparqlParser.ts:984</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L988">sparql/BaseSparqlParser.ts:988</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5918,7 +5920,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathoneinpropertyset">PathOneInPropertySet</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1001">sparql/BaseSparqlParser.ts:1001</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1005">sparql/BaseSparqlParser.ts:1005</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5956,7 +5958,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathprimary">PathPrimary</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L963">sparql/BaseSparqlParser.ts:963</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L967">sparql/BaseSparqlParser.ts:967</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5993,7 +5995,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathQuery&#x27;, () &#x3D;&gt; {this.SUBRULE(this.PathSpec);this.MANY(() &#x3D;&gt; this.SUBRULE(this.DatasetClause));this.CONSUME(sparqlTokenMap.START);this.SUBRULE(this.PathTerminal);this.CONSUME(sparqlTokenMap.END);this.SUBRULE1(this.PathTerminal);this.SUBRULE(this.Via);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.MaxLength));this.SUBRULE(this.SolutionModifier);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L29">sparql/StardogSparqlParser.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L29">sparql/StardogSparqlParser.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6031,7 +6033,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#pathsequence">PathSequence</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L934">sparql/BaseSparqlParser.ts:934</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L938">sparql/BaseSparqlParser.ts:938</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6068,7 +6070,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Spec<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathSpec&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.PATHS) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.PATHS_SHORTEST) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.PATHS_ALL) },]);this.OPTION1(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.CYCLIC));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L65">sparql/StardogSparqlParser.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L65">sparql/StardogSparqlParser.ts:65</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6105,7 +6107,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Terminal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathTerminal&#x27;, () &#x3D;&gt; {this.SUBRULE(this.Var);this.OPTION(() &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Equals);this.SUBRULE(this.iri);},},{ ALT: () &#x3D;&gt; this.SUBRULE(this.GroupGraphPattern) },]);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L50">sparql/StardogSparqlParser.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L50">sparql/StardogSparqlParser.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6143,7 +6145,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#prefixdecl">PrefixDecl</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L111">sparql/BaseSparqlParser.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L115">sparql/BaseSparqlParser.ts:115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6181,7 +6183,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#prefixedname">PrefixedName</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1958">sparql/BaseSparqlParser.ts:1958</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1964">sparql/BaseSparqlParser.ts:1964</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6219,7 +6221,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#primaryexpression">PrimaryExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1261">sparql/BaseSparqlParser.ts:1261</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1267">sparql/BaseSparqlParser.ts:1267</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6257,7 +6259,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#prologue">Prologue</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L95">sparql/BaseSparqlParser.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L99">sparql/BaseSparqlParser.ts:99</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6295,7 +6297,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#propertylist">PropertyList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L815">sparql/BaseSparqlParser.ts:815</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L819">sparql/BaseSparqlParser.ts:819</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6333,7 +6335,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#propertylistnotempty">PropertyListNotEmpty</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L820">sparql/BaseSparqlParser.ts:820</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L824">sparql/BaseSparqlParser.ts:824</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6371,7 +6373,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#propertylistpath">PropertyListPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L873">sparql/BaseSparqlParser.ts:873</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L877">sparql/BaseSparqlParser.ts:877</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6409,7 +6411,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#propertylistpathnotempty">PropertyListPathNotEmpty</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L878">sparql/BaseSparqlParser.ts:878</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L882">sparql/BaseSparqlParser.ts:882</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6447,7 +6449,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#quaddata">QuadData</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L538">sparql/BaseSparqlParser.ts:538</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L542">sparql/BaseSparqlParser.ts:542</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6485,7 +6487,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#quadpattern">QuadPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L531">sparql/BaseSparqlParser.ts:531</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L535">sparql/BaseSparqlParser.ts:535</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6523,7 +6525,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#quads">Quads</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L545">sparql/BaseSparqlParser.ts:545</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L549">sparql/BaseSparqlParser.ts:549</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6561,7 +6563,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#quadsnottriples">QuadsNotTriples</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L555">sparql/BaseSparqlParser.ts:555</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L559">sparql/BaseSparqlParser.ts:559</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6599,7 +6601,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#query">Query</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L18">sparql/StardogSparqlParser.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L18">sparql/StardogSparqlParser.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6634,7 +6636,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#queryunit">QueryUnit</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L60">sparql/BaseSparqlParser.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L64">sparql/BaseSparqlParser.ts:64</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6672,7 +6674,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#rdfliteral">RDFLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1880">sparql/BaseSparqlParser.ts:1880</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1886">sparql/BaseSparqlParser.ts:1886</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6732,7 +6734,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#regexexpression">RegexExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1733">sparql/BaseSparqlParser.ts:1733</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1739">sparql/BaseSparqlParser.ts:1739</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6770,7 +6772,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#relationalexpression">RelationalExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1137">sparql/BaseSparqlParser.ts:1137</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1141">sparql/BaseSparqlParser.ts:1141</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6808,7 +6810,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#sample">Sample</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1837">sparql/BaseSparqlParser.ts:1837</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1843">sparql/BaseSparqlParser.ts:1843</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6846,7 +6848,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#selectclause">SelectClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L134">sparql/BaseSparqlParser.ts:134</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L138">sparql/BaseSparqlParser.ts:138</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6884,7 +6886,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#selectquery">SelectQuery</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L118">sparql/BaseSparqlParser.ts:118</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L122">sparql/BaseSparqlParser.ts:122</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6922,7 +6924,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#servicegraphpattern">ServiceGraphPattern</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L629">sparql/BaseSparqlParser.ts:629</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L633">sparql/BaseSparqlParser.ts:633</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6960,7 +6962,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#solutionmodifier">SolutionModifier</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L244">sparql/BaseSparqlParser.ts:244</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L248">sparql/BaseSparqlParser.ts:248</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6998,7 +7000,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#sourceselector">SourceSelector</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L233">sparql/BaseSparqlParser.ts:233</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L237">sparql/BaseSparqlParser.ts:237</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7036,7 +7038,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#sparqldoc">SparqlDoc</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L51">sparql/BaseSparqlParser.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L55">sparql/BaseSparqlParser.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7073,7 +7075,7 @@
 					<div class="tsd-signature tsd-kind-icon">Stardog<wbr>OrCustom<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;StardogOrCustomFunction&#x27;, () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Unknown);this.SUBRULE(this.ExpressionList);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L136">sparql/StardogSparqlParser.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L136">sparql/StardogSparqlParser.ts:136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7111,7 +7113,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#strreplaceexpression">StrReplaceExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1761">sparql/BaseSparqlParser.ts:1761</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1767">sparql/BaseSparqlParser.ts:1767</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7149,7 +7151,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#string">String</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1940">sparql/BaseSparqlParser.ts:1940</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1946">sparql/BaseSparqlParser.ts:1946</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7187,7 +7189,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#subselect">SubSelect</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L126">sparql/BaseSparqlParser.ts:126</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L130">sparql/BaseSparqlParser.ts:130</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7225,7 +7227,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#substringexpression">SubstringExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1747">sparql/BaseSparqlParser.ts:1747</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1753">sparql/BaseSparqlParser.ts:1753</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7263,7 +7265,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#sum">Sum</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1801">sparql/BaseSparqlParser.ts:1801</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1807">sparql/BaseSparqlParser.ts:1807</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7301,7 +7303,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#triplesblock">TriplesBlock</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L593">sparql/BaseSparqlParser.ts:593</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L597">sparql/BaseSparqlParser.ts:597</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7339,7 +7341,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#triplesnode">TriplesNode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1015">sparql/BaseSparqlParser.ts:1015</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1019">sparql/BaseSparqlParser.ts:1019</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7377,7 +7379,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#triplesnodepath">TriplesNodePath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1030">sparql/BaseSparqlParser.ts:1030</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1034">sparql/BaseSparqlParser.ts:1034</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7415,7 +7417,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#triplessamesubject">TriplesSameSubject</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L797">sparql/BaseSparqlParser.ts:797</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L801">sparql/BaseSparqlParser.ts:801</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7453,7 +7455,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#triplessamesubjectpath">TriplesSameSubjectPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L855">sparql/BaseSparqlParser.ts:855</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L859">sparql/BaseSparqlParser.ts:859</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7491,7 +7493,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#triplestemplate">TriplesTemplate</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L564">sparql/BaseSparqlParser.ts:564</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L568">sparql/BaseSparqlParser.ts:568</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7529,7 +7531,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#unaryexpression">UnaryExpression</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1236">sparql/BaseSparqlParser.ts:1236</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1242">sparql/BaseSparqlParser.ts:1242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7567,7 +7569,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#update">Update</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L350">sparql/BaseSparqlParser.ts:350</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L354">sparql/BaseSparqlParser.ts:354</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7605,7 +7607,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#update1">Update1</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L362">sparql/BaseSparqlParser.ts:362</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L366">sparql/BaseSparqlParser.ts:366</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7643,7 +7645,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#updateunit">UpdateUnit</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L90">sparql/BaseSparqlParser.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L94">sparql/BaseSparqlParser.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7681,7 +7683,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#usingclause">UsingClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L488">sparql/BaseSparqlParser.ts:488</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L492">sparql/BaseSparqlParser.ts:492</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7719,7 +7721,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#valuelogical">ValueLogical</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1132">sparql/BaseSparqlParser.ts:1132</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1136">sparql/BaseSparqlParser.ts:1136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7757,7 +7759,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#valuesclause">ValuesClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L342">sparql/BaseSparqlParser.ts:342</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L346">sparql/BaseSparqlParser.ts:346</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7795,7 +7797,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#var">Var</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1091">sparql/BaseSparqlParser.ts:1091</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1095">sparql/BaseSparqlParser.ts:1095</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7833,7 +7835,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#varoriri">VarOrIri</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1083">sparql/BaseSparqlParser.ts:1083</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1087">sparql/BaseSparqlParser.ts:1087</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7871,7 +7873,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#varorterm">VarOrTerm</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1075">sparql/BaseSparqlParser.ts:1075</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1079">sparql/BaseSparqlParser.ts:1079</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7909,7 +7911,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#verb">Verb</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L834">sparql/BaseSparqlParser.ts:834</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L838">sparql/BaseSparqlParser.ts:838</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7947,7 +7949,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#verbpath">VerbPath</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L898">sparql/BaseSparqlParser.ts:898</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L902">sparql/BaseSparqlParser.ts:902</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7985,7 +7987,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#verbsimple">VerbSimple</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L903">sparql/BaseSparqlParser.ts:903</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L907">sparql/BaseSparqlParser.ts:907</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -8022,7 +8024,7 @@
 					<div class="tsd-signature tsd-kind-icon">Via<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Via&#x27;, () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.VIA);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.GroupGraphPattern) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Path) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/StardogSparqlParser.ts#L41">sparql/StardogSparqlParser.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/StardogSparqlParser.ts#L41">sparql/StardogSparqlParser.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -8060,7 +8062,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#whereclause">WhereClause</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L238">sparql/BaseSparqlParser.ts:238</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L242">sparql/BaseSparqlParser.ts:242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -8175,7 +8177,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#iri">iri</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1950">sparql/BaseSparqlParser.ts:1950</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1956">sparql/BaseSparqlParser.ts:1956</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -8213,7 +8215,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#iriorfunction">iriOrFunction</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L1874">sparql/BaseSparqlParser.ts:1874</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L1880">sparql/BaseSparqlParser.ts:1880</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -12547,14 +12549,105 @@
 					<a name="parse" class="tsd-anchor"></a>
 					<h3>parse</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, entryRule<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#parse">parse</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L23">sparql/BaseSparqlParser.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L23">sparql/BaseSparqlParser.ts:23</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>document: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> entryRule: <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.SparqlDoc</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>idxInCallingRule<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5><span class="tsd-flag ts-flagOptional">Optional</span> idxInCallingRule: <span class="tsd-signature-type">number</span></h5>
+														</li>
+														<li>
+															<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>
+														<span class="tsd-signature-symbol"> | </span>
+														<span class="tsd-signature-type">any</span>
+													</h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>cst<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>errors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IRecognitionException</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="parsegroupgraphpattern" class="tsd-anchor"></a>
+					<h3>parse<wbr>Group<wbr>Graph<wbr>Pattern</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Group<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#parsegroupgraphpattern">parseGroupGraphPattern</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L33">sparql/BaseSparqlParser.ts:33</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>document: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>cst<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>errors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IRecognitionException</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="parsetriplesblock" class="tsd-anchor"></a>
+					<h3>parse<wbr>Triples<wbr>Block</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">parse<wbr>Triples<wbr>Block<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#parsetriplesblock">parseTriplesBlock</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L36">sparql/BaseSparqlParser.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -12754,7 +12847,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="basesparqlparser.html">BaseSparqlParser</a>.<a href="basesparqlparser.html#tokenize">tokenize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/c17c06b/src/sparql/BaseSparqlParser.ts#L20">sparql/BaseSparqlParser.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/sparql/BaseSparqlParser.ts#L20">sparql/BaseSparqlParser.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -12899,7 +12992,7 @@
 								<a href="stardogsparqlparser.html#builtincall_lang" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LANG</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="stardogsparqlparser.html#builtincall_langmatchers" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHERS</a>
+								<a href="stardogsparqlparser.html#builtincall_langmatches" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHES</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="stardogsparqlparser.html#builtincall_lcase" class="tsd-kind-icon">Built<wbr>InCall_<wbr>LCASE</a>
@@ -13791,6 +13884,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="stardogsparqlparser.html#parse" class="tsd-kind-icon">parse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="stardogsparqlparser.html#parsegroupgraphpattern" class="tsd-kind-icon">parse<wbr>Group<wbr>Graph<wbr>Pattern</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="stardogsparqlparser.html#parsetriplesblock" class="tsd-kind-icon">parse<wbr>Triples<wbr>Block</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="stardogsparqlparser.html#reset" class="tsd-kind-icon">reset</a>

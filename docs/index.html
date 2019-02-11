@@ -65,23 +65,25 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<h1 id="millan">Millan</h1>
-				<p>Millan is the Stardog whisperer -- a set of parsers for languages used with
-				Stardog (currently SPARQL, Turtle, and Stardog Mapping Syntax 2 (SMS)).</p>
+				<p>Millan is the <a href="https://www.stardog.com">Stardog</a> whisperer -- a set of parsers
+					for languages used with Stardog (currently <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a>,
+					<a href="https://en.wikipedia.org/wiki/Turtle_(syntax)">Turtle</a>, and
+				<a href="https://www.stardog.com/docs/#_stardog_mapping_syntax_2">Stardog Mapping Syntax 2 (SMS)</a>).</p>
 				<h2 id="features">Features</h2>
 				<ul>
-					<li>Error-tolerant parsing for W3C-compliant SPARQL and SPARQL with Stardog
-					extensions</li>
+					<li>Error-tolerant parsing for W3C-compliant SPARQL and SPARQL with
+					<a href="https://www.stardog.com/docs/#_path_queries">Stardog extensions</a>.</li>
 					<li>Error-tolerant parsing for W3C-compliant Turtle</li>
 					<li>Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)</li>
 					<li>Exported token matchers (regular expressions) and token sets for all of the
 					above languages</li>
-					<li>Available as an ES Module, a CommonJS module, and a UMD module (both
-					minified and unminified in all cases)</li>
+					<li>Universally usable (both in nodejs and the browser)</li>
 					<li>Tested against W3C test suites</li>
 					<li>Small and fast</li>
-					<li>Written in TypeScript, compiled to JS (and usable in either environment, with
-					type declarations provided for TypeScript)</li>
-					<li>Used in production at Stardog in support of Stardog Studio language servers</li>
+					<li>Written in <a href="https://www.typescriptlang.org/">TypeScript</a>, compiled to JS
+					(with type declarations provided TypeScript)</li>
+					<li>Used in production at Stardog in support of <a href="https://www.stardog.com/studio/">Stardog Studio</a>
+					language servers</li>
 				</ul>
 				<h2 id="installation">Installation</h2>
 				<p>Simply run:</p>
@@ -94,25 +96,23 @@
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/index.umd.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>As an ES module:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> millan <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;</code></pre>
-				<p><strong>NOTE</strong>: When using Millan in the browser, you will also have to install and
-				include its single dependency, chevrotain.</p>
 				<h2 id="basic-usage">Basic Usage</h2>
 				<p>Import Millan or the specific parts of Millan that you need, e.g.:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { W3CSpecSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;</code></pre>
 				<p>Parsing a document requires a parser instance, so you should get one:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sparqlParser = <span class="hljs-keyword">new</span> W3CSpecSparqlParser();</code></pre>
 				<p>Every parser instance has exactly the same API. They are all instances of the
-				Parser base class from <code>chevrotain</code>.</p>
+				Parser base class from <a href="https://github.com/SAP/chevrotain">chevrotain</a>, and they all implement the <a href="https://stardog-union.github.io/millan/interfaces/istardogparser.html">IStardogParser</a> interface.</p>
 				<p>The two parser methods you&#39;ll use most often are <code>parse</code> and <code>tokenize</code>. Use
 					<code>tokenize</code> only when you want the parser instance to <em>lex</em> (tokenize) the
 				provided text:</p>
 				<pre><code class="language-javascript">sparqlParser.tokenize(<span class="hljs-string">`
-  PREFIX : &lt;http://example.org/ns#&gt; 
+  PREFIX : &lt;http://example.org/ns#&gt;
   SELECT *
   WHERE { ?x ?y ?z }
 `</span>);</code></pre>
 				<p>Result:</p>
-				<pre><code class="language-json">[
+				<pre><code>[
   {
     <span class="hljs-attr">"image"</span>: <span class="hljs-string">"PREFIX"</span>,
     <span class="hljs-attr">"startOffset"</span>: <span class="hljs-number">3</span>,
@@ -133,53 +133,52 @@
     }
   },
   /* . . . */
-]</code></pre>
-				<p>Use <code>parse</code> when you want the full parsing experience. Note that, because
+]</code></pre><p>Use <code>parse</code> when you want the full parsing experience. Note that, because
 					Millan&#39;s parsers are error-tolerant, the <code>parse</code> method returns an object
-				that contains both a concrete syntax tree (CST) <em>and</em> an array of any errors:</p>
+					that contains both a <a href="https://sap.github.io/chevrotain/docs/guide/concrete_syntax_tree.html#ast-vs-cst">concrete syntax tree (CST)</a>
+				<em>and</em> an array of any errors:</p>
 				<pre><code class="language-javascript">sparqlParser.parse(<span class="hljs-string">`
   PREFIX : &lt;http://example.org/ns#&gt;
   SELECT *
   WHERE { ?x ?y ?z }
 `</span>);</code></pre>
 				<p>Result:</p>
-				<pre><code class="language-json">{
-  &quot;errors&quot;: [],
-  &quot;cst&quot;: {
-    &quot;name&quot;: &quot;SparqlDoc&quot;,
-    &quot;children&quot;: {
-      &quot;Prologue&quot;: [
+				<pre><code>{
+  <span class="hljs-string">"errors"</span>: [],
+  <span class="hljs-string">"cst"</span>: {
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"SparqlDoc"</span>,
+    <span class="hljs-string">"children"</span>: {
+      <span class="hljs-string">"Prologue"</span>: [
         {
-          &quot;name&quot;: &quot;Prologue&quot;,
-          &quot;children&quot;: {
-            &quot;PrefixDecl&quot;: [
+          <span class="hljs-string">"name"</span>: <span class="hljs-string">"Prologue"</span>,
+          <span class="hljs-string">"children"</span>: {
+            <span class="hljs-string">"PrefixDecl"</span>: [
               {
-                &quot;name&quot;: &quot;PrefixDecl&quot;,
-                &quot;children&quot;: {
-                  &quot;PREFIX&quot;: [
+                <span class="hljs-string">"name"</span>: <span class="hljs-string">"PrefixDecl"</span>,
+                <span class="hljs-string">"children"</span>: {
+                  <span class="hljs-string">"PREFIX"</span>: [
                     {
-                      &quot;image&quot;: &quot;PREFIX&quot;,
-                      &quot;startOffset&quot;: 3,
-                      &quot;endOffset&quot;: 8,
-                      &quot;startLine&quot;: 2,
-                      &quot;endLine&quot;: 2,
-                      &quot;startColumn&quot;: 3,
-                      &quot;endColumn&quot;: 8,
-                      &quot;tokenTypeIdx&quot;: 43,
-                      &quot;tokenType&quot;: {
-                        &quot;PATTERN&quot;: {},
-                        &quot;tokenTypeIdx&quot;: 43,
-                        &quot;CATEGORIES&quot;: [],
-                        &quot;categoryMatches&quot;: [],
-                        &quot;categoryMatchesMap&quot;: {},
-                        &quot;tokenName&quot;: &quot;PREFIX&quot;,
-                        &quot;isParent&quot;: false
+                      <span class="hljs-string">"image"</span>: <span class="hljs-string">"PREFIX"</span>,
+                      <span class="hljs-string">"startOffset"</span>: <span class="hljs-number">3</span>,
+                      <span class="hljs-string">"endOffset"</span>: <span class="hljs-number">8</span>,
+                      <span class="hljs-string">"startLine"</span>: <span class="hljs-number">2</span>,
+                      <span class="hljs-string">"endLine"</span>: <span class="hljs-number">2</span>,
+                      <span class="hljs-string">"startColumn"</span>: <span class="hljs-number">3</span>,
+                      <span class="hljs-string">"endColumn"</span>: <span class="hljs-number">8</span>,
+                      <span class="hljs-string">"tokenTypeIdx"</span>: <span class="hljs-number">43</span>,
+                      <span class="hljs-string">"tokenType"</span>: {
+                        <span class="hljs-string">"PATTERN"</span>: {},
+                        <span class="hljs-string">"tokenTypeIdx"</span>: <span class="hljs-number">43</span>,
+                        <span class="hljs-string">"CATEGORIES"</span>: [],
+                        <span class="hljs-string">"categoryMatches"</span>: [],
+                        <span class="hljs-string">"categoryMatchesMap"</span>: {},
+                        <span class="hljs-string">"tokenName"</span>: <span class="hljs-string">"PREFIX"</span>,
+                        <span class="hljs-string">"isParent"</span>: <span class="hljs-literal">false</span>
                       }
                     }
                   ],
-                  &quot;PNAME_NS&quot;: [ /* . . . */ ],
-                  /* . . . etc. . . . */</code></pre>
-				<p>Helpfully, the <code>name</code> fields in the CSTs returned by Millan&#39;s parsers exactly
+                  <span class="hljs-string">"PNAME_NS"</span>: [ /* . . . */ ],
+                  /* . . . etc. . . . */</code></pre><p>Helpfully, the <code>name</code> fields in the CSTs returned by Millan&#39;s parsers exactly
 					match, in <em>nearly</em> every case (we&#39;ve removed some redundancy), the names of the
 					rules in the official EBNF for the corresponding grammar (e.g., <code>SparqlDoc</code>,
 				<code>Prologue</code>, <code>PrefixDecl</code>, etc.).</p>
@@ -194,62 +193,61 @@
   WHERE { ?x ?y ?z }
 `</span>);</code></pre>
 				<p>Result:</p>
-				<pre><code class="language-json">{
-  &quot;errors&quot;: [
+				<pre><code>{
+  <span class="hljs-string">"errors"</span>: [
     {
-      &quot;name&quot;: &quot;NoViableAltException&quot;,
-      &quot;message&quot;: &quot;Expecting: one of these possible Token sequences:\n  1. [?foo]\n  2. [?bar]\n  3. [LParen]\n  4. [Star]\nbut found: &#39;1&#39;&quot;,
-      &quot;token&quot;: {
-        &quot;image&quot;: &quot;1&quot;,
-        &quot;startOffset&quot;: 47,
-        &quot;endOffset&quot;: 47,
-        &quot;startLine&quot;: 3,
-        &quot;endLine&quot;: 3,
-        &quot;startColumn&quot;: 10,
-        &quot;endColumn&quot;: 10,
-        &quot;tokenTypeIdx&quot;: 7,
-        &quot;tokenType&quot;: {
-          &quot;PATTERN&quot;: {},
-          &quot;tokenTypeIdx&quot;: 7,
-          &quot;CATEGORIES&quot;: [],
-          &quot;categoryMatches&quot;: [],
-          &quot;categoryMatchesMap&quot;: {},
-          &quot;tokenName&quot;: &quot;INTEGER&quot;,
-          &quot;isParent&quot;: false
+      <span class="hljs-string">"name"</span>: <span class="hljs-string">"NoViableAltException"</span>,
+      <span class="hljs-string">"message"</span>: <span class="hljs-string">"Expecting: one of these possible Token sequences:\n  1. [?foo]\n  2. [?bar]\n  3. [LParen]\n  4. [Star]\nbut found: '1'"</span>,
+      <span class="hljs-string">"token"</span>: {
+        <span class="hljs-string">"image"</span>: <span class="hljs-string">"1"</span>,
+        <span class="hljs-string">"startOffset"</span>: <span class="hljs-number">47</span>,
+        <span class="hljs-string">"endOffset"</span>: <span class="hljs-number">47</span>,
+        <span class="hljs-string">"startLine"</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-string">"endLine"</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-string">"startColumn"</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-string">"endColumn"</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-string">"tokenTypeIdx"</span>: <span class="hljs-number">7</span>,
+        <span class="hljs-string">"tokenType"</span>: {
+          <span class="hljs-string">"PATTERN"</span>: {},
+          <span class="hljs-string">"tokenTypeIdx"</span>: <span class="hljs-number">7</span>,
+          <span class="hljs-string">"CATEGORIES"</span>: [],
+          <span class="hljs-string">"categoryMatches"</span>: [],
+          <span class="hljs-string">"categoryMatchesMap"</span>: {},
+          <span class="hljs-string">"tokenName"</span>: <span class="hljs-string">"INTEGER"</span>,
+          <span class="hljs-string">"isParent"</span>: <span class="hljs-literal">false</span>
         }
       },
-      &quot;resyncedTokens&quot;: [],
-      &quot;context&quot;: {
-        &quot;ruleStack&quot;: [
-          &quot;SparqlDoc&quot;,
-          &quot;QueryUnit&quot;,
-          &quot;Query&quot;,
-          &quot;SelectQuery&quot;,
-          &quot;SelectClause&quot;
+      <span class="hljs-string">"resyncedTokens"</span>: [],
+      <span class="hljs-string">"context"</span>: {
+        <span class="hljs-string">"ruleStack"</span>: [
+          <span class="hljs-string">"SparqlDoc"</span>,
+          <span class="hljs-string">"QueryUnit"</span>,
+          <span class="hljs-string">"Query"</span>,
+          <span class="hljs-string">"SelectQuery"</span>,
+          <span class="hljs-string">"SelectClause"</span>
         ],
-        &quot;ruleOccurrenceStack&quot;: [
-          0,
-          0,
-          0,
-          0,
-          0
+        <span class="hljs-string">"ruleOccurrenceStack"</span>: [
+          <span class="hljs-number">0</span>,
+          <span class="hljs-number">0</span>,
+          <span class="hljs-number">0</span>,
+          <span class="hljs-number">0</span>,
+          <span class="hljs-number">0</span>
         ]
       }
     }
   ],
-  &quot;cst&quot;: {
-    &quot;name&quot;: &quot;SparqlDoc&quot;,
-    &quot;children&quot;: {
-      &quot;Prologue&quot;: [
+  <span class="hljs-string">"cst"</span>: {
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"SparqlDoc"</span>,
+    <span class="hljs-string">"children"</span>: {
+      <span class="hljs-string">"Prologue"</span>: [
         {
-          &quot;name&quot;: &quot;Prologue&quot;,
-          &quot;children&quot;: {
-            &quot;PrefixDecl&quot;: [
+          <span class="hljs-string">"name"</span>: <span class="hljs-string">"Prologue"</span>,
+          <span class="hljs-string">"children"</span>: {
+            <span class="hljs-string">"PrefixDecl"</span>: [
               {
-                &quot;name&quot;: &quot;PrefixDecl&quot;,
-                /* . . . etc. . . . */</code></pre>
-				<p>Full types are available for all APIs, so feel free to consult them (and also
-				the <code>chevrotain</code> docs) for more information.</p>
+                <span class="hljs-string">"name"</span>: <span class="hljs-string">"PrefixDecl"</span>,
+                /* . . . etc. . . . */</code></pre><h2 id="full-api">Full API</h2>
+				<p>Check out our comprehensive <a href="https://stardog-union.github.io/millan/">API docs</a> for more information.</p>
 				<h2 id="contributing">Contributing</h2>
 				<h3 id="prerequisites">Prerequisites</h3>
 				<ul>
@@ -285,6 +283,8 @@
 				</ol>
 				<p>If you don&#39;t have contributor rights, you will need to fork the repo before
 				doing steps 2 and 3, and then submit the PR from your fork.</p>
+				<p>Be sure to run <code>yarn docs</code> before submitting your PR, so that our type docs are
+				updated accordingly.</p>
 				<h2 id="license">License</h2>
 				<p>Copyright 2018 Stardog Union</p>
 				<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -307,11 +307,17 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-is-not-exported">
+						<a href="enums/lexermode.html" class="tsd-kind-icon">Lexer<wbr>Mode</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/basesparqlparser.html" class="tsd-kind-icon">Base<wbr>Sparql<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/smsparser.html" class="tsd-kind-icon">Sms<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/srsparser.html" class="tsd-kind-icon">Srs<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/stardogsparqlparser.html" class="tsd-kind-icon">Stardog<wbr>Sparql<wbr>Parser</a>
@@ -329,16 +335,34 @@
 						<a href="interfaces/fileandcontents.html" class="tsd-kind-icon">File<wbr>And<wbr>Contents</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/isparqlsrsvisitor.html" class="tsd-kind-icon">ISparql<wbr>Srs<wbr>Visitor</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/istardogparser.html" class="tsd-kind-icon">IStardog<wbr>Parser</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-is-not-exported">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/itokensmap.html" class="tsd-kind-icon">ITokens<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/itraversecontext.html" class="tsd-kind-icon">ITraverse<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/sparqlsrsvisitoritem.html" class="tsd-kind-icon">Sparql<wbr>Srs<wbr>Visitor<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#cstnodetraversecontext" class="tsd-kind-icon">Cst<wbr>Node<wbr>Traverse<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#anon" class="tsd-kind-icon">ANON</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#blank_node_label" class="tsd-kind-icon">BLANK_<wbr>NODE_<wbr>LABEL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#catch_all" class="tsd-kind-icon">CATCH_<wbr>ALL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#catch_all_at_least_one" class="tsd-kind-icon">CATCH_<wbr>ALL_<wbr>AT_<wbr>LEAST_<wbr>ONE</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#decimal" class="tsd-kind-icon">DECIMAL</a>
@@ -365,10 +389,16 @@
 						<a href="globals.html#exponent" class="tsd-kind-icon">EXPONENT</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#endthen" class="tsd-kind-icon">End<wbr>Then</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#from_block_end_matcher" class="tsd-kind-icon">FROM_<wbr>BLOCK_<wbr>END_<wbr>MATCHER</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#from_json_block_end_matcher" class="tsd-kind-icon">FROM_<wbr>JSON_<wbr>BLOCK_<wbr>END_<wbr>MATCHER</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#groupgraphpattern" class="tsd-kind-icon">Group<wbr>Graph<wbr>Pattern</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#hex" class="tsd-kind-icon">HEX</a>
@@ -384,6 +414,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#iriref" class="tsd-kind-icon">IRIREF</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#if" class="tsd-kind-icon">If</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#langtag" class="tsd-kind-icon">LANGTAG</a>
@@ -427,6 +460,9 @@
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#pn_prefix" class="tsd-kind-icon">PN_<wbr>PREFIX</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#rule" class="tsd-kind-icon">Rule</a>
+					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#string_literal1" class="tsd-kind-icon">STRING_<wbr>LITERAL1</a>
 					</li>
@@ -444,6 +480,12 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#string_literal_long2_token" class="tsd-kind-icon">STRING_<wbr>LITERAL_<wbr>LONG2_<wbr>TOKEN</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#then" class="tsd-kind-icon">Then</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#triplesblock" class="tsd-kind-icon">Triples<wbr>Block</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#var1" class="tsd-kind-icon">VAR1</a>
@@ -463,8 +505,17 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#allvalidqueries" class="tsd-kind-icon">all<wbr>Valid<wbr>Queries</a>
 					</li>
-					<li class=" tsd-kind-variable">
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#basetokens" class="tsd-kind-icon">base<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#defaultnamespacesmap" class="tsd-kind-icon">default<wbr>Namespaces<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#disallowedsparqlliteraltokennames" class="tsd-kind-icon">disallowed<wbr>Sparql<wbr>Literal<wbr>Token<wbr>Names</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#disallowedsparqltokennames" class="tsd-kind-icon">disallowed<wbr>Sparql<wbr>Token<wbr>Names</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#escapesequence" class="tsd-kind-icon">escape<wbr>Sequence</a>
@@ -484,14 +535,26 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#parser" class="tsd-kind-icon">parser</a>
 					</li>
-					<li class=" tsd-kind-variable">
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#pathstokens" class="tsd-kind-icon">paths<wbr>Tokens</a>
 					</li>
-					<li class=" tsd-kind-variable">
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#smstokentypes" class="tsd-kind-icon">sms<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#smstokens" class="tsd-kind-icon">sms<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#sparqltokentypes" class="tsd-kind-icon">sparql<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#sparqltokens" class="tsd-kind-icon">sparql<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#srstokentypes" class="tsd-kind-icon">srs<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#srstokens" class="tsd-kind-icon">srs<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#stardogtokens" class="tsd-kind-icon">stardog<wbr>Tokens</a>
@@ -511,8 +574,11 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#turtlelexer" class="tsd-kind-icon">turtle<wbr>Lexer</a>
 					</li>
-					<li class=" tsd-kind-variable">
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#turtletokentypes" class="tsd-kind-icon">turtle<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#turtletokens" class="tsd-kind-icon">turtle<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#unescapediri" class="tsd-kind-icon">unescaped<wbr>Iri</a>
@@ -526,14 +592,47 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#unicoderegexp" class="tsd-kind-icon">unicode<wbr>Regexp</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#upperloweriffixtures" class="tsd-kind-icon">upper<wbr>Lower<wbr>IfFixtures</a>
+					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#_traverse" class="tsd-kind-icon">_traverse</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#addifclauseerrorstoerrors" class="tsd-kind-icon">add<wbr>IfClause<wbr>Errors<wbr>ToErrors</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#addthenclauseerrorstoerrors" class="tsd-kind-icon">add<wbr>Then<wbr>Clause<wbr>Errors<wbr>ToErrors</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultearlyaborttest" class="tsd-kind-icon">default<wbr>Early<wbr>Abort<wbr>Test</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#explicitendmatcher" class="tsd-kind-icon">explicit<wbr>End<wbr>Matcher</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#findandswapplaceholders" class="tsd-kind-icon">find<wbr>And<wbr>Swap<wbr>Placeholders</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#getallfilecontents" class="tsd-kind-icon">get<wbr>All<wbr>File<wbr>Contents</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getcustomerrorrulestack" class="tsd-kind-icon">get<wbr>Custom<wbr>Error<wbr>Rule<wbr>Stack</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getcustomirecognitionexception" class="tsd-kind-icon">get<wbr>CustomIRecognition<wbr>Exception</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getdisallowedliteralerror" class="tsd-kind-icon">get<wbr>Disallowed<wbr>Literal<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getdisallowedtokenerror" class="tsd-kind-icon">get<wbr>Disallowed<wbr>Token<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getnoprefixerror" class="tsd-kind-icon">get<wbr>NoPrefix<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getsparqlsrsvisitor" class="tsd-kind-icon">get<wbr>Sparql<wbr>Srs<wbr>Visitor</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#iscstnode" class="tsd-kind-icon">is<wbr>Cst<wbr>Node</a>
@@ -554,10 +653,22 @@
 						<a href="globals.html#readfileasync" class="tsd-kind-icon">read<wbr>File<wbr>Async</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#reducevisitoritemerrors" class="tsd-kind-icon">reduce<wbr>Visitor<wbr>Item<wbr>Errors</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#traverse" class="tsd-kind-icon">traverse</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#unescape" class="tsd-kind-icon">unescape</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#unsafetraverse" class="tsd-kind-icon">unsafe<wbr>Traverse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#upperlowerthenfixtures" class="tsd-kind-icon">upper<wbr>Lower<wbr>Then<wbr>Fixtures</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#disallowedsparqltokennametorulemap" class="tsd-kind-icon">disallowed<wbr>Sparql<wbr>Token<wbr>Name<wbr>ToRule<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#escapereplacements" class="tsd-kind-icon">escape<wbr>Replacements</a>
@@ -568,20 +679,29 @@
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#keywords" class="tsd-kind-icon">keywords</a>
 					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#multimodelexerdefinition" class="tsd-kind-icon">multi<wbr>Mode<wbr>Lexer<wbr>Definition</a>
+					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#regex" class="tsd-kind-icon">regex</a>
 					</li>
-					<li class=" tsd-kind-object-literal">
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#smstokenmap" class="tsd-kind-icon">sms<wbr>Token<wbr>Map</a>
 					</li>
-					<li class=" tsd-kind-object-literal">
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#sparqltokenmap" class="tsd-kind-icon">sparql<wbr>Token<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#srstokenmap" class="tsd-kind-icon">srs<wbr>Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#terminals" class="tsd-kind-icon">terminals</a>
 					</li>
-					<li class=" tsd-kind-object-literal">
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#turtletokenmap" class="tsd-kind-icon">turtle<wbr>Token<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#ungeneratedfixtures" class="tsd-kind-icon">ungenerated<wbr>Fixtures</a>
 					</li>
 				</ul>
 			</nav>
