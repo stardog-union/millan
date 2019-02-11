@@ -2,8 +2,9 @@
 
 Millan is the [Stardog](https://www.stardog.com) whisperer -- a set of parsers
 for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wiki/SPARQL),
-[Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)), and
-[Stardog Mapping Syntax 2 (SMS)](https://www.stardog.com/docs/#_stardog_mapping_syntax_2)).
+[Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)),
+[Stardog Mapping Syntax 2 (SMS)](https://www.stardog.com/docs/#_stardog_mapping_syntax_2),
+and [Stardog Rules Syntax](https://www.stardog.com/docs/#_stardog_rules_syntax)).
 
 ## Features
 
@@ -11,6 +12,7 @@ for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wik
 [Stardog extensions](https://www.stardog.com/docs/#_path_queries).
 - Error-tolerant parsing for W3C-compliant Turtle
 - Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)
+- Error-tolerant parsing for Stardog Rules Syntax (SRS)
 - Exported token matchers (regular expressions) and token sets for all of the
 above languages
 - Universally usable (both in nodejs and the browser)
@@ -63,7 +65,7 @@ Parsing a document requires a parser instance, so you should get one:
 const sparqlParser = new W3CSpecSparqlParser();
 ```
 
-Every parser instance has exactly the same API. They are all instances of the
+Every parser instance has essentially the same API. They are all instances of the
 Parser base class from [chevrotain](https://github.com/SAP/chevrotain), and they all implement the [IStardogParser](https://stardog-union.github.io/millan/interfaces/istardogparser.html) interface.
 
 The two parser methods you'll use most often are `parse` and `tokenize`. Use
