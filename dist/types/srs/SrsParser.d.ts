@@ -3,11 +3,17 @@ import { TurtleParser } from '../turtle/TurtleParser';
 export declare class SrsParser extends TurtleParser {
     private sparqlSrsVisitor;
     protected lexer: Lexer;
-    protected namespacesMap: {};
+    protected baseNamespacesMap: Readonly<{}>;
+    protected namespacesMap: {
+        [key: string]: boolean;
+    };
     constructor(config?: Partial<IParserConfig>);
     private visitCst;
     private getSparqlRulesFromVisitor;
     protected resetManagedState: () => void;
+    setBaseNamespaces: (newBaseNamespaces: {
+        [key: string]: boolean;
+    }) => void;
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];

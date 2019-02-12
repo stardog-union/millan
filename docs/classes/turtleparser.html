@@ -287,7 +287,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Parser.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L55">turtle/TurtleParser.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L55">turtle/TurtleParser.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -318,7 +318,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blank<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BlankNode&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.BLANK_NODE_LABEL) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.ANON) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L297">turtle/TurtleParser.ts:297</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L297">turtle/TurtleParser.ts:297</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -355,7 +355,7 @@
 					<div class="tsd-signature tsd-kind-icon">Boolean<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BooleanLiteral&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.TRUE) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.FALSE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L248">turtle/TurtleParser.ts:248</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L248">turtle/TurtleParser.ts:248</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -403,7 +403,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteral&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.INTEGER) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.DECIMAL) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.DOUBLE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L225">turtle/TurtleParser.ts:225</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L225">turtle/TurtleParser.ts:225</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -440,7 +440,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prefixed<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PrefixedName&#x27;, () &#x3D;&gt; {const prefixedNameToken &#x3D; this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.PNAME_LN) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.PNAME_NS) },]);const pnameNsImage &#x3D; prefixedNameToken.image.slice(0,prefixedNameToken.image.indexOf(&#x27;:&#x27;));if (!(pnameNsImage in this.namespacesMap)) {this.semanticErrors.push({name: &#x27;NoNamespacePrefixError&#x27;,message: &#x27;A prefix was used for which there was no namespace defined.&#x27;,token: prefixedNameToken,context: {ruleStack: this.getHumanReadableRuleStack(),ruleOccurrenceStack: [...this.RULE_OCCURRENCE_STACK],},resyncedTokens: [], // these don&#x27;t really make sense for semantic errors, since they don&#x27;t cause the parser to resync});}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L274">turtle/TurtleParser.ts:274</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L274">turtle/TurtleParser.ts:274</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -477,7 +477,7 @@
 					<div class="tsd-signature tsd-kind-icon">RDFLiteral<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RDFLiteral&#x27;, () &#x3D;&gt; {this.SUBRULE(this.String);this.OPTION(() &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.LANGTAG) },{ALT: () &#x3D;&gt; {this.CONSUME(turtleTokenMap.DoubleCaret);this.SUBRULE(this.iri);},},]);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L233">turtle/TurtleParser.ts:233</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L233">turtle/TurtleParser.ts:233</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -536,7 +536,7 @@
 					<div class="tsd-signature tsd-kind-icon">String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;String&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.STRING_LITERAL_QUOTE) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.STRING_LITERAL_SINGLE_QUOTE) },{ALT: () &#x3D;&gt;this.CONSUME(turtleTokenMap.STRING_LITERAL_LONG_SINGLE_QUOTE),},{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.STRING_LITERAL_LONG_QUOTE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L255">turtle/TurtleParser.ts:255</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L255">turtle/TurtleParser.ts:255</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -584,7 +584,7 @@
 					<div class="tsd-signature tsd-kind-icon">base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;base&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.TTL_BASE);this.CONSUME(turtleTokenMap.IRIREF);this.CONSUME(turtleTokenMap.Period);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L112">turtle/TurtleParser.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L112">turtle/TurtleParser.ts:112</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -621,7 +621,7 @@
 					<div class="tsd-signature tsd-kind-icon">blank<wbr>Node<wbr>Property<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;blankNodePropertyList&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.LBracket);this.SUBRULE(this.predicateObjectList);this.CONSUME(turtleTokenMap.RBracket);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L203">turtle/TurtleParser.ts:203</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L203">turtle/TurtleParser.ts:203</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -669,7 +669,7 @@
 					<div class="tsd-signature tsd-kind-icon">collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;collection&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.LParen);this.MANY(() &#x3D;&gt; this.SUBRULE(this.object));this.CONSUME(turtleTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L219">turtle/TurtleParser.ts:219</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L219">turtle/TurtleParser.ts:219</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -706,7 +706,7 @@
 					<div class="tsd-signature tsd-kind-icon">directive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;directive&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.prefixID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.base) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.sparqlPrefix) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.sparqlBase) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L91">turtle/TurtleParser.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L91">turtle/TurtleParser.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -798,7 +798,7 @@
 					<div class="tsd-signature tsd-kind-icon">iri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;iri&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.IRIREF) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.PrefixedName) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L267">turtle/TurtleParser.ts:267</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L267">turtle/TurtleParser.ts:267</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -846,7 +846,7 @@
 					<div class="tsd-signature tsd-kind-icon">lexer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lexer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L14">turtle/TurtleParser.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L14">turtle/TurtleParser.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -856,7 +856,7 @@
 					<div class="tsd-signature tsd-kind-icon">literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;literal&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.RDFLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanLiteral) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L195">turtle/TurtleParser.ts:195</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L195">turtle/TurtleParser.ts:195</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -904,7 +904,7 @@
 					<div class="tsd-signature tsd-kind-icon">namespaces<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L22">turtle/TurtleParser.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L22">turtle/TurtleParser.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -919,7 +919,7 @@
 					<div class="tsd-signature tsd-kind-icon">object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;object&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNode) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.collection) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.blankNodePropertyList) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.literal) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L209">turtle/TurtleParser.ts:209</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L209">turtle/TurtleParser.ts:209</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -956,7 +956,7 @@
 					<div class="tsd-signature tsd-kind-icon">object<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;objectList&#x27;, () &#x3D;&gt; {this.SUBRULE(this.object);this.MANY(() &#x3D;&gt; {this.CONSUME(turtleTokenMap.Comma);this.SUBRULE1(this.object);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L180">turtle/TurtleParser.ts:180</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L180">turtle/TurtleParser.ts:180</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1004,7 +1004,7 @@
 					<div class="tsd-signature tsd-kind-icon">predicate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;predicate&#x27;, () &#x3D;&gt; {this.SUBRULE(this.iri);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L176">turtle/TurtleParser.ts:176</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L176">turtle/TurtleParser.ts:176</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1041,7 +1041,7 @@
 					<div class="tsd-signature tsd-kind-icon">predicate<wbr>Object<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;predicateObjectList&#x27;, () &#x3D;&gt; {this.SUBRULE(this.verb);this.SUBRULE(this.objectList);this.OPTION(() &#x3D;&gt; {this.CONSUME(turtleTokenMap.Semicolon);this.OPTION1(() &#x3D;&gt; {this.SUBRULE1(this.verb);this.SUBRULE1(this.objectList);});});this.MANY(() &#x3D;&gt; {this.CONSUME1(turtleTokenMap.Semicolon);this.OPTION2(() &#x3D;&gt; {this.SUBRULE2(this.verb);this.SUBRULE2(this.objectList);});});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L149">turtle/TurtleParser.ts:149</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L149">turtle/TurtleParser.ts:149</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1078,7 +1078,7 @@
 					<div class="tsd-signature tsd-kind-icon">prefixID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;prefixID&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.TTL_PREFIX);const pnameNsToken &#x3D; this.CONSUME(turtleTokenMap.PNAME_NS);const iriToken &#x3D; this.CONSUME(turtleTokenMap.IRIREF);const pnameImageWithoutColon &#x3D; pnameNsToken.image.slice(0, -1);const iriImage &#x3D; iriToken.image;this.namespacesMap[pnameImageWithoutColon] &#x3D; iriImage;this.CONSUME(turtleTokenMap.Period);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L100">turtle/TurtleParser.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L100">turtle/TurtleParser.ts:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1132,7 +1132,7 @@
 					<div class="tsd-signature tsd-kind-icon">semantic<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IRecognitionException</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L23">turtle/TurtleParser.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L23">turtle/TurtleParser.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1142,7 +1142,7 @@
 					<div class="tsd-signature tsd-kind-icon">sparql<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;sparqlBase&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.BASE);this.CONSUME(turtleTokenMap.IRIREF);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L118">turtle/TurtleParser.ts:118</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L118">turtle/TurtleParser.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1179,7 +1179,7 @@
 					<div class="tsd-signature tsd-kind-icon">sparql<wbr>Prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;sparqlPrefix&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.PREFIX);const pnameNsToken &#x3D; this.CONSUME(turtleTokenMap.PNAME_NS);const iriToken &#x3D; this.CONSUME(turtleTokenMap.IRIREF);const pnameImageWithoutColon &#x3D; pnameNsToken.image.slice(0, -1);const iriImage &#x3D; iriToken.image;this.namespacesMap[pnameImageWithoutColon] &#x3D; iriImage;})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L123">turtle/TurtleParser.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L123">turtle/TurtleParser.ts:123</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1216,7 +1216,7 @@
 					<div class="tsd-signature tsd-kind-icon">statement<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;statement&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.directive) },{ALT: () &#x3D;&gt; {this.SUBRULE(this.triples);this.CONSUME(turtleTokenMap.Period);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L79">turtle/TurtleParser.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L79">turtle/TurtleParser.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1253,7 +1253,7 @@
 					<div class="tsd-signature tsd-kind-icon">subject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;subject&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNode) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.collection) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L168">turtle/TurtleParser.ts:168</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L168">turtle/TurtleParser.ts:168</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1309,7 +1309,7 @@
 					<div class="tsd-signature tsd-kind-icon">triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;triples&#x27;, () &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.subject);this.SUBRULE(this.predicateObjectList);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.blankNodePropertyList);this.OPTION(() &#x3D;&gt; this.SUBRULE1(this.predicateObjectList));},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L132">turtle/TurtleParser.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L132">turtle/TurtleParser.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1346,7 +1346,7 @@
 					<div class="tsd-signature tsd-kind-icon">turtle<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;turtleDoc&#x27;, () &#x3D;&gt; {this.MANY(() &#x3D;&gt; this.SUBRULE(this.statement));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L75">turtle/TurtleParser.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L75">turtle/TurtleParser.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1383,7 +1383,7 @@
 					<div class="tsd-signature tsd-kind-icon">verb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;verb&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.predicate) },{ ALT: () &#x3D;&gt; this.CONSUME(turtleTokenMap.A) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L188">turtle/TurtleParser.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L188">turtle/TurtleParser.ts:188</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5654,7 +5654,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L35">turtle/TurtleParser.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L35">turtle/TurtleParser.ts:35</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -5730,7 +5730,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L27">turtle/TurtleParser.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L27">turtle/TurtleParser.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -5873,7 +5873,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/6355984/src/turtle/TurtleParser.ts#L32">turtle/TurtleParser.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/3167753/src/turtle/TurtleParser.ts#L32">turtle/TurtleParser.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
