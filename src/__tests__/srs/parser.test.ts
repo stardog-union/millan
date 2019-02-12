@@ -6,6 +6,10 @@ import { readDirAsync, readFileAsync } from '../utils';
 const parser = new SrsParser();
 
 describe('srs parser', () => {
+  beforeEach(() => {
+    parser.setBaseNamespaces({});
+  });
+
   it('parses a basic isolated SRS document', () => {
     const result = parser.parse(fixtures.valid.basicIsolated);
     expect(result).toMatchSnapshot();
@@ -78,6 +82,29 @@ describe('srs parser', () => {
         expect(errors).not.toHaveLength(0);
       }
     });
+  });
+
+  it("allows passing in a custom set of 'base' namespaces for prefix parsing", () => {
+    expect(
+      parser.parse(fixtures.invalid.parse.wrongPrefix).semanticErrors
+    ).not.toHaveLength(0);
+    parser.setBaseNamespaces({ test: true });
+    expect(
+      parser.parse(fixtures.invalid.parse.wrongPrefix).semanticErrors
+    ).toHaveLength(0);
+  });
+
+  it('allows inline prefix definitions to augment and override the base namespaces', () => {
+    const invalidFixture = fixtures.invalid.parse.wrongPrefix;
+    expect(parser.parse(invalidFixture).semanticErrors).not.toHaveLength(0);
+    expect(
+      parser.parse(invalidFixture.replace('PREFAX', 'PREFIX')).semanticErrors
+    ).toHaveLength(0);
+    expect(
+      parser.parse(
+        invalidFixture.replace('PREFAX', 'PREFIX').replace(/test:/g, 'test2:')
+      ).semanticErrors
+    ).toHaveLength(0);
   });
 
   it('produces no errors when parsing the w3 turtle test suite', async (done) => {

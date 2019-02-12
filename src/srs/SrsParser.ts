@@ -29,10 +29,10 @@ import {
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor: ReturnType<typeof getSparqlSrsVisitor>;
   protected lexer: Lexer;
-  // TODO: Allow passing in different "base" namespaces.
-  protected namespacesMap = {
+  protected baseNamespacesMap = Object.freeze({
     ...defaultNamespacesMap,
-  };
+  });
+  protected namespacesMap: { [key: string]: boolean } = {};
 
   constructor(config?: Partial<IParserConfig>) {
     super(
@@ -77,6 +77,14 @@ export class SrsParser extends TurtleParser {
       ...defaultNamespacesMap,
     };
     this.semanticErrors = [];
+  };
+
+  public setBaseNamespaces = (newBaseNamespaces: {
+    [key: string]: boolean;
+  }) => {
+    this.baseNamespacesMap = {
+      ...newBaseNamespaces,
+    };
   };
 
   public tokenize = (document: string): IToken[] =>
@@ -136,7 +144,10 @@ export class SrsParser extends TurtleParser {
         if (matchingVisitorItem) {
           addIfClauseErrorsToErrors({
             fullCtx: ctx,
-            namespacesMap: this.namespacesMap,
+            namespacesMap: {
+              ...this.baseNamespacesMap,
+              ...this.namespacesMap,
+            },
             cst: matchingVisitorItem.parseResult.cst,
             errors,
             semanticErrors,
@@ -153,7 +164,10 @@ export class SrsParser extends TurtleParser {
         if (matchingVisitorItem) {
           addThenClauseErrorsToErrors({
             fullCtx: ctx,
-            namespacesMap: this.namespacesMap,
+            namespacesMap: {
+              ...this.baseNamespacesMap,
+              ...this.namespacesMap,
+            },
             cst: matchingVisitorItem.parseResult.cst,
             errors,
             semanticErrors,
