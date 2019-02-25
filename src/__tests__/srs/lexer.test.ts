@@ -38,6 +38,27 @@ describe('srs lexer', () => {
     ).toHaveLength(1);
   });
 
+  it('correctly parses Turtle prefixes with patterns matching SRS patterns', () => {
+    // Test for issue #19
+    const { errors, tokens } = lexer.tokenize(`
+      @prefix rule: <http://www.rule.com/> .
+
+      rule:test a rule:x .
+
+      rule :MyRule
+      IF {
+        ?s rule:whatever ?o .
+      }
+      THEN {
+        ?s rule:somethingElse ?o
+      }
+
+      :something rule:something rule:x .
+    `);
+    expect(errors).toHaveLength(0);
+    expect(tokens).toMatchSnapshot();
+  });
+
   it('parses valid SRS documents with no errors', () => {
     const validDocuments = fixtures.valid;
     Object.keys(validDocuments).forEach((docKey) => {
