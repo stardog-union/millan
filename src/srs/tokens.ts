@@ -73,9 +73,17 @@ const TriplesBlock = createToken({
   line_breaks: true,
 });
 
+const indexOfIriRef = turtleTokenTypes.indexOf(turtleTokenMap.IRIREF);
+
 export const multiModeLexerDefinition: IMultiModeLexerDefinition = {
   modes: {
-    [LexerMode.TURTLE]: [Rule, If, Then, ...turtleTokenTypes],
+    [LexerMode.TURTLE]: [
+      ...turtleTokenTypes.slice(0, indexOfIriRef + 1),
+      Rule,
+      If,
+      Then,
+      ...turtleTokenTypes.slice(indexOfIriRef + 1),
+    ],
     [LexerMode.IFCLAUSE]: [turtleTokenMap.WhiteSpace, GroupGraphPattern],
     [LexerMode.THENCLAUSE]: [
       turtleTokenMap.WhiteSpace,
