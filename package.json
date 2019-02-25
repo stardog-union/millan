@@ -1,6 +1,6 @@
 {
   "name": "millan",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "The Stardog Whisperer (error-tolerant parsers for languages used with Stardog)",
   "keywords": [
     "stardog",
@@ -40,6 +40,10 @@
     {
       "name": "Sandra Gonzales",
       "email": "sandy@stardog.com"
+    },
+    {
+      "name": "Annee Barrett",
+      "email": "annee@stardog.com"
     }
   ],
   "dependencies": {
