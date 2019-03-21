@@ -149,18 +149,11 @@ export class TurtleParser extends Parser implements IStardogParser {
   predicateObjectList = this.RULE('predicateObjectList', () => {
     this.SUBRULE(this.verb);
     this.SUBRULE(this.objectList);
-    this.OPTION(() => {
+    this.MANY(() => {
       this.CONSUME(turtleTokenMap.Semicolon);
-      this.OPTION1(() => {
+      this.OPTION(() => {
         this.SUBRULE1(this.verb);
         this.SUBRULE1(this.objectList);
-      });
-    });
-    this.MANY(() => {
-      this.CONSUME1(turtleTokenMap.Semicolon);
-      this.OPTION2(() => {
-        this.SUBRULE2(this.verb);
-        this.SUBRULE2(this.objectList);
       });
     });
   });
