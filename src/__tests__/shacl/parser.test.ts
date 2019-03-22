@@ -1,8 +1,9 @@
-import { Lexer } from 'chevrotain';
-const { getShaclTokenTypes } = require('../../shacl/tokens');
+import { ShaclParser } from '../../shacl/ShaclParser';
 
-const lexer = new Lexer(getShaclTokenTypes('sh'));
 const fixture = `
+ex:OtherPerson
+  a :Thing .
+
 ex:PersonShape
 	a sh:NodeShape ;
 	sh:targetClass ex:Person ;    # Applies to all persons
@@ -21,9 +22,16 @@ ex:PersonShape
   <http://www.w3.org/ns/shacl#ignoredProperties> ( rdf:type ) .
 `;
 
-describe('SHACL lexer', () => {
-  it('works', () => {
-    console.log(JSON.stringify(lexer.tokenize(fixture), null, 2));
+describe('SHACL parser', () => {
+  let parser: ShaclParser;
+
+  beforeEach(() => {
+    parser = new ShaclParser();
+  });
+
+  it('parses', () => {
+    const { cst } = parser.parse(fixture);
+    console.log(JSON.stringify(cst, null, 2));
     expect(true).toBe(true);
   });
 });

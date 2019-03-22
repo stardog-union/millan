@@ -7,7 +7,7 @@ import { getAsTypedTuple } from 'helpers/types';
 const shaclIriNamespace = 'http://www.w3.org/ns/shacl#';
 
 // token categories:
-const categoryTokens = {
+export const categoryTokenMap = {
   IriTakingPredicate: createToken({
     name: 'IriTakingPredicate',
     pattern: Lexer.NA,
@@ -33,6 +33,9 @@ const categoryTokens = {
     pattern: Lexer.NA,
   }),
 };
+export const categoryTokens = Object.keys(categoryTokenMap).map(
+  (key) => categoryTokenMap[key]
+);
 
 const localNamesByCategory = {
   IriTakingPredicate: getAsTypedTuple(
@@ -99,6 +102,8 @@ const localNamesByCategory = {
     'alternativePath',
     'inversePath',
     'zeroOrMorePath',
+    'oneOrMorePath',
+    'zeroOrOnePath',
     'nodeKind',
     'languageIn',
     'and',
@@ -207,7 +212,7 @@ const shaclUnprefixedTokenMap = localNames.reduce((tokenMap, localName) => {
   // in the way that we re-compute prefixed SHACL tokens below. Saving this
   // compute time is important for parsing.
   const category = localNameToCategoryMap[localName];
-  const categoryToken = categoryTokens[category];
+  const categoryToken = categoryTokenMap[category];
   const tokenName = `SHACL_${localName}`;
   const iriTokenName = `${tokenName}_IRI`;
   // Category token that will select either a SHACL IRI or a SHACL PN_LOCAL:
@@ -260,32 +265,50 @@ export const getShaclTokenMap: (shaclPrefix: string) => TokenMap = memoize(
 
 const pnameIndex = turtleTokenTypes.indexOf(sparqlTokenMap.PNAME_NS);
 const iriIndex = turtleTokenTypes.indexOf(turtleTokenMap.IRIREF);
+// tokenMap keys will need to be sorted in reverse order so that tokens with
+// partial overlap are in the right order in the TokenType array.
+const reverseSort = (a, b) => {
+  // @ts-ignore: unused variable
+  const [aIgnore, aName, aRemainder] = a.split('_');
+  // @ts-ignore: unused variable
+  const [bIgnore, bName, bRemainder] = b.split('_');
+  if (aName === bName) {
+    if (aRemainder && bRemainder) {
+      return 0; // treat as lexicographically the same for sorting
+    }
+    return aRemainder ? 1 : -1;
+  }
+  return aName < bName ? 1 : bName < aName ? -1 : 0;
+};
 
 export const getShaclTokenTypes: (shaclPrefix: string) => TokenType[] = memoize(
   (shaclPrefix: string) => {
     const tokenMap = getShaclTokenMap(shaclPrefix);
-    const { pnameTokens, iriTokens } = Object.keys(tokenMap).reduce(
-      (accumulator, key) => {
-        if (key.endsWith('_IRI')) {
-          if (iriIndex < pnameIndex) {
-            accumulator.iriTokens.push(tokenMap[key.slice(0, -4)]);
+    const { pnameTokens, iriTokens } = Object.keys(tokenMap)
+      .sort(reverseSort)
+      .reduce(
+        (accumulator, key) => {
+          if (key.endsWith('_IRI')) {
+            if (iriIndex < pnameIndex) {
+              accumulator.iriTokens.push(tokenMap[key.slice(0, -4)]);
+            }
+            accumulator.iriTokens.push(tokenMap[key]);
+          } else if (key.endsWith('_prefixed')) {
+            if (pnameIndex < iriIndex) {
+              accumulator.pnameTokens.push(tokenMap[key.slice(0, -9)]);
+            }
+            accumulator.pnameTokens.push(tokenMap[key]);
           }
-          accumulator.iriTokens.push(tokenMap[key]);
-        } else if (key.endsWith('_prefixed')) {
-          if (pnameIndex < iriIndex) {
-            accumulator.pnameTokens.push(tokenMap[key.slice(0, -9)]);
-          }
-          accumulator.pnameTokens.push(tokenMap[key]);
-        }
 
-        return accumulator;
-      },
-      { pnameTokens: [], iriTokens: [] }
-    );
+          return accumulator;
+        },
+        { pnameTokens: [], iriTokens: [] }
+      );
 
     if (pnameIndex < iriIndex) {
       return [
         ...turtleTokenTypes.slice(0, pnameIndex),
+        ...categoryTokens,
         ...pnameTokens,
         ...turtleTokenTypes.slice(pnameIndex, iriIndex),
         ...iriTokens,
@@ -294,6 +317,7 @@ export const getShaclTokenTypes: (shaclPrefix: string) => TokenType[] = memoize(
     } else {
       return [
         ...turtleTokenTypes.slice(0, iriIndex),
+        ...categoryTokens,
         ...iriTokens,
         ...turtleTokenTypes.slice(iriIndex, pnameIndex),
         ...pnameTokens,
