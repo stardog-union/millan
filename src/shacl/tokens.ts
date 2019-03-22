@@ -202,6 +202,31 @@ const localNameToCategoryMap = localNameCategories.reduce(
   {}
 );
 const localNames = Object.keys(localNameToCategoryMap);
+const shaclUnprefixedTokenMap = localNames.reduce((tokenMap, localName) => {
+  // These can be computed beforehand, so no need to constantly re-compute them
+  // in the way that we re-compute prefixed SHACL tokens below. Saving this
+  // compute time is important for parsing.
+  const category = localNameToCategoryMap[localName];
+  const categoryToken = categoryTokens[category];
+  const tokenName = `SHACL_${localName}`;
+  const iriTokenName = `${tokenName}_IRI`;
+  // Category token that will select either a SHACL IRI or a SHACL PN_LOCAL:
+  const iriOrPrefixCategoryToken = createToken({
+    name: tokenName,
+    pattern: Lexer.NA,
+    categories: categoryToken ? [categoryToken] : [],
+  });
+
+  return {
+    ...tokenMap,
+    [tokenName]: iriOrPrefixCategoryToken,
+    [iriTokenName]: createToken({
+      name: iriTokenName,
+      pattern: `<${shaclIriNamespace}${localName}>`,
+      categories: [iriOrPrefixCategoryToken],
+    }),
+  };
+}, {});
 
 const makePrefixer = (prefix: string) => (localName: string) =>
   `${prefix}:${localName}`;
@@ -218,32 +243,18 @@ export const getShaclTokenMap: (shaclPrefix: string) => TokenMap = memoize(
     const prefix = makePrefixer(shaclPrefix);
 
     return localNames.reduce((tokenMap, localName) => {
-      const category = localNameToCategoryMap[localName];
-      const categoryToken = categoryTokens[category];
       const tokenName = `SHACL_${localName}`;
       const prefixedTokenName = `${tokenName}_prefixed`;
-      const iriTokenName = `${tokenName}_IRI`;
-      const iriOrPrefixCategoryToken = createToken({
-        name: tokenName,
-        pattern: Lexer.NA,
-        categories: categoryToken ? [categoryToken] : [],
-      });
 
       return {
         ...tokenMap,
-        [tokenName]: iriOrPrefixCategoryToken,
         [prefixedTokenName]: createToken({
           name: prefixedTokenName,
           pattern: prefix(localName),
-          categories: [iriOrPrefixCategoryToken],
-        }),
-        [iriTokenName]: createToken({
-          name: iriTokenName,
-          pattern: `<${shaclIriNamespace}${localName}>`,
-          categories: [iriOrPrefixCategoryToken],
+          categories: [tokenMap[tokenName]],
         }),
       };
-    }, {});
+    }, shaclUnprefixedTokenMap);
   }
 );
 
