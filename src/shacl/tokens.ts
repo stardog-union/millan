@@ -3,8 +3,10 @@ const { sparqlTokenMap } = require('../sparql/tokens');
 import { TokenType, createToken, Lexer } from 'chevrotain';
 import memoize from 'memoize-one';
 import { getAsTypedTuple } from 'helpers/types';
+import isDeepEqual from 'lodash.isequal';
 
 const shaclIriNamespace = 'http://www.w3.org/ns/shacl#';
+const xsdIriNamespace = 'http://www.w3.org/2001/XMLSchema#';
 
 // token categories:
 export const categoryTokenMap = {
@@ -33,6 +35,7 @@ export const categoryTokenMap = {
     pattern: Lexer.NA,
   }),
 };
+
 export const categoryTokens = Object.keys(categoryTokenMap).map(
   (key) => categoryTokenMap[key]
 );
@@ -116,6 +119,14 @@ const localNamesByCategory = {
     'select'
   ),
 };
+
+const xsdLocalNames = getAsTypedTuple(
+  'boolean',
+  'integer',
+  'string',
+  'date',
+  'anyURI'
+);
 
 // const listTakingLocalNames = [
 //   'and',
@@ -207,6 +218,25 @@ const localNameToCategoryMap = localNameCategories.reduce(
   {}
 );
 const localNames = Object.keys(localNameToCategoryMap);
+const xsdUnprefixedTokenMap = xsdLocalNames.reduce((tokenMap, localName) => {
+  const tokenName = `SHACL_xsd_${localName}`;
+  const iriTokenName = `${tokenName}_IRI`;
+  // Category token that will select either an XSD IRI or an XSD PN_LOCAL:
+  const iriOrPrefixCategoryToken = createToken({
+    name: tokenName,
+    pattern: Lexer.NA,
+  });
+
+  return {
+    ...tokenMap,
+    [tokenName]: iriOrPrefixCategoryToken,
+    [iriTokenName]: createToken({
+      name: iriTokenName,
+      pattern: `^^<${xsdIriNamespace}${localName}`,
+      categories: [iriOrPrefixCategoryToken],
+    }),
+  };
+}, {});
 const shaclUnprefixedTokenMap = localNames.reduce((tokenMap, localName) => {
   // These can be computed beforehand, so no need to constantly re-compute them
   // in the way that we re-compute prefixed SHACL tokens below. Saving this
@@ -231,7 +261,7 @@ const shaclUnprefixedTokenMap = localNames.reduce((tokenMap, localName) => {
       categories: [iriOrPrefixCategoryToken],
     }),
   };
-}, {});
+}, xsdUnprefixedTokenMap);
 
 const makePrefixer = (prefix: string) => (localName: string) =>
   `${prefix}:${localName}`;
@@ -243,25 +273,40 @@ type LocalName = {
 }[keyof typeof localNamesByCategory];
 type TokenMap = { [K in LocalName]: TokenType };
 
-export const getShaclTokenMap: (shaclPrefix: string) => TokenMap = memoize(
-  (shaclPrefix: string) => {
-    const prefix = makePrefixer(shaclPrefix);
+export const getShaclTokenMap: (
+  prefixes: { shacl: string; xsd: string }
+) => TokenMap = memoize((prefixes: { shacl: string; xsd: string }) => {
+  const prefixWithShacl = makePrefixer(prefixes.shacl);
+  const prefixWithXsd = makePrefixer(prefixes.xsd);
 
-    return localNames.reduce((tokenMap, localName) => {
-      const tokenName = `SHACL_${localName}`;
-      const prefixedTokenName = `${tokenName}_prefixed`;
+  const shaclTokenMap = localNames.reduce((tokenMap, localName) => {
+    const tokenName = `SHACL_${localName}`;
+    const prefixedTokenName = `${tokenName}_prefixed`;
 
-      return {
-        ...tokenMap,
-        [prefixedTokenName]: createToken({
-          name: prefixedTokenName,
-          pattern: prefix(localName),
-          categories: [tokenMap[tokenName]],
-        }),
-      };
-    }, shaclUnprefixedTokenMap);
-  }
-);
+    return {
+      ...tokenMap,
+      [prefixedTokenName]: createToken({
+        name: prefixedTokenName,
+        pattern: prefixWithShacl(localName),
+        categories: [tokenMap[tokenName]],
+      }),
+    };
+  }, shaclUnprefixedTokenMap);
+
+  return xsdLocalNames.reduce((tokenMap, localName) => {
+    const tokenName = `SHACL_xsd_${localName}`;
+    const prefixedTokenName = `${tokenName}_prefixed`;
+
+    return {
+      ...tokenMap,
+      [prefixedTokenName]: createToken({
+        name: prefixedTokenName,
+        pattern: `^^${prefixWithXsd(localName)}`,
+        categories: [tokenMap[tokenName]],
+      }),
+    };
+  }, shaclTokenMap);
+}, isDeepEqual);
 
 const pnameIndex = turtleTokenTypes.indexOf(sparqlTokenMap.PNAME_NS);
 const iriIndex = turtleTokenTypes.indexOf(turtleTokenMap.IRIREF);
@@ -281,48 +326,48 @@ const reverseSort = (a, b) => {
   return aName < bName ? 1 : bName < aName ? -1 : 0;
 };
 
-export const getShaclTokenTypes: (shaclPrefix: string) => TokenType[] = memoize(
-  (shaclPrefix: string) => {
-    const tokenMap = getShaclTokenMap(shaclPrefix);
-    const { pnameTokens, iriTokens } = Object.keys(tokenMap)
-      .sort(reverseSort)
-      .reduce(
-        (accumulator, key) => {
-          if (key.endsWith('_IRI')) {
-            if (iriIndex < pnameIndex) {
-              accumulator.iriTokens.push(tokenMap[key.slice(0, -4)]);
-            }
-            accumulator.iriTokens.push(tokenMap[key]);
-          } else if (key.endsWith('_prefixed')) {
-            if (pnameIndex < iriIndex) {
-              accumulator.pnameTokens.push(tokenMap[key.slice(0, -9)]);
-            }
-            accumulator.pnameTokens.push(tokenMap[key]);
+export const getShaclTokenTypes: (
+  prefixes: { shacl: string; xsd: string }
+) => TokenType[] = memoize((prefixes: { shacl: string; xsd: string }) => {
+  const tokenMap = getShaclTokenMap(prefixes);
+  const { pnameTokens, iriTokens } = Object.keys(tokenMap)
+    .sort(reverseSort)
+    .reduce(
+      (accumulator, key) => {
+        if (key.endsWith('_IRI')) {
+          if (iriIndex < pnameIndex) {
+            accumulator.iriTokens.push(tokenMap[key.slice(0, -4)]);
           }
+          accumulator.iriTokens.push(tokenMap[key]);
+        } else if (key.endsWith('_prefixed')) {
+          if (pnameIndex < iriIndex) {
+            accumulator.pnameTokens.push(tokenMap[key.slice(0, -9)]);
+          }
+          accumulator.pnameTokens.push(tokenMap[key]);
+        }
 
-          return accumulator;
-        },
-        { pnameTokens: [], iriTokens: [] }
-      );
+        return accumulator;
+      },
+      { pnameTokens: [], iriTokens: [] }
+    );
 
-    if (pnameIndex < iriIndex) {
-      return [
-        ...turtleTokenTypes.slice(0, pnameIndex),
-        ...categoryTokens,
-        ...pnameTokens,
-        ...turtleTokenTypes.slice(pnameIndex, iriIndex),
-        ...iriTokens,
-        ...turtleTokenTypes.slice(iriIndex),
-      ];
-    } else {
-      return [
-        ...turtleTokenTypes.slice(0, iriIndex),
-        ...categoryTokens,
-        ...iriTokens,
-        ...turtleTokenTypes.slice(iriIndex, pnameIndex),
-        ...pnameTokens,
-        ...turtleTokenTypes.slice(pnameIndex),
-      ];
-    }
+  if (pnameIndex < iriIndex) {
+    return [
+      ...turtleTokenTypes.slice(0, pnameIndex),
+      ...categoryTokens,
+      ...pnameTokens,
+      ...turtleTokenTypes.slice(pnameIndex, iriIndex),
+      ...iriTokens,
+      ...turtleTokenTypes.slice(iriIndex),
+    ];
+  } else {
+    return [
+      ...turtleTokenTypes.slice(0, iriIndex),
+      ...categoryTokens,
+      ...iriTokens,
+      ...turtleTokenTypes.slice(iriIndex, pnameIndex),
+      ...pnameTokens,
+      ...turtleTokenTypes.slice(pnameIndex),
+    ];
   }
-);
+}, isDeepEqual);

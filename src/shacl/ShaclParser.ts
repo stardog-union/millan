@@ -27,7 +27,6 @@ export class ShaclParser extends TurtleParser {
     semanticErrors: IRecognitionException[];
     cst: any;
   } => {
-    console.log(document);
     this.input = this.tokenize(document);
     const cst = this.turtleDoc();
     // Next two items are copied so that they can be returned/held after parse
@@ -42,20 +41,23 @@ export class ShaclParser extends TurtleParser {
     };
   };
 
-  constructor(config?: Partial<IParserConfig>, shaclPrefix = 'sh') {
+  constructor(
+    config?: Partial<IParserConfig>,
+    prefixes = { shacl: 'sh', xsd: 'xsd' }
+  ) {
     super(
       {
         outputCst: true,
         recoveryEnabled: true,
         ...config,
       },
-      getShaclTokenTypes(shaclPrefix),
-      getShaclTokenTypes(shaclPrefix),
+      getShaclTokenTypes(prefixes),
+      getShaclTokenTypes(prefixes),
       false
     );
 
-    this.lexer = new Lexer(getShaclTokenTypes(shaclPrefix));
-    this.shaclTokenMap = getShaclTokenMap(shaclPrefix);
+    this.lexer = new Lexer(getShaclTokenTypes(prefixes));
+    this.shaclTokenMap = getShaclTokenMap(prefixes);
     Parser.performSelfAnalysis(this);
   }
 
@@ -270,7 +272,14 @@ export class ShaclParser extends TurtleParser {
 
   shaclIntConstraint = this.RULE('shaclIntConstraint', () => {
     this.CONSUME(categoryTokenMap.IntTakingPredicate);
-    this.CONSUME(turtleTokenMap.INTEGER);
+    this.OR([
+      {
+        ALT: () => this.CONSUME(turtleTokenMap.INTEGER),
+      },
+      {
+        ALT: () => this.SUBRULE(this.shaclXsdInteger),
+      },
+    ]);
   });
 
   shaclStringConstraint = this.RULE('shaclStringConstraint', () => {
@@ -283,12 +292,35 @@ export class ShaclParser extends TurtleParser {
     () => {
       this.CONSUME(categoryTokenMap.StringLiteralQuoteTakingPredicate);
       this.CONSUME(turtleTokenMap.STRING_LITERAL_QUOTE);
+      this.OPTION(() => {
+        this.OR([
+          {
+            ALT: () => this.CONSUME(turtleTokenMap.LANGTAG),
+          },
+          {
+            ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_xsd_string),
+          },
+          {
+            ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_xsd_anyURI),
+          },
+        ]);
+      });
     }
   );
 
   shaclLangStringConstraint = this.RULE('shaclLangStringConstraint', () => {
     this.CONSUME(this.shaclTokenMap.SHACL_message);
-    this.CONSUME(turtleTokenMap.LANGTAG);
+    this.SUBRULE(this.String);
+    this.OPTION(() => {
+      this.OR([
+        {
+          ALT: () => this.CONSUME(turtleTokenMap.LANGTAG),
+        },
+        {
+          ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_xsd_string),
+        },
+      ]);
+    });
   });
 
   shaclBooleanConstraint = this.RULE('shaclBooleanConstraint', () => {
@@ -299,6 +331,9 @@ export class ShaclParser extends TurtleParser {
       },
       {
         ALT: () => this.CONSUME(turtleTokenMap.FALSE),
+      },
+      {
+        ALT: () => this.SUBRULE(this.shaclXsdBoolean),
       },
     ]);
   });
@@ -438,5 +473,30 @@ export class ShaclParser extends TurtleParser {
         ALT: () => this.SUBRULE(this.literal),
       },
     ]);
+  });
+
+  shaclXsdBoolean = this.RULE('shaclXsdBoolean', () => {
+    this.SUBRULE(this.String);
+    this.CONSUME(this.shaclTokenMap.SHACL_xsd_boolean);
+  });
+
+  shaclXsdString = this.RULE('shaclXsdString', () => {
+    this.SUBRULE(this.String);
+    this.CONSUME(this.shaclTokenMap.SHACL_xsd_string);
+  });
+
+  shaclXsdInteger = this.RULE('shaclXsdInteger', () => {
+    this.SUBRULE(this.String);
+    this.CONSUME(this.shaclTokenMap.SHACL_xsd_integer);
+  });
+
+  shaclXsdDate = this.RULE('shaclXsdDate', () => {
+    this.SUBRULE(this.String);
+    this.CONSUME(this.shaclTokenMap.SHACL_xsd_date);
+  });
+
+  shaclXsdAnyURI = this.RULE('shaclXsdAnyURI', () => {
+    this.SUBRULE(this.String);
+    this.CONSUME(this.shaclTokenMap.SHACL_xsd_anyURI);
   });
 }

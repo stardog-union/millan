@@ -1,4 +1,6 @@
+import * as path from 'path';
 import { ShaclParser } from '../../shacl/ShaclParser';
+import { readDirAsync, readFileAsync } from '../utils';
 
 const fixture = `
 ex:OtherPerson
@@ -22,6 +24,39 @@ ex:PersonShape
   <http://www.w3.org/ns/shacl#ignoredProperties> ( rdf:type ) .
 `;
 
+const fixtureSuites = [
+  'shacl-core/complex',
+  'shacl-core/misc',
+  'shacl-core/node',
+  'shacl-core/path',
+  'shacl-core/property',
+  'shacl-core/targets',
+];
+const getAllFileContents = () =>
+  Promise.all(
+    fixtureSuites.map((suitePath) =>
+      readDirAsync(path.join(__dirname, 'fixtures', suitePath))
+    )
+  ).then((filesContainer) =>
+    Promise.all(
+      // @ts-ignore
+      filesContainer.reduce(
+        (flattenedFilesPromises, files, idx) => [
+          ...flattenedFilesPromises,
+          ...files.map((file) =>
+            readFileAsync(
+              path.join(__dirname, 'fixtures', fixtureSuites[idx], file)
+            ).then((contents) => ({
+              file,
+              contents,
+            }))
+          ),
+        ],
+        []
+      )
+    )
+  );
+
 describe('SHACL parser', () => {
   let parser: ShaclParser;
 
@@ -33,5 +68,25 @@ describe('SHACL parser', () => {
     const { cst } = parser.parse(fixture);
     console.log(JSON.stringify(cst, null, 2));
     expect(true).toBe(true);
+  });
+
+  it('does the damn thing', async (done) => {
+    const allFileContents = await getAllFileContents();
+    let count = 0;
+    allFileContents.forEach(({ contents, file }) => {
+      const { cst, errors } = parser.parse(contents);
+
+      if (errors.length) {
+        if (file === 'personexample.ttl') {
+          console.log(JSON.stringify(cst, null, 2));
+          console.log(JSON.stringify(errors, null, 2));
+        }
+        count++;
+        console.log(file);
+      }
+    });
+    console.log('files', allFileContents.length);
+    console.log('errored', count);
+    done();
   });
 });

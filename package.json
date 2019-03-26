@@ -47,7 +47,8 @@
     }
   ],
   "dependencies": {
-    "chevrotain": "3.0.1"
+    "chevrotain": "3.0.1",
+    "lodash.isequal": "^4.5.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
