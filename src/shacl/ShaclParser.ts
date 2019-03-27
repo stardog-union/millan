@@ -61,48 +61,38 @@ export class ShaclParser extends TurtleParser {
     Parser.performSelfAnalysis(this);
   }
 
-  triples = this.OVERRIDE_RULE('triples', () => {
+  predicateObjectList = this.OVERRIDE_RULE('predicateObjectList', () => {
     this.OR([
       {
         ALT: () => {
-          this.SUBRULE(this.subject);
-          this.SUBRULE(this.shaclPredicateObjectList);
+          this.SUBRULE(this.verb);
+          this.SUBRULE(this.objectList);
         },
       },
-      {
-        ALT: () => {
-          this.SUBRULE(this.blankNodePropertyList);
-          this.OPTION(() => this.SUBRULE1(this.shaclPredicateObjectList));
-        },
-      },
-    ]);
-  });
-
-  blankNodePropertyList = this.OVERRIDE_RULE('blankNodePropertyList', () => {
-    this.CONSUME(turtleTokenMap.LBracket);
-    this.SUBRULE(this.shaclPredicateObjectList);
-    this.CONSUME(turtleTokenMap.RBracket);
-  });
-
-  shaclPredicateObjectList = this.RULE('shaclPredicateObjectList', () => {
-    this.OR([
       {
         ALT: () => {
           this.SUBRULE(this.shaclRulePredicateObjectList);
-          this.MANY(() => {
-            this.CONSUME(turtleTokenMap.Semicolon);
-            this.OPTION(() => {
-              this.SUBRULE1(this.shaclPredicateObjectList);
-            });
-          });
-        },
-      },
-      {
-        ALT: () => {
-          this.SUBRULE(this.predicateObjectList);
         },
       },
     ]);
+    this.MANY(() => {
+      this.CONSUME(turtleTokenMap.Semicolon);
+      this.OPTION(() => {
+        this.OR1([
+          {
+            ALT: () => {
+              this.SUBRULE1(this.verb);
+              this.SUBRULE1(this.objectList);
+            },
+          },
+          {
+            ALT: () => {
+              this.SUBRULE1(this.shaclRulePredicateObjectList);
+            },
+          },
+        ]);
+      });
+    });
   });
 
   shaclRulePredicateObjectList = this.RULE(
@@ -213,12 +203,15 @@ export class ShaclParser extends TurtleParser {
     this.CONSUME(turtleTokenMap.LParen);
     this.SUBRULE(this.shaclPropertyPathPath);
     this.AT_LEAST_ONE(() => this.SUBRULE1(this.shaclPropertyPathPath));
+    this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
+    this.CONSUME(turtleTokenMap.RParen);
   });
 
   shaclAlternativePath = this.RULE('shaclAlternativePath', () => {
     this.CONSUME(turtleTokenMap.LBracket);
     this.CONSUME(this.shaclTokenMap.SHACL_alternativePath);
     this.SUBRULE(this.shaclSequencePath);
+    this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RBracket);
   });
 
@@ -226,6 +219,7 @@ export class ShaclParser extends TurtleParser {
     this.CONSUME(turtleTokenMap.LBracket);
     this.CONSUME(this.shaclTokenMap.SHACL_inversePath);
     this.SUBRULE(this.shaclPropertyPathPath);
+    this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RBracket);
   });
 
@@ -233,6 +227,7 @@ export class ShaclParser extends TurtleParser {
     this.CONSUME(turtleTokenMap.LBracket);
     this.CONSUME(this.shaclTokenMap.SHACL_zeroOrMorePath);
     this.SUBRULE(this.shaclPropertyPathPath);
+    this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RBracket);
   });
 
@@ -240,6 +235,7 @@ export class ShaclParser extends TurtleParser {
     this.CONSUME(turtleTokenMap.LBracket);
     this.CONSUME(this.shaclTokenMap.SHACL_oneOrMorePath);
     this.SUBRULE(this.shaclPropertyPathPath);
+    this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RBracket);
   });
 
@@ -247,6 +243,7 @@ export class ShaclParser extends TurtleParser {
     this.CONSUME(turtleTokenMap.LBracket);
     this.CONSUME(this.shaclTokenMap.SHACL_zeroOrOnePath);
     this.SUBRULE(this.shaclPropertyPathPath);
+    this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RBracket);
   });
 
@@ -255,6 +252,7 @@ export class ShaclParser extends TurtleParser {
       {
         ALT: () => this.SUBRULE(this.shaclIntConstraint),
       },
+      // TODO: Some specificy here is possibly unnecessary.
       {
         ALT: () => this.SUBRULE(this.shaclStringConstraint),
       },
@@ -266,6 +264,9 @@ export class ShaclParser extends TurtleParser {
       },
       {
         ALT: () => this.SUBRULE(this.shaclBooleanConstraint),
+      },
+      {
+        ALT: () => this.SUBRULE(this.shaclAnyLiteralConstraint),
       },
     ]);
   });
@@ -284,7 +285,7 @@ export class ShaclParser extends TurtleParser {
 
   shaclStringConstraint = this.RULE('shaclStringConstraint', () => {
     this.CONSUME(this.shaclTokenMap.SHACL_select);
-    this.SUBRULE(this.String);
+    this.SUBRULE(this.String); // TODO: a bit too lax?
   });
 
   shaclStringLiteralQuoteConstraint = this.RULE(
@@ -298,10 +299,16 @@ export class ShaclParser extends TurtleParser {
             ALT: () => this.CONSUME(turtleTokenMap.LANGTAG),
           },
           {
-            ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_xsd_string),
+            ALT: () => {
+              this.CONSUME(turtleTokenMap.DoubleCaret);
+              this.CONSUME(this.shaclTokenMap.SHACL_xsd_string);
+            },
           },
           {
-            ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_xsd_anyURI),
+            ALT: () => {
+              this.CONSUME1(turtleTokenMap.DoubleCaret);
+              this.CONSUME(this.shaclTokenMap.SHACL_xsd_anyURI);
+            },
           },
         ]);
       });
@@ -317,7 +324,10 @@ export class ShaclParser extends TurtleParser {
           ALT: () => this.CONSUME(turtleTokenMap.LANGTAG),
         },
         {
-          ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_xsd_string),
+          ALT: () => {
+            this.CONSUME(turtleTokenMap.DoubleCaret);
+            this.CONSUME(this.shaclTokenMap.SHACL_xsd_string);
+          },
         },
       ]);
     });
@@ -336,6 +346,11 @@ export class ShaclParser extends TurtleParser {
         ALT: () => this.SUBRULE(this.shaclXsdBoolean),
       },
     ]);
+  });
+
+  shaclAnyLiteralConstraint = this.RULE('shaclAnyLiteralConstraint', () => {
+    this.CONSUME(categoryTokenMap.AnyLiteralTakingPredicate);
+    this.SUBRULE(this.literal);
   });
 
   shaclListTakingConstraint = this.RULE('shaclListTakingConstraint', () => {
@@ -450,6 +465,9 @@ export class ShaclParser extends TurtleParser {
       {
         ALT: () => this.SUBRULE(this.blankNodePropertyList),
       },
+      {
+        ALT: () => this.SUBRULE(this.BlankNode),
+      },
     ]);
   });
 
@@ -476,27 +494,32 @@ export class ShaclParser extends TurtleParser {
   });
 
   shaclXsdBoolean = this.RULE('shaclXsdBoolean', () => {
-    this.SUBRULE(this.String);
+    this.SUBRULE(this.shaclStringWithDoubleCaret);
     this.CONSUME(this.shaclTokenMap.SHACL_xsd_boolean);
   });
 
   shaclXsdString = this.RULE('shaclXsdString', () => {
-    this.SUBRULE(this.String);
+    this.SUBRULE(this.shaclStringWithDoubleCaret);
     this.CONSUME(this.shaclTokenMap.SHACL_xsd_string);
   });
 
   shaclXsdInteger = this.RULE('shaclXsdInteger', () => {
-    this.SUBRULE(this.String);
+    this.SUBRULE(this.shaclStringWithDoubleCaret);
     this.CONSUME(this.shaclTokenMap.SHACL_xsd_integer);
   });
 
   shaclXsdDate = this.RULE('shaclXsdDate', () => {
-    this.SUBRULE(this.String);
+    this.SUBRULE(this.shaclStringWithDoubleCaret);
     this.CONSUME(this.shaclTokenMap.SHACL_xsd_date);
   });
 
   shaclXsdAnyURI = this.RULE('shaclXsdAnyURI', () => {
-    this.SUBRULE(this.String);
+    this.SUBRULE(this.shaclStringWithDoubleCaret);
     this.CONSUME(this.shaclTokenMap.SHACL_xsd_anyURI);
+  });
+
+  shaclStringWithDoubleCaret = this.RULE('shaclStringWithDoubleCaret', () => {
+    this.SUBRULE(this.String);
+    this.CONSUME(turtleTokenMap.DoubleCaret);
   });
 }

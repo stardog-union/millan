@@ -23,7 +23,7 @@ ex:PersonShape
 
 describe('SHACL lexer', () => {
   it('works', () => {
-    console.log(JSON.stringify(lexer.tokenize(fixture), null, 2));
+    // console.log(JSON.stringify(lexer.tokenize(fixture), null, 2));
     expect(true).toBe(true);
   });
 });

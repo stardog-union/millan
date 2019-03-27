@@ -34,6 +34,10 @@ export const categoryTokenMap = {
     name: 'ShapeExpectingPredicate',
     pattern: Lexer.NA,
   }),
+  AnyLiteralTakingPredicate: createToken({
+    name: 'AnyLiteralTakingPredicate',
+    pattern: Lexer.NA,
+  }),
 };
 
 export const categoryTokens = Object.keys(categoryTokenMap).map(
@@ -64,10 +68,6 @@ const localNamesByCategory = {
   IntTakingPredicate: getAsTypedTuple(
     'minCount',
     'maxCount',
-    'minExclusive',
-    'minInclusive',
-    'maxExclusive',
-    'maxInclusive',
     'minLength',
     'maxLength',
     'qualifiedMinCount',
@@ -95,6 +95,12 @@ const localNamesByCategory = {
     'declare',
     'prefixes'
   ),
+  AnyLiteralTakingPredicate: getAsTypedTuple(
+    'minExclusive',
+    'minInclusive',
+    'maxExclusive',
+    'maxInclusive'
+  ),
   other: getAsTypedTuple(
     'Shape',
     'NodeShape',
@@ -112,7 +118,6 @@ const localNamesByCategory = {
     'and',
     'or',
     'xone',
-    'qualifiedValueShapesDisjoint',
     'ignoredProperties',
     'hasValue',
     'in',
@@ -125,6 +130,7 @@ const xsdLocalNames = getAsTypedTuple(
   'integer',
   'string',
   'date',
+  'dateTime',
   'anyURI'
 );
 
@@ -232,8 +238,8 @@ const xsdUnprefixedTokenMap = xsdLocalNames.reduce((tokenMap, localName) => {
     [tokenName]: iriOrPrefixCategoryToken,
     [iriTokenName]: createToken({
       name: iriTokenName,
-      pattern: `^^<${xsdIriNamespace}${localName}`,
-      categories: [iriOrPrefixCategoryToken],
+      pattern: `<${xsdIriNamespace}${localName}`,
+      categories: [iriOrPrefixCategoryToken, turtleTokenMap.IRIREF],
     }),
   };
 }, {});
@@ -258,7 +264,7 @@ const shaclUnprefixedTokenMap = localNames.reduce((tokenMap, localName) => {
     [iriTokenName]: createToken({
       name: iriTokenName,
       pattern: `<${shaclIriNamespace}${localName}>`,
-      categories: [iriOrPrefixCategoryToken],
+      categories: [iriOrPrefixCategoryToken, turtleTokenMap.IRIREF],
     }),
   };
 }, xsdUnprefixedTokenMap);
@@ -288,7 +294,7 @@ export const getShaclTokenMap: (
       [prefixedTokenName]: createToken({
         name: prefixedTokenName,
         pattern: prefixWithShacl(localName),
-        categories: [tokenMap[tokenName]],
+        categories: [tokenMap[tokenName], turtleTokenMap.PNAME_LN],
       }),
     };
   }, shaclUnprefixedTokenMap);
@@ -301,8 +307,8 @@ export const getShaclTokenMap: (
       ...tokenMap,
       [prefixedTokenName]: createToken({
         name: prefixedTokenName,
-        pattern: `^^${prefixWithXsd(localName)}`,
-        categories: [tokenMap[tokenName]],
+        pattern: `${prefixWithXsd(localName)}`,
+        categories: [tokenMap[tokenName], turtleTokenMap.PNAME_LN],
       }),
     };
   }, shaclTokenMap);

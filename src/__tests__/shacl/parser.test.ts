@@ -73,20 +73,22 @@ describe('SHACL parser', () => {
   it('does the damn thing', async (done) => {
     const allFileContents = await getAllFileContents();
     let count = 0;
+
     allFileContents.forEach(({ contents, file }) => {
-      const { cst, errors } = parser.parse(contents);
+      if (file === 'qualifiedValueShape-001.ttl') {
+        // The above test has a reference to something that is not part of the
+        // current SHACL spec (`sh:nodeShape`), though it used to be.
+        return;
+      }
+
+      const { errors } = parser.parse(contents);
 
       if (errors.length) {
-        if (file === 'personexample.ttl') {
-          console.log(JSON.stringify(cst, null, 2));
-          console.log(JSON.stringify(errors, null, 2));
-        }
         count++;
         console.log(file);
       }
     });
-    console.log('files', allFileContents.length);
-    console.log('errored', count);
+
     done();
   });
 });
