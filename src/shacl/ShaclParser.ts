@@ -43,7 +43,8 @@ export class ShaclParser extends TurtleParser {
 
   constructor(
     config?: Partial<IParserConfig>,
-    prefixes = { shacl: 'sh', xsd: 'xsd' }
+    prefixes = { shacl: 'sh', xsd: 'xsd' },
+    doLog = false
   ) {
     super(
       {
@@ -53,7 +54,8 @@ export class ShaclParser extends TurtleParser {
       },
       getShaclTokenTypes(prefixes),
       getShaclTokenTypes(prefixes),
-      false
+      false,
+      doLog
     );
 
     this.lexer = new Lexer(getShaclTokenTypes(prefixes));
@@ -284,7 +286,14 @@ export class ShaclParser extends TurtleParser {
   });
 
   shaclStringConstraint = this.RULE('shaclStringConstraint', () => {
-    this.CONSUME(this.shaclTokenMap.SHACL_select);
+    this.OR([
+      {
+        ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_select),
+      },
+      {
+        ALT: () => this.CONSUME(this.shaclTokenMap.SHACL_ask),
+      },
+    ]);
     this.SUBRULE(this.String); // TODO: a bit too lax?
   });
 
@@ -316,7 +325,7 @@ export class ShaclParser extends TurtleParser {
   );
 
   shaclLangStringConstraint = this.RULE('shaclLangStringConstraint', () => {
-    this.CONSUME(this.shaclTokenMap.SHACL_message);
+    this.CONSUME(categoryTokenMap.LangStringTakingPredicate);
     this.SUBRULE(this.String);
     this.OPTION(() => {
       this.OR([

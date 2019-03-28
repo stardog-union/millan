@@ -1,6 +1,8 @@
 import * as path from 'path';
+import * as fs from 'fs';
 import { ShaclParser } from '../../shacl/ShaclParser';
 import { readDirAsync, readFileAsync } from '../utils';
+import { clearCache } from 'chevrotain';
 
 const fixture = `
 ex:OtherPerson
@@ -31,6 +33,10 @@ const fixtureSuites = [
   'shacl-core/path',
   'shacl-core/property',
   'shacl-core/targets',
+  'shacl-sparql/component',
+  'shacl-sparql/node',
+  'shacl-sparql/pre-binding',
+  'shacl-sparql/property',
 ];
 const getAllFileContents = () =>
   Promise.all(
@@ -57,38 +63,68 @@ const getAllFileContents = () =>
     )
   );
 
+const invalidTestsFilenames = [
+  'qualifiedValueShape-001.ttl', // references `sh:nodeShape` from old, not current, SHACL spec
+];
+
 describe('SHACL parser', () => {
   let parser: ShaclParser;
 
   beforeEach(() => {
+    clearCache();
     parser = new ShaclParser();
   });
 
   it('parses', () => {
-    const { cst } = parser.parse(fixture);
-    console.log(JSON.stringify(cst, null, 2));
-    expect(true).toBe(true);
+    const { errors } = parser.parse(fixture);
+    expect(errors).toHaveLength(0);
   });
 
-  it('does the damn thing', async (done) => {
+  it('parses all w3c SHACL tests without errors', async (done) => {
     const allFileContents = await getAllFileContents();
-    let count = 0;
+    const filesWithErrors = [];
 
     allFileContents.forEach(({ contents, file }) => {
-      if (file === 'qualifiedValueShape-001.ttl') {
-        // The above test has a reference to something that is not part of the
-        // current SHACL spec (`sh:nodeShape`), though it used to be.
+      if (invalidTestsFilenames.includes(file)) {
         return;
       }
 
       const { errors } = parser.parse(contents);
 
       if (errors.length) {
-        count++;
-        console.log(file);
+        filesWithErrors.push(file);
       }
     });
 
-    done();
+    if (filesWithErrors.length) {
+      done.fail(
+        `The following files caused parse errors: ${filesWithErrors.join(', ')}`
+      );
+    } else {
+      done();
+    }
+  });
+
+  it('accepts and parses with nonstandard SHACL namespaces', () => {
+    const testFixture = fs.readFileSync(
+      path.join(
+        __dirname,
+        'fixtures',
+        'misc',
+        'nonstandard-shacl-namespace.ttl'
+      ),
+      {
+        encoding: 'utf8',
+      }
+    );
+    const specialParser = new ShaclParser(
+      {},
+      { shacl: 'weehee', xsd: 'xsd' },
+      true
+    );
+    const { cst, errors } = specialParser.parse(testFixture);
+    // console.log(JSON.stringify(errors, null, 2));
+    // console.log(JSON.stringify(cst, null, 2));
+    expect(errors).toHaveLength(0);
   });
 });

@@ -1,8 +1,3 @@
-import { Lexer } from 'chevrotain';
-const { getShaclTokenTypes } = require('../../shacl/tokens');
-
-const lexer = new Lexer(getShaclTokenTypes('sh'));
-const fixture = `
 ex:PersonShape
 	a sh:NodeShape ;
 	sh:targetClass ex:Person ;    # Applies to all persons
@@ -19,10 +14,3 @@ ex:PersonShape
 	] ;
 	sh:closed true ;
   <http://www.w3.org/ns/shacl#ignoredProperties> ( rdf:type ) .
-`;
-
-describe('SHACL lexer', () => {
-  it('works', () => {
-    expect(true).toBe(true);
-  });
-});

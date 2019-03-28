@@ -26,6 +26,10 @@ export const categoryTokenMap = {
     name: 'StringLiteralQuoteTakingPredicate',
     pattern: Lexer.NA,
   }),
+  LangStringTakingPredicate: createToken({
+    name: 'LangStringTakingPredicate',
+    pattern: Lexer.NA,
+  }),
   BooleanTakingPredicate: createToken({
     name: 'BooleanTakingPredicate',
     pattern: Lexer.NA,
@@ -79,6 +83,7 @@ const localNamesByCategory = {
     'prefix',
     'namespace'
   ),
+  LangStringTakingPredicate: getAsTypedTuple('message', 'labelTemplate'),
   BooleanTakingPredicate: getAsTypedTuple(
     'uniqueLang',
     'qualifiedValueShapesDisjoint',
@@ -93,7 +98,11 @@ const localNamesByCategory = {
     'qualifiedValueShape',
     'sparql',
     'declare',
-    'prefixes'
+    'prefixes',
+    'parameter',
+    'nodeValidator',
+    'propertyValidator',
+    'validator'
   ),
   AnyLiteralTakingPredicate: getAsTypedTuple(
     'minExclusive',
@@ -121,7 +130,8 @@ const localNamesByCategory = {
     'ignoredProperties',
     'hasValue',
     'in',
-    'select'
+    'select',
+    'ask'
   ),
 };
 
