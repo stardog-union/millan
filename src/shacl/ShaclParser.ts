@@ -43,8 +43,7 @@ export class ShaclParser extends TurtleParser {
 
   constructor(
     config?: Partial<IParserConfig>,
-    prefixes = { shacl: 'sh', xsd: 'xsd' },
-    doLog = false
+    prefixes = { shacl: 'sh', xsd: 'xsd' }
   ) {
     super(
       {
@@ -54,8 +53,7 @@ export class ShaclParser extends TurtleParser {
       },
       getShaclTokenTypes(prefixes),
       getShaclTokenTypes(prefixes),
-      false,
-      doLog
+      false
     );
 
     this.lexer = new Lexer(getShaclTokenTypes(prefixes));

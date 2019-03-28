@@ -117,14 +117,38 @@ describe('SHACL parser', () => {
         encoding: 'utf8',
       }
     );
-    const specialParser = new ShaclParser(
-      {},
-      { shacl: 'weehee', xsd: 'xsd' },
-      true
-    );
-    const { cst, errors } = specialParser.parse(testFixture);
-    // console.log(JSON.stringify(errors, null, 2));
-    // console.log(JSON.stringify(cst, null, 2));
+    const specialParser = new ShaclParser({}, { shacl: 'weehee', xsd: 'xsd' });
+    const { errors } = specialParser.parse(testFixture);
     expect(errors).toHaveLength(0);
+  });
+
+  it('accepts and parses with nonstandard XSD namespaces', () => {
+    const testFixture = fs.readFileSync(
+      path.join(__dirname, 'fixtures', 'misc', 'nonstandard-xsd-namespace.ttl'),
+      {
+        encoding: 'utf8',
+      }
+    );
+    const specialParser = new ShaclParser({}, { shacl: 'sh', xsd: 'xxxxx' });
+    const { errors } = specialParser.parse(testFixture);
+    expect(errors).toHaveLength(0);
+  });
+
+  it('accepts and parses with both nonstandard SHACL and nonstandard XSD namespaces', () => {
+    const testFixture = fs.readFileSync(
+      path.join(
+        __dirname,
+        'fixtures',
+        'misc',
+        'nonstandard-shacl-and-xsd-namespaces.ttl'
+      ),
+      {
+        encoding: 'utf8',
+      }
+    );
+    const specialParser = new ShaclParser({}, { shacl: 'weehee', xsd: 'xxxx' });
+    const { cst, errors } = specialParser.parse(testFixture);
+    expect(errors).toHaveLength(0);
+    console.log(JSON.stringify(cst, null, 2));
   });
 });
