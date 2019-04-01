@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { ShaclParser } from '../../shacl/ShaclParser';
 import { readDirAsync, readFileAsync } from '../utils';
-import { clearCache } from 'chevrotain';
 
 const fixture = `
 ex:OtherPerson
@@ -71,7 +70,6 @@ describe('SHACL parser', () => {
   let parser: ShaclParser;
 
   beforeEach(() => {
-    clearCache();
     parser = new ShaclParser();
   });
 
@@ -147,8 +145,7 @@ describe('SHACL parser', () => {
       }
     );
     const specialParser = new ShaclParser({}, { shacl: 'weehee', xsd: 'xxxx' });
-    const { cst, errors } = specialParser.parse(testFixture);
+    const { errors } = specialParser.parse(testFixture);
     expect(errors).toHaveLength(0);
-    console.log(JSON.stringify(cst, null, 2));
   });
 });

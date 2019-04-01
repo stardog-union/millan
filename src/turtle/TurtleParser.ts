@@ -60,7 +60,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     lexerDefinition: TokenType[] | IMultiModeLexerDefinition = tokens,
     performSelfAnalysis = true
   ) {
-    super([], tokens, {
+    super(tokens, {
       outputCst: true,
       recoveryEnabled: true,
       ...config,

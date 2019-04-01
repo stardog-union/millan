@@ -22,6 +22,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
   public parse = (document: string, entryRule = this.SparqlDoc) => {
     this.input = this.lexer.tokenize(document).tokens;
+    console.log(JSON.stringify(this.input, null, 2));
     const cst = entryRule.call(this);
     const errors: IRecognitionException[] = this.errors;
     return {
@@ -43,7 +44,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     } = {},
     tokenVocab: TokenType[]
   ) {
-    super(options.input || [], tokenVocab, {
+    super(tokenVocab, {
       recoveryEnabled: true,
       outputCst: true,
       ...options.config,
