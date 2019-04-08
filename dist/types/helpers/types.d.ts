@@ -9,4 +9,6 @@ export interface IStardogParser {
 export interface ITokensMap {
     [key: string]: IToken[];
 }
+declare type Lit = string | number | boolean | undefined | null | void | symbol | {};
+export declare const getAsTypedTuple: <T extends Lit[]>(...args: T) => T;
 export { IToken, CstNode, TokenType };

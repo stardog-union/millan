@@ -65,13 +65,13 @@ export class ShaclParser extends TurtleParser {
     this.OR([
       {
         ALT: () => {
-          this.SUBRULE(this.verb);
-          this.SUBRULE(this.objectList);
+          this.SUBRULE(this.shaclRulePredicateObjectList);
         },
       },
       {
         ALT: () => {
-          this.SUBRULE(this.shaclRulePredicateObjectList);
+          this.SUBRULE(this.verb);
+          this.SUBRULE(this.objectList);
         },
       },
     ]);
@@ -81,13 +81,13 @@ export class ShaclParser extends TurtleParser {
         this.OR1([
           {
             ALT: () => {
-              this.SUBRULE1(this.verb);
-              this.SUBRULE1(this.objectList);
+              this.SUBRULE1(this.shaclRulePredicateObjectList);
             },
           },
           {
             ALT: () => {
-              this.SUBRULE1(this.shaclRulePredicateObjectList);
+              this.SUBRULE1(this.verb);
+              this.SUBRULE1(this.objectList);
             },
           },
         ]);
@@ -109,9 +109,6 @@ export class ShaclParser extends TurtleParser {
           ALT: () => this.SUBRULE(this.shaclTargetNode),
         },
         {
-          ALT: () => this.SUBRULE(this.shaclVerbShape),
-        },
-        {
           ALT: () => this.SUBRULE(this.shaclPropertyPath),
         },
         {
@@ -125,6 +122,9 @@ export class ShaclParser extends TurtleParser {
         },
         {
           ALT: () => this.SUBRULE(this.shaclHasValueConstraint),
+        },
+        {
+          ALT: () => this.SUBRULE(this.shaclVerbShape),
         },
       ]);
     }
@@ -202,7 +202,7 @@ export class ShaclParser extends TurtleParser {
   shaclSequencePath = this.RULE('shaclSequencePath', () => {
     this.CONSUME(turtleTokenMap.LParen);
     this.SUBRULE(this.shaclPropertyPathPath);
-    this.AT_LEAST_ONE(() => this.SUBRULE1(this.shaclPropertyPathPath));
+    this.MANY(() => this.SUBRULE1(this.shaclPropertyPathPath));
     this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RParen);
   });

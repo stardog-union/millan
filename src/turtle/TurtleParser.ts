@@ -279,8 +279,8 @@ export class TurtleParser extends Parser implements IStardogParser {
         message: 'A prefix was used for which there was no namespace defined.',
         token: prefixedNameToken,
         context: {
-          ruleStack: this.getHumanReadableRuleStack(),
-          ruleOccurrenceStack: [...this.RULE_OCCURRENCE_STACK],
+          ruleStack: (<any>this).getHumanReadableRuleStack(),
+          ruleOccurrenceStack: [...(<any>this).RULE_OCCURRENCE_STACK],
         },
         resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
       });

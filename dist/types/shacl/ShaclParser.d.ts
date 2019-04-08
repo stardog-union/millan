@@ -9,10 +9,11 @@ export declare class ShaclParser extends TurtleParser {
         semanticErrors: IRecognitionException[];
         cst: any;
     };
-    constructor(config?: Partial<IParserConfig>, shaclPrefix?: string);
-    triples: (idxInCallingRule?: number, ...args: any[]) => void;
-    blankNodePropertyList: (idxInCallingRule?: number, ...args: any[]) => void;
-    shaclPredicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
+    constructor(config?: Partial<IParserConfig>, prefixes?: {
+        shacl: string;
+        xsd: string;
+    });
+    predicateObjectList: (idxInCallingRule?: number, ...args: any[]) => void;
     shaclRulePredicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclPredicateIRI: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclNodeKind: (idxInCallingRule?: number, ...args: any[]) => any;
@@ -33,6 +34,7 @@ export declare class ShaclParser extends TurtleParser {
     shaclStringLiteralQuoteConstraint: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclLangStringConstraint: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclBooleanConstraint: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclAnyLiteralConstraint: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclListTakingConstraint: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclLanguageInConstraint: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclStringCollection: (idxInCallingRule?: number, ...args: any[]) => any;
@@ -47,4 +49,10 @@ export declare class ShaclParser extends TurtleParser {
     shaclShape: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclShapeOrLiteral: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclIRIOrLiteral: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclXsdBoolean: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclXsdString: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclXsdInteger: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclXsdDate: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclXsdAnyURI: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclStringWithDoubleCaret: (idxInCallingRule?: number, ...args: any[]) => any;
 }

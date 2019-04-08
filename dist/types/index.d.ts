@@ -4,6 +4,7 @@ export * from './sparql/W3SpecSparqlParser';
 export * from './turtle/TurtleParser';
 export * from './srs/SrsParser';
 export * from './sms/SmsParser';
+export * from './shacl/ShaclParser';
 export * from './helpers/cst';
 export * from './helpers/types';
 declare const sparqlTokens: any;
