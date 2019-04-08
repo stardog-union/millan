@@ -132,7 +132,7 @@ export class ShaclParser extends TurtleParser {
 
   shaclPredicateIRI = this.RULE('shaclPredicateIRI', () => {
     this.CONSUME(categoryTokenMap.IriTakingPredicate);
-    this.SUBRULE(this.iri);
+    this.SUBRULE(this.iri); // FIXME? This may need to allow a list of IRIs, as with shaclTargetNode.
   });
 
   shaclNodeKind = this.RULE('shaclNodeKind', () => {
@@ -143,6 +143,10 @@ export class ShaclParser extends TurtleParser {
   shaclTargetNode = this.RULE('shaclTargetNode', () => {
     this.CONSUME(this.shaclTokenMap.SHACL_targetNode);
     this.SUBRULE(this.shaclIRIOrLiteral);
+    this.MANY(() => {
+      this.CONSUME(turtleTokenMap.Comma);
+      this.SUBRULE1(this.shaclIRIOrLiteral);
+    });
   });
 
   shaclVerbShape = this.RULE('shaclVerbShape', () => {
@@ -176,7 +180,7 @@ export class ShaclParser extends TurtleParser {
   shaclPropertyPathPath = this.RULE('shaclPropertyPathPath', () => {
     this.OR([
       {
-        ALT: () => this.SUBRULE(this.iri),
+        ALT: () => this.SUBRULE(this.shaclPredicatePath),
       },
       {
         ALT: () => this.SUBRULE(this.shaclSequencePath),
@@ -199,10 +203,27 @@ export class ShaclParser extends TurtleParser {
     ]);
   });
 
+  shaclPredicatePath = this.RULE('shaclPredicatePath', () => {
+    this.OR([
+      {
+        ALT: () => this.SUBRULE(this.iri),
+      },
+      {
+        // This case does not seem to be allowed by the SHACL spec, but the
+        // online W3C validator accepts one level of parens wrapping the IRI.
+        ALT: () => {
+          this.CONSUME(turtleTokenMap.LParen);
+          this.SUBRULE1(this.iri);
+          this.CONSUME(turtleTokenMap.RParen);
+        },
+      },
+    ]);
+  });
+
   shaclSequencePath = this.RULE('shaclSequencePath', () => {
     this.CONSUME(turtleTokenMap.LParen);
     this.SUBRULE(this.shaclPropertyPathPath);
-    this.MANY(() => this.SUBRULE1(this.shaclPropertyPathPath));
+    this.AT_LEAST_ONE(() => this.SUBRULE1(this.shaclPropertyPathPath));
     this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RParen);
   });
@@ -210,7 +231,7 @@ export class ShaclParser extends TurtleParser {
   shaclAlternativePath = this.RULE('shaclAlternativePath', () => {
     this.CONSUME(turtleTokenMap.LBracket);
     this.CONSUME(this.shaclTokenMap.SHACL_alternativePath);
-    this.SUBRULE(this.shaclSequencePath);
+    this.SUBRULE(this.shaclPropertyPathPath); // This does not match the SHACL spec, but it does match the test cases, which violate the spec. ;_;
     this.OPTION(() => this.CONSUME(turtleTokenMap.Semicolon));
     this.CONSUME(turtleTokenMap.RBracket);
   });
@@ -252,7 +273,7 @@ export class ShaclParser extends TurtleParser {
       {
         ALT: () => this.SUBRULE(this.shaclIntConstraint),
       },
-      // TODO: Some specificy here is possibly unnecessary.
+      // TODO: Some specificity here is possibly unnecessary.
       {
         ALT: () => this.SUBRULE(this.shaclStringConstraint),
       },

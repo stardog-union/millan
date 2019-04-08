@@ -22,6 +22,7 @@ export declare class ShaclParser extends TurtleParser {
     shaclShapeType: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclPropertyPath: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclPropertyPathPath: (idxInCallingRule?: number, ...args: any[]) => any;
+    shaclPredicatePath: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclSequencePath: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclAlternativePath: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclInversePath: (idxInCallingRule?: number, ...args: any[]) => any;

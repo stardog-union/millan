@@ -11977,13 +11977,13 @@ var ShaclParser = /** @class */ (function (_super) {
             _this.OR([
                 {
                     ALT: function () {
-                        _this.SUBRULE(_this.verb);
-                        _this.SUBRULE(_this.objectList);
+                        _this.SUBRULE(_this.shaclRulePredicateObjectList);
                     },
                 },
                 {
                     ALT: function () {
-                        _this.SUBRULE(_this.shaclRulePredicateObjectList);
+                        _this.SUBRULE(_this.verb);
+                        _this.SUBRULE(_this.objectList);
                     },
                 },
             ]);
@@ -11993,13 +11993,13 @@ var ShaclParser = /** @class */ (function (_super) {
                     _this.OR1([
                         {
                             ALT: function () {
-                                _this.SUBRULE1(_this.verb);
-                                _this.SUBRULE1(_this.objectList);
+                                _this.SUBRULE1(_this.shaclRulePredicateObjectList);
                             },
                         },
                         {
                             ALT: function () {
-                                _this.SUBRULE1(_this.shaclRulePredicateObjectList);
+                                _this.SUBRULE1(_this.verb);
+                                _this.SUBRULE1(_this.objectList);
                             },
                         },
                     ]);
@@ -12018,9 +12018,6 @@ var ShaclParser = /** @class */ (function (_super) {
                     ALT: function () { return _this.SUBRULE(_this.shaclTargetNode); },
                 },
                 {
-                    ALT: function () { return _this.SUBRULE(_this.shaclVerbShape); },
-                },
-                {
                     ALT: function () { return _this.SUBRULE(_this.shaclPropertyPath); },
                 },
                 {
@@ -12035,11 +12032,14 @@ var ShaclParser = /** @class */ (function (_super) {
                 {
                     ALT: function () { return _this.SUBRULE(_this.shaclHasValueConstraint); },
                 },
+                {
+                    ALT: function () { return _this.SUBRULE(_this.shaclVerbShape); },
+                },
             ]);
         });
         _this.shaclPredicateIRI = _this.RULE('shaclPredicateIRI', function () {
             _this.CONSUME(categoryTokenMap.IriTakingPredicate);
-            _this.SUBRULE(_this.iri);
+            _this.SUBRULE(_this.iri); // FIXME? This may need to allow a list of IRIs, as with shaclTargetNode.
         });
         _this.shaclNodeKind = _this.RULE('shaclNodeKind', function () {
             _this.CONSUME(_this.shaclTokenMap.SHACL_nodeKind);
@@ -12048,6 +12048,10 @@ var ShaclParser = /** @class */ (function (_super) {
         _this.shaclTargetNode = _this.RULE('shaclTargetNode', function () {
             _this.CONSUME(_this.shaclTokenMap.SHACL_targetNode);
             _this.SUBRULE(_this.shaclIRIOrLiteral);
+            _this.MANY(function () {
+                _this.CONSUME(turtleTokenMap.Comma);
+                _this.SUBRULE1(_this.shaclIRIOrLiteral);
+            });
         });
         _this.shaclVerbShape = _this.RULE('shaclVerbShape', function () {
             _this.SUBRULE(_this.verb);
@@ -12077,7 +12081,7 @@ var ShaclParser = /** @class */ (function (_super) {
         _this.shaclPropertyPathPath = _this.RULE('shaclPropertyPathPath', function () {
             _this.OR([
                 {
-                    ALT: function () { return _this.SUBRULE(_this.iri); },
+                    ALT: function () { return _this.SUBRULE(_this.shaclPredicatePath); },
                 },
                 {
                     ALT: function () { return _this.SUBRULE(_this.shaclSequencePath); },
@@ -12099,6 +12103,22 @@ var ShaclParser = /** @class */ (function (_super) {
                 },
             ]);
         });
+        _this.shaclPredicatePath = _this.RULE('shaclPredicatePath', function () {
+            _this.OR([
+                {
+                    ALT: function () { return _this.SUBRULE(_this.iri); },
+                },
+                {
+                    // This case does not seem to be allowed by the SHACL spec, but the
+                    // online W3C validator accepts one level of parens wrapping the IRI.
+                    ALT: function () {
+                        _this.CONSUME(turtleTokenMap.LParen);
+                        _this.SUBRULE1(_this.iri);
+                        _this.CONSUME(turtleTokenMap.RParen);
+                    },
+                },
+            ]);
+        });
         _this.shaclSequencePath = _this.RULE('shaclSequencePath', function () {
             _this.CONSUME(turtleTokenMap.LParen);
             _this.SUBRULE(_this.shaclPropertyPathPath);
@@ -12109,7 +12129,7 @@ var ShaclParser = /** @class */ (function (_super) {
         _this.shaclAlternativePath = _this.RULE('shaclAlternativePath', function () {
             _this.CONSUME(turtleTokenMap.LBracket);
             _this.CONSUME(_this.shaclTokenMap.SHACL_alternativePath);
-            _this.SUBRULE(_this.shaclSequencePath);
+            _this.SUBRULE(_this.shaclPropertyPathPath); // This does not match the SHACL spec, but it does match the test cases, which violate the spec. ;_;
             _this.OPTION(function () { return _this.CONSUME(turtleTokenMap.Semicolon); });
             _this.CONSUME(turtleTokenMap.RBracket);
         });
@@ -12146,7 +12166,7 @@ var ShaclParser = /** @class */ (function (_super) {
                 {
                     ALT: function () { return _this.SUBRULE(_this.shaclIntConstraint); },
                 },
-                // TODO: Some specificy here is possibly unnecessary.
+                // TODO: Some specificity here is possibly unnecessary.
                 {
                     ALT: function () { return _this.SUBRULE(_this.shaclStringConstraint); },
                 },

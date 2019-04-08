@@ -82,7 +82,7 @@ describe('SHACL parser', () => {
     expect(errors).toHaveLength(0);
   });
 
-  it.only('parses all w3c SHACL tests without errors', async (done) => {
+  it('parses all w3c SHACL tests without errors', async (done) => {
     const allFileContents = await getAllFileContents();
     const filesWithErrors = [];
 
@@ -95,7 +95,7 @@ describe('SHACL parser', () => {
 
       if (errors.length) {
         filesWithErrors.push(file);
-        if (file === 'path-strange-002.ttl') {
+        if (file === 'path-unused-001-shapes.ttl') {
           console.log(JSON.stringify(errors, null, 2));
           console.log(JSON.stringify(cst, null, 2));
         }
