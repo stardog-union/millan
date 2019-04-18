@@ -34,7 +34,7 @@ const reserved = [
 ];
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: path.join(SRC_DIR, 'index.ts'),
   output: {
     path: path.join(__dirname, 'dist'),

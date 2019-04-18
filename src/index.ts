@@ -14,6 +14,7 @@ const sparqlTokens = require('./sparql/tokens');
 const turtleTokens = require('./turtle/tokens');
 const smsTokens = require('./sms/tokens');
 const srsTokens = require('./srs/tokens');
+const shaclTokens = require('./shacl/tokens');
 import { keywords as sparqlKeywords } from './sparql/keywords';
 import { terminals as sparqlTerminals } from './sparql/terminals';
 import * as matchers from './helpers/matchers';
@@ -22,6 +23,7 @@ export {
   turtleTokens,
   smsTokens,
   srsTokens,
+  shaclTokens,
   sparqlKeywords,
   sparqlTerminals,
   matchers,
