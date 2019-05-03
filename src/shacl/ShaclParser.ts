@@ -6,6 +6,7 @@ import {
   IParserConfig,
   Parser,
 } from 'chevrotain';
+import { getShaclVisitor } from 'shacl/visitor';
 const {
   getShaclTokenTypes,
   getShaclTokenMap,
@@ -14,8 +15,23 @@ const {
 const { turtleTokenMap } = require('../turtle/tokens');
 
 export class ShaclParser extends TurtleParser {
-  protected lexer: Lexer;
+  private prefixes;
   private shaclTokenMap;
+  private shaclVisitor: ReturnType<typeof getShaclVisitor>;
+  protected lexer: Lexer;
+
+  private visitCst = (cst: any) => {
+    // To save resources while parsing, the shaclVisitor is a singleton.
+    if (!this.shaclVisitor) {
+      const BaseSrsVisitor = this.getBaseCstVisitorConstructorWithDefaults();
+      this.shaclVisitor = getShaclVisitor(BaseSrsVisitor);
+    } else {
+      this.shaclVisitor.$resetState();
+    }
+
+    this.shaclVisitor.visit(cst);
+    return this.shaclVisitor.$validateShapes(this.prefixes);
+  };
 
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
@@ -29,10 +45,14 @@ export class ShaclParser extends TurtleParser {
   } => {
     this.input = this.tokenize(document);
     const cst = this.turtleDoc();
+    const { validationErrors } = this.visitCst(cst);
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];
-    const semanticErrors: IRecognitionException[] = [...this.semanticErrors];
+    const semanticErrors: IRecognitionException[] = [
+      ...this.semanticErrors,
+      ...validationErrors,
+    ];
 
     return {
       errors,
@@ -56,6 +76,7 @@ export class ShaclParser extends TurtleParser {
       false
     );
 
+    this.prefixes = prefixes;
     this.lexer = new Lexer(getShaclTokenTypes(prefixes));
     this.shaclTokenMap = getShaclTokenMap(prefixes);
     Parser.performSelfAnalysis(this);

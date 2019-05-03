@@ -156,4 +156,93 @@ describe('SHACL parser', () => {
     const { errors } = specialParser.parse(testFixture);
     expect(errors).toHaveLength(0);
   });
+
+  describe('visitor', () => {
+    it('marks NodeShapes with path properties as invalid', () => {
+      const fixture = `:TestNode1 a sh:NodeShape . :TestNode1 sh:path :somePath .`;
+      const { semanticErrors } = parser.parse(fixture);
+      const validationErrors = semanticErrors.filter(
+        (err) => err.name !== 'NoNamespacePrefixError'
+      );
+      expect(validationErrors).toHaveLength(1);
+      expect(validationErrors[0].message).toBe(
+        'SHACL instances of `NodeShape` cannot have a value for the `path` property.'
+      );
+      expect(validationErrors[0].token.image).toBe('sh:path');
+    });
+
+    it('marks multiple path properties as invalid', () => {
+      const fixture = `:TestNode1 a sh:PropertyShape . :TestNode1 sh:path :somePath1; sh:path :somePath2 .`;
+      const { semanticErrors } = parser.parse(fixture);
+      const validationErrors = semanticErrors.filter(
+        (err) => err.name !== 'NoNamespacePrefixError'
+      );
+      expect(validationErrors).toHaveLength(1);
+      expect(validationErrors[0].message).toBe(
+        'A shape can have at most one value for sh:path.'
+      );
+      expect(validationErrors[0].token.image).toBe('sh:path');
+    });
+
+    it('marks other NodeShape properties as invalid', () => {
+      const fixture = ':TestNode1 a sh:NodeShape . :TestNode1 sh:lessThan 2 .';
+      const { semanticErrors } = parser.parse(fixture);
+      const validationErrors = semanticErrors.filter(
+        (err) => err.name !== 'NoNamespacePrefixError'
+      );
+      expect(validationErrors).toHaveLength(1);
+      expect(validationErrors[0].message).toBe(
+        'A NodeShape cannot have any value for sh:lessThan.'
+      );
+      expect(validationErrors[0].token.image).toBe('sh:lessThan');
+    });
+
+    it('marks properties that cannot be repeated as invalid when repeated', () => {
+      const fixture =
+        ':TestNode1 a sh:NodeShape . :TestNode sh:deactivated true . :TestNode sh:deactivated true .';
+      const { semanticErrors } = parser.parse(fixture);
+      const validationErrors = semanticErrors.filter(
+        (err) => err.name !== 'NoNamespacePrefixError'
+      );
+      expect(validationErrors).toHaveLength(1);
+      expect(validationErrors[0].message).toBe(
+        'A shape can have at most one value for sh:deactivated.'
+      );
+      expect(validationErrors[0].token.image).toBe('sh:deactivated');
+    });
+
+    it('works with blank nodes', () => {
+      const fixture = `:TestNode1 a sh:NodeShape ; sh:property [
+        sh:minCount 1 ;
+        sh:path :somePath ;
+        sh:minCount 1 ;
+      ] ;
+      sh:path :notAllowed .`;
+      const { semanticErrors } = parser.parse(fixture);
+      const validationErrors = semanticErrors.filter(
+        (err) => err.name !== 'NoNamespacePrefixError'
+      );
+      expect(validationErrors).toHaveLength(2);
+      expect(validationErrors[0].message).toBe(
+        'SHACL instances of `NodeShape` cannot have a value for the `path` property.'
+      );
+      expect(validationErrors[1].message).toBe(
+        'A shape can have at most one value for sh:minCount.'
+      );
+    });
+
+    it('matches SHACL PrefixedNames and IRIs when validating', () => {
+      const fixture =
+        ':TestNode1 a sh:NodeShape . :TestNode <http://www.w3.org/ns/shacl#deactivated> true . :TestNode sh:deactivated true .';
+      const { semanticErrors } = parser.parse(fixture);
+      const validationErrors = semanticErrors.filter(
+        (err) => err.name !== 'NoNamespacePrefixError'
+      );
+      expect(validationErrors).toHaveLength(1);
+      expect(validationErrors[0].message).toBe(
+        'A shape can have at most one value for sh:deactivated.'
+      );
+      expect(validationErrors[0].token.image).toBe('sh:deactivated');
+    });
+  });
 });
