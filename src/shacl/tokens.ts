@@ -8,7 +8,7 @@ import isDeepEqual from 'lodash.isequal';
 const shaclIriNamespace = 'http://www.w3.org/ns/shacl#';
 const xsdIriNamespace = 'http://www.w3.org/2001/XMLSchema#';
 
-// token categories:
+// Token categories, useful for making the parser rules simpler.
 export const categoryTokenMap = {
   IriTakingPredicate: createToken({
     name: 'IriTakingPredicate',
@@ -144,86 +144,8 @@ const xsdLocalNames = getAsTypedTuple(
   'anyURI'
 );
 
-// const listTakingLocalNames = [
-//   'and',
-//   'or',
-//   'xone',
-//   'ignoredProperties',
-//   'in',
-//   'languageIn',
-//   'ask',
-//   'select',
-// ];
-// const shapeExpectingLocalNames = [
-//   'and',
-//   'or',
-//   'xone',
-//   'not',
-//   'node',
-//   'property',
-//   'sparql',
-//   'qualifiedValueShape',
-//   'declare',
-//   'prefixes',
-// ];
-// const localNames = getAsTypedTuple(
-//   'Shape',
-//   'NodeShape',
-//   'PropertyShape',
-//   'targetNode',
-//   'targetClass',
-//   'targetSubjectsOf',
-//   'targetObjectsOf',
-//   'severity',
-//   'property',
-//   'message',
-//   'deactivated',
-//   'path',
-//   'alternativePath',
-//   'inversePath',
-//   'zeroOrMorePath',
-//   'class',
-//   'datatype',
-//   'nodeKind',
-//   'minCount',
-//   'maxCount',
-//   'minExclusive',
-//   'minInclusive',
-//   'maxExclusive',
-//   'maxInclusive',
-//   'minLength',
-//   'maxLength',
-//   'pattern',
-//   'flags',
-//   'languageIn',
-//   'uniqueLang',
-//   'equals',
-//   'disjoint',
-//   'lessThan',
-//   'lessThanOrEquals',
-//   'not',
-//   'and',
-//   'or',
-//   'xone',
-//   'node',
-//   'property',
-//   'qualifiedValueShape',
-//   'qualifiedValueShapesDisjoint',
-//   'qualifiedMinCount',
-//   'qualifiedMaxCount',
-//   'closed',
-//   'ignoredProperties',
-//   'hasValue',
-//   'in',
-//   'sparql',
-//   'select',
-//   'declare',
-//   'prefix',
-//   'namespace',
-//   'prefixes'
-// );
-const localNameCategories = Object.keys(localNamesByCategory);
-const localNameToCategoryMap = localNameCategories.reduce(
+// Map of local names back to their categories, for easier lookup:
+const localNameToCategoryMap = Object.keys(localNamesByCategory).reduce(
   (nameToCategoryMap, category) => {
     const categoryLocalNames = localNamesByCategory[category];
     categoryLocalNames.forEach(
@@ -233,11 +155,21 @@ const localNameToCategoryMap = localNameCategories.reduce(
   },
   {}
 );
+
 const localNames = Object.keys(localNameToCategoryMap);
+
+// We can pre-compute all tokens for the `xsd` namespace except for those that
+// include prefixes (since we don't know a priori what the prefix will be).
+// For each XSD local name, we will create a "category" token that will
+// ultimately be used as the single token encompassing either the full
+// (un-prefixed) IRI or the prefixed name (i.e., `xsd:string). At this point,
+// we create only the category token and the full (un-prefixed) IRI token; the
+// prefixed token is created later (via `getShaclTokenTypes`) once we actually
+// know what the `xsd` prefix is.
 const xsdUnprefixedTokenMap = xsdLocalNames.reduce((tokenMap, localName) => {
-  const tokenName = `SHACL_xsd_${localName}`;
-  const iriTokenName = `${tokenName}_IRI`;
-  // Category token that will select either an XSD IRI or an XSD PN_LOCAL:
+  const tokenName = `SHACL_xsd_${localName}`; // category token name
+  const iriTokenName = `${tokenName}_IRI`; // IRI token name
+  // Category token that will ultimately select either an XSD IRI or an XSD PN_LOCAL:
   const iriOrPrefixCategoryToken = createToken({
     name: tokenName,
     pattern: Lexer.NA,
@@ -253,10 +185,14 @@ const xsdUnprefixedTokenMap = xsdLocalNames.reduce((tokenMap, localName) => {
     }),
   };
 }, {});
+
+// We can also pre-compute all SHACL tokens except for those that include
+// prefixes (again, since we don't know a priori what the SHACL prefix will be).
+// This helps keep our parser quick. We do it in the same way that we did for
+// XSD tokens, above -- we create a "category" token for each SHACL local name
+// that will be used to match either the full (un-prefixed) IRI or the prefixed
+// name (once we know what the SHACL prefix is).
 const shaclUnprefixedTokenMap = localNames.reduce((tokenMap, localName) => {
-  // These can be computed beforehand, so no need to constantly re-compute them
-  // in the way that we re-compute prefixed SHACL tokens below. Saving this
-  // compute time is important for parsing.
   const category = localNameToCategoryMap[localName];
   const categoryToken = categoryTokenMap[category];
   const tokenName = `SHACL_${localName}`;
@@ -287,14 +223,26 @@ type LocalName = {
     ? T
     : never
 }[keyof typeof localNamesByCategory];
+
 type TokenMap = { [K in LocalName]: TokenType };
 
+// Retrieves the complete map of all SHACL/XSD tokens, given the SHACL and XSD
+// prefixes. The map contains, for every local name, a token matching the full
+// IRI, a token matching the prefixed local name, and a "category" token that
+// matches both. The category token is useful for simplifying parser rules (not
+// having to match every SHACL token as both a full IRI and a prefixed local
+// name.)
+// This function is called by the SHACL parser. It is memoized because the
+// arguments are small and unlikely to change often, and the parser needs to be
+// fast, so we should avoid re-computing.
 export const getShaclTokenMap: (
   prefixes: { shacl: string; xsd: string }
 ) => TokenMap = memoize((prefixes: { shacl: string; xsd: string }) => {
   const prefixWithShacl = makePrefixer(prefixes.shacl);
   const prefixWithXsd = makePrefixer(prefixes.xsd);
 
+  // Add the prefixed local names to the SHACL token map now that we know the
+  // prefixes.
   const shaclTokenMap = localNames.reduce((tokenMap, localName) => {
     const tokenName = `SHACL_${localName}`;
     const prefixedTokenName = `${tokenName}_prefixed`;
@@ -309,6 +257,8 @@ export const getShaclTokenMap: (
     };
   }, shaclUnprefixedTokenMap);
 
+  // Add the prefixed local names to the XSD token map now that we know the
+  // prefixes.
   return xsdLocalNames.reduce((tokenMap, localName) => {
     const tokenName = `SHACL_xsd_${localName}`;
     const prefixedTokenName = `${tokenName}_prefixed`;
@@ -324,8 +274,12 @@ export const getShaclTokenMap: (
   }, shaclTokenMap);
 }, isDeepEqual);
 
+// Get the index of PNAME_NS and IRIREF so that we can re-use existing Turtle
+// tokens but ensure that our special SHACL/XSD tokens are inserted at the
+// right place (since order of tokens matters for chevrotain).
 const pnameIndex = turtleTokenTypes.indexOf(sparqlTokenMap.PNAME_NS);
 const iriIndex = turtleTokenTypes.indexOf(turtleTokenMap.IRIREF);
+
 // tokenMap keys will need to be sorted in reverse order so that tokens with
 // partial overlap are in the right order in the TokenType array.
 const reverseSort = (a, b) => {
@@ -342,6 +296,10 @@ const reverseSort = (a, b) => {
   return aName < bName ? 1 : bName < aName ? -1 : 0;
 };
 
+// Given SHACL and XSD prefixes, this method returns an array of Turtle +
+// SHACL/XSD tokens, including tokens for prefixed local names, with the
+// SHACL/XSD tokens inserted at the proper positions so that they are matched
+// before the more generic Turtle tokens.
 export const getShaclTokenTypes: (
   prefixes: { shacl: string; xsd: string }
 ) => TokenType[] = memoize((prefixes: { shacl: string; xsd: string }) => {

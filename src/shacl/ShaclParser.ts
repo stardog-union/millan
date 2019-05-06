@@ -14,13 +14,22 @@ const {
 } = require('./tokens');
 const { turtleTokenMap } = require('../turtle/tokens');
 
+// A SHACL parser for the Turtle serialization of SHACL only. The parser can
+// can accept any arbitrary namespace prefix for SHACL/XSD and still tokenize
+// and parse the document correctly (it will also, of course, parse docuemnts
+// using the full SHACL/XSD IRIs). The parser runs both a parse phase and a
+// second validation phase (using a visitor) in order to accommodate SHACL
+// rules that are not purely syntactic.
 export class ShaclParser extends TurtleParser {
   private prefixes;
   private shaclTokenMap;
   private shaclVisitor: ReturnType<typeof getShaclVisitor>;
   protected lexer: Lexer;
 
-  private visitCst = (cst: any) => {
+  // Some SHACL rules cannot be checked for violations during the first parse.
+  // The visitor accepts the CST that results from parsing and checks
+  // conformity with these SHACL rules.
+  private validateWithVisitor = (cst: any) => {
     // To save resources while parsing, the shaclVisitor is a singleton.
     if (!this.shaclVisitor) {
       const BaseSrsVisitor = this.getBaseCstVisitorConstructorWithDefaults();
@@ -45,7 +54,7 @@ export class ShaclParser extends TurtleParser {
   } => {
     this.input = this.tokenize(document);
     const cst = this.turtleDoc();
-    const { validationErrors } = this.visitCst(cst);
+    const { validationErrors } = this.validateWithVisitor(cst);
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];

@@ -3,6 +3,7 @@ import {
   CstNode,
   CstElement,
   IRecognitionException,
+  IToken,
 } from 'chevrotain';
 import escapeStringRegexp from 'escape-string-regexp';
 import { isCstNode } from 'helpers/cst';
@@ -19,7 +20,7 @@ export interface IShaclVisitor extends ICstVisitor<any, any> {
 
 interface ShaclVisitorTreeItem {
   type: string;
-  token: any; // TODO
+  token: IToken;
 }
 
 interface ShaclShape {
@@ -28,29 +29,38 @@ interface ShaclShape {
   predicates: ShaclVisitorTreeItem[];
 }
 
+// Given a SHACL prefix, returns a RegExp that can be used for grabbing the
+// local name (e.g., the 'NodeShape' in 'sh:NodeShape') from either a full
+// SHACL IRI or a prefixed local name.
 const getShaclLocalNameMatcher = (shaclPrefix: string) =>
   new RegExp(`(?:shacl#|${escapeStringRegexp(shaclPrefix)}:)(\\S+?)>?$`);
 
-const getUnderlyingToken = (ctx: CstNode) => {
+// Traverses the tree of descendants for a given CstNode until a token is
+// found. Returns the "start" token for the CstNode (i.e., the earliest token
+// encompassed by the CstNode). This is useful for diagnostics.
+const getUnderlyingStartToken = (ctx: CstNode) => {
   let currentNode: any = ctx;
-
   while ((currentNode as CstNode).children) {
     const currentNodeKey = Object.keys((currentNode as CstNode).children)[0];
     currentNode = currentNode.children[currentNodeKey][0];
   }
-
   return currentNode;
 };
 
+// Grabs the local name (e.g., the 'NodeShape' in 'sh:NodeShape') from either
+// a full SHACL IRI or a prefixed local name, if it is available.
 const getLocalName = (iri: string, matcher: RegExp) => {
   const result = matcher.exec(iri);
-
   if (result) {
     return result[1];
   }
 };
 
-// NOTE: mutates `shape`
+// Given an initial (possibly partially complete) `shape` object and an array
+// of CstElements matching the `shaclRulePredicateObjectList` grammar rule,
+// transforms the `shape` into a complete `ShaclShape` with associated SHACL
+// types and predicates.
+// NOTE: mutates `shape`!
 const addPredicatesAndTypesToShape = (
   shape: ShaclShape,
   shaclRulePredicateObjectListNodes: CstElement[]
@@ -60,7 +70,7 @@ const addPredicatesAndTypesToShape = (
 
     switch (child.name) {
       case 'shaclVerbShape':
-        const token = getUnderlyingToken(child);
+        const token = getUnderlyingStartToken(child);
         const verbTokenInsensitive = token.image.toLowerCase();
         const isTypeVerb =
           verbTokenInsensitive === 'a' ||
@@ -82,12 +92,12 @@ const addPredicatesAndTypesToShape = (
           if (shapeTypeNode.children.SHACL_NodeShape) {
             shape.types.push({
               type: 'NodeShape',
-              token: getUnderlyingToken(shapeTypeNode),
+              token: getUnderlyingStartToken(shapeTypeNode),
             });
           } else if (shapeTypeNode.children.SHACL_PropertyShape) {
             shape.types.push({
               type: 'PropertyShape',
-              token: getUnderlyingToken(shapeTypeNode),
+              token: getUnderlyingStartToken(shapeTypeNode),
             });
           }
         });
@@ -95,49 +105,49 @@ const addPredicatesAndTypesToShape = (
       case 'shaclPredicateIRI':
         shape.predicates.push({
           type: 'IriTakingPredicate',
-          token: child.children.IriTakingPredicate[0],
+          token: child.children.IriTakingPredicate[0] as IToken,
         });
         break;
       case 'shaclNodeKind':
         shape.predicates.push({
           type: 'nodeKind',
-          token: child.children.SHACL_nodeKind[0],
+          token: child.children.SHACL_nodeKind[0] as IToken,
         });
         break;
       case 'shaclTargetNode':
         shape.predicates.push({
           type: 'targetNode',
-          token: child.children.SHACL_targetNode[0],
+          token: child.children.SHACL_targetNode[0] as IToken,
         });
         break;
       case 'shaclPropertyPath':
         shape.predicates.push({
           type: 'path',
-          token: child.children.SHACL_path[0],
+          token: child.children.SHACL_path[0] as IToken,
         });
         break;
       case 'shaclLiteralConstraint':
         shape.predicates.push({
           type: 'LiteralConstraint',
-          token: getUnderlyingToken(child),
+          token: getUnderlyingStartToken(child),
         });
         break;
       case 'shaclListTakingConstraint':
         shape.predicates.push({
           type: 'ListTakingConstraint',
-          token: getUnderlyingToken(child),
+          token: getUnderlyingStartToken(child),
         });
         break;
       case 'shaclShapeExpectingConstraint':
         shape.predicates.push({
           type: 'ShapeExpectingPredicate',
-          token: child.children.ShapeExpectingPredicate[0],
+          token: child.children.ShapeExpectingPredicate[0] as IToken,
         });
         break;
       case 'shaclHasValueConstraint':
         shape.predicates.push({
           type: 'hasValue',
-          token: child.children.SHACL_hasValue[0],
+          token: child.children.SHACL_hasValue[0] as IToken,
         });
         break;
       default:
@@ -148,6 +158,8 @@ const addPredicatesAndTypesToShape = (
   });
 };
 
+// Utility method for constructing a `ShaclShape` from CstElements matching the
+// `shaclShape` grammar rule.
 const getShaclShapeFromBlankNodePropertyList = (ctx) => {
   const blankNodeNode = ctx.blankNodePropertyList[0];
   const predicateObjectListNode = blankNodeNode.children.predicateObjectList[0];
@@ -181,7 +193,7 @@ const getShaclShapeFromBlankNodePropertyList = (ctx) => {
   const shape = {
     subject: {
       type: 'blankNodePropertyList',
-      token: getUnderlyingToken(blankNodeNode),
+      token: getUnderlyingStartToken(blankNodeNode),
     },
     types: [],
     predicates: [],
@@ -192,6 +204,10 @@ const getShaclShapeFromBlankNodePropertyList = (ctx) => {
   return shape;
 };
 
+// Returns a new SHACL visitor that extends that given BaseVisitor. The SHACL
+// visitor is capable of constructing ShaclShape objects from a given CST and
+// then using those shapes to perform validations that cannot be performed in
+// the initial parse of a SHACL document.
 export const getShaclVisitor = (
   BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>
 ): IShaclVisitor => {
@@ -204,6 +220,9 @@ export const getShaclVisitor = (
       this.shapes = [];
     }
 
+    // `triples` have two alternatives, one with a `subject` and one with a
+    // `blankNodePropertyList`. This method constructs SHACL shapes for each
+    // alternative.
     triples = (ctx: { [key: string]: CstNode | CstNode[] }) => {
       if (ctx.subject) {
         const predicateObjectListNode = ctx.predicateObjectList[0];
@@ -225,7 +244,7 @@ export const getShaclVisitor = (
               Object.keys(ctx.subject[0].children)[0] === 'collection'
                 ? 'collection'
                 : 'subject',
-            token: getUnderlyingToken(ctx.subject[0]),
+            token: getUnderlyingStartToken(ctx.subject[0]),
           },
           types: [],
           predicates: [],
@@ -250,6 +269,8 @@ export const getShaclVisitor = (
       }
     };
 
+    // Some SHACL shapes (e.g., nested PropertyShapes) shapes are not matched
+    // by the `triples` grammar rule; instead, they match `shapeShape`.
     shaclShape = (ctx: { [key: string]: CstNode | CstNode[] }) => {
       if (!ctx.blankNodePropertyList) {
         // Not an inline shape we need to traverse, just an identifier.
