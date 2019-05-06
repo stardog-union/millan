@@ -1,7 +1,6 @@
 import { Lexer } from 'chevrotain';
 const { getShaclTokenTypes } = require('../../shacl/tokens');
 
-const lexer = new Lexer(getShaclTokenTypes('sh'));
 const fixture = `
 ex:PersonShape
 	a sh:NodeShape ;
@@ -22,7 +21,37 @@ ex:PersonShape
 `;
 
 describe('SHACL lexer', () => {
-  it('works', () => {
-    expect(true).toBe(true);
+  it('lexes standard SHACL', () => {
+    const lexer = new Lexer(
+      getShaclTokenTypes({
+        shacl: 'sh',
+        xsd: 'xsd',
+      })
+    );
+    expect(lexer.tokenize(fixture).tokens).toMatchSnapshot();
+  });
+
+  it('lexes non-standard SHACL', () => {
+    const lexer = new Lexer(
+      getShaclTokenTypes({
+        shacl: 'nonStandardShacl',
+        xsd: 'xsd',
+      })
+    );
+    expect(
+      lexer.tokenize(fixture.replace('sh:', 'nonStandardShacl:')).tokens
+    ).toMatchSnapshot();
+  });
+
+  it('lexes with non-standard XSD namespace', () => {
+    const lexer = new Lexer(
+      getShaclTokenTypes({
+        shacl: 'sh',
+        xsd: 'nonStandardXsd',
+      })
+    );
+    expect(
+      lexer.tokenize(fixture.replace('xsd:', 'nonStandardXsd:')).tokens
+    ).toMatchSnapshot();
   });
 });
