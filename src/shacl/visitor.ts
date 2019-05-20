@@ -69,7 +69,7 @@ const addPredicatesAndTypesToShape = (
     const child = node.children[Object.keys(node.children)[0]][0] as CstNode;
 
     switch (child.name) {
-      case 'shaclVerbShape':
+      case 'shaclVerbShape': {
         const token = getUnderlyingStartToken(child);
         const verbTokenInsensitive = token.image.toLowerCase();
         const isTypeVerb =
@@ -102,12 +102,23 @@ const addPredicatesAndTypesToShape = (
           }
         });
         break;
-      case 'shaclPredicateIRI':
-        shape.predicates.push({
-          type: 'IriTakingPredicate',
-          token: child.children.IriTakingPredicate[0] as IToken,
-        });
+      }
+      case 'shaclPredicateIRI': {
+        if (child.children.SingleIriTakingPredicate) {
+          shape.predicates.push({
+            type: 'SingleIriTakingPredicate',
+            token: getUnderlyingStartToken(child.children
+              .SingleIriTakingPredicate[0] as CstNode),
+          });
+        } else if (child.children.ManyIriTakingPredicate) {
+          shape.predicates.push({
+            type: 'ManyIriTakingPredicate',
+            token: getUnderlyingStartToken(child.children
+              .ManyIriTakingPredicate[0] as CstNode),
+          });
+        }
         break;
+      }
       case 'shaclNodeKind':
         shape.predicates.push({
           type: 'nodeKind',
@@ -269,7 +280,7 @@ export const getShaclVisitor = (
       }
     };
 
-    // Some SHACL shapes (e.g., nested PropertyShapes) shapes are not matched
+    // Some SHACL shapes (e.g., nested PropertyShapes) are not matched
     // by the `triples` grammar rule; instead, they match `shapeShape`.
     shaclShape = (ctx: { [key: string]: CstNode | CstNode[] }) => {
       if (!ctx.blankNodePropertyList) {
@@ -301,9 +312,6 @@ export const getShaclVisitor = (
 
       const shapesConsolidatedBySubject = this.shapes.reduce(
         (consolidatedShapes, shape) => {
-          if (!shape) {
-            console.log(this.shapes);
-          }
           const { image } = shape.subject.token;
           const subjectImage = image === '[' ? `bnode${++bnodeCount}` : image;
 

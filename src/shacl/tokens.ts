@@ -10,8 +10,12 @@ const xsdIriNamespace = 'http://www.w3.org/2001/XMLSchema#';
 
 // Token categories, useful for making the parser rules simpler.
 export const categoryTokenMap = {
-  IriTakingPredicate: createToken({
-    name: 'IriTakingPredicate',
+  ManyIriTakingPredicate: createToken({
+    name: 'ManyIriTakingPredicate',
+    pattern: Lexer.NA,
+  }),
+  SingleIriTakingPredicate: createToken({
+    name: 'SingleIriTakingPredicate',
     pattern: Lexer.NA,
   }),
   NodeKindIRI: createToken({
@@ -49,18 +53,16 @@ export const categoryTokens = Object.keys(categoryTokenMap).map(
 );
 
 const localNamesByCategory = {
-  IriTakingPredicate: getAsTypedTuple(
-    'class',
-    'datatype',
+  ManyIriTakingPredicate: getAsTypedTuple(
     'equals',
     'disjoint',
     'lessThan',
     'lessThanOrEquals',
     'targetClass',
     'targetSubjectsOf',
-    'targetObjectsOf',
-    'severity'
+    'targetObjectsOf'
   ),
+  SingleIriTakingPredicate: getAsTypedTuple('class', 'datatype', 'severity'),
   NodeKindIRI: getAsTypedTuple(
     'IRI',
     'BlankNode',
@@ -139,8 +141,8 @@ const xsdLocalNames = getAsTypedTuple(
   'boolean',
   'integer',
   'string',
-  'date',
   'dateTime',
+  'date',
   'anyURI'
 );
 

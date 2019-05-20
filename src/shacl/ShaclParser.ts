@@ -161,8 +161,24 @@ export class ShaclParser extends TurtleParser {
   );
 
   shaclPredicateIRI = this.RULE('shaclPredicateIRI', () => {
-    this.CONSUME(categoryTokenMap.IriTakingPredicate);
-    this.SUBRULE(this.iri); // FIXME? This may need to allow a list of IRIs, as with shaclTargetNode.
+    this.OR([
+      {
+        ALT: () => {
+          this.CONSUME(categoryTokenMap.SingleIriTakingPredicate);
+          this.SUBRULE(this.iri);
+        },
+      },
+      {
+        ALT: () => {
+          this.CONSUME(categoryTokenMap.ManyIriTakingPredicate);
+          this.SUBRULE1(this.iri);
+          this.MANY(() => {
+            this.CONSUME(turtleTokenMap.Comma);
+            this.SUBRULE2(this.iri);
+          });
+        },
+      },
+    ]);
   });
 
   shaclNodeKind = this.RULE('shaclNodeKind', () => {
@@ -303,7 +319,7 @@ export class ShaclParser extends TurtleParser {
       {
         ALT: () => this.SUBRULE(this.shaclIntConstraint),
       },
-      // TODO: Some specificity here is possibly unnecessary.
+      // TODO: Some specificity here is possibly unnecessary -- e.g., maybe `shaclStringConstraint` and `shaclStringLiteralQuoteConstraint` can be consolidated in some way?
       {
         ALT: () => this.SUBRULE(this.shaclStringConstraint),
       },

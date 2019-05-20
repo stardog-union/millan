@@ -3,26 +3,57 @@ import * as fs from 'fs';
 import { ShaclParser } from '../../shacl/ShaclParser';
 import { readDirAsync, readFileAsync } from '../utils';
 
-const fixture = `
+const basicFixture = `
 ex:OtherPerson
   a :Thing .
 
 ex:PersonShape
-	a sh:NodeShape ;
-	sh:targetClass ex:Person ;    # Applies to all persons
+  a sh:NodeShape ;
+  sh:targetClass ex:Person ;    # Applies to all persons
+  sh:property [                 # _:b1
+	  sh:path ex:ssn ;           # constrains the values of ex:ssn
+	  sh:maxCount 1 ;
+	  sh:datatype xsd:string ;
+	  sh:pattern "^\\\\d{3}-\\\\d{2}-\\\\d{4}$" ;
+  ] ;
+  sh:property [                 # _:b2
+	  sh:path ex:worksFor ;
+	  sh:class ex:Company ;
+	  sh:nodeKind sh:IRI ;
+  ] ;
+  sh:closed true ;
+  <http://www.w3.org/ns/shacl#ignoredProperties> ( rdf:type ) .
+`;
+
+const mixedShaclAndTurtleFixture = `
+ex:OtherPerson
+  a :Thing .
+
+ex:PersonShape
+  a sh:NodeShape ;
+  :loves ex:Somebody ;
+	sh:targetClass ex:Person, ex:Human ;
 	sh:property [                 # _:b1
 		sh:path ex:ssn ;           # constrains the values of ex:ssn
 		sh:maxCount 1 ;
 		sh:datatype xsd:string ;
 		sh:pattern "^\\\\d{3}-\\\\d{2}-\\\\d{4}$" ;
-	] ;
-	sh:property [                 # _:b2
-		sh:path ex:worksFor ;
-		sh:class ex:Company ;
-		sh:nodeKind sh:IRI ;
-	] ;
-	sh:closed true ;
-  <http://www.w3.org/ns/shacl#ignoredProperties> ( rdf:type ) .
+	] .
+`;
+
+const manyValuesForSingleValueFixture = `
+ex:OtherPerson
+  a :Thing .
+
+ex:PersonShape
+  a sh:NodeShape ;
+	sh:targetClass ex:Person ;    # Applies to all persons
+	sh:property [                 # _:b1
+		sh:path ex:ssn ;           # constrains the values of ex:ssn
+		sh:maxCount 1 ;
+		sh:datatype xsd:string, xsd:boolean ; #invalid
+		sh:pattern "^\\\\d{3}-\\\\d{2}-\\\\d{4}$" ;
+	] .
 `;
 
 const fixtureSuites = [
@@ -37,6 +68,7 @@ const fixtureSuites = [
   'shacl-sparql/pre-binding',
   'shacl-sparql/property',
 ];
+
 const getAllFileContents = () =>
   Promise.all(
     fixtureSuites.map((suitePath) =>
@@ -78,8 +110,18 @@ describe('SHACL parser', () => {
   });
 
   it('parses', () => {
-    const { errors } = parser.parse(fixture);
+    const { errors } = parser.parse(basicFixture);
     expect(errors).toHaveLength(0);
+  });
+
+  it('parses mixed SHACL and Turtle', () => {
+    const { errors } = parser.parse(mixedShaclAndTurtleFixture);
+    expect(errors).toHaveLength(0);
+  });
+
+  it('fails when single-value predicates have multiple values', () => {
+    const { errors } = parser.parse(manyValuesForSingleValueFixture);
+    expect(errors.length).toBeGreaterThan(0);
   });
 
   it('parses all w3c SHACL tests without errors', async (done) => {
@@ -95,10 +137,6 @@ describe('SHACL parser', () => {
 
       if (errors.length) {
         filesWithErrors.push(file);
-        if (file === 'path-unused-001-shapes.ttl') {
-          console.log(JSON.stringify(errors, null, 2));
-          console.log(JSON.stringify(cst, null, 2));
-        }
       }
     });
 
