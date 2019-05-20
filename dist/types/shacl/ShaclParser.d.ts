@@ -1,8 +1,11 @@
 import { TurtleParser } from '../turtle/TurtleParser';
 import { Lexer, IToken, IRecognitionException, IParserConfig } from 'chevrotain';
 export declare class ShaclParser extends TurtleParser {
-    protected lexer: Lexer;
+    private prefixes;
     private shaclTokenMap;
+    private shaclVisitor;
+    protected lexer: Lexer;
+    private validateWithVisitor;
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
         errors: IRecognitionException[];

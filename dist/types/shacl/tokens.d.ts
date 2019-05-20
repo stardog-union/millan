@@ -1,6 +1,7 @@
 import { TokenType } from 'chevrotain';
 export declare const categoryTokenMap: {
-    IriTakingPredicate: TokenType;
+    ManyIriTakingPredicate: TokenType;
+    SingleIriTakingPredicate: TokenType;
     NodeKindIRI: TokenType;
     IntTakingPredicate: TokenType;
     StringLiteralQuoteTakingPredicate: TokenType;
@@ -11,7 +12,8 @@ export declare const categoryTokenMap: {
 };
 export declare const categoryTokens: any[];
 declare const localNamesByCategory: {
-    IriTakingPredicate: ["class", "datatype", "equals", "disjoint", "lessThan", "lessThanOrEquals", "targetClass", "targetSubjectsOf", "targetObjectsOf", "severity"];
+    ManyIriTakingPredicate: ["equals", "disjoint", "lessThan", "lessThanOrEquals", "targetClass", "targetSubjectsOf", "targetObjectsOf"];
+    SingleIriTakingPredicate: ["class", "datatype", "severity"];
     NodeKindIRI: ["IRI", "BlankNode", "Literal", "BlankNodeOrIRI", "BlankNodeOrLiteral", "IRIOrLiteral"];
     IntTakingPredicate: ["minCount", "maxCount", "minLength", "maxLength", "qualifiedMinCount", "qualifiedMaxCount"];
     StringLiteralQuoteTakingPredicate: ["pattern", "flags", "prefix", "namespace"];

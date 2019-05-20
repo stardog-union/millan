@@ -141,8 +141,8 @@ const xsdLocalNames = getAsTypedTuple(
   'boolean',
   'integer',
   'string',
-  'dateTime',
   'date',
+  'dateTime',
   'anyURI'
 );
 
@@ -286,16 +286,26 @@ const iriIndex = turtleTokenTypes.indexOf(turtleTokenMap.IRIREF);
 // partial overlap are in the right order in the TokenType array.
 const reverseSort = (a, b) => {
   // @ts-ignore: unused variable
-  const [aIgnore, aName, aRemainder] = a.split('_');
+  const [aIgnored, aName, ...aRemainder] = a.split('_');
   // @ts-ignore: unused variable
-  const [bIgnore, bName, bRemainder] = b.split('_');
-  if (aName === bName) {
-    if (aRemainder && bRemainder) {
-      return 0; // treat as lexicographically the same for sorting
+  const [bIgnored, bName, ...bRemainder] = b.split('_');
+  // Grab the local name and lowercase it:
+  const aSortString = (aName === 'xsd' ? aRemainder[0] : aName).toLowerCase();
+  const bSortString = (bName === 'xsd' ? bRemainder[0] : bName).toLowerCase();
+
+  if (aSortString === bSortString) {
+    // If local names are identical, prefer the one without a suffix to those with suffixes.
+    const aSuffix = aName === 'xsd' ? aRemainder[1] : aRemainder[0];
+    const bSuffix = bName === 'xsd' ? bRemainder[1] : bRemainder[0];
+
+    if (aSuffix && bSuffix) {
+      return 0; // when both local names have suffixes, treat as lexicographically the same for sorting
+    } else {
+      return aSuffix ? 1 : -1;
     }
-    return aRemainder ? 1 : -1;
+  } else {
+    return aSortString < bSortString ? 1 : bSortString < aSortString ? -1 : 0;
   }
-  return aName < bName ? 1 : bName < aName ? -1 : 0;
 };
 
 // Given SHACL and XSD prefixes, this method returns an array of Turtle +
