@@ -43,7 +43,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     } = {},
     tokenVocab: TokenType[]
   ) {
-    super(options.input || [], tokenVocab, {
+    super(tokenVocab, {
       recoveryEnabled: true,
       outputCst: true,
       ...options.config,

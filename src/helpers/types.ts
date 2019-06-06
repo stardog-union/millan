@@ -11,5 +11,8 @@ export interface ITokensMap {
   [key: string]: IToken[];
 }
 
+type Lit = string | number | boolean | undefined | null | void | symbol | {};
+export const getAsTypedTuple = <T extends Lit[]>(...args: T): T => args;
+
 // exported for convenience
 export { IToken, CstNode, TokenType };

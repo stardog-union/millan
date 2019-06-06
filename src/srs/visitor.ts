@@ -1,7 +1,6 @@
 import {
   IToken,
   IRecognitionException,
-  CstVisitorConstructor,
   ICstVisitor,
   CstNode,
 } from 'chevrotain';
@@ -29,10 +28,9 @@ export interface ISparqlSrsVisitor extends ICstVisitor<any, any> {
 // delegates parsing of the block to the existing SPARQL parser's relevant
 // sub-rule (GroupGraphPattern or TriplesBlock).
 export const getSparqlSrsVisitor = (
-  BaseVisitor: CstVisitorConstructor
+  BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>
 ): ISparqlSrsVisitor => {
-  class SparqlSrsVisitor extends BaseVisitor<any, any>
-    implements ISparqlSrsVisitor {
+  class SparqlSrsVisitor extends BaseVisitor implements ISparqlSrsVisitor {
     private sparqlParser: W3SpecSparqlParser;
     private groupGraphPatterns: SparqlSrsVisitorItem[] = [];
     private triplesBlocks: SparqlSrsVisitorItem[] = [];

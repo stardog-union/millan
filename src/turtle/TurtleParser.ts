@@ -60,7 +60,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     lexerDefinition: TokenType[] | IMultiModeLexerDefinition = tokens,
     performSelfAnalysis = true
   ) {
-    super([], tokens, {
+    super(tokens, {
       outputCst: true,
       recoveryEnabled: true,
       ...config,
@@ -149,18 +149,11 @@ export class TurtleParser extends Parser implements IStardogParser {
   predicateObjectList = this.RULE('predicateObjectList', () => {
     this.SUBRULE(this.verb);
     this.SUBRULE(this.objectList);
-    this.OPTION(() => {
+    this.MANY(() => {
       this.CONSUME(turtleTokenMap.Semicolon);
-      this.OPTION1(() => {
+      this.OPTION(() => {
         this.SUBRULE1(this.verb);
         this.SUBRULE1(this.objectList);
-      });
-    });
-    this.MANY(() => {
-      this.CONSUME1(turtleTokenMap.Semicolon);
-      this.OPTION2(() => {
-        this.SUBRULE2(this.verb);
-        this.SUBRULE2(this.objectList);
       });
     });
   });
@@ -286,8 +279,8 @@ export class TurtleParser extends Parser implements IStardogParser {
         message: 'A prefix was used for which there was no namespace defined.',
         token: prefixedNameToken,
         context: {
-          ruleStack: this.getHumanReadableRuleStack(),
-          ruleOccurrenceStack: [...this.RULE_OCCURRENCE_STACK],
+          ruleStack: (<any>this).getHumanReadableRuleStack(),
+          ruleOccurrenceStack: [...(<any>this).RULE_OCCURRENCE_STACK],
         },
         resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
       });

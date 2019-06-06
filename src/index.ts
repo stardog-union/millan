@@ -4,6 +4,7 @@ export * from './sparql/W3SpecSparqlParser';
 export * from './turtle/TurtleParser';
 export * from './srs/SrsParser';
 export * from './sms/SmsParser';
+export * from './shacl/ShaclParser';
 export * from './helpers/cst';
 export * from './helpers/types';
 
@@ -13,6 +14,7 @@ const sparqlTokens = require('./sparql/tokens');
 const turtleTokens = require('./turtle/tokens');
 const smsTokens = require('./sms/tokens');
 const srsTokens = require('./srs/tokens');
+const shaclTokens = require('./shacl/tokens');
 import { keywords as sparqlKeywords } from './sparql/keywords';
 import { terminals as sparqlTerminals } from './sparql/terminals';
 import * as matchers from './helpers/matchers';
@@ -21,6 +23,7 @@ export {
   turtleTokens,
   smsTokens,
   srsTokens,
+  shaclTokens,
   sparqlKeywords,
   sparqlTerminals,
   matchers,

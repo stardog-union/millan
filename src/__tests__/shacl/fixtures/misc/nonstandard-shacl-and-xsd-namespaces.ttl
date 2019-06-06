@@ -1,0 +1,16 @@
+ex:PersonShape
+	a weehee:NodeShape ;
+	weehee:targetClass ex:Person ;    # Applies to all persons
+	weehee:property [                 # _:b1
+		weehee:path ex:ssn ;           # constrains the values of ex:ssn
+		weehee:maxCount 1 ;
+		weehee:datatype xxxx:string ;
+		weehee:pattern "^\\\\d{3}-\\\\d{2}-\\\\d{4}$" ;
+	] ;
+	weehee:property [                 # _:b2
+		weehee:path ex:worksFor ;
+		weehee:class ex:Company ;
+		weehee:nodeKind weehee:IRI ;
+	] ;
+	weehee:closed true ;
+  <http://www.w3.org/ns/shacl#ignoredProperties> ( rdf:type ) .

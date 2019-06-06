@@ -1,4 +1,4 @@
-import { IToken, IRecognitionException, CstVisitorConstructor, ICstVisitor, CstNode } from 'chevrotain';
+import { IToken, IRecognitionException, ICstVisitor, CstNode } from 'chevrotain';
 import { ITokensMap } from '../helpers/types';
 interface SparqlSrsVisitorItem {
     parseResult: {
@@ -14,7 +14,7 @@ export interface ISparqlSrsVisitor extends ICstVisitor<any, any> {
     $getTriplesBlocks(): SparqlSrsVisitorItem[];
     $resetState(): void;
 }
-export declare const getSparqlSrsVisitor: (BaseVisitor: CstVisitorConstructor) => ISparqlSrsVisitor;
+export declare const getSparqlSrsVisitor: (BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>) => ISparqlSrsVisitor;
 export declare function reduceVisitorItemErrors(acc: IRecognitionException[], item: SparqlSrsVisitorItem): IRecognitionException[];
 export declare function findAndSwapPlaceholders(node: IToken, parentNode: CstNode, visitorItems: SparqlSrsVisitorItem[], key: string): SparqlSrsVisitorItem;
 export {};

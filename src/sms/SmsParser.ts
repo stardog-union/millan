@@ -24,7 +24,7 @@ export class SmsParser extends Parser {
   };
 
   constructor(config?: Partial<IParserConfig>) {
-    super([], smsTokenTypes, {
+    super(smsTokenTypes, {
       outputCst: true,
       recoveryEnabled: true,
       ...config,
