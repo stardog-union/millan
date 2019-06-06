@@ -1,11 +1,15 @@
-const { sparqlTokenMap, baseTokens, pathsTokens } = require('./tokens');
+const {
+  sparqlTokenMap,
+  baseTokens,
+  stardogSpecificSparqlTokens,
+} = require('./tokens');
 import { BaseSparqlParser } from './BaseSparqlParser';
 import { Parser } from 'chevrotain';
 
 const indexOfSELECT = baseTokens.indexOf(sparqlTokenMap.SELECT);
 const stardogTokens = [
   ...baseTokens.slice(0, indexOfSELECT),
-  ...pathsTokens,
+  ...stardogSpecificSparqlTokens,
   ...baseTokens.slice(indexOfSELECT),
 ];
 
@@ -69,6 +73,29 @@ export class StardogSparqlParser extends BaseSparqlParser {
       { ALT: () => this.CONSUME(sparqlTokenMap.PATHS_ALL) },
     ]);
     this.OPTION1(() => this.CONSUME(sparqlTokenMap.CYCLIC));
+  });
+
+  GraphPatternNotTriples = this.OVERRIDE_RULE('GraphPatternNotTriples', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.GroupOrUnionGraphPattern) },
+      { ALT: () => this.SUBRULE(this.OptionalGraphPattern) },
+      { ALT: () => this.SUBRULE(this.MinusGraphPattern) },
+      { ALT: () => this.SUBRULE(this.GraphGraphPattern) },
+      { ALT: () => this.SUBRULE(this.ServiceGraphPattern) },
+      { ALT: () => this.SUBRULE(this.Filter) },
+      { ALT: () => this.SUBRULE(this.Bind) },
+      { ALT: () => this.SUBRULE(this.Unnest) },
+      { ALT: () => this.SUBRULE(this.InlineData) },
+    ]);
+  });
+
+  Unnest = this.RULE('Unnest', () => {
+    this.CONSUME(sparqlTokenMap.UNNEST);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.AS);
+    this.SUBRULE(this.Var);
+    this.CONSUME(sparqlTokenMap.RParen);
   });
 
   BuiltInCall = this.OVERRIDE_RULE('BuiltInCall', () => {

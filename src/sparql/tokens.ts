@@ -211,6 +211,7 @@ export const sparqlTokenMap = {
   OPTIONAL: keywords.OPTIONAL,
   SERVICE: keywords.SERVICE,
   BIND: keywords.BIND,
+  UNNEST: keywords.UNNEST,
   UNDEF: keywords.UNDEF,
   MINUS: keywords.MINUS,
   UNION: keywords.UNION,
@@ -465,4 +466,9 @@ export const pathsTokens = [
   sparqlTokenMap.PATHS,
 ];
 
-export const sparqlTokenTypes = [...baseTokens, ...pathsTokens];
+export const stardogSpecificSparqlTokens = [
+  ...pathsTokens,
+  sparqlTokenMap.UNNEST,
+];
+
+export const sparqlTokenTypes = [...baseTokens, ...stardogSpecificSparqlTokens];
