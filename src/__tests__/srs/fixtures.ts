@@ -58,6 +58,17 @@ const ungeneratedFixtures = {
       'THEN {\n' +
       '   ?x a <urn:A> .\n' +
       '}',
+    bindWithoutLiteralSubject:
+      // Was previously failing: https://github.com/stardog-union/millan/issues/22
+      'IF {\n' +
+      '   ?t a :Triangle ;\n' +
+      '   :base ?b ;\n' +
+      '   :height ?h\n' +
+      '   BIND(?b * ?h / 2 AS ?area)\n' +
+      '}\n' +
+      'THEN {' +
+      '   ?t :area ?area\n' +
+      '}',
   },
   invalid: {
     lex: {
