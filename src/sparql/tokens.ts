@@ -466,9 +466,13 @@ export const pathsTokens = [
   sparqlTokenMap.PATHS,
 ];
 
-export const stardogSpecificSparqlTokens = [
-  ...pathsTokens,
-  sparqlTokenMap.UNNEST,
+export const nonStandardTokens = [...pathsTokens, sparqlTokenMap.UNNEST];
+
+const indexOfSelect = baseTokens.indexOf(sparqlTokenMap.SELECT);
+export const stardogSparqlTokens = [
+  ...baseTokens.slice(0, indexOfSelect),
+  ...nonStandardTokens,
+  ...baseTokens.slice(indexOfSelect),
 ];
 
-export const sparqlTokenTypes = [...baseTokens, ...stardogSpecificSparqlTokens];
+export const sparqlTokenTypes = [...baseTokens, ...nonStandardTokens];

@@ -76,7 +76,6 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       tsconfig: path.resolve(__dirname, 'tsconfig.json'),
       watch: SRC_DIR,
-      workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
     }),
   ],
   devtool: 'source-map',

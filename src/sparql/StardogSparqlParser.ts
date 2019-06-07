@@ -1,21 +1,10 @@
-const {
-  sparqlTokenMap,
-  baseTokens,
-  stardogSpecificSparqlTokens,
-} = require('./tokens');
+const { sparqlTokenMap, stardogSparqlTokens } = require('./tokens');
 import { BaseSparqlParser } from './BaseSparqlParser';
 import { Parser } from 'chevrotain';
 
-const indexOfSELECT = baseTokens.indexOf(sparqlTokenMap.SELECT);
-const stardogTokens = [
-  ...baseTokens.slice(0, indexOfSELECT),
-  ...stardogSpecificSparqlTokens,
-  ...baseTokens.slice(indexOfSELECT),
-];
-
 export class StardogSparqlParser extends BaseSparqlParser {
   constructor(options?) {
-    super(options, stardogTokens);
+    super(options, stardogSparqlTokens);
     Parser.performSelfAnalysis(this);
   }
 
