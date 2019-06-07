@@ -266,6 +266,11 @@ export const keywords = {
     pattern: /BIND/i,
   }),
 
+  UNNEST: createToken({
+    name: 'UNNEST',
+    pattern: /UNNEST/i,
+  }),
+
   UNDEF: createToken({
     name: 'UNDEF',
     pattern: /UNDEF/i,

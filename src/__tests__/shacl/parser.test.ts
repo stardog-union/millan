@@ -133,7 +133,7 @@ describe('SHACL parser', () => {
         return;
       }
 
-      const { errors, cst } = parser.parse(contents);
+      const { errors } = parser.parse(contents);
 
       if (errors.length) {
         filesWithErrors.push(file);

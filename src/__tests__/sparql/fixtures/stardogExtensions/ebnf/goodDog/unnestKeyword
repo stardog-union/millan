@@ -1,0 +1,5 @@
+# taken from Stardog docs: https://www.stardog.com/docs/#_unnest_operator_and_arrays
+select ?person ?name {
+  ?person :names ?csvNameString
+  UNNEST(split(?csvNameString, ",") as ?name)
+}
