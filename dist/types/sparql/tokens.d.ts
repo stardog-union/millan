@@ -104,6 +104,7 @@ export declare const sparqlTokenMap: {
     OPTIONAL: TokenType;
     SERVICE: TokenType;
     BIND: TokenType;
+    UNNEST: TokenType;
     UNDEF: TokenType;
     MINUS: TokenType;
     UNION: TokenType;
@@ -178,4 +179,6 @@ export declare const sparqlTokenMap: {
 };
 export declare const baseTokens: TokenType[];
 export declare const pathsTokens: TokenType[];
+export declare const nonStandardTokens: TokenType[];
+export declare const stardogSparqlTokens: TokenType[];
 export declare const sparqlTokenTypes: TokenType[];

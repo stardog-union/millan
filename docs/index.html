@@ -316,6 +316,9 @@
 						<a href="classes/basesparqlparser.html" class="tsd-kind-icon">Base<wbr>Sparql<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/shaclparser.html" class="tsd-kind-icon">Shacl<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/smsparser.html" class="tsd-kind-icon">Sms<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -337,6 +340,9 @@
 						<a href="interfaces/fileandcontents.html" class="tsd-kind-icon">File<wbr>And<wbr>Contents</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/ishaclvisitor.html" class="tsd-kind-icon">IShacl<wbr>Visitor</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/isparqlsrsvisitor.html" class="tsd-kind-icon">ISparql<wbr>Srs<wbr>Visitor</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -349,10 +355,25 @@
 						<a href="interfaces/itraversecontext.html" class="tsd-kind-icon">ITraverse<wbr>Context</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/shaclshape.html" class="tsd-kind-icon">Shacl<wbr>Shape</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/shaclvisitortreeitem.html" class="tsd-kind-icon">Shacl<wbr>Visitor<wbr>Tree<wbr>Item</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
 						<a href="interfaces/sparqlsrsvisitoritem.html" class="tsd-kind-icon">Sparql<wbr>Srs<wbr>Visitor<wbr>Item</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="globals.html#cstnodetraversecontext" class="tsd-kind-icon">Cst<wbr>Node<wbr>Traverse<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#lit" class="tsd-kind-icon">Lit</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#localname" class="tsd-kind-icon">Local<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#tokenmap" class="tsd-kind-icon">Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#anon" class="tsd-kind-icon">ANON</a>
@@ -510,6 +531,12 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#basetokens" class="tsd-kind-icon">base<wbr>Tokens</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#basicfixture" class="tsd-kind-icon">basic<wbr>Fixture</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#categorytokens" class="tsd-kind-icon">category<wbr>Tokens</a>
+					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#defaultnamespacesmap" class="tsd-kind-icon">default<wbr>Namespaces<wbr>Map</a>
 					</li>
@@ -525,20 +552,68 @@
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#escapediri" class="tsd-kind-icon">escaped<wbr>Iri</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#fixture" class="tsd-kind-icon">fixture</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#fixturesuites" class="tsd-kind-icon">fixture<wbr>Suites</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#getshacltokenmap" class="tsd-kind-icon">get<wbr>Shacl<wbr>Token<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#getshacltokentypes" class="tsd-kind-icon">get<wbr>Shacl<wbr>Token<wbr>Types</a>
+					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#illegalirichars" class="tsd-kind-icon">illegal<wbr>Iri<wbr>Chars</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#indexofselect" class="tsd-kind-icon">index<wbr>OfSELECT</a>
+						<a href="globals.html#indexofiriref" class="tsd-kind-icon">index<wbr>OfIri<wbr>Ref</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#indexofselect" class="tsd-kind-icon">index<wbr>OfSelect</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#invalidtestsfilenames" class="tsd-kind-icon">invalid<wbr>Tests<wbr>Filenames</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#iriindex" class="tsd-kind-icon">iri<wbr>Index</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#lexer" class="tsd-kind-icon">lexer</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#parser" class="tsd-kind-icon">parser</a>
+						<a href="globals.html#localnametocategorymap" class="tsd-kind-icon">local<wbr>Name<wbr>ToCategory<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#localnames" class="tsd-kind-icon">local<wbr>Names</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#manyvaluesforsinglevaluefixture" class="tsd-kind-icon">many<wbr>Values<wbr>For<wbr>Single<wbr>Value<wbr>Fixture</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#mixedshaclandturtlefixture" class="tsd-kind-icon">mixed<wbr>Shacl<wbr>And<wbr>Turtle<wbr>Fixture</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#nonstandardtokens" class="tsd-kind-icon">non<wbr>Standard<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#parser" class="tsd-kind-icon">parser</a>
+					</li>
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#pathstokens" class="tsd-kind-icon">paths<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pnameindex" class="tsd-kind-icon">pname<wbr>Index</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#shaclirinamespace" class="tsd-kind-icon">shacl<wbr>Iri<wbr>Namespace</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#shacltokens" class="tsd-kind-icon">shacl<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#shaclunprefixedtokenmap" class="tsd-kind-icon">shacl<wbr>Unprefixed<wbr>Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#smstokentypes" class="tsd-kind-icon">sms<wbr>Token<wbr>Types</a>
@@ -559,7 +634,7 @@
 						<a href="globals.html#srstokens" class="tsd-kind-icon">srs<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#stardogtokens" class="tsd-kind-icon">stardog<wbr>Tokens</a>
+						<a href="globals.html#stardogsparqltokens" class="tsd-kind-icon">stardog<wbr>Sparql<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#stringliterallongquote" class="tsd-kind-icon">string<wbr>Literal<wbr>Long<wbr>Quote</a>
@@ -572,6 +647,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#stringliteralsinglequote" class="tsd-kind-icon">string<wbr>Literal<wbr>Single<wbr>Quote</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#subexpressionmatcher" class="tsd-kind-icon">sub<wbr>Expression<wbr>Matcher</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#turtlelexer" class="tsd-kind-icon">turtle<wbr>Lexer</a>
@@ -597,11 +675,23 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#upperloweriffixtures" class="tsd-kind-icon">upper<wbr>Lower<wbr>IfFixtures</a>
 					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#xsdirinamespace" class="tsd-kind-icon">xsd<wbr>Iri<wbr>Namespace</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#xsdlocalnames" class="tsd-kind-icon">xsd<wbr>Local<wbr>Names</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#xsdunprefixedtokenmap" class="tsd-kind-icon">xsd<wbr>Unprefixed<wbr>Token<wbr>Map</a>
+					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#_traverse" class="tsd-kind-icon">_traverse</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#addifclauseerrorstoerrors" class="tsd-kind-icon">add<wbr>IfClause<wbr>Errors<wbr>ToErrors</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#addpredicatesandtypestoshape" class="tsd-kind-icon">add<wbr>Predicates<wbr>And<wbr>Types<wbr>ToShape</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#addthenclauseerrorstoerrors" class="tsd-kind-icon">add<wbr>Then<wbr>Clause<wbr>Errors<wbr>ToErrors</a>
@@ -615,8 +705,11 @@
 					<li class=" tsd-kind-function">
 						<a href="globals.html#findandswapplaceholders" class="tsd-kind-icon">find<wbr>And<wbr>Swap<wbr>Placeholders</a>
 					</li>
-					<li class=" tsd-kind-function">
+					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#getallfilecontents" class="tsd-kind-icon">get<wbr>All<wbr>File<wbr>Contents</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#getastypedtuple" class="tsd-kind-icon">get<wbr>AsTyped<wbr>Tuple</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#getcustomerrorrulestack" class="tsd-kind-icon">get<wbr>Custom<wbr>Error<wbr>Rule<wbr>Stack</a>
@@ -631,10 +724,25 @@
 						<a href="globals.html#getdisallowedtokenerror" class="tsd-kind-icon">get<wbr>Disallowed<wbr>Token<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getlocalname" class="tsd-kind-icon">get<wbr>Local<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#getnoprefixerror" class="tsd-kind-icon">get<wbr>NoPrefix<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getshacllocalnamematcher" class="tsd-kind-icon">get<wbr>Shacl<wbr>Local<wbr>Name<wbr>Matcher</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getshaclshapefromblanknodepropertylist" class="tsd-kind-icon">get<wbr>Shacl<wbr>Shape<wbr>From<wbr>Blank<wbr>Node<wbr>Property<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getshaclvisitor" class="tsd-kind-icon">get<wbr>Shacl<wbr>Visitor</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getsparqlsrsvisitor" class="tsd-kind-icon">get<wbr>Sparql<wbr>Srs<wbr>Visitor</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getunderlyingstarttoken" class="tsd-kind-icon">get<wbr>Underlying<wbr>Start<wbr>Token</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#iscstnode" class="tsd-kind-icon">is<wbr>Cst<wbr>Node</a>
@@ -644,6 +752,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#makeexpectextensionforparse" class="tsd-kind-icon">make<wbr>Expect<wbr>Extension<wbr>For<wbr>Parse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#makeprefixer" class="tsd-kind-icon">make<wbr>Prefixer</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#parse" class="tsd-kind-icon">parse</a>
@@ -656,6 +767,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#reducevisitoritemerrors" class="tsd-kind-icon">reduce<wbr>Visitor<wbr>Item<wbr>Errors</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#reversesort" class="tsd-kind-icon">reverse<wbr>Sort</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#traverse" class="tsd-kind-icon">traverse</a>
@@ -670,6 +784,9 @@
 						<a href="globals.html#upperlowerthenfixtures" class="tsd-kind-icon">upper<wbr>Lower<wbr>Then<wbr>Fixtures</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#categorytokenmap" class="tsd-kind-icon">category<wbr>Token<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#disallowedsparqltokennametorulemap" class="tsd-kind-icon">disallowed<wbr>Sparql<wbr>Token<wbr>Name<wbr>ToRule<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
@@ -680,6 +797,9 @@
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#keywords" class="tsd-kind-icon">keywords</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#localnamesbycategory" class="tsd-kind-icon">local<wbr>Names<wbr>ByCategory</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#multimodelexerdefinition" class="tsd-kind-icon">multi<wbr>Mode<wbr>Lexer<wbr>Definition</a>

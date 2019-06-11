@@ -52,6 +52,7 @@ export declare const keywords: {
     OPTIONAL: TokenType;
     SERVICE: TokenType;
     BIND: TokenType;
+    UNNEST: TokenType;
     UNDEF: TokenType;
     MINUS: TokenType;
     UNION: TokenType;

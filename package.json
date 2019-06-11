@@ -1,6 +1,6 @@
 {
   "name": "millan",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "The Stardog Whisperer (error-tolerant parsers for languages used with Stardog)",
   "keywords": [
     "stardog",
@@ -11,7 +11,8 @@
     "knowledge graph",
     "linked data",
     "semantic web",
-    "rules"
+    "rules",
+    "shacl"
   ],
   "main": "dist/millan.js",
   "types": "dist/types/index.d.ts",

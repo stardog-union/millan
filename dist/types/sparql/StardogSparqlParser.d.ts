@@ -6,6 +6,8 @@ export declare class StardogSparqlParser extends BaseSparqlParser {
     Via: (idxInCallingRule?: number, ...args: any[]) => any;
     PathTerminal: (idxInCallingRule?: number, ...args: any[]) => any;
     PathSpec: (idxInCallingRule?: number, ...args: any[]) => any;
+    GraphPatternNotTriples: (idxInCallingRule?: number, ...args: any[]) => void;
+    Unnest: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall: (idxInCallingRule?: number, ...args: any[]) => void;
     StardogOrCustomFunction: (idxInCallingRule?: number, ...args: any[]) => any;
     ConstructTemplate: (idxInCallingRule?: number, ...args: any[]) => void;
