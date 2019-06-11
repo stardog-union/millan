@@ -7,6 +7,11 @@ type CstNodeTraverseContext = ITraverseContext & {
   node: CstNode;
 };
 
+// RegEx for matching any relevant children of `Expression` inside of `Bind`;
+// used to avoid false negatives in the check for disallowed literals inside of
+// `Bind`.
+const subExpressionMatcher = /(?:[A-Z]+Expression|ValueLogical)$/i;
+
 // Default: just don't abort early at all. Used in the stack unwinding process
 // that creates an error rule stack.
 const defaultEarlyAbortTest = () => false;
@@ -187,36 +192,61 @@ const getDisallowedLiteralError = (
   subParserRuleName: string
 ) => {
   let foundPropertyListPathNotEmptyCtx = null;
+  let didFindSubExpressionWithMultipleChildren = false;
   let errorContext = null;
+
   const errorRuleStack = getCustomErrorRuleStack(
     parentCtx,
     fullCtx,
     ['Expression', 'TriplesSameSubjectPath'],
     subParserRuleName,
     (stackCtx: CstNodeTraverseContext) => {
-      if (stackCtx.node.name === 'PropertyListPathNotEmpty') {
+      const { node, parentCtx } = stackCtx;
+      const nodeName = node.name;
+
+      if (nodeName === 'PropertyListPathNotEmpty') {
+        // Track the found `PropertyListPathNotEmmpty` node and keep going.
         foundPropertyListPathNotEmptyCtx = stackCtx;
         return false;
       }
 
-      const { node, parentCtx } = stackCtx;
-      const isExpression = node.name === 'Expression';
-      const isTriplesBlock = node.name === 'TriplesSameSubjectPath';
+      if (
+        !didFindSubExpressionWithMultipleChildren &&
+        subExpressionMatcher.test(nodeName)
+      ) {
+        // Track that we found a sub-expression with multiple children, then
+        // keep going.
+        didFindSubExpressionWithMultipleChildren =
+          (<CstNode>parentCtx.node).children[nodeName].length > 1;
+        return false;
+      }
+
+      const isExpression = nodeName === 'Expression';
+      const isTriplesBlock = nodeName === 'TriplesSameSubjectPath';
 
       if (!isExpression && !isTriplesBlock) {
         return false;
       }
 
-      const isBoundExpression =
-        isExpression && (<CstNode>parentCtx.node).name === 'Bind';
+      const isBoundExpressionWithLiteralSubject =
+        isExpression &&
+        (<CstNode>parentCtx.node).name === 'Bind' &&
+        // If we've found a sub-expression with multiple children, it's highly
+        // likely (maybe definite?) that this `Bind` does not include an invalid
+        // literal as a subject, so we don't count this as an error. This _may_
+        // allow rare false positives, but it definitely prevents false
+        // negatives of the sort described in https://github.com/stardog-union/millan/issues/22
+        !didFindSubExpressionWithMultipleChildren;
       const isTriplesBlockSubject =
         isTriplesBlock &&
         (!foundPropertyListPathNotEmptyCtx ||
           (<CstNode>foundPropertyListPathNotEmptyCtx.parentCtx.node).name !==
             'TriplesSameSubjectPath');
 
-      if (isBoundExpression || isTriplesBlockSubject) {
-        errorContext = isBoundExpression ? 'Bind' : 'TriplesBlock';
+      if (isBoundExpressionWithLiteralSubject || isTriplesBlockSubject) {
+        errorContext = isBoundExpressionWithLiteralSubject
+          ? 'Bind'
+          : 'TriplesBlock';
         return false;
       }
 
