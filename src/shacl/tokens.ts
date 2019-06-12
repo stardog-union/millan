@@ -1,7 +1,7 @@
 const { turtleTokenTypes, turtleTokenMap } = require('../turtle/tokens');
 const { sparqlTokenMap } = require('../sparql/tokens');
 import { TokenType, createToken, Lexer } from 'chevrotain';
-import * as memoize from 'memoize-one';
+import memoize from 'memoize-one';
 import { getAsTypedTuple } from 'helpers/types';
 import isDeepEqual from 'lodash.isequal';
 

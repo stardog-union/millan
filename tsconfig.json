@@ -8,7 +8,7 @@
     "noUnusedParameters": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "stripInternal": true,
     "outDir": "./dist",
     "declaration": true,

@@ -5,7 +5,7 @@ import {
   IRecognitionException,
   IToken,
 } from 'chevrotain';
-import * as escapeStringRegexp from 'escape-string-regexp';
+import escapeStringRegexp from 'escape-string-regexp';
 import { isCstNode } from 'helpers/cst';
 
 export interface IShaclVisitor extends ICstVisitor<any, any> {
