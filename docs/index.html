@@ -69,7 +69,7 @@
 					for languages used with Stardog (currently <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a>,
 					<a href="https://en.wikipedia.org/wiki/Turtle_(syntax)">Turtle</a>,
 					<a href="https://www.stardog.com/docs/#_stardog_mapping_syntax_2">Stardog Mapping Syntax 2 (SMS)</a>,
-				and <a href="https://www.stardog.com/docs/#_stardog_rules_syntax">Stardog Rules Syntax</a>).</p>
+				<a href="https://www.stardog.com/docs/#_stardog_rules_syntax">Stardog Rules Syntax</a>), and the Turtle serialization of <a href="https://www.w3.org/TR/shacl/">SHACL</a>.</p>
 				<h2 id="features">Features</h2>
 				<ul>
 					<li>Error-tolerant parsing for W3C-compliant SPARQL and SPARQL with
@@ -77,6 +77,7 @@
 					<li>Error-tolerant parsing for W3C-compliant Turtle</li>
 					<li>Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)</li>
 					<li>Error-tolerant parsing for Stardog Rules Syntax (SRS)</li>
+					<li>Error-tolerant parsing for the Turtle serialization of the W3C Shapes Constraints Language (SHACL)</li>
 					<li>Exported token matchers (regular expressions) and token sets for all of the
 					above languages</li>
 					<li>Universally usable (both in nodejs and the browser)</li>
@@ -338,6 +339,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/fileandcontents.html" class="tsd-kind-icon">File<wbr>And<wbr>Contents</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isemanticerror.html" class="tsd-kind-icon">ISemantic<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ishaclvisitor.html" class="tsd-kind-icon">IShacl<wbr>Visitor</a>

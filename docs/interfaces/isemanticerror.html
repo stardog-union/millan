@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LexerMode | millan</title>
+	<title>ISemanticError | millan</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,60 +56,62 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="lexermode.html">LexerMode</a>
+					<a href="isemanticerror.html">ISemanticError</a>
 				</li>
 			</ul>
-			<h1>Enumeration LexerMode</h1>
+			<h1>Interface ISemanticError</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="tsd-signature-type">object</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ISemanticError</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Enumeration members</h3>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="lexermode.html#ifclause" class="tsd-kind-icon">IFCLAUSE</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="lexermode.html#thenclause" class="tsd-kind-icon">THENCLAUSE</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="lexermode.html#turtle" class="tsd-kind-icon">TURTLE</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isemanticerror.html#context" class="tsd-kind-icon">context</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isemanticerror.html#resyncedtokens" class="tsd-kind-icon">resynced<wbr>Tokens</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-					<a name="ifclause" class="tsd-anchor"></a>
-					<h3>IFCLAUSE</h3>
-					<div class="tsd-signature tsd-kind-icon">IFCLAUSE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;ifclause&quot;</span></div>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="context" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> context</h3>
+					<div class="tsd-signature tsd-kind-icon">context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IRecognizerContext</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/srs/tokens.ts#L9">srs/tokens.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/helpers/types.ts#L26">helpers/types.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-					<a name="thenclause" class="tsd-anchor"></a>
-					<h3>THENCLAUSE</h3>
-					<div class="tsd-signature tsd-kind-icon">THENCLAUSE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;thenclause&quot;</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="resyncedtokens" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> resynced<wbr>Tokens</h3>
+					<div class="tsd-signature tsd-kind-icon">resynced<wbr>Tokens<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IToken</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/srs/tokens.ts#L10">srs/tokens.ts:10</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-					<a name="turtle" class="tsd-anchor"></a>
-					<h3>TURTLE</h3>
-					<div class="tsd-signature tsd-kind-icon">TURTLE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;turtle&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/srs/tokens.ts#L8">srs/tokens.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/helpers/types.ts#L25">helpers/types.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -127,17 +129,14 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum tsd-is-not-exported">
-						<a href="lexermode.html" class="tsd-kind-icon">Lexer<wbr>Mode</a>
+					<li class="current tsd-kind-interface">
+						<a href="isemanticerror.html" class="tsd-kind-icon">ISemantic<wbr>Error</a>
 						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-								<a href="lexermode.html#ifclause" class="tsd-kind-icon">IFCLAUSE</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="isemanticerror.html#context" class="tsd-kind-icon">context</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-								<a href="lexermode.html#thenclause" class="tsd-kind-icon">THENCLAUSE</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-								<a href="lexermode.html#turtle" class="tsd-kind-icon">TURTLE</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="isemanticerror.html#resyncedtokens" class="tsd-kind-icon">resynced<wbr>Tokens</a>
 							</li>
 						</ul>
 					</li>

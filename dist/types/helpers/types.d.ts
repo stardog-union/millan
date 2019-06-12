@@ -1,4 +1,4 @@
-import { IToken, IRecognitionException, CstNode, TokenType } from 'chevrotain';
+import { IToken, IRecognitionException, CstNode, TokenType, IRecognizerContext } from 'chevrotain';
 export interface IStardogParser {
     tokenize: (document: string) => IToken[];
     parse: (document: string) => {
@@ -8,6 +8,10 @@ export interface IStardogParser {
 }
 export interface ITokensMap {
     [key: string]: IToken[];
+}
+export interface ISemanticError extends Pick<IRecognitionException, Exclude<keyof IRecognitionException, 'resyncedTokens' | 'context'>> {
+    resyncedTokens?: IToken[];
+    context?: IRecognizerContext;
 }
 declare type Lit = string | number | boolean | undefined | null | void | symbol | {};
 export declare const getAsTypedTuple: <T extends Lit[]>(...args: T) => T;
