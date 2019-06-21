@@ -1,61 +1,61 @@
+import * as path from 'path';
 import { StandardGraphQlParser } from '../../graphql/StandardGraphQlParser';
+import { readDirAsync, readFileAsync } from '../utils';
 
-const parser = new StandardGraphQlParser();
+const FIXTURES_DIR = path.join(__dirname, 'fixtures');
+const CATEGORY_PATTERN = /^categor(?:y|ies)/i;
 
-const basicFixture = `
-query queryName($foo: TestInput, $site: TestEnum = RED) {
-  testAlias: hasArgs(string: "testString")
-  ... on Test {
-    hasArgs(
-      listEnum: [RED, GREEN, BLUE]
-      int: 1
-      listFloat: [1.23, 1.3e-1, -1.35384e+3]
-      boolean: true
-      id: 123
-      object: $foo
-      enum: $site
+const standardParser = new StandardGraphQlParser();
+
+const getAllFixtures = () =>
+  readDirAsync(FIXTURES_DIR).then((filenames) =>
+    Promise.all(
+      filenames.map((filename) =>
+        readFileAsync(path.join(FIXTURES_DIR, filename)).then(
+          (fileContents) => ({ filename, fileContents })
+        )
+      )
     )
-  }
-  test @include(if: true) {
-    union {
-      __typename
-    }
-  }
-  ...frag
-  ... @skip(if: false) {
-    id
-  }
-  ... {
-    id
-  }
-}
+  );
 
-mutation mutationName {
-  setString(value: "newString")
-}
-
-subscription subscriptionName {
-  subscribeToTest(id: "anId") {
-    ... on Test {
-      id
-    }
-  }
-}
-
-fragment frag on Test {
-  test @include(if: true) {
-    union {
-      __typename
-    }
-  }
-}
-`;
+const invalidTestsFilenames = [
+  'schema-kitchen-sink.graphql', // includes a "repeatable" keyword that isn't even part of the working draft yet (as of June 21, 2019); see RFC here: https://github.com/graphql/graphql-js/pull/1541
+];
 
 describe('StandardGraphQlParser', () => {
-  it('parses', () => {
-    const { cst, errors } = parser.parse(basicFixture);
-    console.log(JSON.stringify(cst, null, 2));
-    console.log(JSON.stringify(errors, null, 2));
-    expect(true).toBe(true);
+  it('correctly parses all graphql-js fixtures', async () => {
+    const fixtures = await getAllFixtures();
+    const filesWithErrors = [];
+    const cstsForSnapshot = {};
+
+    fixtures.forEach(({ fileContents, filename }) => {
+      if (invalidTestsFilenames.includes(filename)) {
+        return;
+      }
+
+      const { errors, cst } = standardParser.parse(fileContents);
+
+      if (errors.length) {
+        filesWithErrors.push(filename);
+      }
+
+      cstsForSnapshot[filename] = cst;
+    });
+
+    const snapshotObj = JSON.parse(
+      JSON.stringify(
+        cstsForSnapshot,
+        (key, value) => {
+          if (CATEGORY_PATTERN.test(key)) {
+            return; // remove all category keys in JSON string (it's noise)
+          }
+          return value;
+        },
+        2
+      )
+    );
+
+    expect(filesWithErrors).toHaveLength(0);
+    expect(snapshotObj).toMatchSnapshot();
   });
 });

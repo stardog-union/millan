@@ -1,7 +1,8 @@
-import { createToken, Lexer, ITokenConfig, TokenType } from 'chevrotain';
+import { createToken, Lexer, ITokenConfig } from 'chevrotain';
 import { regex } from 'helpers/regex';
 import { STRING_LITERAL_LONG2 } from 'helpers/matchers';
 
+// Patterns:
 const NAME_PATTERN = /[_A-Za-z][_0-9A-Za-z]*/;
 const INTEGER_PART_PATTERN = /\-?(?:0|[1-9][0-9]*)/;
 const EXPONENT_PART_PATTERN = /[eE][+-]?[0-9]+/;
@@ -21,29 +22,98 @@ const STRING_CHARACTER_PATTERN = regex.and(
 );
 const BOOLEAN_PATTERN = /true|false/;
 const NULL_PATTERN = /null/;
+const ON_PATTERN = /on/;
+
+// Holder of tokens; tokens are generally added and created in order, below.
+const graphQlTokens = [];
+
+// Utility used primarily for keywords, which should also be counted as
+// matching the `Name` token and (except for special cases) the
+// `EnumValueToken` and `FragmentName` tokens. Ensures the created token has
+// those other tokens as categories, and ensures that `Name` will be matched
+// correctly for tokens that start with keyword characters but have additional
+// characters. Adds the created token to the `graphQlTokens` array.
+const createAndPushTokenWithNameAlt = (config: ITokenConfig) => {
+  const categories = [Name];
+
+  if (config.pattern !== BOOLEAN_PATTERN && config.pattern !== NULL_PATTERN) {
+    categories.push(EnumValueToken);
+  }
+
+  if (config.pattern !== ON_PATTERN) {
+    categories.push(FragmentName);
+  }
+
+  return createAndPushToken({
+    name: config.name,
+    pattern: config.pattern,
+    longer_alt: Name,
+    categories,
+  });
+};
+
+// Simple wrapper for `createToken` that also pushes the created token into
+// `graphQlTokens` at the time of creation, since order matters.
+const createAndPushToken = (config: ITokenConfig) => {
+  const token = createToken(config);
+  graphQlTokens.push(token);
+  return token;
+};
+
+// Category tokens need to be created first, so they can be referenced by other
+// tokens. They are _not_ yet added to the `graphQlTokens` array so that they
+// do not match before various more specific keywords.
+const Name = createToken({ name: 'Name', pattern: NAME_PATTERN });
+// `EnumValueToken` and `FragmentName` are purely abstract categories that will
+// be matched for all `Name` tokens _except_ the special tokens specified in
+// the GraphQL grammar. See `createAndPushTokenWithNameAlt` for details.
+const EnumValueToken = createToken({
+  name: 'EnumValueToken',
+  pattern: Lexer.NA, // pure category, no explicit match of its own
+});
+const FragmentName = createToken({
+  name: 'FragmentName',
+  pattern: Lexer.NA,
+});
+// `StringValueToken` will make either BlockStrings or Strings.
+const StringValueToken = createToken({
+  name: 'StringValueToken',
+  pattern: Lexer.NA,
+});
+
+// Generally, anything that matches `Name` should match `EnumValueToken` and
+// `FragmentName`. NOTE, however that `On` will not match `FragmentName` and
+// `BooleanValueToken` and `NullValueToken` will not match `EnumValueToken`, in
+// accordance with the official grammar; this is handled by the fact that the
+// `On`, `BooleanValueToken`, and `FragmentName` tokens are defined and pushed
+// into the tokens array earlier than `Name`. Given
+// `createAndPushTokenWithNameAlt`, the latter tokens will also be treated as
+// `Name` tokens, but will NOT be treated as instances of the relevant
+// `EnumValueToken` or `FragmentName`. That's exactly what we want.
+Name.CATEGORIES.push(EnumValueToken, FragmentName);
 
 const ignoredTokens = {
-  WhiteSpace: createToken({
+  WhiteSpace: createAndPushToken({
     name: 'WhiteSpace',
     pattern: /[ \t]+/,
     group: Lexer.SKIPPED,
   }),
-  UnicodeBOM: createToken({
+  UnicodeBOM: createAndPushToken({
     name: 'UnicodeBOM',
     pattern: '\\uFFFE',
     group: Lexer.SKIPPED,
   }),
-  LineTerminator: createToken({
+  LineTerminator: createAndPushToken({
     name: 'LineTerminator',
     pattern: /\n\r|\r|\n/,
     group: Lexer.SKIPPED,
   }),
-  Comment: createToken({
+  Comment: createAndPushToken({
     name: 'Comment',
     pattern: /#[^\n\r]*/,
     group: Lexer.SKIPPED,
   }),
-  Comma: createToken({
+  Comma: createAndPushToken({
     name: 'Comma',
     pattern: ',',
     group: Lexer.SKIPPED,
@@ -51,30 +121,24 @@ const ignoredTokens = {
 };
 
 const punctuators = {
-  Bang: createToken({ name: 'Bang', pattern: '!' }),
-  Dollar: createToken({ name: 'Dollar', pattern: '$' }),
-  LParen: createToken({ name: 'LParen', pattern: '(' }),
-  RParen: createToken({ name: 'RParen', pattern: ')' }),
-  Spread: createToken({ name: 'Spread', pattern: '...' }),
-  Colon: createToken({ name: 'Colon', pattern: ':' }),
-  Equals: createToken({ name: 'Equals', pattern: '=' }),
-  At: createToken({ name: 'At', pattern: '@' }),
-  LBracket: createToken({ name: 'LBracket', pattern: '[' }),
-  RBracket: createToken({ name: 'RBracket', pattern: ']' }),
-  LCurly: createToken({ name: 'LCurly', pattern: '{' }),
-  RCurly: createToken({ name: 'RCurly', pattern: '}' }),
-  Or: createToken({ name: 'Or', pattern: '|' }),
-  And: createToken({ name: 'And', pattern: '&' }), // not listed in the spec as a punctuator, for some reason
+  Bang: createAndPushToken({ name: 'Bang', pattern: '!' }),
+  Dollar: createAndPushToken({ name: 'Dollar', pattern: '$' }),
+  LParen: createAndPushToken({ name: 'LParen', pattern: '(' }),
+  RParen: createAndPushToken({ name: 'RParen', pattern: ')' }),
+  Spread: createAndPushToken({ name: 'Spread', pattern: '...' }),
+  Colon: createAndPushToken({ name: 'Colon', pattern: ':' }),
+  Equals: createAndPushToken({ name: 'Equals', pattern: '=' }),
+  At: createAndPushToken({ name: 'At', pattern: '@' }),
+  LBracket: createAndPushToken({ name: 'LBracket', pattern: '[' }),
+  RBracket: createAndPushToken({ name: 'RBracket', pattern: ']' }),
+  LCurly: createAndPushToken({ name: 'LCurly', pattern: '{' }),
+  RCurly: createAndPushToken({ name: 'RCurly', pattern: '}' }),
+  Pipe: createAndPushToken({ name: 'Pipe', pattern: '|' }),
+  Amp: createAndPushToken({ name: 'Amp', pattern: '&' }), // not listed in the spec as a punctuator, for some reason
 };
 
-const Name = createToken({ name: 'Name', pattern: NAME_PATTERN });
-
 const nonKeywordTerminals = {
-  IntValueToken: createToken({
-    name: 'IntValueToken',
-    pattern: INTEGER_PART_PATTERN,
-  }),
-  FloatValueToken: createToken({
+  FloatValueToken: createAndPushToken({
     name: 'FloatValueToken',
     pattern: regex.and(
       INTEGER_PART_PATTERN,
@@ -84,143 +148,152 @@ const nonKeywordTerminals = {
       )
     ),
   }),
-  StringValueToken: createToken({
-    name: 'StringValueToken',
-    pattern: regex.or(STRING_CHARACTER_PATTERN, STRING_LITERAL_LONG2),
+  IntValueToken: createAndPushToken({
+    name: 'IntValueToken',
+    pattern: INTEGER_PART_PATTERN,
   }),
-  BooleanValueToken: createToken({
+  BlockStringToken: createAndPushToken({
+    name: 'BlockStringToken',
+    pattern: STRING_LITERAL_LONG2,
+    categories: [StringValueToken],
+  }),
+  StringToken: createAndPushToken({
+    name: 'StringToken',
+    pattern: STRING_CHARACTER_PATTERN,
+    categories: [StringValueToken],
+  }),
+  BooleanValueToken: createAndPushTokenWithNameAlt({
     name: 'BooleanValueToken',
     pattern: BOOLEAN_PATTERN,
   }),
-  NullValueToken: createToken({
+  NullValueToken: createAndPushTokenWithNameAlt({
     name: 'NullValueToken',
     pattern: NULL_PATTERN,
   }),
-  EnumValueToken: createToken({
-    name: 'EnumValueToken',
-    pattern: regex.and(/(?!true|false|null)/, NAME_PATTERN),
-    categories: [Name],
-  }),
-  FragmentName: createToken({
-    name: 'FragmentName',
-    pattern: regex.and(/(?!on)/, NAME_PATTERN),
-    categories: [Name],
-  }),
+  EnumValueToken,
+  FragmentName,
+  Name,
+  StringValueToken,
 };
 
-const createKeywordToken = (config: ITokenConfig) =>
-  createToken({
-    name: config.name,
-    pattern: config.pattern,
-    longer_alt: Name,
-  });
-
 const keywords = {
-  Query: createKeywordToken({
+  Query: createAndPushTokenWithNameAlt({
     name: 'Query',
     pattern: 'query',
   }),
-  Mutation: createKeywordToken({
+  Mutation: createAndPushTokenWithNameAlt({
     name: 'Mutation',
     pattern: 'mutation',
   }),
-  Subscription: createKeywordToken({
+  Subscription: createAndPushTokenWithNameAlt({
     name: 'Subscription',
     pattern: 'subscription',
   }),
-  Fragment: createKeywordToken({
+  Fragment: createAndPushTokenWithNameAlt({
     name: 'Fragment',
     pattern: 'fragment',
   }),
-  On: createKeywordToken({
+  On: createAndPushTokenWithNameAlt({
     name: 'On',
-    pattern: 'on',
+    pattern: ON_PATTERN,
   }),
-  Schema: createKeywordToken({
+  Schema: createAndPushTokenWithNameAlt({
     name: 'Schema',
     pattern: 'schema',
   }),
-  Extend: createKeywordToken({
+  Extend: createAndPushTokenWithNameAlt({
     name: 'Extend',
     pattern: 'extend',
   }),
-  Scalar: createKeywordToken({
+  Scalar: createAndPushTokenWithNameAlt({
     name: 'Scalar',
     pattern: 'scalar',
   }),
-  TypeToken: createKeywordToken({
+  TypeToken: createAndPushTokenWithNameAlt({
     name: 'TypeToken',
     pattern: 'type',
   }),
-  Implements: createKeywordToken({
+  Implements: createAndPushTokenWithNameAlt({
     name: 'Implements',
     pattern: 'implements',
   }),
-  Interface: createKeywordToken({
+  Interface: createAndPushTokenWithNameAlt({
     name: 'Interface',
     pattern: 'interface',
   }),
-  Union: createKeywordToken({
+  Union: createAndPushTokenWithNameAlt({
     name: 'Union',
     pattern: 'union',
   }),
-  Enum: createKeywordToken({
+  Enum: createAndPushTokenWithNameAlt({
     name: 'Enum',
     pattern: 'enum',
   }),
-  Input: createKeywordToken({
+  Input: createAndPushTokenWithNameAlt({
     name: 'Input',
     pattern: 'input',
   }),
-  DirectiveToken: createKeywordToken({
+  DirectiveToken: createAndPushTokenWithNameAlt({
     name: 'DirectiveToken',
     pattern: 'directive',
   }),
-  QUERY: createKeywordToken({ name: 'QUERY', pattern: 'QUERY' }),
-  MUTATION: createKeywordToken({ name: 'MUTATION', pattern: 'MUTATION' }),
-  SUBSCRIPTION: createKeywordToken({
+  QUERY: createAndPushTokenWithNameAlt({ name: 'QUERY', pattern: 'QUERY' }),
+  MUTATION: createAndPushTokenWithNameAlt({
+    name: 'MUTATION',
+    pattern: 'MUTATION',
+  }),
+  SUBSCRIPTION: createAndPushTokenWithNameAlt({
     name: 'SUBSCRIPTION',
     pattern: 'SUBSCRIPTION',
   }),
-  FIELD: createKeywordToken({ name: 'FIELD', pattern: 'FIELD' }),
-  FRAGMENT_DEFINITION: createKeywordToken({
+  FRAGMENT_DEFINITION: createAndPushTokenWithNameAlt({
     name: 'FRAGMENT_DEFINITION',
     pattern: 'FRAGMENT_DEFINITION',
   }),
-  FRAGMENT_SPREAD: createKeywordToken({
+  FRAGMENT_SPREAD: createAndPushTokenWithNameAlt({
     name: 'FRAGMENT_SPREAD',
     pattern: 'FRAGMENT_SPREAD',
   }),
-  INLINE_FRAGMENT: createKeywordToken({
+  INLINE_FRAGMENT: createAndPushTokenWithNameAlt({
     name: 'INLINE_FRAGMENT',
     pattern: 'INLINE_FRAGMENT',
   }),
-  SCHEMA: createKeywordToken({ name: 'SCHEMA', pattern: 'SCHEMA' }),
-  SCALAR: createKeywordToken({ name: 'SCALAR', pattern: 'SCALAR' }),
-  OBJECT: createKeywordToken({ name: 'OBJECT', pattern: 'OBJECT' }),
-  FIELD_DEFINITION: createKeywordToken({
+  SCHEMA: createAndPushTokenWithNameAlt({ name: 'SCHEMA', pattern: 'SCHEMA' }),
+  SCALAR: createAndPushTokenWithNameAlt({ name: 'SCALAR', pattern: 'SCALAR' }),
+  OBJECT: createAndPushTokenWithNameAlt({ name: 'OBJECT', pattern: 'OBJECT' }),
+  FIELD_DEFINITION: createAndPushTokenWithNameAlt({
     name: 'FIELD_DEFINITION',
     pattern: 'FIELD_DEFINITION',
   }),
-  ARGUMENT_DEFINITION: createKeywordToken({
+  FIELD: createAndPushTokenWithNameAlt({ name: 'FIELD', pattern: 'FIELD' }),
+  ARGUMENT_DEFINITION: createAndPushTokenWithNameAlt({
     name: 'ARGUMENT_DEFINITION',
     pattern: 'ARGUMENT_DEFINITION',
   }),
-  INTERFACE: createKeywordToken({ name: 'INTERFACE', pattern: 'INTERFACE' }),
-  UNION: createKeywordToken({ name: 'UNION', pattern: 'UNION' }),
-  ENUM: createKeywordToken({ name: 'ENUM', pattern: 'ENUM' }),
-  ENUM_VALUE: createKeywordToken({ name: 'ENUM_VALUE', pattern: 'ENUM_VALUE' }),
-  INPUT_OBJECT: createKeywordToken({
+  INTERFACE: createAndPushTokenWithNameAlt({
+    name: 'INTERFACE',
+    pattern: 'INTERFACE',
+  }),
+  UNION: createAndPushTokenWithNameAlt({ name: 'UNION', pattern: 'UNION' }),
+  ENUM_VALUE: createAndPushTokenWithNameAlt({
+    name: 'ENUM_VALUE',
+    pattern: 'ENUM_VALUE',
+  }),
+  ENUM: createAndPushTokenWithNameAlt({ name: 'ENUM', pattern: 'ENUM' }),
+  INPUT_OBJECT: createAndPushTokenWithNameAlt({
     name: 'INPUT_OBJECT',
     pattern: 'INPUT_OBJECT',
   }),
-  INPUT_FIELD_DEFINITION: createKeywordToken({
+  INPUT_FIELD_DEFINITION: createAndPushTokenWithNameAlt({
     name: 'INPUT_FIELD_DEFINITION',
     pattern: 'INPUT_FIELD_DEFINITION',
   }),
 };
 
-export const graphQlTokenMap = {
+// Add category and catch-all tokens.
+graphQlTokens.push(FragmentName, EnumValueToken, Name, StringValueToken);
+
+const graphQlTokenMap = {
   ...ignoredTokens,
   ...punctuators,
   ...nonKeywordTerminals,
@@ -228,23 +301,4 @@ export const graphQlTokenMap = {
   Name,
 };
 
-export const graphQlTokens = [
-  ignoredTokens,
-  punctuators,
-  keywords,
-  // nonKeywordTerminals,
-]
-  .reduce(
-    (allTokens, tokenMap) => [
-      ...allTokens,
-      ...Object.keys(tokenMap).map((tokenKey) => tokenMap[tokenKey]),
-    ],
-    []
-  )
-  .concat([
-    nonKeywordTerminals.FloatValueToken,
-    ...Object.keys(nonKeywordTerminals)
-      .filter((key) => key !== 'FloatValueToken')
-      .map((key) => nonKeywordTerminals[key]),
-  ])
-  .concat([Name]); // ensures that this does not match before any other alternatives
+export { graphQlTokenMap, graphQlTokens };

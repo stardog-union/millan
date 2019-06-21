@@ -1,60 +1,42 @@
 const { graphQlTokens } = require('../../graphql/tokens');
 import { Lexer } from 'chevrotain';
+import * as path from 'path';
+import { readDirAsync, readFileAsync } from '../utils';
+
+const FIXTURES_DIR = path.join(__dirname, 'fixtures');
+const CATEGORY_PATTERN = /^categor(?:y|ies)/i;
 
 const lexer = new Lexer(graphQlTokens);
 
-const basicFixture = `
-query queryName($foo: TestInput, $site: TestEnum = RED) {
-  testAlias: hasArgs(string: "testString")
-  ... on Test {
-    hasArgs(
-      listEnum: [RED, GREEN, BLUE]
-      int: 1
-      listFloat: [1.23, 1.3e-1, -1.35384e+3]
-      boolean: true
-      id: 123
-      object: $foo
-      enum: $site
+const getAllFixtures = () =>
+  readDirAsync(FIXTURES_DIR).then((filenames) =>
+    Promise.all(
+      filenames.map((filename) =>
+        readFileAsync(path.join(FIXTURES_DIR, filename))
+      )
     )
-  }
-  test @include(if: true) {
-    union {
-      __typename
-    }
-  }
-  ...frag
-  ... @skip(if: false) {
-    id
-  }
-  ... {
-    id
-  }
-}
-
-mutation mutationName {
-  setString(value: "newString")
-}
-
-subscription subscriptionName {
-  subscribeToTest(id: "anId") {
-    ... on Test {
-      id
-    }
-  }
-}
-
-fragment frag on Test {
-  test @include(if: true) {
-    union {
-      __typename
-    }
-  }
-}
-`;
+  );
 
 describe('GraphQL Tokenizer', () => {
-  it('tokenizes', () => {
-    const result = lexer.tokenize(basicFixture);
-    console.log(JSON.stringify(result, null, 2));
+  it('correctly tokenizes all graphql-js fixtures', async () => {
+    const fixtures = await getAllFixtures();
+
+    fixtures.forEach((fileContents) => {
+      const tokens = lexer.tokenize(fileContents);
+      const snapshotObj = JSON.parse(
+        JSON.stringify(
+          tokens,
+          (key, value) => {
+            if (CATEGORY_PATTERN.test(key)) {
+              return; // remove all category keys in JSON string (it's noise)
+            }
+            return value;
+          },
+          2
+        )
+      );
+
+      expect(snapshotObj).toMatchSnapshot();
+    });
   });
 });

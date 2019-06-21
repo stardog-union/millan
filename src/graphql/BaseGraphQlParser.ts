@@ -76,9 +76,11 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
   });
 
   OperationType = this.RULE('OperationType', () => {
-    this.CONSUME(graphQlTokenMap.Query);
-    this.CONSUME(graphQlTokenMap.Mutation);
-    this.CONSUME(graphQlTokenMap.Subscription);
+    this.OR([
+      { ALT: () => this.CONSUME(graphQlTokenMap.Query) },
+      { ALT: () => this.CONSUME(graphQlTokenMap.Mutation) },
+      { ALT: () => this.CONSUME(graphQlTokenMap.Subscription) },
+    ]);
   });
 
   SelectionSet = this.RULE('SelectionSet', () => {
@@ -90,8 +92,8 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
   Selection = this.RULE('Selection', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.Field) },
-      { ALT: () => this.SUBRULE(this.FragmentSpread) },
       { ALT: () => this.SUBRULE(this.InlineFragment) },
+      { ALT: () => this.SUBRULE(this.FragmentSpread) },
     ]);
   });
 
@@ -383,10 +385,10 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
 
   ImplementsInterfaces = this.RULE('ImplementsInterfaces', () => {
     this.CONSUME(graphQlTokenMap.Implements);
-    this.OPTION(() => this.CONSUME(graphQlTokenMap.And));
+    this.OPTION(() => this.CONSUME(graphQlTokenMap.Amp));
     this.SUBRULE(this.NamedType);
     this.MANY(() => {
-      this.CONSUME1(graphQlTokenMap.And);
+      this.CONSUME1(graphQlTokenMap.Amp);
       this.SUBRULE1(this.NamedType);
     });
   });
@@ -462,10 +464,10 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
 
   UnionMemberTypes = this.RULE('UnionMemberTypes', () => {
     this.CONSUME(graphQlTokenMap.Equals);
-    this.OPTION(() => this.CONSUME(graphQlTokenMap.Or));
+    this.OPTION(() => this.CONSUME(graphQlTokenMap.Pipe));
     this.SUBRULE(this.NamedType);
     this.MANY(() => {
-      this.CONSUME1(graphQlTokenMap.Or);
+      this.CONSUME1(graphQlTokenMap.Pipe);
       this.SUBRULE1(this.NamedType);
     });
   });
@@ -566,10 +568,10 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
   });
 
   DirectiveLocations = this.RULE('DirectiveLocations', () => {
-    this.OPTION(() => this.CONSUME(graphQlTokenMap.Or));
+    this.OPTION(() => this.CONSUME(graphQlTokenMap.Pipe));
     this.SUBRULE(this.DirectiveLocation);
     this.MANY(() => {
-      this.CONSUME1(graphQlTokenMap.Or);
+      this.CONSUME1(graphQlTokenMap.Pipe);
       this.SUBRULE1(this.DirectiveLocation);
     });
   });
