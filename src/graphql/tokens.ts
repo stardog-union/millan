@@ -1,4 +1,4 @@
-import { createToken, Lexer, ITokenConfig } from 'chevrotain';
+import { createToken, Lexer, ITokenConfig, TokenType } from 'chevrotain';
 import { regex } from 'helpers/regex';
 import { STRING_LITERAL_LONG2 } from 'helpers/matchers';
 
@@ -25,7 +25,7 @@ const NULL_PATTERN = /null/;
 const ON_PATTERN = /on/;
 
 // Holder of tokens; tokens are generally added and created in order, below.
-const graphQlTokens = [];
+const graphQlTokens: TokenType[] = [];
 
 // Utility used primarily for keywords, which should also be counted as
 // matching the `Name` token and (except for special cases) the
@@ -290,9 +290,6 @@ const keywords = {
   }),
 };
 
-// Add category and catch-all tokens.
-graphQlTokens.push(FragmentName, EnumValueToken, Name, StringValueToken);
-
 const graphQlTokenMap = {
   ...ignoredTokens,
   ...punctuators,
@@ -301,4 +298,112 @@ const graphQlTokenMap = {
   Name,
 };
 
-export { graphQlTokenMap, graphQlTokens };
+const stardogDirectives = [
+  'optional',
+  'bind',
+  'hide',
+  'skip',
+  'include',
+  'filter',
+  'prefix',
+  'config',
+]
+  .sort()
+  .reduce(
+    (accumulator, name) => {
+      const key = `${name[0].toUpperCase()}${name.slice(1)}DirectiveToken`;
+      const token = createToken({
+        name: key,
+        pattern: name,
+        categories: [Name, EnumValueToken, FragmentName],
+        longer_alt: Name,
+      });
+
+      return {
+        ...accumulator,
+        tokenMap: {
+          ...accumulator.tokenMap,
+          [key]: token,
+        },
+        orderedTokens: accumulator.orderedTokens.concat(token),
+      };
+    },
+    { tokenMap: {}, orderedTokens: [] }
+  );
+
+const stardogArguments = [
+  'orderBy',
+  'first',
+  'to',
+  'if',
+  'alias',
+  'graph',
+  'offset',
+  'limit',
+  'iri',
+]
+  .sort()
+  .reduce(
+    (accumulator, name) => {
+      const key = `${name[0].toUpperCase()}${name.slice(1)}ArgumentToken`;
+      const token = createToken({
+        name: key,
+        pattern: name,
+        categories: [Name, EnumValueToken, FragmentName],
+        longer_alt: Name,
+      });
+
+      return {
+        ...accumulator,
+        tokenMap: {
+          ...accumulator.tokenMap,
+          [key]: token,
+        },
+        orderedTokens: accumulator.orderedTokens.concat(token),
+      };
+    },
+    { tokenMap: {}, orderedTokens: [] }
+  );
+
+// These two tokens aren't really arguments or directives; instead, they're
+// fields of objects that can be passed as the stardog `orderBy` argument.
+const stardogOrderByArgumentFieldPropertyToken = createToken({
+  name: 'OrderByArgumentFieldPropertyToken',
+  pattern: 'field',
+  categories: [Name, EnumValueToken, FragmentName],
+  longer_alt: Name,
+});
+const stardogOrderByArgumentDescPropertyToken = createToken({
+  name: 'OrderByArgumentDescPropertyToken',
+  pattern: 'desc',
+  categories: [Name, EnumValueToken, FragmentName],
+  longer_alt: Name,
+});
+
+const stardogGraphQlTokenMap = {
+  ...graphQlTokenMap,
+  ...stardogDirectives.tokenMap,
+  ...stardogArguments.tokenMap,
+  OrderByArgumentFieldPropertyToken: stardogOrderByArgumentFieldPropertyToken,
+  OrderByArgumentDescPropertyToken: stardogOrderByArgumentDescPropertyToken,
+};
+
+const stardogGraphQlTokens = [
+  ...graphQlTokens,
+  ...stardogDirectives.orderedTokens,
+  ...stardogArguments.orderedTokens,
+  stardogOrderByArgumentFieldPropertyToken,
+  stardogOrderByArgumentDescPropertyToken,
+];
+
+// Add shared category and catch-all tokens.
+const finalTokens = [FragmentName, EnumValueToken, Name, StringValueToken];
+graphQlTokens.push(...finalTokens);
+stardogGraphQlTokens.push(...finalTokens);
+
+export {
+  graphQlTokenMap,
+  graphQlTokens,
+  stardogGraphQlTokenMap,
+  stardogGraphQlTokens,
+};
