@@ -2,8 +2,6 @@ import * as path from 'path';
 import { StandardGraphQlParser } from '../../graphql/StandardGraphQlParser';
 import { StardogGraphQlParser } from '../../graphql/StardogGraphQlParser';
 import { readDirAsync, readFileAsync } from '../utils';
-import { Lexer } from 'chevrotain';
-const { stardogGraphQlTokens } = require('../../graphql/tokens');
 
 const FIXTURES_DIR = path.join(__dirname, 'fixtures');
 const CATEGORY_PATTERN = /^categor(?:y|ies)/i;
@@ -202,12 +200,29 @@ describe('StardogGraphqlParser', () => {
     `;
 
     const { cst, errors } = stardogGraphQlParser.parse(fixture);
-    if (errors.length) {
-      console.log(JSON.stringify(errors, jsonStringifyReplacer, 2));
-      const tokens = new Lexer(stardogGraphQlTokens).tokenize(fixture);
-      console.log(JSON.stringify(tokens, jsonStringifyReplacer, 2));
-    }
     expect(errors).toHaveLength(0);
     expect(getSnapshotObj(cst)).toMatchSnapshot();
+  });
+
+  it('reports SPARQL errors for special Stardog directives containing SPARQL', () => {
+    const fixture = `
+      {
+        Human {
+          name
+          id @filter(if: "$id == 1003") # no '==' in SPARQL
+        }
+      }
+
+      {
+        Human {
+          name @hide
+          firstName @bind(to: "strbefore($name, ' '))") # unmatched parens
+          lastName @bind(to: "strafter(($name, ' ')") # unmatched parens
+        }
+      }
+    `;
+
+    const { errors } = stardogGraphQlParser.parse(fixture);
+    expect(getSnapshotObj(errors)).toMatchSnapshot();
   });
 });

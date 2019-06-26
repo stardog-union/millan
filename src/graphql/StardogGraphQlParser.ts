@@ -1,12 +1,41 @@
 const { stardogGraphQlTokens, stardogGraphQlTokenMap } = require('./tokens');
 import { BaseGraphQlParser } from './BaseGraphQlParser';
-import { Parser } from 'chevrotain';
+import { Parser, IRecognitionException } from 'chevrotain';
+import { getStardogGraphQlVisitor } from 'graphql/StardogGraphQlVisitor';
 
 export class StardogGraphQlParser extends BaseGraphQlParser {
+  private stardogGraphQlVisitor;
+
   constructor(options?) {
     super(options, stardogGraphQlTokens);
     Parser.performSelfAnalysis(this);
   }
+
+  private visitCst = (cst: any) => {
+    // To save resources while parsing, the visitor is a singleton.
+    if (!this.stardogGraphQlVisitor) {
+      const BaseStardogGraphQlVisitor = this.getBaseCstVisitorConstructorWithDefaults();
+      this.stardogGraphQlVisitor = getStardogGraphQlVisitor(
+        BaseStardogGraphQlVisitor
+      );
+    } else {
+      this.stardogGraphQlVisitor.$resetState();
+    }
+
+    return this.stardogGraphQlVisitor.visit(cst, this.input);
+  };
+
+  public parse = (document: string, entryRule = this.Document) => {
+    this.input = this.tokenize(document);
+    const cst = entryRule.call(this);
+    const { errors: sparqlErrors } = this.visitCst(cst);
+    const graphQlErrors: IRecognitionException[] = this.errors;
+
+    return {
+      errors: [...graphQlErrors, ...sparqlErrors],
+      cst,
+    };
+  };
 
   OperationDefinition = this.OVERRIDE_RULE('OperationDefinition', () => {
     this.OR([
@@ -282,7 +311,6 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
   OrderByArgument = this.RULE('OrderByArgument', () => {
     this.CONSUME(stardogGraphQlTokenMap.OrderByArgumentToken);
     this.CONSUME(stardogGraphQlTokenMap.Colon);
-    // TODO: Post-parse validation to check for duplicates.
     this.OR([
       { ALT: () => this.SUBRULE(this.OrderByArgumentField) },
       {
