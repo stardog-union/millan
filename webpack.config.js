@@ -38,10 +38,16 @@ const reserved = [
 
 module.exports = {
   mode: 'production',
-  entry: path.join(SRC_DIR, 'index.ts'),
+  entry: {
+    millan: path.join(SRC_DIR, 'index.ts'),
+    ...['graphql', 'shacl', 'sms', 'sparql', 'srs', 'turtle'].reduce((entries, languageId) => ({
+      ...entries,
+      [languageId]: path.join(SRC_DIR, languageId, 'index.ts'),
+    }), {}),
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'millan.js',
+    filename: (chunkData) => chunkData.chunk.name === 'millan' ? 'millan.js' : 'millan.[name].js',
     library: 'millan',
     libraryTarget: 'umd',
     umdNamedDefine: true,
