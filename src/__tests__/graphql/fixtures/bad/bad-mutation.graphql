@@ -1,0 +1,8 @@
+# unnamed mutation
+mutation [] @onMutation {
+  like(story: 123) @onField {
+    story {
+      id @onField
+    }
+  }
+}

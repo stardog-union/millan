@@ -1,0 +1,14 @@
+{
+  Human {
+    name
+    id @filter(if: "$id == 1003") # no '==' in SPARQL
+  }
+}
+
+{
+  Human {
+    name @hide
+    firstName @bind(to: "strbefore($name, ' '))") # unmatched parens
+    lastName @bind(to: "strafter(($name, ' ')") # unmatched parens
+  }
+}

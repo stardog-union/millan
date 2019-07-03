@@ -1,0 +1,20 @@
+query queryName($foo: ComplexType, $site: Site = MOBILE) @onQuery {
+  whoever123is: node(id: [123, 456]) {
+    id ,
+    ... on onUser @onInlineFragment { # bad fragment name
+      field2 {
+        id ,
+        alias: field1(first:10, after:$foo,) @include(if: $foo) {
+          id,
+          ...frag @onFragmentSpread
+        }
+      }
+    }
+    @skip(unless: $foo) {
+      id
+    }
+    ... {
+      id
+    }
+  }
+}

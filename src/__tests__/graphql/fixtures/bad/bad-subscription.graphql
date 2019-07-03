@@ -1,0 +1,14 @@
+subscription StoryLikeSubscription(
+  $input: StoryLikeSubscribeInput
+) @onSubscription {
+  storyLikeSubscribe(input: $input) {
+    story {
+      likers {
+        "string" # this is not allowed
+      }
+      likeSentence {
+        text
+      }
+    }
+  }
+}

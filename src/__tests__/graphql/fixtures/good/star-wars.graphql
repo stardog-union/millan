@@ -1,0 +1,189 @@
+# Various Star Wars queries from graphql-js tests.
+query HeroNameQuery {
+  hero {
+    name
+  }
+}
+
+query HeroNameAndFriendsQuery {
+  hero {
+    id
+    name
+    friends {
+      name
+    }
+  }
+}
+
+query NestedQuery {
+  hero {
+    name
+    friends {
+      name
+      appearsIn
+      friends {
+        name
+      }
+    }
+  }
+}
+
+query FetchLukeQuery {
+  human(id: "1000") {
+    name
+  }
+}
+
+query FetchSomeIDQuery($someId: String!) {
+  human(id: $someId) {
+    name
+  }
+}
+
+query humanQuery($id: String!) {
+  human(id: $id) {
+    name
+  }
+}
+
+query FetchLukeAliased {
+  luke: human(id: "1000") {
+    name
+  }
+}
+
+query UseFragment {
+  luke: human(id: "1000") {
+    ...HumanFragment
+  }
+  leia: human(id: "1003") {
+    ...HumanFragment
+  }
+}
+fragment HumanFragment on Human {
+  name
+  homePlanet
+}
+
+query CheckTypeOfR2 {
+  hero {
+    __typename
+    name
+  }
+}
+
+query CheckTypeOfLuke {
+  hero(episode: EMPIRE) {
+    __typename
+    name
+  }
+}
+
+query FetchLukeAndLeiaAliased {
+  luke: human(id: "1000") {
+    name
+  }
+  leia: human(id: "1003") {
+    name
+  }
+}
+
+query NestedQueryWithFragment {
+  hero {
+    ...NameAndAppearances
+    friends {
+      ...NameAndAppearances
+      friends {
+        ...NameAndAppearances
+      }
+    }
+  }
+}
+fragment NameAndAppearances on Character {
+  name
+  appearsIn
+}
+
+query DroidFieldInFragment {
+  hero {
+    name
+    ... on Droid {
+      primaryFunction
+    }
+  }
+}
+
+query IntrospectionTypeQuery {
+  __schema {
+    types {
+      name
+    }
+  }
+}
+
+query IntrospectionQueryTypeQuery {
+  __schema {
+    queryType {
+      name
+    }
+  }
+}
+
+query IntrospectionDroidTypeQuery {
+  __type(name: "Droid") {
+    name
+  }
+}
+
+query IntrospectionDroidFieldsQuery {
+  __type(name: "Droid") {
+    name
+    fields {
+      name
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+
+query IntrospectionDroidNestedFieldsQuery {
+  __type(name: "Droid") {
+    name
+    fields {
+      name
+      type {
+        name
+        kind
+        ofType {
+          name
+          kind
+        }
+      }
+    }
+  }
+}
+
+query IntrospectionQueryTypeQuery {
+  __schema {
+    queryType {
+      fields {
+        name
+        args {
+          name
+          description
+          type {
+            name
+            kind
+            ofType {
+              name
+              kind
+            }
+          }
+          defaultValue
+        }
+      }
+    }
+  }
+}

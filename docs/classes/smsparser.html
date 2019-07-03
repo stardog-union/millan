@@ -184,7 +184,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Parser.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L24">sms/SmsParser.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L24">sms/SmsParser.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -206,7 +206,7 @@
 					<div class="tsd-signature tsd-kind-icon">Bind<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Bind&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.BIND);this.CONSUME(smsTokenMap.LParen);this.SUBRULE(this.TemplateOrCast);this.CONSUME(smsTokenMap.AS);this.SUBRULE(this.Var);this.CONSUME(smsTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L105">sms/SmsParser.ts:105</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L105">sms/SmsParser.ts:105</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -243,7 +243,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blank<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BlankNode&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.BLANK_NODE_LABEL) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.ANON) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L325">sms/SmsParser.ts:325</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L325">sms/SmsParser.ts:325</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -280,7 +280,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blank<wbr>Node<wbr>Property<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BlankNodePropertyList&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.LBracket);this.SUBRULE(this.PropertyListNotEmpty);this.CONSUME(smsTokenMap.RBracket);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L258">sms/SmsParser.ts:258</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L258">sms/SmsParser.ts:258</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -317,7 +317,7 @@
 					<div class="tsd-signature tsd-kind-icon">Boolean<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BooleanLiteral&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.TRUE) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.FALSE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L318">sms/SmsParser.ts:318</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L318">sms/SmsParser.ts:318</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -354,7 +354,7 @@
 					<div class="tsd-signature tsd-kind-icon">Cast<wbr>Func<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;CastFunc&#x27;, () &#x3D;&gt; {this.SUBRULE(this.iri);this.CONSUME(smsTokenMap.LParen);this.SUBRULE(this.Var);this.CONSUME(smsTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L125">sms/SmsParser.ts:125</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L125">sms/SmsParser.ts:125</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -391,7 +391,7 @@
 					<div class="tsd-signature tsd-kind-icon">Collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Collection&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.LParen);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.GraphNode));this.CONSUME(smsTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L252">sms/SmsParser.ts:252</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L252">sms/SmsParser.ts:252</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -428,7 +428,7 @@
 					<div class="tsd-signature tsd-kind-icon">Construct<wbr>Template<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConstructTemplate&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.LCurly);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.ConstructTriples));this.CONSUME(smsTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L162">sms/SmsParser.ts:162</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L162">sms/SmsParser.ts:162</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -465,7 +465,7 @@
 					<div class="tsd-signature tsd-kind-icon">Construct<wbr>Triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConstructTriples&#x27;, () &#x3D;&gt; {this.SUBRULE(this.TriplesSameSubject);this.OPTION(() &#x3D;&gt; {this.CONSUME(smsTokenMap.Period);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.ConstructTriples));});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L168">sms/SmsParser.ts:168</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L168">sms/SmsParser.ts:168</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -502,7 +502,7 @@
 					<div class="tsd-signature tsd-kind-icon">From<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FromClause&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.FROM);this.OR([{ALT: () &#x3D;&gt; this.SUBRULE(this.SqlClause),},{ALT: () &#x3D;&gt; this.SUBRULE(this.JsonClause),},{ALT: () &#x3D;&gt; this.SUBRULE(this.GraphQlClause),},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L59">sms/SmsParser.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L59">sms/SmsParser.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -539,7 +539,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphNode&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.VarOrTerm) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TriplesNode) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L332">sms/SmsParser.ts:332</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L332">sms/SmsParser.ts:332</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -576,7 +576,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>QlClause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphQlClause&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.GraphQl);this.CONSUME(smsTokenMap.LCurly);this.CONSUME(smsTokenMap.GraphQlBlock);this.CONSUME(smsTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L79">sms/SmsParser.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L79">sms/SmsParser.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -613,7 +613,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Term<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphTerm&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RDFLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNode) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.NIL) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L223">sms/SmsParser.ts:223</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L223">sms/SmsParser.ts:223</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -650,7 +650,7 @@
 					<div class="tsd-signature tsd-kind-icon">Json<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;JsonClause&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.Json);this.CONSUME(smsTokenMap.JsonBlock);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L74">sms/SmsParser.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L74">sms/SmsParser.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -687,7 +687,7 @@
 					<div class="tsd-signature tsd-kind-icon">Mapping<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;MappingClause&#x27;, () &#x3D;&gt; {this.SUBRULE(this.MappingDecl);this.SUBRULE(this.FromClause);this.SUBRULE(this.ToClause);this.SUBRULE(this.WhereClause);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L47">sms/SmsParser.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L47">sms/SmsParser.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -724,7 +724,7 @@
 					<div class="tsd-signature tsd-kind-icon">Mapping<wbr>Decl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;MappingDecl&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.Mapping);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.iri));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L54">sms/SmsParser.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L54">sms/SmsParser.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -761,7 +761,7 @@
 					<div class="tsd-signature tsd-kind-icon">Mapping<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;MappingDoc&#x27;, () &#x3D;&gt; {this.MANY(() &#x3D;&gt; this.SUBRULE(this.PrefixDecl));this.SUBRULE(this.MappingClause);this.MANY1(() &#x3D;&gt; {this.CONSUME(smsTokenMap.Semicolon);this.SUBRULE1(this.MappingClause);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L37">sms/SmsParser.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L37">sms/SmsParser.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -798,7 +798,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteral&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralUnsigned) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralPositive) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralNegative) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L286">sms/SmsParser.ts:286</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L286">sms/SmsParser.ts:286</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -835,7 +835,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<wbr>Negative<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteralNegative&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.INTEGER_NEGATIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.DECIMAL_NEGATIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.DOUBLE_NEGATIVE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L310">sms/SmsParser.ts:310</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L310">sms/SmsParser.ts:310</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -872,7 +872,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<wbr>Positive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteralPositive&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.INTEGER_POSITIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.DECIMAL_POSITIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.DOUBLE_POSITIVE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L302">sms/SmsParser.ts:302</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L302">sms/SmsParser.ts:302</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -909,7 +909,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<wbr>Unsigned<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteralUnsigned&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.INTEGER) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.DECIMAL) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.DOUBLE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L294">sms/SmsParser.ts:294</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L294">sms/SmsParser.ts:294</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -946,7 +946,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Object&#x27;, () &#x3D;&gt; {this.SUBRULE(this.GraphNode);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L248">sms/SmsParser.ts:248</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L248">sms/SmsParser.ts:248</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -983,7 +983,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectList&#x27;, () &#x3D;&gt; {this.AT_LEAST_ONE_SEP({SEP: smsTokenMap.Comma,DEF: () &#x3D;&gt; this.SUBRULE(this.Object),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L241">sms/SmsParser.ts:241</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L241">sms/SmsParser.ts:241</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1020,7 +1020,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prefix<wbr>Decl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PrefixDecl&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.PREFIX);this.CONSUME(smsTokenMap.PNAME_NS);this.CONSUME(smsTokenMap.IRIREF);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L142">sms/SmsParser.ts:142</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L142">sms/SmsParser.ts:142</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1057,7 +1057,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prefixed<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PrefixedName&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.PNAME_LN) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.PNAME_NS) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L155">sms/SmsParser.ts:155</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L155">sms/SmsParser.ts:155</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1094,7 +1094,7 @@
 					<div class="tsd-signature tsd-kind-icon">Property<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PropertyList&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.PropertyListNotEmpty));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L219">sms/SmsParser.ts:219</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L219">sms/SmsParser.ts:219</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1131,7 +1131,7 @@
 					<div class="tsd-signature tsd-kind-icon">Property<wbr>List<wbr>Not<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PropertyListNotEmpty&#x27;, () &#x3D;&gt; {this.SUBRULE(this.Verb);this.SUBRULE(this.ObjectList);this.MANY(() &#x3D;&gt; {this.CONSUME(smsTokenMap.Semicolon);this.OPTION(() &#x3D;&gt; {this.SUBRULE1(this.Verb);this.SUBRULE1(this.ObjectList);});});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L200">sms/SmsParser.ts:200</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L200">sms/SmsParser.ts:200</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1168,7 +1168,7 @@
 					<div class="tsd-signature tsd-kind-icon">RDFLiteral<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RDFLiteral&#x27;, () &#x3D;&gt; {this.SUBRULE(this.String);this.OPTION(() &#x3D;&gt;this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.LANGTAG) },{ALT: () &#x3D;&gt; {this.CONSUME(smsTokenMap.DoubleCaret);this.SUBRULE(this.iri);},},]));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L271">sms/SmsParser.ts:271</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L271">sms/SmsParser.ts:271</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1205,7 +1205,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sql<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SqlClause&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.Sql);this.CONSUME(smsTokenMap.LCurly);this.CONSUME(smsTokenMap.SqlBlock);this.CONSUME(smsTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L86">sms/SmsParser.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L86">sms/SmsParser.ts:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1242,7 +1242,7 @@
 					<div class="tsd-signature tsd-kind-icon">String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;String&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.STRING_LITERAL1) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.STRING_LITERAL2) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.STRING_LITERAL_LONG1) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.STRING_LITERAL_LONG2) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L346">sms/SmsParser.ts:346</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L346">sms/SmsParser.ts:346</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1279,7 +1279,7 @@
 					<div class="tsd-signature tsd-kind-icon">Template<wbr>Func<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TemplateFunc&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.Template);this.CONSUME(smsTokenMap.LParen);this.SUBRULE(this.String);this.CONSUME(smsTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L132">sms/SmsParser.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L132">sms/SmsParser.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1316,7 +1316,7 @@
 					<div class="tsd-signature tsd-kind-icon">Template<wbr>OrCast<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TemplateOrCast&#x27;, () &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; this.SUBRULE(this.TemplateFunc),},{ALT: () &#x3D;&gt; this.SUBRULE(this.CastFunc),},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L114">sms/SmsParser.ts:114</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L114">sms/SmsParser.ts:114</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1353,7 +1353,7 @@
 					<div class="tsd-signature tsd-kind-icon">To<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ToClause&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.TO);this.SUBRULE(this.ConstructTemplate);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L93">sms/SmsParser.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L93">sms/SmsParser.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1390,7 +1390,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesNode&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Collection) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNodePropertyList) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L212">sms/SmsParser.ts:212</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L212">sms/SmsParser.ts:212</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1427,7 +1427,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Same<wbr>Subject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesSameSubject&#x27;, () &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.VarOrTerm);this.SUBRULE(this.PropertyListNotEmpty);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.TriplesNode);this.SUBRULE(this.PropertyList);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L176">sms/SmsParser.ts:176</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L176">sms/SmsParser.ts:176</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1464,7 +1464,7 @@
 					<div class="tsd-signature tsd-kind-icon">Var<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Var&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.VAR1) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.VAR2) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L339">sms/SmsParser.ts:339</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L339">sms/SmsParser.ts:339</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1501,7 +1501,7 @@
 					<div class="tsd-signature tsd-kind-icon">Var<wbr>OrIri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VarOrIri&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L264">sms/SmsParser.ts:264</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L264">sms/SmsParser.ts:264</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1538,7 +1538,7 @@
 					<div class="tsd-signature tsd-kind-icon">Var<wbr>OrTerm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VarOrTerm&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.GraphTerm) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L193">sms/SmsParser.ts:193</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L193">sms/SmsParser.ts:193</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1575,7 +1575,7 @@
 					<div class="tsd-signature tsd-kind-icon">Verb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Verb&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.VarOrIri) },{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.A) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L234">sms/SmsParser.ts:234</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L234">sms/SmsParser.ts:234</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1612,7 +1612,7 @@
 					<div class="tsd-signature tsd-kind-icon">Where<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;WhereClause&#x27;, () &#x3D;&gt; {this.CONSUME(smsTokenMap.WHERE);this.CONSUME(smsTokenMap.LCurly);this.MANY(() &#x3D;&gt; this.SUBRULE(this.Bind));this.CONSUME(smsTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L98">sms/SmsParser.ts:98</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L98">sms/SmsParser.ts:98</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1671,7 +1671,7 @@
 					<div class="tsd-signature tsd-kind-icon">iri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;iri&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(smsTokenMap.IRIREF) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.PrefixedName) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L148">sms/SmsParser.ts:148</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L148">sms/SmsParser.ts:148</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1708,7 +1708,7 @@
 					<div class="tsd-signature tsd-kind-icon">lexer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lexer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L11">sms/SmsParser.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L11">sms/SmsParser.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -2705,7 +2705,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L16">sms/SmsParser.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L16">sms/SmsParser.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2784,7 +2784,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/fff40d7/src/sms/SmsParser.ts#L13">sms/SmsParser.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/dda6de2/src/sms/SmsParser.ts#L13">sms/SmsParser.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
