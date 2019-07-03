@@ -3,7 +3,8 @@ import { StandardGraphQlParser } from '../../graphql/StandardGraphQlParser';
 import { StardogGraphQlParser } from '../../graphql/StardogGraphQlParser';
 import { readDirAsync, readFileAsync } from '../utils';
 
-const FIXTURES_DIR = path.join(__dirname, 'fixtures');
+const GOOD_FIXTURES_DIR = path.join(__dirname, 'fixtures', 'good');
+const BAD_FIXTURES_DIR = path.join(__dirname, 'fixtures', 'bad');
 const CATEGORY_PATTERN = /^categor(?:y|ies)/i;
 const jsonStringifyReplacer = (key: string, value: any) => {
   if (CATEGORY_PATTERN.test(key)) {
@@ -17,14 +18,40 @@ const getSnapshotObj = (input: object) =>
 const standardParser = new StandardGraphQlParser();
 const stardogGraphQlParser = new StardogGraphQlParser();
 
-const getAllFixtures = () =>
-  readDirAsync(FIXTURES_DIR).then((filenames) =>
+const getAllGoodFixtures = () =>
+  readDirAsync(GOOD_FIXTURES_DIR).then((filenames) =>
     Promise.all(
       filenames.map((filename) =>
-        readFileAsync(path.join(FIXTURES_DIR, filename)).then(
+        readFileAsync(path.join(GOOD_FIXTURES_DIR, filename)).then(
           (fileContents) => ({ filename, fileContents })
         )
       )
+    )
+  );
+
+const getAllBadStandardFixtures = () =>
+  readDirAsync(BAD_FIXTURES_DIR).then((filenames) =>
+    Promise.all(
+      filenames
+        .filter((filename) => !filename.includes('stardog'))
+        .map((filename) =>
+          readFileAsync(path.join(BAD_FIXTURES_DIR, filename)).then(
+            (fileContents) => ({ filename, fileContents })
+          )
+        )
+    )
+  );
+
+const getAllBadStardogFixtures = () =>
+  readDirAsync(BAD_FIXTURES_DIR).then((filenames) =>
+    Promise.all(
+      filenames
+        .filter((filename) => filename.includes('stardog'))
+        .map((filename) =>
+          readFileAsync(path.join(BAD_FIXTURES_DIR, filename)).then(
+            (fileContents) => ({ filename, fileContents })
+          )
+        )
     )
   );
 
@@ -34,7 +61,7 @@ const invalidTestsFilenames = [
 
 describe('StandardGraphQlParser', () => {
   it('correctly parses all graphql-js fixtures', async () => {
-    const fixtures = await getAllFixtures();
+    const fixtures = await getAllGoodFixtures();
     const filesWithErrors = [];
     const cstsForSnapshot = {};
 
@@ -49,7 +76,10 @@ describe('StandardGraphQlParser', () => {
         filesWithErrors.push(filename);
       }
 
-      cstsForSnapshot[filename] = cst;
+      // No snapshot for the GitHub schema, as it's much too large.
+      if (!filename.endsWith('github-schema.graphql')) {
+        cstsForSnapshot[filename] = cst;
+      }
     });
 
     const snapshotObj = getSnapshotObj(cstsForSnapshot);
@@ -57,11 +87,24 @@ describe('StandardGraphQlParser', () => {
     expect(filesWithErrors).toHaveLength(0);
     expect(snapshotObj).toMatchSnapshot();
   });
+
+  it('correctly reports errors', async () => {
+    const fixtures = await getAllBadStandardFixtures();
+    const errorsForSnapshot = {};
+
+    fixtures.forEach(({ fileContents, filename }) => {
+      const { errors } = standardParser.parse(fileContents);
+      errorsForSnapshot[filename] = errors;
+    });
+
+    const snapshotObj = getSnapshotObj(errorsForSnapshot);
+    expect(snapshotObj).toMatchSnapshot();
+  });
 });
 
 describe('StardogGraphqlParser', () => {
   it('correctly parses all graphql-js fixtures', async () => {
-    const fixtures = await getAllFixtures();
+    const fixtures = await getAllGoodFixtures();
     const filesWithErrors = [];
     const cstsForSnapshot = {};
 
@@ -76,7 +119,10 @@ describe('StardogGraphqlParser', () => {
         filesWithErrors.push(filename);
       }
 
-      cstsForSnapshot[filename] = cst;
+      // No snapshot for the GitHub schema, as it's much too large.
+      if (!filename.endsWith('github-schema.graphql')) {
+        cstsForSnapshot[filename] = cst;
+      }
     });
 
     const snapshotObj = getSnapshotObj(cstsForSnapshot);
@@ -204,25 +250,16 @@ describe('StardogGraphqlParser', () => {
     expect(getSnapshotObj(cst)).toMatchSnapshot();
   });
 
-  it('reports SPARQL errors for special Stardog directives containing SPARQL', () => {
-    const fixture = `
-      {
-        Human {
-          name
-          id @filter(if: "$id == 1003") # no '==' in SPARQL
-        }
-      }
+  it('correctly reports errors', async () => {
+    const fixtures = await getAllBadStardogFixtures();
+    const errorsForSnapshot = {};
 
-      {
-        Human {
-          name @hide
-          firstName @bind(to: "strbefore($name, ' '))") # unmatched parens
-          lastName @bind(to: "strafter(($name, ' ')") # unmatched parens
-        }
-      }
-    `;
+    fixtures.forEach(({ fileContents, filename }) => {
+      const { errors } = stardogGraphQlParser.parse(fileContents);
+      errorsForSnapshot[filename] = errors;
+    });
 
-    const { errors } = stardogGraphQlParser.parse(fixture);
-    expect(getSnapshotObj(errors)).toMatchSnapshot();
+    const snapshotObj = getSnapshotObj(errorsForSnapshot);
+    expect(snapshotObj).toMatchSnapshot();
   });
 });

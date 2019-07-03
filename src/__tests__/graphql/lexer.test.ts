@@ -3,23 +3,26 @@ import { Lexer } from 'chevrotain';
 import * as path from 'path';
 import { readDirAsync, readFileAsync } from '../utils';
 
-const FIXTURES_DIR = path.join(__dirname, 'fixtures');
+const GOOD_FIXTURES_DIR = path.join(__dirname, 'fixtures', 'good');
 const CATEGORY_PATTERN = /^categor(?:y|ies)/i;
 
 const lexer = new Lexer(graphQlTokens);
 
-const getAllFixtures = () =>
-  readDirAsync(FIXTURES_DIR).then((filenames) =>
+const getAllGoodFixtures = () =>
+  readDirAsync(GOOD_FIXTURES_DIR).then((filenames) =>
     Promise.all(
-      filenames.map((filename) =>
-        readFileAsync(path.join(FIXTURES_DIR, filename))
-      )
+      // No snapshot for the GitHub schema, as it's much too large.
+      filenames
+        .filter((filename) => filename !== 'github-schema.graphql')
+        .map((filename) =>
+          readFileAsync(path.join(GOOD_FIXTURES_DIR, filename))
+        )
     )
   );
 
 describe('GraphQL Tokenizer', () => {
   it('correctly tokenizes all graphql-js fixtures', async () => {
-    const fixtures = await getAllFixtures();
+    const fixtures = await getAllGoodFixtures();
 
     fixtures.forEach((fileContents) => {
       const tokens = lexer.tokenize(fileContents);
