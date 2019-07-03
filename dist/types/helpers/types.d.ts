@@ -9,6 +9,9 @@ export interface IStardogParser {
 export interface ITokensMap {
     [key: string]: IToken[];
 }
+export interface CstNodeMap {
+    [key: string]: CstNode[];
+}
 export interface ISemanticError extends Pick<IRecognitionException, Exclude<keyof IRecognitionException, 'resyncedTokens' | 'context'>> {
     resyncedTokens?: IToken[];
     context?: IRecognizerContext;
