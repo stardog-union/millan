@@ -12,13 +12,16 @@ export * from './helpers/cst';
 export * from './helpers/types';
 
 // Convenience imports/exports that aren't core functionality:
-// NOTE: Tokens MUST be imported using CommonJS syntax; see here: https://github.com/SAP/chevrotain/issues/345
-const sparqlTokens = require('./sparql/tokens');
-const turtleTokens = require('./turtle/tokens');
-const smsTokens = require('./sms/tokens');
-const srsTokens = require('./srs/tokens');
-const shaclTokens = require('./shacl/tokens');
-const graphQlTokens = require('./graphql/tokens');
+// NOTE: It used to be that the tokens had to be imported using CommonJS
+// syntax due to this issue: https://github.com/SAP/chevrotain/issues/345.
+// If you start to see issues again, change these back. (You may also need
+// to change the token imports in other files.)
+import * as sparqlTokens from './sparql/tokens';
+import * as turtleTokens from './turtle/tokens';
+import * as smsTokens from './sms/tokens';
+import * as srsTokens from './srs/tokens';
+import * as shaclTokens from './shacl/tokens';
+import * as graphQlTokens from './graphql/tokens';
 import { keywords as sparqlKeywords } from './sparql/keywords';
 import { terminals as sparqlTerminals } from './sparql/terminals';
 import * as matchers from './helpers/matchers';

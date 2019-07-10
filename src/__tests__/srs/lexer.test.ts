@@ -1,4 +1,4 @@
-const { multiModeLexerDefinition } = require('../../srs/tokens');
+import { multiModeLexerDefinition } from '../../srs/tokens';
 import { Lexer } from 'chevrotain';
 import { fixtures } from './fixtures';
 

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ShaclVisitorTreeItem | millan</title>
+	<title>StardogArgumentHolder | millan</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="shaclvisitortreeitem.html">ShaclVisitorTreeItem</a>
+					<a href="stardogargumentholder.html">StardogArgumentHolder</a>
 				</li>
 			</ul>
-			<h1>Interface ShaclVisitorTreeItem</h1>
+			<h1>Interface StardogArgumentHolder</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ShaclVisitorTreeItem</span>
+						<span class="target">StardogArgumentHolder</span>
 					</li>
 				</ul>
 			</section>
@@ -81,8 +81,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="shaclvisitortreeitem.html#token" class="tsd-kind-icon">token</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="shaclvisitortreeitem.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="stardogargumentholder.html#orderedtokens" class="tsd-kind-icon">ordered<wbr>Tokens</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="stardogargumentholder.html#tokenmap" class="tsd-kind-icon">token<wbr>Map</a></li>
 							</ul>
 						</section>
 					</div>
@@ -91,24 +91,56 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="token" class="tsd-anchor"></a>
-					<h3>token</h3>
-					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IToken</span></div>
+					<a name="orderedtokens" class="tsd-anchor"></a>
+					<h3>ordered<wbr>Tokens</h3>
+					<div class="tsd-signature tsd-kind-icon">ordered<wbr>Tokens<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TokenType</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/shacl/visitor.ts#L23">shacl/visitor.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/graphql/tokens.ts#L327">graphql/tokens.ts:327</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="type" class="tsd-anchor"></a>
-					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="tokenmap" class="tsd-anchor"></a>
+					<h3>token<wbr>Map</h3>
+					<div class="tsd-signature tsd-kind-icon">token<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/shacl/visitor.ts#L22">shacl/visitor.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/graphql/tokens.ts#L316">graphql/tokens.ts:316</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>Alias<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>First<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Graph<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>If<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Iri<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Limit<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Offset<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>Order<wbr>ByArgument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>To<wbr>Argument<wbr>Token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenType</span></h5>
+							</li>
+						</ul>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -125,13 +157,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-is-not-exported">
-						<a href="shaclvisitortreeitem.html" class="tsd-kind-icon">Shacl<wbr>Visitor<wbr>Tree<wbr>Item</a>
+						<a href="stardogargumentholder.html" class="tsd-kind-icon">Stardog<wbr>Argument<wbr>Holder</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="shaclvisitortreeitem.html#token" class="tsd-kind-icon">token</a>
+								<a href="stardogargumentholder.html#orderedtokens" class="tsd-kind-icon">ordered<wbr>Tokens</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="shaclvisitortreeitem.html#type" class="tsd-kind-icon">type</a>
+								<a href="stardogargumentholder.html#tokenmap" class="tsd-kind-icon">token<wbr>Map</a>
 							</li>
 						</ul>
 					</li>

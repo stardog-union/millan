@@ -1,4 +1,4 @@
-const { turtleTokenTypes } = require('../turtle/tokens');
+import { turtleTokenTypes } from '../turtle/tokens';
 import { createToken, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
 import { CATCH_ALL_AT_LEAST_ONE } from 'helpers/matchers';
 import { turtleTokenMap } from 'turtle/tokens';

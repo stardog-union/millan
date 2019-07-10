@@ -1,4 +1,4 @@
-const { stardogGraphQlTokens, stardogGraphQlTokenMap } = require('./tokens');
+import { stardogGraphQlTokens, stardogGraphQlTokenMap } from './tokens';
 import { BaseGraphQlParser } from './BaseGraphQlParser';
 import { Parser, IRecognitionException } from 'chevrotain';
 import { getStardogGraphQlVisitor } from 'graphql/StardogGraphQlVisitor';

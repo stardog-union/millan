@@ -1,4 +1,4 @@
-const { turtleTokenTypes, turtleTokenMap } = require('./tokens');
+import { turtleTokenTypes, turtleTokenMap } from './tokens';
 import {
   Parser,
   IParserConfig,

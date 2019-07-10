@@ -6,8 +6,7 @@ const SRC_DIR = path.join(__dirname, 'src');
 
 // At _least_ these tokens need to be preserved in order for chevrotain to
 // work correctly after minification. See here: https://sap.github.io/chevrotain/docs/FAQ.html#MINIFIED.
-// The ones that are commented out may be needed at some point, so may as
-// well leave them there for people who look here in the future.
+// NOTE: new parsers should be added here when they are created.
 const reserved = [
   'BaseSparqlParser',
   'W3SpecSparqlParser',
@@ -19,21 +18,6 @@ const reserved = [
   'StandardGraphQlParser',
   'StardogGraphQlParser',
   'Parser',
-  // 'srsTokenTypes',
-  // 'srsTokenMap',
-  // 'multiModeLexerDefinition',
-  // 'turtleTokenTypes',
-  // 'turtleTokenMap',
-  // 'smsTokenTypes',
-  // 'smsTokenMap',
-  // 'sparqlTokenTypes',
-  // 'pathTokens',
-  // 'baseTokens',
-  // 'sparqlTokenMap',
-  // 'terminals',
-  // 'keywords',
-  // 'sparqlKeywords',
-  // 'sparqlTerminals',
 ];
 
 const individualEntryData = [

@@ -1,4 +1,4 @@
-const { graphQlTokens } = require('./tokens');
+import { graphQlTokens } from './tokens';
 import { BaseGraphQlParser } from './BaseGraphQlParser';
 import { Parser } from 'chevrotain';
 

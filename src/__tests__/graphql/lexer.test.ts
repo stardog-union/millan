@@ -1,4 +1,4 @@
-const { graphQlTokens } = require('../../graphql/tokens');
+import { graphQlTokens } from '../../graphql/tokens';
 import { Lexer } from 'chevrotain';
 import * as path from 'path';
 import { readDirAsync, readFileAsync } from '../utils';

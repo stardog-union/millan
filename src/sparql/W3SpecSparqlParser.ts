@@ -1,4 +1,4 @@
-const { baseTokens } = require('./tokens');
+import { baseTokens } from './tokens';
 import { BaseSparqlParser } from './BaseSparqlParser';
 import { Parser } from 'chevrotain';
 

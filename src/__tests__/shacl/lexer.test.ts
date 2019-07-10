@@ -1,5 +1,5 @@
 import { Lexer } from 'chevrotain';
-const { getShaclTokenTypes } = require('../../shacl/tokens');
+import { getShaclTokenTypes } from '../../shacl/tokens';
 
 const fixture = `
 ex:PersonShape

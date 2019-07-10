@@ -1,10 +1,5 @@
-// tslint:disable:function-name
-const { sparqlTokenMap } = require('../sparql/tokens');
-const {
-  srsTokenMap,
-  srsTokenTypes,
-  multiModeLexerDefinition,
-} = require('./tokens');
+import { sparqlTokenMap } from '../sparql/tokens';
+import { srsTokenMap, srsTokenTypes, multiModeLexerDefinition } from './tokens';
 import {
   Parser,
   Lexer,

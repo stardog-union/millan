@@ -1,4 +1,4 @@
-const { graphQlTokenMap } = require('./tokens');
+import { graphQlTokenMap } from './tokens';
 import {
   Parser,
   TokenType,

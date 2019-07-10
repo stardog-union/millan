@@ -103,11 +103,10 @@
 <span class="hljs-comment">// or, if you only need some part of millan (e.g., only _one_ of the parsers):</span>
 <span class="hljs-keyword">import</span> { StardogSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan/standalone/millan.sparql'</span>;</code></pre>
 				<p>In the browser, importing everything at once:</p>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/browser/millan.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/millan.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>In the browser, importing only what is needed:</p>
 				<pre><code class="language-html"><span class="hljs-comment">&lt;!-- Here, we first load any shared chunks needed by 'sms' (as indicated by the filename), then the SMS-related Javacript only --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/browser/millan.vendors~graphql~shacl~sms~sparql~srs~turtle.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/browser/millan.graphql~shacl~sms~sparql~srs~turtle.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/browser/millan.sms.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>When used in the browser via <code>script</code> tags, the API will be exposed on a global <code>millan</code> variable.</p>
 				<h2 id="basic-usage">Basic Usage</h2>
@@ -393,6 +392,12 @@
 					<li class=" tsd-kind-interface tsd-is-not-exported">
 						<a href="interfaces/sparqlsrsvisitoritem.html" class="tsd-kind-icon">Sparql<wbr>Srs<wbr>Visitor<wbr>Item</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/stardogargumentholder.html" class="tsd-kind-icon">Stardog<wbr>Argument<wbr>Holder</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/stardogdirectiveholder.html" class="tsd-kind-icon">Stardog<wbr>Directive<wbr>Holder</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-is-not-exported">
 						<a href="globals.html#cstnodetraversecontext" class="tsd-kind-icon">Cst<wbr>Node<wbr>Traverse<wbr>Context</a>
 					</li>
@@ -612,7 +617,7 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#allvalidqueries" class="tsd-kind-icon">all<wbr>Valid<wbr>Queries</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#basetokens" class="tsd-kind-icon">base<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
@@ -645,10 +650,10 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#fixturesuites" class="tsd-kind-icon">fixture<wbr>Suites</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#getshacltokenmap" class="tsd-kind-icon">get<wbr>Shacl<wbr>Token<wbr>Map</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#getshacltokentypes" class="tsd-kind-icon">get<wbr>Shacl<wbr>Token<wbr>Types</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
@@ -700,28 +705,16 @@
 						<a href="globals.html#shaclirinamespace" class="tsd-kind-icon">shacl<wbr>Iri<wbr>Namespace</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#shacltokens" class="tsd-kind-icon">shacl<wbr>Tokens</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#shaclunprefixedtokenmap" class="tsd-kind-icon">shacl<wbr>Unprefixed<wbr>Token<wbr>Map</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#smstokentypes" class="tsd-kind-icon">sms<wbr>Token<wbr>Types</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#smstokens" class="tsd-kind-icon">sms<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#sparqltokentypes" class="tsd-kind-icon">sparql<wbr>Token<wbr>Types</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#sparqltokens" class="tsd-kind-icon">sparql<wbr>Tokens</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#srstokentypes" class="tsd-kind-icon">srs<wbr>Token<wbr>Types</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#srstokens" class="tsd-kind-icon">srs<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#standardparser" class="tsd-kind-icon">standard<wbr>Parser</a>
@@ -744,7 +737,7 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#stardogorderbyargumentfieldpropertytoken" class="tsd-kind-icon">stardog<wbr>Order<wbr>ByArgument<wbr>Field<wbr>Property<wbr>Token</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#stardogsparqltokens" class="tsd-kind-icon">stardog<wbr>Sparql<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable">
@@ -765,11 +758,8 @@
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#turtlelexer" class="tsd-kind-icon">turtle<wbr>Lexer</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
+					<li class=" tsd-kind-variable">
 						<a href="globals.html#turtletokentypes" class="tsd-kind-icon">turtle<wbr>Token<wbr>Types</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#turtletokens" class="tsd-kind-icon">turtle<wbr>Tokens</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#unescapediri" class="tsd-kind-icon">unescaped<wbr>Iri</a>
@@ -918,7 +908,7 @@
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#upperlowerthenfixtures" class="tsd-kind-icon">upper<wbr>Lower<wbr>Then<wbr>Fixtures</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#categorytokenmap" class="tsd-kind-icon">category<wbr>Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
@@ -936,13 +926,13 @@
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#ignoredtokens" class="tsd-kind-icon">ignored<wbr>Tokens</a>
 					</li>
-					<li class=" tsd-kind-object-literal">
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#keywords" class="tsd-kind-icon">keywords</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#localnamesbycategory" class="tsd-kind-icon">local<wbr>Names<wbr>ByCategory</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#multimodelexerdefinition" class="tsd-kind-icon">multi<wbr>Mode<wbr>Lexer<wbr>Definition</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
@@ -954,13 +944,13 @@
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#regex" class="tsd-kind-icon">regex</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#smstokenmap" class="tsd-kind-icon">sms<wbr>Token<wbr>Map</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#sparqltokenmap" class="tsd-kind-icon">sparql<wbr>Token<wbr>Map</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#srstokenmap" class="tsd-kind-icon">srs<wbr>Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
@@ -969,7 +959,7 @@
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#terminals" class="tsd-kind-icon">terminals</a>
 					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#turtletokenmap" class="tsd-kind-icon">turtle<wbr>Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">

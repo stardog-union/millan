@@ -7,12 +7,12 @@ import {
   Parser,
 } from 'chevrotain';
 import { getShaclVisitor } from 'shacl/visitor';
-const {
+import {
   getShaclTokenTypes,
   getShaclTokenMap,
   categoryTokenMap,
-} = require('./tokens');
-const { turtleTokenMap } = require('../turtle/tokens');
+} from './tokens';
+import { turtleTokenMap } from '../turtle/tokens';
 
 // A SHACL parser for the Turtle serialization of SHACL only. The parser can
 // can accept any arbitrary namespace prefix for SHACL/XSD and still tokenize
