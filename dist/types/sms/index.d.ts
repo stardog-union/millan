@@ -1,2 +1,2 @@
 export * from './SmsParser';
-export * from './tokens';
+export declare const smsTokens: any;

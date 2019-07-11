@@ -1,2 +1,2 @@
 export * from './TurtleParser';
-export * from './tokens';
+export declare const turtleTokens: any;

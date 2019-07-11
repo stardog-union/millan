@@ -1,6 +1,6 @@
 export * from './BaseSparqlParser';
 export * from './W3SpecSparqlParser';
 export * from './StardogSparqlParser';
-export * from './keywords';
-export * from './terminals';
-export * from './tokens';
+export declare const sparqlTokens: any;
+export declare const keywords: any;
+export declare const terminals: any;

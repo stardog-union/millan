@@ -1,2 +1,2 @@
 export * from './SrsParser';
-export * from './tokens';
+export declare const srsTokens: any;

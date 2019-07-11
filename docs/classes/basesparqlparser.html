@@ -357,7 +357,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Parser.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L37">sparql/BaseSparqlParser.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L37">sparql/BaseSparqlParser.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -390,7 +390,7 @@
 					<div class="tsd-signature tsd-kind-icon">Add<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Add&#x27;, () &#x3D;&gt; {log(&#x27;Add&#x27;);this.CONSUME(sparqlTokenMap.ADD);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.GraphOrDefault);this.CONSUME(sparqlTokenMap.TO);this.SUBRULE1(this.GraphOrDefault);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L415">sparql/BaseSparqlParser.ts:415</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L415">sparql/BaseSparqlParser.ts:415</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -427,7 +427,7 @@
 					<div class="tsd-signature tsd-kind-icon">Additive<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;AdditiveExpression&#x27;, () &#x3D;&gt; {log(&#x27;AdditiveExpression&#x27;);this.SUBRULE(this.MultiplicativeExpression);this.MANY(() &#x3D;&gt;this.OR([{ALT: () &#x3D;&gt; {this.OR1([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Plus) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Minus) },]);this.SUBRULE1(this.MultiplicativeExpression);},},{ALT: () &#x3D;&gt; {this.OR2([{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralPositive) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralNegative) },]);this.MANY1(() &#x3D;&gt;this.OR3([{ALT: () &#x3D;&gt; {this.OR4([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Star) },{ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.ForwardSlash),},]);this.SUBRULE1(this.UnaryExpression);},},]));},},]));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1180">sparql/BaseSparqlParser.ts:1180</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1180">sparql/BaseSparqlParser.ts:1180</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -464,7 +464,7 @@
 					<div class="tsd-signature tsd-kind-icon">Aggregate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Aggregate&#x27;, () &#x3D;&gt; {log(&#x27;Aggregate&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Count) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Sum) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Min) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Max) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Avg) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Sample) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.GroupConcat) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1867">sparql/BaseSparqlParser.ts:1867</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1867">sparql/BaseSparqlParser.ts:1867</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -501,7 +501,7 @@
 					<div class="tsd-signature tsd-kind-icon">Arg<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ArgList&#x27;, () &#x3D;&gt; {log(&#x27;ArgList&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NIL) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.MANY(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);});this.CONSUME(sparqlTokenMap.RParen);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L748">sparql/BaseSparqlParser.ts:748</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L748">sparql/BaseSparqlParser.ts:748</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -538,7 +538,7 @@
 					<div class="tsd-signature tsd-kind-icon">Ask<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;AskQuery&#x27;, () &#x3D;&gt; {log(&#x27;AskQuery&#x27;);this.CONSUME(sparqlTokenMap.ASK);this.MANY(() &#x3D;&gt; this.SUBRULE(this.DatasetClause));this.SUBRULE(this.WhereClause);this.SUBRULE(this.SolutionModifier);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L209">sparql/BaseSparqlParser.ts:209</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L209">sparql/BaseSparqlParser.ts:209</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -575,7 +575,7 @@
 					<div class="tsd-signature tsd-kind-icon">Avg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Avg&#x27;, () &#x3D;&gt; {log(&#x27;Avg&#x27;);this.CONSUME(sparqlTokenMap.AVG);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1834">sparql/BaseSparqlParser.ts:1834</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1834">sparql/BaseSparqlParser.ts:1834</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -612,7 +612,7 @@
 					<div class="tsd-signature tsd-kind-icon">Base<wbr>Decl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BaseDecl&#x27;, () &#x3D;&gt; {log(&#x27;BaseDecl&#x27;);this.CONSUME(sparqlTokenMap.BASE);this.CONSUME(sparqlTokenMap.IRIREF);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L109">sparql/BaseSparqlParser.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L109">sparql/BaseSparqlParser.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -649,7 +649,7 @@
 					<div class="tsd-signature tsd-kind-icon">Bind<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Bind&#x27;, () &#x3D;&gt; {log(&#x27;Bind&#x27;);this.CONSUME(sparqlTokenMap.BIND);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.AS);this.SUBRULE(this.Var);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L641">sparql/BaseSparqlParser.ts:641</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L641">sparql/BaseSparqlParser.ts:641</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -686,7 +686,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blank<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BlankNode&#x27;, () &#x3D;&gt; {log(&#x27;BlankNode&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.BLANK_NODE_LABEL) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.ANON) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1972">sparql/BaseSparqlParser.ts:1972</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1972">sparql/BaseSparqlParser.ts:1972</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -723,7 +723,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blank<wbr>Node<wbr>Property<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BlankNodePropertyList&#x27;, () &#x3D;&gt; {log(&#x27;BlankNodePropertyList&#x27;);this.CONSUME(sparqlTokenMap.LBracket);this.SUBRULE(this.PropertyListNotEmpty);this.CONSUME(sparqlTokenMap.RBracket);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1027">sparql/BaseSparqlParser.ts:1027</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1027">sparql/BaseSparqlParser.ts:1027</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -760,7 +760,7 @@
 					<div class="tsd-signature tsd-kind-icon">Blank<wbr>Node<wbr>Property<wbr>List<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BlankNodePropertyListPath&#x27;, () &#x3D;&gt; {log(&#x27;BlankNodePropertyListPath&#x27;);this.CONSUME(sparqlTokenMap.LBracket);this.SUBRULE(this.PropertyListPathNotEmpty);this.CONSUME(sparqlTokenMap.RBracket);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1042">sparql/BaseSparqlParser.ts:1042</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1042">sparql/BaseSparqlParser.ts:1042</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -797,7 +797,7 @@
 					<div class="tsd-signature tsd-kind-icon">Boolean<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BooleanLiteral&#x27;, () &#x3D;&gt; {log(&#x27;BooleanLiteral&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.TRUE) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.FALSE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1938">sparql/BaseSparqlParser.ts:1938</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1938">sparql/BaseSparqlParser.ts:1938</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -834,7 +834,7 @@
 					<div class="tsd-signature tsd-kind-icon">Bracketted<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BrackettedExpression&#x27;, () &#x3D;&gt; {log(&#x27;BrackettedExpression&#x27;);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1280">sparql/BaseSparqlParser.ts:1280</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1280">sparql/BaseSparqlParser.ts:1280</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -871,7 +871,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Aggregate) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LANG) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LANGMATCHES) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_DATATYPE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_BOUND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_IRI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_URI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_BNODE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_RAND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ABS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CEIL) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_FLOOR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ROUND) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CONCAT) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.SubstringExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRLEN) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.StrReplaceExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_UCASE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_LCASE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_ENCODE_FOR_URI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_CONTAINS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRSTARTS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRENDS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRBEFORE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRAFTER) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_YEAR) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MONTH) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_DAY) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_HOURS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MINUTES) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SECONDS) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_TIMEZONE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_TZ) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_NOW) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_UUID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRUUID) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_MD5) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA1) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA256) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA384) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_SHA512) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_COALESCE) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_IF) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRLANG) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_STRDT) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_sameTerm) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isIRI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isURI) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isBlank) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall_isNumeric) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RegexExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ExistsFunction) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NotExistsFunction) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1678">sparql/BaseSparqlParser.ts:1678</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1678">sparql/BaseSparqlParser.ts:1678</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -908,7 +908,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>ABS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_ABS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_ABS&#x27;);this.CONSUME(sparqlTokenMap.ABS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1357">sparql/BaseSparqlParser.ts:1357</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1357">sparql/BaseSparqlParser.ts:1357</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -945,7 +945,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>BNODE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_BNODE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_BNODE&#x27;);this.CONSUME(sparqlTokenMap.BNODE);this.OR([{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);},},{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NIL) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1338">sparql/BaseSparqlParser.ts:1338</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1338">sparql/BaseSparqlParser.ts:1338</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -982,7 +982,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>BOUND<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_BOUND&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_BOUND&#x27;);this.CONSUME(sparqlTokenMap.BOUND);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Var);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1317">sparql/BaseSparqlParser.ts:1317</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1317">sparql/BaseSparqlParser.ts:1317</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1019,7 +1019,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>CEIL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_CEIL&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_CEIL&#x27;);this.CONSUME(sparqlTokenMap.CEIL);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1364">sparql/BaseSparqlParser.ts:1364</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1364">sparql/BaseSparqlParser.ts:1364</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1056,7 +1056,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>COALESCE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_COALESCE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_COALESCE&#x27;);this.CONSUME(sparqlTokenMap.COALESCE);this.SUBRULE(this.ExpressionList);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1590">sparql/BaseSparqlParser.ts:1590</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1590">sparql/BaseSparqlParser.ts:1590</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1093,7 +1093,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>CONCAT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_CONCAT&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_CONCAT&#x27;);this.CONSUME(sparqlTokenMap.CONCAT);this.SUBRULE(this.ExpressionList);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1385">sparql/BaseSparqlParser.ts:1385</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1385">sparql/BaseSparqlParser.ts:1385</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1130,7 +1130,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>CONTAINS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_CONTAINS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_CONTAINS&#x27;);this.CONSUME(sparqlTokenMap.CONTAINS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1418">sparql/BaseSparqlParser.ts:1418</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1418">sparql/BaseSparqlParser.ts:1418</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1167,7 +1167,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>DATATYPE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_DATATYPE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_DATATYPE&#x27;);this.CONSUME(sparqlTokenMap.DATATYPE);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1310">sparql/BaseSparqlParser.ts:1310</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1310">sparql/BaseSparqlParser.ts:1310</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1204,7 +1204,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>DAY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_DAY&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_DAY&#x27;);this.CONSUME(sparqlTokenMap.DAY);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1484">sparql/BaseSparqlParser.ts:1484</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1484">sparql/BaseSparqlParser.ts:1484</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1241,7 +1241,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>ENCODE_<wbr>FOR_<wbr>URI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_ENCODE_FOR_URI&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_ENCODE_FOR_URI&#x27;);this.CONSUME(sparqlTokenMap.ENCODE_FOR_URI);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1411">sparql/BaseSparqlParser.ts:1411</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1411">sparql/BaseSparqlParser.ts:1411</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1278,7 +1278,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>FLOOR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_FLOOR&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_FLOOR&#x27;);this.CONSUME(sparqlTokenMap.FLOOR);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1371">sparql/BaseSparqlParser.ts:1371</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1371">sparql/BaseSparqlParser.ts:1371</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1315,7 +1315,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>HOURS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_HOURS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_HOURS&#x27;);this.CONSUME(sparqlTokenMap.HOURS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1492">sparql/BaseSparqlParser.ts:1492</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1492">sparql/BaseSparqlParser.ts:1492</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1352,7 +1352,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>IF<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_IF&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_IF&#x27;);this.CONSUME(sparqlTokenMap.IF);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME1(sparqlTokenMap.Comma);this.SUBRULE2(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1596">sparql/BaseSparqlParser.ts:1596</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1596">sparql/BaseSparqlParser.ts:1596</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1389,7 +1389,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>IRI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_IRI&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_IRI&#x27;);this.CONSUME(sparqlTokenMap.IRI);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1324">sparql/BaseSparqlParser.ts:1324</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1324">sparql/BaseSparqlParser.ts:1324</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1426,7 +1426,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>LANG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_LANG&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_LANG&#x27;);this.CONSUME(sparqlTokenMap.LANG);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1294">sparql/BaseSparqlParser.ts:1294</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1294">sparql/BaseSparqlParser.ts:1294</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1463,7 +1463,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>LANGMATCHES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_LANGMATCHES&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_LANGMATCHES&#x27;);this.CONSUME(sparqlTokenMap.LANGMATCHES);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1301">sparql/BaseSparqlParser.ts:1301</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1301">sparql/BaseSparqlParser.ts:1301</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1500,7 +1500,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>LCASE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_LCASE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_LCASE&#x27;);this.CONSUME(sparqlTokenMap.LCASE);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1404">sparql/BaseSparqlParser.ts:1404</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1404">sparql/BaseSparqlParser.ts:1404</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1537,7 +1537,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>MD5<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_MD5&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_MD5&#x27;);this.CONSUME(sparqlTokenMap.MD5);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1550">sparql/BaseSparqlParser.ts:1550</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1550">sparql/BaseSparqlParser.ts:1550</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1574,7 +1574,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>MINUTES<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_MINUTES&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_MINUTES&#x27;);this.CONSUME(sparqlTokenMap.MINUTES);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1500">sparql/BaseSparqlParser.ts:1500</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1500">sparql/BaseSparqlParser.ts:1500</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1611,7 +1611,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>MONTH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_MONTH&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_MONTH&#x27;);this.CONSUME(sparqlTokenMap.MONTH);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1476">sparql/BaseSparqlParser.ts:1476</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1476">sparql/BaseSparqlParser.ts:1476</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1648,7 +1648,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>NOW<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_NOW&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_NOW&#x27;);this.CONSUME(sparqlTokenMap.NOW);this.CONSUME(sparqlTokenMap.NIL);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1532">sparql/BaseSparqlParser.ts:1532</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1532">sparql/BaseSparqlParser.ts:1532</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1685,7 +1685,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>RAND<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_RAND&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_RAND&#x27;);this.CONSUME(sparqlTokenMap.RAND);this.CONSUME(sparqlTokenMap.NIL);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1352">sparql/BaseSparqlParser.ts:1352</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1352">sparql/BaseSparqlParser.ts:1352</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1722,7 +1722,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>ROUND<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_ROUND&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_ROUND&#x27;);this.CONSUME(sparqlTokenMap.ROUND);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1378">sparql/BaseSparqlParser.ts:1378</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1378">sparql/BaseSparqlParser.ts:1378</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1759,7 +1759,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>SECONDS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_SECONDS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_SECONDS&#x27;);this.CONSUME(sparqlTokenMap.SECONDS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1508">sparql/BaseSparqlParser.ts:1508</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1508">sparql/BaseSparqlParser.ts:1508</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1796,7 +1796,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>SHA1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_SHA1&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_SHA1&#x27;);this.CONSUME(sparqlTokenMap.SHA1);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1558">sparql/BaseSparqlParser.ts:1558</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1558">sparql/BaseSparqlParser.ts:1558</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1833,7 +1833,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>SHA256<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_SHA256&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_SHA256&#x27;);this.CONSUME(sparqlTokenMap.SHA256);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1566">sparql/BaseSparqlParser.ts:1566</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1566">sparql/BaseSparqlParser.ts:1566</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1870,7 +1870,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>SHA384<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_SHA384&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_SHA384&#x27;);this.CONSUME(sparqlTokenMap.SHA384);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1574">sparql/BaseSparqlParser.ts:1574</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1574">sparql/BaseSparqlParser.ts:1574</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1907,7 +1907,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>SHA512<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_SHA512&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_SHA512&#x27;);this.CONSUME(sparqlTokenMap.SHA512);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1582">sparql/BaseSparqlParser.ts:1582</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1582">sparql/BaseSparqlParser.ts:1582</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1944,7 +1944,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STR&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STR&#x27;);this.CONSUME(sparqlTokenMap.STR);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1287">sparql/BaseSparqlParser.ts:1287</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1287">sparql/BaseSparqlParser.ts:1287</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1981,7 +1981,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRAFTER<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRAFTER&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRAFTER&#x27;);this.CONSUME(sparqlTokenMap.STRAFTER);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1458">sparql/BaseSparqlParser.ts:1458</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1458">sparql/BaseSparqlParser.ts:1458</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2018,7 +2018,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRBEFORE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRBEFORE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRBEFORE&#x27;);this.CONSUME(sparqlTokenMap.STRBEFORE);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1448">sparql/BaseSparqlParser.ts:1448</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1448">sparql/BaseSparqlParser.ts:1448</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2055,7 +2055,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRDT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRDT&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRDT&#x27;);this.CONSUME(sparqlTokenMap.STRDT);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1618">sparql/BaseSparqlParser.ts:1618</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1618">sparql/BaseSparqlParser.ts:1618</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2092,7 +2092,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRENDS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRENDS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRENDS&#x27;);this.CONSUME(sparqlTokenMap.STRENDS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1438">sparql/BaseSparqlParser.ts:1438</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1438">sparql/BaseSparqlParser.ts:1438</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2129,7 +2129,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRLANG<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRLANG&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRLANG&#x27;);this.CONSUME(sparqlTokenMap.STRLANG);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1608">sparql/BaseSparqlParser.ts:1608</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1608">sparql/BaseSparqlParser.ts:1608</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2166,7 +2166,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRLEN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRLEN&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRLEN&#x27;);this.CONSUME(sparqlTokenMap.STRLEN);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1390">sparql/BaseSparqlParser.ts:1390</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1390">sparql/BaseSparqlParser.ts:1390</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2203,7 +2203,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRSTARTS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRSTARTS&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRSTARTS&#x27;);this.CONSUME(sparqlTokenMap.STRSTARTS);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1428">sparql/BaseSparqlParser.ts:1428</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1428">sparql/BaseSparqlParser.ts:1428</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2240,7 +2240,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>STRUUID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_STRUUID&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_STRUUID&#x27;);this.CONSUME(sparqlTokenMap.STRUUID);this.CONSUME(sparqlTokenMap.NIL);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1544">sparql/BaseSparqlParser.ts:1544</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1544">sparql/BaseSparqlParser.ts:1544</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2277,7 +2277,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>TIMEZONE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_TIMEZONE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_TIMEZONE&#x27;);this.CONSUME(sparqlTokenMap.TIMEZONE);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1516">sparql/BaseSparqlParser.ts:1516</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1516">sparql/BaseSparqlParser.ts:1516</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2314,7 +2314,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>TZ<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_TZ&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_TZ&#x27;);this.CONSUME(sparqlTokenMap.TZ);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1524">sparql/BaseSparqlParser.ts:1524</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1524">sparql/BaseSparqlParser.ts:1524</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2351,7 +2351,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>UCASE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_UCASE&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_UCASE&#x27;);this.CONSUME(sparqlTokenMap.UCASE);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1397">sparql/BaseSparqlParser.ts:1397</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1397">sparql/BaseSparqlParser.ts:1397</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2388,7 +2388,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>URI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_URI&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_URI&#x27;);this.CONSUME(sparqlTokenMap.URI);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1331">sparql/BaseSparqlParser.ts:1331</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1331">sparql/BaseSparqlParser.ts:1331</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2425,7 +2425,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>UUID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_UUID&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_UUID&#x27;);this.CONSUME(sparqlTokenMap.UUID);this.CONSUME(sparqlTokenMap.NIL);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1538">sparql/BaseSparqlParser.ts:1538</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1538">sparql/BaseSparqlParser.ts:1538</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2462,7 +2462,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>YEAR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_YEAR&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_YEAR&#x27;);this.CONSUME(sparqlTokenMap.YEAR);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1468">sparql/BaseSparqlParser.ts:1468</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1468">sparql/BaseSparqlParser.ts:1468</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2499,7 +2499,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>is<wbr>Blank<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_isBlank&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_isBlank&#x27;);this.CONSUME(sparqlTokenMap.isBlank);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1654">sparql/BaseSparqlParser.ts:1654</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1654">sparql/BaseSparqlParser.ts:1654</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2536,7 +2536,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>isIRI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_isIRI&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_isIRI&#x27;);this.CONSUME(sparqlTokenMap.isIRI);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1638">sparql/BaseSparqlParser.ts:1638</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1638">sparql/BaseSparqlParser.ts:1638</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2573,7 +2573,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>is<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_isLiteral&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_isLiteral&#x27;);this.CONSUME(sparqlTokenMap.isLiteral);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1662">sparql/BaseSparqlParser.ts:1662</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1662">sparql/BaseSparqlParser.ts:1662</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2610,7 +2610,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>is<wbr>Numeric<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_isNumeric&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_isNumeric&#x27;);this.CONSUME(sparqlTokenMap.isNumeric);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1670">sparql/BaseSparqlParser.ts:1670</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1670">sparql/BaseSparqlParser.ts:1670</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2647,7 +2647,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>isURI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_isURI&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_isURI&#x27;);this.CONSUME(sparqlTokenMap.isURI);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1646">sparql/BaseSparqlParser.ts:1646</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1646">sparql/BaseSparqlParser.ts:1646</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2684,7 +2684,7 @@
 					<div class="tsd-signature tsd-kind-icon">Built<wbr>InCall_<wbr>same<wbr>Term<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BuiltInCall_sameTerm&#x27;, () &#x3D;&gt; {log(&#x27;BuiltInCall_sameTerm&#x27;);this.CONSUME(sparqlTokenMap.sameTerm);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1628">sparql/BaseSparqlParser.ts:1628</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1628">sparql/BaseSparqlParser.ts:1628</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2721,7 +2721,7 @@
 					<div class="tsd-signature tsd-kind-icon">Clear<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Clear&#x27;, () &#x3D;&gt; {log(&#x27;Clear&#x27;);this.CONSUME(sparqlTokenMap.CLEAR);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.GraphRefAll);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L394">sparql/BaseSparqlParser.ts:394</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L394">sparql/BaseSparqlParser.ts:394</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2758,7 +2758,7 @@
 					<div class="tsd-signature tsd-kind-icon">Collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Collection&#x27;, () &#x3D;&gt; {log(&#x27;Collection&#x27;);this.CONSUME(sparqlTokenMap.LParen);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.GraphNode));this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1049">sparql/BaseSparqlParser.ts:1049</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1049">sparql/BaseSparqlParser.ts:1049</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2795,7 +2795,7 @@
 					<div class="tsd-signature tsd-kind-icon">Collection<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;CollectionPath&#x27;, () &#x3D;&gt; {log(&#x27;CollectionPath&#x27;);this.CONSUME(sparqlTokenMap.LParen);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.GraphNodePath));this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1056">sparql/BaseSparqlParser.ts:1056</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1056">sparql/BaseSparqlParser.ts:1056</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2832,7 +2832,7 @@
 					<div class="tsd-signature tsd-kind-icon">Conditional<wbr>And<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConditionalAndExpression&#x27;, () &#x3D;&gt; {log(&#x27;ConditionalAndExpression&#x27;);this.AT_LEAST_ONE_SEP({SEP: sparqlTokenMap.LogicalAnd,DEF: () &#x3D;&gt; this.SUBRULE(this.ValueLogical),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1128">sparql/BaseSparqlParser.ts:1128</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1128">sparql/BaseSparqlParser.ts:1128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2869,7 +2869,7 @@
 					<div class="tsd-signature tsd-kind-icon">Conditional<wbr>OrExpression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConditionalOrExpression&#x27;, () &#x3D;&gt; {log(&#x27;ConditionalOrExpression&#x27;);this.AT_LEAST_ONE_SEP({SEP: sparqlTokenMap.LogicalOr,DEF: () &#x3D;&gt; this.SUBRULE(this.ConditionalAndExpression),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1120">sparql/BaseSparqlParser.ts:1120</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1120">sparql/BaseSparqlParser.ts:1120</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2906,7 +2906,7 @@
 					<div class="tsd-signature tsd-kind-icon">Constant<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Constant&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RDFLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanLiteral) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L80">sparql/BaseSparqlParser.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L80">sparql/BaseSparqlParser.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2943,7 +2943,7 @@
 					<div class="tsd-signature tsd-kind-icon">Constraint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Constraint&#x27;, () &#x3D;&gt; {log(&#x27;Constraint&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.BrackettedExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.FunctionCall) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L733">sparql/BaseSparqlParser.ts:733</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L733">sparql/BaseSparqlParser.ts:733</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2980,7 +2980,7 @@
 					<div class="tsd-signature tsd-kind-icon">Construct<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConstructQuery&#x27;, () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.CONSTRUCT);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.ConstructTemplate);this.MANY(() &#x3D;&gt; this.SUBRULE(this.DatasetClause));this.SUBRULE(this.WhereClause);},},{ALT: () &#x3D;&gt; {this.MANY1(() &#x3D;&gt; this.SUBRULE1(this.DatasetClause));this.CONSUME(sparqlTokenMap.WHERE);this.CONSUME(sparqlTokenMap.LCurly);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.TriplesTemplate));this.CONSUME(sparqlTokenMap.RCurly);},},]);this.SUBRULE(this.SolutionModifier);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L170">sparql/BaseSparqlParser.ts:170</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L170">sparql/BaseSparqlParser.ts:170</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3017,7 +3017,7 @@
 					<div class="tsd-signature tsd-kind-icon">Construct<wbr>Template<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConstructTemplate&#x27;, () &#x3D;&gt; {log(&#x27;ConstructTemplate&#x27;);this.CONSUME(sparqlTokenMap.LCurly);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.ConstructTriples));this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L785">sparql/BaseSparqlParser.ts:785</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L785">sparql/BaseSparqlParser.ts:785</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3054,7 +3054,7 @@
 					<div class="tsd-signature tsd-kind-icon">Construct<wbr>Triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ConstructTriples&#x27;, () &#x3D;&gt; {log(&#x27;ConstructTriples&#x27;);this.SUBRULE(this.TriplesSameSubject);this.OPTION(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Period);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.ConstructTriples));});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L792">sparql/BaseSparqlParser.ts:792</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L792">sparql/BaseSparqlParser.ts:792</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3091,7 +3091,7 @@
 					<div class="tsd-signature tsd-kind-icon">Copy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Copy&#x27;, () &#x3D;&gt; {log(&#x27;Copy&#x27;);this.CONSUME(sparqlTokenMap.COPY);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.GraphOrDefault);this.CONSUME(sparqlTokenMap.TO);this.SUBRULE1(this.GraphOrDefault);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L433">sparql/BaseSparqlParser.ts:433</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L433">sparql/BaseSparqlParser.ts:433</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3128,7 +3128,7 @@
 					<div class="tsd-signature tsd-kind-icon">Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Count&#x27;, () &#x3D;&gt; {log(&#x27;Count&#x27;);this.CONSUME(sparqlTokenMap.COUNT);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.OR([{ ALT: () &#x3D;&gt; this.CONSUME3(sparqlTokenMap.Star) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Expression) },]);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1795">sparql/BaseSparqlParser.ts:1795</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1795">sparql/BaseSparqlParser.ts:1795</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3165,7 +3165,7 @@
 					<div class="tsd-signature tsd-kind-icon">Create<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Create&#x27;, () &#x3D;&gt; {log(&#x27;Create&#x27;);this.CONSUME(sparqlTokenMap.CREATE);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.GraphRefAll);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L408">sparql/BaseSparqlParser.ts:408</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L408">sparql/BaseSparqlParser.ts:408</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3202,7 +3202,7 @@
 					<div class="tsd-signature tsd-kind-icon">Data<wbr>Block<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DataBlock&#x27;, () &#x3D;&gt; {log(&#x27;DataBlock&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.InlineDataOneVar) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InlineDataFull) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L657">sparql/BaseSparqlParser.ts:657</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L657">sparql/BaseSparqlParser.ts:657</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3239,7 +3239,7 @@
 					<div class="tsd-signature tsd-kind-icon">Data<wbr>Block<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DataBlockValue&#x27;, () &#x3D;&gt; {log(&#x27;DataBlockValue&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RDFLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanLiteral) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.UNDEF) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L701">sparql/BaseSparqlParser.ts:701</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L701">sparql/BaseSparqlParser.ts:701</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3276,7 +3276,7 @@
 					<div class="tsd-signature tsd-kind-icon">Dataset<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DatasetClause&#x27;, () &#x3D;&gt; {log(&#x27;DatasetClause&#x27;);this.CONSUME(sparqlTokenMap.FROM);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.DefaultGraphClause) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NamedGraphClause) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L217">sparql/BaseSparqlParser.ts:217</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L217">sparql/BaseSparqlParser.ts:217</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3313,7 +3313,7 @@
 					<div class="tsd-signature tsd-kind-icon">Default<wbr>Graph<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DefaultGraphClause&#x27;, () &#x3D;&gt; {log(&#x27;DefaultGraphClause&#x27;);this.SUBRULE(this.SourceSelector);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L226">sparql/BaseSparqlParser.ts:226</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L226">sparql/BaseSparqlParser.ts:226</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3350,7 +3350,7 @@
 					<div class="tsd-signature tsd-kind-icon">Delete<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DeleteClause&#x27;, () &#x3D;&gt; {log(&#x27;DeleteClause&#x27;);this.CONSUME(sparqlTokenMap.DELETE);this.SUBRULE(this.QuadPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L480">sparql/BaseSparqlParser.ts:480</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L480">sparql/BaseSparqlParser.ts:480</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3387,7 +3387,7 @@
 					<div class="tsd-signature tsd-kind-icon">Delete<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DeleteData&#x27;, () &#x3D;&gt; {log(&#x27;DeleteData&#x27;);this.CONSUME(sparqlTokenMap.DELETE_DATA);this.SUBRULE(this.QuadData);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L448">sparql/BaseSparqlParser.ts:448</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L448">sparql/BaseSparqlParser.ts:448</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3424,7 +3424,7 @@
 					<div class="tsd-signature tsd-kind-icon">Delete<wbr>Where<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DeleteWhere&#x27;, () &#x3D;&gt; {log(&#x27;DeleteWhere&#x27;);this.CONSUME(sparqlTokenMap.DELETE_WHERE);this.SUBRULE(this.QuadPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L454">sparql/BaseSparqlParser.ts:454</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L454">sparql/BaseSparqlParser.ts:454</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3461,7 +3461,7 @@
 					<div class="tsd-signature tsd-kind-icon">Describe<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DescribeQuery&#x27;, () &#x3D;&gt; {log(&#x27;DescribeQuery&#x27;);this.CONSUME(sparqlTokenMap.DESCRIBE);this.OR([{ALT: () &#x3D;&gt; {this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.VarOrIri));},},{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Star) },]);this.MANY(() &#x3D;&gt; this.SUBRULE(this.DatasetClause));this.OPTION(() &#x3D;&gt; this.SUBRULE(this.WhereClause));this.SUBRULE(this.SolutionModifier);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L193">sparql/BaseSparqlParser.ts:193</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L193">sparql/BaseSparqlParser.ts:193</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3498,7 +3498,7 @@
 					<div class="tsd-signature tsd-kind-icon">Drop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Drop&#x27;, () &#x3D;&gt; {log(&#x27;Drop&#x27;);this.CONSUME(sparqlTokenMap.DROP);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.GraphRefAll);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L401">sparql/BaseSparqlParser.ts:401</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L401">sparql/BaseSparqlParser.ts:401</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3535,7 +3535,7 @@
 					<div class="tsd-signature tsd-kind-icon">Exists<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ExistsFunction&#x27;, () &#x3D;&gt; {log(&#x27;ExistsFunction&#x27;);this.CONSUME(sparqlTokenMap.EXISTS);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1783">sparql/BaseSparqlParser.ts:1783</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1783">sparql/BaseSparqlParser.ts:1783</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3572,7 +3572,7 @@
 					<div class="tsd-signature tsd-kind-icon">Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Expression&#x27;, () &#x3D;&gt; {log(&#x27;Expression&#x27;);this.SUBRULE(this.ConditionalOrExpression);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1115">sparql/BaseSparqlParser.ts:1115</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1115">sparql/BaseSparqlParser.ts:1115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3609,7 +3609,7 @@
 					<div class="tsd-signature tsd-kind-icon">Expression<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ExpressionList&#x27;, () &#x3D;&gt; {log(&#x27;ExpressionList&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NIL) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.MANY(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);});this.CONSUME(sparqlTokenMap.RParen);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L767">sparql/BaseSparqlParser.ts:767</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L767">sparql/BaseSparqlParser.ts:767</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3646,7 +3646,7 @@
 					<div class="tsd-signature tsd-kind-icon">Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Filter&#x27;, () &#x3D;&gt; {log(&#x27;Filter&#x27;);this.CONSUME(sparqlTokenMap.FILTER);this.SUBRULE(this.Constraint);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L727">sparql/BaseSparqlParser.ts:727</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L727">sparql/BaseSparqlParser.ts:727</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3683,7 +3683,7 @@
 					<div class="tsd-signature tsd-kind-icon">Function<wbr>Call<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FunctionCall&#x27;, () &#x3D;&gt; {log(&#x27;FunctionCall&#x27;);this.SUBRULE(this.iri);this.SUBRULE(this.ArgList);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L742">sparql/BaseSparqlParser.ts:742</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L742">sparql/BaseSparqlParser.ts:742</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3720,7 +3720,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphGraphPattern&#x27;, () &#x3D;&gt; {log(&#x27;GraphGraphPattern&#x27;);this.CONSUME(sparqlTokenMap.GRAPH);this.SUBRULE(this.VarOrIri);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L626">sparql/BaseSparqlParser.ts:626</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L626">sparql/BaseSparqlParser.ts:626</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3757,7 +3757,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphNode&#x27;, () &#x3D;&gt; {log(&#x27;GraphNode&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.VarOrTerm) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TriplesNode) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1063">sparql/BaseSparqlParser.ts:1063</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1063">sparql/BaseSparqlParser.ts:1063</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3794,7 +3794,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Node<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphNodePath&#x27;, () &#x3D;&gt; {log(&#x27;GraphNodePath&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.VarOrTerm) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TriplesNodePath) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1071">sparql/BaseSparqlParser.ts:1071</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1071">sparql/BaseSparqlParser.ts:1071</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3831,7 +3831,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>OrDefault<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphOrDefault&#x27;, () &#x3D;&gt; {log(&#x27;GraphOrDefault&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DEFAULT) },{ALT: () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.GRAPH));this.SUBRULE(this.iri);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L506">sparql/BaseSparqlParser.ts:506</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L506">sparql/BaseSparqlParser.ts:506</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3868,7 +3868,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Pattern<wbr>Not<wbr>Triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphPatternNotTriples&#x27;, () &#x3D;&gt; {log(&#x27;GraphPatternNotTriples&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.GroupOrUnionGraphPattern) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.OptionalGraphPattern) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.MinusGraphPattern) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.GraphGraphPattern) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ServiceGraphPattern) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Filter) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Bind) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InlineData) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L606">sparql/BaseSparqlParser.ts:606</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L606">sparql/BaseSparqlParser.ts:606</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3905,7 +3905,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Ref<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphRef&#x27;, () &#x3D;&gt; {log(&#x27;GraphRef&#x27;);this.CONSUME(sparqlTokenMap.GRAPH);this.SUBRULE(this.iri);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L519">sparql/BaseSparqlParser.ts:519</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L519">sparql/BaseSparqlParser.ts:519</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3942,7 +3942,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Ref<wbr>All<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphRefAll&#x27;, () &#x3D;&gt; {log(&#x27;GraphRefAll&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.GraphRef) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DEFAULT) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NAMED) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.ALL) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L525">sparql/BaseSparqlParser.ts:525</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L525">sparql/BaseSparqlParser.ts:525</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -3979,7 +3979,7 @@
 					<div class="tsd-signature tsd-kind-icon">Graph<wbr>Term<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GraphTerm&#x27;, () &#x3D;&gt; {log(&#x27;GraphTerm&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RDFLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNode) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NIL) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1103">sparql/BaseSparqlParser.ts:1103</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1103">sparql/BaseSparqlParser.ts:1103</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4016,7 +4016,7 @@
 					<div class="tsd-signature tsd-kind-icon">Group<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GroupClause&#x27;, () &#x3D;&gt; {log(&#x27;GroupClause&#x27;);this.CONSUME(sparqlTokenMap.GroupBy);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.GroupCondition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L256">sparql/BaseSparqlParser.ts:256</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L256">sparql/BaseSparqlParser.ts:256</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4053,7 +4053,7 @@
 					<div class="tsd-signature tsd-kind-icon">Group<wbr>Concat<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GroupConcat&#x27;, () &#x3D;&gt; {log(&#x27;GroupConcat&#x27;);this.CONSUME(sparqlTokenMap.GROUP_CONCAT);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.OPTION1(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Semicolon);this.CONSUME(sparqlTokenMap.SEPARATOR);this.CONSUME(sparqlTokenMap.Equals);this.SUBRULE(this.String);});this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1852">sparql/BaseSparqlParser.ts:1852</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1852">sparql/BaseSparqlParser.ts:1852</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4090,7 +4090,7 @@
 					<div class="tsd-signature tsd-kind-icon">Group<wbr>Condition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GroupCondition&#x27;, () &#x3D;&gt; {log(&#x27;GroupCondition&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.FunctionCall) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.OPTION(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.AS);this.SUBRULE(this.Var);});this.CONSUME(sparqlTokenMap.RParen);},},{ ALT: () &#x3D;&gt; this.SUBRULE1(this.Var) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L262">sparql/BaseSparqlParser.ts:262</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L262">sparql/BaseSparqlParser.ts:262</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4127,7 +4127,7 @@
 					<div class="tsd-signature tsd-kind-icon">Group<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GroupGraphPattern&#x27;, () &#x3D;&gt; {log(&#x27;GroupGraphPattern&#x27;);this.CONSUME(sparqlTokenMap.LCurly);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.SubSelect) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.GroupGraphPatternSub) },]);this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L577">sparql/BaseSparqlParser.ts:577</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L577">sparql/BaseSparqlParser.ts:577</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4164,7 +4164,7 @@
 					<div class="tsd-signature tsd-kind-icon">Group<wbr>Graph<wbr>Pattern<wbr>Sub<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GroupGraphPatternSub&#x27;, () &#x3D;&gt; {log(&#x27;GroupGraphPatternSub&#x27;);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.TriplesBlock));this.MANY(() &#x3D;&gt; {this.SUBRULE(this.GraphPatternNotTriples);this.OPTION1(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.Period));this.OPTION2(() &#x3D;&gt; this.SUBRULE1(this.TriplesBlock));});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L587">sparql/BaseSparqlParser.ts:587</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L587">sparql/BaseSparqlParser.ts:587</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4201,7 +4201,7 @@
 					<div class="tsd-signature tsd-kind-icon">Group<wbr>OrUnion<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;GroupOrUnionGraphPattern&#x27;, () &#x3D;&gt; {log(&#x27;GroupOrUnionGraphPattern&#x27;);this.SUBRULE(this.GroupGraphPattern);this.MANY(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.UNION);this.SUBRULE1(this.GroupGraphPattern);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L718">sparql/BaseSparqlParser.ts:718</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L718">sparql/BaseSparqlParser.ts:718</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4238,7 +4238,7 @@
 					<div class="tsd-signature tsd-kind-icon">Having<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;HavingClause&#x27;, () &#x3D;&gt; {log(&#x27;HavingClause&#x27;);this.CONSUME(sparqlTokenMap.HAVING);this.SUBRULE(this.HavingCondition);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L282">sparql/BaseSparqlParser.ts:282</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L282">sparql/BaseSparqlParser.ts:282</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4275,7 +4275,7 @@
 					<div class="tsd-signature tsd-kind-icon">Having<wbr>Condition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;HavingCondition&#x27;, () &#x3D;&gt; {log(&#x27;HavingCondition&#x27;);this.SUBRULE(this.Constraint);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L288">sparql/BaseSparqlParser.ts:288</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L288">sparql/BaseSparqlParser.ts:288</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4312,7 +4312,7 @@
 					<div class="tsd-signature tsd-kind-icon">Inline<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InlineData&#x27;, () &#x3D;&gt; {log(&#x27;InlineData&#x27;);this.CONSUME(sparqlTokenMap.VALUES);this.SUBRULE(this.DataBlock);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L651">sparql/BaseSparqlParser.ts:651</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L651">sparql/BaseSparqlParser.ts:651</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4349,7 +4349,7 @@
 					<div class="tsd-signature tsd-kind-icon">Inline<wbr>Data<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InlineDataFull&#x27;, () &#x3D;&gt; {log(&#x27;InlineDataFull&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NIL) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.MANY(() &#x3D;&gt; this.SUBRULE(this.Var));this.CONSUME(sparqlTokenMap.RParen);},},]);this.CONSUME(sparqlTokenMap.LCurly);this.MANY1(() &#x3D;&gt;this.OR1([{ALT: () &#x3D;&gt; {this.CONSUME1(sparqlTokenMap.LParen);this.MANY2(() &#x3D;&gt; this.SUBRULE(this.DataBlockValue));this.CONSUME1(sparqlTokenMap.RParen);},},{ ALT: () &#x3D;&gt; this.CONSUME1(sparqlTokenMap.NIL) },]));this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L673">sparql/BaseSparqlParser.ts:673</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L673">sparql/BaseSparqlParser.ts:673</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4386,7 +4386,7 @@
 					<div class="tsd-signature tsd-kind-icon">Inline<wbr>Data<wbr>One<wbr>Var<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InlineDataOneVar&#x27;, () &#x3D;&gt; {log(&#x27;InlineDataOneVar&#x27;);this.SUBRULE(this.Var);this.CONSUME(sparqlTokenMap.LCurly);this.MANY(() &#x3D;&gt; this.SUBRULE(this.DataBlockValue));this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L665">sparql/BaseSparqlParser.ts:665</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L665">sparql/BaseSparqlParser.ts:665</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4423,7 +4423,7 @@
 					<div class="tsd-signature tsd-kind-icon">Insert<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InsertClause&#x27;, () &#x3D;&gt; {log(&#x27;InsertClause&#x27;);this.CONSUME(sparqlTokenMap.INSERT);this.SUBRULE(this.QuadPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L486">sparql/BaseSparqlParser.ts:486</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L486">sparql/BaseSparqlParser.ts:486</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4460,7 +4460,7 @@
 					<div class="tsd-signature tsd-kind-icon">Insert<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InsertData&#x27;, () &#x3D;&gt; {log(&#x27;InsertData&#x27;);this.CONSUME(sparqlTokenMap.INSERT_DATA);this.SUBRULE(this.QuadData);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L442">sparql/BaseSparqlParser.ts:442</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L442">sparql/BaseSparqlParser.ts:442</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4497,7 +4497,7 @@
 					<div class="tsd-signature tsd-kind-icon">Integer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Integer&#x27;, () &#x3D;&gt; {log(&#x27;Integer&#x27;);this.CONSUME(sparqlTokenMap.INTEGER);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1014">sparql/BaseSparqlParser.ts:1014</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1014">sparql/BaseSparqlParser.ts:1014</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4534,7 +4534,7 @@
 					<div class="tsd-signature tsd-kind-icon">Limit<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;LimitClause&#x27;, () &#x3D;&gt; {log(&#x27;LimitClause&#x27;);this.CONSUME(sparqlTokenMap.LIMIT);this.CONSUME(sparqlTokenMap.INTEGER);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L340">sparql/BaseSparqlParser.ts:340</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L340">sparql/BaseSparqlParser.ts:340</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4571,7 +4571,7 @@
 					<div class="tsd-signature tsd-kind-icon">Limit<wbr>Offset<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;LimitOffsetClause&#x27;, () &#x3D;&gt; {log(&#x27;LimitOffsetClause&#x27;);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.LimitClause);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.OffsetClause));},},{ALT: () &#x3D;&gt; {this.SUBRULE1(this.OffsetClause);this.OPTION1(() &#x3D;&gt; this.SUBRULE1(this.LimitClause));},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L316">sparql/BaseSparqlParser.ts:316</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L316">sparql/BaseSparqlParser.ts:316</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4608,7 +4608,7 @@
 					<div class="tsd-signature tsd-kind-icon">Load<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Load&#x27;, () &#x3D;&gt; {log(&#x27;Load&#x27;);this.CONSUME(sparqlTokenMap.LOAD);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.iri);this.OPTION1(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.INTO);this.SUBRULE(this.GraphRef);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L383">sparql/BaseSparqlParser.ts:383</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L383">sparql/BaseSparqlParser.ts:383</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4645,7 +4645,7 @@
 					<div class="tsd-signature tsd-kind-icon">Max<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Max&#x27;, () &#x3D;&gt; {log(&#x27;Max&#x27;);this.CONSUME(sparqlTokenMap.MAX);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1825">sparql/BaseSparqlParser.ts:1825</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1825">sparql/BaseSparqlParser.ts:1825</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4682,7 +4682,7 @@
 					<div class="tsd-signature tsd-kind-icon">Max<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;MaxLength&#x27;, () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.MAX_LENGTH);this.CONSUME(sparqlTokenMap.INTEGER);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L89">sparql/BaseSparqlParser.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L89">sparql/BaseSparqlParser.ts:89</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4719,7 +4719,7 @@
 					<div class="tsd-signature tsd-kind-icon">Min<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Min&#x27;, () &#x3D;&gt; {log(&#x27;Min&#x27;);this.CONSUME(sparqlTokenMap.MIN);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1816">sparql/BaseSparqlParser.ts:1816</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1816">sparql/BaseSparqlParser.ts:1816</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4756,7 +4756,7 @@
 					<div class="tsd-signature tsd-kind-icon">Minus<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;MinusGraphPattern&#x27;, () &#x3D;&gt; {log(&#x27;MinusGraphPattern&#x27;);this.CONSUME(sparqlTokenMap.MINUS);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L712">sparql/BaseSparqlParser.ts:712</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L712">sparql/BaseSparqlParser.ts:712</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4793,7 +4793,7 @@
 					<div class="tsd-signature tsd-kind-icon">Modify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Modify&#x27;, () &#x3D;&gt; {log(&#x27;Modify&#x27;);this.OPTION(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.WITH);this.SUBRULE(this.iri);});this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.DeleteClause);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.InsertClause));},},{ ALT: () &#x3D;&gt; this.SUBRULE1(this.InsertClause) },]);this.MANY(() &#x3D;&gt; this.SUBRULE(this.UsingClause));this.CONSUME(sparqlTokenMap.WHERE);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L460">sparql/BaseSparqlParser.ts:460</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L460">sparql/BaseSparqlParser.ts:460</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4830,7 +4830,7 @@
 					<div class="tsd-signature tsd-kind-icon">Move<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Move&#x27;, () &#x3D;&gt; {log(&#x27;Move&#x27;);this.CONSUME(sparqlTokenMap.MOVE);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.GraphOrDefault);this.CONSUME(sparqlTokenMap.TO);this.SUBRULE1(this.GraphOrDefault);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L424">sparql/BaseSparqlParser.ts:424</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L424">sparql/BaseSparqlParser.ts:424</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4867,7 +4867,7 @@
 					<div class="tsd-signature tsd-kind-icon">Multiplicative<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;MultiplicativeExpression&#x27;, () &#x3D;&gt; {log(&#x27;MultiplicativeExpression&#x27;);this.SUBRULE(this.UnaryExpression);this.MANY(() &#x3D;&gt;this.OR([{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Star);this.SUBRULE1(this.UnaryExpression);},},{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.ForwardSlash);this.SUBRULE2(this.UnaryExpression);},},]));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1221">sparql/BaseSparqlParser.ts:1221</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1221">sparql/BaseSparqlParser.ts:1221</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4904,7 +4904,7 @@
 					<div class="tsd-signature tsd-kind-icon">Named<wbr>Graph<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NamedGraphClause&#x27;, () &#x3D;&gt; {log(&#x27;NamedGraphClause&#x27;);this.CONSUME(sparqlTokenMap.NAMED);this.SUBRULE(this.SourceSelector);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L231">sparql/BaseSparqlParser.ts:231</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L231">sparql/BaseSparqlParser.ts:231</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4941,7 +4941,7 @@
 					<div class="tsd-signature tsd-kind-icon">Not<wbr>Exists<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NotExistsFunction&#x27;, () &#x3D;&gt; {log(&#x27;NotExistsFunction&#x27;);this.CONSUME(sparqlTokenMap.NOT_EXISTS);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1789">sparql/BaseSparqlParser.ts:1789</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1789">sparql/BaseSparqlParser.ts:1789</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -4978,7 +4978,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericExpression&#x27;, () &#x3D;&gt; {log(&#x27;NumericExpression&#x27;);this.SUBRULE(this.AdditiveExpression);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1175">sparql/BaseSparqlParser.ts:1175</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1175">sparql/BaseSparqlParser.ts:1175</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5015,7 +5015,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteral&#x27;, () &#x3D;&gt; {log(&#x27;NumericLiteral&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralUnsigned) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralPositive) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteralNegative) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1902">sparql/BaseSparqlParser.ts:1902</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1902">sparql/BaseSparqlParser.ts:1902</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5052,7 +5052,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<wbr>Negative<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteralNegative&#x27;, () &#x3D;&gt; {log(&#x27;NumericLiteralNegative&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.INTEGER_NEGATIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DECIMAL_NEGATIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DOUBLE_NEGATIVE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1929">sparql/BaseSparqlParser.ts:1929</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1929">sparql/BaseSparqlParser.ts:1929</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5089,7 +5089,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<wbr>Positive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteralPositive&#x27;, () &#x3D;&gt; {log(&#x27;NumericLiteralPositive&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.INTEGER_POSITIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DECIMAL_POSITIVE) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DOUBLE_POSITIVE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1920">sparql/BaseSparqlParser.ts:1920</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1920">sparql/BaseSparqlParser.ts:1920</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5126,7 +5126,7 @@
 					<div class="tsd-signature tsd-kind-icon">Numeric<wbr>Literal<wbr>Unsigned<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NumericLiteralUnsigned&#x27;, () &#x3D;&gt; {log(&#x27;NumericLiteralUnsigned&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.INTEGER) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DECIMAL) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DOUBLE) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1911">sparql/BaseSparqlParser.ts:1911</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1911">sparql/BaseSparqlParser.ts:1911</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5163,7 +5163,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Object&#x27;, () &#x3D;&gt; {log(&#x27;Object&#x27;);this.SUBRULE(this.GraphNode);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L854">sparql/BaseSparqlParser.ts:854</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L854">sparql/BaseSparqlParser.ts:854</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5200,7 +5200,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectList&#x27;, () &#x3D;&gt; {log(&#x27;ObjectList&#x27;);this.AT_LEAST_ONE_SEP({SEP: sparqlTokenMap.Comma,DEF: () &#x3D;&gt; this.SUBRULE(this.Object),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L846">sparql/BaseSparqlParser.ts:846</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L846">sparql/BaseSparqlParser.ts:846</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5237,7 +5237,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>List<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectListPath&#x27;, () &#x3D;&gt; {log(&#x27;ObjectListPath&#x27;);this.AT_LEAST_ONE_SEP({SEP: sparqlTokenMap.Comma,DEF: () &#x3D;&gt; this.SUBRULE(this.ObjectPath),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L912">sparql/BaseSparqlParser.ts:912</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L912">sparql/BaseSparqlParser.ts:912</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5274,7 +5274,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectPath&#x27;, () &#x3D;&gt; {log(&#x27;ObjectPath&#x27;);this.SUBRULE(this.GraphNodePath);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L920">sparql/BaseSparqlParser.ts:920</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L920">sparql/BaseSparqlParser.ts:920</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5311,7 +5311,7 @@
 					<div class="tsd-signature tsd-kind-icon">Offset<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OffsetClause&#x27;, () &#x3D;&gt; {log(&#x27;OffsetClause&#x27;);this.CONSUME(sparqlTokenMap.OFFSET);this.CONSUME(sparqlTokenMap.INTEGER);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L334">sparql/BaseSparqlParser.ts:334</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L334">sparql/BaseSparqlParser.ts:334</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5348,7 +5348,7 @@
 					<div class="tsd-signature tsd-kind-icon">Optional<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OptionalGraphPattern&#x27;, () &#x3D;&gt; {log(&#x27;OptionalGraphPattern&#x27;);this.CONSUME(sparqlTokenMap.OPTIONAL);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L620">sparql/BaseSparqlParser.ts:620</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L620">sparql/BaseSparqlParser.ts:620</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5385,7 +5385,7 @@
 					<div class="tsd-signature tsd-kind-icon">Order<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OrderClause&#x27;, () &#x3D;&gt; {log(&#x27;OrderClause&#x27;);this.CONSUME(sparqlTokenMap.OrderBy);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.OrderCondition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L293">sparql/BaseSparqlParser.ts:293</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L293">sparql/BaseSparqlParser.ts:293</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5422,7 +5422,7 @@
 					<div class="tsd-signature tsd-kind-icon">Order<wbr>Condition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OrderCondition&#x27;, () &#x3D;&gt; {log(&#x27;OrderCondition&#x27;);this.OR([{ALT: () &#x3D;&gt; {this.OR1([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.ASC) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DESC) },]);this.SUBRULE(this.BrackettedExpression);},},{ ALT: () &#x3D;&gt; this.SUBRULE(this.Constraint) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L299">sparql/BaseSparqlParser.ts:299</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L299">sparql/BaseSparqlParser.ts:299</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5459,7 +5459,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Path&#x27;, () &#x3D;&gt; {log(&#x27;Path&#x27;);this.SUBRULE(this.PathAlternative);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L925">sparql/BaseSparqlParser.ts:925</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L925">sparql/BaseSparqlParser.ts:925</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5496,7 +5496,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Alternative<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathAlternative&#x27;, () &#x3D;&gt; {log(&#x27;PathAlternative&#x27;);this.AT_LEAST_ONE_SEP({SEP: sparqlTokenMap.Pipe,DEF: () &#x3D;&gt; this.SUBRULE(this.PathSequence),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L930">sparql/BaseSparqlParser.ts:930</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L930">sparql/BaseSparqlParser.ts:930</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5533,7 +5533,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Elt<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathElt&#x27;, () &#x3D;&gt; {log(&#x27;PathElt&#x27;);this.SUBRULE(this.PathPrimary);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.PathMod));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L946">sparql/BaseSparqlParser.ts:946</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L946">sparql/BaseSparqlParser.ts:946</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5570,7 +5570,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Elt<wbr>OrInverse<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathEltOrInverse&#x27;, () &#x3D;&gt; {log(&#x27;PathEltOrInverse&#x27;);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.Caret));this.SUBRULE(this.PathElt);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L952">sparql/BaseSparqlParser.ts:952</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L952">sparql/BaseSparqlParser.ts:952</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5607,7 +5607,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Mod<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathMod&#x27;, () &#x3D;&gt; {log(&#x27;PathMod&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.QuestionMark) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Star) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Plus) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L958">sparql/BaseSparqlParser.ts:958</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L958">sparql/BaseSparqlParser.ts:958</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5644,7 +5644,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Negated<wbr>Property<wbr>Set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathNegatedPropertySet&#x27;, () &#x3D;&gt; {log(&#x27;PathNegatedPropertySet&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.PathOneInPropertySet) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.MANY_SEP({SEP: sparqlTokenMap.Pipe,DEF: () &#x3D;&gt; this.SUBRULE1(this.PathOneInPropertySet),});this.CONSUME(sparqlTokenMap.RParen);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L988">sparql/BaseSparqlParser.ts:988</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L988">sparql/BaseSparqlParser.ts:988</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5681,7 +5681,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>One<wbr>InProperty<wbr>Set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathOneInPropertySet&#x27;, () &#x3D;&gt; {log(&#x27;PathOneInPropertySet&#x27;);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.Caret));this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.A) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1005">sparql/BaseSparqlParser.ts:1005</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1005">sparql/BaseSparqlParser.ts:1005</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5718,7 +5718,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Primary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathPrimary&#x27;, () &#x3D;&gt; {log(&#x27;PathPrimary&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.A) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Bang);this.SUBRULE(this.PathNegatedPropertySet);},},{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Path);this.CONSUME(sparqlTokenMap.RParen);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L967">sparql/BaseSparqlParser.ts:967</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L967">sparql/BaseSparqlParser.ts:967</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5755,7 +5755,7 @@
 					<div class="tsd-signature tsd-kind-icon">Path<wbr>Sequence<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PathSequence&#x27;, () &#x3D;&gt; {log(&#x27;PathSequence&#x27;);this.AT_LEAST_ONE_SEP({SEP: sparqlTokenMap.ForwardSlash,DEF: () &#x3D;&gt; this.SUBRULE(this.PathEltOrInverse),});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L938">sparql/BaseSparqlParser.ts:938</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L938">sparql/BaseSparqlParser.ts:938</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5792,7 +5792,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prefix<wbr>Decl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PrefixDecl&#x27;, () &#x3D;&gt; {log(&#x27;PrefixDecl&#x27;);this.CONSUME(sparqlTokenMap.PREFIX);this.CONSUME(sparqlTokenMap.PNAME_NS);this.CONSUME(sparqlTokenMap.IRIREF);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L115">sparql/BaseSparqlParser.ts:115</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L115">sparql/BaseSparqlParser.ts:115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5829,7 +5829,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prefixed<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PrefixedName&#x27;, () &#x3D;&gt; {log(&#x27;PrefixedName&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.PNAME_LN) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.PNAME_NS) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1964">sparql/BaseSparqlParser.ts:1964</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1964">sparql/BaseSparqlParser.ts:1964</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5866,7 +5866,7 @@
 					<div class="tsd-signature tsd-kind-icon">Primary<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PrimaryExpression&#x27;, () &#x3D;&gt; {log(&#x27;PrimaryExpression&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.BrackettedExpression) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BuiltInCall) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.iriOrFunction) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.RDFLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NumericLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanLiteral) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1267">sparql/BaseSparqlParser.ts:1267</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1267">sparql/BaseSparqlParser.ts:1267</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5903,7 +5903,7 @@
 					<div class="tsd-signature tsd-kind-icon">Prologue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Prologue&#x27;, () &#x3D;&gt; {log(&#x27;Prologue&#x27;);this.MANY(() &#x3D;&gt;this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.BaseDecl) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.PrefixDecl) },]));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L99">sparql/BaseSparqlParser.ts:99</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L99">sparql/BaseSparqlParser.ts:99</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5940,7 +5940,7 @@
 					<div class="tsd-signature tsd-kind-icon">Property<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PropertyList&#x27;, () &#x3D;&gt; {log(&#x27;PropertyList&#x27;);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.PropertyListNotEmpty));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L819">sparql/BaseSparqlParser.ts:819</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L819">sparql/BaseSparqlParser.ts:819</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -5977,7 +5977,7 @@
 					<div class="tsd-signature tsd-kind-icon">Property<wbr>List<wbr>Not<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PropertyListNotEmpty&#x27;, () &#x3D;&gt; {log(&#x27;PropertyListNotEmpty&#x27;);this.SUBRULE(this.Verb);this.SUBRULE(this.ObjectList);this.MANY(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Semicolon);this.OPTION(() &#x3D;&gt; {this.SUBRULE1(this.Verb);this.SUBRULE1(this.ObjectList);});});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L824">sparql/BaseSparqlParser.ts:824</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L824">sparql/BaseSparqlParser.ts:824</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6014,7 +6014,7 @@
 					<div class="tsd-signature tsd-kind-icon">Property<wbr>List<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PropertyListPath&#x27;, () &#x3D;&gt; {log(&#x27;PropertyListPath&#x27;);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.PropertyListPathNotEmpty));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L877">sparql/BaseSparqlParser.ts:877</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L877">sparql/BaseSparqlParser.ts:877</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6051,7 +6051,7 @@
 					<div class="tsd-signature tsd-kind-icon">Property<wbr>List<wbr>Path<wbr>Not<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;PropertyListPathNotEmpty&#x27;, () &#x3D;&gt; {log(&#x27;PropertyListPathNotEmpty&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.VerbPath) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.VerbSimple) },]);this.SUBRULE(this.ObjectListPath);this.MANY(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Semicolon);this.OPTION(() &#x3D;&gt; {this.OR1([{ ALT: () &#x3D;&gt; this.SUBRULE1(this.VerbPath) },{ ALT: () &#x3D;&gt; this.SUBRULE1(this.VerbSimple) },]);this.SUBRULE1(this.ObjectListPath);});});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L882">sparql/BaseSparqlParser.ts:882</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L882">sparql/BaseSparqlParser.ts:882</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6088,7 +6088,7 @@
 					<div class="tsd-signature tsd-kind-icon">Quad<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;QuadData&#x27;, () &#x3D;&gt; {log(&#x27;QuadData&#x27;);this.CONSUME(sparqlTokenMap.LCurly);this.SUBRULE(this.Quads);this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L542">sparql/BaseSparqlParser.ts:542</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L542">sparql/BaseSparqlParser.ts:542</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6125,7 +6125,7 @@
 					<div class="tsd-signature tsd-kind-icon">Quad<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;QuadPattern&#x27;, () &#x3D;&gt; {log(&#x27;QuadPattern&#x27;);this.CONSUME(sparqlTokenMap.LCurly);this.SUBRULE(this.Quads);this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L535">sparql/BaseSparqlParser.ts:535</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L535">sparql/BaseSparqlParser.ts:535</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6162,7 +6162,7 @@
 					<div class="tsd-signature tsd-kind-icon">Quads<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Quads&#x27;, () &#x3D;&gt; {log(&#x27;Quads&#x27;);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.TriplesTemplate));this.MANY(() &#x3D;&gt; {this.SUBRULE(this.QuadsNotTriples);this.OPTION1(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.Period));this.OPTION2(() &#x3D;&gt; this.SUBRULE1(this.TriplesTemplate));});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L549">sparql/BaseSparqlParser.ts:549</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L549">sparql/BaseSparqlParser.ts:549</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6199,7 +6199,7 @@
 					<div class="tsd-signature tsd-kind-icon">Quads<wbr>Not<wbr>Triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;QuadsNotTriples&#x27;, () &#x3D;&gt; {log(&#x27;QuadsNotTriples&#x27;);this.CONSUME(sparqlTokenMap.GRAPH);this.SUBRULE(this.VarOrIri);this.CONSUME(sparqlTokenMap.LCurly);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.TriplesTemplate));this.CONSUME(sparqlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L559">sparql/BaseSparqlParser.ts:559</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L559">sparql/BaseSparqlParser.ts:559</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6236,7 +6236,7 @@
 					<div class="tsd-signature tsd-kind-icon">Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Query&#x27;, () &#x3D;&gt; {log(&#x27;Query&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.SelectQuery) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ConstructQuery) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.DescribeQuery) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.AskQuery) },]);this.SUBRULE(this.ValuesClause);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L69">sparql/BaseSparqlParser.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L69">sparql/BaseSparqlParser.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6273,7 +6273,7 @@
 					<div class="tsd-signature tsd-kind-icon">Query<wbr>Unit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;QueryUnit&#x27;, () &#x3D;&gt; {log(&#x27;QueryUnit&#x27;);this.SUBRULE(this.Query);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L64">sparql/BaseSparqlParser.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L64">sparql/BaseSparqlParser.ts:64</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6310,7 +6310,7 @@
 					<div class="tsd-signature tsd-kind-icon">RDFLiteral<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RDFLiteral&#x27;, () &#x3D;&gt; {log(&#x27;RDFLiteral&#x27;);this.SUBRULE(this.String);this.OPTION(() &#x3D;&gt;this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.LANGTAG) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.DoubleCaret);this.SUBRULE(this.iri);},},]));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1886">sparql/BaseSparqlParser.ts:1886</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1886">sparql/BaseSparqlParser.ts:1886</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6347,7 +6347,7 @@
 					<div class="tsd-signature tsd-kind-icon">Regex<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RegexExpression&#x27;, () &#x3D;&gt; {log(&#x27;RegexExpression&#x27;);this.CONSUME(sparqlTokenMap.REGEX);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.OPTION(() &#x3D;&gt; {this.CONSUME1(sparqlTokenMap.Comma);this.SUBRULE2(this.Expression);});this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1739">sparql/BaseSparqlParser.ts:1739</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1739">sparql/BaseSparqlParser.ts:1739</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6384,7 +6384,7 @@
 					<div class="tsd-signature tsd-kind-icon">Relational<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RelationalExpression&#x27;, () &#x3D;&gt; {log(&#x27;RelationalExpression&#x27;);this.SUBRULE(this.NumericExpression);this.OPTION(() &#x3D;&gt;this.OR([{ALT: () &#x3D;&gt; {this.OR1([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Equals) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.NotEquals) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.LessThan) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.GreaterThan) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.LessThanEquals) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.GreaterThanEquals) },]);this.SUBRULE1(this.NumericExpression);},},{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.IN);this.SUBRULE(this.ExpressionList);},},{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.NOT_IN);this.SUBRULE1(this.ExpressionList);},},]));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1141">sparql/BaseSparqlParser.ts:1141</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1141">sparql/BaseSparqlParser.ts:1141</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6421,7 +6421,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sample<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Sample&#x27;, () &#x3D;&gt; {log(&#x27;Sample&#x27;);this.CONSUME(sparqlTokenMap.SAMPLE);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1843">sparql/BaseSparqlParser.ts:1843</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1843">sparql/BaseSparqlParser.ts:1843</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6458,7 +6458,7 @@
 					<div class="tsd-signature tsd-kind-icon">Select<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SelectClause&#x27;, () &#x3D;&gt; {log(&#x27;SelectClause&#x27;);this.CONSUME(sparqlTokenMap.SELECT);this.OPTION(() &#x3D;&gt;this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.DISTINCT) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.REDUCED) },]));this.OR1([{ALT: () &#x3D;&gt; {this.AT_LEAST_ONE(() &#x3D;&gt;this.OR2([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.AS);this.SUBRULE1(this.Var);this.CONSUME(sparqlTokenMap.RParen);},},]));},},{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.Star) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L138">sparql/BaseSparqlParser.ts:138</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L138">sparql/BaseSparqlParser.ts:138</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6495,7 +6495,7 @@
 					<div class="tsd-signature tsd-kind-icon">Select<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SelectQuery&#x27;, () &#x3D;&gt; {log(&#x27;SelectQuery&#x27;);this.SUBRULE(this.SelectClause);this.MANY(() &#x3D;&gt; this.SUBRULE(this.DatasetClause));this.SUBRULE(this.WhereClause);this.SUBRULE(this.SolutionModifier);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L122">sparql/BaseSparqlParser.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L122">sparql/BaseSparqlParser.ts:122</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6532,7 +6532,7 @@
 					<div class="tsd-signature tsd-kind-icon">Service<wbr>Graph<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ServiceGraphPattern&#x27;, () &#x3D;&gt; {log(&#x27;ServiceGraphPattern&#x27;);this.CONSUME(sparqlTokenMap.SERVICE);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.SILENT));this.SUBRULE(this.VarOrIri);this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L633">sparql/BaseSparqlParser.ts:633</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L633">sparql/BaseSparqlParser.ts:633</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6569,7 +6569,7 @@
 					<div class="tsd-signature tsd-kind-icon">Solution<wbr>Modifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SolutionModifier&#x27;, () &#x3D;&gt; {log(&#x27;SolutionModifier&#x27;);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.GroupClause));this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.HavingClause));this.OPTION2(() &#x3D;&gt; this.SUBRULE(this.OrderClause));this.OPTION3(() &#x3D;&gt; this.SUBRULE(this.LimitOffsetClause));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L248">sparql/BaseSparqlParser.ts:248</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L248">sparql/BaseSparqlParser.ts:248</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6606,7 +6606,7 @@
 					<div class="tsd-signature tsd-kind-icon">Source<wbr>Selector<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SourceSelector&#x27;, () &#x3D;&gt; {log(&#x27;SourceSelector&#x27;);this.SUBRULE(this.iri);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L237">sparql/BaseSparqlParser.ts:237</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L237">sparql/BaseSparqlParser.ts:237</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6643,7 +6643,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sparql<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SparqlDoc&#x27;, () &#x3D;&gt; {log(&#x27;SparqlDoc&#x27;);this.SUBRULE(this.Prologue);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.QueryUnit) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.UpdateUnit) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L55">sparql/BaseSparqlParser.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L55">sparql/BaseSparqlParser.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6680,7 +6680,7 @@
 					<div class="tsd-signature tsd-kind-icon">Str<wbr>Replace<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;StrReplaceExpression&#x27;, () &#x3D;&gt; {log(&#x27;StrReplaceExpression&#x27;);this.CONSUME(sparqlTokenMap.REPLACE);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.CONSUME1(sparqlTokenMap.Comma);this.SUBRULE2(this.Expression);this.OPTION(() &#x3D;&gt; {this.CONSUME2(sparqlTokenMap.Comma);this.SUBRULE3(this.Expression);});this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1767">sparql/BaseSparqlParser.ts:1767</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1767">sparql/BaseSparqlParser.ts:1767</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6717,7 +6717,7 @@
 					<div class="tsd-signature tsd-kind-icon">String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;String&#x27;, () &#x3D;&gt; {log(&#x27;String&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.STRING_LITERAL1) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.STRING_LITERAL2) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.STRING_LITERAL_LONG1) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.STRING_LITERAL_LONG2) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1946">sparql/BaseSparqlParser.ts:1946</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1946">sparql/BaseSparqlParser.ts:1946</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6754,7 +6754,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sub<wbr>Select<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SubSelect&#x27;, () &#x3D;&gt; {log(&#x27;SubSelect&#x27;);this.SUBRULE(this.SelectClause);this.SUBRULE(this.WhereClause);this.SUBRULE(this.SolutionModifier);this.SUBRULE(this.ValuesClause);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L130">sparql/BaseSparqlParser.ts:130</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L130">sparql/BaseSparqlParser.ts:130</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6791,7 +6791,7 @@
 					<div class="tsd-signature tsd-kind-icon">Substring<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SubstringExpression&#x27;, () &#x3D;&gt; {log(&#x27;SubstringExpression&#x27;);this.CONSUME(sparqlTokenMap.SUBSTR);this.CONSUME(sparqlTokenMap.LParen);this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.Comma);this.SUBRULE1(this.Expression);this.OPTION(() &#x3D;&gt; {this.CONSUME1(sparqlTokenMap.Comma);this.SUBRULE2(this.Expression);});this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1753">sparql/BaseSparqlParser.ts:1753</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1753">sparql/BaseSparqlParser.ts:1753</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6828,7 +6828,7 @@
 					<div class="tsd-signature tsd-kind-icon">Sum<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Sum&#x27;, () &#x3D;&gt; {log(&#x27;Sum&#x27;);this.CONSUME(sparqlTokenMap.SUM);this.CONSUME1(sparqlTokenMap.LParen);this.OPTION(() &#x3D;&gt; this.CONSUME2(sparqlTokenMap.DISTINCT));this.SUBRULE(this.Expression);this.CONSUME(sparqlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1807">sparql/BaseSparqlParser.ts:1807</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1807">sparql/BaseSparqlParser.ts:1807</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6865,7 +6865,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Block<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesBlock&#x27;, () &#x3D;&gt; {log(&#x27;TriplesBlock&#x27;);this.SUBRULE(this.TriplesSameSubjectPath);this.OPTION(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Period);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.TriplesBlock));});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L597">sparql/BaseSparqlParser.ts:597</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L597">sparql/BaseSparqlParser.ts:597</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6902,7 +6902,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesNode&#x27;, () &#x3D;&gt; {log(&#x27;TriplesNode&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Collection) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNodePropertyList) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1019">sparql/BaseSparqlParser.ts:1019</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1019">sparql/BaseSparqlParser.ts:1019</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6939,7 +6939,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Node<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesNodePath&#x27;, () &#x3D;&gt; {log(&#x27;TriplesNodePath&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.CollectionPath) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BlankNodePropertyListPath) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1034">sparql/BaseSparqlParser.ts:1034</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1034">sparql/BaseSparqlParser.ts:1034</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -6976,7 +6976,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Same<wbr>Subject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesSameSubject&#x27;, () &#x3D;&gt; {log(&#x27;TriplesSameSubject&#x27;);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.VarOrTerm);this.SUBRULE(this.PropertyListNotEmpty);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.TriplesNode);this.SUBRULE(this.PropertyList);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L801">sparql/BaseSparqlParser.ts:801</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L801">sparql/BaseSparqlParser.ts:801</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7013,7 +7013,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Same<wbr>Subject<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesSameSubjectPath&#x27;, () &#x3D;&gt; {log(&#x27;TriplesSameSubjectPath&#x27;);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.VarOrTerm);this.SUBRULE(this.PropertyListPathNotEmpty);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.TriplesNodePath);this.SUBRULE(this.PropertyListPath);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L859">sparql/BaseSparqlParser.ts:859</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L859">sparql/BaseSparqlParser.ts:859</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7050,7 +7050,7 @@
 					<div class="tsd-signature tsd-kind-icon">Triples<wbr>Template<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TriplesTemplate&#x27;, () &#x3D;&gt; {log(&#x27;TriplesTemplate&#x27;);this.SUBRULE(this.TriplesSameSubject);this.OPTION(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Period);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.TriplesTemplate));});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L568">sparql/BaseSparqlParser.ts:568</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L568">sparql/BaseSparqlParser.ts:568</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7087,7 +7087,7 @@
 					<div class="tsd-signature tsd-kind-icon">Unary<wbr>Expression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;UnaryExpression&#x27;, () &#x3D;&gt; {log(&#x27;UnaryExpression&#x27;);this.OR([{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Bang);this.SUBRULE(this.PrimaryExpression);},},{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Plus);this.SUBRULE1(this.PrimaryExpression);},},{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Minus);this.SUBRULE2(this.PrimaryExpression);},},{ ALT: () &#x3D;&gt; this.SUBRULE3(this.PrimaryExpression) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1242">sparql/BaseSparqlParser.ts:1242</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1242">sparql/BaseSparqlParser.ts:1242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7124,7 +7124,7 @@
 					<div class="tsd-signature tsd-kind-icon">Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Update&#x27;, () &#x3D;&gt; {log(&#x27;Update&#x27;);this.SUBRULE(this.Prologue);this.OPTION(() &#x3D;&gt; {this.SUBRULE(this.Update1);this.OPTION1(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.Semicolon);this.SUBRULE(this.Update);});});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L354">sparql/BaseSparqlParser.ts:354</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L354">sparql/BaseSparqlParser.ts:354</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7161,7 +7161,7 @@
 					<div class="tsd-signature tsd-kind-icon">Update1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Update1&#x27;, () &#x3D;&gt; {log(&#x27;Update1&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Load) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Clear) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Drop) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Add) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Move) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Copy) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Create) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InsertData) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.DeleteData) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.DeleteWhere) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.Modify) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L366">sparql/BaseSparqlParser.ts:366</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L366">sparql/BaseSparqlParser.ts:366</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7198,7 +7198,7 @@
 					<div class="tsd-signature tsd-kind-icon">Update<wbr>Unit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;UpdateUnit&#x27;, () &#x3D;&gt; {log(&#x27;UpdateUnit&#x27;);this.SUBRULE(this.Update);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L94">sparql/BaseSparqlParser.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L94">sparql/BaseSparqlParser.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7235,7 +7235,7 @@
 					<div class="tsd-signature tsd-kind-icon">Using<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;UsingClause&#x27;, () &#x3D;&gt; {log(&#x27;UsingClause&#x27;);this.CONSUME(sparqlTokenMap.USING);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },{ALT: () &#x3D;&gt; {this.CONSUME(sparqlTokenMap.NAMED);this.SUBRULE1(this.iri);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L492">sparql/BaseSparqlParser.ts:492</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L492">sparql/BaseSparqlParser.ts:492</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7272,7 +7272,7 @@
 					<div class="tsd-signature tsd-kind-icon">Value<wbr>Logical<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ValueLogical&#x27;, () &#x3D;&gt; {log(&#x27;ValueLogical&#x27;);this.SUBRULE(this.RelationalExpression);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1136">sparql/BaseSparqlParser.ts:1136</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1136">sparql/BaseSparqlParser.ts:1136</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7309,7 +7309,7 @@
 					<div class="tsd-signature tsd-kind-icon">Values<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ValuesClause&#x27;, () &#x3D;&gt; {log(&#x27;ValuesClause&#x27;);this.OPTION(() &#x3D;&gt; {this.CONSUME(sparqlTokenMap.VALUES);this.SUBRULE(this.DataBlock);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L346">sparql/BaseSparqlParser.ts:346</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L346">sparql/BaseSparqlParser.ts:346</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7346,7 +7346,7 @@
 					<div class="tsd-signature tsd-kind-icon">Var<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Var&#x27;, () &#x3D;&gt; {log(&#x27;Var&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.VAR1) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.VAR2) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1095">sparql/BaseSparqlParser.ts:1095</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1095">sparql/BaseSparqlParser.ts:1095</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7383,7 +7383,7 @@
 					<div class="tsd-signature tsd-kind-icon">Var<wbr>OrIri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VarOrIri&#x27;, () &#x3D;&gt; {log(&#x27;VarOrIri&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.iri) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1087">sparql/BaseSparqlParser.ts:1087</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1087">sparql/BaseSparqlParser.ts:1087</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7420,7 +7420,7 @@
 					<div class="tsd-signature tsd-kind-icon">Var<wbr>OrTerm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VarOrTerm&#x27;, () &#x3D;&gt; {log(&#x27;VarOrTerm&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Var) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.GraphTerm) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1079">sparql/BaseSparqlParser.ts:1079</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1079">sparql/BaseSparqlParser.ts:1079</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7457,7 +7457,7 @@
 					<div class="tsd-signature tsd-kind-icon">Verb<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Verb&#x27;, () &#x3D;&gt; {log(&#x27;Verb&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.VarOrIri) },{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.A) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L838">sparql/BaseSparqlParser.ts:838</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L838">sparql/BaseSparqlParser.ts:838</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7494,7 +7494,7 @@
 					<div class="tsd-signature tsd-kind-icon">Verb<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VerbPath&#x27;, () &#x3D;&gt; {log(&#x27;VerbPath&#x27;);this.SUBRULE(this.Path);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L902">sparql/BaseSparqlParser.ts:902</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L902">sparql/BaseSparqlParser.ts:902</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7531,7 +7531,7 @@
 					<div class="tsd-signature tsd-kind-icon">Verb<wbr>Simple<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VerbSimple&#x27;, () &#x3D;&gt; {log(&#x27;VerbSimple&#x27;);this.SUBRULE(this.Var);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L907">sparql/BaseSparqlParser.ts:907</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L907">sparql/BaseSparqlParser.ts:907</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7568,7 +7568,7 @@
 					<div class="tsd-signature tsd-kind-icon">Where<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;WhereClause&#x27;, () &#x3D;&gt; {log(&#x27;WhereClause&#x27;);this.OPTION(() &#x3D;&gt; this.CONSUME(sparqlTokenMap.WHERE));this.SUBRULE(this.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L242">sparql/BaseSparqlParser.ts:242</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L242">sparql/BaseSparqlParser.ts:242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7627,7 +7627,7 @@
 					<div class="tsd-signature tsd-kind-icon">iri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;iri&#x27;, () &#x3D;&gt; {log(&#x27;iri&#x27;);this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(sparqlTokenMap.IRIREF) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.PrefixedName) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1956">sparql/BaseSparqlParser.ts:1956</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1956">sparql/BaseSparqlParser.ts:1956</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7664,7 +7664,7 @@
 					<div class="tsd-signature tsd-kind-icon">iri<wbr>OrFunction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;iriOrFunction&#x27;, () &#x3D;&gt; {log(&#x27;iriOrFunction&#x27;);this.SUBRULE(this.iri);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.ArgList));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L1880">sparql/BaseSparqlParser.ts:1880</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L1880">sparql/BaseSparqlParser.ts:1880</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -7701,7 +7701,7 @@
 					<div class="tsd-signature tsd-kind-icon">lexer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lexer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L18">sparql/BaseSparqlParser.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L18">sparql/BaseSparqlParser.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -8698,7 +8698,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L23">sparql/BaseSparqlParser.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L23">sparql/BaseSparqlParser.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -8756,7 +8756,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L33">sparql/BaseSparqlParser.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L33">sparql/BaseSparqlParser.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -8787,7 +8787,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L36">sparql/BaseSparqlParser.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L36">sparql/BaseSparqlParser.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -8866,7 +8866,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/95d6b1d/src/sparql/BaseSparqlParser.ts#L20">sparql/BaseSparqlParser.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/40f2315/src/sparql/BaseSparqlParser.ts#L20">sparql/BaseSparqlParser.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

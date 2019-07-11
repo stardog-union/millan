@@ -11,7 +11,7 @@ export declare class TurtleParser extends Parser implements IStardogParser {
         semanticErrors: IRecognitionException[];
         cst: any;
     };
-    constructor(config?: Partial<IParserConfig>, tokens?: TokenType[], lexerDefinition?: TokenType[] | IMultiModeLexerDefinition, performSelfAnalysis?: boolean);
+    constructor(config?: Partial<IParserConfig>, tokens?: any, lexerDefinition?: TokenType[] | IMultiModeLexerDefinition, performSelfAnalysis?: boolean);
     turtleDoc: (idxInCallingRule?: number, ...args: any[]) => any;
     statement: (idxInCallingRule?: number, ...args: any[]) => any;
     directive: (idxInCallingRule?: number, ...args: any[]) => any;

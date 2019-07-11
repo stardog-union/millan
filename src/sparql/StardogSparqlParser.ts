@@ -1,4 +1,4 @@
-import { sparqlTokenMap, stardogSparqlTokens } from './tokens';
+const { sparqlTokenMap, stardogSparqlTokens } = require('./tokens');
 import { BaseSparqlParser } from './BaseSparqlParser';
 import { Parser } from 'chevrotain';
 

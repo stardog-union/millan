@@ -1,2 +1,2 @@
 export * from './ShaclParser';
-export * from './tokens';
+export declare const shaclTokens: any;

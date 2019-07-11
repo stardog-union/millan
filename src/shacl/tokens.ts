@@ -1,5 +1,5 @@
-import { turtleTokenTypes, turtleTokenMap } from '../turtle/tokens';
-import { sparqlTokenMap } from '../sparql/tokens';
+const { turtleTokenTypes, turtleTokenMap } = require('../turtle/tokens');
+const { sparqlTokenMap } = require('../sparql/tokens');
 import { TokenType, createToken, Lexer } from 'chevrotain';
 import memoize from 'memoize-one';
 import { getAsTypedTuple } from 'helpers/types';

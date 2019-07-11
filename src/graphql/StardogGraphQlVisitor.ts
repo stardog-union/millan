@@ -86,7 +86,7 @@ export const getStardogGraphQlVisitor = (
         .StringValueToken as IToken[];
       const { errors } = this.$parseSparqlExpression(stringValueToken);
 
-      // Possible future TODO: replace the CST nodes with thoe returned from
+      // Possible future TODO: replace the CST nodes with those returned from
       // the stardogSparqlParser, like we do for the IfClause and ThenClause
       // in the SRS Parser
       if (errors.length > 0) {
@@ -108,6 +108,7 @@ export const getStardogGraphQlVisitor = (
         startColumn: tokenStartColumn,
         endColumn: tokenEndColumn,
       } = tokenForOffset;
+
       return errors.map((error) => {
         const { token } = error;
         const {
@@ -121,10 +122,13 @@ export const getStardogGraphQlVisitor = (
           ...error,
           token: {
             ...token,
-            startOffset: tokenStartOffset + errorStartOffset + offsetPadding,
-            endOffset: tokenEndOffset + errorEndOffset + offsetPadding,
-            startColumn: tokenStartColumn + errorStartColumn + offsetPadding,
-            endColumn: tokenEndColumn + errorEndColumn + offsetPadding,
+            // error token's offsets might be set explicitly to null
+            startOffset:
+              tokenStartOffset + (errorStartOffset || 0) + offsetPadding,
+            endOffset: tokenEndOffset + (errorEndOffset || 0) + offsetPadding,
+            startColumn:
+              tokenStartColumn + (errorStartColumn || 0) + offsetPadding,
+            endColumn: tokenEndColumn + (errorEndColumn || 0) + offsetPadding,
             startLine: tokenForOffset.startLine,
             endLine: tokenForOffset.endLine,
           },

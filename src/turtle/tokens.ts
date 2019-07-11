@@ -1,4 +1,4 @@
-import { sparqlTokenMap } from '../sparql/tokens';
+const { sparqlTokenMap } = require('../sparql/tokens');
 import { createToken, TokenType } from 'chevrotain';
 import { regex } from '../helpers/regex';
 import {

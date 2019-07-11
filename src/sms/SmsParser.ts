@@ -1,4 +1,4 @@
-import { smsTokenTypes, smsTokenMap } from './tokens';
+const { smsTokenTypes, smsTokenMap } = require('./tokens');
 import {
   Parser,
   Lexer,
