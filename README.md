@@ -4,7 +4,7 @@ Millan is the [Stardog](https://www.stardog.com) whisperer -- a set of parsers
 for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wiki/SPARQL),
 [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)),
 [Stardog Mapping Syntax 2 (SMS)](https://www.stardog.com/docs/#_stardog_mapping_syntax_2),
-[Stardog Rules Syntax](https://www.stardog.com/docs/#_stardog_rules_syntax)), and the Turtle serialization of [SHACL](https://www.w3.org/TR/shacl/).
+[Stardog Rules Syntax](https://www.stardog.com/docs/#_stardog_rules_syntax), the Turtle serialization of [SHACL](https://www.w3.org/TR/shacl/), and [GraphQL](https://graphql.github.io/graphql-spec/)).
 
 ## Features
 
@@ -14,9 +14,10 @@ for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wik
 - Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)
 - Error-tolerant parsing for Stardog Rules Syntax (SRS)
 - Error-tolerant parsing for the Turtle serialization of the W3C Shapes Constraints Language (SHACL)
+- Error-tolerant parsing for GraphQL (both the Facebook standard and with [Stardog's GraphQL extensions](https://www.stardog.com/docs/#_graphql_queries))
 - Exported token matchers (regular expressions) and token sets for all of the
 above languages
-- Universally usable (both in nodejs and the browser)
+- Universally usable (both in nodejs and the browser), either as a single bundle or as only the specific parts you need
 - Tested against W3C test suites
 - Small and fast
 - Written in [TypeScript](https://www.typescriptlang.org/), compiled to JS
@@ -39,19 +40,34 @@ In Node/CommonJS:
 
 ```javascript
 const millan = require('millan');
-```
-
-In the browser:
-
-```html
-<script src="path/to/millan/index.umd.min.js"></script>
+// or, if you only need some part of millan (e.g., only _one_ of the parsers):
+const graphql = require('millan/standalone/millan.graphql');
 ```
 
 As an ES module:
 
 ```javascript
 import * as millan from 'millan';
+// or, if you only need some part of millan (e.g., only _one_ of the parsers):
+import { StardogSparqlParser } from 'millan/standalone/millan.sparql';
 ```
+
+In the browser, importing everything at once:
+
+```html
+<script src="path/to/millan/millan.js"></script>
+```
+
+In the browser, importing only what is needed:
+
+```html
+<!-- Here, we first load any shared chunks needed by 'sms' (as indicated by the filename), then the SMS-related Javacript only -->
+<script src="path/to/millan/browser/millan.vendors~graphql~shacl~sms~sparql~srs~turtle.js"></script>
+<script src="path/to/millan/browser/millan.sms.js"></script>
+```
+
+When used in the browser via `script` tags, the API will be exposed on a global `millan` variable.
+
 ## Basic Usage
 
 Import Millan or the specific parts of Millan that you need, e.g.:

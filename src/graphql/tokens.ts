@@ -298,6 +298,35 @@ const graphQlTokenMap = {
   Name,
 };
 
+interface StardogDirectiveHolder {
+  tokenMap: {
+    OptionalDirectiveToken: TokenType;
+    BindDirectiveToken: TokenType;
+    HideDirectiveToken: TokenType;
+    SkipDirectiveToken: TokenType;
+    IncludeDirectiveToken: TokenType;
+    FilterDirectiveToken: TokenType;
+    PrefixDirectiveToken: TokenType;
+    ConfigDirectiveToken: TokenType;
+  };
+  orderedTokens: TokenType[];
+}
+
+interface StardogArgumentHolder {
+  tokenMap: {
+    OrderByArgumentToken: TokenType;
+    FirstArgumentToken: TokenType;
+    ToArgumentToken: TokenType;
+    IfArgumentToken: TokenType;
+    AliasArgumentToken: TokenType;
+    GraphArgumentToken: TokenType;
+    OffsetArgumentToken: TokenType;
+    LimitArgumentToken: TokenType;
+    IriArgumentToken: TokenType;
+  };
+  orderedTokens: TokenType[];
+}
+
 const stardogDirectives = [
   'optional',
   'bind',
@@ -328,7 +357,7 @@ const stardogDirectives = [
         orderedTokens: accumulator.orderedTokens.concat(token),
       };
     },
-    { tokenMap: {}, orderedTokens: [] }
+    { tokenMap: {}, orderedTokens: [] } as StardogDirectiveHolder
   );
 
 const stardogArguments = [
@@ -362,7 +391,7 @@ const stardogArguments = [
         orderedTokens: accumulator.orderedTokens.concat(token),
       };
     },
-    { tokenMap: {}, orderedTokens: [] }
+    { tokenMap: {}, orderedTokens: [] } as StardogArgumentHolder
   );
 
 // These two tokens aren't really arguments or directives; instead, they're

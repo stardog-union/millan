@@ -67,6 +67,23 @@ declare const graphQlTokenMap: {
 declare const stardogGraphQlTokenMap: {
     OrderByArgumentFieldPropertyToken: TokenType;
     OrderByArgumentDescPropertyToken: TokenType;
+    OrderByArgumentToken: TokenType;
+    FirstArgumentToken: TokenType;
+    ToArgumentToken: TokenType;
+    IfArgumentToken: TokenType;
+    AliasArgumentToken: TokenType;
+    GraphArgumentToken: TokenType;
+    OffsetArgumentToken: TokenType;
+    LimitArgumentToken: TokenType;
+    IriArgumentToken: TokenType;
+    OptionalDirectiveToken: TokenType;
+    BindDirectiveToken: TokenType;
+    HideDirectiveToken: TokenType;
+    SkipDirectiveToken: TokenType;
+    IncludeDirectiveToken: TokenType;
+    FilterDirectiveToken: TokenType;
+    PrefixDirectiveToken: TokenType;
+    ConfigDirectiveToken: TokenType;
     Name: TokenType;
     Query: TokenType;
     Mutation: TokenType;
@@ -130,5 +147,5 @@ declare const stardogGraphQlTokenMap: {
     Comment: TokenType;
     Comma: TokenType;
 };
-declare const stardogGraphQlTokens: any[];
+declare const stardogGraphQlTokens: TokenType[];
 export { graphQlTokenMap, graphQlTokens, stardogGraphQlTokenMap, stardogGraphQlTokens, };
