@@ -41,7 +41,7 @@ In Node/CommonJS:
 ```javascript
 const millan = require('millan');
 // or, if you only need some part of millan (e.g., only _one_ of the parsers):
-const graphql = require('millan/standalone/millan.graphql');
+const graphql = require('millan/dist/standalone/millan.graphql');
 ```
 
 As an ES module:
@@ -49,7 +49,7 @@ As an ES module:
 ```javascript
 import * as millan from 'millan';
 // or, if you only need some part of millan (e.g., only _one_ of the parsers):
-import { StardogSparqlParser } from 'millan/standalone/millan.sparql';
+import { StardogSparqlParser } from 'millan/dist/standalone/millan.sparql';
 ```
 
 In the browser, importing everything at once:
@@ -62,8 +62,8 @@ In the browser, importing only what is needed:
 
 ```html
 <!-- Here, we first load any shared chunks needed by 'sms' (as indicated by the filename), then the SMS-related Javacript only -->
-<script src="path/to/millan/browser/millan.vendors~graphql~shacl~sms~sparql~srs~turtle.js"></script>
-<script src="path/to/millan/browser/millan.sms.js"></script>
+<script src="path/to/millan/dist/browser/millan.vendors~graphql~shacl~sms~sparql~srs~turtle.js"></script>
+<script src="path/to/millan/dist/browser/millan.sms.js"></script>
 ```
 
 When used in the browser via `script` tags, the API will be exposed on a global `millan` variable.
