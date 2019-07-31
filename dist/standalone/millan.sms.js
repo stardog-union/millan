@@ -1,2 +1,11357 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define("millan",[],t):"object"==typeof exports?exports.millan=t():e.millan=t()}("undefined"!=typeof self?self:this,function(){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var i=t[r]={i:r,l:!1,exports:{}};return e[r].call(i.exports,i,i.exports,n),i.l=!0,i.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var i in e)n.d(r,i,function(t){return e[t]}.bind(null,i));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=71)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(8),i=n(22),o=n(7),a=n(12),s=n(24),c=n(16),u=n(49),p=n(11),l=n(6),f=n(32),h=n(50),E=n(28),d={};d.VERSION=s.VERSION,d.Parser=r.Parser;d.ParserDefinitionErrorType=r.ParserDefinitionErrorType,d.Lexer=i.Lexer,d.LexerDefinitionErrorType=i.LexerDefinitionErrorType,d.EOF=o.EOF,d.tokenName=o.tokenName,d.tokenLabel=o.tokenLabel,d.tokenMatcher=o.tokenMatcher,d.createToken=o.createToken,d.createTokenInstance=o.createTokenInstance,d.EMPTY_ALT=r.EMPTY_ALT,d.defaultParserErrorProvider=c.defaultParserErrorProvider,d.isRecognitionException=a.isRecognitionException,d.EarlyExitException=a.EarlyExitException,d.MismatchedTokenException=a.MismatchedTokenException,d.NotAllInputParsedException=a.NotAllInputParsedException,d.NoViableAltException=a.NoViableAltException,d.defaultLexerErrorProvider=E.defaultLexerErrorProvider,d.Flat=l.Flat,d.Repetition=l.Repetition,d.RepetitionWithSeparator=l.RepetitionWithSeparator,d.RepetitionMandatory=l.RepetitionMandatory,d.RepetitionMandatoryWithSeparator=l.RepetitionMandatoryWithSeparator,d.Option=l.Option,d.Alternation=l.Alternation,d.NonTerminal=l.NonTerminal,d.Terminal=l.Terminal,d.Rule=l.Rule,d.GAstVisitor=p.GAstVisitor,d.serializeGrammar=l.serializeGrammar,d.serializeProduction=l.serializeProduction,d.resolveGrammar=f.resolveGrammar,d.defaultGrammarResolverErrorProvider=c.defaultGrammarResolverErrorProvider,d.validateGrammar=f.validateGrammar,d.defaultGrammarValidatorErrorProvider=c.defaultGrammarValidatorErrorProvider,d.assignOccurrenceIndices=f.assignOccurrenceIndices,d.clearCache=function(){console.warn("The clearCache function was 'soft' removed from the Chevrotain API.\n\t It performs no action other than printing this message.\n\t Please avoid using it as it will be completely removed in the future")},d.createSyntaxDiagramsCode=u.createSyntaxDiagramsCode,d.generateParserFactory=h.generateParserFactory,d.generateParserModule=h.generateParserModule,e.exports=d},function(e,t,n){"use strict";n.r(t),n.d(t,"keywords",function(){return o});var r=n(0),i=Object(r.createToken)({name:"MAX_LENGTH",pattern:/MAX LENGTH/i}),o={SELECT:Object(r.createToken)({name:"SELECT",pattern:/SELECT/i}),CONSTRUCT:Object(r.createToken)({name:"CONSTRUCT",pattern:/CONSTRUCT/i}),DISTINCT:Object(r.createToken)({name:"DISTINCT",pattern:/DISTINCT/i}),START:Object(r.createToken)({name:"START",pattern:/START/i}),END:Object(r.createToken)({name:"END",pattern:/END/i}),VIA:Object(r.createToken)({name:"VIA",pattern:/VIA/i}),PATHS:Object(r.createToken)({name:"PATHS",pattern:/PATHS/i}),PATHS_ALL:Object(r.createToken)({name:"PATHS_ALL",pattern:/PATHS ALL/i}),PATHS_SHORTEST:Object(r.createToken)({name:"PATHS_SHORTEST",pattern:/PATHS SHORTEST/i}),CYCLIC:Object(r.createToken)({name:"CYCLIC",pattern:/CYCLIC/i}),AS:Object(r.createToken)({name:"AS",pattern:/AS/i}),WHERE:Object(r.createToken)({name:"WHERE",pattern:/WHERE/i}),A:Object(r.createToken)({name:"A",pattern:/a/i}),GroupBy:Object(r.createToken)({name:"GroupBy",pattern:/group by/i}),OrderBy:Object(r.createToken)({name:"OrderBy",pattern:/order by/i}),By:Object(r.createToken)({name:"By",pattern:/By/i}),BASE:Object(r.createToken)({name:"BASE",pattern:/BASE/i}),PREFIX:Object(r.createToken)({name:"PREFIX",pattern:/PREFIX/i}),DESCRIBE:Object(r.createToken)({name:"DESCRIBE",pattern:/DESCRIBE/i}),ASK:Object(r.createToken)({name:"ASK",pattern:/ASK/i}),FROM:Object(r.createToken)({name:"FROM",pattern:/FROM/i}),REDUCED:Object(r.createToken)({name:"REDUCED",pattern:/REDUCED/i}),NAMED:Object(r.createToken)({name:"NAMED",pattern:/NAMED/i}),HAVING:Object(r.createToken)({name:"HAVING",pattern:/HAVING/i}),ASC:Object(r.createToken)({name:"ASC",pattern:/ASC/i}),DESC:Object(r.createToken)({name:"DESC",pattern:/DESC/i}),OFFSET:Object(r.createToken)({name:"OFFSET",pattern:/OFFSET/i}),LIMIT:Object(r.createToken)({name:"LIMIT",pattern:/LIMIT/i}),VALUES:Object(r.createToken)({name:"VALUES",pattern:/VALUES/i}),LOAD:Object(r.createToken)({name:"LOAD",pattern:/LOAD/i}),SILENT:Object(r.createToken)({name:"SILENT",pattern:/SILENT/i}),INTO:Object(r.createToken)({name:"INTO",pattern:/INTO/i}),CLEAR:Object(r.createToken)({name:"CLEAR",pattern:/CLEAR/i}),DROP:Object(r.createToken)({name:"DROP",pattern:/DROP/i}),CREATE:Object(r.createToken)({name:"CREATE",pattern:/CREATE/i}),ADD:Object(r.createToken)({name:"ADD",pattern:/ADD/i}),TO:Object(r.createToken)({name:"TO",pattern:/TO/i}),MOVE:Object(r.createToken)({name:"MOVE",pattern:/MOVE/i}),COPY:Object(r.createToken)({name:"COPY",pattern:/COPY/i}),INSERT_DATA:Object(r.createToken)({name:"INSERT_DATA",pattern:/Insert +Data/i}),DELETE_DATA:Object(r.createToken)({name:"DELETE_DATA",pattern:/Delete +Data/i}),DELETE_WHERE:Object(r.createToken)({name:"DELETE_WHERE",pattern:/Delete +Where/i}),WITH:Object(r.createToken)({name:"WITH",pattern:/WITH/i}),DELETE:Object(r.createToken)({name:"DELETE",pattern:/DELETE/i}),INSERT:Object(r.createToken)({name:"INSERT",pattern:/INSERT/i}),USING:Object(r.createToken)({name:"USING",pattern:/USING/i}),DEFAULT:Object(r.createToken)({name:"DEFAULT",pattern:/DEFAULT/i}),GRAPH:Object(r.createToken)({name:"GRAPH",pattern:/GRAPH/i}),ALL:Object(r.createToken)({name:"ALL",pattern:/ALL/i}),OPTIONAL:Object(r.createToken)({name:"OPTIONAL",pattern:/OPTIONAL/i}),SERVICE:Object(r.createToken)({name:"SERVICE",pattern:/SERVICE/i}),BIND:Object(r.createToken)({name:"BIND",pattern:/BIND/i}),UNNEST:Object(r.createToken)({name:"UNNEST",pattern:/UNNEST/i}),UNDEF:Object(r.createToken)({name:"UNDEF",pattern:/UNDEF/i}),MINUS:Object(r.createToken)({name:"MINUS",pattern:/MINUS/i}),UNION:Object(r.createToken)({name:"UNION",pattern:/UNION/i}),FILTER:Object(r.createToken)({name:"FILTER",pattern:/FILTER/i}),STR:Object(r.createToken)({name:"STR",pattern:/STR/i}),LANG:Object(r.createToken)({name:"LANG",pattern:/LANG/i}),LANGMATCHES:Object(r.createToken)({name:"LANGMATCHES",pattern:/LANGMATCHES/i}),DATATYPE:Object(r.createToken)({name:"DATATYPE",pattern:/DATATYPE/i}),BOUND:Object(r.createToken)({name:"BOUND",pattern:/BOUND/i}),IRI:Object(r.createToken)({name:"IRI",pattern:/IRI/i}),URI:Object(r.createToken)({name:"URI",pattern:/URI/i}),BNODE:Object(r.createToken)({name:"BNODE",pattern:/BNODE/i}),RAND:Object(r.createToken)({name:"RAND",pattern:/RAND/i}),ABS:Object(r.createToken)({name:"ABS",pattern:/ABS/i}),CEIL:Object(r.createToken)({name:"CEIL",pattern:/CEIL/i}),FLOOR:Object(r.createToken)({name:"FLOOR",pattern:/FLOOR/i}),ROUND:Object(r.createToken)({name:"ROUND",pattern:/ROUND/i}),CONCAT:Object(r.createToken)({name:"CONCAT",pattern:/CONCAT/i}),STRLEN:Object(r.createToken)({name:"STRLEN",pattern:/STRLEN/i}),UCASE:Object(r.createToken)({name:"UCASE",pattern:/UCASE/i}),LCASE:Object(r.createToken)({name:"LCASE",pattern:/LCASE/i}),ENCODE_FOR_URI:Object(r.createToken)({name:"ENCODE_FOR_URI",pattern:/ENCODE_FOR_URI/i}),CONTAINS:Object(r.createToken)({name:"CONTAINS",pattern:/CONTAINS/i}),STRSTARTS:Object(r.createToken)({name:"STRSTARTS",pattern:/STRSTARTS/i}),STRENDS:Object(r.createToken)({name:"STRENDS",pattern:/STRENDS/i}),STRBEFORE:Object(r.createToken)({name:"STRBEFORE",pattern:/STRBEFORE/i}),STRAFTER:Object(r.createToken)({name:"STRAFTER",pattern:/STRAFTER/i}),YEAR:Object(r.createToken)({name:"YEAR",pattern:/YEAR/i}),MONTH:Object(r.createToken)({name:"MONTH",pattern:/MONTH/i}),DAY:Object(r.createToken)({name:"DAY",pattern:/DAY/i}),HOURS:Object(r.createToken)({name:"HOURS",pattern:/HOURS/i}),MINUTES:Object(r.createToken)({name:"MINUTES",pattern:/MINUTES/i}),SECONDS:Object(r.createToken)({name:"SECONDS",pattern:/SECONDS/i}),TIMEZONE:Object(r.createToken)({name:"TIMEZONE",pattern:/TIMEZONE/i}),TZ:Object(r.createToken)({name:"TZ",pattern:/TZ/i}),NOW:Object(r.createToken)({name:"NOW",pattern:/NOW/i}),UUID:Object(r.createToken)({name:"UUID",pattern:/UUID/i}),STRUUID:Object(r.createToken)({name:"STRUUID",pattern:/STRUUID/i}),MD5:Object(r.createToken)({name:"MD5",pattern:/MD5/i}),SHA1:Object(r.createToken)({name:"SHA1",pattern:/SHA1/i}),SHA256:Object(r.createToken)({name:"SHA256",pattern:/SHA256/i}),SHA384:Object(r.createToken)({name:"SHA384",pattern:/SHA384/i}),SHA512:Object(r.createToken)({name:"SHA512",pattern:/SHA512/i}),COALESCE:Object(r.createToken)({name:"COALESCE",pattern:/COALESCE/i}),IF:Object(r.createToken)({name:"IF",pattern:/IF/i}),STRLANG:Object(r.createToken)({name:"STRLANG",pattern:/STRLANG/i}),STRDT:Object(r.createToken)({name:"STRDT",pattern:/STRDT/i}),sameTerm:Object(r.createToken)({name:"sameTerm",pattern:/sameTerm/i}),isIRI:Object(r.createToken)({name:"isIRI",pattern:/isIRI/i}),isURI:Object(r.createToken)({name:"isURI",pattern:/isURI/i}),isBlank:Object(r.createToken)({name:"isBlank",pattern:/isBlank/i}),isLiteral:Object(r.createToken)({name:"isLiteral",pattern:/isLiteral/i}),isNumeric:Object(r.createToken)({name:"isNumeric",pattern:/isNumeric/i}),REGEX:Object(r.createToken)({name:"REGEX",pattern:/REGEX/i}),SUBSTR:Object(r.createToken)({name:"SUBSTR",pattern:/SUBSTR/i}),REPLACE:Object(r.createToken)({name:"REPLACE",pattern:/REPLACE/i}),EXISTS:Object(r.createToken)({name:"EXISTS",pattern:/EXISTS/i}),NOT_EXISTS:Object(r.createToken)({name:"NOT_EXISTS",pattern:/NOT EXISTS/i}),COUNT:Object(r.createToken)({name:"COUNT",pattern:/COUNT/i}),SUM:Object(r.createToken)({name:"SUM",pattern:/SUM/i}),MIN:Object(r.createToken)({name:"MIN",pattern:/MIN/i}),AVG:Object(r.createToken)({name:"AVG",pattern:/AVG/i}),SAMPLE:Object(r.createToken)({name:"SAMPLE",pattern:/SAMPLE/i}),GROUP_CONCAT:Object(r.createToken)({name:"GROUP_CONCAT",pattern:/GROUP_CONCAT/i}),SEPARATOR:Object(r.createToken)({name:"SEPARATOR",pattern:/SEPARATOR/i}),TRUE:Object(r.createToken)({name:"TRUE",pattern:/TRUE/i}),FALSE:Object(r.createToken)({name:"FALSE",pattern:/FALSE/i}),IN:Object(r.createToken)({name:"IN",pattern:/IN/i}),NOT_IN:Object(r.createToken)({name:"NOT_IN",pattern:/NOT IN/i}),MAX_LENGTH:i,MAX:Object(r.createToken)({name:"MAX",pattern:/MAX/i,longer_alt:i})}},function(e,t,n){"use strict";n.d(t,"a",function(){return r});var r={or:function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return new RegExp(e.map(function(e){return"("+e.source+")"}).join("|"))},and:function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return new RegExp(e.map(function(e){return"("+e.source+")"}).join(""))},option:function(e){return new RegExp("("+e.source+")?")},many:function(e){return new RegExp("("+e.source+")*")}}},function(e,t,n){"use strict";n.r(t),n.d(t,"CATCH_ALL",function(){return i}),n.d(t,"CATCH_ALL_AT_LEAST_ONE",function(){return o}),n.d(t,"IRIREF",function(){return a}),n.d(t,"PN_CHARS_BASE",function(){return s}),n.d(t,"LANGTAG",function(){return c}),n.d(t,"INTEGER",function(){return u}),n.d(t,"DECIMAL",function(){return p}),n.d(t,"EXPONENT",function(){return l}),n.d(t,"ECHAR",function(){return f}),n.d(t,"WS",function(){return h}),n.d(t,"HEX",function(){return E}),n.d(t,"PN_LOCAL_ESC",function(){return d}),n.d(t,"PN_CHARS_U",function(){return T}),n.d(t,"PN_CHARS",function(){return m}),n.d(t,"PN_PREFIX",function(){return R}),n.d(t,"PERCENT",function(){return A}),n.d(t,"PLX",function(){return N}),n.d(t,"PN_LOCAL",function(){return y}),n.d(t,"VARNAME",function(){return O}),n.d(t,"ANON",function(){return S}),n.d(t,"NIL",function(){return L}),n.d(t,"STRING_LITERAL1",function(){return I}),n.d(t,"STRING_LITERAL2",function(){return v}),n.d(t,"STRING_LITERAL_LONG1",function(){return _}),n.d(t,"STRING_LITERAL_LONG2",function(){return k}),n.d(t,"DOUBLE",function(){return g}),n.d(t,"INTEGER_POSITIVE",function(){return C}),n.d(t,"DECIMAL_POSITIVE",function(){return P}),n.d(t,"DOUBLE_POSITIVE",function(){return M}),n.d(t,"INTEGER_NEGATIVE",function(){return U}),n.d(t,"DECIMAL_NEGATIVE",function(){return D}),n.d(t,"DOUBLE_NEGATIVE",function(){return x}),n.d(t,"VAR1",function(){return b}),n.d(t,"VAR2",function(){return F}),n.d(t,"BLANK_NODE_LABEL",function(){return w}),n.d(t,"PNAME_NS",function(){return G}),n.d(t,"PNAME_LN",function(){return B});var r=n(2),i=/[\s\S]*/,o=/[\s\S]+/,a=/<[^<>\\{}|\^`\u0000-\u0020]*>/,s=/[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDBFF][\uDC00-\uDFFF]/,c=/@[a-zA-Z]+(-[a-zA-Z0-9]+)*/,u=/\d+/,p=/(\d*\.\d+)|(\d+\.\d*)/,l=/[eE][+-]?\d+/,f=/\\[tbnrf"'\\]/,h=/[\u0020\u0009\u000d\u000a]/,E=/[0-9A-Fa-f]/,d=/\\[_~.\-!\$&'()*+,=\/?#@%;]/,T=r.a.or(s,/_/),m=r.a.or(T,/-/,/\d/,/\u00b7/,/[\u0300-\u036f]/,/[\u203f-\u2040]/),R=r.a.and(s,r.a.option(r.a.and(r.a.many(r.a.or(m,/\./)),m))),A=r.a.and(/%/,E,E),N=r.a.or(A,d),y=r.a.and(r.a.or(T,/:/,/\d/,N),r.a.option(r.a.and(r.a.many(r.a.or(m,/\./,/:/,N)),r.a.or(m,/:/,N)))),O=r.a.and(r.a.or(T,/\d/),r.a.many(r.a.or(T,/\d/,/\u00b7/,/[\u0300-\u036f]/,/[\u203f-\u2040]/))),S=r.a.and(/\[/,r.a.many(h),/\]/),L=r.a.and(/\(/,r.a.many(h),/\)/),I=r.a.and(/'/,r.a.many(r.a.or(/[^\u0027\u005C\u000A\u000D]/,f)),/'/),v=r.a.and(/"/,r.a.many(r.a.or(/[^\u0022\u005C\u000A\u000D]/,f)),/"/),_=r.a.and(/'''/,r.a.many(r.a.and(r.a.option(r.a.or(/'/,/''/)),r.a.or(/[^'\\]/,f))),/'''/),k=r.a.and(/"""/,r.a.many(r.a.and(r.a.option(r.a.or(/"/,/""/)),r.a.or(/[^"\\]/,f))),/"""/),g=r.a.or(r.a.and(/\d+\.\d*/,l),r.a.and(/\.\d+/,l),r.a.and(/\d+/,l)),C=r.a.and(/\+/,u),P=r.a.and(/\+/,p),M=r.a.and(/\+/,g),U=r.a.and(/-/,u),D=r.a.and(/-/,p),x=r.a.and(/-/,g),b=r.a.and(/\?/,O),F=r.a.and(/\$/,O),w=r.a.and(/_:/,r.a.or(T,/\d/),r.a.option(r.a.and(r.a.many(r.a.or(m,/\./)),m))),G=r.a.and(r.a.option(R),/:/),B=r.a.and(G,y)},function(e,t,n){"use strict";function r(e){return e&&0===e.length}function i(e){return null==e?[]:Object.keys(e)}function o(e){for(var t=[],n=Object.keys(e),r=0;r<n.length;r++)t.push(e[n[r]]);return t}function a(e,t){for(var n=[],r=i(e),o=0;o<r.length;o++){var a=r[o];n.push(t.call(null,e[a],a))}return n}function s(e,t){for(var n=[],r=0;r<e.length;r++)n.push(t.call(null,e[r],r));return n}function c(e){for(var t=[],n=0;n<e.length;n++){var r=e[n];Array.isArray(r)?t=t.concat(c(r)):t.push(r)}return t}function u(e){return r(e)?void 0:e[0]}function p(e){var t=e&&e.length;return t?e[t-1]:void 0}function l(e,t){if(Array.isArray(e))for(var n=0;n<e.length;n++)t.call(null,e[n],n);else{if(!M(e))throw Error("non exhaustive match");var r=i(e);for(n=0;n<r.length;n++){var o=r[n],a=e[o];t.call(null,a,o)}}}function f(e){return"string"==typeof e}function h(e){return void 0===e}function E(e){return e instanceof Function}function d(e,t){return void 0===t&&(t=1),e.slice(t,e.length)}function T(e,t){return void 0===t&&(t=1),e.slice(0,e.length-t)}function m(e,t){var n=[];if(Array.isArray(e))for(var r=0;r<e.length;r++){var i=e[r];t.call(null,i)&&n.push(i)}return n}function R(e,t){return m(e,function(e){return!t(e)})}function A(e,t){for(var n=Object.keys(e),r={},i=0;i<n.length;i++){var o=n[i],a=e[o];t(a)&&(r[o]=a)}return r}function N(e,t){return!!M(e)&&e.hasOwnProperty(t)}function y(e,t){return void 0!==L(e,function(e){return e===t})}function O(e){for(var t=[],n=0;n<e.length;n++)t.push(e[n]);return t}function S(e){var t={};for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t}function L(e,t){for(var n=0;n<e.length;n++){var r=e[n];if(t.call(null,r))return r}}function I(e,t){for(var n=[],r=0;r<e.length;r++){var i=e[r];t.call(null,i)&&n.push(i)}return n}function v(e,t,n){for(var r=Array.isArray(e),a=r?e:o(e),s=r?[]:i(e),c=n,u=0;u<a.length;u++)c=t.call(null,c,a[u],r?u:s[u]);return c}function _(e){return R(e,function(e){return null==e})}function k(e,t){void 0===t&&(t=function(e){return e});var n=[];return v(e,function(e,r){var i=t(r);return y(n,i)?e:(n.push(i),e.concat(r))},[])}function g(e){for(var t=[],n=1;n<arguments.length;n++)t[n-1]=arguments[n];var r=[null].concat(t);return Function.bind.apply(e,r)}function C(e){return Array.isArray(e)}function P(e){return e instanceof RegExp}function M(e){return e instanceof Object}function U(e,t){for(var n=0;n<e.length;n++)if(!t(e[n],n))return!1;return!0}function D(e,t){return R(e,function(e){return y(t,e)})}function x(e,t){for(var n=0;n<e.length;n++)if(t(e[n]))return!0;return!1}function b(e,t){for(var n=0;n<e.length;n++)if(e[n]===t)return n;return-1}function F(e,t){var n=O(e);return n.sort(function(e,n){return t(e)-t(n)}),n}function w(e,t){if(e.length!==t.length)throw Error("can't zipObject with different number of keys and values!");for(var n={},r=0;r<e.length;r++)n[e[r]]=t[r];return n}function G(e){for(var t=[],n=1;n<arguments.length;n++)t[n-1]=arguments[n];for(var r=0;r<t.length;r++)for(var o=t[r],a=i(o),s=0;s<a.length;s++){var c=a[s];e[c]=o[c]}return e}function B(e){for(var t=[],n=1;n<arguments.length;n++)t[n-1]=arguments[n];for(var r=0;r<t.length;r++){var o=t[r];if(!h(o))for(var a=i(o),s=0;s<a.length;s++){var c=a[s];N(e,c)||(e[c]=o[c])}}return e}function j(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return B.apply(null,[{}].concat(e))}function V(e,t){var n={};return l(e,function(e){var r=t(e),i=n[r];i?i.push(e):n[r]=[e]}),n}function H(e,t){for(var n=S(e),r=i(t),o=0;o<r.length;o++){var a=r[o],s=t[a];n[a]=s}return n}function W(){}function K(e){return e}function Y(e){for(var t=[],n=0;n<e.length;n++){var r=e[n];t.push(void 0!==r?r:void 0)}return t}function X(e){console&&console.error&&console.error("Error: "+e)}function z(e){console&&console.warn&&console.warn("Warning: "+e)}function q(){return"function"==typeof Map}function Z(e,t){t.forEach(function(t){var n=t.prototype;Object.getOwnPropertyNames(n).forEach(function(r){if("constructor"!==r){var i=Object.getOwnPropertyDescriptor(n,r);i&&(i.get||i.set)?Object.defineProperty(e.prototype,r,i):e.prototype[r]=t.prototype[r]}})})}function $(e){function t(){}t.prototype=e;var n=new t;function r(){return typeof n.bar}return r(),r(),e}Object.defineProperty(t,"__esModule",{value:!0}),t.isEmpty=r,t.keys=i,t.values=o,t.mapValues=a,t.map=s,t.flatten=c,t.first=u,t.last=p,t.forEach=l,t.isString=f,t.isUndefined=h,t.isFunction=E,t.drop=d,t.dropRight=T,t.filter=m,t.reject=R,t.pick=A,t.has=N,t.contains=y,t.cloneArr=O,t.cloneObj=S,t.find=L,t.findAll=I,t.reduce=v,t.compact=_,t.uniq=k,t.partial=g,t.isArray=C,t.isRegExp=P,t.isObject=M,t.every=U,t.difference=D,t.some=x,t.indexOf=b,t.sortBy=F,t.zipObject=w,t.assign=G,t.assignNoOverwrite=B,t.defaults=j,t.groupBy=V,t.merge=H,t.NOOP=W,t.IDENTITY=K,t.packArray=Y,t.PRINT_ERROR=X,t.PRINT_WARNING=z,t.isES2015MapSupported=q,t.applyMixins=Z,t.toFastProperties=$},function(e,t,n){"use strict";n.r(t),n.d(t,"terminals",function(){return c});var r=n(0),i=n(3),o=Object(r.createToken)({name:"STRING_LITERAL_LONG1",pattern:i.STRING_LITERAL_LONG1}),a=Object(r.createToken)({name:"STRING_LITERAL_LONG2",pattern:i.STRING_LITERAL_LONG2}),s=Object(r.createToken)({name:"PNAME_LN",pattern:i.PNAME_LN}),c={IRIREF:Object(r.createToken)({name:"IRIREF",pattern:i.IRIREF,label:"<http://example.com>"}),LANGTAG:Object(r.createToken)({name:"LANGTAG",pattern:i.LANGTAG}),INTEGER:Object(r.createToken)({name:"INTEGER",pattern:i.INTEGER}),DECIMAL:Object(r.createToken)({name:"DECIMAL",pattern:i.DECIMAL}),DOUBLE:Object(r.createToken)({name:"DOUBLE",pattern:i.DOUBLE}),INTEGER_POSITIVE:Object(r.createToken)({name:"INTEGER_POSITIVE",pattern:i.INTEGER_POSITIVE}),DECIMAL_POSITIVE:Object(r.createToken)({name:"DECIMAL_POSITIVE",pattern:i.DECIMAL_POSITIVE}),DOUBLE_POSITIVE:Object(r.createToken)({name:"DOUBLE_POSITIVE",pattern:i.DOUBLE_POSITIVE}),INTEGER_NEGATIVE:Object(r.createToken)({name:"INTEGER_NEGATIVE",pattern:i.INTEGER_NEGATIVE}),DECIMAL_NEGATIVE:Object(r.createToken)({name:"DECIMAL_NEGATIVE",pattern:i.DECIMAL_NEGATIVE}),DOUBLE_NEGATIVE:Object(r.createToken)({name:"DOUBLE_NEGATIVE",pattern:i.DOUBLE_NEGATIVE}),STRING_LITERAL_LONG1:o,STRING_LITERAL_LONG2:a,STRING_LITERAL1:Object(r.createToken)({name:"STRING_LITERAL1",pattern:i.STRING_LITERAL1,longer_alt:o}),STRING_LITERAL2:Object(r.createToken)({name:"STRING_LITERAL2",pattern:i.STRING_LITERAL2,longer_alt:a}),NIL:Object(r.createToken)({name:"NIL",pattern:i.NIL,label:"()"}),ANON:Object(r.createToken)({name:"ANON",pattern:i.ANON,label:"[]"}),PNAME_LN:s,PNAME_NS:Object(r.createToken)({name:"PNAME_NS",pattern:i.PNAME_NS,longer_alt:s}),BLANK_NODE_LABEL:Object(r.createToken)({name:"BLANK_NODE_LABEL",pattern:i.BLANK_NODE_LABEL}),VAR1:Object(r.createToken)({name:"VAR1",pattern:i.VAR1,label:"?foo"}),VAR2:Object(r.createToken)({name:"VAR2",pattern:i.VAR2,label:"?bar"}),PERCENT:Object(r.createToken)({name:"PERCENT",pattern:i.PERCENT})}},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(4),a=n(7),s=function(){function e(e){this.definition=e}return e.prototype.accept=function(e){e.visit(this),o.forEach(this.definition,function(t){t.accept(e)})},e}();t.AbstractProduction=s;var c=function(e){function t(t){var n=e.call(this,[])||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),Object.defineProperty(t.prototype,"definition",{get:function(){return void 0!==this.referencedRule?this.referencedRule.definition:[]},set:function(e){},enumerable:!0,configurable:!0}),t.prototype.accept=function(e){e.visit(this)},t}(s);t.NonTerminal=c;var u=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.orgText="",o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.Rule=u;var p=function(e){function t(t){var n=e.call(this,t.definition)||this;return o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.Flat=p;var l=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.Option=l;var f=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.RepetitionMandatory=f;var h=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.RepetitionMandatoryWithSeparator=h;var E=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.Repetition=E;var d=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.RepetitionWithSeparator=d;var T=function(e){function t(t){var n=e.call(this,t.definition)||this;return n.idx=1,o.assign(n,o.pick(t,function(e){return void 0!==e})),n}return i(t,e),t}(s);t.Alternation=T;var m=function(){function e(e){this.idx=1,o.assign(this,o.pick(e,function(e){return void 0!==e}))}return e.prototype.accept=function(e){e.visit(this)},e}();function R(e){function t(e){return o.map(e,R)}if(e instanceof c)return{type:"NonTerminal",name:e.nonTerminalName,idx:e.idx};if(e instanceof p)return{type:"Flat",definition:t(e.definition)};if(e instanceof l)return{type:"Option",idx:e.idx,definition:t(e.definition)};if(e instanceof f)return{type:"RepetitionMandatory",name:e.name,idx:e.idx,definition:t(e.definition)};if(e instanceof h)return{type:"RepetitionMandatoryWithSeparator",name:e.name,idx:e.idx,separator:R(new m({terminalType:e.separator})),definition:t(e.definition)};if(e instanceof d)return{type:"RepetitionWithSeparator",name:e.name,idx:e.idx,separator:R(new m({terminalType:e.separator})),definition:t(e.definition)};if(e instanceof E)return{type:"Repetition",name:e.name,idx:e.idx,definition:t(e.definition)};if(e instanceof T)return{type:"Alternation",name:e.name,idx:e.idx,definition:t(e.definition)};if(e instanceof m){var n={type:"Terminal",name:a.tokenName(e.terminalType),label:a.tokenLabel(e.terminalType),idx:e.idx},r=e.terminalType.PATTERN;return e.terminalType.PATTERN&&(n.pattern=o.isRegExp(r)?r.source:r),n}if(e instanceof u)return{type:"Rule",name:e.name,orgText:e.orgText,definition:t(e.definition)};throw Error("non exhaustive match")}t.Terminal=m,t.serializeGrammar=function(e){return o.map(e,R)},t.serializeProduction=R},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(9),o=n(22),a=n(13);function s(e){return r.isString(e.LABEL)&&""!==e.LABEL}function c(e){return r.isObject(e)&&e.hasOwnProperty("tokenName")&&r.isString(e.tokenName)?e.tokenName:i.functionName(e)}t.tokenLabel=function(e){return s(e)?e.LABEL:c(e)},t.hasTokenLabel=s,t.tokenName=c;var u="parent",p="categories",l="label",f="group",h="push_mode",E="pop_mode",d="longer_alt",T="line_breaks",m="start_chars_hint";function R(e){return function(e){var t=e.name,n=e.pattern,o={};i.defineNameProp(o,t)||(o.tokenName=t);r.isUndefined(n)||(o.PATTERN=n);if(r.has(e,u))throw"The parent property is no longer supported.\nSee: https://github.com/SAP/chevrotain/issues/564#issuecomment-349062346 for details.";r.has(e,p)&&(o.CATEGORIES=e[p]);a.augmentTokenTypes([o]),r.has(e,l)&&(o.LABEL=e[l]);r.has(e,f)&&(o.GROUP=e[f]);r.has(e,E)&&(o.POP_MODE=e[E]);r.has(e,h)&&(o.PUSH_MODE=e[h]);r.has(e,d)&&(o.LONGER_ALT=e[d]);r.has(e,T)&&(o.LINE_BREAKS=e[T]);r.has(e,m)&&(o.START_CHARS_HINT=e[m]);return o}(e)}t.createToken=R,t.EOF=R({name:"EOF",pattern:o.Lexer.NA}),a.augmentTokenTypes([t.EOF]),t.createTokenInstance=function(e,t,n,r,i,o,a,s){return{image:t,startOffset:n,endOffset:r,startLine:i,endLine:o,startColumn:a,endColumn:s,tokenTypeIdx:e.tokenTypeIdx,tokenType:e}},t.tokenMatcher=function(e,t){return a.tokenStructuredMatcher(e,t)}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(9),i=n(4),o=n(36),a=n(7),s=n(31),c=n(23),u=n(16),p=n(32),l=n(33),f=n(41),h=n(42),E=n(44),d=n(45),T=n(46),m=n(47),R=n(48);t.END_OF_FILE=a.createTokenInstance(a.EOF,"",NaN,NaN,NaN,NaN,NaN,NaN),Object.freeze(t.END_OF_FILE),t.DEFAULT_PARSER_CONFIG=Object.freeze({recoveryEnabled:!1,maxLookahead:4,ignoredIssues:{},dynamicTokensEnabled:!1,outputCst:!0,errorMessageProvider:u.defaultParserErrorProvider,serializedGrammar:null}),t.DEFAULT_RULE_CONFIG=Object.freeze({recoveryValueFunc:function(){},resyncEnabled:!0}),function(e){e[e.INVALID_RULE_NAME=0]="INVALID_RULE_NAME",e[e.DUPLICATE_RULE_NAME=1]="DUPLICATE_RULE_NAME",e[e.INVALID_RULE_OVERRIDE=2]="INVALID_RULE_OVERRIDE",e[e.DUPLICATE_PRODUCTIONS=3]="DUPLICATE_PRODUCTIONS",e[e.UNRESOLVED_SUBRULE_REF=4]="UNRESOLVED_SUBRULE_REF",e[e.LEFT_RECURSION=5]="LEFT_RECURSION",e[e.NONE_LAST_EMPTY_ALT=6]="NONE_LAST_EMPTY_ALT",e[e.AMBIGUOUS_ALTS=7]="AMBIGUOUS_ALTS",e[e.CONFLICT_TOKENS_RULES_NAMESPACE=8]="CONFLICT_TOKENS_RULES_NAMESPACE",e[e.INVALID_TOKEN_NAME=9]="INVALID_TOKEN_NAME",e[e.INVALID_NESTED_RULE_NAME=10]="INVALID_NESTED_RULE_NAME",e[e.DUPLICATE_NESTED_NAME=11]="DUPLICATE_NESTED_NAME",e[e.NO_NON_EMPTY_LOOKAHEAD=12]="NO_NON_EMPTY_LOOKAHEAD",e[e.AMBIGUOUS_PREFIX_ALTS=13]="AMBIGUOUS_PREFIX_ALTS",e[e.TOO_MANY_ALTS=14]="TOO_MANY_ALTS"}(t.ParserDefinitionErrorType||(t.ParserDefinitionErrorType={})),t.EMPTY_ALT=function(e){return void 0===e&&(e=void 0),function(){return e}};var Parser=function(){function Parser(e,n){void 0===n&&(n=t.DEFAULT_PARSER_CONFIG),this.ignoredIssues=t.DEFAULT_PARSER_CONFIG.ignoredIssues,this.definitionErrors=[],this.selfAnalysisDone=!1;this.initErrorHandler(n),this.initLexerAdapter(),this.initLooksAhead(n),this.initRecognizerEngine(e,n),this.initRecoverable(n),this.initTreeBuilder(n),this.initContentAssist(),this.ignoredIssues=i.has(n,"ignoredIssues")?n.ignoredIssues:t.DEFAULT_PARSER_CONFIG.ignoredIssues,i.toFastProperties(this)}return Parser.performSelfAnalysis=function(e){e.performSelfAnalysis()},Parser.prototype.performSelfAnalysis=function(){var e,t=this;this.selfAnalysisDone=!0;var n=r.classNameFromInstance(this),a=this.gastProductionsCache;if(this.serializedGrammar){var l=s.deserializeGrammar(this.serializedGrammar,this.tokensMap);i.forEach(l,function(e){t.gastProductionsCache.put(e.name,e)})}var f=p.resolveGrammar({rules:a.values()});if(this.definitionErrors.push.apply(this.definitionErrors,f),i.isEmpty(f)){var h=p.validateGrammar({rules:a.values(),maxLookahead:this.maxLookahead,tokenTypes:i.values(this.tokensMap),ignoredIssues:this.ignoredIssues,errMsgProvider:u.defaultGrammarValidatorErrorProvider,grammarName:n});this.definitionErrors.push.apply(this.definitionErrors,h)}if(i.isEmpty(this.definitionErrors)){var E=o.computeAllProdsFollows(a.values());this.resyncFollows=E}var d=c.analyzeCst(a.values(),this.fullRuleNameToShort);if(this.allRuleNames=d.allRuleNames,!Parser.DEFER_DEFINITION_ERRORS_HANDLING&&!i.isEmpty(this.definitionErrors))throw e=i.map(this.definitionErrors,function(e){return e.message}),new Error("Parser Definition Errors detected:\n "+e.join("\n-------------------------------\n"))},Parser.DEFER_DEFINITION_ERRORS_HANDLING=!1,Parser}();t.Parser=Parser,i.applyMixins(Parser,[l.Recoverable,f.LooksAhead,h.TreeBuilder,E.LexerAdapter,T.RecognizerEngine,d.RecognizerApi,m.ErrorHandler,R.ContentAssist])},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4);t.classNameFromInstance=function(e){return a(e.constructor)};var i=/^\s*function\s*(\S*)\s*\(/,o="name";function a(e){var t=e.name;return t||e.toString().match(i)[1]}t.functionName=a,t.defineNameProp=function(e,t){var n=Object.getOwnPropertyDescriptor(e,o);return!(!r.isUndefined(n)&&!n.configurable||(Object.defineProperty(e,o,{enumerable:!1,configurable:!0,writable:!1,value:t}),0))};var s=function(){function e(){this._state={}}return e.prototype.keys=function(){return r.keys(this._state)},e.prototype.values=function(){return r.values(this._state)},e.prototype.put=function(e,t){this._state[e]=t},e.prototype.putAll=function(e){this._state=r.assign(this._state,e._state)},e.prototype.get=function(e){return this._state[e]},e.prototype.containsKey=function(e){return r.has(this._state,e)},e.prototype.clear=function(){this._state={}},e}();t.HashTable=s},function(e,t,n){"use strict";n.r(t),n.d(t,"sparqlTokenMap",function(){return a}),n.d(t,"baseTokens",function(){return s}),n.d(t,"pathsTokens",function(){return c}),n.d(t,"nonStandardTokens",function(){return u}),n.d(t,"stardogSparqlTokens",function(){return l}),n.d(t,"sparqlTokenTypes",function(){return f});var r=n(0),i=n(5),o=n(1),a={IRIREF:i.terminals.IRIREF,LANGTAG:i.terminals.LANGTAG,INTEGER:i.terminals.INTEGER,DECIMAL:i.terminals.DECIMAL,DOUBLE:i.terminals.DOUBLE,INTEGER_POSITIVE:i.terminals.INTEGER_POSITIVE,DECIMAL_POSITIVE:i.terminals.DECIMAL_POSITIVE,DOUBLE_POSITIVE:i.terminals.DOUBLE_POSITIVE,INTEGER_NEGATIVE:i.terminals.INTEGER_NEGATIVE,DECIMAL_NEGATIVE:i.terminals.DECIMAL_NEGATIVE,DOUBLE_NEGATIVE:i.terminals.DOUBLE_NEGATIVE,STRING_LITERAL1:i.terminals.STRING_LITERAL1,STRING_LITERAL2:i.terminals.STRING_LITERAL2,STRING_LITERAL_LONG1:i.terminals.STRING_LITERAL_LONG1,STRING_LITERAL_LONG2:i.terminals.STRING_LITERAL_LONG2,NIL:i.terminals.NIL,ANON:i.terminals.ANON,PNAME_NS:i.terminals.PNAME_NS,PNAME_LN:i.terminals.PNAME_LN,BLANK_NODE_LABEL:i.terminals.BLANK_NODE_LABEL,VAR1:i.terminals.VAR1,VAR2:i.terminals.VAR2,PERCENT:i.terminals.PERCENT,Comment:Object(r.createToken)({name:"Comment",pattern:/#[^\n]*/,group:"comments"}),LCurly:Object(r.createToken)({name:"LCurly",pattern:"{"}),RCurly:Object(r.createToken)({name:"RCurly",pattern:"}"}),LParen:Object(r.createToken)({name:"LParen",pattern:"("}),RParen:Object(r.createToken)({name:"RParen",pattern:")"}),WhiteSpace:Object(r.createToken)({name:"WhiteSpace",pattern:/\s+/,group:r.Lexer.SKIPPED,line_breaks:!0}),Star:Object(r.createToken)({name:"Star",pattern:"*"}),Unknown:Object(r.createToken)({name:"Unknown",pattern:/\w+/}),Period:Object(r.createToken)({name:"Period",pattern:"."}),QuestionMark:Object(r.createToken)({name:"QuestionMark",pattern:"?"}),Plus:Object(r.createToken)({name:"Plus",pattern:"+"}),Minus:Object(r.createToken)({name:"Minus",pattern:"-"}),LBracket:Object(r.createToken)({name:"LBracket",pattern:"["}),RBracket:Object(r.createToken)({name:"RBracket",pattern:"]"}),Semicolon:Object(r.createToken)({name:"Semicolon",pattern:";"}),Comma:Object(r.createToken)({name:"Comma",pattern:","}),Pipe:Object(r.createToken)({name:"Pipe",pattern:"|"}),ForwardSlash:Object(r.createToken)({name:"ForwardSlash",pattern:"/"}),Caret:Object(r.createToken)({name:"Caret",pattern:"^"}),DoubleCaret:Object(r.createToken)({name:"DoubleCaret",pattern:"^^"}),Bang:Object(r.createToken)({name:"Bang",pattern:"!"}),LogicalOr:Object(r.createToken)({name:"LogicalOr",pattern:"||"}),LogicalAnd:Object(r.createToken)({name:"LogicalAnd",pattern:"&&"}),Equals:Object(r.createToken)({name:"Equals",pattern:"="}),NotEquals:Object(r.createToken)({name:"NotEquals",pattern:"!="}),LessThan:Object(r.createToken)({name:"LessThan",pattern:"<"}),GreaterThan:Object(r.createToken)({name:"GreaterThan",pattern:">"}),LessThanEquals:Object(r.createToken)({name:"LessThanEquals",pattern:"<="}),GreaterThanEquals:Object(r.createToken)({name:"GreaterThanEquals",pattern:">="}),SELECT:o.keywords.SELECT,CONSTRUCT:o.keywords.CONSTRUCT,DISTINCT:o.keywords.DISTINCT,START:o.keywords.START,END:o.keywords.END,VIA:o.keywords.VIA,CYCLIC:o.keywords.CYCLIC,PATHS_SHORTEST:o.keywords.PATHS_SHORTEST,PATHS_ALL:o.keywords.PATHS_ALL,PATHS:o.keywords.PATHS,AS:o.keywords.AS,WHERE:o.keywords.WHERE,A:o.keywords.A,GroupBy:o.keywords.GroupBy,OrderBy:o.keywords.OrderBy,By:o.keywords.By,BASE:o.keywords.BASE,PREFIX:o.keywords.PREFIX,DESCRIBE:o.keywords.DESCRIBE,ASK:o.keywords.ASK,FROM:o.keywords.FROM,REDUCED:o.keywords.REDUCED,NAMED:o.keywords.NAMED,HAVING:o.keywords.HAVING,ASC:o.keywords.ASC,DESC:o.keywords.DESC,OFFSET:o.keywords.OFFSET,LIMIT:o.keywords.LIMIT,VALUES:o.keywords.VALUES,LOAD:o.keywords.LOAD,SILENT:o.keywords.SILENT,INTO:o.keywords.INTO,CLEAR:o.keywords.CLEAR,DROP:o.keywords.DROP,CREATE:o.keywords.CREATE,ADD:o.keywords.ADD,TO:o.keywords.TO,MOVE:o.keywords.MOVE,COPY:o.keywords.COPY,INSERT_DATA:o.keywords.INSERT_DATA,DELETE_DATA:o.keywords.DELETE_DATA,DELETE_WHERE:o.keywords.DELETE_WHERE,WITH:o.keywords.WITH,DELETE:o.keywords.DELETE,INSERT:o.keywords.INSERT,USING:o.keywords.USING,DEFAULT:o.keywords.DEFAULT,GRAPH:o.keywords.GRAPH,ALL:o.keywords.ALL,OPTIONAL:o.keywords.OPTIONAL,SERVICE:o.keywords.SERVICE,BIND:o.keywords.BIND,UNNEST:o.keywords.UNNEST,UNDEF:o.keywords.UNDEF,MINUS:o.keywords.MINUS,UNION:o.keywords.UNION,FILTER:o.keywords.FILTER,STR:o.keywords.STR,LANG:o.keywords.LANG,LANGMATCHES:o.keywords.LANGMATCHES,DATATYPE:o.keywords.DATATYPE,BOUND:o.keywords.BOUND,IRI:o.keywords.IRI,URI:o.keywords.URI,BNODE:o.keywords.BNODE,RAND:o.keywords.RAND,ABS:o.keywords.ABS,CEIL:o.keywords.CEIL,FLOOR:o.keywords.FLOOR,ROUND:o.keywords.ROUND,CONCAT:o.keywords.CONCAT,STRLEN:o.keywords.STRLEN,UCASE:o.keywords.UCASE,LCASE:o.keywords.LCASE,ENCODE_FOR_URI:o.keywords.ENCODE_FOR_URI,CONTAINS:o.keywords.CONTAINS,STRSTARTS:o.keywords.STRSTARTS,STRENDS:o.keywords.STRENDS,STRBEFORE:o.keywords.STRBEFORE,STRAFTER:o.keywords.STRAFTER,YEAR:o.keywords.YEAR,MONTH:o.keywords.MONTH,DAY:o.keywords.DAY,HOURS:o.keywords.HOURS,MINUTES:o.keywords.MINUTES,SECONDS:o.keywords.SECONDS,TIMEZONE:o.keywords.TIMEZONE,TZ:o.keywords.TZ,NOW:o.keywords.NOW,UUID:o.keywords.UUID,STRUUID:o.keywords.STRUUID,MD5:o.keywords.MD5,SHA1:o.keywords.SHA1,SHA256:o.keywords.SHA256,SHA384:o.keywords.SHA384,SHA512:o.keywords.SHA512,COALESCE:o.keywords.COALESCE,IF:o.keywords.IF,STRLANG:o.keywords.STRLANG,STRDT:o.keywords.STRDT,sameTerm:o.keywords.sameTerm,isIRI:o.keywords.isIRI,isURI:o.keywords.isURI,isBlank:o.keywords.isBlank,isLiteral:o.keywords.isLiteral,isNumeric:o.keywords.isNumeric,REGEX:o.keywords.REGEX,SUBSTR:o.keywords.SUBSTR,REPLACE:o.keywords.REPLACE,EXISTS:o.keywords.EXISTS,NOT_EXISTS:o.keywords.NOT_EXISTS,COUNT:o.keywords.COUNT,SUM:o.keywords.SUM,MIN:o.keywords.MIN,AVG:o.keywords.AVG,SAMPLE:o.keywords.SAMPLE,GROUP_CONCAT:o.keywords.GROUP_CONCAT,SEPARATOR:o.keywords.SEPARATOR,TRUE:o.keywords.TRUE,FALSE:o.keywords.FALSE,IN:o.keywords.IN,NOT_IN:o.keywords.NOT_IN,MAX_LENGTH:o.keywords.MAX_LENGTH,MAX:o.keywords.MAX},s=[a.NIL,a.ANON,a.LCurly,a.RCurly,a.LParen,a.RParen,a.WhiteSpace,a.IRIREF,a.LANGTAG,a.DOUBLE,a.DECIMAL,a.INTEGER,a.DOUBLE_POSITIVE,a.DECIMAL_POSITIVE,a.INTEGER_POSITIVE,a.DOUBLE_NEGATIVE,a.DECIMAL_NEGATIVE,a.INTEGER_NEGATIVE,a.STRING_LITERAL1,a.STRING_LITERAL2,a.STRING_LITERAL_LONG1,a.STRING_LITERAL_LONG2,a.PNAME_NS,a.PNAME_LN,a.BLANK_NODE_LABEL,a.VAR1,a.VAR2,a.Comment,a.SELECT,a.CONSTRUCT,a.DISTINCT,a.Star,a.WHERE,a.GroupBy,a.OrderBy,a.By,a.Period,a.QuestionMark,a.Plus,a.Minus,a.LBracket,a.RBracket,a.PERCENT,a.BASE,a.PREFIX,a.DESCRIBE,a.ASK,a.FROM,a.REDUCED,a.NAMED,a.HAVING,a.ASC,a.DESC,a.OFFSET,a.LIMIT,a.VALUES,a.LOAD,a.SILENT,a.INTO,a.AS,a.CLEAR,a.DROP,a.CREATE,a.ADD,a.TO,a.MOVE,a.COPY,a.INSERT_DATA,a.DELETE_DATA,a.DELETE_WHERE,a.WITH,a.DELETE,a.INSERT,a.USING,a.DEFAULT,a.GRAPH,a.ALL,a.OPTIONAL,a.SERVICE,a.BIND,a.UNDEF,a.MINUS,a.UNION,a.FILTER,a.LANGMATCHES,a.LANG,a.DATATYPE,a.BOUND,a.IRI,a.URI,a.BNODE,a.RAND,a.ABS,a.CEIL,a.FLOOR,a.ROUND,a.CONCAT,a.STRLEN,a.UCASE,a.LCASE,a.ENCODE_FOR_URI,a.CONTAINS,a.STRSTARTS,a.STRENDS,a.STRBEFORE,a.STRAFTER,a.YEAR,a.MONTH,a.DAY,a.HOURS,a.MINUTES,a.SECONDS,a.TIMEZONE,a.TZ,a.NOW,a.UUID,a.STRUUID,a.MD5,a.SHA1,a.SHA256,a.SHA384,a.SHA512,a.COALESCE,a.IF,a.STRLANG,a.STRDT,a.STR,a.sameTerm,a.isIRI,a.isURI,a.isBlank,a.isLiteral,a.isNumeric,a.REGEX,a.SUBSTR,a.REPLACE,a.EXISTS,a.NOT_EXISTS,a.COUNT,a.SUM,a.MIN,a.MAX_LENGTH,a.MAX,a.AVG,a.SAMPLE,a.GROUP_CONCAT,a.SEPARATOR,a.TRUE,a.FALSE,a.Semicolon,a.Comma,a.ForwardSlash,a.DoubleCaret,a.Caret,a.LogicalOr,a.Pipe,a.LogicalAnd,a.NotEquals,a.Bang,a.Equals,a.LessThanEquals,a.GreaterThanEquals,a.LessThan,a.GreaterThan,a.IN,a.NOT_IN,a.A,a.Unknown],c=[a.START,a.END,a.VIA,a.CYCLIC,a.PATHS_SHORTEST,a.PATHS_ALL,a.PATHS],u=c.concat([a.UNNEST]),p=s.indexOf(a.SELECT),l=s.slice(0,p).concat(u,s.slice(p)),f=s.concat(u)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(6),i=function(){function e(){}return e.prototype.visit=function(e){if(e instanceof r.NonTerminal)return this.visitNonTerminal(e);if(e instanceof r.Flat)return this.visitFlat(e);if(e instanceof r.Option)return this.visitOption(e);if(e instanceof r.RepetitionMandatory)return this.visitRepetitionMandatory(e);if(e instanceof r.RepetitionMandatoryWithSeparator)return this.visitRepetitionMandatoryWithSeparator(e);if(e instanceof r.RepetitionWithSeparator)return this.visitRepetitionWithSeparator(e);if(e instanceof r.Repetition)return this.visitRepetition(e);if(e instanceof r.Alternation)return this.visitAlternation(e);if(e instanceof r.Terminal)return this.visitTerminal(e);if(e instanceof r.Rule)return this.visitRule(e);throw Error("non exhaustive match")},e.prototype.visitNonTerminal=function(e){},e.prototype.visitFlat=function(e){},e.prototype.visitOption=function(e){},e.prototype.visitRepetition=function(e){},e.prototype.visitRepetitionMandatory=function(e){},e.prototype.visitRepetitionMandatoryWithSeparator=function(e){},e.prototype.visitRepetitionWithSeparator=function(e){},e.prototype.visitAlternation=function(e){},e.prototype.visitTerminal=function(e){},e.prototype.visitRule=function(e){},e}();t.GAstVisitor=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i="MismatchedTokenException",o="NoViableAltException",a="EarlyExitException",s="NotAllInputParsedException",c=[i,o,a,s];function u(e,t,n){this.name=i,this.message=e,this.token=t,this.previousToken=n,this.resyncedTokens=[]}function p(e,t,n){this.name=o,this.message=e,this.token=t,this.previousToken=n,this.resyncedTokens=[]}function l(e,t){this.name=s,this.message=e,this.token=t,this.resyncedTokens=[]}function f(e,t,n){this.name=a,this.message=e,this.token=t,this.previousToken=n,this.resyncedTokens=[]}Object.freeze(c),t.isRecognitionException=function(e){return r.contains(c,e.name)},t.MismatchedTokenException=u,u.prototype=Error.prototype,t.NoViableAltException=p,p.prototype=Error.prototype,t.NotAllInputParsedException=l,l.prototype=Error.prototype,t.EarlyExitException=f,f.prototype=Error.prototype},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(9),o=n(7);function a(e){for(var t=r.cloneArr(e),n=e,i=!0;i;){n=r.compact(r.flatten(r.map(n,function(e){return e.CATEGORIES})));var o=r.difference(n,t);t=t.concat(o),r.isEmpty(o)?i=!1:n=o}return t}function s(e){r.forEach(e,function(e){l(e)||(t.tokenIdxToClass.put(t.tokenShortNameIdx,e),e.tokenTypeIdx=t.tokenShortNameIdx++),f(e)&&!r.isArray(e.CATEGORIES)&&(e.CATEGORIES=[e.CATEGORIES]),f(e)||(e.CATEGORIES=[]),h(e)||(e.categoryMatches=[]),E(e)||(e.categoryMatchesMap={}),d(e)||(e.tokenName=o.tokenName(e))})}function c(e){r.forEach(e,function(e){e.categoryMatches=[],r.forEach(e.categoryMatchesMap,function(n,r){e.categoryMatches.push(t.tokenIdxToClass.get(r).tokenTypeIdx)})})}function u(e){r.forEach(e,function(e){p([],e)})}function p(e,t){r.forEach(e,function(e){t.categoryMatchesMap[e.tokenTypeIdx]=!0}),r.forEach(t.CATEGORIES,function(n){var i=e.concat(t);r.contains(i,n)||p(i,n)})}function l(e){return r.has(e,"tokenTypeIdx")}function f(e){return r.has(e,"CATEGORIES")}function h(e){return r.has(e,"categoryMatches")}function E(e){return r.has(e,"categoryMatchesMap")}function d(e){return r.has(e,"tokenName")}t.tokenStructuredMatcher=function(e,t){var n=e.tokenTypeIdx;return n===t.tokenTypeIdx||!0===t.isParent&&!0===t.categoryMatchesMap[n]},t.tokenStructuredMatcherNoCategories=function(e,t){return e.tokenTypeIdx===t.tokenTypeIdx},t.tokenShortNameIdx=1,t.tokenIdxToClass=new i.HashTable,t.augmentTokenTypes=function(e){var t=a(e);s(t),u(t),c(t),r.forEach(t,function(e){e.isParent=e.categoryMatches.length>0})},t.expandCategories=a,t.assignTokenDefaultProps=s,t.assignCategoriesTokensProp=c,t.assignCategoriesMapProp=u,t.singleAssignCategoriesToksMap=p,t.hasShortKeyProperty=l,t.hasCategoriesProperty=f,t.hasExtendingTokensTypesProperty=h,t.hasExtendingTokensTypesMapProperty=E,t.hasTokenNameProperty=d,t.isTokenType=function(e){return r.has(e,"tokenTypeIdx")}},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(4),a=n(6),s=n(11),c=n(7);t.isSequenceProd=function(e){return e instanceof a.Flat||e instanceof a.Option||e instanceof a.Repetition||e instanceof a.RepetitionMandatory||e instanceof a.RepetitionMandatoryWithSeparator||e instanceof a.RepetitionWithSeparator||e instanceof a.Terminal||e instanceof a.Rule},t.isOptionalProd=function e(t,n){return void 0===n&&(n=[]),!!(t instanceof a.Option||t instanceof a.Repetition||t instanceof a.RepetitionWithSeparator)||(t instanceof a.Alternation?o.some(t.definition,function(t){return e(t,n)}):!(t instanceof a.NonTerminal&&o.contains(n,t))&&t instanceof a.AbstractProduction&&(t instanceof a.NonTerminal&&n.push(t),o.every(t.definition,function(t){return e(t,n)})))},t.isBranchingProd=function(e){return e instanceof a.Alternation},t.getProductionDslName=function(e){if(e instanceof a.NonTerminal)return"SUBRULE";if(e instanceof a.Option)return"OPTION";if(e instanceof a.Alternation)return"OR";if(e instanceof a.RepetitionMandatory)return"AT_LEAST_ONE";if(e instanceof a.RepetitionMandatoryWithSeparator)return"AT_LEAST_ONE_SEP";if(e instanceof a.RepetitionWithSeparator)return"MANY_SEP";if(e instanceof a.Repetition)return"MANY";if(e instanceof a.Terminal)return"CONSUME";throw Error("non exhaustive match")};var u=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.separator="-",t.dslMethods={option:[],alternation:[],repetition:[],repetitionWithSeparator:[],repetitionMandatory:[],repetitionMandatoryWithSeparator:[]},t}return i(t,e),t.prototype.visitTerminal=function(e){var t=c.tokenName(e.terminalType)+this.separator+"Terminal";o.has(this.dslMethods,t)||(this.dslMethods[t]=[]),this.dslMethods[t].push(e)},t.prototype.visitNonTerminal=function(e){var t=e.nonTerminalName+this.separator+"Terminal";o.has(this.dslMethods,t)||(this.dslMethods[t]=[]),this.dslMethods[t].push(e)},t.prototype.visitOption=function(e){this.dslMethods.option.push(e)},t.prototype.visitRepetitionWithSeparator=function(e){this.dslMethods.repetitionWithSeparator.push(e)},t.prototype.visitRepetitionMandatory=function(e){this.dslMethods.repetitionMandatory.push(e)},t.prototype.visitRepetitionMandatoryWithSeparator=function(e){this.dslMethods.repetitionMandatoryWithSeparator.push(e)},t.prototype.visitRepetition=function(e){this.dslMethods.repetition.push(e)},t.prototype.visitAlternation=function(e){this.dslMethods.alternation.push(e)},t}(s.GAstVisitor);t.DslMethodsCollectorVisitor=u},function(e,t,n){"use strict";function r(e,t,n){return n|t|e}Object.defineProperty(t,"__esModule",{value:!0}),t.BITS_FOR_METHOD_IDX=4,t.BITS_FOR_OCCURRENCE_IDX=4,t.BITS_FOR_RULE_IDX=24,t.BITS_FOR_ALT_IDX=8,t.OR_IDX=1<<t.BITS_FOR_METHOD_IDX,t.OPTION_IDX=2<<t.BITS_FOR_METHOD_IDX,t.MANY_IDX=3<<t.BITS_FOR_METHOD_IDX,t.AT_LEAST_ONE_IDX=4<<t.BITS_FOR_METHOD_IDX,t.MANY_SEP_IDX=5<<t.BITS_FOR_METHOD_IDX,t.AT_LEAST_ONE_SEP_IDX=6<<t.BITS_FOR_METHOD_IDX,t.getKeyForAutomaticLookahead=r;var i=32-t.BITS_FOR_ALT_IDX;t.getKeyForAltIndex=function(e,t,n,o){var a=o+1<<i;return r(e,t,n)|a}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(7),i=n(4),o=n(4),a=n(6),s=n(14),c=n(17),u=n(24),p=n(8);t.defaultParserErrorProvider={buildMismatchTokenMessage:function(e){var t=e.expected,n=e.actual;e.previous,e.ruleName;return"Expecting "+(r.hasTokenLabel(t)?"--\x3e "+r.tokenLabel(t)+" <--":"token of type --\x3e "+r.tokenName(t)+" <--")+" but found --\x3e '"+n.image+"' <--"},buildNotAllInputParsedMessage:function(e){var t=e.firstRedundant;e.ruleName;return"Redundant input, expecting EOF but found: "+t.image},buildNoViableAltMessage:function(e){var t=e.expectedPathsPerAlt,n=e.actual,i=(e.previous,e.customUserDescription),a=(e.ruleName,"\nbut found: '"+o.first(n).image+"'");if(i)return"Expecting: "+i+a;var s=o.reduce(t,function(e,t){return e.concat(t)},[]),c=o.map(s,function(e){return"["+o.map(e,function(e){return r.tokenLabel(e)}).join(", ")+"]"});return"Expecting: "+("one of these possible Token sequences:\n"+o.map(c,function(e,t){return"  "+(t+1)+". "+e}).join("\n"))+a},buildEarlyExitMessage:function(e){var t=e.expectedIterationPaths,n=e.actual,i=e.customUserDescription,a=(e.ruleName,"\nbut found: '"+o.first(n).image+"'");return i?"Expecting: "+i+a:"Expecting: "+("expecting at least one iteration which starts with one of these possible Token sequences::\n  <"+o.map(t,function(e){return"["+o.map(e,function(e){return r.tokenLabel(e)}).join(",")+"]"}).join(" ,")+">")+a}},Object.freeze(t.defaultParserErrorProvider),t.defaultGrammarResolverErrorProvider={buildRuleNotFoundError:function(e,t){return"Invalid grammar, reference to a rule which is not defined: ->"+t.nonTerminalName+"<-\ninside top level rule: ->"+e.name+"<-"}},t.defaultGrammarValidatorErrorProvider={buildDuplicateFoundError:function(e,t){var n,i=e.name,c=o.first(t),u=c.idx,p=s.getProductionDslName(c),l=(n=c)instanceof a.Terminal?r.tokenName(n.terminalType):n instanceof a.NonTerminal?n.nonTerminalName:"",f="->"+p+"<- with numerical suffix: ->"+u+"<-\n                  "+(l?"and argument: ->"+l+"<-":"")+"\n                  appears more than once ("+t.length+" times) in the top level rule: ->"+i+"<-.\n                  "+(0===u?"Also note that numerical suffix 0 means "+p+" without any suffix.":"")+"\n                  To fix this make sure each usage of "+p+" "+(l?"with the argument: ->"+l+"<-":"")+"\n                  in the rule ->"+i+"<- has a different occurrence index (0-5), as that combination acts as a unique\n                  position key in the grammar, which is needed by the parsing engine.\n                  \n                  For further details see: https://sap.github.io/chevrotain/docs/FAQ.html#NUMERICAL_SUFFIXES \n                  ";return f=(f=f.replace(/[ \t]+/g," ")).replace(/\s\s+/g,"\n")},buildInvalidNestedRuleNameError:function(e,t){return"Invalid nested rule name: ->"+t.name+"<- inside rule: ->"+e.name+"<-\nit must match the pattern: ->"+c.validNestedRuleName.toString()+"<-.\nNote that this means a nested rule name must start with the '$'(dollar) sign."},buildDuplicateNestedRuleNameError:function(e,t){return"Duplicate nested rule name: ->"+o.first(t).name+"<- inside rule: ->"+e.name+"<-\nA nested name must be unique in the scope of a top level grammar rule."},buildNamespaceConflictError:function(e){return"Namespace conflict found in grammar.\nThe grammar has both a Terminal(Token) and a Non-Terminal(Rule) named: <"+e.name+">.\nTo resolve this make sure each Terminal and Non-Terminal names are unique\nThis is easy to accomplish by using the convention that Terminal names start with an uppercase letter\nand Non-Terminal names start with a lower case letter."},buildAlternationPrefixAmbiguityError:function(e){var t=o.map(e.prefixPath,function(e){return r.tokenLabel(e)}).join(", "),n=0===e.alternation.idx?"":e.alternation.idx;return"Ambiguous alternatives: <"+e.ambiguityIndices.join(" ,")+"> due to common lookahead prefix\nin <OR"+n+"> inside <"+e.topLevelRule.name+"> Rule,\n<"+t+"> may appears as a prefix path in all these alternatives.\nhttps://sap.github.io/chevrotain/docs/guide/resolving_grammar_errors.html#COMMON_PREFIX\nFor Further details."},buildAlternationAmbiguityError:function(e){var t=o.map(e.prefixPath,function(e){return r.tokenLabel(e)}).join(", "),n=0===e.alternation.idx?"":e.alternation.idx,i="Ambiguous alternatives: <"+e.ambiguityIndices.join(" ,")+"> in <OR"+n+"> inside <"+e.topLevelRule.name+"> Rule,\n<"+t+"> may appears as a prefix path in all these alternatives.\n",a=u.VERSION.replace(/\./g,"_");return i=i+"To Resolve this, try one of of the following: \n1. Refactor your grammar to be LL(K) for the current value of k (by default k="+p.DEFAULT_PARSER_CONFIG.maxLookahead+"})\n2. Increase the value of K for your grammar by providing a larger 'maxLookahead' value in the parser's config\n3. This issue can be ignored (if you know what you are doing...), see https://sap.github.io/chevrotain/documentation/"+a+"/interfaces/iparserconfig.html#ignoredissues for more details\n"},buildEmptyRepetitionError:function(e){var t=s.getProductionDslName(e.repetition);return 0!==e.repetition.idx&&(t+=e.repetition.idx),"The repetition <"+t+"> within Rule <"+e.topLevelRule.name+"> can never consume any tokens.\nThis could lead to an infinite loop."},buildTokenNameError:function(e){return"Invalid Grammar Token name: ->"+r.tokenName(e.tokenType)+"<- it must match the pattern: ->"+e.expectedPattern.toString()+"<-"},buildEmptyAlternationError:function(e){return"Ambiguous empty alternative: <"+(e.emptyChoiceIdx+1)+"> in <OR"+e.alternation.idx+"> inside <"+e.topLevelRule.name+"> Rule.\nOnly the last alternative may be an empty alternative."},buildTooManyAlternativesError:function(e){return"An Alternation cannot have more than 256 alternatives:\n<OR"+e.alternation.idx+"> inside <"+e.topLevelRule.name+"> Rule.\n has "+(e.alternation.definition.length+1)+" alternatives."},buildLeftRecursionError:function(e){var t=e.topLevelRule.name;return"Left Recursion found in grammar.\nrule: <"+t+"> can be invoked from itself (directly or indirectly)\nwithout consuming any Tokens. The grammar path that causes this is: \n "+(t+" --\x3e "+i.map(e.leftRecursionPath,function(e){return e.name}).concat([t]).join(" --\x3e "))+"\n To fix this refactor your grammar to remove the left recursion.\nsee: https://en.wikipedia.org/wiki/LL_parser#Left_Factoring."},buildInvalidRuleNameError:function(e){return"Invalid grammar rule name: ->"+e.topLevelRule.name+"<- it must match the pattern: ->"+e.expectedPattern.toString()+"<-"},buildDuplicateRuleNameError:function(e){return"Duplicate definition, rule: ->"+(e.topLevelRule instanceof a.Rule?e.topLevelRule.name:e.topLevelRule)+"<- is already defined in the grammar: ->"+e.grammarName+"<-"}}},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(4),a=n(4),s=n(8),c=n(14),u=n(7),p=n(18),l=n(23),f=n(19),h=n(6),E=n(11);function d(e){return c.getProductionDslName(e)+"_#_"+e.idx+"_#_"+T(e)}function T(e){return e instanceof h.Terminal?u.tokenName(e.terminalType):e instanceof h.NonTerminal?e.nonTerminalName:""}t.validateGrammar=function(e,t,n,r,i,p){var f=o.map(e,function(e){return function(e,t){var n=new m;e.accept(n);var r=n.allProductions,i=o.groupBy(r,d),a=o.pick(i,function(e){return e.length>1});return o.map(o.values(a),function(n){var r=o.first(n),i=t.buildDuplicateFoundError(e,n),a=c.getProductionDslName(r),u={message:i,type:s.ParserDefinitionErrorType.DUPLICATE_PRODUCTIONS,ruleName:e.name,dslName:a,occurrence:r.idx},p=T(r);return p&&(u.parameter=p),u})}(e,i)}),h=o.map(e,function(e){return O(e,e,i)}),E=[],S=[],L=[];a.every(h,a.isEmpty)&&(E=a.map(e,function(e){return I(e,i)}),S=a.map(e,function(e){return v(e,t,r,i)}),L=g(e,t,i));var _=function(e,t,n){var r=[],i=a.map(t,function(e){return u.tokenName(e)});return a.forEach(e,function(e){var t=e.name;if(a.contains(i,t)){var o=n.buildNamespaceConflictError(e);r.push({message:o,type:s.ParserDefinitionErrorType.CONFLICT_TOKENS_RULES_NAMESPACE,ruleName:t})}}),r}(e,n,i),C=o.map(n,function(e){return N(e,i)}),P=function(e,t){var n=[];return a.forEach(e,function(e){var r=new l.NamedDSLMethodsCollectorVisitor("");e.accept(r);var i=a.map(r.result,function(e){return e.orgProd});n.push(a.map(i,function(n){return A(e,n,t)}))}),a.flatten(n)}(e,i),M=function(e,t){var n=[];return a.forEach(e,function(e){var r=new l.NamedDSLMethodsCollectorVisitor("");e.accept(r);var i=a.groupBy(r.result,function(e){return e.name}),o=a.pick(i,function(e){return e.length>1});a.forEach(a.values(o),function(r){var i=a.map(r,function(e){return e.orgProd}),o=t.buildDuplicateNestedRuleNameError(e,i);n.push({message:o,type:s.ParserDefinitionErrorType.DUPLICATE_NESTED_NAME,ruleName:e.name})})}),n}(e,i),U=a.map(e,function(e){return k(e,i)}),D=a.map(e,function(e){return R(e,i)}),x=a.map(e,function(t){return y(t,e,p,i)});return o.flatten(f.concat(C,P,M,L,h,E,S,_,U,D,x))},t.identifyProductionForDuplicates=d;var m=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.allProductions=[],t}return i(t,e),t.prototype.visitNonTerminal=function(e){this.allProductions.push(e)},t.prototype.visitOption=function(e){this.allProductions.push(e)},t.prototype.visitRepetitionWithSeparator=function(e){this.allProductions.push(e)},t.prototype.visitRepetitionMandatory=function(e){this.allProductions.push(e)},t.prototype.visitRepetitionMandatoryWithSeparator=function(e){this.allProductions.push(e)},t.prototype.visitRepetition=function(e){this.allProductions.push(e)},t.prototype.visitAlternation=function(e){this.allProductions.push(e)},t.prototype.visitTerminal=function(e){this.allProductions.push(e)},t}(E.GAstVisitor);function R(e,n){var r=[],i=e.name;return i.match(t.validTermsPattern)||r.push({message:n.buildInvalidRuleNameError({topLevelRule:e,expectedPattern:t.validTermsPattern}),type:s.ParserDefinitionErrorType.INVALID_RULE_NAME,ruleName:i}),r}function A(e,n,r){var i,o=[];return n.name.match(t.validNestedRuleName)||(i=r.buildInvalidNestedRuleNameError(e,n),o.push({message:i,type:s.ParserDefinitionErrorType.INVALID_NESTED_RULE_NAME,ruleName:e.name})),o}function N(e,n){var r=[];return u.tokenName(e).match(t.validTermsPattern)||r.push({message:n.buildTokenNameError({tokenType:e,expectedPattern:t.validTermsPattern}),type:s.ParserDefinitionErrorType.INVALID_TOKEN_NAME}),r}function y(e,t,n,r){var i=[];if(a.reduce(t,function(t,n){return n.name===e.name?t+1:t},0)>1){var o=r.buildDuplicateRuleNameError({topLevelRule:e,grammarName:n});i.push({message:o,type:s.ParserDefinitionErrorType.DUPLICATE_RULE_NAME,ruleName:e.name})}return i}function O(e,t,n,r){void 0===r&&(r=[]);var i=[],a=S(t.definition);if(o.isEmpty(a))return[];var c=e.name;o.contains(a,e)&&i.push({message:n.buildLeftRecursionError({topLevelRule:e,leftRecursionPath:r}),type:s.ParserDefinitionErrorType.LEFT_RECURSION,ruleName:c});var u=o.difference(a,r.concat([e])),p=o.map(u,function(t){var i=o.cloneArr(r);return i.push(t),O(e,t,n,i)});return i.concat(o.flatten(p))}function S(e){var t=[];if(o.isEmpty(e))return t;var n=o.first(e);if(n instanceof h.NonTerminal)t.push(n.referencedRule);else if(n instanceof h.Flat||n instanceof h.Option||n instanceof h.RepetitionMandatory||n instanceof h.RepetitionMandatoryWithSeparator||n instanceof h.RepetitionWithSeparator||n instanceof h.Repetition)t=t.concat(S(n.definition));else if(n instanceof h.Alternation)t=o.flatten(o.map(n.definition,function(e){return S(e.definition)}));else if(!(n instanceof h.Terminal))throw Error("non exhaustive match");var r=c.isOptionalProd(n),i=e.length>1;if(r&&i){var a=o.drop(e);return t.concat(S(a))}return t}t.OccurrenceValidationCollector=m,t.validTermsPattern=/^[a-zA-Z_]\w*$/,t.validNestedRuleName=new RegExp(t.validTermsPattern.source.replace("^","^\\$")),t.validateRuleName=R,t.validateNestedRuleName=A,t.validateTokenName=N,t.validateRuleDoesNotAlreadyExist=y,t.validateRuleIsOverridden=function(e,t,n){var r,i=[];return o.contains(t,e)||(r="Invalid rule override, rule: ->"+e+"<- cannot be overridden in the grammar: ->"+n+"<-as it is not defined in any of the super grammars ",i.push({message:r,type:s.ParserDefinitionErrorType.INVALID_RULE_OVERRIDE,ruleName:e})),i},t.validateNoLeftRecursion=O,t.getFirstNoneTerminal=S;var L=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.alternations=[],t}return i(t,e),t.prototype.visitAlternation=function(e){this.alternations.push(e)},t}(E.GAstVisitor);function I(e,t){var n=new L;e.accept(n);var r=n.alternations;return o.reduce(r,function(n,r){var i=o.dropRight(r.definition),a=o.map(i,function(n,i){var a=f.nextPossibleTokensAfter([n],[],null,1);return o.isEmpty(a)?{message:t.buildEmptyAlternationError({topLevelRule:e,alternation:r,emptyChoiceIdx:i}),type:s.ParserDefinitionErrorType.NONE_LAST_EMPTY_ALT,ruleName:e.name,occurrence:r.idx,alternative:i+1}:null});return n.concat(o.compact(a))},[])}function v(e,t,n,r){var i=new L;e.accept(i);var u=i.alternations,l=n[e.name];return l&&(u=a.reject(u,function(e){return l[c.getProductionDslName(e)+(0===e.idx?"":e.idx)]})),o.reduce(u,function(n,i){var c=i.idx,u=p.getLookaheadPathsForOr(c,e,t),l=function(e,t,n,r){var i=[],c=a.reduce(e,function(t,n,r){return a.forEach(n,function(n){var o=[r];a.forEach(e,function(e,t){r!==t&&p.containsPath(e,n)&&o.push(t)}),o.length>1&&!p.containsPath(i,n)&&(i.push(n),t.push({alts:o,path:n}))}),t},[]);return o.map(c,function(e){var i=a.map(e.alts,function(e){return e+1}),o=r.buildAlternationAmbiguityError({topLevelRule:n,alternation:t,ambiguityIndices:i,prefixPath:e.path});return{message:o,type:s.ParserDefinitionErrorType.AMBIGUOUS_ALTS,ruleName:n.name,occurrence:t.idx,alternatives:[e.alts]}})}(u,i,e,r),f=function(e,t,n,r){var i=[],o=a.reduce(e,function(e,t,n){var r=a.map(t,function(e){return{idx:n,path:e}});return e.concat(r)},[]);return a.forEach(o,function(e){var c=e.idx,u=e.path,l=a.findAll(o,function(e){return e.idx<c&&p.isStrictPrefixOfPath(e.path,u)}),f=a.map(l,function(e){var i=[e.idx+1,c+1],o=0===t.idx?"":t.idx;return{message:r.buildAlternationPrefixAmbiguityError({topLevelRule:n,alternation:t,ambiguityIndices:i,prefixPath:e.path}),type:s.ParserDefinitionErrorType.AMBIGUOUS_PREFIX_ALTS,ruleName:n.name,occurrence:o,alternatives:i}});i=i.concat(f)}),i}(u,i,e,r);return n.concat(l,f)},[])}t.validateEmptyOrAlternative=I,t.validateAmbiguousAlternationAlternatives=v;var _=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.allProductions=[],t}return i(t,e),t.prototype.visitRepetitionWithSeparator=function(e){this.allProductions.push(e)},t.prototype.visitRepetitionMandatory=function(e){this.allProductions.push(e)},t.prototype.visitRepetitionMandatoryWithSeparator=function(e){this.allProductions.push(e)},t.prototype.visitRepetition=function(e){this.allProductions.push(e)},t}(E.GAstVisitor);function k(e,t){var n=new L;e.accept(n);var r=n.alternations;return o.reduce(r,function(n,r){return r.definition.length>255&&n.push({message:t.buildTooManyAlternativesError({topLevelRule:e,alternation:r}),type:s.ParserDefinitionErrorType.TOO_MANY_ALTS,ruleName:e.name,occurrence:r.idx}),n},[])}function g(e,t,n){var r=[];return a.forEach(e,function(e){var i=new _;e.accept(i);var o=i.allProductions;a.forEach(o,function(i){var o=p.getProdType(i),c=i.idx,u=p.getLookaheadPathsForOptionalProd(c,e,o,t)[0];if(a.isEmpty(a.flatten(u))){var l=n.buildEmptyRepetitionError({topLevelRule:e,repetition:i});r.push({message:l,type:s.ParserDefinitionErrorType.NO_NON_EMPTY_LOOKAHEAD,ruleName:e.name})}})}),r}t.RepetionCollector=_,t.validateTooManyAlts=k,t.validateSomeNonEmptyLookaheadPath=g},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o,a=n(4),s=n(19),c=n(21),u=n(13),p=n(6),l=n(11);!function(e){e[e.OPTION=0]="OPTION",e[e.REPETITION=1]="REPETITION",e[e.REPETITION_MANDATORY=2]="REPETITION_MANDATORY",e[e.REPETITION_MANDATORY_WITH_SEPARATOR=3]="REPETITION_MANDATORY_WITH_SEPARATOR",e[e.REPETITION_WITH_SEPARATOR=4]="REPETITION_WITH_SEPARATOR",e[e.ALTERNATION=5]="ALTERNATION"}(o=t.PROD_TYPE||(t.PROD_TYPE={})),t.getProdType=function(e){if(e instanceof p.Option)return o.OPTION;if(e instanceof p.Repetition)return o.REPETITION;if(e instanceof p.RepetitionMandatory)return o.REPETITION_MANDATORY;if(e instanceof p.RepetitionMandatoryWithSeparator)return o.REPETITION_MANDATORY_WITH_SEPARATOR;if(e instanceof p.RepetitionWithSeparator)return o.REPETITION_WITH_SEPARATOR;if(e instanceof p.Alternation)return o.ALTERNATION;throw Error("non exhaustive match")},t.buildLookaheadFuncForOr=function(e,t,n,r,i,o){var a=d(e,t,n);return o(a,r,R(a)?u.tokenStructuredMatcherNoCategories:u.tokenStructuredMatcher,i)},t.buildLookaheadFuncForOptionalProd=function(e,t,n,r,i,o){var a=T(e,t,i,n),s=R(a)?u.tokenStructuredMatcherNoCategories:u.tokenStructuredMatcher;return o(a[0],s,r)},t.buildAlternativesLookAheadFunc=function(e,t,n,r){var i=e.length,o=a.every(e,function(e){return a.every(e,function(e){return 1===e.length})});if(t)return function(t){for(var r=a.map(t,function(e){return e.GATE}),o=0;o<i;o++){var s=e[o],c=s.length,u=r[o];if(void 0===u||!1!==u.call(this))e:for(var p=0;p<c;p++){for(var l=s[p],f=l.length,h=0;h<f;h++){var E=this.LA(h+1);if(!1===n(E,l[h]))continue e}return o}}};if(o&&!r){var s=a.map(e,function(e){return a.flatten(e)}),c=a.reduce(s,function(e,t,n){return a.forEach(t,function(t){a.has(e,t.tokenTypeIdx)||(e[t.tokenTypeIdx]=n),a.forEach(t.categoryMatches,function(t){a.has(e,t)||(e[t]=n)})}),e},[]);return function(){var e=this.LA(1);return c[e.tokenTypeIdx]}}return function(){for(var t=0;t<i;t++){var r=e[t],o=r.length;e:for(var a=0;a<o;a++){for(var s=r[a],c=s.length,u=0;u<c;u++){var p=this.LA(u+1);if(!1===n(p,s[u]))continue e}return t}}}},t.buildSingleAlternativeLookaheadFunction=function(e,t,n){var r=a.every(e,function(e){return 1===e.length}),i=e.length;if(r&&!n){var o=a.flatten(e);if(1===o.length&&a.isEmpty(o[0].categoryMatches)){var s=o[0].tokenTypeIdx;return function(){return this.LA(1).tokenTypeIdx===s}}var c=a.reduce(o,function(e,t,n){return e[t.tokenTypeIdx]=!0,a.forEach(t.categoryMatches,function(t){e[t]=!0}),e},[]);return function(){var e=this.LA(1);return!0===c[e.tokenTypeIdx]}}return function(){e:for(var n=0;n<i;n++){for(var r=e[n],o=r.length,a=0;a<o;a++){var s=this.LA(a+1);if(!1===t(s,r[a]))continue e}return!0}return!1}};var f=function(e){function t(t,n,r){var i=e.call(this)||this;return i.topProd=t,i.targetOccurrence=n,i.targetProdType=r,i}return i(t,e),t.prototype.startWalking=function(){return this.walk(this.topProd),this.restDef},t.prototype.checkIsTarget=function(e,t,n,r){return e.idx===this.targetOccurrence&&this.targetProdType===t&&(this.restDef=n.concat(r),!0)},t.prototype.walkOption=function(t,n,r){this.checkIsTarget(t,o.OPTION,n,r)||e.prototype.walkOption.call(this,t,n,r)},t.prototype.walkAtLeastOne=function(t,n,r){this.checkIsTarget(t,o.REPETITION_MANDATORY,n,r)||e.prototype.walkOption.call(this,t,n,r)},t.prototype.walkAtLeastOneSep=function(t,n,r){this.checkIsTarget(t,o.REPETITION_MANDATORY_WITH_SEPARATOR,n,r)||e.prototype.walkOption.call(this,t,n,r)},t.prototype.walkMany=function(t,n,r){this.checkIsTarget(t,o.REPETITION,n,r)||e.prototype.walkOption.call(this,t,n,r)},t.prototype.walkManySep=function(t,n,r){this.checkIsTarget(t,o.REPETITION_WITH_SEPARATOR,n,r)||e.prototype.walkOption.call(this,t,n,r)},t}(c.RestWalker),h=function(e){function t(t,n){var r=e.call(this)||this;return r.targetOccurrence=t,r.targetProdType=n,r.result=[],r}return i(t,e),t.prototype.checkIsTarget=function(e,t){e.idx===this.targetOccurrence&&this.targetProdType===t&&(this.result=e.definition)},t.prototype.visitOption=function(e){this.checkIsTarget(e,o.OPTION)},t.prototype.visitRepetition=function(e){this.checkIsTarget(e,o.REPETITION)},t.prototype.visitRepetitionMandatory=function(e){this.checkIsTarget(e,o.REPETITION_MANDATORY)},t.prototype.visitRepetitionMandatoryWithSeparator=function(e){this.checkIsTarget(e,o.REPETITION_MANDATORY_WITH_SEPARATOR)},t.prototype.visitRepetitionWithSeparator=function(e){this.checkIsTarget(e,o.REPETITION_WITH_SEPARATOR)},t.prototype.visitAlternation=function(e){this.checkIsTarget(e,o.ALTERNATION)},t}(l.GAstVisitor);function E(e,t){function n(e,t){return a.reduce(e,function(e,n,r){if(r!==t){var i=a.map(n,function(e){return e.partialPath});return e.concat(i)}return e},[])}function r(e,t){return void 0===a.find(e,function(e){return a.every(t,function(t,n){return t===e[n]})})}function i(e){for(var t=[],n=0;n<e;n++)t.push([]);return t}for(var o=a.map(e,function(e){return s.possiblePathsFrom([e],1)}),c=i(o.length),u=o,p=1;p<=t;p++){var l=u;u=i(l.length);for(var f=0;f<l.length;f++)for(var h=l[f],E=n(l,f),d=0;d<h.length;d++){var T=h[d].partialPath,R=h[d].suffixDef;if(r(E,T)||a.isEmpty(R)||T.length===t){var A=c[f];m(A,T)||A.push(T)}else{var N=s.possiblePathsFrom(R,p+1,T);u[f]=u[f].concat(N)}}}return c}function d(e,t,n){var r=new h(e,o.ALTERNATION);return t.accept(r),E(r.result,n)}function T(e,t,n,r){var i=new h(e,n);t.accept(i);var o=i.result,a=new f(t,e,n).startWalking();return E([new p.Flat({definition:o}),new p.Flat({definition:a})],r)}function m(e,t){return void 0!==a.find(e,function(e){return t.length===e.length&&a.every(t,function(t,n){return t===e[n]})})}function R(e){return a.every(e,function(e){return a.every(e,function(e){return a.every(e,function(e){return a.isEmpty(e.categoryMatches)})})})}t.lookAheadSequenceFromAlternatives=E,t.getLookaheadPathsForOr=d,t.getLookaheadPathsForOptionalProd=T,t.containsPath=m,t.isStrictPrefixOfPath=function(e,t){return e.length<t.length&&a.every(e,function(e,n){return e===t[n]})},t.areTokenCategoriesNotUsed=R},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(21),a=n(4),s=n(7),c=n(29),u=n(6),p=function(e){function t(t,n){var r=e.call(this)||this;return r.topProd=t,r.path=n,r.possibleTokTypes=[],r.nextProductionName="",r.nextProductionOccurrence=0,r.found=!1,r.isAtEndOfPath=!1,r}return i(t,e),t.prototype.startWalking=function(){if(this.found=!1,this.path.ruleStack[0]!==this.topProd.name)throw Error("The path does not start with the walker's top Rule!");return this.ruleStack=a.cloneArr(this.path.ruleStack).reverse(),this.occurrenceStack=a.cloneArr(this.path.occurrenceStack).reverse(),this.ruleStack.pop(),this.occurrenceStack.pop(),this.updateExpectedNext(),this.walk(this.topProd),this.possibleTokTypes},t.prototype.walk=function(t,n){void 0===n&&(n=[]),this.found||e.prototype.walk.call(this,t,n)},t.prototype.walkProdRef=function(e,t,n){if(e.referencedRule.name===this.nextProductionName&&e.idx===this.nextProductionOccurrence){var r=t.concat(n);this.updateExpectedNext(),this.walk(e.referencedRule,r)}},t.prototype.updateExpectedNext=function(){a.isEmpty(this.ruleStack)?(this.nextProductionName="",this.nextProductionOccurrence=0,this.isAtEndOfPath=!0):(this.nextProductionName=this.ruleStack.pop(),this.nextProductionOccurrence=this.occurrenceStack.pop())},t}(o.RestWalker);t.AbstractNextPossibleTokensWalker=p;var l=function(e){function t(t,n){var r=e.call(this,t,n)||this;return r.path=n,r.nextTerminalName="",r.nextTerminalOccurrence=0,r.nextTerminalName=s.tokenName(r.path.lastTok),r.nextTerminalOccurrence=r.path.lastTokOccurrence,r}return i(t,e),t.prototype.walkTerminal=function(e,t,n){if(this.isAtEndOfPath&&s.tokenName(e.terminalType)===this.nextTerminalName&&e.idx===this.nextTerminalOccurrence&&!this.found){var r=t.concat(n),i=new u.Flat({definition:r});this.possibleTokTypes=c.first(i),this.found=!0}},t}(p);t.NextAfterTokenWalker=l;var f=function(e){function t(t,n){var r=e.call(this)||this;return r.topRule=t,r.occurrence=n,r.result={token:void 0,occurrence:void 0,isEndOfRule:void 0},r}return i(t,e),t.prototype.startWalking=function(){return this.walk(this.topRule),this.result},t}(o.RestWalker);t.AbstractNextTerminalAfterProductionWalker=f;var h=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return i(t,e),t.prototype.walkMany=function(t,n,r){if(t.idx===this.occurrence){var i=a.first(n.concat(r));this.result.isEndOfRule=void 0===i,i instanceof u.Terminal&&(this.result.token=i.terminalType,this.result.occurrence=i.idx)}else e.prototype.walkMany.call(this,t,n,r)},t}(f);t.NextTerminalAfterManyWalker=h;var E=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return i(t,e),t.prototype.walkManySep=function(t,n,r){if(t.idx===this.occurrence){var i=a.first(n.concat(r));this.result.isEndOfRule=void 0===i,i instanceof u.Terminal&&(this.result.token=i.terminalType,this.result.occurrence=i.idx)}else e.prototype.walkManySep.call(this,t,n,r)},t}(f);t.NextTerminalAfterManySepWalker=E;var d=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return i(t,e),t.prototype.walkAtLeastOne=function(t,n,r){if(t.idx===this.occurrence){var i=a.first(n.concat(r));this.result.isEndOfRule=void 0===i,i instanceof u.Terminal&&(this.result.token=i.terminalType,this.result.occurrence=i.idx)}else e.prototype.walkAtLeastOne.call(this,t,n,r)},t}(f);t.NextTerminalAfterAtLeastOneWalker=d;var T=function(e){function t(){return null!==e&&e.apply(this,arguments)||this}return i(t,e),t.prototype.walkAtLeastOneSep=function(t,n,r){if(t.idx===this.occurrence){var i=a.first(n.concat(r));this.result.isEndOfRule=void 0===i,i instanceof u.Terminal&&(this.result.token=i.terminalType,this.result.occurrence=i.idx)}else e.prototype.walkAtLeastOneSep.call(this,t,n,r)},t}(f);function m(e,t,n,r){var i=a.cloneArr(n);i.push(e.name);var o=a.cloneArr(r);return o.push(1),{idx:t,def:e.definition,ruleStack:i,occurrenceStack:o}}t.NextTerminalAfterAtLeastOneSepWalker=T,t.possiblePathsFrom=function e(t,n,r){void 0===r&&(r=[]),r=a.cloneArr(r);var i=[],o=0;function s(s){var c=e(s.concat(a.drop(t,o+1)),n,r);return i.concat(c)}for(;r.length<n&&o<t.length;){var c=t[o];if(c instanceof u.Flat)return s(c.definition);if(c instanceof u.NonTerminal)return s(c.definition);if(c instanceof u.Option)i=s(c.definition);else{if(c instanceof u.RepetitionMandatory)return s(p=c.definition.concat([new u.Repetition({definition:c.definition})]));if(c instanceof u.RepetitionMandatoryWithSeparator)return s(p=[new u.Flat({definition:c.definition}),new u.Repetition({definition:[new u.Terminal({terminalType:c.separator})].concat(c.definition)})]);if(c instanceof u.RepetitionWithSeparator){var p=c.definition.concat([new u.Repetition({definition:[new u.Terminal({terminalType:c.separator})].concat(c.definition)})]);i=s(p)}else if(c instanceof u.Repetition)p=c.definition.concat([new u.Repetition({definition:c.definition})]),i=s(p);else{if(c instanceof u.Alternation)return a.forEach(c.definition,function(e){i=s(e.definition)}),i;if(!(c instanceof u.Terminal))throw Error("non exhaustive match");r.push(c.terminalType)}}o++}return i.push({partialPath:r,suffixDef:a.drop(t,o)}),i},t.nextPossibleTokensAfter=function(e,t,n,r){var i=["EXIT_NONE_TERMINAL"],o=!1,s=t.length,c=s-r-1,p=[],l=[];for(l.push({idx:-1,def:e,ruleStack:[],occurrenceStack:[]});!a.isEmpty(l);){var f=l.pop();if("EXIT_ALTERNATIVE"!==f){var h=f.def,E=f.idx,d=f.ruleStack,T=f.occurrenceStack;if(!a.isEmpty(h)){var R=h[0];if("EXIT_NONE_TERMINAL"===R){var A={idx:E,def:a.drop(h),ruleStack:a.dropRight(d),occurrenceStack:a.dropRight(T)};l.push(A)}else if(R instanceof u.Terminal)if(E<s-1){var N=E+1;n(t[N],R.terminalType)&&(A={idx:N,def:a.drop(h),ruleStack:d,occurrenceStack:T},l.push(A))}else{if(E!==s-1)throw Error("non exhaustive match");p.push({nextTokenType:R.terminalType,nextTokenOccurrence:R.idx,ruleStack:d,occurrenceStack:T}),o=!0}else if(R instanceof u.NonTerminal){var y=a.cloneArr(d);y.push(R.nonTerminalName);var O=a.cloneArr(T);O.push(R.idx),A={idx:E,def:R.definition.concat(i,a.drop(h)),ruleStack:y,occurrenceStack:O},l.push(A)}else if(R instanceof u.Option){var S={idx:E,def:a.drop(h),ruleStack:d,occurrenceStack:T};l.push(S),l.push("EXIT_ALTERNATIVE");var L={idx:E,def:R.definition.concat(a.drop(h)),ruleStack:d,occurrenceStack:T};l.push(L)}else if(R instanceof u.RepetitionMandatory){var I=new u.Repetition({definition:R.definition,idx:R.idx});A={idx:E,def:R.definition.concat([I],a.drop(h)),ruleStack:d,occurrenceStack:T},l.push(A)}else if(R instanceof u.RepetitionMandatoryWithSeparator){var v=new u.Terminal({terminalType:R.separator});I=new u.Repetition({definition:[v].concat(R.definition),idx:R.idx}),A={idx:E,def:R.definition.concat([I],a.drop(h)),ruleStack:d,occurrenceStack:T},l.push(A)}else if(R instanceof u.RepetitionWithSeparator){S={idx:E,def:a.drop(h),ruleStack:d,occurrenceStack:T},l.push(S),l.push("EXIT_ALTERNATIVE"),v=new u.Terminal({terminalType:R.separator});var _=new u.Repetition({definition:[v].concat(R.definition),idx:R.idx});L={idx:E,def:R.definition.concat([_],a.drop(h)),ruleStack:d,occurrenceStack:T},l.push(L)}else if(R instanceof u.Repetition)S={idx:E,def:a.drop(h),ruleStack:d,occurrenceStack:T},l.push(S),l.push("EXIT_ALTERNATIVE"),_=new u.Repetition({definition:R.definition,idx:R.idx}),L={idx:E,def:R.definition.concat([_],a.drop(h)),ruleStack:d,occurrenceStack:T},l.push(L);else if(R instanceof u.Alternation)for(var k=R.definition.length-1;k>=0;k--){var g={idx:E,def:R.definition[k].definition.concat(a.drop(h)),ruleStack:d,occurrenceStack:T};l.push(g),l.push("EXIT_ALTERNATIVE")}else if(R instanceof u.Flat)l.push({idx:E,def:R.definition.concat(a.drop(h)),ruleStack:d,occurrenceStack:T});else{if(!(R instanceof u.Rule))throw Error("non exhaustive match");l.push(m(R,E,d,T))}}}else o&&a.last(l).idx<=c&&l.pop()}return p}},,function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(6),o=function(){function e(){}return e.prototype.walk=function(e,t){var n=this;void 0===t&&(t=[]),r.forEach(e.definition,function(o,a){var s=r.drop(e.definition,a+1);if(o instanceof i.NonTerminal)n.walkProdRef(o,s,t);else if(o instanceof i.Terminal)n.walkTerminal(o,s,t);else if(o instanceof i.Flat)n.walkFlat(o,s,t);else if(o instanceof i.Option)n.walkOption(o,s,t);else if(o instanceof i.RepetitionMandatory)n.walkAtLeastOne(o,s,t);else if(o instanceof i.RepetitionMandatoryWithSeparator)n.walkAtLeastOneSep(o,s,t);else if(o instanceof i.RepetitionWithSeparator)n.walkManySep(o,s,t);else if(o instanceof i.Repetition)n.walkMany(o,s,t);else{if(!(o instanceof i.Alternation))throw Error("non exhaustive match");n.walkOr(o,s,t)}})},e.prototype.walkTerminal=function(e,t,n){},e.prototype.walkProdRef=function(e,t,n){},e.prototype.walkFlat=function(e,t,n){var r=t.concat(n);this.walk(e,r)},e.prototype.walkOption=function(e,t,n){var r=t.concat(n);this.walk(e,r)},e.prototype.walkAtLeastOne=function(e,t,n){var r=[new i.Option({definition:e.definition})].concat(t,n);this.walk(e,r)},e.prototype.walkAtLeastOneSep=function(e,t,n){var r=a(e,t,n);this.walk(e,r)},e.prototype.walkMany=function(e,t,n){var r=[new i.Option({definition:e.definition})].concat(t,n);this.walk(e,r)},e.prototype.walkManySep=function(e,t,n){var r=a(e,t,n);this.walk(e,r)},e.prototype.walkOr=function(e,t,n){var o=this,a=t.concat(n);r.forEach(e.definition,function(e){var t=new i.Flat({definition:[e]});o.walk(t,a)})},e}();function a(e,t,n){return[new i.Option({definition:[new i.Terminal({terminalType:e.separator})].concat(e.definition)})].concat(t,n)}t.RestWalker=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(37),i=n(4),o=n(13),a=n(28);!function(e){e[e.MISSING_PATTERN=0]="MISSING_PATTERN",e[e.INVALID_PATTERN=1]="INVALID_PATTERN",e[e.EOI_ANCHOR_FOUND=2]="EOI_ANCHOR_FOUND",e[e.UNSUPPORTED_FLAGS_FOUND=3]="UNSUPPORTED_FLAGS_FOUND",e[e.DUPLICATE_PATTERNS_FOUND=4]="DUPLICATE_PATTERNS_FOUND",e[e.INVALID_GROUP_TYPE_FOUND=5]="INVALID_GROUP_TYPE_FOUND",e[e.PUSH_MODE_DOES_NOT_EXIST=6]="PUSH_MODE_DOES_NOT_EXIST",e[e.MULTI_MODE_LEXER_WITHOUT_DEFAULT_MODE=7]="MULTI_MODE_LEXER_WITHOUT_DEFAULT_MODE",e[e.MULTI_MODE_LEXER_WITHOUT_MODES_PROPERTY=8]="MULTI_MODE_LEXER_WITHOUT_MODES_PROPERTY",e[e.MULTI_MODE_LEXER_DEFAULT_MODE_VALUE_DOES_NOT_EXIST=9]="MULTI_MODE_LEXER_DEFAULT_MODE_VALUE_DOES_NOT_EXIST",e[e.LEXER_DEFINITION_CANNOT_CONTAIN_UNDEFINED=10]="LEXER_DEFINITION_CANNOT_CONTAIN_UNDEFINED",e[e.SOI_ANCHOR_FOUND=11]="SOI_ANCHOR_FOUND",e[e.EMPTY_MATCH_PATTERN=12]="EMPTY_MATCH_PATTERN",e[e.NO_LINE_BREAKS_FLAGS=13]="NO_LINE_BREAKS_FLAGS",e[e.UNREACHABLE_PATTERN=14]="UNREACHABLE_PATTERN",e[e.IDENTIFY_TERMINATOR=15]="IDENTIFY_TERMINATOR",e[e.CUSTOM_LINE_BREAK=16]="CUSTOM_LINE_BREAK"}(t.LexerDefinitionErrorType||(t.LexerDefinitionErrorType={}));var s={deferDefinitionErrorsHandling:!1,positionTracking:"full",lineTerminatorsPattern:/\n|\r\n?/g,lineTerminatorCharacters:["\n","\r"],ensureOptimizations:!1,safeMode:!1,errorMessageProvider:a.defaultLexerErrorProvider};Object.freeze(s);var c=function(){function e(e,t){void 0===t&&(t=s);var n=this;if(this.lexerDefinition=e,this.lexerDefinitionErrors=[],this.lexerDefinitionWarning=[],this.patternIdxToConfig={},this.charCodeToPatternIdxToConfig={},this.modes=[],this.emptyGroups={},this.config=void 0,this.trackStartLines=!0,this.trackEndLines=!0,this.hasCustom=!1,this.canModeBeOptimized={},"boolean"==typeof t)throw Error("The second argument to the Lexer constructor is now an ILexerConfig Object.\na boolean 2nd argument is no longer supported");if(this.config=i.merge(s,t),this.config.lineTerminatorsPattern===s.lineTerminatorsPattern)this.config.lineTerminatorsPattern=r.LineTerminatorOptimizedTester;else if(this.config.lineTerminatorCharacters===s.lineTerminatorCharacters)throw Error("Error: Missing <lineTerminatorCharacters> property on the Lexer config.\n\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#MISSING_LINE_TERM_CHARS");if(t.safeMode&&t.ensureOptimizations)throw Error('"safeMode" and "ensureOptimizations" flags are mutually exclusive.');this.trackStartLines=/full|onlyStart/i.test(this.config.positionTracking),this.trackEndLines=/full/i.test(this.config.positionTracking);var a,c=!0;i.isArray(e)?((a={modes:{}}).modes[r.DEFAULT_MODE]=i.cloneArr(e),a[r.DEFAULT_MODE]=r.DEFAULT_MODE):(c=!1,a=i.cloneObj(e)),this.lexerDefinitionErrors=this.lexerDefinitionErrors.concat(r.performRuntimeChecks(a,this.trackStartLines,this.config.lineTerminatorCharacters)),this.lexerDefinitionWarning=this.lexerDefinitionWarning.concat(r.performWarningRuntimeChecks(a,this.trackStartLines,this.config.lineTerminatorCharacters)),a.modes=a.modes?a.modes:{},i.forEach(a.modes,function(e,t){a.modes[t]=i.reject(e,function(e){return i.isUndefined(e)})});var u=i.keys(a.modes);if(i.forEach(a.modes,function(e,a){if(n.modes.push(a),n.lexerDefinitionErrors=n.lexerDefinitionErrors.concat(r.validatePatterns(e,u)),i.isEmpty(n.lexerDefinitionErrors)){o.augmentTokenTypes(e);var s=r.analyzeTokenTypes(e,{lineTerminatorCharacters:n.config.lineTerminatorCharacters,positionTracking:t.positionTracking,ensureOptimizations:t.ensureOptimizations,safeMode:t.safeMode});n.patternIdxToConfig[a]=s.patternIdxToConfig,n.charCodeToPatternIdxToConfig[a]=s.charCodeToPatternIdxToConfig,n.emptyGroups=i.merge(n.emptyGroups,s.emptyGroups),n.hasCustom=s.hasCustom||n.hasCustom,n.canModeBeOptimized[a]=s.canBeOptimized}}),this.defaultMode=a.defaultMode,!i.isEmpty(this.lexerDefinitionErrors)&&!this.config.deferDefinitionErrorsHandling){var p=i.map(this.lexerDefinitionErrors,function(e){return e.message}).join("-----------------------\n");throw new Error("Errors detected in definition of Lexer:\n"+p)}if(i.forEach(this.lexerDefinitionWarning,function(e){i.PRINT_WARNING(e.message)}),r.SUPPORT_STICKY?(this.chopInput=i.IDENTITY,this.match=this.matchWithTest):(this.updateLastIndex=i.NOOP,this.match=this.matchWithExec),c&&(this.handleModes=i.NOOP),!1===this.trackStartLines&&(this.computeNewColumn=i.IDENTITY),!1===this.trackEndLines&&(this.updateTokenEndLineColumnLocation=i.NOOP),/full/i.test(this.config.positionTracking))this.createTokenInstance=this.createFullToken;else if(/onlyStart/i.test(this.config.positionTracking))this.createTokenInstance=this.createStartOnlyToken;else{if(!/onlyOffset/i.test(this.config.positionTracking))throw Error('Invalid <positionTracking> config option: "'+this.config.positionTracking+'"');this.createTokenInstance=this.createOffsetOnlyToken}this.hasCustom?this.addToken=this.addTokenUsingPush:this.addToken=this.addTokenUsingMemberAccess;var l=i.reduce(this.canModeBeOptimized,function(e,t,n){return!1===t&&e.push(n),e},[]);if(t.ensureOptimizations&&!i.isEmpty(l))throw Error("Lexer Modes: < "+l.join(", ")+' > cannot be optimized.\n\t Disable the "ensureOptimizations" lexer config flag to silently ignore this and run the lexer in an un-optimized mode.\n\t Or inspect the console log for details on how to resolve these issues.')}return e.prototype.tokenize=function(e,t){if(void 0===t&&(t=this.defaultMode),!i.isEmpty(this.lexerDefinitionErrors)){var n=i.map(this.lexerDefinitionErrors,function(e){return e.message}).join("-----------------------\n");throw new Error("Unable to Tokenize because Errors detected in definition of Lexer:\n"+n)}return this.tokenizeInternal(e,t)},e.prototype.tokenizeInternal=function(e,t){var n,o,a,s,c,u,p,l,f,h,E,d,T=this,m=e,R=m.length,A=0,N=0,y=this.hasCustom?0:Math.floor(e.length/10),O=new Array(y),S=[],L=this.trackStartLines?1:void 0,I=this.trackStartLines?1:void 0,v=r.cloneEmptyGroups(this.emptyGroups),_=this.trackStartLines,k=this.config.lineTerminatorsPattern,g=0,C=[],P=[],M=[],U=[];Object.freeze(U);var D,x=void 0,b=function(e){if(1===M.length&&void 0===e.tokenType.PUSH_MODE){var t=T.config.errorMessageProvider.buildUnableToPopLexerModeMessage(e);S.push({offset:e.startOffset,line:void 0!==e.startLine?e.startLine:void 0,column:void 0!==e.startColumn?e.startColumn:void 0,length:e.image.length,message:t})}else{M.pop();var n=i.last(M);C=T.patternIdxToConfig[n],P=T.charCodeToPatternIdxToConfig[n],g=C.length;var r=T.canModeBeOptimized[n]&&!1===T.config.safeMode;x=P&&r?function(e){var t=P[e];return void 0===t?U:t}:function(){return C}}};function F(e){M.push(e),P=this.charCodeToPatternIdxToConfig[e],C=this.patternIdxToConfig[e],g=C.length,g=C.length;var t=this.canModeBeOptimized[e]&&!1===this.config.safeMode;x=P&&t?function(e){var t=P[e];return void 0===t?U:t}:function(){return C}}for(F.call(this,t);A<R;){c=null;var w=m.charCodeAt(A),G=x(w),B=G.length;for(n=0;n<B;n++){var j=(D=G[n]).pattern;if(!1!==($=D.short)?w===$&&(c=j):!0===D.isCustom?c=null!==(d=j.exec(m,A,O,v))?d[0]:d:(this.updateLastIndex(j,A),c=this.match(j,e,A)),null!==c){if(void 0!==(s=D.longerAlt)){var V=C[s],H=V.pattern;!0===V.isCustom?a=null!==(d=H.exec(m,A,O,v))?d[0]:d:(this.updateLastIndex(H,A),a=this.match(H,e,A)),a&&a.length>c.length&&(c=a,D=V)}break}}if(null!==c){if(u=c.length,void 0!==(p=D.group)&&(l=D.tokenTypeIdx,f=this.createTokenInstance(c,A,l,D.tokenType,L,I,u),!1===p?N=this.addToken(O,N,f):v[p].push(f)),e=this.chopInput(e,u),A+=u,I=this.computeNewColumn(I,u),!0===_&&!0===D.canLineTerminator){var W=0,K=void 0,Y=void 0;k.lastIndex=0;do{!0===(K=k.test(c))&&(Y=k.lastIndex-1,W++)}while(K);0!==W&&(L+=W,I=u-Y,this.updateTokenEndLineColumnLocation(f,p,Y,W,L,I,u))}this.handleModes(D,b,F,f)}else{for(var X=A,z=L,q=I,Z=!1;!Z&&A<R;)for(m.charCodeAt(A),e=this.chopInput(e,1),A++,o=0;o<g;o++){var $,Q=C[o];j=Q.pattern;if(!1!==($=Q.short)?m.charCodeAt(A)===$&&(Z=!0):!0===Q.isCustom?Z=null!==j.exec(m,A,O,v):(this.updateLastIndex(j,A),Z=null!==j.exec(e)),!0===Z)break}h=A-X,E=this.config.errorMessageProvider.buildUnexpectedCharactersMessage(m,X,h,z,q),S.push({offset:X,line:z,column:q,length:h,message:E})}}return this.hasCustom||(O.length=N),{tokens:O,groups:v,errors:S}},e.prototype.handleModes=function(e,t,n,r){if(!0===e.pop){var i=e.push;t(r),void 0!==i&&n.call(this,i)}else void 0!==e.push&&n.call(this,e.push)},e.prototype.chopInput=function(e,t){return e.substring(t)},e.prototype.updateLastIndex=function(e,t){e.lastIndex=t},e.prototype.updateTokenEndLineColumnLocation=function(e,t,n,r,i,o,a){var s,c;void 0!==t&&(c=(s=n===a-1)?-1:0,1===r&&!0===s||(e.endLine=i+c,e.endColumn=o-1-c))},e.prototype.computeNewColumn=function(e,t){return e+t},e.prototype.createTokenInstance=function(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];return null},e.prototype.createOffsetOnlyToken=function(e,t,n,r){return{image:e,startOffset:t,tokenTypeIdx:n,tokenType:r}},e.prototype.createStartOnlyToken=function(e,t,n,r,i,o){return{image:e,startOffset:t,startLine:i,startColumn:o,tokenTypeIdx:n,tokenType:r}},e.prototype.createFullToken=function(e,t,n,r,i,o,a){return{image:e,startOffset:t,endOffset:t+a-1,startLine:i,endLine:i,startColumn:o,endColumn:o+a-1,tokenTypeIdx:n,tokenType:r}},e.prototype.addToken=function(e,t,n){return 666},e.prototype.addTokenUsingPush=function(e,t,n){return e.push(n),t},e.prototype.addTokenUsingMemberAccess=function(e,t,n){return e[t]=n,++t},e.prototype.match=function(e,t,n){return null},e.prototype.matchWithTest=function(e,t,n){return!0===e.test(t)?t.substring(n,e.lastIndex):null},e.prototype.matchWithExec=function(e,t){var n=e.exec(t);return null!==n?n[0]:n},e.SKIPPED="This marks a skipped Token pattern, this means each token identified by it willbe consumed and then thrown into oblivion, this can be used to for example to completely ignore whitespace.",e.NA=/NOT_APPLICABLE/,e}();t.Lexer=c},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(4),a=n(9),s=n(15),c=n(6),u=n(11);t.addTerminalToCst=function(e,t,n){void 0===e.children[n]?e.children[n]=[t]:e.children[n].push(t)},t.addNoneTerminalToCst=function(e,t,n){void 0===e.children[t]?e.children[t]=[n]:e.children[t].push(n)};var p=function(e){function t(t){var n=e.call(this)||this;return n.result=[],n.ruleIdx=t,n}return i(t,e),t.prototype.collectNamedDSLMethod=function(e,t,n){if(!o.isUndefined(e.name)){var r=void 0;if(e instanceof c.Option||e instanceof c.Repetition||e instanceof c.RepetitionMandatory||e instanceof c.Alternation)r=new t({definition:e.definition,idx:e.idx});else{if(!(e instanceof c.RepetitionMandatoryWithSeparator||e instanceof c.RepetitionWithSeparator))throw Error("non exhaustive match");r=new t({definition:e.definition,idx:e.idx,separator:e.separator})}var i=[r],a=s.getKeyForAutomaticLookahead(this.ruleIdx,n,e.idx);this.result.push({def:i,key:a,name:e.name,orgProd:e})}},t.prototype.visitOption=function(e){this.collectNamedDSLMethod(e,c.Option,s.OPTION_IDX)},t.prototype.visitRepetition=function(e){this.collectNamedDSLMethod(e,c.Repetition,s.MANY_IDX)},t.prototype.visitRepetitionMandatory=function(e){this.collectNamedDSLMethod(e,c.RepetitionMandatory,s.AT_LEAST_ONE_IDX)},t.prototype.visitRepetitionMandatoryWithSeparator=function(e){this.collectNamedDSLMethod(e,c.RepetitionMandatoryWithSeparator,s.AT_LEAST_ONE_SEP_IDX)},t.prototype.visitRepetitionWithSeparator=function(e){this.collectNamedDSLMethod(e,c.RepetitionWithSeparator,s.MANY_SEP_IDX)},t.prototype.visitAlternation=function(e){var t=this;this.collectNamedDSLMethod(e,c.Alternation,s.OR_IDX);var n=e.definition.length>1;o.forEach(e.definition,function(r,i){if(!o.isUndefined(r.name)){var a=r.definition;a=n?[new c.Option({definition:r.definition})]:r.definition;var u=s.getKeyForAltIndex(t.ruleIdx,s.OR_IDX,e.idx,i);t.result.push({def:a,key:u,name:r.name,orgProd:r})}})},t}(u.GAstVisitor);t.NamedDSLMethodsCollectorVisitor=p,t.analyzeCst=function(e,t){var n={dictDef:new a.HashTable,allRuleNames:[]};return o.forEach(e,function(e){var r=t.get(e.name);n.allRuleNames.push(e.name);var i=new p(r);e.accept(i),o.forEach(i.result,function(t){t.def,t.key;var r=t.name;n.allRuleNames.push(e.name+r)})}),n}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.VERSION="4.3.3"},,,function(e,t,n){var r,i,o;"undefined"!=typeof self&&self,i=[],void 0===(o="function"==typeof(r=function(){function e(){}e.prototype.saveState=function(){return{idx:this.idx,input:this.input,groupIdx:this.groupIdx}},e.prototype.restoreState=function(e){this.idx=e.idx,this.input=e.input,this.groupIdx=e.groupIdx},e.prototype.pattern=function(e){this.idx=0,this.input=e,this.groupIdx=0,this.consumeChar("/");var t=this.disjunction();this.consumeChar("/");for(var n={type:"Flags",global:!1,ignoreCase:!1,multiLine:!1,unicode:!1,sticky:!1};this.isRegExpFlag();)switch(this.popChar()){case"g":s(n,"global");break;case"i":s(n,"ignoreCase");break;case"m":s(n,"multiLine");break;case"u":s(n,"unicode");break;case"y":s(n,"sticky")}if(this.idx!==this.input.length)throw Error("Redundant input: "+this.input.substring(this.idx));return{type:"Pattern",flags:n,value:t}},e.prototype.disjunction=function(){var e=[];for(e.push(this.alternative());"|"===this.peekChar();)this.consumeChar("|"),e.push(this.alternative());return{type:"Disjunction",value:e}},e.prototype.alternative=function(){for(var e=[];this.isTerm();)e.push(this.term());return{type:"Alternative",value:e}},e.prototype.term=function(){return this.isAssertion()?this.assertion():this.atom()},e.prototype.assertion=function(){switch(this.popChar()){case"^":return{type:"StartAnchor"};case"$":return{type:"EndAnchor"};case"\\":switch(this.popChar()){case"b":return{type:"WordBoundary"};case"B":return{type:"NonWordBoundary"}}throw Error("Invalid Assertion Escape");case"(":var e;switch(this.consumeChar("?"),this.popChar()){case"=":e="Lookahead";break;case"!":e="NegativeLookahead"}c(e);var t=this.disjunction();return this.consumeChar(")"),{type:e,value:t}}!function(){throw Error("Internal Error - Should never get here!")}()},e.prototype.quantifier=function(e){var t;switch(this.popChar()){case"*":t={atLeast:0,atMost:1/0};break;case"+":t={atLeast:1,atMost:1/0};break;case"?":t={atLeast:0,atMost:1};break;case"{":var n=this.integerIncludingZero();switch(this.popChar()){case"}":t={atLeast:n,atMost:n};break;case",":var r;this.isDigit()?(r=this.integerIncludingZero(),t={atLeast:n,atMost:r}):t={atLeast:n,atMost:1/0},this.consumeChar("}")}if(!0===e&&void 0===t)return;c(t)}if(!0!==e||void 0!==t)return c(t),"?"===this.peekChar(0)?(this.consumeChar("?"),t.greedy=!1):t.greedy=!0,t.type="Quantifier",t},e.prototype.atom=function(){var e;switch(this.peekChar()){case".":e=this.dotAll();break;case"\\":e=this.atomEscape();break;case"[":e=this.characterClass();break;case"(":e=this.group()}return void 0===e&&this.isPatternCharacter()&&(e=this.patternCharacter()),c(e),this.isQuantifier()&&(e.quantifier=this.quantifier()),e},e.prototype.dotAll=function(){return this.consumeChar("."),{type:"Set",complement:!0,value:[o("\n"),o("\r"),o("\u2028"),o("\u2029")]}},e.prototype.atomEscape=function(){switch(this.consumeChar("\\"),this.peekChar()){case"1":case"2":case"3":case"4":case"5":case"6":case"7":case"8":case"9":return this.decimalEscapeAtom();case"d":case"D":case"s":case"S":case"w":case"W":return this.characterClassEscape();case"f":case"n":case"r":case"t":case"v":return this.controlEscapeAtom();case"c":return this.controlLetterEscapeAtom();case"0":return this.nulCharacterAtom();case"x":return this.hexEscapeSequenceAtom();case"u":return this.regExpUnicodeEscapeSequenceAtom();default:return this.identityEscapeAtom()}},e.prototype.decimalEscapeAtom=function(){var e=this.positiveInteger();return{type:"GroupBackReference",value:e}},e.prototype.characterClassEscape=function(){var e,t=!1;switch(this.popChar()){case"d":e=u;break;case"D":e=u,t=!0;break;case"s":e=l;break;case"S":e=l,t=!0;break;case"w":e=p;break;case"W":e=p,t=!0}return c(e),{type:"Set",value:e,complement:t}},e.prototype.controlEscapeAtom=function(){var e;switch(this.popChar()){case"f":e=o("\f");break;case"n":e=o("\n");break;case"r":e=o("\r");break;case"t":e=o("\t");break;case"v":e=o("\v")}return c(e),{type:"Character",value:e}},e.prototype.controlLetterEscapeAtom=function(){this.consumeChar("c");var e=this.popChar();if(!1===/[a-zA-Z]/.test(e))throw Error("Invalid ");var t=e.toUpperCase().charCodeAt(0)-64;return{type:"Character",value:t}},e.prototype.nulCharacterAtom=function(){return this.consumeChar("0"),{type:"Character",value:o("\0")}},e.prototype.hexEscapeSequenceAtom=function(){return this.consumeChar("x"),this.parseHexDigits(2)},e.prototype.regExpUnicodeEscapeSequenceAtom=function(){return this.consumeChar("u"),this.parseHexDigits(4)},e.prototype.identityEscapeAtom=function(){var e=this.popChar();return{type:"Character",value:o(e)}},e.prototype.classPatternCharacterAtom=function(){switch(this.peekChar()){case"\n":case"\r":case"\u2028":case"\u2029":case"\\":case"]":throw Error("TBD");default:var e=this.popChar();return{type:"Character",value:o(e)}}},e.prototype.characterClass=function(){var e=[],t=!1;for(this.consumeChar("["),"^"===this.peekChar(0)&&(this.consumeChar("^"),t=!0);this.isClassAtom();){var n=this.classAtom(),r="Character"===n.type;if(r&&this.isRangeDash()){this.consumeChar("-");var i=this.classAtom(),s="Character"===i.type;if(s){if(i.value<n.value)throw Error("Range out of order in character class");e.push({from:n.value,to:i.value})}else a(n.value,e),e.push(o("-")),a(i.value,e)}else a(n.value,e)}return this.consumeChar("]"),{type:"Set",complement:t,value:e}},e.prototype.classAtom=function(){switch(this.peekChar()){case"]":case"\n":case"\r":case"\u2028":case"\u2029":throw Error("TBD");case"\\":return this.classEscape();default:return this.classPatternCharacterAtom()}},e.prototype.classEscape=function(){switch(this.consumeChar("\\"),this.peekChar()){case"b":return this.consumeChar("b"),{type:"Character",value:o("\b")};case"d":case"D":case"s":case"S":case"w":case"W":return this.characterClassEscape();case"f":case"n":case"r":case"t":case"v":return this.controlEscapeAtom();case"c":return this.controlLetterEscapeAtom();case"0":return this.nulCharacterAtom();case"x":return this.hexEscapeSequenceAtom();case"u":return this.regExpUnicodeEscapeSequenceAtom();default:return this.identityEscapeAtom()}},e.prototype.group=function(){var e=!0;switch(this.consumeChar("("),this.peekChar(0)){case"?":this.consumeChar("?"),this.consumeChar(":"),e=!1;break;default:this.groupIdx++}var t=this.disjunction();this.consumeChar(")");var n={type:"Group",capturing:e,value:t};return e&&(n.idx=this.groupIdx),n},e.prototype.positiveInteger=function(){var e=this.popChar();if(!1===i.test(e))throw Error("Expecting a positive integer");for(;r.test(this.peekChar(0));)e+=this.popChar();return parseInt(e,10)},e.prototype.integerIncludingZero=function(){var e=this.popChar();if(!1===r.test(e))throw Error("Expecting an integer");for(;r.test(this.peekChar(0));)e+=this.popChar();return parseInt(e,10)},e.prototype.patternCharacter=function(){var e=this.popChar();switch(e){case"\n":case"\r":case"\u2028":case"\u2029":case"^":case"$":case"\\":case".":case"*":case"+":case"?":case"(":case")":case"[":case"|":throw Error("TBD");default:return{type:"Character",value:o(e)}}},e.prototype.isRegExpFlag=function(){switch(this.peekChar(0)){case"g":case"i":case"m":case"u":case"y":return!0;default:return!1}},e.prototype.isRangeDash=function(){return"-"===this.peekChar()&&this.isClassAtom(1)},e.prototype.isDigit=function(){return r.test(this.peekChar(0))},e.prototype.isClassAtom=function(e){switch(void 0===e&&(e=0),this.peekChar(e)){case"]":case"\n":case"\r":case"\u2028":case"\u2029":return!1;default:return!0}},e.prototype.isTerm=function(){return this.isAtom()||this.isAssertion()},e.prototype.isAtom=function(){if(this.isPatternCharacter())return!0;switch(this.peekChar(0)){case".":case"\\":case"[":case"(":return!0;default:return!1}},e.prototype.isAssertion=function(){switch(this.peekChar(0)){case"^":case"$":return!0;case"\\":switch(this.peekChar(1)){case"b":case"B":return!0;default:return!1}case"(":return"?"===this.peekChar(1)&&("="===this.peekChar(2)||"!"===this.peekChar(2));default:return!1}},e.prototype.isQuantifier=function(){var e=this.saveState();try{return void 0!==this.quantifier(!0)}catch(e){return!1}finally{this.restoreState(e)}},e.prototype.isPatternCharacter=function(){switch(this.peekChar()){case"^":case"$":case"\\":case".":case"*":case"+":case"?":case"(":case")":case"[":case"|":case"/":case"\n":case"\r":case"\u2028":case"\u2029":return!1;default:return!0}},e.prototype.parseHexDigits=function(e){for(var t="",r=0;r<e;r++){var i=this.popChar();if(!1===n.test(i))throw Error("Expecting a HexDecimal digits");t+=i}var o=parseInt(t,16);return{type:"Character",value:o}},e.prototype.peekChar=function(e){return void 0===e&&(e=0),this.input[this.idx+e]},e.prototype.popChar=function(){var e=this.peekChar(0);return this.consumeChar(),e},e.prototype.consumeChar=function(e){if(void 0!==e&&this.input[this.idx]!==e)throw Error("Expected: '"+e+"' but found: '"+this.input[this.idx]+"' at offset: "+this.idx);if(this.idx>=this.input.length)throw Error("Unexpected end of input");this.idx++};var t,n=/[0-9a-fA-F]/,r=/[0-9]/,i=/[1-9]/;function o(e){return e.charCodeAt(0)}function a(e,t){void 0!==e.length?e.forEach(function(e){t.push(e)}):t.push(e)}function s(e,t){if(!0===e[t])throw"duplicate flag "+t;e[t]=!0}function c(e){if(void 0===e)throw Error("Internal Error - Should never get here!")}var u=[];for(t=o("0");t<=o("9");t++)u.push(t);var p=[o("_")].concat(u);for(t=o("a");t<=o("z");t++)p.push(t);for(t=o("A");t<=o("Z");t++)p.push(t);var l=[o(" "),o("\f"),o("\n"),o("\r"),o("\t"),o("\v"),o("\t"),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o(" "),o("\u2028"),o("\u2029"),o(" "),o(" "),o("　"),o("\ufeff")];function f(){}return f.prototype.visitChildren=function(e){for(var t in e){var n=e[t];e.hasOwnProperty(t)&&(void 0!==n.type?this.visit(n):Array.isArray(n)&&n.forEach(function(e){this.visit(e)},this))}},f.prototype.visit=function(e){switch(e.type){case"Pattern":this.visitPattern(e);break;case"Flags":this.visitFlags(e);break;case"Disjunction":this.visitDisjunction(e);break;case"Alternative":this.visitAlternative(e);break;case"StartAnchor":this.visitStartAnchor(e);break;case"EndAnchor":this.visitEndAnchor(e);break;case"WordBoundary":this.visitWordBoundary(e);break;case"NonWordBoundary":this.visitNonWordBoundary(e);break;case"Lookahead":this.visitLookahead(e);break;case"NegativeLookahead":this.visitNegativeLookahead(e);break;case"Character":this.visitCharacter(e);break;case"Set":this.visitSet(e);break;case"Group":this.visitGroup(e);break;case"GroupBackReference":this.visitGroupBackReference(e);break;case"Quantifier":this.visitQuantifier(e)}this.visitChildren(e)},f.prototype.visitPattern=function(e){},f.prototype.visitFlags=function(e){},f.prototype.visitDisjunction=function(e){},f.prototype.visitAlternative=function(e){},f.prototype.visitStartAnchor=function(e){},f.prototype.visitEndAnchor=function(e){},f.prototype.visitWordBoundary=function(e){},f.prototype.visitNonWordBoundary=function(e){},f.prototype.visitLookahead=function(e){},f.prototype.visitNegativeLookahead=function(e){},f.prototype.visitCharacter=function(e){},f.prototype.visitSet=function(e){},f.prototype.visitGroup=function(e){},f.prototype.visitGroupBackReference=function(e){},f.prototype.visitQuantifier=function(e){},{RegExpParser:e,BaseRegExpVisitor:f,VERSION:"0.4.0"}})?r.apply(t,i):r)||(e.exports=o)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.defaultLexerErrorProvider={buildUnableToPopLexerModeMessage:function(e){return"Unable to pop Lexer Mode after encountering Token ->"+e.image+"<- The Mode Stack is empty"},buildUnexpectedCharactersMessage:function(e,t,n,r,i){return"unexpected character: ->"+e.charAt(t)+"<- at offset: "+t+", skipped "+n+" characters."}}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(6),o=n(14);function a(e){if(e instanceof i.NonTerminal)return a(e.referencedRule);if(e instanceof i.Terminal)return u(e);if(o.isSequenceProd(e))return s(e);if(o.isBranchingProd(e))return c(e);throw Error("non exhaustive match")}function s(e){for(var t,n=[],i=e.definition,s=0,c=i.length>s,u=!0;c&&u;)t=i[s],u=o.isOptionalProd(t),n=n.concat(a(t)),s+=1,c=i.length>s;return r.uniq(n)}function c(e){var t=r.map(e.definition,function(e){return a(e)});return r.uniq(r.flatten(t))}function u(e){return[e.terminalType]}t.first=a,t.firstForSequence=s,t.firstForBranching=c,t.firstForTerminal=u},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.IN="_~IN~_"},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r,i=n(39),o=n(4),a=n(6);!function(e){e[e.OPTION=0]="OPTION",e[e.OR=1]="OR",e[e.MANY=2]="MANY",e[e.MANY_SEP=3]="MANY_SEP",e[e.AT_LEAST_ONE=4]="AT_LEAST_ONE",e[e.AT_LEAST_ONE_SEP=5]="AT_LEAST_ONE_SEP",e[e.REF=6]="REF",e[e.TERMINAL=7]="TERMINAL",e[e.FLAT=8]="FLAT"}(r=t.ProdType||(t.ProdType={}));var s=/(?:\s*{\s*NAME\s*:\s*["'`]([\w$]*)["'`])?/,c=new RegExp(s.source.replace("{","").replace(")?","\\s*,)?")),u=/\.\s*CONSUME(\d+)?\s*\(\s*(?:[a-zA-Z_$]\w*\s*\.\s*)*([a-zA-Z_$]\w*)/,p=new RegExp(u.source,"g"),l=/\.\s*SUBRULE(\d+)?\s*\(\s*(?:[a-zA-Z_$]\w*\s*\.\s*)*([a-zA-Z_$]\w*)/,f=new RegExp(l.source,"g"),h=/\.\s*OPTION(\d+)?\s*\(/,E=new RegExp(h.source+s.source),d=new RegExp(h.source,"g"),T=/\.\s*MANY(\d+)?\s*\(/,m=new RegExp(T.source+s.source),R=new RegExp(T.source,"g"),A=/\s*SEP\s*:\s*(?:[a-zA-Z_$]\w*\s*\.\s*)*([a-zA-Z_$]\w*)/,N=new RegExp(/\.\s*MANY_SEP(\d+)?\s*\(\s*{/.source+c.source+A.source),y=new RegExp(N.source,"g"),O=new RegExp(/\.\s*AT_LEAST_ONE_SEP(\d+)?\s*\(\s*{/.source+c.source+A.source),S=new RegExp(O.source,"g"),L=/\.\s*AT_LEAST_ONE(\d+)?\s*\(/,I=new RegExp(L.source+s.source),v=new RegExp(L.source,"g"),_=/\.\s*OR(\d+)?\s*\(/,k=new RegExp(_.source+s.source),g=new RegExp(_.source,"g"),C=new RegExp(c.source+/\s*(ALT)\s*:/.source),P=new RegExp(C.source,"g");function M(e,n){switch(e.type){case r.AT_LEAST_ONE:return function(e,t){return U(I,new a.RepetitionMandatory({definition:[]}),e,t)}(e,n);case r.AT_LEAST_ONE_SEP:return function(e,t){return D(e,t,a.RepetitionMandatoryWithSeparator,O)}(e,n);case r.MANY_SEP:return function(e,t){return D(e,t,a.RepetitionWithSeparator,N)}(e,n);case r.MANY:return function(e,t){return U(m,new a.Repetition({definition:[]}),e,t)}(e,n);case r.OPTION:return function(e,t){return U(E,new a.Option({definition:[]}),e,t)}(e,n);case r.OR:return function(e,t){return U(k,new a.Alternation({definition:[]}),e,t)}(e,n);case r.FLAT:return function(e,t){var n=new a.Flat({definition:[]}),r=C.exec(e.text)[1];o.isUndefined(r)||(n.name=r);return x(n,e.range,t)}(e,n);case r.REF:return function(e){var t=l.exec(e.text),n=void 0===t[1]?0:parseInt(t[1],10),r=t[2];return new a.NonTerminal({nonTerminalName:r,idx:n})}(e);case r.TERMINAL:return function(e){var n=u.exec(e.text),r=void 0===n[1]?0:parseInt(n[1],10),i=n[2],o=t.terminalNameToConstructor[i];if(!o)throw Error("Terminal Token name: "+i+" not found\n\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_grammar_errors.html#TERMINAL_NAME_NOT_FOUND\n\tFor Further details.");return new a.Terminal({terminalType:o,idx:r})}(e);default:throw Error("non exhaustive match")}}function U(e,t,n,r){var i=e.exec(n.text),a=void 0===i[1];t.idx=a?0:parseInt(i[1],10);var s=i[2];return o.isUndefined(s)||(t.name=s),x(t,n.range,r)}function D(e,n,r,i){var a=i.exec(e.text),s=void 0===a[1]?0:parseInt(a[1],10),c=a[3],u=t.terminalNameToConstructor[c];if(!u)throw Error("Separator Terminal Token name: "+c+" not found");var p=new r({definition:[],separator:u,idx:s}),l=a[2];return o.isUndefined(l)||(p.name=l),x(p,e.range,n)}function x(e,t,n){var r=b(t,n),i=o.sortBy(r,function(e){return e.range.start}),a=[];return o.forEach(i,function(e){a.push(M(e,n))}),e.definition=a,e}function b(e,t){return o.filter(t,function(n){var r=e.strictlyContainsRange(n.range),i=o.every(t,function(t){var r=t.range.strictlyContainsRange(n.range),i=t.range.isStrictlyContainedInRange(e);return!(r&&i)});return r&&i})}t.terminalNameToConstructor={},t.buildTopProduction=function(e,n,r){t.terminalNameToConstructor=r;var o=W(H(j("  "+e)));return function(e,t,n,r){return x(new a.Rule({name:e,definition:[],orgText:r}),t,n)}(n,new i.Range(0,e.length+2),o,e)},t.buildProdGast=M,t.getDirectlyContainedRanges=b;var F=/\/\/.*/g,w=/\/\*([^*]|[\r\n]|(\*+([^*\/]|[\r\n])))*\*+\//g,G=/(NAME\s*:\s*)?"([^\\"]|\\([bfnrtv"\\\/]|u[0-9a-fA-F]{4}))*"/g,B=/(NAME\s*:\s*)?'([^\\']|\\([bfnrtv'\\\/]|u[0-9a-fA-F]{4}))*'/g;function j(e){return e.replace(F,"").replace(w,"")}function V(e,t){return void 0!==t?e:""}function H(e){return e.replace(G,V).replace(B,V)}function W(e){var t=K(e),n=Y(e),r=X(e),i=z(e),o=q(e),a=Z(e),s=$(e),c=Q(e);return[].concat(t,n,r,i,o,a,s,c)}function K(e){return ne(e,r.TERMINAL,p)}function Y(e){return ne(e,r.REF,f)}function X(e){return re(e,r.AT_LEAST_ONE,v)}function z(e){return re(e,r.AT_LEAST_ONE_SEP,S)}function q(e){return re(e,r.MANY,R)}function Z(e){return re(e,r.MANY_SEP,y)}function $(e){return re(e,r.OPTION,d)}function Q(e){var t=re(e,r.OR,g),n=te(t);return t.concat(n)}t.removeComments=j,t.removeStringLiterals=H,t.createRanges=W,t.createTerminalRanges=K,t.createRefsRanges=Y,t.createAtLeastOneRanges=X,t.createAtLeastOneSepRanges=z,t.createManyRanges=q,t.createManySepRanges=Z,t.createOptionRanges=$,t.createOrRanges=Q;var J=o.partial(oe,"{","}"),ee=o.partial(oe,"(",")");function te(e){var t=[];return o.forEach(e,function(e){var n=ie(e.text,r.FLAT,P,J),i=e.range.start;o.forEach(n,function(e){e.range.start+=i,e.range.end+=i}),t=t.concat(n)}),o.uniq(t,function(e){return e.type+"~"+e.range.start+"~"+e.range.end+"~"+e.text})}function ne(e,t,n){for(var r,o=[];r=n.exec(e);){var a=r.index,s=n.lastIndex,c=new i.Range(a,s),u=r[0];o.push({range:c,text:u,type:t})}return o}function re(e,t,n){return ie(e,t,n,ee)}function ie(e,t,n,r){for(var o,a=[];o=n.exec(e);){var s=o.index,c=r(s+o[0].length,e),u=new i.Range(s,c),p=e.substr(s,c-s+1);a.push({range:u,text:p,type:t})}return a}function oe(e,t,n,r){for(var i=[1],a=-1;!o.isEmpty(i)&&a+n<r.length;){a++;var s=r.charAt(n+a);s===e?i.push(1):s===t&&i.pop()}if(o.isEmpty(i))return a+n;throw new Error("INVALID INPUT TEXT, UNTERMINATED PARENTHESIS")}function ae(e,t){return o.map(e,function(e){return se(e,t)})}function se(e,t){switch(e.type){case"NonTerminal":return new a.NonTerminal({nonTerminalName:e.name,idx:e.idx});case"Flat":return new a.Flat({name:e.name,definition:ae(e.definition,t)});case"Option":return new a.Option({name:e.name,idx:e.idx,definition:ae(e.definition,t)});case"RepetitionMandatory":return new a.RepetitionMandatory({name:e.name,idx:e.idx,definition:ae(e.definition,t)});case"RepetitionMandatoryWithSeparator":return new a.RepetitionMandatoryWithSeparator({name:e.name,idx:e.idx,separator:t[e.separator.name],definition:ae(e.definition,t)});case"RepetitionWithSeparator":return new a.RepetitionWithSeparator({name:e.name,idx:e.idx,separator:t[e.separator.name],definition:ae(e.definition,t)});case"Repetition":return new a.Repetition({name:e.name,idx:e.idx,definition:ae(e.definition,t)});case"Alternation":return new a.Alternation({name:e.name,idx:e.idx,definition:ae(e.definition,t)});case"Terminal":return new a.Terminal({terminalType:t[e.name],idx:e.idx});case"Rule":return new a.Rule({name:e.name,orgText:e.orgText,definition:ae(e.definition,t)});default:}}t.createOrPartRanges=te,t.findClosingOffset=oe,t.deserializeGrammar=ae,t.deserializeProduction=se},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(9),o=n(40),a=n(17),s=n(16),c=n(14);t.resolveGrammar=function(e){e=r.defaults(e,{errMsgProvider:s.defaultGrammarResolverErrorProvider});var t=new i.HashTable;return r.forEach(e.rules,function(e){t.put(e.name,e)}),o.resolveGrammar(t,e.errMsgProvider)},t.validateGrammar=function(e){return e=r.defaults(e,{errMsgProvider:s.defaultGrammarValidatorErrorProvider,ignoredIssues:{}}),a.validateGrammar(e.rules,e.maxLookahead,e.tokenTypes,e.ignoredIssues,e.errMsgProvider,e.grammarName)},t.assignOccurrenceIndices=function(e){r.forEach(e.rules,function(e){var t=new c.DslMethodsCollectorVisitor;e.accept(t),r.forEach(t.dslMethods,function(e){r.forEach(e,function(e,t){e.idx=t+1})})})}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(7),i=n(4),o=n(12),a=n(30),s=n(9),c=n(8);function u(e){this.name=t.IN_RULE_RECOVERY_EXCEPTION,this.message=e}t.EOF_FOLLOW_KEY={},t.IN_RULE_RECOVERY_EXCEPTION="InRuleRecoveryException",t.InRuleRecoveryException=u,u.prototype=Error.prototype;var p=function(){function e(){}return e.prototype.initRecoverable=function(e){this.firstAfterRepMap=new s.HashTable,this.resyncFollows=new s.HashTable,this.recoveryEnabled=i.has(e,"recoveryEnabled")?e.recoveryEnabled:c.DEFAULT_PARSER_CONFIG.recoveryEnabled,this.recoveryEnabled&&(this.attemptInRepetitionRecovery=l)},e.prototype.getTokenToInsert=function(e){var t=r.createTokenInstance(e,"",NaN,NaN,NaN,NaN,NaN,NaN);return t.isInsertedInRecovery=!0,t},e.prototype.canTokenTypeBeInsertedInRecovery=function(e){return!0},e.prototype.tryInRepetitionRecovery=function(e,t,n,r){for(var a=this,s=this.findReSyncTokenType(),c=this.exportLexerState(),u=[],p=!1,l=this.LA(1),f=this.LA(1),h=function(){var e=a.LA(0),t=a.errorMessageProvider.buildMismatchTokenMessage({expected:r,actual:l,previous:e,ruleName:a.getCurrRuleFullName()}),n=new o.MismatchedTokenException(t,l,a.LA(0));n.resyncedTokens=i.dropRight(u),a.SAVE_ERROR(n)};!p;){if(this.tokenMatcher(f,r))return void h();if(n.call(this))return h(),void e.apply(this,t);this.tokenMatcher(f,s)?p=!0:(f=this.SKIP_TOKEN(),this.addToResyncTokens(f,u))}this.importLexerState(c)},e.prototype.shouldInRepetitionRecoveryBeTried=function(e,t){return void 0!==e&&void 0!==t&&(!this.tokenMatcher(this.LA(1),e)&&(!this.isBackTracking()&&!this.canPerformInRuleRecovery(e,this.getFollowsForInRuleRecovery(e,t))))},e.prototype.getFollowsForInRuleRecovery=function(e,t){var n=this.getCurrentGrammarPath(e,t);return this.getNextPossibleTokenTypes(n)},e.prototype.tryInRuleRecovery=function(e,t){if(this.canRecoverWithSingleTokenInsertion(e,t))return this.getTokenToInsert(e);if(this.canRecoverWithSingleTokenDeletion(e)){var n=this.SKIP_TOKEN();return this.consumeToken(),n}throw new u("sad sad panda")},e.prototype.canPerformInRuleRecovery=function(e,t){return this.canRecoverWithSingleTokenInsertion(e,t)||this.canRecoverWithSingleTokenDeletion(e)},e.prototype.canRecoverWithSingleTokenInsertion=function(e,t){var n=this;if(!this.canTokenTypeBeInsertedInRecovery(e))return!1;if(i.isEmpty(t))return!1;var r=this.LA(1);return void 0!==i.find(t,function(e){return n.tokenMatcher(r,e)})},e.prototype.canRecoverWithSingleTokenDeletion=function(e){return this.tokenMatcher(this.LA(2),e)},e.prototype.isInCurrentRuleReSyncSet=function(e){var t=this.getCurrFollowKey(),n=this.getFollowSetFromFollowKey(t);return i.contains(n,e)},e.prototype.findReSyncTokenType=function(){for(var e=this.flattenFollowSet(),t=this.LA(1),n=2;;){var r=t.tokenType;if(i.contains(e,r))return r;t=this.LA(n),n++}},e.prototype.getCurrFollowKey=function(){if(1===this.RULE_STACK.length)return t.EOF_FOLLOW_KEY;var e=this.getLastExplicitRuleShortName(),n=this.getLastExplicitRuleOccurrenceIndex(),r=this.getPreviousExplicitRuleShortName();return{ruleName:this.shortRuleNameToFullName(e),idxInCallingRule:n,inRule:this.shortRuleNameToFullName(r)}},e.prototype.buildFullFollowKeyStack=function(){var e=this,n=this.RULE_STACK,r=this.RULE_OCCURRENCE_STACK;return i.isEmpty(this.LAST_EXPLICIT_RULE_STACK)||(n=i.map(this.LAST_EXPLICIT_RULE_STACK,function(t){return e.RULE_STACK[t]}),r=i.map(this.LAST_EXPLICIT_RULE_STACK,function(t){return e.RULE_OCCURRENCE_STACK[t]})),i.map(n,function(i,o){return 0===o?t.EOF_FOLLOW_KEY:{ruleName:e.shortRuleNameToFullName(i),idxInCallingRule:r[o],inRule:e.shortRuleNameToFullName(n[o-1])}})},e.prototype.flattenFollowSet=function(){var e=this,t=i.map(this.buildFullFollowKeyStack(),function(t){return e.getFollowSetFromFollowKey(t)});return i.flatten(t)},e.prototype.getFollowSetFromFollowKey=function(e){if(e===t.EOF_FOLLOW_KEY)return[r.EOF];var n=e.ruleName+e.idxInCallingRule+a.IN+e.inRule;return this.resyncFollows.get(n)},e.prototype.addToResyncTokens=function(e,t){return this.tokenMatcher(e,r.EOF)||t.push(e),t},e.prototype.reSyncTo=function(e){for(var t=[],n=this.LA(1);!1===this.tokenMatcher(n,e);)n=this.SKIP_TOKEN(),this.addToResyncTokens(n,t);return i.dropRight(t)},e.prototype.attemptInRepetitionRecovery=function(e,t,n,r,i,o){},e.prototype.getCurrentGrammarPath=function(e,t){return{ruleStack:this.getHumanReadableRuleStack(),occurrenceStack:i.cloneArr(this.RULE_OCCURRENCE_STACK),lastTok:e,lastTokOccurrence:t}},e.prototype.getHumanReadableRuleStack=function(){var e=this;return i.isEmpty(this.LAST_EXPLICIT_RULE_STACK)?i.map(this.RULE_STACK,function(t){return e.shortRuleNameToFullName(t)}):i.map(this.LAST_EXPLICIT_RULE_STACK,function(t){return e.shortRuleNameToFullName(e.RULE_STACK[t])})},e}();function l(e,t,n,i,o,a){var s=this.getKeyForAutomaticLookahead(i,o),c=this.firstAfterRepMap.get(s);if(void 0===c){var u=this.getCurrRuleFullName();c=new a(this.getGAstProductions().get(u),o).startWalking(),this.firstAfterRepMap.put(s,c)}var p=c.token,l=c.occurrence,f=c.isEndOfRule;1===this.RULE_STACK.length&&f&&void 0===p&&(p=r.EOF,l=1),this.shouldInRepetitionRecoveryBeTried(p,l)&&this.tryInRepetitionRecovery(e,t,n,p)}t.Recoverable=p,t.attemptInRepetitionRecovery=l},,,function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(21),a=n(9),s=n(29),c=n(4),u=n(30),p=n(7),l=n(6),f=function(e){function t(t){var n=e.call(this)||this;return n.topProd=t,n.follows=new a.HashTable,n}return i(t,e),t.prototype.startWalking=function(){return this.walk(this.topProd),this.follows},t.prototype.walkTerminal=function(e,t,n){},t.prototype.walkProdRef=function(e,t,n){var r=h(e.referencedRule,e.idx)+this.topProd.name,i=t.concat(n),o=new l.Flat({definition:i}),a=s.first(o);this.follows.put(r,a)},t}(o.RestWalker);function h(e,t){return e.name+t+u.IN}t.ResyncFollowsWalker=f,t.computeAllProdsFollows=function(e){var t=new a.HashTable;return c.forEach(e,function(e){var n=new f(e).startWalking();t.putAll(n)}),t},t.buildBetweenProdsFollowPrefix=h,t.buildInProdFollowPrefix=function(e){return p.tokenName(e.terminalType)+e.idx+u.IN}},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(27),a=n(7),s=n(22),c=n(4),u=n(38),p=new o.RegExpParser,l="PATTERN";function f(e){var t=c.filter(e,function(e){return!c.has(e,l)});return{errors:c.map(t,function(e){return{message:"Token Type: ->"+a.tokenName(e)+"<- missing static 'PATTERN' property",type:s.LexerDefinitionErrorType.MISSING_PATTERN,tokenTypes:[e]}}),valid:c.difference(e,t)}}function h(e){var t=c.filter(e,function(e){var t=e[l];return!(c.isRegExp(t)||c.isFunction(t)||c.has(t,"exec")||c.isString(t))});return{errors:c.map(t,function(e){return{message:"Token Type: ->"+a.tokenName(e)+"<- static 'PATTERN' can only be a RegExp, a Function matching the {CustomPatternMatcherFunc} type or an Object matching the {ICustomPattern} interface.",type:s.LexerDefinitionErrorType.INVALID_PATTERN,tokenTypes:[e]}}),valid:c.difference(e,t)}}t.DEFAULT_MODE="defaultMode",t.MODES="modes",t.SUPPORT_STICKY="boolean"==typeof new RegExp("(?:)").sticky,t.disableSticky=function(){t.SUPPORT_STICKY=!1},t.enableSticky=function(){t.SUPPORT_STICKY=!0},t.analyzeTokenTypes=function(e,n){n=c.defaults(n,{useSticky:t.SUPPORT_STICKY,debug:!1,safeMode:!1,positionTracking:"full",lineTerminatorCharacters:["\r","\n"]});var r=c.reject(e,function(e){return e[l]===s.Lexer.NA}),i=!1,o=c.map(r,function(e){var t=e[l];if(c.isRegExp(t)){var r=t.source;return 1===r.length&&"^"!==r&&"$"!==r&&"."!==r?r:2!==r.length||"\\"!==r[0]||c.contains(["d","D","s","S","t","r","n","t","0","c","b","B","f","v","w","W"],r[1])?n.useSticky?I(t):L(t):r[1]}if(c.isFunction(t))return i=!0,{exec:t};if(c.has(t,"exec"))return i=!0,t;if("string"==typeof t){if(1===t.length)return t;var o=t.replace(/[\\^$.*+?()[\]{}|]/g,"\\$&"),a=new RegExp(o);return n.useSticky?I(a):L(a)}throw Error("non exhaustive match")}),p=c.map(r,function(e){return e.tokenTypeIdx}),f=c.map(r,function(e){var t=e.GROUP;if(t!==s.Lexer.SKIPPED){if(c.isString(t))return t;if(c.isUndefined(t))return!1;throw Error("non exhaustive match")}}),h=c.map(r,function(e){var t=e.LONGER_ALT;if(t)return c.indexOf(r,t)}),E=c.map(r,function(e){return e.PUSH_MODE}),d=c.map(r,function(e){return c.has(e,"POP_MODE")}),T=C(n.lineTerminatorCharacters),m=c.map(r,function(e){return!1});"onlyOffset"!==n.positionTracking&&(m=c.map(r,function(e){return c.has(e,"LINE_BREAKS")?e.LINE_BREAKS:!1===k(e,T)?u.canMatchCharCode(T,e.PATTERN):void 0}));var R=c.map(r,v),A=c.map(o,_),N=c.reduce(r,function(e,t){var n=t.GROUP;return c.isString(n)&&n!==s.Lexer.SKIPPED&&(e[n]=[]),e},{}),y=c.map(o,function(e,t){return{pattern:o[t],longerAlt:h[t],canLineTerminator:m[t],isCustom:R[t],short:A[t],group:f[t],push:E[t],pop:d[t],tokenTypeIdx:p[t],tokenType:r[t]}});function O(e,t,n){void 0===e[t]&&(e[t]=[]),e[t].push(n)}var S=!0,g=[];return n.safeMode||(g=c.reduce(r,function(e,t,r){if("string"==typeof t.PATTERN){var i=t.PATTERN.charCodeAt(0);O(e,i,y[r])}else if(c.isArray(t.START_CHARS_HINT))c.forEach(t.START_CHARS_HINT,function(t){var n="string"==typeof t?t.charCodeAt(0):t;O(e,n,y[r])});else if(c.isRegExp(t.PATTERN))if(t.PATTERN.unicode)S=!1,n.ensureOptimizations&&c.PRINT_ERROR(u.failedOptimizationPrefixMsg+"\tUnable to analyze < "+t.PATTERN.toString()+" > pattern.\n\tThe regexp unicode flag is not currently supported by the regexp-to-ast library.\n\tThis will disable the lexer's first char optimizations.\n\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#UNICODE_OPTIMIZE");else{var o=u.getStartCodes(t.PATTERN,n.ensureOptimizations);c.isEmpty(o)&&(S=!1),c.forEach(o,function(t){O(e,t,y[r])})}else n.ensureOptimizations&&c.PRINT_ERROR(u.failedOptimizationPrefixMsg+"\tTokenType: <"+a.tokenName(t)+"> is using a custom token pattern without providing <start_chars_hint> parameter.\n\tThis will disable the lexer's first char optimizations.\n\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#CUSTOM_OPTIMIZE"),S=!1;return e},[])),S&&g.length<65536&&(g=c.packArray(g)),{emptyGroups:N,patternIdxToConfig:y,charCodeToPatternIdxToConfig:g,hasCustom:i,canBeOptimized:S}},t.validatePatterns=function(e,t){var n=[],r=f(e);n=n.concat(r.errors);var i=h(r.valid),o=i.valid;return n=(n=(n=(n=(n=n.concat(i.errors)).concat(function(e){var t=[],n=c.filter(e,function(e){return c.isRegExp(e[l])});return t=(t=(t=(t=(t=t.concat(d(n))).concat(R(n))).concat(A(n))).concat(N(n))).concat(T(n))}(o))).concat(y(o))).concat(O(o,t))).concat(S(o))},t.findMissingPatterns=f,t.findInvalidPatterns=h;var E=/[^\\][\$]/;function d(e){var t=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.found=!1,t}return i(t,e),t.prototype.visitEndAnchor=function(e){this.found=!0},t}(o.BaseRegExpVisitor),n=c.filter(e,function(e){var n=e[l];try{var r=p.pattern(n.toString()),i=new t;return i.visit(r),i.found}catch(e){return E.test(n.source)}});return c.map(n,function(e){return{message:"Unexpected RegExp Anchor Error:\n\tToken Type: ->"+a.tokenName(e)+"<- static 'PATTERN' cannot contain end of input anchor '$'\n\tSee sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#ANCHORS\tfor details.",type:s.LexerDefinitionErrorType.EOI_ANCHOR_FOUND,tokenTypes:[e]}})}function T(e){var t=c.filter(e,function(e){return e[l].test("")});return c.map(t,function(e){return{message:"Token Type: ->"+a.tokenName(e)+"<- static 'PATTERN' must not match an empty string",type:s.LexerDefinitionErrorType.EMPTY_MATCH_PATTERN,tokenTypes:[e]}})}t.findEndOfInputAnchor=d,t.findEmptyMatchRegExps=T;var m=/[^\\[][\^]|^\^/;function R(e){var t=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.found=!1,t}return i(t,e),t.prototype.visitStartAnchor=function(e){this.found=!0},t}(o.BaseRegExpVisitor),n=c.filter(e,function(e){var n=e[l];try{var r=p.pattern(n.toString()),i=new t;return i.visit(r),i.found}catch(e){return m.test(n.source)}});return c.map(n,function(e){return{message:"Unexpected RegExp Anchor Error:\n\tToken Type: ->"+a.tokenName(e)+"<- static 'PATTERN' cannot contain start of input anchor '^'\n\tSee https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#ANCHORS\tfor details.",type:s.LexerDefinitionErrorType.SOI_ANCHOR_FOUND,tokenTypes:[e]}})}function A(e){var t=c.filter(e,function(e){var t=e[l];return t instanceof RegExp&&(t.multiline||t.global)});return c.map(t,function(e){return{message:"Token Type: ->"+a.tokenName(e)+"<- static 'PATTERN' may NOT contain global('g') or multiline('m')",type:s.LexerDefinitionErrorType.UNSUPPORTED_FLAGS_FOUND,tokenTypes:[e]}})}function N(e){var t=[],n=c.map(e,function(n){return c.reduce(e,function(e,r){return n.PATTERN.source!==r.PATTERN.source||c.contains(t,r)||r.PATTERN===s.Lexer.NA?e:(t.push(r),e.push(r),e)},[])});n=c.compact(n);var r=c.filter(n,function(e){return e.length>1});return c.map(r,function(e){var t=c.map(e,function(e){return a.tokenName(e)});return{message:"The same RegExp pattern ->"+c.first(e).PATTERN+"<-has been used in all of the following Token Types: "+t.join(", ")+" <-",type:s.LexerDefinitionErrorType.DUPLICATE_PATTERNS_FOUND,tokenTypes:e}})}function y(e){var t=c.filter(e,function(e){if(!c.has(e,"GROUP"))return!1;var t=e.GROUP;return t!==s.Lexer.SKIPPED&&t!==s.Lexer.NA&&!c.isString(t)});return c.map(t,function(e){return{message:"Token Type: ->"+a.tokenName(e)+"<- static 'GROUP' can only be Lexer.SKIPPED/Lexer.NA/A String",type:s.LexerDefinitionErrorType.INVALID_GROUP_TYPE_FOUND,tokenTypes:[e]}})}function O(e,t){var n=c.filter(e,function(e){return void 0!==e.PUSH_MODE&&!c.contains(t,e.PUSH_MODE)});return c.map(n,function(e){return{message:"Token Type: ->"+a.tokenName(e)+"<- static 'PUSH_MODE' value cannot refer to a Lexer Mode ->"+e.PUSH_MODE+"<-which does not exist",type:s.LexerDefinitionErrorType.PUSH_MODE_DOES_NOT_EXIST,tokenTypes:[e]}})}function S(e){var t=[],n=c.reduce(e,function(e,t,n){var r,i=t.PATTERN;return i===s.Lexer.NA?e:(c.isString(i)?e.push({str:i,idx:n,tokenType:t}):c.isRegExp(i)&&(r=i,void 0===c.find([".","\\","[","]","|","^","$","(",")","?","*","+","{"],function(e){return-1!==r.source.indexOf(e)}))&&e.push({str:i.source,idx:n,tokenType:t}),e)},[]);return c.forEach(e,function(e,r){c.forEach(n,function(n){var i=n.str,o=n.idx,u=n.tokenType;if(r<o&&function(e,t){if(c.isRegExp(t)){var n=t.exec(e);return null!==n&&0===n.index}if(c.isFunction(t))return t(e,0,[],{});if(c.has(t,"exec"))return t.exec(e,0,[],{});if("string"==typeof t)return t===e;throw Error("non exhaustive match")}(i,e.PATTERN)){var p="Token: ->"+a.tokenName(u)+"<- can never be matched.\nBecause it appears AFTER the Token Type ->"+a.tokenName(e)+"<-in the lexer's definition.\nSee https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#UNREACHABLE";t.push({message:p,type:s.LexerDefinitionErrorType.UNREACHABLE_PATTERN,tokenTypes:[e,u]})}})}),t}function L(e){var t=e.ignoreCase?"i":"";return new RegExp("^(?:"+e.source+")",t)}function I(e){var t=e.ignoreCase?"iy":"y";return new RegExp(""+e.source,t)}function v(e){var t=e.PATTERN;if(c.isRegExp(t))return!1;if(c.isFunction(t))return!0;if(c.has(t,"exec"))return!0;if(c.isString(t))return!1;throw Error("non exhaustive match")}function _(e){return!(!c.isString(e)||1!==e.length)&&e.charCodeAt(0)}function k(e,t){if(c.has(e,"LINE_BREAKS"))return!1;if(c.isRegExp(e.PATTERN)){try{u.canMatchCharCode(t,e.PATTERN)}catch(e){return{issue:s.LexerDefinitionErrorType.IDENTIFY_TERMINATOR,errMsg:e.message}}return!1}if(c.isString(e.PATTERN))return!1;if(v(e))return{issue:s.LexerDefinitionErrorType.CUSTOM_LINE_BREAK};throw Error("non exhaustive match")}function g(e,t){if(t.issue===s.LexerDefinitionErrorType.IDENTIFY_TERMINATOR)return"Warning: unable to identify line terminator usage in pattern.\n\tThe problem is in the <"+e.name+"> Token Type\n\t Root cause: "+t.errMsg+".\n\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#IDENTIFY_TERMINATOR";if(t.issue===s.LexerDefinitionErrorType.CUSTOM_LINE_BREAK)return"Warning: A Custom Token Pattern should specify the <line_breaks> option.\n\tThe problem is in the <"+e.name+"> Token Type\n\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#CUSTOM_LINE_BREAK";throw Error("non exhaustive match")}function C(e){return c.map(e,function(e){return c.isString(e)&&e.length>0?e.charCodeAt(0):e})}t.findStartOfInputAnchor=R,t.findUnsupportedFlags=A,t.findDuplicatePatterns=N,t.findInvalidGroupType=y,t.findModesThatDoNotExist=O,t.findUnreachablePatterns=S,t.addStartOfInput=L,t.addStickyFlag=I,t.performRuntimeChecks=function(e,n,r){var i=[];return c.has(e,t.DEFAULT_MODE)||i.push({message:"A MultiMode Lexer cannot be initialized without a <"+t.DEFAULT_MODE+"> property in its definition\n",type:s.LexerDefinitionErrorType.MULTI_MODE_LEXER_WITHOUT_DEFAULT_MODE}),c.has(e,t.MODES)||i.push({message:"A MultiMode Lexer cannot be initialized without a <"+t.MODES+"> property in its definition\n",type:s.LexerDefinitionErrorType.MULTI_MODE_LEXER_WITHOUT_MODES_PROPERTY}),c.has(e,t.MODES)&&c.has(e,t.DEFAULT_MODE)&&!c.has(e.modes,e.defaultMode)&&i.push({message:"A MultiMode Lexer cannot be initialized with a "+t.DEFAULT_MODE+": <"+e.defaultMode+">which does not exist\n",type:s.LexerDefinitionErrorType.MULTI_MODE_LEXER_DEFAULT_MODE_VALUE_DOES_NOT_EXIST}),c.has(e,t.MODES)&&c.forEach(e.modes,function(e,t){c.forEach(e,function(e,n){c.isUndefined(e)&&i.push({message:"A Lexer cannot be initialized using an undefined Token Type. Mode:<"+t+"> at index: <"+n+">\n",type:s.LexerDefinitionErrorType.LEXER_DEFINITION_CANNOT_CONTAIN_UNDEFINED})})}),i},t.performWarningRuntimeChecks=function(e,t,n){var r=[],i=!1,o=c.compact(c.flatten(c.mapValues(e.modes,function(e){return e}))),a=c.reject(o,function(e){return e[l]===s.Lexer.NA}),p=C(n);return t&&c.forEach(a,function(e){var t=k(e,p);if(!1!==t){var n={message:g(e,t),type:t.issue,tokenType:e};r.push(n)}else c.has(e,"LINE_BREAKS")?!0===e.LINE_BREAKS&&(i=!0):u.canMatchCharCode(p,e.PATTERN)&&(i=!0)}),t&&!i&&r.push({message:"Warning: No LINE_BREAKS Found.\n\tThis Lexer has been defined to track line and column information,\n\tBut none of the Token Types can be identified as matching a line terminator.\n\tSee https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#LINE_BREAKS \n\tfor details.",type:s.LexerDefinitionErrorType.NO_LINE_BREAKS_FLAGS}),r},t.cloneEmptyGroups=function(e){var t={},n=c.keys(e);return c.forEach(n,function(n){var r=e[n];if(!c.isArray(r))throw Error("non exhaustive match");t[n]=[]}),t},t.isCustomPattern=v,t.isShortPattern=_,t.LineTerminatorOptimizedTester={test:function(e){for(var t=e.length,n=this.lastIndex;n<t;n++){var r=e.charCodeAt(n);if(10===r)return this.lastIndex=n+1,!0;if(13===r)return 10===e.charCodeAt(n+1)?this.lastIndex=n+2:this.lastIndex=n+1,!0}return!1},lastIndex:0},t.buildLineBreakIssueMessage=g},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(27),a=n(4),s=new o.RegExpParser,c="Complement Sets are not supported for first char optimization";function u(e){switch(e.type){case"Disjunction":return a.flatten(a.map(e.value,u));case"Alternative":for(var t=[],n=e.value,r=0;r<n.length;r++){var i=n[r];if(!a.contains(["GroupBackReference","Lookahead","NegativeLookahead","StartAnchor","EndAnchor","WordBoundary","NonWordBoundary"],i.type)){var o=i;switch(o.type){case"Character":t.push(o.value);break;case"Set":if(!0===o.complement)throw Error(c);a.forEach(o.value,function(e){if("number"==typeof e)t.push(e);else for(var n=e,r=n.from;r<=n.to;r++)t.push(r)});break;case"Group":var s=u(o.value);a.forEach(s,function(e){return t.push(e)});break;default:throw Error("Non Exhaustive Match")}var p=void 0!==o.quantifier&&0===o.quantifier.atLeast;if("Group"===o.type&&!1===f(o)||"Group"!==o.type&&!1===p)break}}return t;default:throw Error("non exhaustive match!")}}function p(e){var t=[];return a.forEach(e,function(e){t.push(e);var n=String.fromCharCode(e);n.toUpperCase()!==n?t.push(n.toUpperCase().charCodeAt(0)):n.toLowerCase()!==n&&t.push(n.toLowerCase().charCodeAt(0))}),t}function l(e,t){return a.find(e.value,function(e){if("number"==typeof e)return a.contains(t,e);var n=e;return void 0!==a.find(t,function(e){return n.from<=e&&e<=n.to})})}function f(e){return!(!e.quantifier||0!==e.quantifier.atLeast)||!!e.value&&(a.isArray(e.value)?a.every(e.value,f):f(e.value))}t.failedOptimizationPrefixMsg='Unable to use "first char" lexer optimizations:\n',t.getStartCodes=function(e,n){void 0===n&&(n=!1);try{var r=s.pattern(e.toString()),i=u(r.value);return r.flags.ignoreCase&&(i=p(i)),i}catch(r){if(r.message===c)n&&a.PRINT_WARNING(t.failedOptimizationPrefixMsg+"\tUnable to optimize: < "+e.toString()+" >\n\tComplement Sets cannot be automatically optimized.\n\tThis will disable the lexer's first char optimizations.\n\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#COMPLEMENT for details.");else{var l="";n&&(l="\n\tThis will disable the lexer's first char optimizations.\n\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#REGEXP_PARSING for details."),a.PRINT_ERROR(t.failedOptimizationPrefixMsg+"\n\tFailed parsing: < "+e.toString()+" >\n\tUsing the regexp-to-ast library version: "+o.VERSION+"\n\tPlease open an issue at: https://github.com/bd82/regexp-to-ast/issues"+l)}}return[]},t.firstChar=u,t.applyIgnoreCase=p;var h=function(e){function t(t){var n=e.call(this)||this;return n.targetCharCodes=t,n.found=!1,n}return i(t,e),t.prototype.visitChildren=function(t){switch(t.type){case"Lookahead":return void this.visitLookahead(t);case"NegativeLookahead":return void this.visitNegativeLookahead(t)}e.prototype.visitChildren.call(this,t)},t.prototype.visitCharacter=function(e){a.contains(this.targetCharCodes,e.value)&&(this.found=!0)},t.prototype.visitSet=function(e){e.complement?void 0===l(e,this.targetCharCodes)&&(this.found=!0):void 0!==l(e,this.targetCharCodes)&&(this.found=!0)},t}(o.BaseRegExpVisitor);t.canMatchCharCode=function(e,t){if(t instanceof RegExp){var n=s.pattern(t.toString()),r=new h(e);return r.visit(n),r.found}return void 0!==a.find(t,function(t){return a.contains(e,t.charCodeAt(0))})}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){if(this.start=e,this.end=t,!i(e,t))throw new Error("INVALID RANGE")}return e.prototype.contains=function(e){return this.start<=e&&this.end>=e},e.prototype.containsRange=function(e){return this.start<=e.start&&this.end>=e.end},e.prototype.isContainedInRange=function(e){return e.containsRange(this)},e.prototype.strictlyContainsRange=function(e){return this.start<e.start&&this.end>e.end},e.prototype.isStrictlyContainedInRange=function(e){return e.strictlyContainsRange(this)},e}();function i(e,t){return!(e<0||t<e)}t.Range=r,t.isValidRange=i},function(e,t,n){"use strict";var r,i=this&&this.__extends||(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)});Object.defineProperty(t,"__esModule",{value:!0});var o=n(8),a=n(4),s=n(11);t.resolveGrammar=function(e,t){var n=new c(e,t);return n.resolveRefs(),n.errors};var c=function(e){function t(t,n){var r=e.call(this)||this;return r.nameToTopRule=t,r.errMsgProvider=n,r.errors=[],r}return i(t,e),t.prototype.resolveRefs=function(){var e=this;a.forEach(this.nameToTopRule.values(),function(t){e.currTopLevel=t,t.accept(e)})},t.prototype.visitNonTerminal=function(e){var t=this.nameToTopRule.get(e.nonTerminalName);if(t)e.referencedRule=t;else{var n=this.errMsgProvider.buildRuleNotFoundError(this.currTopLevel,e);this.errors.push({message:n,type:o.ParserDefinitionErrorType.UNRESOLVED_SUBRULE_REF,ruleName:this.currTopLevel.name,unresolvedRefName:e.nonTerminalName})}},t}(s.GAstVisitor);t.GastRefResolverVisitor=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(18),i=n(4),o=n(8),a=n(15),s=function(){function e(){}return e.prototype.initLooksAhead=function(e){this.dynamicTokensEnabled=i.has(e,"dynamicTokensEnabled")?e.dynamicTokensEnabled:o.DEFAULT_PARSER_CONFIG.dynamicTokensEnabled,this.maxLookahead=i.has(e,"maxLookahead")?e.maxLookahead:o.DEFAULT_PARSER_CONFIG.maxLookahead,this.lookAheadFuncsCache=i.isES2015MapSupported()?new Map:[],i.isES2015MapSupported()?(this.getLaFuncFromCache=this.getLaFuncFromMap,this.setLaFuncCache=this.setLaFuncCacheUsingMap):(this.getLaFuncFromCache=this.getLaFuncFromObj,this.setLaFuncCache=this.setLaFuncUsingObj)},e.prototype.lookAheadBuilderForOptional=function(e,t,n){return r.buildSingleAlternativeLookaheadFunction(e,t,n)},e.prototype.lookAheadBuilderForAlternatives=function(e,t,n,i){return r.buildAlternativesLookAheadFunc(e,t,n,i)},e.prototype.getKeyForAutomaticLookahead=function(e,t){var n=this.getLastExplicitRuleShortName();return a.getKeyForAutomaticLookahead(n,e,t)},e.prototype.getLookaheadFuncForOr=function(e,t){var n=this.getKeyForAutomaticLookahead(a.OR_IDX,e),o=this.getLaFuncFromCache(n);if(void 0===o){var s=this.getCurrRuleFullName(),c=this.getGAstProductions().get(s),u=i.some(t,function(e){return i.isFunction(e.GATE)});return o=r.buildLookaheadFuncForOr(e,c,this.maxLookahead,u,this.dynamicTokensEnabled,this.lookAheadBuilderForAlternatives),this.setLaFuncCache(n,o),o}return o},e.prototype.getLookaheadFuncForOption=function(e,t){return this.getLookaheadFuncFor(e,t,this.maxLookahead,r.PROD_TYPE.OPTION)},e.prototype.getLookaheadFuncForMany=function(e,t){return this.getLookaheadFuncFor(e,t,this.maxLookahead,r.PROD_TYPE.REPETITION)},e.prototype.getLookaheadFuncForManySep=function(e,t){return this.getLookaheadFuncFor(e,t,this.maxLookahead,r.PROD_TYPE.REPETITION_WITH_SEPARATOR)},e.prototype.getLookaheadFuncForAtLeastOne=function(e,t){return this.getLookaheadFuncFor(e,t,this.maxLookahead,r.PROD_TYPE.REPETITION_MANDATORY)},e.prototype.getLookaheadFuncForAtLeastOneSep=function(e,t){return this.getLookaheadFuncFor(e,t,this.maxLookahead,r.PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR)},e.prototype.getLookaheadFuncFor=function(e,t,n,i){var o=this.getLaFuncFromCache(e);if(void 0===o){var a=this.getCurrRuleFullName(),s=this.getGAstProductions().get(a);return o=r.buildLookaheadFuncForOptionalProd(t,s,n,this.dynamicTokensEnabled,i,this.lookAheadBuilderForOptional),this.setLaFuncCache(e,o),o}return o},e.prototype.getLaFuncFromCache=function(e){},e.prototype.getLaFuncFromMap=function(e){return this.lookAheadFuncsCache.get(e)},e.prototype.getLaFuncFromObj=function(e){return this.lookAheadFuncsCache[e]},e.prototype.setLaFuncCache=function(e,t){},e.prototype.setLaFuncCacheUsingMap=function(e,t){this.lookAheadFuncsCache.set(e,t)},e.prototype.setLaFuncUsingObj=function(e,t){this.lookAheadFuncsCache[e]=t},e}();t.LooksAhead=s},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(23),i=n(4),o=n(43),a=n(15),s=n(8),c=function(){function e(){}return e.prototype.initTreeBuilder=function(e){this.LAST_EXPLICIT_RULE_STACK=[],this.CST_STACK=[],this.outputCst=i.has(e,"outputCst")?e.outputCst:s.DEFAULT_PARSER_CONFIG.outputCst,this.outputCst||(this.cstInvocationStateUpdate=i.NOOP,this.cstFinallyStateUpdate=i.NOOP,this.cstPostTerminal=i.NOOP,this.cstPostNonTerminal=i.NOOP,this.getLastExplicitRuleShortName=this.getLastExplicitRuleShortNameNoCst,this.getPreviousExplicitRuleShortName=this.getPreviousExplicitRuleShortNameNoCst,this.getLastExplicitRuleOccurrenceIndex=this.getLastExplicitRuleOccurrenceIndexNoCst,this.manyInternal=this.manyInternalNoCst,this.orInternal=this.orInternalNoCst,this.optionInternal=this.optionInternalNoCst,this.atLeastOneInternal=this.atLeastOneInternalNoCst,this.manySepFirstInternal=this.manySepFirstInternalNoCst,this.atLeastOneSepFirstInternal=this.atLeastOneSepFirstInternalNoCst)},e.prototype.cstNestedInvocationStateUpdate=function(e,t){this.CST_STACK.push({name:e,fullName:this.shortRuleNameToFull.get(this.getLastExplicitRuleShortName())+e,children:{}})},e.prototype.cstInvocationStateUpdate=function(e,t){this.LAST_EXPLICIT_RULE_STACK.push(this.RULE_STACK.length-1),this.CST_STACK.push({name:e,children:{}})},e.prototype.cstFinallyStateUpdate=function(){this.LAST_EXPLICIT_RULE_STACK.pop(),this.CST_STACK.pop()},e.prototype.cstNestedFinallyStateUpdate=function(){this.CST_STACK.pop()},e.prototype.cstPostTerminal=function(e,t){var n=this.CST_STACK[this.CST_STACK.length-1];r.addTerminalToCst(n,t,e)},e.prototype.cstPostNonTerminal=function(e,t){r.addNoneTerminalToCst(this.CST_STACK[this.CST_STACK.length-1],t,e)},e.prototype.getBaseCstVisitorConstructor=function(){if(i.isUndefined(this.baseCstVisitorConstructor)){var e=o.createBaseSemanticVisitorConstructor(this.className,this.allRuleNames);return this.baseCstVisitorConstructor=e,e}return this.baseCstVisitorConstructor},e.prototype.getBaseCstVisitorConstructorWithDefaults=function(){if(i.isUndefined(this.baseCstVisitorWithDefaultsConstructor)){var e=o.createBaseVisitorConstructorWithDefaults(this.className,this.allRuleNames,this.getBaseCstVisitorConstructor());return this.baseCstVisitorWithDefaultsConstructor=e,e}return this.baseCstVisitorWithDefaultsConstructor},e.prototype.nestedRuleBeforeClause=function(e,t){var n;return void 0!==e.NAME?(n=e.NAME,this.nestedRuleInvocationStateUpdate(n,t),n):void 0},e.prototype.nestedAltBeforeClause=function(e,t,n,r){var i,o=this.getLastExplicitRuleShortName(),s=a.getKeyForAltIndex(o,n,t,r);return void 0!==e.NAME?(i=e.NAME,this.nestedRuleInvocationStateUpdate(i,s),{shortName:s,nestedName:i}):void 0},e.prototype.nestedRuleFinallyClause=function(e,t){var n=this.CST_STACK,i=n[n.length-1];this.nestedRuleFinallyStateUpdate();var o=n[n.length-1];r.addNoneTerminalToCst(o,t,i)},e.prototype.getLastExplicitRuleShortName=function(){var e=this.LAST_EXPLICIT_RULE_STACK[this.LAST_EXPLICIT_RULE_STACK.length-1];return this.RULE_STACK[e]},e.prototype.getLastExplicitRuleShortNameNoCst=function(){var e=this.RULE_STACK;return e[e.length-1]},e.prototype.getPreviousExplicitRuleShortName=function(){var e=this.LAST_EXPLICIT_RULE_STACK[this.LAST_EXPLICIT_RULE_STACK.length-2];return this.RULE_STACK[e]},e.prototype.getPreviousExplicitRuleShortNameNoCst=function(){var e=this.RULE_STACK;return e[e.length-2]},e.prototype.getLastExplicitRuleOccurrenceIndex=function(){var e=this.LAST_EXPLICIT_RULE_STACK[this.LAST_EXPLICIT_RULE_STACK.length-1];return this.RULE_OCCURRENCE_STACK[e]},e.prototype.getLastExplicitRuleOccurrenceIndexNoCst=function(){var e=this.RULE_OCCURRENCE_STACK;return e[e.length-1]},e.prototype.nestedRuleInvocationStateUpdate=function(e,t){this.RULE_OCCURRENCE_STACK.push(1),this.RULE_STACK.push(t),this.cstNestedInvocationStateUpdate(e,t)},e.prototype.nestedRuleFinallyStateUpdate=function(){this.RULE_STACK.pop(),this.RULE_OCCURRENCE_STACK.pop(),this.cstNestedFinallyStateUpdate()},e}();t.TreeBuilder=c},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r,i=n(4),o=n(9),a=n(17);function s(e,t){for(var n=i.keys(e),r=n.length,o=0;o<r;o++)for(var a=e[n[o]],s=a.length,c=0;c<s;c++){var u=a[c];void 0===u.tokenTypeIdx&&(void 0!==u.fullName?this[u.fullName](u.children,t):this[u.name](u.children,t))}}function c(e,t){var n=u(e,t),r=l(e,t);return n.concat(r)}function u(e,t){var n=i.map(t,function(t){if(!i.isFunction(e[t]))return{msg:"Missing visitor method: <"+t+"> on "+o.functionName(e.constructor)+" CST Visitor.",type:r.MISSING_METHOD,methodName:t}});return i.compact(n)}t.defaultVisit=s,t.createBaseSemanticVisitorConstructor=function(e,t){var n=function(){};return o.defineNameProp(n,e+"BaseSemantics"),(n.prototype={visit:function(e,t){if(i.isArray(e)&&(e=e[0]),!i.isUndefined(e))return void 0!==e.fullName?this[e.fullName](e.children,t):this[e.name](e.children,t)},validateVisitor:function(){var e=c(this,t);if(!i.isEmpty(e)){var n=i.map(e,function(e){return e.msg});throw Error("Errors Detected in CST Visitor <"+o.functionName(this.constructor)+">:\n\t"+n.join("\n\n").replace(/\n/g,"\n\t"))}}}).constructor=n,n._RULE_NAMES=t,n},t.createBaseVisitorConstructorWithDefaults=function(e,t,n){var r=function(){};o.defineNameProp(r,e+"BaseSemanticsWithDefaults");var a=Object.create(n.prototype);return i.forEach(t,function(e){a[e]=s}),(r.prototype=a).constructor=r,r},function(e){e[e.REDUNDANT_METHOD=0]="REDUNDANT_METHOD",e[e.MISSING_METHOD=1]="MISSING_METHOD"}(r=t.CstVisitorDefinitionError||(t.CstVisitorDefinitionError={})),t.validateVisitor=c,t.validateMissingCstMethods=u;var p=["constructor","visit","validateVisitor"];function l(e,t){var n=[];for(var s in e)a.validTermsPattern.test(s)&&i.isFunction(e[s])&&!i.contains(p,s)&&!i.contains(t,s)&&n.push({msg:"Redundant visitor method: <"+s+"> on "+o.functionName(e.constructor)+" CST Visitor\nThere is no Grammar Rule corresponding to this method's name.\nFor utility methods on visitor classes use methods names that do not match /"+a.validTermsPattern.source+"/.",type:r.REDUNDANT_METHOD,methodName:s});return n}t.validateRedundantMethods=l},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(8),i=function(){function e(){}return e.prototype.initLexerAdapter=function(){this.tokVector=[],this.tokVectorLength=0,this.currIdx=-1},Object.defineProperty(e.prototype,"input",{get:function(){return this.tokVector},set:function(e){this.reset(),this.tokVector=e,this.tokVectorLength=e.length},enumerable:!0,configurable:!0}),e.prototype.SKIP_TOKEN=function(){return this.currIdx<=this.tokVector.length-2?(this.consumeToken(),this.LA(1)):r.END_OF_FILE},e.prototype.LA=function(e){return this.currIdx+e<0||this.tokVectorLength<=this.currIdx+e?r.END_OF_FILE:this.tokVector[this.currIdx+e]},e.prototype.consumeToken=function(){this.currIdx++},e.prototype.exportLexerState=function(){return this.currIdx},e.prototype.importLexerState=function(e){this.currIdx=e},e.prototype.resetLexerState=function(){this.currIdx=-1},e.prototype.moveToTerminatedState=function(){this.currIdx=this.tokVector.length-1},e.prototype.getLexerPosition=function(){return this.exportLexerState()},e}();t.LexerAdapter=i},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(12),o=n(8),a=n(16),s=n(31),c=n(17),u=n(6),p=function(){function e(){}return e.prototype.CONSUME=function(e,t){return this.consumeInternal(e,0,t)},e.prototype.CONSUME1=function(e,t){return this.consumeInternal(e,1,t)},e.prototype.CONSUME2=function(e,t){return this.consumeInternal(e,2,t)},e.prototype.CONSUME3=function(e,t){return this.consumeInternal(e,3,t)},e.prototype.CONSUME4=function(e,t){return this.consumeInternal(e,4,t)},e.prototype.CONSUME5=function(e,t){return this.consumeInternal(e,5,t)},e.prototype.CONSUME6=function(e,t){return this.consumeInternal(e,6,t)},e.prototype.CONSUME7=function(e,t){return this.consumeInternal(e,7,t)},e.prototype.CONSUME8=function(e,t){return this.consumeInternal(e,8,t)},e.prototype.CONSUME9=function(e,t){return this.consumeInternal(e,9,t)},e.prototype.SUBRULE=function(e,t){return this.subruleInternal(e,0,t)},e.prototype.SUBRULE1=function(e,t){return this.subruleInternal(e,1,t)},e.prototype.SUBRULE2=function(e,t){return this.subruleInternal(e,2,t)},e.prototype.SUBRULE3=function(e,t){return this.subruleInternal(e,3,t)},e.prototype.SUBRULE4=function(e,t){return this.subruleInternal(e,4,t)},e.prototype.SUBRULE5=function(e,t){return this.subruleInternal(e,5,t)},e.prototype.SUBRULE6=function(e,t){return this.subruleInternal(e,6,t)},e.prototype.SUBRULE7=function(e,t){return this.subruleInternal(e,7,t)},e.prototype.SUBRULE8=function(e,t){return this.subruleInternal(e,8,t)},e.prototype.SUBRULE9=function(e,t){return this.subruleInternal(e,9,t)},e.prototype.OPTION=function(e){return this.optionInternal(e,0)},e.prototype.OPTION1=function(e){return this.optionInternal(e,1)},e.prototype.OPTION2=function(e){return this.optionInternal(e,2)},e.prototype.OPTION3=function(e){return this.optionInternal(e,3)},e.prototype.OPTION4=function(e){return this.optionInternal(e,4)},e.prototype.OPTION5=function(e){return this.optionInternal(e,5)},e.prototype.OPTION6=function(e){return this.optionInternal(e,6)},e.prototype.OPTION7=function(e){return this.optionInternal(e,7)},e.prototype.OPTION8=function(e){return this.optionInternal(e,8)},e.prototype.OPTION9=function(e){return this.optionInternal(e,9)},e.prototype.OR=function(e){return this.orInternal(e,0)},e.prototype.OR1=function(e){return this.orInternal(e,1)},e.prototype.OR2=function(e){return this.orInternal(e,2)},e.prototype.OR3=function(e){return this.orInternal(e,3)},e.prototype.OR4=function(e){return this.orInternal(e,4)},e.prototype.OR5=function(e){return this.orInternal(e,5)},e.prototype.OR6=function(e){return this.orInternal(e,6)},e.prototype.OR7=function(e){return this.orInternal(e,7)},e.prototype.OR8=function(e){return this.orInternal(e,8)},e.prototype.OR9=function(e){return this.orInternal(e,9)},e.prototype.MANY=function(e){this.manyInternal(0,e)},e.prototype.MANY1=function(e){this.manyInternal(1,e)},e.prototype.MANY2=function(e){this.manyInternal(2,e)},e.prototype.MANY3=function(e){this.manyInternal(3,e)},e.prototype.MANY4=function(e){this.manyInternal(4,e)},e.prototype.MANY5=function(e){this.manyInternal(5,e)},e.prototype.MANY6=function(e){this.manyInternal(6,e)},e.prototype.MANY7=function(e){this.manyInternal(7,e)},e.prototype.MANY8=function(e){this.manyInternal(8,e)},e.prototype.MANY9=function(e){this.manyInternal(9,e)},e.prototype.MANY_SEP=function(e){this.manySepFirstInternal(0,e)},e.prototype.MANY_SEP1=function(e){this.manySepFirstInternal(1,e)},e.prototype.MANY_SEP2=function(e){this.manySepFirstInternal(2,e)},e.prototype.MANY_SEP3=function(e){this.manySepFirstInternal(3,e)},e.prototype.MANY_SEP4=function(e){this.manySepFirstInternal(4,e)},e.prototype.MANY_SEP5=function(e){this.manySepFirstInternal(5,e)},e.prototype.MANY_SEP6=function(e){this.manySepFirstInternal(6,e)},e.prototype.MANY_SEP7=function(e){this.manySepFirstInternal(7,e)},e.prototype.MANY_SEP8=function(e){this.manySepFirstInternal(8,e)},e.prototype.MANY_SEP9=function(e){this.manySepFirstInternal(9,e)},e.prototype.AT_LEAST_ONE=function(e){this.atLeastOneInternal(0,e)},e.prototype.AT_LEAST_ONE1=function(e){return this.atLeastOneInternal(1,e)},e.prototype.AT_LEAST_ONE2=function(e){this.atLeastOneInternal(2,e)},e.prototype.AT_LEAST_ONE3=function(e){this.atLeastOneInternal(3,e)},e.prototype.AT_LEAST_ONE4=function(e){this.atLeastOneInternal(4,e)},e.prototype.AT_LEAST_ONE5=function(e){this.atLeastOneInternal(5,e)},e.prototype.AT_LEAST_ONE6=function(e){this.atLeastOneInternal(6,e)},e.prototype.AT_LEAST_ONE7=function(e){this.atLeastOneInternal(7,e)},e.prototype.AT_LEAST_ONE8=function(e){this.atLeastOneInternal(8,e)},e.prototype.AT_LEAST_ONE9=function(e){this.atLeastOneInternal(9,e)},e.prototype.AT_LEAST_ONE_SEP=function(e){this.atLeastOneSepFirstInternal(0,e)},e.prototype.AT_LEAST_ONE_SEP1=function(e){this.atLeastOneSepFirstInternal(1,e)},e.prototype.AT_LEAST_ONE_SEP2=function(e){this.atLeastOneSepFirstInternal(2,e)},e.prototype.AT_LEAST_ONE_SEP3=function(e){this.atLeastOneSepFirstInternal(3,e)},e.prototype.AT_LEAST_ONE_SEP4=function(e){this.atLeastOneSepFirstInternal(4,e)},e.prototype.AT_LEAST_ONE_SEP5=function(e){this.atLeastOneSepFirstInternal(5,e)},e.prototype.AT_LEAST_ONE_SEP6=function(e){this.atLeastOneSepFirstInternal(6,e)},e.prototype.AT_LEAST_ONE_SEP7=function(e){this.atLeastOneSepFirstInternal(7,e)},e.prototype.AT_LEAST_ONE_SEP8=function(e){this.atLeastOneSepFirstInternal(8,e)},e.prototype.AT_LEAST_ONE_SEP9=function(e){this.atLeastOneSepFirstInternal(9,e)},e.prototype.RULE=function(e,t,n){if(void 0===n&&(n=o.DEFAULT_RULE_CONFIG),r.contains(this.definedRulesNames,e)){var i={message:a.defaultGrammarValidatorErrorProvider.buildDuplicateRuleNameError({topLevelRule:e,grammarName:this.className}),type:o.ParserDefinitionErrorType.DUPLICATE_RULE_NAME,ruleName:e};this.definitionErrors.push(i)}if(this.definedRulesNames.push(e),!this.gastProductionsCache.containsKey(e)&&!this.serializedGrammar){var c=s.buildTopProduction(t.toString(),e,this.tokensMap);this.gastProductionsCache.put(e,c)}var u=this.defineRule(e,t,n);return this[e]=u,u},e.prototype.OVERRIDE_RULE=function(e,t,n){void 0===n&&(n=o.DEFAULT_RULE_CONFIG);var r=[];if(r=r.concat(c.validateRuleIsOverridden(e,this.definedRulesNames,this.className)),this.definitionErrors.push.apply(this.definitionErrors,r),!this.serializedGrammar){var i=s.buildTopProduction(t.toString(),e,this.tokensMap);this.gastProductionsCache.put(e,i)}var a=this.defineRule(e,t,n);return this[e]=a,a},e.prototype.BACKTRACK=function(e,t){return function(){this.isBackTrackingStack.push(1);var n=this.saveRecogState();try{return e.apply(this,t),!0}catch(e){if(i.isRecognitionException(e))return!1;throw e}finally{this.reloadRecogState(n),this.isBackTrackingStack.pop()}}},e.prototype.getGAstProductions=function(){return this.gastProductionsCache},e.prototype.getSerializedGastProductions=function(){return u.serializeGrammar(this.gastProductionsCache.values())},e}();t.RecognizerApi=p},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(15),o=n(12),a=n(18),s=n(19),c=n(8),u=n(33),p=n(7),l=n(13),f=n(9),h=function(){function e(){}return e.prototype.initRecognizerEngine=function(e,t){if(this.className=f.classNameFromInstance(this),this.shortRuleNameToFull=new f.HashTable,this.fullRuleNameToShort=new f.HashTable,this.ruleShortNameIdx=256,this.tokenMatcher=l.tokenStructuredMatcherNoCategories,this.definedRulesNames=[],this.tokensMap={},this.allRuleNames=[],this.isBackTrackingStack=[],this.RULE_STACK=[],this.RULE_OCCURRENCE_STACK=[],this.gastProductionsCache=new f.HashTable,this.serializedGrammar=r.has(t,"serializedGrammar")?t.serializedGrammar:c.DEFAULT_PARSER_CONFIG.serializedGrammar,r.isArray(e)){if(r.isEmpty(e))throw Error("A Token Vocabulary cannot be empty.\n\tNote that the first argument for the parser constructor\n\tis no longer a Token vector (since v4.0).");if("number"==typeof e[0].startOffset)throw Error("The Parser constructor no longer accepts a token vector as the first argument.\n\tSee: https://sap.github.io/chevrotain/docs/changes/BREAKING_CHANGES.html#_4-0-0\n\tFor Further details.")}if(r.isArray(e))this.tokensMap=r.reduce(e,function(e,t){return e[p.tokenName(t)]=t,e},{});else if(r.has(e,"modes")&&r.every(r.flatten(r.values(e.modes)),l.isTokenType)){var n=r.flatten(r.values(e.modes)),i=r.uniq(n);this.tokensMap=r.reduce(i,function(e,t){return e[p.tokenName(t)]=t,e},{})}else{if(!r.isObject(e))throw new Error("<tokensDictionary> argument must be An Array of Token constructors, A dictionary of Token constructors or an IMultiModeLexerDefinition");this.tokensMap=r.cloneObj(e)}this.tokensMap.EOF=p.EOF;var o=r.every(r.values(e),function(e){return r.isEmpty(e.categoryMatches)});this.tokenMatcher=o?l.tokenStructuredMatcherNoCategories:l.tokenStructuredMatcher,l.augmentTokenTypes(r.values(this.tokensMap))},e.prototype.defineRule=function(e,t,n){if(this.selfAnalysisDone)throw Error("Grammar rule <"+e+"> may not be defined after the 'performSelfAnalysis' method has been called'\nMake sure that all grammar rule definitions are done before 'performSelfAnalysis' is called.");var a,s=r.has(n,"resyncEnabled")?n.resyncEnabled:c.DEFAULT_RULE_CONFIG.resyncEnabled,u=r.has(n,"recoveryValueFunc")?n.recoveryValueFunc:c.DEFAULT_RULE_CONFIG.recoveryValueFunc,p=this.ruleShortNameIdx<<i.BITS_FOR_METHOD_IDX+i.BITS_FOR_OCCURRENCE_IDX;this.ruleShortNameIdx++,this.shortRuleNameToFull.put(p,e),this.fullRuleNameToShort.put(e,p);return(a=function(n,r){return void 0===n&&(n=0),this.ruleInvocationStateUpdate(p,e,n),function(e){try{return!0===this.outputCst?(t.apply(this,e),this.CST_STACK[this.CST_STACK.length-1]):t.apply(this,e)}catch(e){var n=1===this.RULE_STACK.length,r=s&&!this.isBackTracking()&&this.recoveryEnabled;if(o.isRecognitionException(e)){if(r){var i,a=this.findReSyncTokenType();if(this.isInCurrentRuleReSyncSet(a))return e.resyncedTokens=this.reSyncTo(a),this.outputCst?((i=this.CST_STACK[this.CST_STACK.length-1]).recoveredNode=!0,i):u();throw this.outputCst&&((i=this.CST_STACK[this.CST_STACK.length-1]).recoveredNode=!0,e.partialCstResult=i),e}if(n)return this.moveToTerminatedState(),u();throw e}throw e}finally{this.ruleFinallyStateUpdate()}}.call(this,r)}).ruleName=e,a},e.prototype.optionInternal=function(e,t){var n=this.getKeyForAutomaticLookahead(i.OPTION_IDX,t),r=this.nestedRuleBeforeClause(e,n);try{return this.optionInternalLogic(e,t,n)}finally{void 0!==r&&this.nestedRuleFinallyClause(n,r)}},e.prototype.optionInternalNoCst=function(e,t){var n=this.getKeyForAutomaticLookahead(i.OPTION_IDX,t);return this.optionInternalLogic(e,t,n)},e.prototype.optionInternalLogic=function(e,t,n){var r,i,o=this,a=this.getLookaheadFuncForOption(n,t);if(void 0!==e.DEF){if(r=e.DEF,void 0!==(i=e.GATE)){var s=a;a=function(){return i.call(o)&&s.call(o)}}}else r=e;if(!0===a.call(this))return r.call(this)},e.prototype.atLeastOneInternal=function(e,t){var n=this.getKeyForAutomaticLookahead(i.AT_LEAST_ONE_IDX,e),r=this.nestedRuleBeforeClause(t,n);try{return this.atLeastOneInternalLogic(e,t,n)}finally{void 0!==r&&this.nestedRuleFinallyClause(n,r)}},e.prototype.atLeastOneInternalNoCst=function(e,t){var n=this.getKeyForAutomaticLookahead(i.AT_LEAST_ONE_IDX,e);this.atLeastOneInternalLogic(e,t,n)},e.prototype.atLeastOneInternalLogic=function(e,t,n){var r,o,c=this,u=this.getLookaheadFuncForAtLeastOne(n,e);if(void 0!==t.DEF){if(r=t.DEF,void 0!==(o=t.GATE)){var p=u;u=function(){return o.call(c)&&p.call(c)}}}else r=t;if(!0!==u.call(this))throw this.raiseEarlyExitException(e,a.PROD_TYPE.REPETITION_MANDATORY,t.ERR_MSG);for(r.call(this);!0===u.call(this);)this.doSingleRepetition(r);this.attemptInRepetitionRecovery(this.atLeastOneInternal,[e,t],u,i.AT_LEAST_ONE_IDX,e,s.NextTerminalAfterAtLeastOneWalker)},e.prototype.atLeastOneSepFirstInternal=function(e,t){var n=this.getKeyForAutomaticLookahead(i.AT_LEAST_ONE_SEP_IDX,e),r=this.nestedRuleBeforeClause(t,n);try{this.atLeastOneSepFirstInternalLogic(e,t,n)}finally{void 0!==r&&this.nestedRuleFinallyClause(n,r)}},e.prototype.atLeastOneSepFirstInternalNoCst=function(e,t){var n=this.getKeyForAutomaticLookahead(i.AT_LEAST_ONE_SEP_IDX,e);this.atLeastOneSepFirstInternalLogic(e,t,n)},e.prototype.atLeastOneSepFirstInternalLogic=function(e,t,n){var r=this,o=t.DEF,c=t.SEP;if(!0!==this.getLookaheadFuncForAtLeastOneSep(n,e).call(this))throw this.raiseEarlyExitException(e,a.PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR,t.ERR_MSG);o.call(this);for(var u=function(){return r.tokenMatcher(r.LA(1),c)};!0===this.tokenMatcher(this.LA(1),c);)this.CONSUME(c),o.call(this);this.attemptInRepetitionRecovery(this.repetitionSepSecondInternal,[e,c,u,o,s.NextTerminalAfterAtLeastOneSepWalker],u,i.AT_LEAST_ONE_SEP_IDX,e,s.NextTerminalAfterAtLeastOneSepWalker)},e.prototype.manyInternal=function(e,t){var n=this.getKeyForAutomaticLookahead(i.MANY_IDX,e),r=this.nestedRuleBeforeClause(t,n);try{return this.manyInternalLogic(e,t,n)}finally{void 0!==r&&this.nestedRuleFinallyClause(n,r)}},e.prototype.manyInternalNoCst=function(e,t){var n=this.getKeyForAutomaticLookahead(i.MANY_IDX,e);return this.manyInternalLogic(e,t,n)},e.prototype.manyInternalLogic=function(e,t,n){var r,o,a=this,c=this.getLookaheadFuncForMany(n,e);if(void 0!==t.DEF){if(r=t.DEF,void 0!==(o=t.GATE)){var u=c;c=function(){return o.call(a)&&u.call(a)}}}else r=t;for(;c.call(this);)this.doSingleRepetition(r);this.attemptInRepetitionRecovery(this.manyInternal,[e,t],c,i.MANY_IDX,e,s.NextTerminalAfterManyWalker)},e.prototype.manySepFirstInternal=function(e,t){var n=this.getKeyForAutomaticLookahead(i.MANY_SEP_IDX,e),r=this.nestedRuleBeforeClause(t,n);try{this.manySepFirstInternalLogic(e,t,n)}finally{void 0!==r&&this.nestedRuleFinallyClause(n,r)}},e.prototype.manySepFirstInternalNoCst=function(e,t){var n=this.getKeyForAutomaticLookahead(i.MANY_SEP_IDX,e);this.manySepFirstInternalLogic(e,t,n)},e.prototype.manySepFirstInternalLogic=function(e,t,n){var r=this,o=t.DEF,a=t.SEP;if(!0===this.getLookaheadFuncForManySep(n,e).call(this)){o.call(this);for(var c=function(){return r.tokenMatcher(r.LA(1),a)};!0===this.tokenMatcher(this.LA(1),a);)this.CONSUME(a),o.call(this);this.attemptInRepetitionRecovery(this.repetitionSepSecondInternal,[e,a,c,o,s.NextTerminalAfterManySepWalker],c,i.MANY_SEP_IDX,e,s.NextTerminalAfterManySepWalker)}},e.prototype.repetitionSepSecondInternal=function(e,t,n,r,o){for(;n();)this.CONSUME(t),r.call(this);this.attemptInRepetitionRecovery(this.repetitionSepSecondInternal,[e,t,n,r,o],n,i.AT_LEAST_ONE_SEP_IDX,e,o)},e.prototype.doSingleRepetition=function(e){var t=this.getLexerPosition(),n=e.call(this);if(this.getLexerPosition()===t)throw Error("Infinite loop detected\n\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_grammar_errors.html#INFINITE_LOOP\n\tFor Further details.");return n},e.prototype.orInternalNoCst=function(e,t){var n=r.isArray(e)?e:e.DEF,i=this.getLookaheadFuncForOr(t,n).call(this,n);if(void 0!==i)return n[i].ALT.call(this);this.raiseNoAltException(t,e.ERR_MSG)},e.prototype.orInternal=function(e,t){var n=this.getKeyForAutomaticLookahead(i.OR_IDX,t),o=this.nestedRuleBeforeClause(e,n);try{var a=r.isArray(e)?e:e.DEF,s=this.getLookaheadFuncForOr(t,a).call(this,a);if(void 0!==s){var c=a[s],u=this.nestedAltBeforeClause(c,t,i.OR_IDX,s);try{return c.ALT.call(this)}finally{void 0!==u&&this.nestedRuleFinallyClause(u.shortName,u.nestedName)}}this.raiseNoAltException(t,e.ERR_MSG)}finally{void 0!==o&&this.nestedRuleFinallyClause(n,o)}},e.prototype.ruleFinallyStateUpdate=function(){if(this.RULE_STACK.pop(),this.RULE_OCCURRENCE_STACK.pop(),this.cstFinallyStateUpdate(),0===this.RULE_STACK.length&&!this.isAtEndOfInput()){var e=this.LA(1),t=this.errorMessageProvider.buildNotAllInputParsedMessage({firstRedundant:e,ruleName:this.getCurrRuleFullName()});this.SAVE_ERROR(new o.NotAllInputParsedException(t,e))}},e.prototype.subruleInternal=function(e,t,n){var r;try{var i=void 0!==n?n.ARGS:void 0;return r=e.call(this,t,i),this.cstPostNonTerminal(r,void 0!==n&&void 0!==n.LABEL?n.LABEL:e.ruleName),r}catch(t){throw o.isRecognitionException(t)&&void 0!==t.partialCstResult&&(this.cstPostNonTerminal(t.partialCstResult,void 0!==n&&void 0!==n.LABEL?n.LABEL:e.ruleName),delete t.partialCstResult),t}},e.prototype.consumeInternal=function(e,t,n){var r;try{var i=this.LA(1);if(!0!==this.tokenMatcher(i,e)){var a=void 0,s=this.LA(0);throw a=void 0!==n&&n.ERR_MSG?n.ERR_MSG:this.errorMessageProvider.buildMismatchTokenMessage({expected:e,actual:i,previous:s,ruleName:this.getCurrRuleFullName()}),this.SAVE_ERROR(new o.MismatchedTokenException(a,i,s))}this.consumeToken(),r=i}catch(n){if(!this.recoveryEnabled||"MismatchedTokenException"!==n.name||this.isBackTracking())throw n;var c=this.getFollowsForInRuleRecovery(e,t);try{r=this.tryInRuleRecovery(e,c)}catch(e){throw e.name===u.IN_RULE_RECOVERY_EXCEPTION?n:e}}return this.cstPostTerminal(void 0!==n&&void 0!==n.LABEL?n.LABEL:e.tokenName,r),r},e.prototype.saveRecogState=function(){var e=this.errors,t=r.cloneArr(this.RULE_STACK);return{errors:e,lexerState:this.exportLexerState(),RULE_STACK:t,CST_STACK:this.CST_STACK,LAST_EXPLICIT_RULE_STACK:this.LAST_EXPLICIT_RULE_STACK}},e.prototype.reloadRecogState=function(e){this.errors=e.errors,this.importLexerState(e.lexerState),this.RULE_STACK=e.RULE_STACK},e.prototype.ruleInvocationStateUpdate=function(e,t,n){this.RULE_OCCURRENCE_STACK.push(n),this.RULE_STACK.push(e),this.cstInvocationStateUpdate(t,e)},e.prototype.isBackTracking=function(){return!r.isEmpty(this.isBackTrackingStack)},e.prototype.getCurrRuleFullName=function(){var e=this.getLastExplicitRuleShortName();return this.shortRuleNameToFull.get(e)},e.prototype.shortRuleNameToFullName=function(e){return this.shortRuleNameToFull.get(e)},e.prototype.isAtEndOfInput=function(){return this.tokenMatcher(this.LA(1),p.EOF)},e.prototype.reset=function(){this.resetLexerState(),this.isBackTrackingStack=[],this.errors=[],this.RULE_STACK=[],this.LAST_EXPLICIT_RULE_STACK=[],this.CST_STACK=[],this.RULE_OCCURRENCE_STACK=[]},e}();t.RecognizerEngine=h},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(12),i=n(4),o=n(18),a=n(8),s=function(){function e(){}return e.prototype.initErrorHandler=function(e){this._errors=[],this.errorMessageProvider=i.defaults(e.errorMessageProvider,a.DEFAULT_PARSER_CONFIG.errorMessageProvider)},e.prototype.SAVE_ERROR=function(e){if(r.isRecognitionException(e))return e.context={ruleStack:this.getHumanReadableRuleStack(),ruleOccurrenceStack:i.cloneArr(this.RULE_OCCURRENCE_STACK)},this._errors.push(e),e;throw Error("Trying to save an Error which is not a RecognitionException")},Object.defineProperty(e.prototype,"errors",{get:function(){return i.cloneArr(this._errors)},set:function(e){this._errors=e},enumerable:!0,configurable:!0}),e.prototype.raiseEarlyExitException=function(e,t,n){for(var i=this.getCurrRuleFullName(),a=this.getGAstProductions().get(i),s=o.getLookaheadPathsForOptionalProd(e,a,t,this.maxLookahead)[0],c=[],u=1;u<this.maxLookahead;u++)c.push(this.LA(u));var p=this.errorMessageProvider.buildEarlyExitMessage({expectedIterationPaths:s,actual:c,previous:this.LA(0),customUserDescription:n,ruleName:i});throw this.SAVE_ERROR(new r.EarlyExitException(p,this.LA(1),this.LA(0)))},e.prototype.raiseNoAltException=function(e,t){for(var n=this.getCurrRuleFullName(),i=this.getGAstProductions().get(n),a=o.getLookaheadPathsForOr(e,i,this.maxLookahead),s=[],c=1;c<=this.maxLookahead;c++)s.push(this.LA(c));var u=this.LA(0),p=this.errorMessageProvider.buildNoViableAltMessage({expectedPathsPerAlt:a,actual:s,previous:u,customUserDescription:t,ruleName:this.getCurrRuleFullName()});throw this.SAVE_ERROR(new r.NoViableAltException(p,this.LA(1),u))},e}();t.ErrorHandler=s},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(19),i=n(4),o=function(){function e(){}return e.prototype.initContentAssist=function(){},e.prototype.computeContentAssist=function(e,t){var n=this.gastProductionsCache.get(e);if(i.isUndefined(n))throw Error("Rule ->"+e+"<- does not exist in this grammar.");return r.nextPossibleTokensAfter([n],t,this.tokenMatcher,this.maxLookahead)},e.prototype.getNextPossibleTokenTypes=function(e){var t=i.first(e.ruleStack),n=this.getGAstProductions().get(t);return new r.NextAfterTokenWalker(n,e).startWalking()},e}();t.ContentAssist=o},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(24);t.createSyntaxDiagramsCode=function(e,t){var n=void 0===t?{}:t,i=n.resourceBase,o=void 0===i?"https://unpkg.com/chevrotain@"+r.VERSION+"/diagrams/":i,a=n.css;return"\n\x3c!-- This is a generated file --\x3e\n<!DOCTYPE html>\n<meta charset=\"utf-8\">\n<style>\n  body {\n    background-color: hsl(30, 20%, 95%)\n  }\n</style>\n\n\n<link rel='stylesheet' href='"+(void 0===a?"https://unpkg.com/chevrotain@"+r.VERSION+"/diagrams/diagrams.css":a)+"'>\n\n<script src='"+o+"vendor/railroad-diagrams.js'><\/script>\n<script src='"+o+"src/diagrams_builder.js'><\/script>\n<script src='"+o+"src/diagrams_behavior.js'><\/script>\n<script src='"+o+'src/main.js\'><\/script>\n\n<div id="diagrams" align="center"></div>    \n\n<script>\n    window.serializedGrammar = '+JSON.stringify(e,null,"  ")+';\n<\/script>\n\n<script>\n    var diagramsDiv = document.getElementById("diagrams");\n    main.drawDiagramsFromSerializedGrammar(serializedGrammar, diagramsDiv);\n<\/script>\n'}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(51);t.generateParserFactory=function(e){var t=r.genWrapperFunction({name:e.name,rules:e.rules}),i=new Function("tokenVocabulary","config","chevrotain",t);return function(t){return i(e.tokenVocabulary,t,n(0))}},t.generateParserModule=function(e){return r.genUmdModule({name:e.name,rules:e.rules})}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(4),i=n(7),o=n(6),a="\n";function s(e){return"\nfunction "+e.name+"(tokenVocabulary, config) {\n    // invoke super constructor\n    chevrotain.Parser.call(this, tokenVocabulary, config)\n\n    const $ = this\n\n    "+c(e.rules)+"\n\n    // very important to call this after all the rules have been defined.\n    // otherwise the parser may not work correctly as it will lack information\n    // derived during the self analysis phase.\n    this.performSelfAnalysis(this)\n}\n\n// inheritance as implemented in javascript in the previous decade... :(\n"+e.name+".prototype = Object.create(chevrotain.Parser.prototype)\n"+e.name+".prototype.constructor = "+e.name+"    \n    "}function c(e){return r.map(e,function(e){return u(e,1)}).join("\n")}function u(e,t){var n=m(t,'$.RULE("'+e.name+'", function() {')+a;return n+=T(e.definition,t+1),n+=m(t+1,"})")+a}function p(e,t){var n=i.tokenName(e.terminalType);return m(t,"$.CONSUME"+e.idx+"(this.tokensMap."+n+")"+a)}function l(e,t){return m(t,"$.SUBRULE"+e.idx+"($."+e.nonTerminalName+")"+a)}function f(e,t){var n=m(t,"$.OR"+e.idx+"([")+a;return n+=r.map(e.definition,function(e){return h(e,t+1)}).join(","+a),n+=a+m(t,"])"+a)}function h(e,t){var n=m(t,"{")+a;return e.name&&(n+=m(t+1,'NAME: "'+e.name+'",')+a),n+=m(t+1,"ALT: function() {")+a,n+=T(e.definition,t+1),n+=m(t+1,"}")+a,n+=m(t,"}")}function E(e,t,n){var r=m(n,"$."+(e+t.idx)+"(");return t.name||t.separator?(r+="{"+a,t.name&&(r+=m(n+1,'NAME: "'+t.name+'"')+","+a),t.separator&&(r+=m(n+1,"SEP: this.tokensMap."+i.tokenName(t.separator))+","+a),r+="DEF: "+d(t.definition,n+2)+a,r+=m(n,"}")+a):r+=d(t.definition,n+1),r+=m(n,")")+a}function d(e,t){var n="function() {"+a;return n+=T(e,t),n+=m(t,"}")+a}function T(e,t){var n="";return r.forEach(e,function(e){n+=function(e,t){if(e instanceof o.NonTerminal)return l(e,t);if(e instanceof o.Option)return E("OPTION",e,t);if(e instanceof o.RepetitionMandatory)return E("AT_LEAST_ONE",e,t);if(e instanceof o.RepetitionMandatoryWithSeparator)return E("AT_LEAST_ONE_SEP",e,t);if(e instanceof o.RepetitionWithSeparator)return E("MANY_SEP",e,t);if(e instanceof o.Repetition)return E("MANY",e,t);if(e instanceof o.Alternation)return f(e,t);if(e instanceof o.Terminal)return p(e,t);if(e instanceof o.Flat)return T(e.definition,t);throw Error("non exhaustive match")}(e,t+1)}),n}function m(e,t){return Array(4*e+1).join(" ")+t}t.genUmdModule=function(e){return"\n(function (root, factory) {\n    if (typeof define === 'function' && define.amd) {\n        // AMD. Register as an anonymous module.\n        define(['chevrotain'], factory);\n    } else if (typeof module === 'object' && module.exports) {\n        // Node. Does not work with strict CommonJS, but\n        // only CommonJS-like environments that support module.exports,\n        // like Node.\n        module.exports = factory(require('chevrotain'));\n    } else {\n        // Browser globals (root is window)\n        root.returnExports = factory(root.b);\n    }\n}(typeof self !== 'undefined' ? self : this, function (chevrotain) {\n\n"+s(e)+"\n    \nreturn {\n    "+e.name+": "+e.name+" \n}\n}));\n"},t.genWrapperFunction=function(e){return"    \n"+s(e)+"\nreturn new "+e.name+"(tokenVocabulary, config)    \n"},t.genClass=s,t.genAllRules=c,t.genRule=u,t.genTerminal=p,t.genNonTerminal=l,t.genAlternation=f,t.genSingleAlt=h},,,,,,,function(e,t,n){"use strict";n.d(t,"a",function(){return SmsParser});var r,i=n(0),o=(r=function(e,t){return(r=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])})(e,t)},function(e,t){function n(){this.constructor=e}r(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)}),a=function(){return(a=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var i in t=arguments[n])Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i]);return e}).apply(this,arguments)},s=n(59),c=s.smsTokenTypes,u=s.smsTokenMap,SmsParser=function(e){function SmsParser(t){var n=e.call(this,c,a({outputCst:!0,recoveryEnabled:!0},t))||this;return n.tokenize=function(e){return n.lexer.tokenize(e).tokens},n.parse=function(e){n.input=n.lexer.tokenize(e).tokens;var t=n.MappingDoc();return{errors:n.errors,cst:t}},n.MappingDoc=n.RULE("MappingDoc",function(){n.MANY(function(){return n.SUBRULE(n.PrefixDecl)}),n.SUBRULE(n.MappingClause),n.MANY1(function(){n.CONSUME(u.Semicolon),n.SUBRULE1(n.MappingClause)})}),n.MappingClause=n.RULE("MappingClause",function(){n.SUBRULE(n.MappingDecl),n.SUBRULE(n.FromClause),n.SUBRULE(n.ToClause),n.SUBRULE(n.WhereClause)}),n.MappingDecl=n.RULE("MappingDecl",function(){n.CONSUME(u.Mapping),n.OPTION(function(){return n.SUBRULE(n.iri)})}),n.FromClause=n.RULE("FromClause",function(){n.CONSUME(u.FROM),n.OR([{ALT:function(){return n.SUBRULE(n.SqlClause)}},{ALT:function(){return n.SUBRULE(n.JsonClause)}},{ALT:function(){return n.SUBRULE(n.GraphQlClause)}}])}),n.JsonClause=n.RULE("JsonClause",function(){n.CONSUME(u.Json),n.CONSUME(u.JsonBlock)}),n.GraphQlClause=n.RULE("GraphQlClause",function(){n.CONSUME(u.GraphQl),n.CONSUME(u.LCurly),n.CONSUME(u.GraphQlBlock),n.CONSUME(u.RCurly)}),n.SqlClause=n.RULE("SqlClause",function(){n.CONSUME(u.Sql),n.CONSUME(u.LCurly),n.CONSUME(u.SqlBlock),n.CONSUME(u.RCurly)}),n.ToClause=n.RULE("ToClause",function(){n.CONSUME(u.TO),n.SUBRULE(n.ConstructTemplate)}),n.WhereClause=n.RULE("WhereClause",function(){n.CONSUME(u.WHERE),n.CONSUME(u.LCurly),n.MANY(function(){return n.SUBRULE(n.Bind)}),n.CONSUME(u.RCurly)}),n.Bind=n.RULE("Bind",function(){n.CONSUME(u.BIND),n.CONSUME(u.LParen),n.SUBRULE(n.TemplateOrCast),n.CONSUME(u.AS),n.SUBRULE(n.Var),n.CONSUME(u.RParen)}),n.TemplateOrCast=n.RULE("TemplateOrCast",function(){n.OR([{ALT:function(){return n.SUBRULE(n.TemplateFunc)}},{ALT:function(){return n.SUBRULE(n.CastFunc)}}])}),n.CastFunc=n.RULE("CastFunc",function(){n.SUBRULE(n.iri),n.CONSUME(u.LParen),n.SUBRULE(n.Var),n.CONSUME(u.RParen)}),n.TemplateFunc=n.RULE("TemplateFunc",function(){n.CONSUME(u.Template),n.CONSUME(u.LParen),n.SUBRULE(n.String),n.CONSUME(u.RParen)}),n.PrefixDecl=n.RULE("PrefixDecl",function(){n.CONSUME(u.PREFIX),n.CONSUME(u.PNAME_NS),n.CONSUME(u.IRIREF)}),n.iri=n.RULE("iri",function(){n.OR([{ALT:function(){return n.CONSUME(u.IRIREF)}},{ALT:function(){return n.SUBRULE(n.PrefixedName)}}])}),n.PrefixedName=n.RULE("PrefixedName",function(){n.OR([{ALT:function(){return n.CONSUME(u.PNAME_LN)}},{ALT:function(){return n.CONSUME(u.PNAME_NS)}}])}),n.ConstructTemplate=n.RULE("ConstructTemplate",function(){n.CONSUME(u.LCurly),n.OPTION(function(){return n.SUBRULE(n.ConstructTriples)}),n.CONSUME(u.RCurly)}),n.ConstructTriples=n.RULE("ConstructTriples",function(){n.SUBRULE(n.TriplesSameSubject),n.OPTION(function(){n.CONSUME(u.Period),n.OPTION1(function(){return n.SUBRULE(n.ConstructTriples)})})}),n.TriplesSameSubject=n.RULE("TriplesSameSubject",function(){n.OR([{ALT:function(){n.SUBRULE(n.VarOrTerm),n.SUBRULE(n.PropertyListNotEmpty)}},{ALT:function(){n.SUBRULE(n.TriplesNode),n.SUBRULE(n.PropertyList)}}])}),n.VarOrTerm=n.RULE("VarOrTerm",function(){n.OR([{ALT:function(){return n.SUBRULE(n.Var)}},{ALT:function(){return n.SUBRULE(n.GraphTerm)}}])}),n.PropertyListNotEmpty=n.RULE("PropertyListNotEmpty",function(){n.SUBRULE(n.Verb),n.SUBRULE(n.ObjectList),n.MANY(function(){n.CONSUME(u.Semicolon),n.OPTION(function(){n.SUBRULE1(n.Verb),n.SUBRULE1(n.ObjectList)})})}),n.TriplesNode=n.RULE("TriplesNode",function(){n.OR([{ALT:function(){return n.SUBRULE(n.Collection)}},{ALT:function(){return n.SUBRULE(n.BlankNodePropertyList)}}])}),n.PropertyList=n.RULE("PropertyList",function(){n.OPTION(function(){return n.SUBRULE(n.PropertyListNotEmpty)})}),n.GraphTerm=n.RULE("GraphTerm",function(){n.OR([{ALT:function(){return n.SUBRULE(n.iri)}},{ALT:function(){return n.SUBRULE(n.RDFLiteral)}},{ALT:function(){return n.SUBRULE(n.NumericLiteral)}},{ALT:function(){return n.SUBRULE(n.BooleanLiteral)}},{ALT:function(){return n.SUBRULE(n.BlankNode)}},{ALT:function(){return n.CONSUME(u.NIL)}}])}),n.Verb=n.RULE("Verb",function(){n.OR([{ALT:function(){return n.SUBRULE(n.VarOrIri)}},{ALT:function(){return n.CONSUME(u.A)}}])}),n.ObjectList=n.RULE("ObjectList",function(){n.AT_LEAST_ONE_SEP({SEP:u.Comma,DEF:function(){return n.SUBRULE(n.Object)}})}),n.Object=n.RULE("Object",function(){n.SUBRULE(n.GraphNode)}),n.Collection=n.RULE("Collection",function(){n.CONSUME(u.LParen),n.AT_LEAST_ONE(function(){return n.SUBRULE(n.GraphNode)}),n.CONSUME(u.RParen)}),n.BlankNodePropertyList=n.RULE("BlankNodePropertyList",function(){n.CONSUME(u.LBracket),n.SUBRULE(n.PropertyListNotEmpty),n.CONSUME(u.RBracket)}),n.VarOrIri=n.RULE("VarOrIri",function(){n.OR([{ALT:function(){return n.SUBRULE(n.Var)}},{ALT:function(){return n.SUBRULE(n.iri)}}])}),n.RDFLiteral=n.RULE("RDFLiteral",function(){n.SUBRULE(n.String),n.OPTION(function(){return n.OR([{ALT:function(){return n.CONSUME(u.LANGTAG)}},{ALT:function(){n.CONSUME(u.DoubleCaret),n.SUBRULE(n.iri)}}])})}),n.NumericLiteral=n.RULE("NumericLiteral",function(){n.OR([{ALT:function(){return n.SUBRULE(n.NumericLiteralUnsigned)}},{ALT:function(){return n.SUBRULE(n.NumericLiteralPositive)}},{ALT:function(){return n.SUBRULE(n.NumericLiteralNegative)}}])}),n.NumericLiteralUnsigned=n.RULE("NumericLiteralUnsigned",function(){n.OR([{ALT:function(){return n.CONSUME(u.INTEGER)}},{ALT:function(){return n.CONSUME(u.DECIMAL)}},{ALT:function(){return n.CONSUME(u.DOUBLE)}}])}),n.NumericLiteralPositive=n.RULE("NumericLiteralPositive",function(){n.OR([{ALT:function(){return n.CONSUME(u.INTEGER_POSITIVE)}},{ALT:function(){return n.CONSUME(u.DECIMAL_POSITIVE)}},{ALT:function(){return n.CONSUME(u.DOUBLE_POSITIVE)}}])}),n.NumericLiteralNegative=n.RULE("NumericLiteralNegative",function(){n.OR([{ALT:function(){return n.CONSUME(u.INTEGER_NEGATIVE)}},{ALT:function(){return n.CONSUME(u.DECIMAL_NEGATIVE)}},{ALT:function(){return n.CONSUME(u.DOUBLE_NEGATIVE)}}])}),n.BooleanLiteral=n.RULE("BooleanLiteral",function(){n.OR([{ALT:function(){return n.CONSUME(u.TRUE)}},{ALT:function(){return n.CONSUME(u.FALSE)}}])}),n.BlankNode=n.RULE("BlankNode",function(){n.OR([{ALT:function(){return n.CONSUME(u.BLANK_NODE_LABEL)}},{ALT:function(){return n.CONSUME(u.ANON)}}])}),n.GraphNode=n.RULE("GraphNode",function(){n.OR([{ALT:function(){return n.SUBRULE(n.VarOrTerm)}},{ALT:function(){return n.SUBRULE(n.TriplesNode)}}])}),n.Var=n.RULE("Var",function(){n.OR([{ALT:function(){return n.CONSUME(u.VAR1)}},{ALT:function(){return n.CONSUME(u.VAR2)}}])}),n.String=n.RULE("String",function(){n.OR([{ALT:function(){return n.CONSUME(u.STRING_LITERAL1)}},{ALT:function(){return n.CONSUME(u.STRING_LITERAL2)}},{ALT:function(){return n.CONSUME(u.STRING_LITERAL_LONG1)}},{ALT:function(){return n.CONSUME(u.STRING_LITERAL_LONG2)}}])}),n.lexer=new i.Lexer(c),i.Parser.performSelfAnalysis(n),n}return o(SmsParser,e),SmsParser}(i.Parser)},function(e,t,n){"use strict";n.r(t),n.d(t,"smsTokenMap",function(){return c}),n.d(t,"smsTokenTypes",function(){return u});var r=n(0),i=n(10).sparqlTokenMap,o=/^\s*to\s*{/i,a=/((?:.|\s)*?)to\s*{/i,s=function(e,t,n){for(var r=0;r<e.length;r++)if(e[r]!==t);else{var i=e.slice(r+1);if(n.exec(i))return[e.slice(0,r)]}return null},c={STRING_LITERAL1:i.STRING_LITERAL1,STRING_LITERAL2:i.STRING_LITERAL2,STRING_LITERAL_LONG1:i.STRING_LITERAL_LONG1,STRING_LITERAL_LONG2:i.STRING_LITERAL_LONG2,IRIREF:i.IRIREF,PNAME_LN:i.PNAME_LN,PNAME_NS:i.PNAME_NS,NIL:i.NIL,DISTINCT:i.DISTINCT,VAR1:i.VAR1,VAR2:i.VAR2,BIND:i.BIND,AS:i.AS,WHERE:i.WHERE,LANGTAG:i.LANGTAG,INTEGER:i.INTEGER,DECIMAL:i.DECIMAL,DOUBLE:i.DOUBLE,INTEGER_POSITIVE:i.INTEGER_POSITIVE,DECIMAL_POSITIVE:i.DECIMAL_POSITIVE,DOUBLE_POSITIVE:i.DOUBLE_POSITIVE,INTEGER_NEGATIVE:i.INTEGER_NEGATIVE,DECIMAL_NEGATIVE:i.DECIMAL_NEGATIVE,DOUBLE_NEGATIVE:i.DOUBLE_NEGATIVE,TRUE:i.TRUE,FALSE:i.FALSE,BLANK_NODE_LABEL:i.BLANK_NODE_LABEL,ANON:i.ANON,A:i.A,FROM:i.FROM,PREFIX:i.PREFIX,Comment:i.Comment,Period:i.Period,Comma:i.Comma,LCurly:i.LCurly,RCurly:i.RCurly,LParen:i.LParen,RParen:i.RParen,WhiteSpace:i.WhiteSpace,DoubleCaret:i.DoubleCaret,Semicolon:i.Semicolon,LBracket:i.LBracket,RBracket:i.RBracket,Template:Object(r.createToken)({name:"Template",pattern:/template/i}),TO:Object(r.createToken)({name:"TO",pattern:/to/i}),Sql:Object(r.createToken)({name:"Sql",pattern:/sql/i}),GraphQl:Object(r.createToken)({name:"GraphQl",pattern:/graphql/i}),Json:Object(r.createToken)({name:"Json",pattern:/json/i}),Mapping:Object(r.createToken)({name:"Mapping",pattern:/mapping/i}),SqlBlock:Object(r.createToken)({name:"SqlBlock",pattern:function(e,t,n){void 0===t&&(t=0);var r=n.slice(-2),i=r[0],a=r[1];if(!i||!a||i.tokenType.tokenName!==c.Sql.tokenName||a.tokenType.tokenName!==c.LCurly.tokenName)return null;var u=e.slice(t);return s(u,"}",o)},line_breaks:!0}),JsonBlock:Object(r.createToken)({name:"JsonBlock",pattern:function(e,t,n){void 0===t&&(t=0);var r=n.slice(-1)[0];if(!r||r.tokenType.tokenName!==c.Json.tokenName)return null;var i=e.slice(t),o=a.exec(i);return o?o.slice(1):null},line_breaks:!0}),GraphQlBlock:Object(r.createToken)({name:"GraphQlBlock",pattern:function(e,t,n){void 0===t&&(t=0);var r=n.slice(-2),i=r[0],a=r[1];if(!i||!a||i.tokenType.tokenName!==c.GraphQl.tokenName||a.tokenType.tokenName!==c.LCurly.tokenName)return null;var u=e.slice(t);return s(u,"}",o)},line_breaks:!0})},u=[c.WhiteSpace,c.Comment,c.LParen,c.RParen,c.Period,c.Template,c.IRIREF,c.PNAME_LN,c.PNAME_NS,c.NIL,c.DISTINCT,c.VAR1,c.VAR2,c.BIND,c.AS,c.WHERE,c.TO,c.LANGTAG,c.INTEGER,c.DECIMAL,c.DOUBLE,c.INTEGER_POSITIVE,c.DECIMAL_POSITIVE,c.DOUBLE_POSITIVE,c.INTEGER_NEGATIVE,c.DECIMAL_NEGATIVE,c.DOUBLE_NEGATIVE,c.TRUE,c.FALSE,c.BLANK_NODE_LABEL,c.ANON,c.A,c.FROM,c.PREFIX,c.Comma,c.DoubleCaret,c.Semicolon,c.LBracket,c.RBracket,c.Sql,c.GraphQl,c.Json,c.Mapping,c.SqlBlock,c.JsonBlock,c.GraphQlBlock,c.LCurly,c.RCurly,c.STRING_LITERAL1,c.STRING_LITERAL2,c.STRING_LITERAL_LONG1,c.STRING_LITERAL_LONG2]},,,,,,,,,,,,function(e,t,n){"use strict";n.r(t),n.d(t,"smsTokens",function(){return i});var r=n(58);n.d(t,"SmsParser",function(){return r.a});var i=n(59)}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define("millan", [], factory);
+	else if(typeof exports === 'object')
+		exports["millan"] = factory();
+	else
+		root["millan"] = factory();
+})((typeof self !== 'undefined' ? self : this), function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/sms/index.ts");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/chevrotain/lib/src/api.js":
+/*!************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/api.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var parser_1 = __webpack_require__(/*! ./parse/parser/parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+var lexer_public_1 = __webpack_require__(/*! ./scan/lexer_public */ "./node_modules/chevrotain/lib/src/scan/lexer_public.js");
+var tokens_public_1 = __webpack_require__(/*! ./scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var exceptions_public_1 = __webpack_require__(/*! ./parse/exceptions_public */ "./node_modules/chevrotain/lib/src/parse/exceptions_public.js");
+var version_1 = __webpack_require__(/*! ./version */ "./node_modules/chevrotain/lib/src/version.js");
+var errors_public_1 = __webpack_require__(/*! ./parse/errors_public */ "./node_modules/chevrotain/lib/src/parse/errors_public.js");
+var render_public_1 = __webpack_require__(/*! ./diagrams/render_public */ "./node_modules/chevrotain/lib/src/diagrams/render_public.js");
+var gast_visitor_public_1 = __webpack_require__(/*! ./parse/grammar/gast/gast_visitor_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js");
+var gast_public_1 = __webpack_require__(/*! ./parse/grammar/gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_resolver_public_1 = __webpack_require__(/*! ./parse/grammar/gast/gast_resolver_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_resolver_public.js");
+var generate_public_1 = __webpack_require__(/*! ./generate/generate_public */ "./node_modules/chevrotain/lib/src/generate/generate_public.js");
+var lexer_errors_public_1 = __webpack_require__(/*! ./scan/lexer_errors_public */ "./node_modules/chevrotain/lib/src/scan/lexer_errors_public.js");
+/**
+ * defines the public API of
+ * changes here may require major version change. (semVer)
+ */
+var API = {};
+// semantic version
+API.VERSION = version_1.VERSION;
+// runtime API
+API.Parser = parser_1.Parser;
+// TypeCheck Multi Trait Parser API against official Chevrotain API
+// The only thing this does not check is the constructor signature.
+var mixedDummyInstance = null;
+var officalDummyInstance = mixedDummyInstance;
+API.ParserDefinitionErrorType = parser_1.ParserDefinitionErrorType;
+API.Lexer = lexer_public_1.Lexer;
+API.LexerDefinitionErrorType = lexer_public_1.LexerDefinitionErrorType;
+API.EOF = tokens_public_1.EOF;
+// Tokens utilities
+API.tokenName = tokens_public_1.tokenName;
+API.tokenLabel = tokens_public_1.tokenLabel;
+API.tokenMatcher = tokens_public_1.tokenMatcher;
+API.createToken = tokens_public_1.createToken;
+API.createTokenInstance = tokens_public_1.createTokenInstance;
+//
+// // Other Utilities
+API.EMPTY_ALT = parser_1.EMPTY_ALT;
+API.defaultParserErrorProvider = errors_public_1.defaultParserErrorProvider;
+API.isRecognitionException = exceptions_public_1.isRecognitionException;
+API.EarlyExitException = exceptions_public_1.EarlyExitException;
+API.MismatchedTokenException = exceptions_public_1.MismatchedTokenException;
+API.NotAllInputParsedException = exceptions_public_1.NotAllInputParsedException;
+API.NoViableAltException = exceptions_public_1.NoViableAltException;
+API.defaultLexerErrorProvider = lexer_errors_public_1.defaultLexerErrorProvider;
+//
+// // grammar reflection API
+API.Flat = gast_public_1.Flat;
+API.Repetition = gast_public_1.Repetition;
+API.RepetitionWithSeparator = gast_public_1.RepetitionWithSeparator;
+API.RepetitionMandatory = gast_public_1.RepetitionMandatory;
+API.RepetitionMandatoryWithSeparator = gast_public_1.RepetitionMandatoryWithSeparator;
+API.Option = gast_public_1.Option;
+API.Alternation = gast_public_1.Alternation;
+API.NonTerminal = gast_public_1.NonTerminal;
+API.Terminal = gast_public_1.Terminal;
+API.Rule = gast_public_1.Rule;
+// // GAST Utilities
+API.GAstVisitor = gast_visitor_public_1.GAstVisitor;
+API.serializeGrammar = gast_public_1.serializeGrammar;
+API.serializeProduction = gast_public_1.serializeProduction;
+API.resolveGrammar = gast_resolver_public_1.resolveGrammar;
+API.defaultGrammarResolverErrorProvider = errors_public_1.defaultGrammarResolverErrorProvider;
+API.validateGrammar = gast_resolver_public_1.validateGrammar;
+API.defaultGrammarValidatorErrorProvider = errors_public_1.defaultGrammarValidatorErrorProvider;
+API.assignOccurrenceIndices = gast_resolver_public_1.assignOccurrenceIndices;
+/* istanbul ignore next */
+API.clearCache = function () {
+    console.warn("The clearCache function was 'soft' removed from the Chevrotain API." +
+        "\n\t It performs no action other than printing this message." +
+        "\n\t Please avoid using it as it will be completely removed in the future");
+};
+API.createSyntaxDiagramsCode = render_public_1.createSyntaxDiagramsCode;
+API.generateParserFactory = generate_public_1.generateParserFactory;
+API.generateParserModule = generate_public_1.generateParserModule;
+module.exports = API;
+//# sourceMappingURL=api.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/diagrams/render_public.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/diagrams/render_public.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var version_1 = __webpack_require__(/*! ../version */ "./node_modules/chevrotain/lib/src/version.js");
+function createSyntaxDiagramsCode(grammar, _a) {
+    var _b = _a === void 0 ? {} : _a, _c = _b.resourceBase, resourceBase = _c === void 0 ? "https://unpkg.com/chevrotain@" + version_1.VERSION + "/diagrams/" : _c, _d = _b.css, css = _d === void 0 ? "https://unpkg.com/chevrotain@" + version_1.VERSION + "/diagrams/diagrams.css" : _d;
+    var header = "\n<!-- This is a generated file -->\n<!DOCTYPE html>\n<meta charset=\"utf-8\">\n<style>\n  body {\n    background-color: hsl(30, 20%, 95%)\n  }\n</style>\n\n";
+    var cssHtml = "\n<link rel='stylesheet' href='" + css + "'>\n";
+    var scripts = "\n<script src='" + resourceBase + "vendor/railroad-diagrams.js'></script>\n<script src='" + resourceBase + "src/diagrams_builder.js'></script>\n<script src='" + resourceBase + "src/diagrams_behavior.js'></script>\n<script src='" + resourceBase + "src/main.js'></script>\n";
+    var diagramsDiv = "\n<div id=\"diagrams\" align=\"center\"></div>    \n";
+    var serializedGrammar = "\n<script>\n    window.serializedGrammar = " + JSON.stringify(grammar, null, "  ") + ";\n</script>\n";
+    var initLogic = "\n<script>\n    var diagramsDiv = document.getElementById(\"diagrams\");\n    main.drawDiagramsFromSerializedGrammar(serializedGrammar, diagramsDiv);\n</script>\n";
+    return (header + cssHtml + scripts + diagramsDiv + serializedGrammar + initLogic);
+}
+exports.createSyntaxDiagramsCode = createSyntaxDiagramsCode;
+//# sourceMappingURL=render_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/generate/generate.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/generate/generate.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var tokens_public_1 = __webpack_require__(/*! ../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var gast_public_1 = __webpack_require__(/*! ../parse/grammar/gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+/**
+ * Missing features
+ * 1. Rule arguments
+ * 2. Gates
+ * 3. embedded actions
+ */
+var NL = "\n";
+function genUmdModule(options) {
+    return "\n(function (root, factory) {\n    if (typeof define === 'function' && define.amd) {\n        // AMD. Register as an anonymous module.\n        define(['chevrotain'], factory);\n    } else if (typeof module === 'object' && module.exports) {\n        // Node. Does not work with strict CommonJS, but\n        // only CommonJS-like environments that support module.exports,\n        // like Node.\n        module.exports = factory(require('chevrotain'));\n    } else {\n        // Browser globals (root is window)\n        root.returnExports = factory(root.b);\n    }\n}(typeof self !== 'undefined' ? self : this, function (chevrotain) {\n\n" + genClass(options) + "\n    \nreturn {\n    " + options.name + ": " + options.name + " \n}\n}));\n";
+}
+exports.genUmdModule = genUmdModule;
+function genWrapperFunction(options) {
+    return "    \n" + genClass(options) + "\nreturn new " + options.name + "(tokenVocabulary, config)    \n";
+}
+exports.genWrapperFunction = genWrapperFunction;
+function genClass(options) {
+    // TODO: how to pass the token vocabulary? Constructor? other?
+    // TODO: should outputCst be enabled by default?
+    var result = "\nfunction " + options.name + "(tokenVocabulary, config) {\n    // invoke super constructor\n    chevrotain.Parser.call(this, tokenVocabulary, config)\n\n    const $ = this\n\n    " + genAllRules(options.rules) + "\n\n    // very important to call this after all the rules have been defined.\n    // otherwise the parser may not work correctly as it will lack information\n    // derived during the self analysis phase.\n    this.performSelfAnalysis(this)\n}\n\n// inheritance as implemented in javascript in the previous decade... :(\n" + options.name + ".prototype = Object.create(chevrotain.Parser.prototype)\n" + options.name + ".prototype.constructor = " + options.name + "    \n    ";
+    return result;
+}
+exports.genClass = genClass;
+function genAllRules(rules) {
+    var rulesText = utils_1.map(rules, function (currRule) {
+        return genRule(currRule, 1);
+    });
+    return rulesText.join("\n");
+}
+exports.genAllRules = genAllRules;
+function genRule(prod, n) {
+    var result = indent(n, "$.RULE(\"" + prod.name + "\", function() {") + NL;
+    result += genDefinition(prod.definition, n + 1);
+    result += indent(n + 1, "})") + NL;
+    return result;
+}
+exports.genRule = genRule;
+function genTerminal(prod, n) {
+    var name = tokens_public_1.tokenName(prod.terminalType);
+    // TODO: potential performance optimization, avoid tokenMap Dictionary access
+    return indent(n, "$.CONSUME" + prod.idx + "(this.tokensMap." + name + ")" + NL);
+}
+exports.genTerminal = genTerminal;
+function genNonTerminal(prod, n) {
+    return indent(n, "$.SUBRULE" + prod.idx + "($." + prod.nonTerminalName + ")" + NL);
+}
+exports.genNonTerminal = genNonTerminal;
+function genAlternation(prod, n) {
+    var result = indent(n, "$.OR" + prod.idx + "([") + NL;
+    var alts = utils_1.map(prod.definition, function (altDef) { return genSingleAlt(altDef, n + 1); });
+    result += alts.join("," + NL);
+    result += NL + indent(n, "])" + NL);
+    return result;
+}
+exports.genAlternation = genAlternation;
+function genSingleAlt(prod, n) {
+    var result = indent(n, "{") + NL;
+    if (prod.name) {
+        result += indent(n + 1, "NAME: \"" + prod.name + "\",") + NL;
+    }
+    result += indent(n + 1, "ALT: function() {") + NL;
+    result += genDefinition(prod.definition, n + 1);
+    result += indent(n + 1, "}") + NL;
+    result += indent(n, "}");
+    return result;
+}
+exports.genSingleAlt = genSingleAlt;
+function genProd(prod, n) {
+    /* istanbul ignore else */
+    if (prod instanceof gast_public_1.NonTerminal) {
+        return genNonTerminal(prod, n);
+    }
+    else if (prod instanceof gast_public_1.Option) {
+        return genDSLRule("OPTION", prod, n);
+    }
+    else if (prod instanceof gast_public_1.RepetitionMandatory) {
+        return genDSLRule("AT_LEAST_ONE", prod, n);
+    }
+    else if (prod instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+        return genDSLRule("AT_LEAST_ONE_SEP", prod, n);
+    }
+    else if (prod instanceof gast_public_1.RepetitionWithSeparator) {
+        return genDSLRule("MANY_SEP", prod, n);
+    }
+    else if (prod instanceof gast_public_1.Repetition) {
+        return genDSLRule("MANY", prod, n);
+    }
+    else if (prod instanceof gast_public_1.Alternation) {
+        return genAlternation(prod, n);
+    }
+    else if (prod instanceof gast_public_1.Terminal) {
+        return genTerminal(prod, n);
+    }
+    else if (prod instanceof gast_public_1.Flat) {
+        return genDefinition(prod.definition, n);
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+function genDSLRule(dslName, prod, n) {
+    var result = indent(n, "$." + (dslName + prod.idx) + "(");
+    if (prod.name || prod.separator) {
+        result += "{" + NL;
+        if (prod.name) {
+            result += indent(n + 1, "NAME: \"" + prod.name + "\"") + "," + NL;
+        }
+        if (prod.separator) {
+            result +=
+                indent(n + 1, "SEP: this.tokensMap." + tokens_public_1.tokenName(prod.separator)) +
+                    "," +
+                    NL;
+        }
+        result += "DEF: " + genDefFunction(prod.definition, n + 2) + NL;
+        result += indent(n, "}") + NL;
+    }
+    else {
+        result += genDefFunction(prod.definition, n + 1);
+    }
+    result += indent(n, ")") + NL;
+    return result;
+}
+function genDefFunction(definition, n) {
+    var def = "function() {" + NL;
+    def += genDefinition(definition, n);
+    def += indent(n, "}") + NL;
+    return def;
+}
+function genDefinition(def, n) {
+    var result = "";
+    utils_1.forEach(def, function (prod) {
+        result += genProd(prod, n + 1);
+    });
+    return result;
+}
+function indent(howMuch, text) {
+    var spaces = Array(howMuch * 4 + 1).join(" ");
+    return spaces + text;
+}
+//# sourceMappingURL=generate.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/generate/generate_public.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/generate/generate_public.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var generate_1 = __webpack_require__(/*! ./generate */ "./node_modules/chevrotain/lib/src/generate/generate.js");
+function generateParserFactory(options) {
+    var wrapperText = generate_1.genWrapperFunction({
+        name: options.name,
+        rules: options.rules
+    });
+    var constructorWrapper = new Function("tokenVocabulary", "config", "chevrotain", wrapperText);
+    return function (config) {
+        return constructorWrapper(options.tokenVocabulary, config, 
+        // TODO: check how the require is transpiled/webpacked
+        __webpack_require__(/*! ../api */ "./node_modules/chevrotain/lib/src/api.js"));
+    };
+}
+exports.generateParserFactory = generateParserFactory;
+function generateParserModule(options) {
+    return generate_1.genUmdModule({ name: options.name, rules: options.rules });
+}
+exports.generateParserModule = generateParserModule;
+//# sourceMappingURL=generate_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/lang/lang_extensions.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+function classNameFromInstance(instance) {
+    return functionName(instance.constructor);
+}
+exports.classNameFromInstance = classNameFromInstance;
+var FUNC_NAME_REGEXP = /^\s*function\s*(\S*)\s*\(/;
+var NAME = "name";
+/* istanbul ignore next too many hacks for IE/old versions of node.js here*/
+function functionName(func) {
+    // Engines that support Function.prototype.name OR the nth (n>1) time after
+    // the name has been computed in the following else block.
+    var existingNameProp = func.name;
+    if (existingNameProp) {
+        return existingNameProp;
+    }
+    // hack for IE and engines that do not support Object.defineProperty on function.name (Node.js 0.10 && 0.12)
+    var computedName = func.toString().match(FUNC_NAME_REGEXP)[1];
+    return computedName;
+}
+exports.functionName = functionName;
+/**
+ * @returns {boolean} - has the property been successfully defined
+ */
+function defineNameProp(obj, nameValue) {
+    var namePropDescriptor = Object.getOwnPropertyDescriptor(obj, NAME);
+    /* istanbul ignore else -> will only run in old versions of node.js */
+    if (utils_1.isUndefined(namePropDescriptor) || namePropDescriptor.configurable) {
+        Object.defineProperty(obj, NAME, {
+            enumerable: false,
+            configurable: true,
+            writable: false,
+            value: nameValue
+        });
+        return true;
+    }
+    /* istanbul ignore next -> will only run in old versions of node.js */
+    return false;
+}
+exports.defineNameProp = defineNameProp;
+/**
+ * simple Hashtable between a string and some generic value
+ * this should be removed once typescript supports ES6 style Hashtable
+ */
+var HashTable = /** @class */ (function () {
+    function HashTable() {
+        this._state = {};
+    }
+    HashTable.prototype.keys = function () {
+        return utils_1.keys(this._state);
+    };
+    HashTable.prototype.values = function () {
+        return utils_1.values(this._state);
+    };
+    HashTable.prototype.put = function (key, value) {
+        this._state[key] = value;
+    };
+    HashTable.prototype.putAll = function (other) {
+        this._state = utils_1.assign(this._state, other._state);
+    };
+    HashTable.prototype.get = function (key) {
+        // To avoid edge case with a key called "hasOwnProperty" we need to perform the commented out check below
+        // -> if (Object.prototype.hasOwnProperty.call(this._state, key)) { ... } <-
+        // however this costs nearly 25% of the parser's runtime.
+        // if someone decides to name their Parser class "hasOwnProperty" they deserve what they will get :)
+        return this._state[key];
+    };
+    HashTable.prototype.containsKey = function (key) {
+        return utils_1.has(this._state, key);
+    };
+    HashTable.prototype.clear = function () {
+        this._state = {};
+    };
+    return HashTable;
+}());
+exports.HashTable = HashTable;
+//# sourceMappingURL=lang_extensions.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/constants.js":
+/*!************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/constants.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// TODO: can this be removed? where is it used?
+exports.IN = "_~IN~_";
+//# sourceMappingURL=constants.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/cst/cst.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/cst/cst.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var lang_extensions_1 = __webpack_require__(/*! ../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var keys_1 = __webpack_require__(/*! ../grammar/keys */ "./node_modules/chevrotain/lib/src/parse/grammar/keys.js");
+var gast_public_1 = __webpack_require__(/*! ../grammar/gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_visitor_public_1 = __webpack_require__(/*! ../grammar/gast/gast_visitor_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js");
+function addTerminalToCst(node, token, tokenTypeName) {
+    if (node.children[tokenTypeName] === undefined) {
+        node.children[tokenTypeName] = [token];
+    }
+    else {
+        node.children[tokenTypeName].push(token);
+    }
+}
+exports.addTerminalToCst = addTerminalToCst;
+function addNoneTerminalToCst(node, ruleName, ruleResult) {
+    if (node.children[ruleName] === undefined) {
+        node.children[ruleName] = [ruleResult];
+    }
+    else {
+        node.children[ruleName].push(ruleResult);
+    }
+}
+exports.addNoneTerminalToCst = addNoneTerminalToCst;
+var NamedDSLMethodsCollectorVisitor = /** @class */ (function (_super) {
+    __extends(NamedDSLMethodsCollectorVisitor, _super);
+    function NamedDSLMethodsCollectorVisitor(ruleIdx) {
+        var _this = _super.call(this) || this;
+        _this.result = [];
+        _this.ruleIdx = ruleIdx;
+        return _this;
+    }
+    NamedDSLMethodsCollectorVisitor.prototype.collectNamedDSLMethod = function (node, newNodeConstructor, methodIdx) {
+        // TODO: better hack to copy what we need here...
+        if (!utils_1.isUndefined(node.name)) {
+            // copy without name so this will indeed be processed later.
+            var nameLessNode 
+            /* istanbul ignore else */
+            = void 0;
+            /* istanbul ignore else */
+            if (node instanceof gast_public_1.Option ||
+                node instanceof gast_public_1.Repetition ||
+                node instanceof gast_public_1.RepetitionMandatory ||
+                node instanceof gast_public_1.Alternation) {
+                nameLessNode = new newNodeConstructor({
+                    definition: node.definition,
+                    idx: node.idx
+                });
+            }
+            else if (node instanceof gast_public_1.RepetitionMandatoryWithSeparator ||
+                node instanceof gast_public_1.RepetitionWithSeparator) {
+                nameLessNode = new newNodeConstructor({
+                    definition: node.definition,
+                    idx: node.idx,
+                    separator: node.separator
+                });
+            }
+            else {
+                throw Error("non exhaustive match");
+            }
+            var def = [nameLessNode];
+            var key = keys_1.getKeyForAutomaticLookahead(this.ruleIdx, methodIdx, node.idx);
+            this.result.push({ def: def, key: key, name: node.name, orgProd: node });
+        }
+    };
+    NamedDSLMethodsCollectorVisitor.prototype.visitOption = function (node) {
+        this.collectNamedDSLMethod(node, gast_public_1.Option, keys_1.OPTION_IDX);
+    };
+    NamedDSLMethodsCollectorVisitor.prototype.visitRepetition = function (node) {
+        this.collectNamedDSLMethod(node, gast_public_1.Repetition, keys_1.MANY_IDX);
+    };
+    NamedDSLMethodsCollectorVisitor.prototype.visitRepetitionMandatory = function (node) {
+        this.collectNamedDSLMethod(node, gast_public_1.RepetitionMandatory, keys_1.AT_LEAST_ONE_IDX);
+    };
+    NamedDSLMethodsCollectorVisitor.prototype.visitRepetitionMandatoryWithSeparator = function (node) {
+        this.collectNamedDSLMethod(node, gast_public_1.RepetitionMandatoryWithSeparator, keys_1.AT_LEAST_ONE_SEP_IDX);
+    };
+    NamedDSLMethodsCollectorVisitor.prototype.visitRepetitionWithSeparator = function (node) {
+        this.collectNamedDSLMethod(node, gast_public_1.RepetitionWithSeparator, keys_1.MANY_SEP_IDX);
+    };
+    NamedDSLMethodsCollectorVisitor.prototype.visitAlternation = function (node) {
+        var _this = this;
+        this.collectNamedDSLMethod(node, gast_public_1.Alternation, keys_1.OR_IDX);
+        var hasMoreThanOneAlternative = node.definition.length > 1;
+        utils_1.forEach(node.definition, function (currFlatAlt, altIdx) {
+            if (!utils_1.isUndefined(currFlatAlt.name)) {
+                var def = currFlatAlt.definition;
+                if (hasMoreThanOneAlternative) {
+                    def = [new gast_public_1.Option({ definition: currFlatAlt.definition })];
+                }
+                else {
+                    // mandatory
+                    def = currFlatAlt.definition;
+                }
+                var key = keys_1.getKeyForAltIndex(_this.ruleIdx, keys_1.OR_IDX, node.idx, altIdx);
+                _this.result.push({
+                    def: def,
+                    key: key,
+                    name: currFlatAlt.name,
+                    orgProd: currFlatAlt
+                });
+            }
+        });
+    };
+    return NamedDSLMethodsCollectorVisitor;
+}(gast_visitor_public_1.GAstVisitor));
+exports.NamedDSLMethodsCollectorVisitor = NamedDSLMethodsCollectorVisitor;
+function analyzeCst(topRules, fullToShortName) {
+    var result = {
+        dictDef: new lang_extensions_1.HashTable(),
+        allRuleNames: []
+    };
+    utils_1.forEach(topRules, function (currTopRule) {
+        var currTopRuleShortName = fullToShortName.get(currTopRule.name);
+        result.allRuleNames.push(currTopRule.name);
+        var namedCollectorVisitor = new NamedDSLMethodsCollectorVisitor(currTopRuleShortName);
+        currTopRule.accept(namedCollectorVisitor);
+        utils_1.forEach(namedCollectorVisitor.result, function (_a) {
+            var def = _a.def, key = _a.key, name = _a.name;
+            result.allRuleNames.push(currTopRule.name + name);
+        });
+    });
+    return result;
+}
+exports.analyzeCst = analyzeCst;
+//# sourceMappingURL=cst.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/cst/cst_visitor.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/cst/cst_visitor.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var lang_extensions_1 = __webpack_require__(/*! ../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var checks_1 = __webpack_require__(/*! ../grammar/checks */ "./node_modules/chevrotain/lib/src/parse/grammar/checks.js");
+function defaultVisit(ctx, param) {
+    var childrenNames = utils_1.keys(ctx);
+    var childrenNamesLength = childrenNames.length;
+    for (var i = 0; i < childrenNamesLength; i++) {
+        var currChildName = childrenNames[i];
+        var currChildArray = ctx[currChildName];
+        var currChildArrayLength = currChildArray.length;
+        for (var j = 0; j < currChildArrayLength; j++) {
+            var currChild = currChildArray[j];
+            // distinction between Tokens Children and CstNode children
+            if (currChild.tokenTypeIdx === undefined) {
+                if (currChild.fullName !== undefined) {
+                    this[currChild.fullName](currChild.children, param);
+                }
+                else {
+                    this[currChild.name](currChild.children, param);
+                }
+            }
+        }
+    }
+    // defaultVisit does not support generic out param
+    return undefined;
+}
+exports.defaultVisit = defaultVisit;
+function createBaseSemanticVisitorConstructor(grammarName, ruleNames) {
+    var derivedConstructor = function () { };
+    // can be overwritten according to:
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/
+    // name?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FFunction%2Fname
+    lang_extensions_1.defineNameProp(derivedConstructor, grammarName + "BaseSemantics");
+    var semanticProto = {
+        visit: function (cstNode, param) {
+            // enables writing more concise visitor methods when CstNode has only a single child
+            if (utils_1.isArray(cstNode)) {
+                // A CST Node's children dictionary can never have empty arrays as values
+                // If a key is defined there will be at least one element in the corresponding value array.
+                cstNode = cstNode[0];
+            }
+            // enables passing optional CstNodes concisely.
+            if (utils_1.isUndefined(cstNode)) {
+                return undefined;
+            }
+            if (cstNode.fullName !== undefined) {
+                return this[cstNode.fullName](cstNode.children, param);
+            }
+            else {
+                return this[cstNode.name](cstNode.children, param);
+            }
+        },
+        validateVisitor: function () {
+            var semanticDefinitionErrors = validateVisitor(this, ruleNames);
+            if (!utils_1.isEmpty(semanticDefinitionErrors)) {
+                var errorMessages = utils_1.map(semanticDefinitionErrors, function (currDefError) { return currDefError.msg; });
+                throw Error("Errors Detected in CST Visitor <" + lang_extensions_1.functionName(this.constructor) + ">:\n\t" +
+                    ("" + errorMessages.join("\n\n").replace(/\n/g, "\n\t")));
+            }
+        }
+    };
+    derivedConstructor.prototype = semanticProto;
+    derivedConstructor.prototype.constructor = derivedConstructor;
+    derivedConstructor._RULE_NAMES = ruleNames;
+    return derivedConstructor;
+}
+exports.createBaseSemanticVisitorConstructor = createBaseSemanticVisitorConstructor;
+function createBaseVisitorConstructorWithDefaults(grammarName, ruleNames, baseConstructor) {
+    var derivedConstructor = function () { };
+    // can be overwritten according to:
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/
+    // name?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FFunction%2Fname
+    lang_extensions_1.defineNameProp(derivedConstructor, grammarName + "BaseSemanticsWithDefaults");
+    var withDefaultsProto = Object.create(baseConstructor.prototype);
+    utils_1.forEach(ruleNames, function (ruleName) {
+        withDefaultsProto[ruleName] = defaultVisit;
+    });
+    derivedConstructor.prototype = withDefaultsProto;
+    derivedConstructor.prototype.constructor = derivedConstructor;
+    return derivedConstructor;
+}
+exports.createBaseVisitorConstructorWithDefaults = createBaseVisitorConstructorWithDefaults;
+var CstVisitorDefinitionError;
+(function (CstVisitorDefinitionError) {
+    CstVisitorDefinitionError[CstVisitorDefinitionError["REDUNDANT_METHOD"] = 0] = "REDUNDANT_METHOD";
+    CstVisitorDefinitionError[CstVisitorDefinitionError["MISSING_METHOD"] = 1] = "MISSING_METHOD";
+})(CstVisitorDefinitionError = exports.CstVisitorDefinitionError || (exports.CstVisitorDefinitionError = {}));
+function validateVisitor(visitorInstance, ruleNames) {
+    var missingErrors = validateMissingCstMethods(visitorInstance, ruleNames);
+    var redundantErrors = validateRedundantMethods(visitorInstance, ruleNames);
+    return missingErrors.concat(redundantErrors);
+}
+exports.validateVisitor = validateVisitor;
+function validateMissingCstMethods(visitorInstance, ruleNames) {
+    var errors = utils_1.map(ruleNames, function (currRuleName) {
+        if (!utils_1.isFunction(visitorInstance[currRuleName])) {
+            return {
+                msg: "Missing visitor method: <" + currRuleName + "> on " + lang_extensions_1.functionName(visitorInstance.constructor) + " CST Visitor.",
+                type: CstVisitorDefinitionError.MISSING_METHOD,
+                methodName: currRuleName
+            };
+        }
+    });
+    return utils_1.compact(errors);
+}
+exports.validateMissingCstMethods = validateMissingCstMethods;
+var VALID_PROP_NAMES = ["constructor", "visit", "validateVisitor"];
+function validateRedundantMethods(visitorInstance, ruleNames) {
+    var errors = [];
+    for (var prop in visitorInstance) {
+        if (checks_1.validTermsPattern.test(prop) &&
+            utils_1.isFunction(visitorInstance[prop]) &&
+            !utils_1.contains(VALID_PROP_NAMES, prop) &&
+            !utils_1.contains(ruleNames, prop)) {
+            errors.push({
+                msg: "Redundant visitor method: <" + prop + "> on " + lang_extensions_1.functionName(visitorInstance.constructor) + " CST Visitor\n" +
+                    "There is no Grammar Rule corresponding to this method's name.\n" +
+                    ("For utility methods on visitor classes use methods names that do not match /" + checks_1.validTermsPattern.source + "/."),
+                type: CstVisitorDefinitionError.REDUNDANT_METHOD,
+                methodName: prop
+            });
+        }
+    }
+    return errors;
+}
+exports.validateRedundantMethods = validateRedundantMethods;
+//# sourceMappingURL=cst_visitor.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/errors_public.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/errors_public.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var tokens_public_1 = __webpack_require__(/*! ../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var utils = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var gast_public_1 = __webpack_require__(/*! ./grammar/gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_1 = __webpack_require__(/*! ./grammar/gast/gast */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast.js");
+var checks_1 = __webpack_require__(/*! ./grammar/checks */ "./node_modules/chevrotain/lib/src/parse/grammar/checks.js");
+var version_1 = __webpack_require__(/*! ../version */ "./node_modules/chevrotain/lib/src/version.js");
+var parser_1 = __webpack_require__(/*! ./parser/parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+exports.defaultParserErrorProvider = {
+    buildMismatchTokenMessage: function (_a) {
+        var expected = _a.expected, actual = _a.actual, previous = _a.previous, ruleName = _a.ruleName;
+        var hasLabel = tokens_public_1.hasTokenLabel(expected);
+        var expectedMsg = hasLabel
+            ? "--> " + tokens_public_1.tokenLabel(expected) + " <--"
+            : "token of type --> " + tokens_public_1.tokenName(expected) + " <--";
+        var msg = "Expecting " + expectedMsg + " but found --> '" + actual.image + "' <--";
+        return msg;
+    },
+    buildNotAllInputParsedMessage: function (_a) {
+        var firstRedundant = _a.firstRedundant, ruleName = _a.ruleName;
+        return ("Redundant input, expecting EOF but found: " + firstRedundant.image);
+    },
+    buildNoViableAltMessage: function (_a) {
+        var expectedPathsPerAlt = _a.expectedPathsPerAlt, actual = _a.actual, previous = _a.previous, customUserDescription = _a.customUserDescription, ruleName = _a.ruleName;
+        var errPrefix = "Expecting: ";
+        // TODO: issue: No Viable Alternative Error may have incomplete details. #502
+        var actualText = utils_1.first(actual).image;
+        var errSuffix = "\nbut found: '" + actualText + "'";
+        if (customUserDescription) {
+            return errPrefix + customUserDescription + errSuffix;
+        }
+        else {
+            var allLookAheadPaths = utils_1.reduce(expectedPathsPerAlt, function (result, currAltPaths) { return result.concat(currAltPaths); }, []);
+            var nextValidTokenSequences = utils_1.map(allLookAheadPaths, function (currPath) {
+                return "[" + utils_1.map(currPath, function (currTokenType) {
+                    return tokens_public_1.tokenLabel(currTokenType);
+                }).join(", ") + "]";
+            });
+            var nextValidSequenceItems = utils_1.map(nextValidTokenSequences, function (itemMsg, idx) { return "  " + (idx + 1) + ". " + itemMsg; });
+            var calculatedDescription = "one of these possible Token sequences:\n" + nextValidSequenceItems.join("\n");
+            return errPrefix + calculatedDescription + errSuffix;
+        }
+    },
+    buildEarlyExitMessage: function (_a) {
+        var expectedIterationPaths = _a.expectedIterationPaths, actual = _a.actual, customUserDescription = _a.customUserDescription, ruleName = _a.ruleName;
+        var errPrefix = "Expecting: ";
+        // TODO: issue: No Viable Alternative Error may have incomplete details. #502
+        var actualText = utils_1.first(actual).image;
+        var errSuffix = "\nbut found: '" + actualText + "'";
+        if (customUserDescription) {
+            return errPrefix + customUserDescription + errSuffix;
+        }
+        else {
+            var nextValidTokenSequences = utils_1.map(expectedIterationPaths, function (currPath) {
+                return "[" + utils_1.map(currPath, function (currTokenType) {
+                    return tokens_public_1.tokenLabel(currTokenType);
+                }).join(",") + "]";
+            });
+            var calculatedDescription = "expecting at least one iteration which starts with one of these possible Token sequences::\n  " +
+                ("<" + nextValidTokenSequences.join(" ,") + ">");
+            return errPrefix + calculatedDescription + errSuffix;
+        }
+    }
+};
+Object.freeze(exports.defaultParserErrorProvider);
+exports.defaultGrammarResolverErrorProvider = {
+    buildRuleNotFoundError: function (topLevelRule, undefinedRule) {
+        var msg = "Invalid grammar, reference to a rule which is not defined: ->" +
+            undefinedRule.nonTerminalName +
+            "<-\n" +
+            "inside top level rule: ->" +
+            topLevelRule.name +
+            "<-";
+        return msg;
+    }
+};
+exports.defaultGrammarValidatorErrorProvider = {
+    buildDuplicateFoundError: function (topLevelRule, duplicateProds) {
+        function getExtraProductionArgument(prod) {
+            if (prod instanceof gast_public_1.Terminal) {
+                return tokens_public_1.tokenName(prod.terminalType);
+            }
+            else if (prod instanceof gast_public_1.NonTerminal) {
+                return prod.nonTerminalName;
+            }
+            else {
+                return "";
+            }
+        }
+        var topLevelName = topLevelRule.name;
+        var duplicateProd = utils_1.first(duplicateProds);
+        var index = duplicateProd.idx;
+        var dslName = gast_1.getProductionDslName(duplicateProd);
+        var extraArgument = getExtraProductionArgument(duplicateProd);
+        var msg = "->" + dslName + "<- with numerical suffix: ->" + index + "<-\n                  " + (extraArgument ? "and argument: ->" + extraArgument + "<-" : "") + "\n                  appears more than once (" + duplicateProds.length + " times) in the top level rule: ->" + topLevelName + "<-.\n                  " + (index === 0
+            ? "Also note that numerical suffix 0 means " + dslName + " without any suffix."
+            : "") + "\n                  To fix this make sure each usage of " + dslName + " " + (extraArgument ? "with the argument: ->" + extraArgument + "<-" : "") + "\n                  in the rule ->" + topLevelName + "<- has a different occurrence index (0-5), as that combination acts as a unique\n                  position key in the grammar, which is needed by the parsing engine.\n                  \n                  For further details see: https://sap.github.io/chevrotain/docs/FAQ.html#NUMERICAL_SUFFIXES \n                  ";
+        // white space trimming time! better to trim afterwards as it allows to use WELL formatted multi line template strings...
+        msg = msg.replace(/[ \t]+/g, " ");
+        msg = msg.replace(/\s\s+/g, "\n");
+        return msg;
+    },
+    buildInvalidNestedRuleNameError: function (topLevelRule, nestedProd) {
+        var msg = "Invalid nested rule name: ->" + nestedProd.name + "<- inside rule: ->" + topLevelRule.name + "<-\n" +
+            ("it must match the pattern: ->" + checks_1.validNestedRuleName.toString() + "<-.\n") +
+            "Note that this means a nested rule name must start with the '$'(dollar) sign.";
+        return msg;
+    },
+    buildDuplicateNestedRuleNameError: function (topLevelRule, nestedProd) {
+        var duplicateName = utils_1.first(nestedProd).name;
+        var errMsg = "Duplicate nested rule name: ->" + duplicateName + "<- inside rule: ->" + topLevelRule.name + "<-\n" +
+            "A nested name must be unique in the scope of a top level grammar rule.";
+        return errMsg;
+    },
+    buildNamespaceConflictError: function (rule) {
+        var errMsg = "Namespace conflict found in grammar.\n" +
+            ("The grammar has both a Terminal(Token) and a Non-Terminal(Rule) named: <" + rule.name + ">.\n") +
+            "To resolve this make sure each Terminal and Non-Terminal names are unique\n" +
+            "This is easy to accomplish by using the convention that Terminal names start with an uppercase letter\n" +
+            "and Non-Terminal names start with a lower case letter.";
+        return errMsg;
+    },
+    buildAlternationPrefixAmbiguityError: function (options) {
+        var pathMsg = utils_1.map(options.prefixPath, function (currTok) {
+            return tokens_public_1.tokenLabel(currTok);
+        }).join(", ");
+        var occurrence = options.alternation.idx === 0 ? "" : options.alternation.idx;
+        var errMsg = "Ambiguous alternatives: <" + options.ambiguityIndices.join(" ,") + "> due to common lookahead prefix\n" +
+            ("in <OR" + occurrence + "> inside <" + options.topLevelRule.name + "> Rule,\n") +
+            ("<" + pathMsg + "> may appears as a prefix path in all these alternatives.\n") +
+            "https://sap.github.io/chevrotain/docs/guide/resolving_grammar_errors.html#COMMON_PREFIX\n" +
+            "For Further details.";
+        return errMsg;
+    },
+    buildAlternationAmbiguityError: function (options) {
+        var pathMsg = utils_1.map(options.prefixPath, function (currtok) {
+            return tokens_public_1.tokenLabel(currtok);
+        }).join(", ");
+        var occurrence = options.alternation.idx === 0 ? "" : options.alternation.idx;
+        var currMessage = "Ambiguous alternatives: <" + options.ambiguityIndices.join(" ,") + "> in <OR" + occurrence + ">" +
+            (" inside <" + options.topLevelRule.name + "> Rule,\n") +
+            ("<" + pathMsg + "> may appears as a prefix path in all these alternatives.\n");
+        var docs_version = version_1.VERSION.replace(/\./g, "_");
+        // Should this information be on the error message or in some common errors docs?
+        currMessage =
+            currMessage +
+                "To Resolve this, try one of of the following: \n" +
+                ("1. Refactor your grammar to be LL(K) for the current value of k (by default k=" + parser_1.DEFAULT_PARSER_CONFIG.maxLookahead + "})\n") +
+                "2. Increase the value of K for your grammar by providing a larger 'maxLookahead' value in the parser's config\n" +
+                "3. This issue can be ignored (if you know what you are doing...), see" +
+                " https://sap.github.io/chevrotain/documentation/" +
+                docs_version +
+                "/interfaces/iparserconfig.html#ignoredissues for more" +
+                " details\n";
+        return currMessage;
+    },
+    buildEmptyRepetitionError: function (options) {
+        var dslName = gast_1.getProductionDslName(options.repetition);
+        if (options.repetition.idx !== 0) {
+            dslName += options.repetition.idx;
+        }
+        var errMsg = "The repetition <" + dslName + "> within Rule <" + options.topLevelRule.name + "> can never consume any tokens.\n" +
+            "This could lead to an infinite loop.";
+        return errMsg;
+    },
+    buildTokenNameError: function (options) {
+        var tokTypeName = tokens_public_1.tokenName(options.tokenType);
+        var errMsg = "Invalid Grammar Token name: ->" + tokTypeName + "<- it must match the pattern: ->" + options.expectedPattern.toString() + "<-";
+        return errMsg;
+    },
+    buildEmptyAlternationError: function (options) {
+        var errMsg = "Ambiguous empty alternative: <" + (options.emptyChoiceIdx + 1) + ">" +
+            (" in <OR" + options.alternation.idx + "> inside <" + options.topLevelRule.name + "> Rule.\n") +
+            "Only the last alternative may be an empty alternative.";
+        return errMsg;
+    },
+    buildTooManyAlternativesError: function (options) {
+        var errMsg = "An Alternation cannot have more than 256 alternatives:\n" +
+            ("<OR" + options.alternation.idx + "> inside <" + options.topLevelRule.name + "> Rule.\n has " + (options.alternation.definition.length +
+                1) + " alternatives.");
+        return errMsg;
+    },
+    buildLeftRecursionError: function (options) {
+        var ruleName = options.topLevelRule.name;
+        var pathNames = utils.map(options.leftRecursionPath, function (currRule) { return currRule.name; });
+        var leftRecursivePath = ruleName + " --> " + pathNames
+            .concat([ruleName])
+            .join(" --> ");
+        var errMsg = "Left Recursion found in grammar.\n" +
+            ("rule: <" + ruleName + "> can be invoked from itself (directly or indirectly)\n") +
+            ("without consuming any Tokens. The grammar path that causes this is: \n " + leftRecursivePath + "\n") +
+            " To fix this refactor your grammar to remove the left recursion.\n" +
+            "see: https://en.wikipedia.org/wiki/LL_parser#Left_Factoring.";
+        return errMsg;
+    },
+    buildInvalidRuleNameError: function (options) {
+        var ruleName = options.topLevelRule.name;
+        var expectedPatternString = options.expectedPattern.toString();
+        var errMsg = "Invalid grammar rule name: ->" + ruleName + "<- it must match the pattern: ->" + expectedPatternString + "<-";
+        return errMsg;
+    },
+    buildDuplicateRuleNameError: function (options) {
+        var ruleName;
+        if (options.topLevelRule instanceof gast_public_1.Rule) {
+            ruleName = options.topLevelRule.name;
+        }
+        else {
+            ruleName = options.topLevelRule;
+        }
+        var errMsg = "Duplicate definition, rule: ->" + ruleName + "<- is already defined in the grammar: ->" + options.grammarName + "<-";
+        return errMsg;
+    }
+};
+//# sourceMappingURL=errors_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/exceptions_public.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/exceptions_public.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var MISMATCHED_TOKEN_EXCEPTION = "MismatchedTokenException";
+var NO_VIABLE_ALT_EXCEPTION = "NoViableAltException";
+var EARLY_EXIT_EXCEPTION = "EarlyExitException";
+var NOT_ALL_INPUT_PARSED_EXCEPTION = "NotAllInputParsedException";
+var RECOGNITION_EXCEPTION_NAMES = [
+    MISMATCHED_TOKEN_EXCEPTION,
+    NO_VIABLE_ALT_EXCEPTION,
+    EARLY_EXIT_EXCEPTION,
+    NOT_ALL_INPUT_PARSED_EXCEPTION
+];
+Object.freeze(RECOGNITION_EXCEPTION_NAMES);
+// hacks to bypass no support for custom Errors in javascript/typescript
+function isRecognitionException(error) {
+    // can't do instanceof on hacked custom js exceptions
+    return utils_1.contains(RECOGNITION_EXCEPTION_NAMES, error.name);
+}
+exports.isRecognitionException = isRecognitionException;
+function MismatchedTokenException(message, token, previousToken) {
+    this.name = MISMATCHED_TOKEN_EXCEPTION;
+    this.message = message;
+    this.token = token;
+    this.previousToken = previousToken;
+    this.resyncedTokens = [];
+}
+exports.MismatchedTokenException = MismatchedTokenException;
+// must use the "Error.prototype" instead of "new Error"
+// because the stack trace points to where "new Error" was invoked"
+MismatchedTokenException.prototype = Error.prototype;
+function NoViableAltException(message, token, previousToken) {
+    this.name = NO_VIABLE_ALT_EXCEPTION;
+    this.message = message;
+    this.token = token;
+    this.previousToken = previousToken;
+    this.resyncedTokens = [];
+}
+exports.NoViableAltException = NoViableAltException;
+NoViableAltException.prototype = Error.prototype;
+function NotAllInputParsedException(message, token) {
+    this.name = NOT_ALL_INPUT_PARSED_EXCEPTION;
+    this.message = message;
+    this.token = token;
+    this.resyncedTokens = [];
+}
+exports.NotAllInputParsedException = NotAllInputParsedException;
+NotAllInputParsedException.prototype = Error.prototype;
+function EarlyExitException(message, token, previousToken) {
+    this.name = EARLY_EXIT_EXCEPTION;
+    this.message = message;
+    this.token = token;
+    this.previousToken = previousToken;
+    this.resyncedTokens = [];
+}
+exports.EarlyExitException = EarlyExitException;
+EarlyExitException.prototype = Error.prototype;
+//# sourceMappingURL=exceptions_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/gast_builder.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/gast_builder.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var range_1 = __webpack_require__(/*! ../text/range */ "./node_modules/chevrotain/lib/src/text/range.js");
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var gast_public_1 = __webpack_require__(/*! ./grammar/gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var ProdType;
+(function (ProdType) {
+    ProdType[ProdType["OPTION"] = 0] = "OPTION";
+    ProdType[ProdType["OR"] = 1] = "OR";
+    ProdType[ProdType["MANY"] = 2] = "MANY";
+    ProdType[ProdType["MANY_SEP"] = 3] = "MANY_SEP";
+    ProdType[ProdType["AT_LEAST_ONE"] = 4] = "AT_LEAST_ONE";
+    ProdType[ProdType["AT_LEAST_ONE_SEP"] = 5] = "AT_LEAST_ONE_SEP";
+    ProdType[ProdType["REF"] = 6] = "REF";
+    ProdType[ProdType["TERMINAL"] = 7] = "TERMINAL";
+    ProdType[ProdType["FLAT"] = 8] = "FLAT";
+})(ProdType = exports.ProdType || (exports.ProdType = {}));
+var namePropRegExp = /(?:\s*{\s*NAME\s*:\s*["'`]([\w$]*)["'`])?/;
+var namePropRegExpNoCurlyFirstOfTwo = new RegExp(namePropRegExp.source
+    // remove opening curly brackets
+    .replace("{", "")
+    // add the comma between the NAME prop and the following prop
+    .replace(")?", "\\s*,)?"));
+var terminalRegEx = /\.\s*CONSUME(\d+)?\s*\(\s*(?:[a-zA-Z_$]\w*\s*\.\s*)*([a-zA-Z_$]\w*)/;
+var terminalRegGlobal = new RegExp(terminalRegEx.source, "g");
+var refRegEx = /\.\s*SUBRULE(\d+)?\s*\(\s*(?:[a-zA-Z_$]\w*\s*\.\s*)*([a-zA-Z_$]\w*)/;
+var refRegExGlobal = new RegExp(refRegEx.source, "g");
+var optionPrefixRegEx = /\.\s*OPTION(\d+)?\s*\(/;
+var optionRegEx = new RegExp(optionPrefixRegEx.source + namePropRegExp.source);
+var optionRegExGlobal = new RegExp(optionPrefixRegEx.source, "g");
+var manyPrefixRegEx = /\.\s*MANY(\d+)?\s*\(/;
+var manyRegEx = new RegExp(manyPrefixRegEx.source + namePropRegExp.source);
+var manyRegExGlobal = new RegExp(manyPrefixRegEx.source, "g");
+var sepPropRegEx = /\s*SEP\s*:\s*(?:[a-zA-Z_$]\w*\s*\.\s*)*([a-zA-Z_$]\w*)/;
+var manySepPrefixRegEx = /\.\s*MANY_SEP(\d+)?\s*\(\s*{/;
+var manyWithSeparatorRegEx = new RegExp(manySepPrefixRegEx.source +
+    namePropRegExpNoCurlyFirstOfTwo.source +
+    sepPropRegEx.source);
+var manyWithSeparatorRegExGlobal = new RegExp(manyWithSeparatorRegEx.source, "g");
+var atLeastOneSepPrefixRegEx = /\.\s*AT_LEAST_ONE_SEP(\d+)?\s*\(\s*{/;
+var atLeastOneWithSeparatorRegEx = new RegExp(atLeastOneSepPrefixRegEx.source +
+    namePropRegExpNoCurlyFirstOfTwo.source +
+    sepPropRegEx.source);
+var atLeastOneWithSeparatorRegExGlobal = new RegExp(atLeastOneWithSeparatorRegEx.source, "g");
+var atLeastOnePrefixRegEx = /\.\s*AT_LEAST_ONE(\d+)?\s*\(/;
+var atLeastOneRegEx = new RegExp(atLeastOnePrefixRegEx.source + namePropRegExp.source);
+var atLeastOneRegExGlobal = new RegExp(atLeastOnePrefixRegEx.source, "g");
+var orPrefixRegEx = /\.\s*OR(\d+)?\s*\(/;
+var orRegEx = new RegExp(orPrefixRegEx.source + namePropRegExp.source);
+var orRegExGlobal = new RegExp(orPrefixRegEx.source, "g");
+var orPartSuffixRegEx = /\s*(ALT)\s*:/;
+var orPartRegEx = new RegExp(namePropRegExpNoCurlyFirstOfTwo.source + orPartSuffixRegEx.source);
+var orPartRegExGlobal = new RegExp(orPartRegEx.source, "g");
+exports.terminalNameToConstructor = {};
+function buildTopProduction(impelText, name, terminals) {
+    // pseudo state. so little state does not yet mandate the complexity of wrapping in a class...
+    // TODO: this is confusing, might be time to create a class..
+    exports.terminalNameToConstructor = terminals;
+    // the top most range must strictly contain all the other ranges
+    // which is why we prefix the text with " " (curr Range impel is only for positive ranges)
+    var spacedImpelText = " " + impelText;
+    // TODO: why do we add whitespace twice?
+    var txtWithoutComments = removeComments(" " + spacedImpelText);
+    var textWithoutCommentsAndStrings = removeStringLiterals(txtWithoutComments);
+    var prodRanges = createRanges(textWithoutCommentsAndStrings);
+    var topRange = new range_1.Range(0, impelText.length + 2);
+    var topRule = buildTopLevel(name, topRange, prodRanges, impelText);
+    return topRule;
+}
+exports.buildTopProduction = buildTopProduction;
+function buildTopLevel(name, topRange, allRanges, orgText) {
+    var topLevelProd = new gast_public_1.Rule({
+        name: name,
+        definition: [],
+        orgText: orgText
+    });
+    return buildAbstractProd(topLevelProd, topRange, allRanges, name);
+}
+function buildProdGast(prodRange, allRanges, ruleName) {
+    switch (prodRange.type) {
+        case ProdType.AT_LEAST_ONE:
+            return buildAtLeastOneProd(prodRange, allRanges, ruleName);
+        case ProdType.AT_LEAST_ONE_SEP:
+            return buildAtLeastOneSepProd(prodRange, allRanges, ruleName);
+        case ProdType.MANY_SEP:
+            return buildManySepProd(prodRange, allRanges, ruleName);
+        case ProdType.MANY:
+            return buildManyProd(prodRange, allRanges, ruleName);
+        case ProdType.OPTION:
+            return buildOptionProd(prodRange, allRanges, ruleName);
+        case ProdType.OR:
+            return buildOrProd(prodRange, allRanges, ruleName);
+        case ProdType.FLAT:
+            return buildFlatProd(prodRange, allRanges, ruleName);
+        case ProdType.REF:
+            return buildRefProd(prodRange);
+        case ProdType.TERMINAL:
+            return buildTerminalProd(prodRange, ruleName);
+        /* istanbul ignore next */
+        default:
+            throw Error("non exhaustive match");
+    }
+}
+exports.buildProdGast = buildProdGast;
+function buildRefProd(prodRange) {
+    var reResult = refRegEx.exec(prodRange.text);
+    var isImplicitOccurrenceIdx = reResult[1] === undefined;
+    var refOccurrence = isImplicitOccurrenceIdx ? 0 : parseInt(reResult[1], 10);
+    var refProdName = reResult[2];
+    var newRef = new gast_public_1.NonTerminal({
+        nonTerminalName: refProdName,
+        idx: refOccurrence
+    });
+    return newRef;
+}
+function buildTerminalProd(prodRange, ruleName) {
+    var reResult = terminalRegEx.exec(prodRange.text);
+    var isImplicitOccurrenceIdx = reResult[1] === undefined;
+    var terminalOccurrence = isImplicitOccurrenceIdx
+        ? 0
+        : parseInt(reResult[1], 10);
+    var terminalName = reResult[2];
+    var terminalType = exports.terminalNameToConstructor[terminalName];
+    if (!terminalType) {
+        throw Error("Terminal Token name: <" + terminalName + "> not found in rule: <" + ruleName + ">  \n" +
+            "\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_grammar_errors.html#TERMINAL_NAME_NOT_FOUND\n" +
+            "\tFor Further details.");
+    }
+    var newTerminal = new gast_public_1.Terminal({
+        terminalType: terminalType,
+        idx: terminalOccurrence
+    });
+    return newTerminal;
+}
+function buildProdWithOccurrence(regEx, prodInstance, prodRange, allRanges, ruleName) {
+    var reResult = regEx.exec(prodRange.text);
+    var isImplicitOccurrenceIdx = reResult[1] === undefined;
+    prodInstance.idx = isImplicitOccurrenceIdx ? 0 : parseInt(reResult[1], 10);
+    var nestedName = reResult[2];
+    if (!utils_1.isUndefined(nestedName)) {
+        ;
+        prodInstance.name = nestedName;
+    }
+    return buildAbstractProd(prodInstance, prodRange.range, allRanges, ruleName);
+}
+function buildAtLeastOneProd(prodRange, allRanges, ruleName) {
+    return buildProdWithOccurrence(atLeastOneRegEx, new gast_public_1.RepetitionMandatory({ definition: [] }), prodRange, allRanges, ruleName);
+}
+function buildAtLeastOneSepProd(prodRange, allRanges, ruleName) {
+    return buildRepetitionWithSep(prodRange, allRanges, gast_public_1.RepetitionMandatoryWithSeparator, atLeastOneWithSeparatorRegEx, ruleName);
+}
+function buildManyProd(prodRange, allRanges, ruleName) {
+    return buildProdWithOccurrence(manyRegEx, new gast_public_1.Repetition({ definition: [] }), prodRange, allRanges, ruleName);
+}
+function buildManySepProd(prodRange, allRanges, ruleName) {
+    return buildRepetitionWithSep(prodRange, allRanges, gast_public_1.RepetitionWithSeparator, manyWithSeparatorRegEx, ruleName);
+}
+function buildRepetitionWithSep(prodRange, allRanges, repConstructor, regExp, ruleName) {
+    var reResult = regExp.exec(prodRange.text);
+    var isImplicitOccurrenceIdx = reResult[1] === undefined;
+    var occurrenceIdx = isImplicitOccurrenceIdx ? 0 : parseInt(reResult[1], 10);
+    var sepName = reResult[3];
+    var separatorType = exports.terminalNameToConstructor[sepName];
+    if (!separatorType) {
+        throw Error("Separator Terminal Token name: " + sepName + " not found");
+    }
+    var repetitionInstance = new repConstructor({
+        definition: [],
+        separator: separatorType,
+        idx: occurrenceIdx
+    });
+    var nestedName = reResult[2];
+    if (!utils_1.isUndefined(nestedName)) {
+        ;
+        repetitionInstance.name = nestedName;
+    }
+    return (buildAbstractProd(repetitionInstance, prodRange.range, allRanges, ruleName));
+}
+function buildOptionProd(prodRange, allRanges, ruleName) {
+    return buildProdWithOccurrence(optionRegEx, new gast_public_1.Option({ definition: [] }), prodRange, allRanges, ruleName);
+}
+function buildOrProd(prodRange, allRanges, ruleName) {
+    return buildProdWithOccurrence(orRegEx, new gast_public_1.Alternation({ definition: [] }), prodRange, allRanges, ruleName);
+}
+function buildFlatProd(prodRange, allRanges, ruleName) {
+    var prodInstance = new gast_public_1.Flat({ definition: [] });
+    var reResult = orPartRegEx.exec(prodRange.text);
+    var nestedName = reResult[1];
+    if (!utils_1.isUndefined(nestedName)) {
+        ;
+        prodInstance.name = nestedName;
+    }
+    return buildAbstractProd(prodInstance, prodRange.range, allRanges, ruleName);
+}
+function buildAbstractProd(prod, topLevelRange, allRanges, ruleName) {
+    var secondLevelProds = getDirectlyContainedRanges(topLevelRange, allRanges);
+    var secondLevelInOrder = utils_1.sortBy(secondLevelProds, function (prodRng) {
+        return prodRng.range.start;
+    });
+    var definition = [];
+    utils_1.forEach(secondLevelInOrder, function (prodRng) {
+        definition.push(buildProdGast(prodRng, allRanges, ruleName));
+    });
+    prod.definition = definition;
+    return prod;
+}
+function getDirectlyContainedRanges(y, prodRanges) {
+    return utils_1.filter(prodRanges, function (x) {
+        var isXDescendantOfY = y.strictlyContainsRange(x.range);
+        var xDoesNotHaveAnyAncestorWhichIsDecendantOfY = utils_1.every(prodRanges, function (maybeAnotherParent) {
+            var isParentOfX = maybeAnotherParent.range.strictlyContainsRange(x.range);
+            var isChildOfY = maybeAnotherParent.range.isStrictlyContainedInRange(y);
+            return !(isParentOfX && isChildOfY);
+        });
+        return isXDescendantOfY && xDoesNotHaveAnyAncestorWhichIsDecendantOfY;
+    });
+}
+exports.getDirectlyContainedRanges = getDirectlyContainedRanges;
+var singleLineCommentRegEx = /\/\/.*/g;
+var multiLineCommentRegEx = /\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\//g;
+var doubleQuoteStringLiteralRegEx = /(NAME\s*:\s*)?"([^\\"]|\\([bfnrtv"\\/]|u[0-9a-fA-F]{4}))*"/g;
+var singleQuoteStringLiteralRegEx = /(NAME\s*:\s*)?'([^\\']|\\([bfnrtv'\\/]|u[0-9a-fA-F]{4}))*'/g;
+function removeComments(text) {
+    var noSingleLine = text.replace(singleLineCommentRegEx, "");
+    var noComments = noSingleLine.replace(multiLineCommentRegEx, "");
+    return noComments;
+}
+exports.removeComments = removeComments;
+function replaceWithEmptyStringExceptNestedRules(match, nestedRuleGroup) {
+    // do not replace with empty string if a nest rule (NAME:"bamba") was detected
+    if (nestedRuleGroup !== undefined) {
+        return match;
+    }
+    return "";
+}
+function removeStringLiterals(text) {
+    var noDoubleQuotes = text.replace(doubleQuoteStringLiteralRegEx, replaceWithEmptyStringExceptNestedRules);
+    var noSingleQuotes = noDoubleQuotes.replace(singleQuoteStringLiteralRegEx, replaceWithEmptyStringExceptNestedRules);
+    return noSingleQuotes;
+}
+exports.removeStringLiterals = removeStringLiterals;
+function createRanges(text) {
+    var terminalRanges = createTerminalRanges(text);
+    var refsRanges = createRefsRanges(text);
+    var atLeastOneRanges = createAtLeastOneRanges(text);
+    var atLeastOneSepRanges = createAtLeastOneSepRanges(text);
+    var manyRanges = createManyRanges(text);
+    var manySepRanges = createManySepRanges(text);
+    var optionRanges = createOptionRanges(text);
+    var orRanges = createOrRanges(text);
+    return [].concat(terminalRanges, refsRanges, atLeastOneRanges, atLeastOneSepRanges, manyRanges, manySepRanges, optionRanges, orRanges);
+}
+exports.createRanges = createRanges;
+function createTerminalRanges(text) {
+    return createRefOrTerminalProdRangeInternal(text, ProdType.TERMINAL, terminalRegGlobal);
+}
+exports.createTerminalRanges = createTerminalRanges;
+function createRefsRanges(text) {
+    return createRefOrTerminalProdRangeInternal(text, ProdType.REF, refRegExGlobal);
+}
+exports.createRefsRanges = createRefsRanges;
+function createAtLeastOneRanges(text) {
+    return createOperatorProdRangeParenthesis(text, ProdType.AT_LEAST_ONE, atLeastOneRegExGlobal);
+}
+exports.createAtLeastOneRanges = createAtLeastOneRanges;
+function createAtLeastOneSepRanges(text) {
+    return createOperatorProdRangeParenthesis(text, ProdType.AT_LEAST_ONE_SEP, atLeastOneWithSeparatorRegExGlobal);
+}
+exports.createAtLeastOneSepRanges = createAtLeastOneSepRanges;
+function createManyRanges(text) {
+    return createOperatorProdRangeParenthesis(text, ProdType.MANY, manyRegExGlobal);
+}
+exports.createManyRanges = createManyRanges;
+function createManySepRanges(text) {
+    return createOperatorProdRangeParenthesis(text, ProdType.MANY_SEP, manyWithSeparatorRegExGlobal);
+}
+exports.createManySepRanges = createManySepRanges;
+function createOptionRanges(text) {
+    return createOperatorProdRangeParenthesis(text, ProdType.OPTION, optionRegExGlobal);
+}
+exports.createOptionRanges = createOptionRanges;
+function createOrRanges(text) {
+    var orRanges = createOperatorProdRangeParenthesis(text, ProdType.OR, orRegExGlobal);
+    // have to split up the OR cases into separate FLAT productions
+    // (A |BB | CDE) ==> or.def[0] --> FLAT(A) , or.def[1] --> FLAT(BB) , or.def[2] --> FLAT(CCDE)
+    var orSubPartsRanges = createOrPartRanges(orRanges);
+    return orRanges.concat(orSubPartsRanges);
+}
+exports.createOrRanges = createOrRanges;
+var findClosingCurly = (utils_1.partial(findClosingOffset, "{", "}"));
+var findClosingParen = (utils_1.partial(findClosingOffset, "(", ")"));
+function createOrPartRanges(orRanges) {
+    var orPartRanges = [];
+    utils_1.forEach(orRanges, function (orRange) {
+        var currOrParts = createOperatorProdRangeInternal(orRange.text, ProdType.FLAT, orPartRegExGlobal, findClosingCurly);
+        var currOrRangeStart = orRange.range.start;
+        // fix offsets as we are working on a subset of the text
+        utils_1.forEach(currOrParts, function (orPart) {
+            orPart.range.start += currOrRangeStart;
+            orPart.range.end += currOrRangeStart;
+        });
+        orPartRanges = orPartRanges.concat(currOrParts);
+    });
+    var uniqueOrPartRanges = utils_1.uniq(orPartRanges, function (prodRange) {
+        // using "~" as a separator for the identify function as its not a valid char in javascript
+        return (prodRange.type +
+            "~" +
+            prodRange.range.start +
+            "~" +
+            prodRange.range.end +
+            "~" +
+            prodRange.text);
+    });
+    return uniqueOrPartRanges;
+}
+exports.createOrPartRanges = createOrPartRanges;
+function createRefOrTerminalProdRangeInternal(text, prodType, pattern) {
+    var prodRanges = [];
+    var matched;
+    while ((matched = pattern.exec(text))) {
+        var start = matched.index;
+        var stop_1 = pattern.lastIndex;
+        var currRange = new range_1.Range(start, stop_1);
+        var currText = matched[0];
+        prodRanges.push({
+            range: currRange,
+            text: currText,
+            type: prodType
+        });
+    }
+    return prodRanges;
+}
+function createOperatorProdRangeParenthesis(text, prodType, pattern) {
+    return createOperatorProdRangeInternal(text, prodType, pattern, findClosingParen);
+}
+function createOperatorProdRangeInternal(text, prodType, pattern, findTerminatorOffSet) {
+    var operatorRanges = [];
+    var matched;
+    while ((matched = pattern.exec(text))) {
+        var start = matched.index;
+        // note that (start + matched[0].length) is the first character AFTER the match
+        var stop_2 = findTerminatorOffSet(start + matched[0].length, text);
+        var currRange = new range_1.Range(start, stop_2);
+        var currText = text.substr(start, stop_2 - start + 1);
+        operatorRanges.push({
+            range: currRange,
+            text: currText,
+            type: prodType
+        });
+    }
+    return operatorRanges;
+}
+function findClosingOffset(opening, closing, start, text) {
+    var parenthesisStack = [1];
+    var i = -1;
+    while (!utils_1.isEmpty(parenthesisStack) && i + start < text.length) {
+        i++;
+        var nextChar = text.charAt(start + i);
+        if (nextChar === opening) {
+            parenthesisStack.push(1);
+        }
+        else if (nextChar === closing) {
+            parenthesisStack.pop();
+        }
+    }
+    // valid termination of the search loop
+    if (utils_1.isEmpty(parenthesisStack)) {
+        return i + start;
+    }
+    else {
+        throw new Error("INVALID INPUT TEXT, UNTERMINATED PARENTHESIS");
+    }
+}
+exports.findClosingOffset = findClosingOffset;
+function deserializeGrammar(grammar, terminals) {
+    return utils_1.map(grammar, function (production) {
+        return deserializeProduction(production, terminals);
+    });
+}
+exports.deserializeGrammar = deserializeGrammar;
+function deserializeProduction(node, terminals) {
+    switch (node.type) {
+        case "NonTerminal":
+            return new gast_public_1.NonTerminal({
+                nonTerminalName: node.name,
+                idx: node.idx
+            });
+        case "Flat":
+            return new gast_public_1.Flat({
+                name: node.name,
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "Option":
+            return new gast_public_1.Option({
+                name: node.name,
+                idx: node.idx,
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "RepetitionMandatory":
+            return new gast_public_1.RepetitionMandatory({
+                name: node.name,
+                idx: node.idx,
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "RepetitionMandatoryWithSeparator":
+            return new gast_public_1.RepetitionMandatoryWithSeparator({
+                name: node.name,
+                idx: node.idx,
+                separator: terminals[node.separator.name],
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "RepetitionWithSeparator":
+            return new gast_public_1.RepetitionWithSeparator({
+                name: node.name,
+                idx: node.idx,
+                separator: terminals[node.separator.name],
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "Repetition":
+            return new gast_public_1.Repetition({
+                name: node.name,
+                idx: node.idx,
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "Alternation":
+            return new gast_public_1.Alternation({
+                name: node.name,
+                idx: node.idx,
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        case "Terminal":
+            return new gast_public_1.Terminal({
+                terminalType: terminals[node.name],
+                idx: node.idx
+            });
+        case "Rule":
+            return new gast_public_1.Rule({
+                name: node.name,
+                orgText: node.orgText,
+                definition: deserializeGrammar(node.definition, terminals)
+            });
+        /* istanbul ignore next */
+        default:
+            var _never = node;
+    }
+}
+exports.deserializeProduction = deserializeProduction;
+//# sourceMappingURL=gast_builder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/checks.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/checks.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var parser_1 = __webpack_require__(/*! ../parser/parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+var gast_1 = __webpack_require__(/*! ./gast/gast */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast.js");
+var tokens_public_1 = __webpack_require__(/*! ../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var lookahead_1 = __webpack_require__(/*! ./lookahead */ "./node_modules/chevrotain/lib/src/parse/grammar/lookahead.js");
+var cst_1 = __webpack_require__(/*! ../cst/cst */ "./node_modules/chevrotain/lib/src/parse/cst/cst.js");
+var interpreter_1 = __webpack_require__(/*! ./interpreter */ "./node_modules/chevrotain/lib/src/parse/grammar/interpreter.js");
+var gast_public_1 = __webpack_require__(/*! ./gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_visitor_public_1 = __webpack_require__(/*! ./gast/gast_visitor_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js");
+function validateGrammar(topLevels, maxLookahead, tokenTypes, ignoredIssues, errMsgProvider, grammarName) {
+    var duplicateErrors = utils.map(topLevels, function (currTopLevel) {
+        return validateDuplicateProductions(currTopLevel, errMsgProvider);
+    });
+    var leftRecursionErrors = utils.map(topLevels, function (currTopRule) {
+        return validateNoLeftRecursion(currTopRule, currTopRule, errMsgProvider);
+    });
+    var emptyAltErrors = [];
+    var ambiguousAltsErrors = [];
+    var emptyRepetitionErrors = [];
+    // left recursion could cause infinite loops in the following validations.
+    // It is safest to first have the user fix the left recursion errors first and only then examine Further issues.
+    if (utils_1.every(leftRecursionErrors, utils_1.isEmpty)) {
+        emptyAltErrors = utils_1.map(topLevels, function (currTopRule) {
+            return validateEmptyOrAlternative(currTopRule, errMsgProvider);
+        });
+        ambiguousAltsErrors = utils_1.map(topLevels, function (currTopRule) {
+            return validateAmbiguousAlternationAlternatives(currTopRule, maxLookahead, ignoredIssues, errMsgProvider);
+        });
+        emptyRepetitionErrors = validateSomeNonEmptyLookaheadPath(topLevels, maxLookahead, errMsgProvider);
+    }
+    var termsNamespaceConflictErrors = checkTerminalAndNoneTerminalsNameSpace(topLevels, tokenTypes, errMsgProvider);
+    var tokenNameErrors = utils.map(tokenTypes, function (currTokType) {
+        return validateTokenName(currTokType, errMsgProvider);
+    });
+    var nestedRulesNameErrors = validateNestedRulesNames(topLevels, errMsgProvider);
+    var nestedRulesDuplicateErrors = validateDuplicateNestedRules(topLevels, errMsgProvider);
+    var tooManyAltsErrors = utils_1.map(topLevels, function (curRule) {
+        return validateTooManyAlts(curRule, errMsgProvider);
+    });
+    var ruleNameErrors = utils_1.map(topLevels, function (curRule) {
+        return validateRuleName(curRule, errMsgProvider);
+    });
+    var duplicateRulesError = utils_1.map(topLevels, function (curRule) {
+        return validateRuleDoesNotAlreadyExist(curRule, topLevels, grammarName, errMsgProvider);
+    });
+    return (utils.flatten(duplicateErrors.concat(tokenNameErrors, nestedRulesNameErrors, nestedRulesDuplicateErrors, emptyRepetitionErrors, leftRecursionErrors, emptyAltErrors, ambiguousAltsErrors, termsNamespaceConflictErrors, tooManyAltsErrors, ruleNameErrors, duplicateRulesError)));
+}
+exports.validateGrammar = validateGrammar;
+function validateNestedRulesNames(topLevels, errMsgProvider) {
+    var result = [];
+    utils_1.forEach(topLevels, function (curTopLevel) {
+        var namedCollectorVisitor = new cst_1.NamedDSLMethodsCollectorVisitor("");
+        curTopLevel.accept(namedCollectorVisitor);
+        var nestedProds = utils_1.map(namedCollectorVisitor.result, function (currItem) { return currItem.orgProd; });
+        result.push(utils_1.map(nestedProds, function (currNestedProd) {
+            return validateNestedRuleName(curTopLevel, currNestedProd, errMsgProvider);
+        }));
+    });
+    return utils_1.flatten(result);
+}
+function validateDuplicateProductions(topLevelRule, errMsgProvider) {
+    var collectorVisitor = new OccurrenceValidationCollector();
+    topLevelRule.accept(collectorVisitor);
+    var allRuleProductions = collectorVisitor.allProductions;
+    var productionGroups = utils.groupBy(allRuleProductions, identifyProductionForDuplicates);
+    var duplicates = utils.pick(productionGroups, function (currGroup) {
+        return currGroup.length > 1;
+    });
+    var errors = utils.map(utils.values(duplicates), function (currDuplicates) {
+        var firstProd = utils.first(currDuplicates);
+        var msg = errMsgProvider.buildDuplicateFoundError(topLevelRule, currDuplicates);
+        var dslName = gast_1.getProductionDslName(firstProd);
+        var defError = {
+            message: msg,
+            type: parser_1.ParserDefinitionErrorType.DUPLICATE_PRODUCTIONS,
+            ruleName: topLevelRule.name,
+            dslName: dslName,
+            occurrence: firstProd.idx
+        };
+        var param = getExtraProductionArgument(firstProd);
+        if (param) {
+            defError.parameter = param;
+        }
+        return defError;
+    });
+    return errors;
+}
+function identifyProductionForDuplicates(prod) {
+    return gast_1.getProductionDslName(prod) + "_#_" + prod.idx + "_#_" + getExtraProductionArgument(prod);
+}
+exports.identifyProductionForDuplicates = identifyProductionForDuplicates;
+function getExtraProductionArgument(prod) {
+    if (prod instanceof gast_public_1.Terminal) {
+        return tokens_public_1.tokenName(prod.terminalType);
+    }
+    else if (prod instanceof gast_public_1.NonTerminal) {
+        return prod.nonTerminalName;
+    }
+    else {
+        return "";
+    }
+}
+var OccurrenceValidationCollector = /** @class */ (function (_super) {
+    __extends(OccurrenceValidationCollector, _super);
+    function OccurrenceValidationCollector() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.allProductions = [];
+        return _this;
+    }
+    OccurrenceValidationCollector.prototype.visitNonTerminal = function (subrule) {
+        this.allProductions.push(subrule);
+    };
+    OccurrenceValidationCollector.prototype.visitOption = function (option) {
+        this.allProductions.push(option);
+    };
+    OccurrenceValidationCollector.prototype.visitRepetitionWithSeparator = function (manySep) {
+        this.allProductions.push(manySep);
+    };
+    OccurrenceValidationCollector.prototype.visitRepetitionMandatory = function (atLeastOne) {
+        this.allProductions.push(atLeastOne);
+    };
+    OccurrenceValidationCollector.prototype.visitRepetitionMandatoryWithSeparator = function (atLeastOneSep) {
+        this.allProductions.push(atLeastOneSep);
+    };
+    OccurrenceValidationCollector.prototype.visitRepetition = function (many) {
+        this.allProductions.push(many);
+    };
+    OccurrenceValidationCollector.prototype.visitAlternation = function (or) {
+        this.allProductions.push(or);
+    };
+    OccurrenceValidationCollector.prototype.visitTerminal = function (terminal) {
+        this.allProductions.push(terminal);
+    };
+    return OccurrenceValidationCollector;
+}(gast_visitor_public_1.GAstVisitor));
+exports.OccurrenceValidationCollector = OccurrenceValidationCollector;
+exports.validTermsPattern = /^[a-zA-Z_]\w*$/;
+exports.validNestedRuleName = new RegExp(exports.validTermsPattern.source.replace("^", "^\\$"));
+function validateRuleName(rule, errMsgProvider) {
+    var errors = [];
+    var ruleName = rule.name;
+    if (!ruleName.match(exports.validTermsPattern)) {
+        errors.push({
+            message: errMsgProvider.buildInvalidRuleNameError({
+                topLevelRule: rule,
+                expectedPattern: exports.validTermsPattern
+            }),
+            type: parser_1.ParserDefinitionErrorType.INVALID_RULE_NAME,
+            ruleName: ruleName
+        });
+    }
+    return errors;
+}
+exports.validateRuleName = validateRuleName;
+function validateNestedRuleName(topLevel, nestedProd, errMsgProvider) {
+    var errors = [];
+    var errMsg;
+    if (!nestedProd.name.match(exports.validNestedRuleName)) {
+        errMsg = errMsgProvider.buildInvalidNestedRuleNameError(topLevel, nestedProd);
+        errors.push({
+            message: errMsg,
+            type: parser_1.ParserDefinitionErrorType.INVALID_NESTED_RULE_NAME,
+            ruleName: topLevel.name
+        });
+    }
+    return errors;
+}
+exports.validateNestedRuleName = validateNestedRuleName;
+function validateTokenName(tokenType, errMsgProvider) {
+    var errors = [];
+    var tokTypeName = tokens_public_1.tokenName(tokenType);
+    if (!tokTypeName.match(exports.validTermsPattern)) {
+        errors.push({
+            message: errMsgProvider.buildTokenNameError({
+                tokenType: tokenType,
+                expectedPattern: exports.validTermsPattern
+            }),
+            type: parser_1.ParserDefinitionErrorType.INVALID_TOKEN_NAME
+        });
+    }
+    return errors;
+}
+exports.validateTokenName = validateTokenName;
+function validateRuleDoesNotAlreadyExist(rule, allRules, className, errMsgProvider) {
+    var errors = [];
+    var occurrences = utils_1.reduce(allRules, function (result, curRule) {
+        if (curRule.name === rule.name) {
+            return result + 1;
+        }
+        return result;
+    }, 0);
+    if (occurrences > 1) {
+        var errMsg = errMsgProvider.buildDuplicateRuleNameError({
+            topLevelRule: rule,
+            grammarName: className
+        });
+        errors.push({
+            message: errMsg,
+            type: parser_1.ParserDefinitionErrorType.DUPLICATE_RULE_NAME,
+            ruleName: rule.name
+        });
+    }
+    return errors;
+}
+exports.validateRuleDoesNotAlreadyExist = validateRuleDoesNotAlreadyExist;
+// TODO: is there anyway to get only the rule names of rules inherited from the super grammars?
+// This is not part of the IGrammarErrorProvider because the validation cannot be performed on
+// The grammar structure, only at runtime.
+function validateRuleIsOverridden(ruleName, definedRulesNames, className) {
+    var errors = [];
+    var errMsg;
+    if (!utils.contains(definedRulesNames, ruleName)) {
+        errMsg =
+            "Invalid rule override, rule: ->" + ruleName + "<- cannot be overridden in the grammar: ->" + className + "<-" +
+                "as it is not defined in any of the super grammars ";
+        errors.push({
+            message: errMsg,
+            type: parser_1.ParserDefinitionErrorType.INVALID_RULE_OVERRIDE,
+            ruleName: ruleName
+        });
+    }
+    return errors;
+}
+exports.validateRuleIsOverridden = validateRuleIsOverridden;
+function validateNoLeftRecursion(topRule, currRule, errMsgProvider, path) {
+    if (path === void 0) { path = []; }
+    var errors = [];
+    var nextNonTerminals = getFirstNoneTerminal(currRule.definition);
+    if (utils.isEmpty(nextNonTerminals)) {
+        return [];
+    }
+    else {
+        var ruleName = topRule.name;
+        var foundLeftRecursion = utils.contains(nextNonTerminals, topRule);
+        if (foundLeftRecursion) {
+            errors.push({
+                message: errMsgProvider.buildLeftRecursionError({
+                    topLevelRule: topRule,
+                    leftRecursionPath: path
+                }),
+                type: parser_1.ParserDefinitionErrorType.LEFT_RECURSION,
+                ruleName: ruleName
+            });
+        }
+        // we are only looking for cyclic paths leading back to the specific topRule
+        // other cyclic paths are ignored, we still need this difference to avoid infinite loops...
+        var validNextSteps = utils.difference(nextNonTerminals, path.concat([topRule]));
+        var errorsFromNextSteps = utils.map(validNextSteps, function (currRefRule) {
+            var newPath = utils.cloneArr(path);
+            newPath.push(currRefRule);
+            return validateNoLeftRecursion(topRule, currRefRule, errMsgProvider, newPath);
+        });
+        return errors.concat(utils.flatten(errorsFromNextSteps));
+    }
+}
+exports.validateNoLeftRecursion = validateNoLeftRecursion;
+function getFirstNoneTerminal(definition) {
+    var result = [];
+    if (utils.isEmpty(definition)) {
+        return result;
+    }
+    var firstProd = utils.first(definition);
+    /* istanbul ignore else */
+    if (firstProd instanceof gast_public_1.NonTerminal) {
+        result.push(firstProd.referencedRule);
+    }
+    else if (firstProd instanceof gast_public_1.Flat ||
+        firstProd instanceof gast_public_1.Option ||
+        firstProd instanceof gast_public_1.RepetitionMandatory ||
+        firstProd instanceof gast_public_1.RepetitionMandatoryWithSeparator ||
+        firstProd instanceof gast_public_1.RepetitionWithSeparator ||
+        firstProd instanceof gast_public_1.Repetition) {
+        result = result.concat(getFirstNoneTerminal(firstProd.definition));
+    }
+    else if (firstProd instanceof gast_public_1.Alternation) {
+        // each sub definition in alternation is a FLAT
+        result = utils.flatten(utils.map(firstProd.definition, function (currSubDef) {
+            return getFirstNoneTerminal(currSubDef.definition);
+        }));
+    }
+    else if (firstProd instanceof gast_public_1.Terminal) {
+        // nothing to see, move along
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+    var isFirstOptional = gast_1.isOptionalProd(firstProd);
+    var hasMore = definition.length > 1;
+    if (isFirstOptional && hasMore) {
+        var rest = utils.drop(definition);
+        return result.concat(getFirstNoneTerminal(rest));
+    }
+    else {
+        return result;
+    }
+}
+exports.getFirstNoneTerminal = getFirstNoneTerminal;
+var OrCollector = /** @class */ (function (_super) {
+    __extends(OrCollector, _super);
+    function OrCollector() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.alternations = [];
+        return _this;
+    }
+    OrCollector.prototype.visitAlternation = function (node) {
+        this.alternations.push(node);
+    };
+    return OrCollector;
+}(gast_visitor_public_1.GAstVisitor));
+function validateEmptyOrAlternative(topLevelRule, errMsgProvider) {
+    var orCollector = new OrCollector();
+    topLevelRule.accept(orCollector);
+    var ors = orCollector.alternations;
+    var errors = utils.reduce(ors, function (errors, currOr) {
+        var exceptLast = utils.dropRight(currOr.definition);
+        var currErrors = utils.map(exceptLast, function (currAlternative, currAltIdx) {
+            var possibleFirstInAlt = interpreter_1.nextPossibleTokensAfter([currAlternative], [], null, 1);
+            if (utils.isEmpty(possibleFirstInAlt)) {
+                return {
+                    message: errMsgProvider.buildEmptyAlternationError({
+                        topLevelRule: topLevelRule,
+                        alternation: currOr,
+                        emptyChoiceIdx: currAltIdx
+                    }),
+                    type: parser_1.ParserDefinitionErrorType.NONE_LAST_EMPTY_ALT,
+                    ruleName: topLevelRule.name,
+                    occurrence: currOr.idx,
+                    alternative: currAltIdx + 1
+                };
+            }
+            else {
+                return null;
+            }
+        });
+        return errors.concat(utils.compact(currErrors));
+    }, []);
+    return errors;
+}
+exports.validateEmptyOrAlternative = validateEmptyOrAlternative;
+function validateAmbiguousAlternationAlternatives(topLevelRule, maxLookahead, ignoredIssues, errMsgProvider) {
+    var orCollector = new OrCollector();
+    topLevelRule.accept(orCollector);
+    var ors = orCollector.alternations;
+    var ignoredIssuesForCurrentRule = ignoredIssues[topLevelRule.name];
+    if (ignoredIssuesForCurrentRule) {
+        ors = utils_1.reject(ors, function (currOr) {
+            return ignoredIssuesForCurrentRule[gast_1.getProductionDslName(currOr) +
+                (currOr.idx === 0 ? "" : currOr.idx)];
+        });
+    }
+    var errors = utils.reduce(ors, function (result, currOr) {
+        var currOccurrence = currOr.idx;
+        var alternatives = lookahead_1.getLookaheadPathsForOr(currOccurrence, topLevelRule, maxLookahead);
+        var altsAmbiguityErrors = checkAlternativesAmbiguities(alternatives, currOr, topLevelRule, errMsgProvider);
+        var altsPrefixAmbiguityErrors = checkPrefixAlternativesAmbiguities(alternatives, currOr, topLevelRule, errMsgProvider);
+        return result.concat(altsAmbiguityErrors, altsPrefixAmbiguityErrors);
+    }, []);
+    return errors;
+}
+exports.validateAmbiguousAlternationAlternatives = validateAmbiguousAlternationAlternatives;
+var RepetionCollector = /** @class */ (function (_super) {
+    __extends(RepetionCollector, _super);
+    function RepetionCollector() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.allProductions = [];
+        return _this;
+    }
+    RepetionCollector.prototype.visitRepetitionWithSeparator = function (manySep) {
+        this.allProductions.push(manySep);
+    };
+    RepetionCollector.prototype.visitRepetitionMandatory = function (atLeastOne) {
+        this.allProductions.push(atLeastOne);
+    };
+    RepetionCollector.prototype.visitRepetitionMandatoryWithSeparator = function (atLeastOneSep) {
+        this.allProductions.push(atLeastOneSep);
+    };
+    RepetionCollector.prototype.visitRepetition = function (many) {
+        this.allProductions.push(many);
+    };
+    return RepetionCollector;
+}(gast_visitor_public_1.GAstVisitor));
+exports.RepetionCollector = RepetionCollector;
+function validateTooManyAlts(topLevelRule, errMsgProvider) {
+    var orCollector = new OrCollector();
+    topLevelRule.accept(orCollector);
+    var ors = orCollector.alternations;
+    var errors = utils.reduce(ors, function (errors, currOr) {
+        if (currOr.definition.length > 255) {
+            errors.push({
+                message: errMsgProvider.buildTooManyAlternativesError({
+                    topLevelRule: topLevelRule,
+                    alternation: currOr
+                }),
+                type: parser_1.ParserDefinitionErrorType.TOO_MANY_ALTS,
+                ruleName: topLevelRule.name,
+                occurrence: currOr.idx
+            });
+        }
+        return errors;
+    }, []);
+    return errors;
+}
+exports.validateTooManyAlts = validateTooManyAlts;
+function validateSomeNonEmptyLookaheadPath(topLevelRules, maxLookahead, errMsgProvider) {
+    var errors = [];
+    utils_1.forEach(topLevelRules, function (currTopRule) {
+        var collectorVisitor = new RepetionCollector();
+        currTopRule.accept(collectorVisitor);
+        var allRuleProductions = collectorVisitor.allProductions;
+        utils_1.forEach(allRuleProductions, function (currProd) {
+            var prodType = lookahead_1.getProdType(currProd);
+            var currOccurrence = currProd.idx;
+            var paths = lookahead_1.getLookaheadPathsForOptionalProd(currOccurrence, currTopRule, prodType, maxLookahead);
+            var pathsInsideProduction = paths[0];
+            if (utils_1.isEmpty(utils_1.flatten(pathsInsideProduction))) {
+                var errMsg = errMsgProvider.buildEmptyRepetitionError({
+                    topLevelRule: currTopRule,
+                    repetition: currProd
+                });
+                errors.push({
+                    message: errMsg,
+                    type: parser_1.ParserDefinitionErrorType.NO_NON_EMPTY_LOOKAHEAD,
+                    ruleName: currTopRule.name
+                });
+            }
+        });
+    });
+    return errors;
+}
+exports.validateSomeNonEmptyLookaheadPath = validateSomeNonEmptyLookaheadPath;
+function checkAlternativesAmbiguities(alternatives, alternation, rule, errMsgProvider) {
+    var foundAmbiguousPaths = [];
+    var identicalAmbiguities = utils_1.reduce(alternatives, function (result, currAlt, currAltIdx) {
+        utils_1.forEach(currAlt, function (currPath) {
+            var altsCurrPathAppearsIn = [currAltIdx];
+            utils_1.forEach(alternatives, function (currOtherAlt, currOtherAltIdx) {
+                if (currAltIdx !== currOtherAltIdx &&
+                    lookahead_1.containsPath(currOtherAlt, currPath)) {
+                    altsCurrPathAppearsIn.push(currOtherAltIdx);
+                }
+            });
+            if (altsCurrPathAppearsIn.length > 1 &&
+                !lookahead_1.containsPath(foundAmbiguousPaths, currPath)) {
+                foundAmbiguousPaths.push(currPath);
+                result.push({
+                    alts: altsCurrPathAppearsIn,
+                    path: currPath
+                });
+            }
+        });
+        return result;
+    }, []);
+    var currErrors = utils.map(identicalAmbiguities, function (currAmbDescriptor) {
+        var ambgIndices = utils_1.map(currAmbDescriptor.alts, function (currAltIdx) { return currAltIdx + 1; });
+        var currMessage = errMsgProvider.buildAlternationAmbiguityError({
+            topLevelRule: rule,
+            alternation: alternation,
+            ambiguityIndices: ambgIndices,
+            prefixPath: currAmbDescriptor.path
+        });
+        return {
+            message: currMessage,
+            type: parser_1.ParserDefinitionErrorType.AMBIGUOUS_ALTS,
+            ruleName: rule.name,
+            occurrence: alternation.idx,
+            alternatives: [currAmbDescriptor.alts]
+        };
+    });
+    return currErrors;
+}
+function checkPrefixAlternativesAmbiguities(alternatives, alternation, rule, errMsgProvider) {
+    var errors = [];
+    // flatten
+    var pathsAndIndices = utils_1.reduce(alternatives, function (result, currAlt, idx) {
+        var currPathsAndIdx = utils_1.map(currAlt, function (currPath) {
+            return { idx: idx, path: currPath };
+        });
+        return result.concat(currPathsAndIdx);
+    }, []);
+    utils_1.forEach(pathsAndIndices, function (currPathAndIdx) {
+        var targetIdx = currPathAndIdx.idx;
+        var targetPath = currPathAndIdx.path;
+        var prefixAmbiguitiesPathsAndIndices = utils_1.findAll(pathsAndIndices, function (searchPathAndIdx) {
+            // prefix ambiguity can only be created from lower idx (higher priority) path
+            return (searchPathAndIdx.idx < targetIdx &&
+                // checking for strict prefix because identical lookaheads
+                // will be be detected using a different validation.
+                lookahead_1.isStrictPrefixOfPath(searchPathAndIdx.path, targetPath));
+        });
+        var currPathPrefixErrors = utils_1.map(prefixAmbiguitiesPathsAndIndices, function (currAmbPathAndIdx) {
+            var ambgIndices = [currAmbPathAndIdx.idx + 1, targetIdx + 1];
+            var occurrence = alternation.idx === 0 ? "" : alternation.idx;
+            var message = errMsgProvider.buildAlternationPrefixAmbiguityError({
+                topLevelRule: rule,
+                alternation: alternation,
+                ambiguityIndices: ambgIndices,
+                prefixPath: currAmbPathAndIdx.path
+            });
+            return {
+                message: message,
+                type: parser_1.ParserDefinitionErrorType.AMBIGUOUS_PREFIX_ALTS,
+                ruleName: rule.name,
+                occurrence: occurrence,
+                alternatives: ambgIndices
+            };
+        });
+        errors = errors.concat(currPathPrefixErrors);
+    });
+    return errors;
+}
+function checkTerminalAndNoneTerminalsNameSpace(topLevels, tokenTypes, errMsgProvider) {
+    var errors = [];
+    var tokenNames = utils_1.map(tokenTypes, function (currToken) { return tokens_public_1.tokenName(currToken); });
+    utils_1.forEach(topLevels, function (currRule) {
+        var currRuleName = currRule.name;
+        if (utils_1.contains(tokenNames, currRuleName)) {
+            var errMsg = errMsgProvider.buildNamespaceConflictError(currRule);
+            errors.push({
+                message: errMsg,
+                type: parser_1.ParserDefinitionErrorType.CONFLICT_TOKENS_RULES_NAMESPACE,
+                ruleName: currRuleName
+            });
+        }
+    });
+    return errors;
+}
+function validateDuplicateNestedRules(topLevelRules, errMsgProvider) {
+    var errors = [];
+    utils_1.forEach(topLevelRules, function (currTopRule) {
+        var namedCollectorVisitor = new cst_1.NamedDSLMethodsCollectorVisitor("");
+        currTopRule.accept(namedCollectorVisitor);
+        var prodsByGroup = utils_1.groupBy(namedCollectorVisitor.result, function (item) { return item.name; });
+        var duplicates = utils_1.pick(prodsByGroup, function (currGroup) {
+            return currGroup.length > 1;
+        });
+        utils_1.forEach(utils_1.values(duplicates), function (currDupGroup) {
+            var currDupProds = utils_1.map(currDupGroup, function (dupGroup) { return dupGroup.orgProd; });
+            var errMsg = errMsgProvider.buildDuplicateNestedRuleNameError(currTopRule, currDupProds);
+            errors.push({
+                message: errMsg,
+                type: parser_1.ParserDefinitionErrorType.DUPLICATE_NESTED_NAME,
+                ruleName: currTopRule.name
+            });
+        });
+    });
+    return errors;
+}
+//# sourceMappingURL=checks.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/first.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/first.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var gast_public_1 = __webpack_require__(/*! ./gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_1 = __webpack_require__(/*! ./gast/gast */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast.js");
+function first(prod) {
+    /* istanbul ignore else */
+    if (prod instanceof gast_public_1.NonTerminal) {
+        // this could in theory cause infinite loops if
+        // (1) prod A refs prod B.
+        // (2) prod B refs prod A
+        // (3) AB can match the empty set
+        // in other words a cycle where everything is optional so the first will keep
+        // looking ahead for the next optional part and will never exit
+        // currently there is no safeguard for this unique edge case because
+        // (1) not sure a grammar in which this can happen is useful for anything (productive)
+        return first(prod.referencedRule);
+    }
+    else if (prod instanceof gast_public_1.Terminal) {
+        return firstForTerminal(prod);
+    }
+    else if (gast_1.isSequenceProd(prod)) {
+        return firstForSequence(prod);
+    }
+    else if (gast_1.isBranchingProd(prod)) {
+        return firstForBranching(prod);
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.first = first;
+function firstForSequence(prod) {
+    var firstSet = [];
+    var seq = prod.definition;
+    var nextSubProdIdx = 0;
+    var hasInnerProdsRemaining = seq.length > nextSubProdIdx;
+    var currSubProd;
+    // so we enter the loop at least once (if the definition is not empty
+    var isLastInnerProdOptional = true;
+    // scan a sequence until it's end or until we have found a NONE optional production in it
+    while (hasInnerProdsRemaining && isLastInnerProdOptional) {
+        currSubProd = seq[nextSubProdIdx];
+        isLastInnerProdOptional = gast_1.isOptionalProd(currSubProd);
+        firstSet = firstSet.concat(first(currSubProd));
+        nextSubProdIdx = nextSubProdIdx + 1;
+        hasInnerProdsRemaining = seq.length > nextSubProdIdx;
+    }
+    return utils_1.uniq(firstSet);
+}
+exports.firstForSequence = firstForSequence;
+function firstForBranching(prod) {
+    var allAlternativesFirsts = utils_1.map(prod.definition, function (innerProd) {
+        return first(innerProd);
+    });
+    return utils_1.uniq(utils_1.flatten(allAlternativesFirsts));
+}
+exports.firstForBranching = firstForBranching;
+function firstForTerminal(terminal) {
+    return [terminal.terminalType];
+}
+exports.firstForTerminal = firstForTerminal;
+//# sourceMappingURL=first.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/follow.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/follow.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var rest_1 = __webpack_require__(/*! ./rest */ "./node_modules/chevrotain/lib/src/parse/grammar/rest.js");
+var lang_extensions_1 = __webpack_require__(/*! ../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var first_1 = __webpack_require__(/*! ./first */ "./node_modules/chevrotain/lib/src/parse/grammar/first.js");
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var constants_1 = __webpack_require__(/*! ../constants */ "./node_modules/chevrotain/lib/src/parse/constants.js");
+var tokens_public_1 = __webpack_require__(/*! ../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var gast_public_1 = __webpack_require__(/*! ./gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+// This ResyncFollowsWalker computes all of the follows required for RESYNC
+// (skipping reference production).
+var ResyncFollowsWalker = /** @class */ (function (_super) {
+    __extends(ResyncFollowsWalker, _super);
+    function ResyncFollowsWalker(topProd) {
+        var _this = _super.call(this) || this;
+        _this.topProd = topProd;
+        _this.follows = new lang_extensions_1.HashTable();
+        return _this;
+    }
+    ResyncFollowsWalker.prototype.startWalking = function () {
+        this.walk(this.topProd);
+        return this.follows;
+    };
+    ResyncFollowsWalker.prototype.walkTerminal = function (terminal, currRest, prevRest) {
+        // do nothing! just like in the public sector after 13:00
+    };
+    ResyncFollowsWalker.prototype.walkProdRef = function (refProd, currRest, prevRest) {
+        var followName = buildBetweenProdsFollowPrefix(refProd.referencedRule, refProd.idx) +
+            this.topProd.name;
+        var fullRest = currRest.concat(prevRest);
+        var restProd = new gast_public_1.Flat({ definition: fullRest });
+        var t_in_topProd_follows = first_1.first(restProd);
+        this.follows.put(followName, t_in_topProd_follows);
+    };
+    return ResyncFollowsWalker;
+}(rest_1.RestWalker));
+exports.ResyncFollowsWalker = ResyncFollowsWalker;
+function computeAllProdsFollows(topProductions) {
+    var reSyncFollows = new lang_extensions_1.HashTable();
+    utils_1.forEach(topProductions, function (topProd) {
+        var currRefsFollow = new ResyncFollowsWalker(topProd).startWalking();
+        reSyncFollows.putAll(currRefsFollow);
+    });
+    return reSyncFollows;
+}
+exports.computeAllProdsFollows = computeAllProdsFollows;
+function buildBetweenProdsFollowPrefix(inner, occurenceInParent) {
+    return inner.name + occurenceInParent + constants_1.IN;
+}
+exports.buildBetweenProdsFollowPrefix = buildBetweenProdsFollowPrefix;
+function buildInProdFollowPrefix(terminal) {
+    var terminalName = tokens_public_1.tokenName(terminal.terminalType);
+    return terminalName + terminal.idx + constants_1.IN;
+}
+exports.buildInProdFollowPrefix = buildInProdFollowPrefix;
+//# sourceMappingURL=follow.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/gast/gast.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var gast_public_1 = __webpack_require__(/*! ./gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_visitor_public_1 = __webpack_require__(/*! ./gast_visitor_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js");
+var tokens_public_1 = __webpack_require__(/*! ../../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+function isSequenceProd(prod) {
+    return (prod instanceof gast_public_1.Flat ||
+        prod instanceof gast_public_1.Option ||
+        prod instanceof gast_public_1.Repetition ||
+        prod instanceof gast_public_1.RepetitionMandatory ||
+        prod instanceof gast_public_1.RepetitionMandatoryWithSeparator ||
+        prod instanceof gast_public_1.RepetitionWithSeparator ||
+        prod instanceof gast_public_1.Terminal ||
+        prod instanceof gast_public_1.Rule);
+}
+exports.isSequenceProd = isSequenceProd;
+function isOptionalProd(prod, alreadyVisited) {
+    if (alreadyVisited === void 0) { alreadyVisited = []; }
+    var isDirectlyOptional = prod instanceof gast_public_1.Option ||
+        prod instanceof gast_public_1.Repetition ||
+        prod instanceof gast_public_1.RepetitionWithSeparator;
+    if (isDirectlyOptional) {
+        return true;
+    }
+    // note that this can cause infinite loop if one optional empty TOP production has a cyclic dependency with another
+    // empty optional top rule
+    // may be indirectly optional ((A?B?C?) | (D?E?F?))
+    if (prod instanceof gast_public_1.Alternation) {
+        // for OR its enough for just one of the alternatives to be optional
+        return utils_1.some(prod.definition, function (subProd) {
+            return isOptionalProd(subProd, alreadyVisited);
+        });
+    }
+    else if (prod instanceof gast_public_1.NonTerminal && utils_1.contains(alreadyVisited, prod)) {
+        // avoiding stack overflow due to infinite recursion
+        return false;
+    }
+    else if (prod instanceof gast_public_1.AbstractProduction) {
+        if (prod instanceof gast_public_1.NonTerminal) {
+            alreadyVisited.push(prod);
+        }
+        return utils_1.every(prod.definition, function (subProd) {
+            return isOptionalProd(subProd, alreadyVisited);
+        });
+    }
+    else {
+        return false;
+    }
+}
+exports.isOptionalProd = isOptionalProd;
+function isBranchingProd(prod) {
+    return prod instanceof gast_public_1.Alternation;
+}
+exports.isBranchingProd = isBranchingProd;
+function getProductionDslName(prod) {
+    /* istanbul ignore else */
+    if (prod instanceof gast_public_1.NonTerminal) {
+        return "SUBRULE";
+    }
+    else if (prod instanceof gast_public_1.Option) {
+        return "OPTION";
+    }
+    else if (prod instanceof gast_public_1.Alternation) {
+        return "OR";
+    }
+    else if (prod instanceof gast_public_1.RepetitionMandatory) {
+        return "AT_LEAST_ONE";
+    }
+    else if (prod instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+        return "AT_LEAST_ONE_SEP";
+    }
+    else if (prod instanceof gast_public_1.RepetitionWithSeparator) {
+        return "MANY_SEP";
+    }
+    else if (prod instanceof gast_public_1.Repetition) {
+        return "MANY";
+    }
+    else if (prod instanceof gast_public_1.Terminal) {
+        return "CONSUME";
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.getProductionDslName = getProductionDslName;
+var DslMethodsCollectorVisitor = /** @class */ (function (_super) {
+    __extends(DslMethodsCollectorVisitor, _super);
+    function DslMethodsCollectorVisitor() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        // A minus is never valid in an identifier name
+        _this.separator = "-";
+        _this.dslMethods = {
+            option: [],
+            alternation: [],
+            repetition: [],
+            repetitionWithSeparator: [],
+            repetitionMandatory: [],
+            repetitionMandatoryWithSeparator: []
+        };
+        return _this;
+    }
+    DslMethodsCollectorVisitor.prototype.visitTerminal = function (terminal) {
+        var key = tokens_public_1.tokenName(terminal.terminalType) + this.separator + "Terminal";
+        if (!utils_1.has(this.dslMethods, key)) {
+            this.dslMethods[key] = [];
+        }
+        this.dslMethods[key].push(terminal);
+    };
+    DslMethodsCollectorVisitor.prototype.visitNonTerminal = function (subrule) {
+        var key = subrule.nonTerminalName + this.separator + "Terminal";
+        if (!utils_1.has(this.dslMethods, key)) {
+            this.dslMethods[key] = [];
+        }
+        this.dslMethods[key].push(subrule);
+    };
+    DslMethodsCollectorVisitor.prototype.visitOption = function (option) {
+        this.dslMethods.option.push(option);
+    };
+    DslMethodsCollectorVisitor.prototype.visitRepetitionWithSeparator = function (manySep) {
+        this.dslMethods.repetitionWithSeparator.push(manySep);
+    };
+    DslMethodsCollectorVisitor.prototype.visitRepetitionMandatory = function (atLeastOne) {
+        this.dslMethods.repetitionMandatory.push(atLeastOne);
+    };
+    DslMethodsCollectorVisitor.prototype.visitRepetitionMandatoryWithSeparator = function (atLeastOneSep) {
+        this.dslMethods.repetitionMandatoryWithSeparator.push(atLeastOneSep);
+    };
+    DslMethodsCollectorVisitor.prototype.visitRepetition = function (many) {
+        this.dslMethods.repetition.push(many);
+    };
+    DslMethodsCollectorVisitor.prototype.visitAlternation = function (or) {
+        this.dslMethods.alternation.push(or);
+    };
+    return DslMethodsCollectorVisitor;
+}(gast_visitor_public_1.GAstVisitor));
+exports.DslMethodsCollectorVisitor = DslMethodsCollectorVisitor;
+//# sourceMappingURL=gast.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var tokens_public_1 = __webpack_require__(/*! ../../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var AbstractProduction = /** @class */ (function () {
+    function AbstractProduction(definition) {
+        this.definition = definition;
+    }
+    AbstractProduction.prototype.accept = function (visitor) {
+        visitor.visit(this);
+        utils_1.forEach(this.definition, function (prod) {
+            prod.accept(visitor);
+        });
+    };
+    return AbstractProduction;
+}());
+exports.AbstractProduction = AbstractProduction;
+var NonTerminal = /** @class */ (function (_super) {
+    __extends(NonTerminal, _super);
+    function NonTerminal(options) {
+        var _this = _super.call(this, []) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    Object.defineProperty(NonTerminal.prototype, "definition", {
+        get: function () {
+            if (this.referencedRule !== undefined) {
+                return this.referencedRule.definition;
+            }
+            return [];
+        },
+        set: function (definition) {
+            // immutable
+        },
+        enumerable: true,
+        configurable: true
+    });
+    NonTerminal.prototype.accept = function (visitor) {
+        visitor.visit(this);
+        // don't visit children of a reference, we will get cyclic infinite loops if we do so
+    };
+    return NonTerminal;
+}(AbstractProduction));
+exports.NonTerminal = NonTerminal;
+var Rule = /** @class */ (function (_super) {
+    __extends(Rule, _super);
+    function Rule(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.orgText = "";
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return Rule;
+}(AbstractProduction));
+exports.Rule = Rule;
+var Flat = /** @class */ (function (_super) {
+    __extends(Flat, _super);
+    // A named Flat production is used to indicate a Nested Rule in an alternation
+    function Flat(options) {
+        var _this = _super.call(this, options.definition) || this;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return Flat;
+}(AbstractProduction));
+exports.Flat = Flat;
+var Option = /** @class */ (function (_super) {
+    __extends(Option, _super);
+    function Option(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return Option;
+}(AbstractProduction));
+exports.Option = Option;
+var RepetitionMandatory = /** @class */ (function (_super) {
+    __extends(RepetitionMandatory, _super);
+    function RepetitionMandatory(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return RepetitionMandatory;
+}(AbstractProduction));
+exports.RepetitionMandatory = RepetitionMandatory;
+var RepetitionMandatoryWithSeparator = /** @class */ (function (_super) {
+    __extends(RepetitionMandatoryWithSeparator, _super);
+    function RepetitionMandatoryWithSeparator(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return RepetitionMandatoryWithSeparator;
+}(AbstractProduction));
+exports.RepetitionMandatoryWithSeparator = RepetitionMandatoryWithSeparator;
+var Repetition = /** @class */ (function (_super) {
+    __extends(Repetition, _super);
+    function Repetition(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return Repetition;
+}(AbstractProduction));
+exports.Repetition = Repetition;
+var RepetitionWithSeparator = /** @class */ (function (_super) {
+    __extends(RepetitionWithSeparator, _super);
+    function RepetitionWithSeparator(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return RepetitionWithSeparator;
+}(AbstractProduction));
+exports.RepetitionWithSeparator = RepetitionWithSeparator;
+var Alternation = /** @class */ (function (_super) {
+    __extends(Alternation, _super);
+    function Alternation(options) {
+        var _this = _super.call(this, options.definition) || this;
+        _this.idx = 1;
+        utils_1.assign(_this, utils_1.pick(options, function (v) { return v !== undefined; }));
+        return _this;
+    }
+    return Alternation;
+}(AbstractProduction));
+exports.Alternation = Alternation;
+var Terminal = /** @class */ (function () {
+    function Terminal(options) {
+        this.idx = 1;
+        utils_1.assign(this, utils_1.pick(options, function (v) { return v !== undefined; }));
+    }
+    Terminal.prototype.accept = function (visitor) {
+        visitor.visit(this);
+    };
+    return Terminal;
+}());
+exports.Terminal = Terminal;
+function serializeGrammar(topRules) {
+    return utils_1.map(topRules, serializeProduction);
+}
+exports.serializeGrammar = serializeGrammar;
+function serializeProduction(node) {
+    function convertDefinition(definition) {
+        return utils_1.map(definition, serializeProduction);
+    }
+    /* istanbul ignore else */
+    if (node instanceof NonTerminal) {
+        return {
+            type: "NonTerminal",
+            name: node.nonTerminalName,
+            idx: node.idx
+        };
+    }
+    else if (node instanceof Flat) {
+        return {
+            type: "Flat",
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof Option) {
+        return {
+            type: "Option",
+            idx: node.idx,
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof RepetitionMandatory) {
+        return {
+            type: "RepetitionMandatory",
+            name: node.name,
+            idx: node.idx,
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof RepetitionMandatoryWithSeparator) {
+        return {
+            type: "RepetitionMandatoryWithSeparator",
+            name: node.name,
+            idx: node.idx,
+            separator: (serializeProduction(new Terminal({ terminalType: node.separator }))),
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof RepetitionWithSeparator) {
+        return {
+            type: "RepetitionWithSeparator",
+            name: node.name,
+            idx: node.idx,
+            separator: (serializeProduction(new Terminal({ terminalType: node.separator }))),
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof Repetition) {
+        return {
+            type: "Repetition",
+            name: node.name,
+            idx: node.idx,
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof Alternation) {
+        return {
+            type: "Alternation",
+            name: node.name,
+            idx: node.idx,
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else if (node instanceof Terminal) {
+        var serializedTerminal = {
+            type: "Terminal",
+            name: tokens_public_1.tokenName(node.terminalType),
+            label: tokens_public_1.tokenLabel(node.terminalType),
+            idx: node.idx
+        };
+        var pattern = node.terminalType.PATTERN;
+        if (node.terminalType.PATTERN) {
+            serializedTerminal.pattern = utils_1.isRegExp(pattern)
+                ? pattern.source
+                : pattern;
+        }
+        return serializedTerminal;
+    }
+    else if (node instanceof Rule) {
+        return {
+            type: "Rule",
+            name: node.name,
+            orgText: node.orgText,
+            definition: convertDefinition(node.definition)
+        };
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.serializeProduction = serializeProduction;
+//# sourceMappingURL=gast_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_resolver_public.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_resolver_public.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var lang_extensions_1 = __webpack_require__(/*! ../../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var resolver_1 = __webpack_require__(/*! ../resolver */ "./node_modules/chevrotain/lib/src/parse/grammar/resolver.js");
+var checks_1 = __webpack_require__(/*! ../checks */ "./node_modules/chevrotain/lib/src/parse/grammar/checks.js");
+var errors_public_1 = __webpack_require__(/*! ../../errors_public */ "./node_modules/chevrotain/lib/src/parse/errors_public.js");
+var gast_1 = __webpack_require__(/*! ./gast */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast.js");
+function resolveGrammar(options) {
+    options = utils_1.defaults(options, {
+        errMsgProvider: errors_public_1.defaultGrammarResolverErrorProvider
+    });
+    var topRulesTable = new lang_extensions_1.HashTable();
+    utils_1.forEach(options.rules, function (rule) {
+        topRulesTable.put(rule.name, rule);
+    });
+    return resolver_1.resolveGrammar(topRulesTable, options.errMsgProvider);
+}
+exports.resolveGrammar = resolveGrammar;
+function validateGrammar(options) {
+    options = utils_1.defaults(options, {
+        errMsgProvider: errors_public_1.defaultGrammarValidatorErrorProvider,
+        ignoredIssues: {}
+    });
+    return checks_1.validateGrammar(options.rules, options.maxLookahead, options.tokenTypes, options.ignoredIssues, options.errMsgProvider, options.grammarName);
+}
+exports.validateGrammar = validateGrammar;
+function assignOccurrenceIndices(options) {
+    utils_1.forEach(options.rules, function (currRule) {
+        var methodsCollector = new gast_1.DslMethodsCollectorVisitor();
+        currRule.accept(methodsCollector);
+        utils_1.forEach(methodsCollector.dslMethods, function (methods) {
+            utils_1.forEach(methods, function (currMethod, arrIdx) {
+                currMethod.idx = arrIdx + 1;
+            });
+        });
+    });
+}
+exports.assignOccurrenceIndices = assignOccurrenceIndices;
+//# sourceMappingURL=gast_resolver_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var gast_public_1 = __webpack_require__(/*! ./gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var GAstVisitor = /** @class */ (function () {
+    function GAstVisitor() {
+    }
+    GAstVisitor.prototype.visit = function (node) {
+        /* istanbul ignore next */
+        if (node instanceof gast_public_1.NonTerminal) {
+            return this.visitNonTerminal(node);
+        }
+        else if (node instanceof gast_public_1.Flat) {
+            return this.visitFlat(node);
+        }
+        else if (node instanceof gast_public_1.Option) {
+            return this.visitOption(node);
+        }
+        else if (node instanceof gast_public_1.RepetitionMandatory) {
+            return this.visitRepetitionMandatory(node);
+        }
+        else if (node instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+            return this.visitRepetitionMandatoryWithSeparator(node);
+        }
+        else if (node instanceof gast_public_1.RepetitionWithSeparator) {
+            return this.visitRepetitionWithSeparator(node);
+        }
+        else if (node instanceof gast_public_1.Repetition) {
+            return this.visitRepetition(node);
+        }
+        else if (node instanceof gast_public_1.Alternation) {
+            return this.visitAlternation(node);
+        }
+        else if (node instanceof gast_public_1.Terminal) {
+            return this.visitTerminal(node);
+        }
+        else if (node instanceof gast_public_1.Rule) {
+            return this.visitRule(node);
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+    };
+    GAstVisitor.prototype.visitNonTerminal = function (node) { };
+    GAstVisitor.prototype.visitFlat = function (node) { };
+    GAstVisitor.prototype.visitOption = function (node) { };
+    GAstVisitor.prototype.visitRepetition = function (node) { };
+    GAstVisitor.prototype.visitRepetitionMandatory = function (node) { };
+    GAstVisitor.prototype.visitRepetitionMandatoryWithSeparator = function (node) { };
+    GAstVisitor.prototype.visitRepetitionWithSeparator = function (node) { };
+    GAstVisitor.prototype.visitAlternation = function (node) { };
+    GAstVisitor.prototype.visitTerminal = function (node) { };
+    GAstVisitor.prototype.visitRule = function (node) { };
+    return GAstVisitor;
+}());
+exports.GAstVisitor = GAstVisitor;
+//# sourceMappingURL=gast_visitor_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/interpreter.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/interpreter.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/* istanbul ignore next */ var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var rest_1 = __webpack_require__(/*! ./rest */ "./node_modules/chevrotain/lib/src/parse/grammar/rest.js");
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var tokens_public_1 = __webpack_require__(/*! ../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var first_1 = __webpack_require__(/*! ./first */ "./node_modules/chevrotain/lib/src/parse/grammar/first.js");
+var gast_public_1 = __webpack_require__(/*! ./gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var AbstractNextPossibleTokensWalker = /** @class */ (function (_super) {
+    __extends(AbstractNextPossibleTokensWalker, _super);
+    function AbstractNextPossibleTokensWalker(topProd, path) {
+        var _this = _super.call(this) /* istanbul ignore next */ || this;
+        _this.topProd = topProd;
+        _this.path = path;
+        _this.possibleTokTypes = [];
+        _this.nextProductionName = "";
+        _this.nextProductionOccurrence = 0;
+        _this.found = false;
+        _this.isAtEndOfPath = false;
+        return _this;
+    }
+    AbstractNextPossibleTokensWalker.prototype.startWalking = function () {
+        this.found = false;
+        if (this.path.ruleStack[0] !== this.topProd.name) {
+            throw Error("The path does not start with the walker's top Rule!");
+        }
+        // immutable for the win
+        this.ruleStack = utils_1.cloneArr(this.path.ruleStack).reverse(); // intelij bug requires assertion
+        this.occurrenceStack = utils_1.cloneArr(this.path.occurrenceStack).reverse(); // intelij bug requires assertion
+        // already verified that the first production is valid, we now seek the 2nd production
+        this.ruleStack.pop();
+        this.occurrenceStack.pop();
+        this.updateExpectedNext();
+        this.walk(this.topProd);
+        return this.possibleTokTypes;
+    };
+    AbstractNextPossibleTokensWalker.prototype.walk = function (prod, prevRest) {
+        if (prevRest === void 0) { prevRest = []; }
+        // stop scanning once we found the path
+        if (!this.found) {
+            _super.prototype.walk.call(this, prod, prevRest);
+        }
+    };
+    AbstractNextPossibleTokensWalker.prototype.walkProdRef = function (refProd, currRest, prevRest) {
+        // found the next production, need to keep walking in it
+        if (refProd.referencedRule.name === this.nextProductionName &&
+            refProd.idx === this.nextProductionOccurrence) {
+            var fullRest = currRest.concat(prevRest);
+            this.updateExpectedNext();
+            this.walk(refProd.referencedRule, fullRest);
+        }
+    };
+    AbstractNextPossibleTokensWalker.prototype.updateExpectedNext = function () {
+        // need to consume the Terminal
+        if (utils_1.isEmpty(this.ruleStack)) {
+            // must reset nextProductionXXX to avoid walking down another Top Level production while what we are
+            // really seeking is the last Terminal...
+            this.nextProductionName = "";
+            this.nextProductionOccurrence = 0;
+            this.isAtEndOfPath = true;
+        }
+        else {
+            this.nextProductionName = this.ruleStack.pop();
+            this.nextProductionOccurrence = this.occurrenceStack.pop();
+        }
+    };
+    return AbstractNextPossibleTokensWalker;
+}(rest_1.RestWalker));
+exports.AbstractNextPossibleTokensWalker = AbstractNextPossibleTokensWalker;
+var NextAfterTokenWalker = /** @class */ (function (_super) {
+    __extends(NextAfterTokenWalker, _super);
+    function NextAfterTokenWalker(topProd, path) {
+        var _this = _super.call(this, topProd, path) /* istanbul ignore next */ || this;
+        _this.path = path;
+        _this.nextTerminalName = "";
+        _this.nextTerminalOccurrence = 0;
+        _this.nextTerminalName = tokens_public_1.tokenName(_this.path.lastTok);
+        _this.nextTerminalOccurrence = _this.path.lastTokOccurrence;
+        return _this;
+    }
+    NextAfterTokenWalker.prototype.walkTerminal = function (terminal, currRest, prevRest) {
+        if (this.isAtEndOfPath &&
+            tokens_public_1.tokenName(terminal.terminalType) === this.nextTerminalName &&
+            terminal.idx === this.nextTerminalOccurrence &&
+            !this.found) {
+            var fullRest = currRest.concat(prevRest);
+            var restProd = new gast_public_1.Flat({ definition: fullRest });
+            this.possibleTokTypes = first_1.first(restProd);
+            this.found = true;
+        }
+    };
+    return NextAfterTokenWalker;
+}(AbstractNextPossibleTokensWalker));
+exports.NextAfterTokenWalker = NextAfterTokenWalker;
+/**
+ * This walker only "walks" a single "TOP" level in the Grammar Ast, this means
+ * it never "follows" production refs
+ */
+var AbstractNextTerminalAfterProductionWalker = /** @class */ (function (_super) {
+    __extends(AbstractNextTerminalAfterProductionWalker, _super);
+    function AbstractNextTerminalAfterProductionWalker(topRule, occurrence) {
+        var _this = _super.call(this) /* istanbul ignore next */ || this;
+        _this.topRule = topRule;
+        _this.occurrence = occurrence;
+        _this.result = {
+            token: undefined,
+            occurrence: undefined,
+            isEndOfRule: undefined
+        };
+        return _this;
+    }
+    AbstractNextTerminalAfterProductionWalker.prototype.startWalking = function () {
+        this.walk(this.topRule);
+        return this.result;
+    };
+    return AbstractNextTerminalAfterProductionWalker;
+}(rest_1.RestWalker));
+exports.AbstractNextTerminalAfterProductionWalker = AbstractNextTerminalAfterProductionWalker;
+var NextTerminalAfterManyWalker = /** @class */ (function (_super) {
+    __extends(NextTerminalAfterManyWalker, _super);
+    function NextTerminalAfterManyWalker() {
+        return _super !== null && _super.apply(this, arguments) /* istanbul ignore next */ || this;
+    }
+    NextTerminalAfterManyWalker.prototype.walkMany = function (manyProd, currRest, prevRest) {
+        if (manyProd.idx === this.occurrence) {
+            var firstAfterMany = utils_1.first(currRest.concat(prevRest));
+            this.result.isEndOfRule = firstAfterMany === undefined;
+            if (firstAfterMany instanceof gast_public_1.Terminal) {
+                this.result.token = firstAfterMany.terminalType;
+                this.result.occurrence = firstAfterMany.idx;
+            }
+        }
+        else {
+            _super.prototype.walkMany.call(this, manyProd, currRest, prevRest);
+        }
+    };
+    return NextTerminalAfterManyWalker;
+}(AbstractNextTerminalAfterProductionWalker));
+exports.NextTerminalAfterManyWalker = NextTerminalAfterManyWalker;
+var NextTerminalAfterManySepWalker = /** @class */ (function (_super) {
+    __extends(NextTerminalAfterManySepWalker, _super);
+    function NextTerminalAfterManySepWalker() {
+        return _super !== null && _super.apply(this, arguments) /* istanbul ignore next */ || this;
+    }
+    NextTerminalAfterManySepWalker.prototype.walkManySep = function (manySepProd, currRest, prevRest) {
+        if (manySepProd.idx === this.occurrence) {
+            var firstAfterManySep = utils_1.first(currRest.concat(prevRest));
+            this.result.isEndOfRule = firstAfterManySep === undefined;
+            if (firstAfterManySep instanceof gast_public_1.Terminal) {
+                this.result.token = firstAfterManySep.terminalType;
+                this.result.occurrence = firstAfterManySep.idx;
+            }
+        }
+        else {
+            _super.prototype.walkManySep.call(this, manySepProd, currRest, prevRest);
+        }
+    };
+    return NextTerminalAfterManySepWalker;
+}(AbstractNextTerminalAfterProductionWalker));
+exports.NextTerminalAfterManySepWalker = NextTerminalAfterManySepWalker;
+var NextTerminalAfterAtLeastOneWalker = /** @class */ (function (_super) {
+    __extends(NextTerminalAfterAtLeastOneWalker, _super);
+    function NextTerminalAfterAtLeastOneWalker() {
+        return _super !== null && _super.apply(this, arguments) /* istanbul ignore next */ || this;
+    }
+    NextTerminalAfterAtLeastOneWalker.prototype.walkAtLeastOne = function (atLeastOneProd, currRest, prevRest) {
+        if (atLeastOneProd.idx === this.occurrence) {
+            var firstAfterAtLeastOne = utils_1.first(currRest.concat(prevRest));
+            this.result.isEndOfRule = firstAfterAtLeastOne === undefined;
+            if (firstAfterAtLeastOne instanceof gast_public_1.Terminal) {
+                this.result.token = firstAfterAtLeastOne.terminalType;
+                this.result.occurrence = firstAfterAtLeastOne.idx;
+            }
+        }
+        else {
+            _super.prototype.walkAtLeastOne.call(this, atLeastOneProd, currRest, prevRest);
+        }
+    };
+    return NextTerminalAfterAtLeastOneWalker;
+}(AbstractNextTerminalAfterProductionWalker));
+exports.NextTerminalAfterAtLeastOneWalker = NextTerminalAfterAtLeastOneWalker;
+// TODO: reduce code duplication in the AfterWalkers
+var NextTerminalAfterAtLeastOneSepWalker = /** @class */ (function (_super) {
+    __extends(NextTerminalAfterAtLeastOneSepWalker, _super);
+    function NextTerminalAfterAtLeastOneSepWalker() {
+        return _super !== null && _super.apply(this, arguments) /* istanbul ignore next */ || this;
+    }
+    NextTerminalAfterAtLeastOneSepWalker.prototype.walkAtLeastOneSep = function (atleastOneSepProd, currRest, prevRest) {
+        if (atleastOneSepProd.idx === this.occurrence) {
+            var firstAfterfirstAfterAtLeastOneSep = utils_1.first(currRest.concat(prevRest));
+            this.result.isEndOfRule =
+                firstAfterfirstAfterAtLeastOneSep === undefined;
+            if (firstAfterfirstAfterAtLeastOneSep instanceof gast_public_1.Terminal) {
+                this.result.token =
+                    firstAfterfirstAfterAtLeastOneSep.terminalType;
+                this.result.occurrence = firstAfterfirstAfterAtLeastOneSep.idx;
+            }
+        }
+        else {
+            _super.prototype.walkAtLeastOneSep.call(this, atleastOneSepProd, currRest, prevRest);
+        }
+    };
+    return NextTerminalAfterAtLeastOneSepWalker;
+}(AbstractNextTerminalAfterProductionWalker));
+exports.NextTerminalAfterAtLeastOneSepWalker = NextTerminalAfterAtLeastOneSepWalker;
+function possiblePathsFrom(targetDef, maxLength, currPath) {
+    if (currPath === void 0) { currPath = []; }
+    // avoid side effects
+    currPath = utils_1.cloneArr(currPath);
+    var result = [];
+    var i = 0;
+    function remainingPathWith(nextDef) {
+        return nextDef.concat(utils_1.drop(targetDef, i + 1));
+    }
+    function getAlternativesForProd(definition) {
+        var alternatives = possiblePathsFrom(remainingPathWith(definition), maxLength, currPath);
+        return result.concat(alternatives);
+    }
+    /**
+     * Mandatory productions will halt the loop as the paths computed from their recursive calls will already contain the
+     * following (rest) of the targetDef.
+     *
+     * For optional productions (Option/Repetition/...) the loop will continue to represent the paths that do not include the
+     * the optional production.
+     */
+    while (currPath.length < maxLength && i < targetDef.length) {
+        var prod = targetDef[i];
+        /* istanbul ignore else */
+        if (prod instanceof gast_public_1.Flat) {
+            return getAlternativesForProd(prod.definition);
+        }
+        else if (prod instanceof gast_public_1.NonTerminal) {
+            return getAlternativesForProd(prod.definition);
+        }
+        else if (prod instanceof gast_public_1.Option) {
+            result = getAlternativesForProd(prod.definition);
+        }
+        else if (prod instanceof gast_public_1.RepetitionMandatory) {
+            var newDef = prod.definition.concat([
+                new gast_public_1.Repetition({
+                    definition: prod.definition
+                })
+            ]);
+            return getAlternativesForProd(newDef);
+        }
+        else if (prod instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+            var newDef = [
+                new gast_public_1.Flat({ definition: prod.definition }),
+                new gast_public_1.Repetition({
+                    definition: [
+                        new gast_public_1.Terminal({ terminalType: prod.separator })
+                    ].concat(prod.definition)
+                })
+            ];
+            return getAlternativesForProd(newDef);
+        }
+        else if (prod instanceof gast_public_1.RepetitionWithSeparator) {
+            var newDef = prod.definition.concat([
+                new gast_public_1.Repetition({
+                    definition: [
+                        new gast_public_1.Terminal({ terminalType: prod.separator })
+                    ].concat(prod.definition)
+                })
+            ]);
+            result = getAlternativesForProd(newDef);
+        }
+        else if (prod instanceof gast_public_1.Repetition) {
+            var newDef = prod.definition.concat([
+                new gast_public_1.Repetition({
+                    definition: prod.definition
+                })
+            ]);
+            result = getAlternativesForProd(newDef);
+        }
+        else if (prod instanceof gast_public_1.Alternation) {
+            utils_1.forEach(prod.definition, function (currAlt) {
+                result = getAlternativesForProd(currAlt.definition);
+            });
+            return result;
+        }
+        else if (prod instanceof gast_public_1.Terminal) {
+            currPath.push(prod.terminalType);
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+        i++;
+    }
+    result.push({
+        partialPath: currPath,
+        suffixDef: utils_1.drop(targetDef, i)
+    });
+    return result;
+}
+exports.possiblePathsFrom = possiblePathsFrom;
+function nextPossibleTokensAfter(initialDef, tokenVector, tokMatcher, maxLookAhead) {
+    var EXIT_NON_TERMINAL = "EXIT_NONE_TERMINAL";
+    // to avoid creating a new Array each time.
+    var EXIT_NON_TERMINAL_ARR = [EXIT_NON_TERMINAL];
+    var EXIT_ALTERNATIVE = "EXIT_ALTERNATIVE";
+    var foundCompletePath = false;
+    var tokenVectorLength = tokenVector.length;
+    var minimalAlternativesIndex = tokenVectorLength - maxLookAhead - 1;
+    var result = [];
+    var possiblePaths = [];
+    possiblePaths.push({
+        idx: -1,
+        def: initialDef,
+        ruleStack: [],
+        occurrenceStack: []
+    });
+    while (!utils_1.isEmpty(possiblePaths)) {
+        var currPath = possiblePaths.pop();
+        // skip alternatives if no more results can be found (assuming deterministic grammar with fixed lookahead)
+        if (currPath === EXIT_ALTERNATIVE) {
+            if (foundCompletePath &&
+                utils_1.last(possiblePaths).idx <= minimalAlternativesIndex) {
+                // remove irrelevant alternative
+                possiblePaths.pop();
+            }
+            continue;
+        }
+        var currDef = currPath.def;
+        var currIdx = currPath.idx;
+        var currRuleStack = currPath.ruleStack;
+        var currOccurrenceStack = currPath.occurrenceStack;
+        // For Example: an empty path could exist in a valid grammar in the case of an EMPTY_ALT
+        if (utils_1.isEmpty(currDef)) {
+            continue;
+        }
+        var prod = currDef[0];
+        /* istanbul ignore else */
+        if (prod === EXIT_NON_TERMINAL) {
+            var nextPath = {
+                idx: currIdx,
+                def: utils_1.drop(currDef),
+                ruleStack: utils_1.dropRight(currRuleStack),
+                occurrenceStack: utils_1.dropRight(currOccurrenceStack)
+            };
+            possiblePaths.push(nextPath);
+        }
+        else if (prod instanceof gast_public_1.Terminal) {
+            /* istanbul ignore else */
+            if (currIdx < tokenVectorLength - 1) {
+                var nextIdx = currIdx + 1;
+                var actualToken = tokenVector[nextIdx];
+                if (tokMatcher(actualToken, prod.terminalType)) {
+                    var nextPath = {
+                        idx: nextIdx,
+                        def: utils_1.drop(currDef),
+                        ruleStack: currRuleStack,
+                        occurrenceStack: currOccurrenceStack
+                    };
+                    possiblePaths.push(nextPath);
+                }
+                // end of the line
+            }
+            else if (currIdx === tokenVectorLength - 1) {
+                // IGNORE ABOVE ELSE
+                result.push({
+                    nextTokenType: prod.terminalType,
+                    nextTokenOccurrence: prod.idx,
+                    ruleStack: currRuleStack,
+                    occurrenceStack: currOccurrenceStack
+                });
+                foundCompletePath = true;
+            }
+            else {
+                throw Error("non exhaustive match");
+            }
+        }
+        else if (prod instanceof gast_public_1.NonTerminal) {
+            var newRuleStack = utils_1.cloneArr(currRuleStack);
+            newRuleStack.push(prod.nonTerminalName);
+            var newOccurrenceStack = utils_1.cloneArr(currOccurrenceStack);
+            newOccurrenceStack.push(prod.idx);
+            var nextPath = {
+                idx: currIdx,
+                def: prod.definition.concat(EXIT_NON_TERMINAL_ARR, utils_1.drop(currDef)),
+                ruleStack: newRuleStack,
+                occurrenceStack: newOccurrenceStack
+            };
+            possiblePaths.push(nextPath);
+        }
+        else if (prod instanceof gast_public_1.Option) {
+            // the order of alternatives is meaningful, FILO (Last path will be traversed first).
+            var nextPathWithout = {
+                idx: currIdx,
+                def: utils_1.drop(currDef),
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPathWithout);
+            // required marker to avoid backtracking paths whose higher priority alternatives already matched
+            possiblePaths.push(EXIT_ALTERNATIVE);
+            var nextPathWith = {
+                idx: currIdx,
+                def: prod.definition.concat(utils_1.drop(currDef)),
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPathWith);
+        }
+        else if (prod instanceof gast_public_1.RepetitionMandatory) {
+            // TODO:(THE NEW operators here take a while...) (convert once?)
+            var secondIteration = new gast_public_1.Repetition({
+                definition: prod.definition,
+                idx: prod.idx
+            });
+            var nextDef = prod.definition.concat([secondIteration], utils_1.drop(currDef));
+            var nextPath = {
+                idx: currIdx,
+                def: nextDef,
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPath);
+        }
+        else if (prod instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+            // TODO:(THE NEW operators here take a while...) (convert once?)
+            var separatorGast = new gast_public_1.Terminal({
+                terminalType: prod.separator
+            });
+            var secondIteration = new gast_public_1.Repetition({
+                definition: [separatorGast].concat(prod.definition),
+                idx: prod.idx
+            });
+            var nextDef = prod.definition.concat([secondIteration], utils_1.drop(currDef));
+            var nextPath = {
+                idx: currIdx,
+                def: nextDef,
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPath);
+        }
+        else if (prod instanceof gast_public_1.RepetitionWithSeparator) {
+            // the order of alternatives is meaningful, FILO (Last path will be traversed first).
+            var nextPathWithout = {
+                idx: currIdx,
+                def: utils_1.drop(currDef),
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPathWithout);
+            // required marker to avoid backtracking paths whose higher priority alternatives already matched
+            possiblePaths.push(EXIT_ALTERNATIVE);
+            var separatorGast = new gast_public_1.Terminal({
+                terminalType: prod.separator
+            });
+            var nthRepetition = new gast_public_1.Repetition({
+                definition: [separatorGast].concat(prod.definition),
+                idx: prod.idx
+            });
+            var nextDef = prod.definition.concat([nthRepetition], utils_1.drop(currDef));
+            var nextPathWith = {
+                idx: currIdx,
+                def: nextDef,
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPathWith);
+        }
+        else if (prod instanceof gast_public_1.Repetition) {
+            // the order of alternatives is meaningful, FILO (Last path will be traversed first).
+            var nextPathWithout = {
+                idx: currIdx,
+                def: utils_1.drop(currDef),
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPathWithout);
+            // required marker to avoid backtracking paths whose higher priority alternatives already matched
+            possiblePaths.push(EXIT_ALTERNATIVE);
+            // TODO: an empty repetition will cause infinite loops here, will the parser detect this in selfAnalysis?
+            var nthRepetition = new gast_public_1.Repetition({
+                definition: prod.definition,
+                idx: prod.idx
+            });
+            var nextDef = prod.definition.concat([nthRepetition], utils_1.drop(currDef));
+            var nextPathWith = {
+                idx: currIdx,
+                def: nextDef,
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            };
+            possiblePaths.push(nextPathWith);
+        }
+        else if (prod instanceof gast_public_1.Alternation) {
+            // the order of alternatives is meaningful, FILO (Last path will be traversed first).
+            for (var i = prod.definition.length - 1; i >= 0; i--) {
+                var currAlt = prod.definition[i];
+                var currAltPath = {
+                    idx: currIdx,
+                    def: currAlt.definition.concat(utils_1.drop(currDef)),
+                    ruleStack: currRuleStack,
+                    occurrenceStack: currOccurrenceStack
+                };
+                possiblePaths.push(currAltPath);
+                possiblePaths.push(EXIT_ALTERNATIVE);
+            }
+        }
+        else if (prod instanceof gast_public_1.Flat) {
+            possiblePaths.push({
+                idx: currIdx,
+                def: prod.definition.concat(utils_1.drop(currDef)),
+                ruleStack: currRuleStack,
+                occurrenceStack: currOccurrenceStack
+            });
+        }
+        else if (prod instanceof gast_public_1.Rule) {
+            // last because we should only encounter at most a single one of these per invocation.
+            possiblePaths.push(expandTopLevelRule(prod, currIdx, currRuleStack, currOccurrenceStack));
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+    }
+    return result;
+}
+exports.nextPossibleTokensAfter = nextPossibleTokensAfter;
+function expandTopLevelRule(topRule, currIdx, currRuleStack, currOccurrenceStack) {
+    var newRuleStack = utils_1.cloneArr(currRuleStack);
+    newRuleStack.push(topRule.name);
+    var newCurrOccurrenceStack = utils_1.cloneArr(currOccurrenceStack);
+    // top rule is always assumed to have been called with occurrence index 1
+    newCurrOccurrenceStack.push(1);
+    return {
+        idx: currIdx,
+        def: topRule.definition,
+        ruleStack: newRuleStack,
+        occurrenceStack: newCurrOccurrenceStack
+    };
+}
+//# sourceMappingURL=interpreter.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/keys.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/keys.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// Lookahead keys are 32Bit integers in the form
+// TTTTTTTTT-ZZZZZZZZZZZZZZZ-YYYY-XXXX
+// XXXX -> Occurrence Index bitmap.
+// YYYY -> DSL Method Name bitmap.
+// ZZZZZZZZZZZZZZZ -> Rule short Index bitmap.
+// TTTTTTTTT -> alternation alternative index bitmap
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BITS_FOR_METHOD_IDX = 4;
+exports.BITS_FOR_OCCURRENCE_IDX = 4;
+exports.BITS_FOR_RULE_IDX = 24;
+// TODO: validation, this means that there may at most 2^8 --> 256 alternatives for an alternation.
+exports.BITS_FOR_ALT_IDX = 8;
+// short string used as part of mapping keys.
+// being short improves the performance when composing KEYS for maps out of these
+// The 5 - 8 bits (16 possible values, are reserved for the DSL method indices)
+/* tslint:disable */
+exports.OR_IDX = 1 << exports.BITS_FOR_METHOD_IDX;
+exports.OPTION_IDX = 2 << exports.BITS_FOR_METHOD_IDX;
+exports.MANY_IDX = 3 << exports.BITS_FOR_METHOD_IDX;
+exports.AT_LEAST_ONE_IDX = 4 << exports.BITS_FOR_METHOD_IDX;
+exports.MANY_SEP_IDX = 5 << exports.BITS_FOR_METHOD_IDX;
+exports.AT_LEAST_ONE_SEP_IDX = 6 << exports.BITS_FOR_METHOD_IDX;
+/* tslint:enable */
+// this actually returns a number, but it is always used as a string (object prop key)
+function getKeyForAutomaticLookahead(ruleIdx, dslMethodIdx, occurrence) {
+    /* tslint:disable */
+    return occurrence | dslMethodIdx | ruleIdx;
+    /* tslint:enable */
+}
+exports.getKeyForAutomaticLookahead = getKeyForAutomaticLookahead;
+var BITS_START_FOR_ALT_IDX = 32 - exports.BITS_FOR_ALT_IDX;
+function getKeyForAltIndex(ruleIdx, dslMethodIdx, occurrence, altIdx) {
+    /* tslint:disable */
+    // alternative indices are zero based, thus must always add one (turn on one bit) to guarantee uniqueness.
+    var altIdxBitMap = (altIdx + 1) << BITS_START_FOR_ALT_IDX;
+    return (getKeyForAutomaticLookahead(ruleIdx, dslMethodIdx, occurrence) |
+        altIdxBitMap);
+    /* tslint:enable */
+}
+exports.getKeyForAltIndex = getKeyForAltIndex;
+//# sourceMappingURL=keys.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/lookahead.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/lookahead.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var interpreter_1 = __webpack_require__(/*! ./interpreter */ "./node_modules/chevrotain/lib/src/parse/grammar/interpreter.js");
+var rest_1 = __webpack_require__(/*! ./rest */ "./node_modules/chevrotain/lib/src/parse/grammar/rest.js");
+var tokens_1 = __webpack_require__(/*! ../../scan/tokens */ "./node_modules/chevrotain/lib/src/scan/tokens.js");
+var gast_public_1 = __webpack_require__(/*! ./gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+var gast_visitor_public_1 = __webpack_require__(/*! ./gast/gast_visitor_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js");
+var PROD_TYPE;
+(function (PROD_TYPE) {
+    PROD_TYPE[PROD_TYPE["OPTION"] = 0] = "OPTION";
+    PROD_TYPE[PROD_TYPE["REPETITION"] = 1] = "REPETITION";
+    PROD_TYPE[PROD_TYPE["REPETITION_MANDATORY"] = 2] = "REPETITION_MANDATORY";
+    PROD_TYPE[PROD_TYPE["REPETITION_MANDATORY_WITH_SEPARATOR"] = 3] = "REPETITION_MANDATORY_WITH_SEPARATOR";
+    PROD_TYPE[PROD_TYPE["REPETITION_WITH_SEPARATOR"] = 4] = "REPETITION_WITH_SEPARATOR";
+    PROD_TYPE[PROD_TYPE["ALTERNATION"] = 5] = "ALTERNATION";
+})(PROD_TYPE = exports.PROD_TYPE || (exports.PROD_TYPE = {}));
+function getProdType(prod) {
+    /* istanbul ignore else */
+    if (prod instanceof gast_public_1.Option) {
+        return PROD_TYPE.OPTION;
+    }
+    else if (prod instanceof gast_public_1.Repetition) {
+        return PROD_TYPE.REPETITION;
+    }
+    else if (prod instanceof gast_public_1.RepetitionMandatory) {
+        return PROD_TYPE.REPETITION_MANDATORY;
+    }
+    else if (prod instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+        return PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR;
+    }
+    else if (prod instanceof gast_public_1.RepetitionWithSeparator) {
+        return PROD_TYPE.REPETITION_WITH_SEPARATOR;
+    }
+    else if (prod instanceof gast_public_1.Alternation) {
+        return PROD_TYPE.ALTERNATION;
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.getProdType = getProdType;
+function buildLookaheadFuncForOr(occurrence, ruleGrammar, k, hasPredicates, dynamicTokensEnabled, laFuncBuilder) {
+    var lookAheadPaths = getLookaheadPathsForOr(occurrence, ruleGrammar, k);
+    var tokenMatcher = areTokenCategoriesNotUsed(lookAheadPaths)
+        ? tokens_1.tokenStructuredMatcherNoCategories
+        : tokens_1.tokenStructuredMatcher;
+    return laFuncBuilder(lookAheadPaths, hasPredicates, tokenMatcher, dynamicTokensEnabled);
+}
+exports.buildLookaheadFuncForOr = buildLookaheadFuncForOr;
+/**
+ *  When dealing with an Optional production (OPTION/MANY/2nd iteration of AT_LEAST_ONE/...) we need to compare
+ *  the lookahead "inside" the production and the lookahead immediately "after" it in the same top level rule (context free).
+ *
+ *  Example: given a production:
+ *  ABC(DE)?DF
+ *
+ *  The optional '(DE)?' should only be entered if we see 'DE'. a single Token 'D' is not sufficient to distinguish between the two
+ *  alternatives.
+ *
+ *  @returns A Lookahead function which will return true IFF the parser should parse the Optional production.
+ */
+function buildLookaheadFuncForOptionalProd(occurrence, ruleGrammar, k, dynamicTokensEnabled, prodType, lookaheadBuilder) {
+    var lookAheadPaths = getLookaheadPathsForOptionalProd(occurrence, ruleGrammar, prodType, k);
+    var tokenMatcher = areTokenCategoriesNotUsed(lookAheadPaths)
+        ? tokens_1.tokenStructuredMatcherNoCategories
+        : tokens_1.tokenStructuredMatcher;
+    return lookaheadBuilder(lookAheadPaths[0], tokenMatcher, dynamicTokensEnabled);
+}
+exports.buildLookaheadFuncForOptionalProd = buildLookaheadFuncForOptionalProd;
+function buildAlternativesLookAheadFunc(alts, hasPredicates, tokenMatcher, dynamicTokensEnabled) {
+    var numOfAlts = alts.length;
+    var areAllOneTokenLookahead = utils_1.every(alts, function (currAlt) {
+        return utils_1.every(currAlt, function (currPath) {
+            return currPath.length === 1;
+        });
+    });
+    // This version takes into account the predicates as well.
+    if (hasPredicates) {
+        /**
+         * @returns {number} - The chosen alternative index
+         */
+        return function (orAlts) {
+            // unfortunately the predicates must be extracted every single time
+            // as they cannot be cached due to references to parameters(vars) which are no longer valid.
+            // note that in the common case of no predicates, no cpu time will be wasted on this (see else block)
+            var predicates = utils_1.map(orAlts, function (currAlt) { return currAlt.GATE; });
+            for (var t = 0; t < numOfAlts; t++) {
+                var currAlt = alts[t];
+                var currNumOfPaths = currAlt.length;
+                var currPredicate = predicates[t];
+                if (currPredicate !== undefined &&
+                    currPredicate.call(this) === false) {
+                    // if the predicate does not match there is no point in checking the paths
+                    continue;
+                }
+                nextPath: for (var j = 0; j < currNumOfPaths; j++) {
+                    var currPath = currAlt[j];
+                    var currPathLength = currPath.length;
+                    for (var i = 0; i < currPathLength; i++) {
+                        var nextToken = this.LA(i + 1);
+                        if (tokenMatcher(nextToken, currPath[i]) === false) {
+                            // mismatch in current path
+                            // try the next pth
+                            continue nextPath;
+                        }
+                    }
+                    // found a full path that matches.
+                    // this will also work for an empty ALT as the loop will be skipped
+                    return t;
+                }
+                // none of the paths for the current alternative matched
+                // try the next alternative
+            }
+            // none of the alternatives could be matched
+            return undefined;
+        };
+    }
+    else if (areAllOneTokenLookahead && !dynamicTokensEnabled) {
+        // optimized (common) case of all the lookaheads paths requiring only
+        // a single token lookahead. These Optimizations cannot work if dynamically defined Tokens are used.
+        var singleTokenAlts = utils_1.map(alts, function (currAlt) {
+            return utils_1.flatten(currAlt);
+        });
+        var choiceToAlt_1 = utils_1.reduce(singleTokenAlts, function (result, currAlt, idx) {
+            utils_1.forEach(currAlt, function (currTokType) {
+                if (!utils_1.has(result, currTokType.tokenTypeIdx)) {
+                    result[currTokType.tokenTypeIdx] = idx;
+                }
+                utils_1.forEach(currTokType.categoryMatches, function (currExtendingType) {
+                    if (!utils_1.has(result, currExtendingType)) {
+                        result[currExtendingType] = idx;
+                    }
+                });
+            });
+            return result;
+        }, []);
+        /**
+         * @returns {number} - The chosen alternative index
+         */
+        return function () {
+            var nextToken = this.LA(1);
+            return choiceToAlt_1[nextToken.tokenTypeIdx];
+        };
+    }
+    else {
+        // optimized lookahead without needing to check the predicates at all.
+        // this causes code duplication which is intentional to improve performance.
+        /**
+         * @returns {number} - The chosen alternative index
+         */
+        return function () {
+            for (var t = 0; t < numOfAlts; t++) {
+                var currAlt = alts[t];
+                var currNumOfPaths = currAlt.length;
+                nextPath: for (var j = 0; j < currNumOfPaths; j++) {
+                    var currPath = currAlt[j];
+                    var currPathLength = currPath.length;
+                    for (var i = 0; i < currPathLength; i++) {
+                        var nextToken = this.LA(i + 1);
+                        if (tokenMatcher(nextToken, currPath[i]) === false) {
+                            // mismatch in current path
+                            // try the next pth
+                            continue nextPath;
+                        }
+                    }
+                    // found a full path that matches.
+                    // this will also work for an empty ALT as the loop will be skipped
+                    return t;
+                }
+                // none of the paths for the current alternative matched
+                // try the next alternative
+            }
+            // none of the alternatives could be matched
+            return undefined;
+        };
+    }
+}
+exports.buildAlternativesLookAheadFunc = buildAlternativesLookAheadFunc;
+function buildSingleAlternativeLookaheadFunction(alt, tokenMatcher, dynamicTokensEnabled) {
+    var areAllOneTokenLookahead = utils_1.every(alt, function (currPath) {
+        return currPath.length === 1;
+    });
+    var numOfPaths = alt.length;
+    // optimized (common) case of all the lookaheads paths requiring only
+    // a single token lookahead.
+    if (areAllOneTokenLookahead && !dynamicTokensEnabled) {
+        var singleTokensTypes = utils_1.flatten(alt);
+        if (singleTokensTypes.length === 1 &&
+            utils_1.isEmpty(singleTokensTypes[0].categoryMatches)) {
+            var expectedTokenType = singleTokensTypes[0];
+            var expectedTokenUniqueKey_1 = expectedTokenType.tokenTypeIdx;
+            return function () {
+                return this.LA(1).tokenTypeIdx === expectedTokenUniqueKey_1;
+            };
+        }
+        else {
+            var choiceToAlt_2 = utils_1.reduce(singleTokensTypes, function (result, currTokType, idx) {
+                result[currTokType.tokenTypeIdx] = true;
+                utils_1.forEach(currTokType.categoryMatches, function (currExtendingType) {
+                    result[currExtendingType] = true;
+                });
+                return result;
+            }, []);
+            return function () {
+                var nextToken = this.LA(1);
+                return choiceToAlt_2[nextToken.tokenTypeIdx] === true;
+            };
+        }
+    }
+    else {
+        return function () {
+            nextPath: for (var j = 0; j < numOfPaths; j++) {
+                var currPath = alt[j];
+                var currPathLength = currPath.length;
+                for (var i = 0; i < currPathLength; i++) {
+                    var nextToken = this.LA(i + 1);
+                    if (tokenMatcher(nextToken, currPath[i]) === false) {
+                        // mismatch in current path
+                        // try the next pth
+                        continue nextPath;
+                    }
+                }
+                // found a full path that matches.
+                return true;
+            }
+            // none of the paths matched
+            return false;
+        };
+    }
+}
+exports.buildSingleAlternativeLookaheadFunction = buildSingleAlternativeLookaheadFunction;
+var RestDefinitionFinderWalker = /** @class */ (function (_super) {
+    __extends(RestDefinitionFinderWalker, _super);
+    function RestDefinitionFinderWalker(topProd, targetOccurrence, targetProdType) {
+        var _this = _super.call(this) || this;
+        _this.topProd = topProd;
+        _this.targetOccurrence = targetOccurrence;
+        _this.targetProdType = targetProdType;
+        return _this;
+    }
+    RestDefinitionFinderWalker.prototype.startWalking = function () {
+        this.walk(this.topProd);
+        return this.restDef;
+    };
+    RestDefinitionFinderWalker.prototype.checkIsTarget = function (node, expectedProdType, currRest, prevRest) {
+        if (node.idx === this.targetOccurrence &&
+            this.targetProdType === expectedProdType) {
+            this.restDef = currRest.concat(prevRest);
+            return true;
+        }
+        // performance optimization, do not iterate over the entire Grammar ast after we have found the target
+        return false;
+    };
+    RestDefinitionFinderWalker.prototype.walkOption = function (optionProd, currRest, prevRest) {
+        if (!this.checkIsTarget(optionProd, PROD_TYPE.OPTION, currRest, prevRest)) {
+            _super.prototype.walkOption.call(this, optionProd, currRest, prevRest);
+        }
+    };
+    RestDefinitionFinderWalker.prototype.walkAtLeastOne = function (atLeastOneProd, currRest, prevRest) {
+        if (!this.checkIsTarget(atLeastOneProd, PROD_TYPE.REPETITION_MANDATORY, currRest, prevRest)) {
+            _super.prototype.walkOption.call(this, atLeastOneProd, currRest, prevRest);
+        }
+    };
+    RestDefinitionFinderWalker.prototype.walkAtLeastOneSep = function (atLeastOneSepProd, currRest, prevRest) {
+        if (!this.checkIsTarget(atLeastOneSepProd, PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR, currRest, prevRest)) {
+            _super.prototype.walkOption.call(this, atLeastOneSepProd, currRest, prevRest);
+        }
+    };
+    RestDefinitionFinderWalker.prototype.walkMany = function (manyProd, currRest, prevRest) {
+        if (!this.checkIsTarget(manyProd, PROD_TYPE.REPETITION, currRest, prevRest)) {
+            _super.prototype.walkOption.call(this, manyProd, currRest, prevRest);
+        }
+    };
+    RestDefinitionFinderWalker.prototype.walkManySep = function (manySepProd, currRest, prevRest) {
+        if (!this.checkIsTarget(manySepProd, PROD_TYPE.REPETITION_WITH_SEPARATOR, currRest, prevRest)) {
+            _super.prototype.walkOption.call(this, manySepProd, currRest, prevRest);
+        }
+    };
+    return RestDefinitionFinderWalker;
+}(rest_1.RestWalker));
+/**
+ * Returns the definition of a target production in a top level level rule.
+ */
+var InsideDefinitionFinderVisitor = /** @class */ (function (_super) {
+    __extends(InsideDefinitionFinderVisitor, _super);
+    function InsideDefinitionFinderVisitor(targetOccurrence, targetProdType) {
+        var _this = _super.call(this) || this;
+        _this.targetOccurrence = targetOccurrence;
+        _this.targetProdType = targetProdType;
+        _this.result = [];
+        return _this;
+    }
+    InsideDefinitionFinderVisitor.prototype.checkIsTarget = function (node, expectedProdName) {
+        if (node.idx === this.targetOccurrence &&
+            this.targetProdType === expectedProdName) {
+            this.result = node.definition;
+        }
+    };
+    InsideDefinitionFinderVisitor.prototype.visitOption = function (node) {
+        this.checkIsTarget(node, PROD_TYPE.OPTION);
+    };
+    InsideDefinitionFinderVisitor.prototype.visitRepetition = function (node) {
+        this.checkIsTarget(node, PROD_TYPE.REPETITION);
+    };
+    InsideDefinitionFinderVisitor.prototype.visitRepetitionMandatory = function (node) {
+        this.checkIsTarget(node, PROD_TYPE.REPETITION_MANDATORY);
+    };
+    InsideDefinitionFinderVisitor.prototype.visitRepetitionMandatoryWithSeparator = function (node) {
+        this.checkIsTarget(node, PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR);
+    };
+    InsideDefinitionFinderVisitor.prototype.visitRepetitionWithSeparator = function (node) {
+        this.checkIsTarget(node, PROD_TYPE.REPETITION_WITH_SEPARATOR);
+    };
+    InsideDefinitionFinderVisitor.prototype.visitAlternation = function (node) {
+        this.checkIsTarget(node, PROD_TYPE.ALTERNATION);
+    };
+    return InsideDefinitionFinderVisitor;
+}(gast_visitor_public_1.GAstVisitor));
+function lookAheadSequenceFromAlternatives(altsDefs, k) {
+    function getOtherPaths(pathsAndSuffixes, filterIdx) {
+        return utils_1.reduce(pathsAndSuffixes, function (result, currPathsAndSuffixes, currIdx) {
+            if (currIdx !== filterIdx) {
+                var currPartialPaths = utils_1.map(currPathsAndSuffixes, function (singlePathAndSuffix) { return singlePathAndSuffix.partialPath; });
+                return result.concat(currPartialPaths);
+            }
+            return result;
+        }, []);
+    }
+    function isUniquePrefix(arr, item) {
+        return (utils_1.find(arr, function (currOtherPath) {
+            return utils_1.every(item, function (currPathTok, idx) { return currPathTok === currOtherPath[idx]; });
+        }) === undefined);
+    }
+    function initializeArrayOfArrays(size) {
+        var result = [];
+        for (var i = 0; i < size; i++) {
+            result.push([]);
+        }
+        return result;
+    }
+    var partialAlts = utils_1.map(altsDefs, function (currAlt) { return interpreter_1.possiblePathsFrom([currAlt], 1); });
+    var finalResult = initializeArrayOfArrays(partialAlts.length);
+    var newData = partialAlts;
+    // maxLookahead loop
+    for (var pathLength = 1; pathLength <= k; pathLength++) {
+        var currDataset = newData;
+        newData = initializeArrayOfArrays(currDataset.length);
+        // alternatives loop
+        for (var resultIdx = 0; resultIdx < currDataset.length; resultIdx++) {
+            var currAltPathsAndSuffixes = currDataset[resultIdx];
+            var otherPaths = getOtherPaths(currDataset, resultIdx);
+            // paths in current alternative loop
+            for (var currPathIdx = 0; currPathIdx < currAltPathsAndSuffixes.length; currPathIdx++) {
+                var currPathPrefix = currAltPathsAndSuffixes[currPathIdx].partialPath;
+                var suffixDef = currAltPathsAndSuffixes[currPathIdx].suffixDef;
+                var isUnique = isUniquePrefix(otherPaths, currPathPrefix);
+                // even if a path is not unique, but there are no longer alternatives to try
+                // or if we have reached the maximum lookahead (k) permitted.
+                if (isUnique ||
+                    utils_1.isEmpty(suffixDef) ||
+                    currPathPrefix.length === k) {
+                    var currAltResult = finalResult[resultIdx];
+                    if (!containsPath(currAltResult, currPathPrefix)) {
+                        currAltResult.push(currPathPrefix);
+                    }
+                }
+                else {
+                    var newPartialPathsAndSuffixes = interpreter_1.possiblePathsFrom(suffixDef, pathLength + 1, currPathPrefix);
+                    newData[resultIdx] = newData[resultIdx].concat(newPartialPathsAndSuffixes);
+                }
+            }
+        }
+    }
+    return finalResult;
+}
+exports.lookAheadSequenceFromAlternatives = lookAheadSequenceFromAlternatives;
+function getLookaheadPathsForOr(occurrence, ruleGrammar, k) {
+    var visitor = new InsideDefinitionFinderVisitor(occurrence, PROD_TYPE.ALTERNATION);
+    ruleGrammar.accept(visitor);
+    return lookAheadSequenceFromAlternatives(visitor.result, k);
+}
+exports.getLookaheadPathsForOr = getLookaheadPathsForOr;
+function getLookaheadPathsForOptionalProd(occurrence, ruleGrammar, prodType, k) {
+    var insideDefVisitor = new InsideDefinitionFinderVisitor(occurrence, prodType);
+    ruleGrammar.accept(insideDefVisitor);
+    var insideDef = insideDefVisitor.result;
+    var afterDefWalker = new RestDefinitionFinderWalker(ruleGrammar, occurrence, prodType);
+    var afterDef = afterDefWalker.startWalking();
+    var insideFlat = new gast_public_1.Flat({ definition: insideDef });
+    var afterFlat = new gast_public_1.Flat({ definition: afterDef });
+    return lookAheadSequenceFromAlternatives([insideFlat, afterFlat], k);
+}
+exports.getLookaheadPathsForOptionalProd = getLookaheadPathsForOptionalProd;
+function containsPath(alternative, path) {
+    var found = utils_1.find(alternative, function (otherPath) {
+        return (path.length === otherPath.length &&
+            utils_1.every(path, function (targetItem, idx) {
+                return targetItem === otherPath[idx];
+            }));
+    });
+    return found !== undefined;
+}
+exports.containsPath = containsPath;
+function isStrictPrefixOfPath(prefix, other) {
+    return (prefix.length < other.length &&
+        utils_1.every(prefix, function (tokType, idx) {
+            return tokType === other[idx];
+        }));
+}
+exports.isStrictPrefixOfPath = isStrictPrefixOfPath;
+function areTokenCategoriesNotUsed(lookAheadPaths) {
+    return utils_1.every(lookAheadPaths, function (singleAltPaths) {
+        return utils_1.every(singleAltPaths, function (singlePath) {
+            return utils_1.every(singlePath, function (token) { return utils_1.isEmpty(token.categoryMatches); });
+        });
+    });
+}
+exports.areTokenCategoriesNotUsed = areTokenCategoriesNotUsed;
+//# sourceMappingURL=lookahead.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/resolver.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/resolver.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var parser_1 = __webpack_require__(/*! ../parser/parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var gast_visitor_public_1 = __webpack_require__(/*! ./gast/gast_visitor_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_visitor_public.js");
+function resolveGrammar(topLevels, errMsgProvider) {
+    var refResolver = new GastRefResolverVisitor(topLevels, errMsgProvider);
+    refResolver.resolveRefs();
+    return refResolver.errors;
+}
+exports.resolveGrammar = resolveGrammar;
+var GastRefResolverVisitor = /** @class */ (function (_super) {
+    __extends(GastRefResolverVisitor, _super);
+    function GastRefResolverVisitor(nameToTopRule, errMsgProvider) {
+        var _this = _super.call(this) || this;
+        _this.nameToTopRule = nameToTopRule;
+        _this.errMsgProvider = errMsgProvider;
+        _this.errors = [];
+        return _this;
+    }
+    GastRefResolverVisitor.prototype.resolveRefs = function () {
+        var _this = this;
+        utils_1.forEach(this.nameToTopRule.values(), function (prod) {
+            _this.currTopLevel = prod;
+            prod.accept(_this);
+        });
+    };
+    GastRefResolverVisitor.prototype.visitNonTerminal = function (node) {
+        var ref = this.nameToTopRule.get(node.nonTerminalName);
+        if (!ref) {
+            var msg = this.errMsgProvider.buildRuleNotFoundError(this.currTopLevel, node);
+            this.errors.push({
+                message: msg,
+                type: parser_1.ParserDefinitionErrorType.UNRESOLVED_SUBRULE_REF,
+                ruleName: this.currTopLevel.name,
+                unresolvedRefName: node.nonTerminalName
+            });
+        }
+        else {
+            node.referencedRule = ref;
+        }
+    };
+    return GastRefResolverVisitor;
+}(gast_visitor_public_1.GAstVisitor));
+exports.GastRefResolverVisitor = GastRefResolverVisitor;
+//# sourceMappingURL=resolver.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/grammar/rest.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/grammar/rest.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var gast_public_1 = __webpack_require__(/*! ./gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+/**
+ *  A Grammar Walker that computes the "remaining" grammar "after" a productions in the grammar.
+ */
+var RestWalker = /** @class */ (function () {
+    function RestWalker() {
+    }
+    RestWalker.prototype.walk = function (prod, prevRest) {
+        var _this = this;
+        if (prevRest === void 0) { prevRest = []; }
+        utils_1.forEach(prod.definition, function (subProd, index) {
+            var currRest = utils_1.drop(prod.definition, index + 1);
+            /* istanbul ignore else */
+            if (subProd instanceof gast_public_1.NonTerminal) {
+                _this.walkProdRef(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.Terminal) {
+                _this.walkTerminal(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.Flat) {
+                _this.walkFlat(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.Option) {
+                _this.walkOption(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.RepetitionMandatory) {
+                _this.walkAtLeastOne(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.RepetitionMandatoryWithSeparator) {
+                _this.walkAtLeastOneSep(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.RepetitionWithSeparator) {
+                _this.walkManySep(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.Repetition) {
+                _this.walkMany(subProd, currRest, prevRest);
+            }
+            else if (subProd instanceof gast_public_1.Alternation) {
+                _this.walkOr(subProd, currRest, prevRest);
+            }
+            else {
+                throw Error("non exhaustive match");
+            }
+        });
+    };
+    RestWalker.prototype.walkTerminal = function (terminal, currRest, prevRest) { };
+    RestWalker.prototype.walkProdRef = function (refProd, currRest, prevRest) { };
+    RestWalker.prototype.walkFlat = function (flatProd, currRest, prevRest) {
+        // ABCDEF => after the D the rest is EF
+        var fullOrRest = currRest.concat(prevRest);
+        this.walk(flatProd, fullOrRest);
+    };
+    RestWalker.prototype.walkOption = function (optionProd, currRest, prevRest) {
+        // ABC(DE)?F => after the (DE)? the rest is F
+        var fullOrRest = currRest.concat(prevRest);
+        this.walk(optionProd, fullOrRest);
+    };
+    RestWalker.prototype.walkAtLeastOne = function (atLeastOneProd, currRest, prevRest) {
+        // ABC(DE)+F => after the (DE)+ the rest is (DE)?F
+        var fullAtLeastOneRest = [
+            new gast_public_1.Option({ definition: atLeastOneProd.definition })
+        ].concat(currRest, prevRest);
+        this.walk(atLeastOneProd, fullAtLeastOneRest);
+    };
+    RestWalker.prototype.walkAtLeastOneSep = function (atLeastOneSepProd, currRest, prevRest) {
+        // ABC DE(,DE)* F => after the (,DE)+ the rest is (,DE)?F
+        var fullAtLeastOneSepRest = restForRepetitionWithSeparator(atLeastOneSepProd, currRest, prevRest);
+        this.walk(atLeastOneSepProd, fullAtLeastOneSepRest);
+    };
+    RestWalker.prototype.walkMany = function (manyProd, currRest, prevRest) {
+        // ABC(DE)*F => after the (DE)* the rest is (DE)?F
+        var fullManyRest = [
+            new gast_public_1.Option({ definition: manyProd.definition })
+        ].concat(currRest, prevRest);
+        this.walk(manyProd, fullManyRest);
+    };
+    RestWalker.prototype.walkManySep = function (manySepProd, currRest, prevRest) {
+        // ABC (DE(,DE)*)? F => after the (,DE)* the rest is (,DE)?F
+        var fullManySepRest = restForRepetitionWithSeparator(manySepProd, currRest, prevRest);
+        this.walk(manySepProd, fullManySepRest);
+    };
+    RestWalker.prototype.walkOr = function (orProd, currRest, prevRest) {
+        var _this = this;
+        // ABC(D|E|F)G => when finding the (D|E|F) the rest is G
+        var fullOrRest = currRest.concat(prevRest);
+        // walk all different alternatives
+        utils_1.forEach(orProd.definition, function (alt) {
+            // wrapping each alternative in a single definition wrapper
+            // to avoid errors in computing the rest of that alternative in the invocation to computeInProdFollows
+            // (otherwise for OR([alt1,alt2]) alt2 will be considered in 'rest' of alt1
+            var prodWrapper = new gast_public_1.Flat({ definition: [alt] });
+            _this.walk(prodWrapper, fullOrRest);
+        });
+    };
+    return RestWalker;
+}());
+exports.RestWalker = RestWalker;
+function restForRepetitionWithSeparator(repSepProd, currRest, prevRest) {
+    var repSepRest = [
+        new gast_public_1.Option({
+            definition: [
+                new gast_public_1.Terminal({ terminalType: repSepProd.separator })
+            ].concat(repSepProd.definition)
+        })
+    ];
+    var fullRepSepRest = repSepRest.concat(currRest, prevRest);
+    return fullRepSepRest;
+}
+//# sourceMappingURL=rest.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/parser.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/parser.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lang_extensions_1 = __webpack_require__(/*! ../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var utils_1 = __webpack_require__(/*! ../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var follow_1 = __webpack_require__(/*! ../grammar/follow */ "./node_modules/chevrotain/lib/src/parse/grammar/follow.js");
+var tokens_public_1 = __webpack_require__(/*! ../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var gast_builder_1 = __webpack_require__(/*! ../gast_builder */ "./node_modules/chevrotain/lib/src/parse/gast_builder.js");
+var cst_1 = __webpack_require__(/*! ../cst/cst */ "./node_modules/chevrotain/lib/src/parse/cst/cst.js");
+var errors_public_1 = __webpack_require__(/*! ../errors_public */ "./node_modules/chevrotain/lib/src/parse/errors_public.js");
+var gast_resolver_public_1 = __webpack_require__(/*! ../grammar/gast/gast_resolver_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_resolver_public.js");
+var recoverable_1 = __webpack_require__(/*! ./traits/recoverable */ "./node_modules/chevrotain/lib/src/parse/parser/traits/recoverable.js");
+var looksahead_1 = __webpack_require__(/*! ./traits/looksahead */ "./node_modules/chevrotain/lib/src/parse/parser/traits/looksahead.js");
+var tree_builder_1 = __webpack_require__(/*! ./traits/tree_builder */ "./node_modules/chevrotain/lib/src/parse/parser/traits/tree_builder.js");
+var lexer_adapter_1 = __webpack_require__(/*! ./traits/lexer_adapter */ "./node_modules/chevrotain/lib/src/parse/parser/traits/lexer_adapter.js");
+var recognizer_api_1 = __webpack_require__(/*! ./traits/recognizer_api */ "./node_modules/chevrotain/lib/src/parse/parser/traits/recognizer_api.js");
+var recognizer_engine_1 = __webpack_require__(/*! ./traits/recognizer_engine */ "./node_modules/chevrotain/lib/src/parse/parser/traits/recognizer_engine.js");
+var error_handler_1 = __webpack_require__(/*! ./traits/error_handler */ "./node_modules/chevrotain/lib/src/parse/parser/traits/error_handler.js");
+var context_assist_1 = __webpack_require__(/*! ./traits/context_assist */ "./node_modules/chevrotain/lib/src/parse/parser/traits/context_assist.js");
+exports.END_OF_FILE = tokens_public_1.createTokenInstance(tokens_public_1.EOF, "", NaN, NaN, NaN, NaN, NaN, NaN);
+Object.freeze(exports.END_OF_FILE);
+exports.DEFAULT_PARSER_CONFIG = Object.freeze({
+    recoveryEnabled: false,
+    maxLookahead: 4,
+    ignoredIssues: {},
+    dynamicTokensEnabled: false,
+    outputCst: true,
+    errorMessageProvider: errors_public_1.defaultParserErrorProvider,
+    serializedGrammar: null
+});
+exports.DEFAULT_RULE_CONFIG = Object.freeze({
+    recoveryValueFunc: function () { return undefined; },
+    resyncEnabled: true
+});
+var ParserDefinitionErrorType;
+(function (ParserDefinitionErrorType) {
+    ParserDefinitionErrorType[ParserDefinitionErrorType["INVALID_RULE_NAME"] = 0] = "INVALID_RULE_NAME";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["DUPLICATE_RULE_NAME"] = 1] = "DUPLICATE_RULE_NAME";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["INVALID_RULE_OVERRIDE"] = 2] = "INVALID_RULE_OVERRIDE";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["DUPLICATE_PRODUCTIONS"] = 3] = "DUPLICATE_PRODUCTIONS";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["UNRESOLVED_SUBRULE_REF"] = 4] = "UNRESOLVED_SUBRULE_REF";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["LEFT_RECURSION"] = 5] = "LEFT_RECURSION";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["NONE_LAST_EMPTY_ALT"] = 6] = "NONE_LAST_EMPTY_ALT";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["AMBIGUOUS_ALTS"] = 7] = "AMBIGUOUS_ALTS";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["CONFLICT_TOKENS_RULES_NAMESPACE"] = 8] = "CONFLICT_TOKENS_RULES_NAMESPACE";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["INVALID_TOKEN_NAME"] = 9] = "INVALID_TOKEN_NAME";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["INVALID_NESTED_RULE_NAME"] = 10] = "INVALID_NESTED_RULE_NAME";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["DUPLICATE_NESTED_NAME"] = 11] = "DUPLICATE_NESTED_NAME";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["NO_NON_EMPTY_LOOKAHEAD"] = 12] = "NO_NON_EMPTY_LOOKAHEAD";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["AMBIGUOUS_PREFIX_ALTS"] = 13] = "AMBIGUOUS_PREFIX_ALTS";
+    ParserDefinitionErrorType[ParserDefinitionErrorType["TOO_MANY_ALTS"] = 14] = "TOO_MANY_ALTS";
+})(ParserDefinitionErrorType = exports.ParserDefinitionErrorType || (exports.ParserDefinitionErrorType = {}));
+function EMPTY_ALT(value) {
+    if (value === void 0) { value = undefined; }
+    return function () {
+        return value;
+    };
+}
+exports.EMPTY_ALT = EMPTY_ALT;
+var Parser = /** @class */ (function () {
+    function Parser(tokenVocabulary, config) {
+        if (config === void 0) { config = exports.DEFAULT_PARSER_CONFIG; }
+        this.ignoredIssues = exports.DEFAULT_PARSER_CONFIG.ignoredIssues;
+        this.definitionErrors = [];
+        this.selfAnalysisDone = false;
+        var that = this;
+        that.initErrorHandler(config);
+        that.initLexerAdapter();
+        that.initLooksAhead(config);
+        that.initRecognizerEngine(tokenVocabulary, config);
+        that.initRecoverable(config);
+        that.initTreeBuilder(config);
+        that.initContentAssist();
+        this.ignoredIssues = utils_1.has(config, "ignoredIssues")
+            ? config.ignoredIssues
+            : exports.DEFAULT_PARSER_CONFIG.ignoredIssues;
+        // Avoid performance regressions in newer versions of V8
+        utils_1.toFastProperties(this);
+    }
+    /**
+     *  @deprecated use the **instance** method with the same name instead
+     */
+    Parser.performSelfAnalysis = function (parserInstance) {
+        ;
+        parserInstance.performSelfAnalysis();
+    };
+    Parser.prototype.performSelfAnalysis = function () {
+        var _this = this;
+        var defErrorsMsgs;
+        this.selfAnalysisDone = true;
+        var className = lang_extensions_1.classNameFromInstance(this);
+        var productions = this.gastProductionsCache;
+        if (this.serializedGrammar) {
+            var rules = gast_builder_1.deserializeGrammar(this.serializedGrammar, this.tokensMap);
+            utils_1.forEach(rules, function (rule) {
+                _this.gastProductionsCache.put(rule.name, rule);
+            });
+        }
+        var resolverErrors = gast_resolver_public_1.resolveGrammar({
+            rules: productions.values()
+        });
+        this.definitionErrors.push.apply(this.definitionErrors, resolverErrors); // mutability for the win?
+        // only perform additional grammar validations IFF no resolving errors have occurred.
+        // as unresolved grammar may lead to unhandled runtime exceptions in the follow up validations.
+        if (utils_1.isEmpty(resolverErrors)) {
+            var validationErrors = gast_resolver_public_1.validateGrammar({
+                rules: productions.values(),
+                maxLookahead: this.maxLookahead,
+                tokenTypes: utils_1.values(this.tokensMap),
+                ignoredIssues: this.ignoredIssues,
+                errMsgProvider: errors_public_1.defaultGrammarValidatorErrorProvider,
+                grammarName: className
+            });
+            this.definitionErrors.push.apply(this.definitionErrors, validationErrors); // mutability for the win?
+        }
+        if (utils_1.isEmpty(this.definitionErrors)) {
+            // this analysis may fail if the grammar is not perfectly valid
+            var allFollows = follow_1.computeAllProdsFollows(productions.values());
+            this.resyncFollows = allFollows;
+        }
+        var cstAnalysisResult = cst_1.analyzeCst(productions.values(), this.fullRuleNameToShort);
+        this.allRuleNames = cstAnalysisResult.allRuleNames;
+        if (!Parser.DEFER_DEFINITION_ERRORS_HANDLING &&
+            !utils_1.isEmpty(this.definitionErrors)) {
+            defErrorsMsgs = utils_1.map(this.definitionErrors, function (defError) { return defError.message; });
+            throw new Error("Parser Definition Errors detected:\n " + defErrorsMsgs.join("\n-------------------------------\n"));
+        }
+    };
+    // Set this flag to true if you don't want the Parser to throw error when problems in it's definition are detected.
+    // (normally during the parser's constructor).
+    // This is a design time flag, it will not affect the runtime error handling of the parser, just design time errors,
+    // for example: duplicate rule names, referencing an unresolved subrule, ect...
+    // This flag should not be enabled during normal usage, it is used in special situations, for example when
+    // needing to display the parser definition errors in some GUI(online playground).
+    Parser.DEFER_DEFINITION_ERRORS_HANDLING = false;
+    return Parser;
+}());
+exports.Parser = Parser;
+utils_1.applyMixins(Parser, [
+    recoverable_1.Recoverable,
+    looksahead_1.LooksAhead,
+    tree_builder_1.TreeBuilder,
+    lexer_adapter_1.LexerAdapter,
+    recognizer_engine_1.RecognizerEngine,
+    recognizer_api_1.RecognizerApi,
+    error_handler_1.ErrorHandler,
+    context_assist_1.ContentAssist
+]);
+//# sourceMappingURL=parser.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/context_assist.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/context_assist.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var interpreter_1 = __webpack_require__(/*! ../../grammar/interpreter */ "./node_modules/chevrotain/lib/src/parse/grammar/interpreter.js");
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var ContentAssist = /** @class */ (function () {
+    function ContentAssist() {
+    }
+    ContentAssist.prototype.initContentAssist = function () { };
+    ContentAssist.prototype.computeContentAssist = function (startRuleName, precedingInput) {
+        var startRuleGast = this.gastProductionsCache.get(startRuleName);
+        if (utils_1.isUndefined(startRuleGast)) {
+            throw Error("Rule ->" + startRuleName + "<- does not exist in this grammar.");
+        }
+        return interpreter_1.nextPossibleTokensAfter([startRuleGast], precedingInput, this.tokenMatcher, this.maxLookahead);
+    };
+    // TODO: should this be a member method or a utility? it does not have any state or usage of 'this'...
+    // TODO: should this be more explicitly part of the public API?
+    ContentAssist.prototype.getNextPossibleTokenTypes = function (grammarPath) {
+        var topRuleName = utils_1.first(grammarPath.ruleStack);
+        var gastProductions = this.getGAstProductions();
+        var topProduction = gastProductions.get(topRuleName);
+        var nextPossibleTokenTypes = new interpreter_1.NextAfterTokenWalker(topProduction, grammarPath).startWalking();
+        return nextPossibleTokenTypes;
+    };
+    return ContentAssist;
+}());
+exports.ContentAssist = ContentAssist;
+//# sourceMappingURL=context_assist.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/error_handler.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/error_handler.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var exceptions_public_1 = __webpack_require__(/*! ../../exceptions_public */ "./node_modules/chevrotain/lib/src/parse/exceptions_public.js");
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var lookahead_1 = __webpack_require__(/*! ../../grammar/lookahead */ "./node_modules/chevrotain/lib/src/parse/grammar/lookahead.js");
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+/**
+ * Trait responsible for runtime parsing errors.
+ */
+var ErrorHandler = /** @class */ (function () {
+    function ErrorHandler() {
+    }
+    ErrorHandler.prototype.initErrorHandler = function (config) {
+        this._errors = [];
+        this.errorMessageProvider = utils_1.defaults(config.errorMessageProvider, parser_1.DEFAULT_PARSER_CONFIG.errorMessageProvider);
+    };
+    ErrorHandler.prototype.SAVE_ERROR = function (error) {
+        if (exceptions_public_1.isRecognitionException(error)) {
+            error.context = {
+                ruleStack: this.getHumanReadableRuleStack(),
+                ruleOccurrenceStack: utils_1.cloneArr(this.RULE_OCCURRENCE_STACK)
+            };
+            this._errors.push(error);
+            return error;
+        }
+        else {
+            throw Error("Trying to save an Error which is not a RecognitionException");
+        }
+    };
+    Object.defineProperty(ErrorHandler.prototype, "errors", {
+        // TODO: extract these methods to ErrorHandler Trait?
+        get: function () {
+            return utils_1.cloneArr(this._errors);
+        },
+        set: function (newErrors) {
+            this._errors = newErrors;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // TODO: consider caching the error message computed information
+    ErrorHandler.prototype.raiseEarlyExitException = function (occurrence, prodType, userDefinedErrMsg) {
+        var ruleName = this.getCurrRuleFullName();
+        var ruleGrammar = this.getGAstProductions().get(ruleName);
+        var lookAheadPathsPerAlternative = lookahead_1.getLookaheadPathsForOptionalProd(occurrence, ruleGrammar, prodType, this.maxLookahead);
+        var insideProdPaths = lookAheadPathsPerAlternative[0];
+        var actualTokens = [];
+        for (var i = 1; i < this.maxLookahead; i++) {
+            actualTokens.push(this.LA(i));
+        }
+        var msg = this.errorMessageProvider.buildEarlyExitMessage({
+            expectedIterationPaths: insideProdPaths,
+            actual: actualTokens,
+            previous: this.LA(0),
+            customUserDescription: userDefinedErrMsg,
+            ruleName: ruleName
+        });
+        throw this.SAVE_ERROR(new exceptions_public_1.EarlyExitException(msg, this.LA(1), this.LA(0)));
+    };
+    // TODO: consider caching the error message computed information
+    ErrorHandler.prototype.raiseNoAltException = function (occurrence, errMsgTypes) {
+        var ruleName = this.getCurrRuleFullName();
+        var ruleGrammar = this.getGAstProductions().get(ruleName);
+        // TODO: getLookaheadPathsForOr can be slow for large enough maxLookahead and certain grammars, consider caching ?
+        var lookAheadPathsPerAlternative = lookahead_1.getLookaheadPathsForOr(occurrence, ruleGrammar, this.maxLookahead);
+        var actualTokens = [];
+        for (var i = 1; i <= this.maxLookahead; i++) {
+            actualTokens.push(this.LA(i));
+        }
+        var previousToken = this.LA(0);
+        var errMsg = this.errorMessageProvider.buildNoViableAltMessage({
+            expectedPathsPerAlt: lookAheadPathsPerAlternative,
+            actual: actualTokens,
+            previous: previousToken,
+            customUserDescription: errMsgTypes,
+            ruleName: this.getCurrRuleFullName()
+        });
+        throw this.SAVE_ERROR(new exceptions_public_1.NoViableAltException(errMsg, this.LA(1), previousToken));
+    };
+    return ErrorHandler;
+}());
+exports.ErrorHandler = ErrorHandler;
+//# sourceMappingURL=error_handler.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/lexer_adapter.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/lexer_adapter.js ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+/**
+ * Trait responsible abstracting over the interaction with Lexer output (Token vector).
+ *
+ * This could be generalized to support other kinds of lexers, e.g.
+ * - Just in Time Lexing / Lexer-Less parsing.
+ * - Streaming Lexer.
+ */
+var LexerAdapter = /** @class */ (function () {
+    function LexerAdapter() {
+    }
+    LexerAdapter.prototype.initLexerAdapter = function () {
+        this.tokVector = [];
+        this.tokVectorLength = 0;
+        this.currIdx = -1;
+    };
+    Object.defineProperty(LexerAdapter.prototype, "input", {
+        get: function () {
+            return this.tokVector;
+        },
+        set: function (newInput) {
+            this.reset();
+            this.tokVector = newInput;
+            this.tokVectorLength = newInput.length;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // skips a token and returns the next token
+    LexerAdapter.prototype.SKIP_TOKEN = function () {
+        if (this.currIdx <= this.tokVector.length - 2) {
+            this.consumeToken();
+            return this.LA(1);
+        }
+        else {
+            return parser_1.END_OF_FILE;
+        }
+    };
+    // Lexer (accessing Token vector) related methods which can be overridden to implement lazy lexers
+    // or lexers dependent on parser context.
+    LexerAdapter.prototype.LA = function (howMuch) {
+        // does: is this optimization (saving tokVectorLength benefits?)
+        if (this.currIdx + howMuch < 0 ||
+            this.tokVectorLength <= this.currIdx + howMuch) {
+            return parser_1.END_OF_FILE;
+        }
+        else {
+            return this.tokVector[this.currIdx + howMuch];
+        }
+    };
+    LexerAdapter.prototype.consumeToken = function () {
+        this.currIdx++;
+    };
+    LexerAdapter.prototype.exportLexerState = function () {
+        return this.currIdx;
+    };
+    LexerAdapter.prototype.importLexerState = function (newState) {
+        this.currIdx = newState;
+    };
+    LexerAdapter.prototype.resetLexerState = function () {
+        this.currIdx = -1;
+    };
+    LexerAdapter.prototype.moveToTerminatedState = function () {
+        this.currIdx = this.tokVector.length - 1;
+    };
+    LexerAdapter.prototype.getLexerPosition = function () {
+        return this.exportLexerState();
+    };
+    return LexerAdapter;
+}());
+exports.LexerAdapter = LexerAdapter;
+//# sourceMappingURL=lexer_adapter.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/looksahead.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/looksahead.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lookahead_1 = __webpack_require__(/*! ../../grammar/lookahead */ "./node_modules/chevrotain/lib/src/parse/grammar/lookahead.js");
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+var keys_1 = __webpack_require__(/*! ../../grammar/keys */ "./node_modules/chevrotain/lib/src/parse/grammar/keys.js");
+/**
+ * Trait responsible for the lookahead related utilities and optimizations.
+ */
+var LooksAhead = /** @class */ (function () {
+    function LooksAhead() {
+    }
+    LooksAhead.prototype.initLooksAhead = function (config) {
+        this.dynamicTokensEnabled = utils_1.has(config, "dynamicTokensEnabled")
+            ? config.dynamicTokensEnabled
+            : parser_1.DEFAULT_PARSER_CONFIG.dynamicTokensEnabled;
+        this.maxLookahead = utils_1.has(config, "maxLookahead")
+            ? config.maxLookahead
+            : parser_1.DEFAULT_PARSER_CONFIG.maxLookahead;
+        /* istanbul ignore next - Using plain array as dictionary will be tested on older node.js versions and IE11 */
+        this.lookAheadFuncsCache = utils_1.isES2015MapSupported() ? new Map() : [];
+        // Performance optimization on newer engines that support ES6 Map
+        // For larger Maps this is slightly faster than using a plain object (array in our case).
+        /* istanbul ignore else - The else branch will be tested on older node.js versions and IE11 */
+        if (utils_1.isES2015MapSupported()) {
+            this.getLaFuncFromCache = this.getLaFuncFromMap;
+            this.setLaFuncCache = this.setLaFuncCacheUsingMap;
+        }
+        else {
+            this.getLaFuncFromCache = this.getLaFuncFromObj;
+            this.setLaFuncCache = this.setLaFuncUsingObj;
+        }
+    };
+    LooksAhead.prototype.lookAheadBuilderForOptional = function (alt, tokenMatcher, dynamicTokensEnabled) {
+        return lookahead_1.buildSingleAlternativeLookaheadFunction(alt, tokenMatcher, dynamicTokensEnabled);
+    };
+    LooksAhead.prototype.lookAheadBuilderForAlternatives = function (alts, hasPredicates, tokenMatcher, dynamicTokensEnabled) {
+        return lookahead_1.buildAlternativesLookAheadFunc(alts, hasPredicates, tokenMatcher, dynamicTokensEnabled);
+    };
+    // this actually returns a number, but it is always used as a string (object prop key)
+    LooksAhead.prototype.getKeyForAutomaticLookahead = function (dslMethodIdx, occurrence) {
+        var currRuleShortName = this.getLastExplicitRuleShortName();
+        return keys_1.getKeyForAutomaticLookahead(currRuleShortName, dslMethodIdx, occurrence);
+    };
+    LooksAhead.prototype.getLookaheadFuncForOr = function (occurrence, alts) {
+        var key = this.getKeyForAutomaticLookahead(keys_1.OR_IDX, occurrence);
+        var laFunc = this.getLaFuncFromCache(key);
+        if (laFunc === undefined) {
+            var ruleName = this.getCurrRuleFullName();
+            var ruleGrammar = this.getGAstProductions().get(ruleName);
+            // note that hasPredicates is only computed once.
+            var hasPredicates = utils_1.some(alts, function (currAlt) {
+                return utils_1.isFunction(currAlt.GATE);
+            });
+            laFunc = lookahead_1.buildLookaheadFuncForOr(occurrence, ruleGrammar, this.maxLookahead, hasPredicates, this.dynamicTokensEnabled, this.lookAheadBuilderForAlternatives);
+            this.setLaFuncCache(key, laFunc);
+            return laFunc;
+        }
+        else {
+            return laFunc;
+        }
+    };
+    // Automatic lookahead calculation
+    LooksAhead.prototype.getLookaheadFuncForOption = function (key, occurrence) {
+        return this.getLookaheadFuncFor(key, occurrence, this.maxLookahead, lookahead_1.PROD_TYPE.OPTION);
+    };
+    LooksAhead.prototype.getLookaheadFuncForMany = function (key, occurrence) {
+        return this.getLookaheadFuncFor(key, occurrence, this.maxLookahead, lookahead_1.PROD_TYPE.REPETITION);
+    };
+    LooksAhead.prototype.getLookaheadFuncForManySep = function (key, occurrence) {
+        return this.getLookaheadFuncFor(key, occurrence, this.maxLookahead, lookahead_1.PROD_TYPE.REPETITION_WITH_SEPARATOR);
+    };
+    LooksAhead.prototype.getLookaheadFuncForAtLeastOne = function (key, occurrence) {
+        return this.getLookaheadFuncFor(key, occurrence, this.maxLookahead, lookahead_1.PROD_TYPE.REPETITION_MANDATORY);
+    };
+    LooksAhead.prototype.getLookaheadFuncForAtLeastOneSep = function (key, occurrence) {
+        return this.getLookaheadFuncFor(key, occurrence, this.maxLookahead, lookahead_1.PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR);
+    };
+    LooksAhead.prototype.getLookaheadFuncFor = function (key, occurrence, maxLookahead, prodType) {
+        var laFunc = this.getLaFuncFromCache(key);
+        if (laFunc === undefined) {
+            var ruleName = this.getCurrRuleFullName();
+            var ruleGrammar = this.getGAstProductions().get(ruleName);
+            laFunc = lookahead_1.buildLookaheadFuncForOptionalProd(occurrence, ruleGrammar, maxLookahead, this.dynamicTokensEnabled, prodType, this.lookAheadBuilderForOptional);
+            this.setLaFuncCache(key, laFunc);
+            return laFunc;
+        }
+        else {
+            return laFunc;
+        }
+    };
+    /* istanbul ignore next */
+    LooksAhead.prototype.getLaFuncFromCache = function (key) {
+        return undefined;
+    };
+    LooksAhead.prototype.getLaFuncFromMap = function (key) {
+        return this.lookAheadFuncsCache.get(key);
+    };
+    /* istanbul ignore next - Using plain array as dictionary will be tested on older node.js versions and IE11 */
+    LooksAhead.prototype.getLaFuncFromObj = function (key) {
+        return this.lookAheadFuncsCache[key];
+    };
+    /* istanbul ignore next */
+    LooksAhead.prototype.setLaFuncCache = function (key, value) { };
+    LooksAhead.prototype.setLaFuncCacheUsingMap = function (key, value) {
+        this.lookAheadFuncsCache.set(key, value);
+    };
+    /* istanbul ignore next - Using plain array as dictionary will be tested on older node.js versions and IE11 */
+    LooksAhead.prototype.setLaFuncUsingObj = function (key, value) {
+        this.lookAheadFuncsCache[key] = value;
+    };
+    return LooksAhead;
+}());
+exports.LooksAhead = LooksAhead;
+//# sourceMappingURL=looksahead.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/recognizer_api.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/recognizer_api.js ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var exceptions_public_1 = __webpack_require__(/*! ../../exceptions_public */ "./node_modules/chevrotain/lib/src/parse/exceptions_public.js");
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+var errors_public_1 = __webpack_require__(/*! ../../errors_public */ "./node_modules/chevrotain/lib/src/parse/errors_public.js");
+var gast_builder_1 = __webpack_require__(/*! ../../gast_builder */ "./node_modules/chevrotain/lib/src/parse/gast_builder.js");
+var checks_1 = __webpack_require__(/*! ../../grammar/checks */ "./node_modules/chevrotain/lib/src/parse/grammar/checks.js");
+var gast_public_1 = __webpack_require__(/*! ../../grammar/gast/gast_public */ "./node_modules/chevrotain/lib/src/parse/grammar/gast/gast_public.js");
+/**
+ * This trait is responsible for implementing the offical API
+ * for defining Chevrotain parsers, i.e:
+ * - CONSUME
+ * - RULE
+ * - OPTION
+ * - ...
+ */
+var RecognizerApi = /** @class */ (function () {
+    function RecognizerApi() {
+    }
+    RecognizerApi.prototype.CONSUME = function (tokType, options) {
+        return this.consumeInternal(tokType, 0, options);
+    };
+    RecognizerApi.prototype.CONSUME1 = function (tokType, options) {
+        return this.consumeInternal(tokType, 1, options);
+    };
+    RecognizerApi.prototype.CONSUME2 = function (tokType, options) {
+        return this.consumeInternal(tokType, 2, options);
+    };
+    RecognizerApi.prototype.CONSUME3 = function (tokType, options) {
+        return this.consumeInternal(tokType, 3, options);
+    };
+    RecognizerApi.prototype.CONSUME4 = function (tokType, options) {
+        return this.consumeInternal(tokType, 4, options);
+    };
+    RecognizerApi.prototype.CONSUME5 = function (tokType, options) {
+        return this.consumeInternal(tokType, 5, options);
+    };
+    RecognizerApi.prototype.CONSUME6 = function (tokType, options) {
+        return this.consumeInternal(tokType, 6, options);
+    };
+    RecognizerApi.prototype.CONSUME7 = function (tokType, options) {
+        return this.consumeInternal(tokType, 7, options);
+    };
+    RecognizerApi.prototype.CONSUME8 = function (tokType, options) {
+        return this.consumeInternal(tokType, 8, options);
+    };
+    RecognizerApi.prototype.CONSUME9 = function (tokType, options) {
+        return this.consumeInternal(tokType, 9, options);
+    };
+    RecognizerApi.prototype.SUBRULE = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 0, options);
+    };
+    RecognizerApi.prototype.SUBRULE1 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 1, options);
+    };
+    RecognizerApi.prototype.SUBRULE2 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 2, options);
+    };
+    RecognizerApi.prototype.SUBRULE3 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 3, options);
+    };
+    RecognizerApi.prototype.SUBRULE4 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 4, options);
+    };
+    RecognizerApi.prototype.SUBRULE5 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 5, options);
+    };
+    RecognizerApi.prototype.SUBRULE6 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 6, options);
+    };
+    RecognizerApi.prototype.SUBRULE7 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 7, options);
+    };
+    RecognizerApi.prototype.SUBRULE8 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 8, options);
+    };
+    RecognizerApi.prototype.SUBRULE9 = function (ruleToCall, options) {
+        return this.subruleInternal(ruleToCall, 9, options);
+    };
+    RecognizerApi.prototype.OPTION = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 0);
+    };
+    RecognizerApi.prototype.OPTION1 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 1);
+    };
+    RecognizerApi.prototype.OPTION2 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 2);
+    };
+    RecognizerApi.prototype.OPTION3 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 3);
+    };
+    RecognizerApi.prototype.OPTION4 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 4);
+    };
+    RecognizerApi.prototype.OPTION5 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 5);
+    };
+    RecognizerApi.prototype.OPTION6 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 6);
+    };
+    RecognizerApi.prototype.OPTION7 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 7);
+    };
+    RecognizerApi.prototype.OPTION8 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 8);
+    };
+    RecognizerApi.prototype.OPTION9 = function (actionORMethodDef) {
+        return this.optionInternal(actionORMethodDef, 9);
+    };
+    RecognizerApi.prototype.OR = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 0);
+    };
+    RecognizerApi.prototype.OR1 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 1);
+    };
+    RecognizerApi.prototype.OR2 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 2);
+    };
+    RecognizerApi.prototype.OR3 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 3);
+    };
+    RecognizerApi.prototype.OR4 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 4);
+    };
+    RecognizerApi.prototype.OR5 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 5);
+    };
+    RecognizerApi.prototype.OR6 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 6);
+    };
+    RecognizerApi.prototype.OR7 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 7);
+    };
+    RecognizerApi.prototype.OR8 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 8);
+    };
+    RecognizerApi.prototype.OR9 = function (altsOrOpts) {
+        return this.orInternal(altsOrOpts, 9);
+    };
+    RecognizerApi.prototype.MANY = function (actionORMethodDef) {
+        this.manyInternal(0, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY1 = function (actionORMethodDef) {
+        this.manyInternal(1, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY2 = function (actionORMethodDef) {
+        this.manyInternal(2, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY3 = function (actionORMethodDef) {
+        this.manyInternal(3, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY4 = function (actionORMethodDef) {
+        this.manyInternal(4, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY5 = function (actionORMethodDef) {
+        this.manyInternal(5, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY6 = function (actionORMethodDef) {
+        this.manyInternal(6, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY7 = function (actionORMethodDef) {
+        this.manyInternal(7, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY8 = function (actionORMethodDef) {
+        this.manyInternal(8, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY9 = function (actionORMethodDef) {
+        this.manyInternal(9, actionORMethodDef);
+    };
+    RecognizerApi.prototype.MANY_SEP = function (options) {
+        this.manySepFirstInternal(0, options);
+    };
+    RecognizerApi.prototype.MANY_SEP1 = function (options) {
+        this.manySepFirstInternal(1, options);
+    };
+    RecognizerApi.prototype.MANY_SEP2 = function (options) {
+        this.manySepFirstInternal(2, options);
+    };
+    RecognizerApi.prototype.MANY_SEP3 = function (options) {
+        this.manySepFirstInternal(3, options);
+    };
+    RecognizerApi.prototype.MANY_SEP4 = function (options) {
+        this.manySepFirstInternal(4, options);
+    };
+    RecognizerApi.prototype.MANY_SEP5 = function (options) {
+        this.manySepFirstInternal(5, options);
+    };
+    RecognizerApi.prototype.MANY_SEP6 = function (options) {
+        this.manySepFirstInternal(6, options);
+    };
+    RecognizerApi.prototype.MANY_SEP7 = function (options) {
+        this.manySepFirstInternal(7, options);
+    };
+    RecognizerApi.prototype.MANY_SEP8 = function (options) {
+        this.manySepFirstInternal(8, options);
+    };
+    RecognizerApi.prototype.MANY_SEP9 = function (options) {
+        this.manySepFirstInternal(9, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE = function (actionORMethodDef) {
+        this.atLeastOneInternal(0, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE1 = function (actionORMethodDef) {
+        return this.atLeastOneInternal(1, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE2 = function (actionORMethodDef) {
+        this.atLeastOneInternal(2, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE3 = function (actionORMethodDef) {
+        this.atLeastOneInternal(3, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE4 = function (actionORMethodDef) {
+        this.atLeastOneInternal(4, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE5 = function (actionORMethodDef) {
+        this.atLeastOneInternal(5, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE6 = function (actionORMethodDef) {
+        this.atLeastOneInternal(6, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE7 = function (actionORMethodDef) {
+        this.atLeastOneInternal(7, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE8 = function (actionORMethodDef) {
+        this.atLeastOneInternal(8, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE9 = function (actionORMethodDef) {
+        this.atLeastOneInternal(9, actionORMethodDef);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP = function (options) {
+        this.atLeastOneSepFirstInternal(0, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP1 = function (options) {
+        this.atLeastOneSepFirstInternal(1, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP2 = function (options) {
+        this.atLeastOneSepFirstInternal(2, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP3 = function (options) {
+        this.atLeastOneSepFirstInternal(3, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP4 = function (options) {
+        this.atLeastOneSepFirstInternal(4, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP5 = function (options) {
+        this.atLeastOneSepFirstInternal(5, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP6 = function (options) {
+        this.atLeastOneSepFirstInternal(6, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP7 = function (options) {
+        this.atLeastOneSepFirstInternal(7, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP8 = function (options) {
+        this.atLeastOneSepFirstInternal(8, options);
+    };
+    RecognizerApi.prototype.AT_LEAST_ONE_SEP9 = function (options) {
+        this.atLeastOneSepFirstInternal(9, options);
+    };
+    RecognizerApi.prototype.RULE = function (name, implementation, 
+    // TODO: how to describe the optional return type of CSTNode? T|CstNode is not good because it is not backward
+    // compatible, T|any is very general...
+    config) {
+        if (config === void 0) { config = parser_1.DEFAULT_RULE_CONFIG; }
+        if (utils_1.contains(this.definedRulesNames, name)) {
+            var errMsg = errors_public_1.defaultGrammarValidatorErrorProvider.buildDuplicateRuleNameError({
+                topLevelRule: name,
+                grammarName: this.className
+            });
+            var error = {
+                message: errMsg,
+                type: parser_1.ParserDefinitionErrorType.DUPLICATE_RULE_NAME,
+                ruleName: name
+            };
+            this.definitionErrors.push(error);
+        }
+        this.definedRulesNames.push(name);
+        // only build the gast representation once.
+        if (!this.gastProductionsCache.containsKey(name) &&
+            !this.serializedGrammar) {
+            var gastProduction = gast_builder_1.buildTopProduction(implementation.toString(), name, this.tokensMap);
+            this.gastProductionsCache.put(name, gastProduction);
+        }
+        var ruleImplementation = this.defineRule(name, implementation, config);
+        this[name] = ruleImplementation;
+        return ruleImplementation;
+    };
+    RecognizerApi.prototype.OVERRIDE_RULE = function (name, impl, config) {
+        if (config === void 0) { config = parser_1.DEFAULT_RULE_CONFIG; }
+        var ruleErrors = [];
+        ruleErrors = ruleErrors.concat(checks_1.validateRuleIsOverridden(name, this.definedRulesNames, this.className));
+        this.definitionErrors.push.apply(this.definitionErrors, ruleErrors); // mutability for the win
+        // Avoid constructing the GAST if we have serialized it
+        if (!this.serializedGrammar) {
+            var gastProduction = gast_builder_1.buildTopProduction(impl.toString(), name, this.tokensMap);
+            this.gastProductionsCache.put(name, gastProduction);
+        }
+        var ruleImplementation = this.defineRule(name, impl, config);
+        this[name] = ruleImplementation;
+        return ruleImplementation;
+    };
+    RecognizerApi.prototype.BACKTRACK = function (grammarRule, args) {
+        return function () {
+            // save org state
+            this.isBackTrackingStack.push(1);
+            var orgState = this.saveRecogState();
+            try {
+                grammarRule.apply(this, args);
+                // if no exception was thrown we have succeed parsing the rule.
+                return true;
+            }
+            catch (e) {
+                if (exceptions_public_1.isRecognitionException(e)) {
+                    return false;
+                }
+                else {
+                    throw e;
+                }
+            }
+            finally {
+                this.reloadRecogState(orgState);
+                this.isBackTrackingStack.pop();
+            }
+        };
+    };
+    // GAST export APIs
+    RecognizerApi.prototype.getGAstProductions = function () {
+        return this.gastProductionsCache;
+    };
+    RecognizerApi.prototype.getSerializedGastProductions = function () {
+        return gast_public_1.serializeGrammar(this.gastProductionsCache.values());
+    };
+    return RecognizerApi;
+}());
+exports.RecognizerApi = RecognizerApi;
+//# sourceMappingURL=recognizer_api.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/recognizer_engine.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/recognizer_engine.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var keys_1 = __webpack_require__(/*! ../../grammar/keys */ "./node_modules/chevrotain/lib/src/parse/grammar/keys.js");
+var exceptions_public_1 = __webpack_require__(/*! ../../exceptions_public */ "./node_modules/chevrotain/lib/src/parse/exceptions_public.js");
+var lookahead_1 = __webpack_require__(/*! ../../grammar/lookahead */ "./node_modules/chevrotain/lib/src/parse/grammar/lookahead.js");
+var interpreter_1 = __webpack_require__(/*! ../../grammar/interpreter */ "./node_modules/chevrotain/lib/src/parse/grammar/interpreter.js");
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+var recoverable_1 = __webpack_require__(/*! ./recoverable */ "./node_modules/chevrotain/lib/src/parse/parser/traits/recoverable.js");
+var tokens_public_1 = __webpack_require__(/*! ../../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var tokens_1 = __webpack_require__(/*! ../../../scan/tokens */ "./node_modules/chevrotain/lib/src/scan/tokens.js");
+var lang_extensions_1 = __webpack_require__(/*! ../../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+/**
+ * This trait is responsible for the runtime parsing engine
+ * Used by the official API (recognizer_api.ts)
+ */
+var RecognizerEngine = /** @class */ (function () {
+    function RecognizerEngine() {
+    }
+    RecognizerEngine.prototype.initRecognizerEngine = function (tokenVocabulary, config) {
+        this.className = lang_extensions_1.classNameFromInstance(this);
+        // TODO: would using an ES6 Map or plain object be faster (CST building scenario)
+        this.shortRuleNameToFull = new lang_extensions_1.HashTable();
+        this.fullRuleNameToShort = new lang_extensions_1.HashTable();
+        this.ruleShortNameIdx = 256;
+        this.tokenMatcher = tokens_1.tokenStructuredMatcherNoCategories;
+        this.definedRulesNames = [];
+        this.tokensMap = {};
+        this.allRuleNames = [];
+        this.isBackTrackingStack = [];
+        this.RULE_STACK = [];
+        this.RULE_OCCURRENCE_STACK = [];
+        this.gastProductionsCache = new lang_extensions_1.HashTable();
+        this.serializedGrammar = utils_1.has(config, "serializedGrammar")
+            ? config.serializedGrammar
+            : parser_1.DEFAULT_PARSER_CONFIG.serializedGrammar;
+        if (utils_1.isArray(tokenVocabulary)) {
+            // This only checks for Token vocabularies provided as arrays.
+            // That is good enough because the main objective is to detect users of pre-V4.0 APIs
+            // rather than all edge cases of empty Token vocabularies.
+            if (utils_1.isEmpty(tokenVocabulary)) {
+                throw Error("A Token Vocabulary cannot be empty.\n" +
+                    "\tNote that the first argument for the parser constructor\n" +
+                    "\tis no longer a Token vector (since v4.0).");
+            }
+            if (typeof tokenVocabulary[0].startOffset === "number") {
+                throw Error("The Parser constructor no longer accepts a token vector as the first argument.\n" +
+                    "\tSee: https://sap.github.io/chevrotain/docs/changes/BREAKING_CHANGES.html#_4-0-0\n" +
+                    "\tFor Further details.");
+            }
+        }
+        if (utils_1.isArray(tokenVocabulary)) {
+            this.tokensMap = utils_1.reduce(tokenVocabulary, function (acc, tokenClazz) {
+                acc[tokens_public_1.tokenName(tokenClazz)] = tokenClazz;
+                return acc;
+            }, {});
+        }
+        else if (utils_1.has(tokenVocabulary, "modes") &&
+            utils_1.every(utils_1.flatten(utils_1.values(tokenVocabulary.modes)), tokens_1.isTokenType)) {
+            var allTokenTypes = utils_1.flatten(utils_1.values(tokenVocabulary.modes));
+            var uniqueTokens = utils_1.uniq(allTokenTypes);
+            this.tokensMap = utils_1.reduce(uniqueTokens, function (acc, tokenClazz) {
+                acc[tokens_public_1.tokenName(tokenClazz)] = tokenClazz;
+                return acc;
+            }, {});
+        }
+        else if (utils_1.isObject(tokenVocabulary)) {
+            this.tokensMap = utils_1.cloneObj(tokenVocabulary);
+        }
+        else {
+            throw new Error("<tokensDictionary> argument must be An Array of Token constructors," +
+                " A dictionary of Token constructors or an IMultiModeLexerDefinition");
+        }
+        // always add EOF to the tokenNames -> constructors map. it is useful to assure all the input has been
+        // parsed with a clear error message ("expecting EOF but found ...")
+        /* tslint:disable */
+        this.tokensMap["EOF"] = tokens_public_1.EOF;
+        // TODO: This check may not be accurate for multi mode lexers
+        var noTokenCategoriesUsed = utils_1.every(utils_1.values(tokenVocabulary), function (tokenConstructor) { return utils_1.isEmpty(tokenConstructor.categoryMatches); });
+        this.tokenMatcher = noTokenCategoriesUsed
+            ? tokens_1.tokenStructuredMatcherNoCategories
+            : tokens_1.tokenStructuredMatcher;
+        // Because ES2015+ syntax should be supported for creating Token classes
+        // We cannot assume that the Token classes were created using the "extendToken" utilities
+        // Therefore we must augment the Token classes both on Lexer initialization and on Parser initialization
+        tokens_1.augmentTokenTypes(utils_1.values(this.tokensMap));
+    };
+    RecognizerEngine.prototype.defineRule = function (ruleName, impl, config) {
+        if (this.selfAnalysisDone) {
+            throw Error("Grammar rule <" + ruleName + "> may not be defined after the 'performSelfAnalysis' method has been called'\n" +
+                "Make sure that all grammar rule definitions are done before 'performSelfAnalysis' is called.");
+        }
+        var resyncEnabled = utils_1.has(config, "resyncEnabled")
+            ? config.resyncEnabled
+            : parser_1.DEFAULT_RULE_CONFIG.resyncEnabled;
+        var recoveryValueFunc = utils_1.has(config, "recoveryValueFunc")
+            ? config.recoveryValueFunc
+            : parser_1.DEFAULT_RULE_CONFIG.recoveryValueFunc;
+        // performance optimization: Use small integers as keys for the longer human readable "full" rule names.
+        // this greatly improves Map access time (as much as 8% for some performance benchmarks).
+        /* tslint:disable */
+        var shortName = this.ruleShortNameIdx <<
+            (keys_1.BITS_FOR_METHOD_IDX + keys_1.BITS_FOR_OCCURRENCE_IDX);
+        /* tslint:enable */
+        this.ruleShortNameIdx++;
+        this.shortRuleNameToFull.put(shortName, ruleName);
+        this.fullRuleNameToShort.put(ruleName, shortName);
+        function invokeRuleWithTry(args) {
+            try {
+                // TODO: dynamically get rid of this?
+                if (this.outputCst === true) {
+                    impl.apply(this, args);
+                    return this.CST_STACK[this.CST_STACK.length - 1];
+                }
+                else {
+                    return impl.apply(this, args);
+                }
+            }
+            catch (e) {
+                var isFirstInvokedRule = this.RULE_STACK.length === 1;
+                // note the reSync is always enabled for the first rule invocation, because we must always be able to
+                // reSync with EOF and just output some INVALID ParseTree
+                // during backtracking reSync recovery is disabled, otherwise we can't be certain the backtracking
+                // path is really the most valid one
+                var reSyncEnabled = resyncEnabled &&
+                    !this.isBackTracking() &&
+                    this.recoveryEnabled;
+                if (exceptions_public_1.isRecognitionException(e)) {
+                    if (reSyncEnabled) {
+                        var reSyncTokType = this.findReSyncTokenType();
+                        if (this.isInCurrentRuleReSyncSet(reSyncTokType)) {
+                            e.resyncedTokens = this.reSyncTo(reSyncTokType);
+                            if (this.outputCst) {
+                                var partialCstResult = this.CST_STACK[this.CST_STACK.length - 1];
+                                partialCstResult.recoveredNode = true;
+                                return partialCstResult;
+                            }
+                            else {
+                                return recoveryValueFunc();
+                            }
+                        }
+                        else {
+                            if (this.outputCst) {
+                                var partialCstResult = this.CST_STACK[this.CST_STACK.length - 1];
+                                partialCstResult.recoveredNode = true;
+                                e.partialCstResult = partialCstResult;
+                            }
+                            // to be handled Further up the call stack
+                            throw e;
+                        }
+                    }
+                    else if (isFirstInvokedRule) {
+                        // otherwise a Redundant input error will be created as well and we cannot guarantee that this is indeed the case
+                        this.moveToTerminatedState();
+                        // the parser should never throw one of its own errors outside its flow.
+                        // even if error recovery is disabled
+                        return recoveryValueFunc();
+                    }
+                    else {
+                        // to be handled Further up the call stack
+                        throw e;
+                    }
+                }
+                else {
+                    // some other Error type which we don't know how to handle (for example a built in JavaScript Error)
+                    throw e;
+                }
+            }
+            finally {
+                this.ruleFinallyStateUpdate();
+            }
+        }
+        var wrappedGrammarRule;
+        wrappedGrammarRule = function (idxInCallingRule, args) {
+            if (idxInCallingRule === void 0) { idxInCallingRule = 0; }
+            this.ruleInvocationStateUpdate(shortName, ruleName, idxInCallingRule);
+            return invokeRuleWithTry.call(this, args);
+        };
+        var ruleNamePropName = "ruleName";
+        wrappedGrammarRule[ruleNamePropName] = ruleName;
+        return wrappedGrammarRule;
+    };
+    // Implementation of parsing DSL
+    RecognizerEngine.prototype.optionInternal = function (actionORMethodDef, occurrence) {
+        var key = this.getKeyForAutomaticLookahead(keys_1.OPTION_IDX, occurrence);
+        var nestedName = this.nestedRuleBeforeClause(actionORMethodDef, key);
+        try {
+            return this.optionInternalLogic(actionORMethodDef, occurrence, key);
+        }
+        finally {
+            if (nestedName !== undefined) {
+                this.nestedRuleFinallyClause(key, nestedName);
+            }
+        }
+    };
+    RecognizerEngine.prototype.optionInternalNoCst = function (actionORMethodDef, occurrence) {
+        var key = this.getKeyForAutomaticLookahead(keys_1.OPTION_IDX, occurrence);
+        return this.optionInternalLogic(actionORMethodDef, occurrence, key);
+    };
+    RecognizerEngine.prototype.optionInternalLogic = function (actionORMethodDef, occurrence, key) {
+        var _this = this;
+        var lookAheadFunc = this.getLookaheadFuncForOption(key, occurrence);
+        var action;
+        var predicate;
+        if (actionORMethodDef.DEF !== undefined) {
+            action = actionORMethodDef.DEF;
+            predicate = actionORMethodDef.GATE;
+            // predicate present
+            if (predicate !== undefined) {
+                var orgLookaheadFunction_1 = lookAheadFunc;
+                lookAheadFunc = function () {
+                    return (predicate.call(_this) && orgLookaheadFunction_1.call(_this));
+                };
+            }
+        }
+        else {
+            action = actionORMethodDef;
+        }
+        if (lookAheadFunc.call(this) === true) {
+            return action.call(this);
+        }
+        return undefined;
+    };
+    RecognizerEngine.prototype.atLeastOneInternal = function (prodOccurrence, actionORMethodDef) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.AT_LEAST_ONE_IDX, prodOccurrence);
+        var nestedName = this.nestedRuleBeforeClause(actionORMethodDef, laKey);
+        try {
+            return this.atLeastOneInternalLogic(prodOccurrence, actionORMethodDef, laKey);
+        }
+        finally {
+            if (nestedName !== undefined) {
+                this.nestedRuleFinallyClause(laKey, nestedName);
+            }
+        }
+    };
+    RecognizerEngine.prototype.atLeastOneInternalNoCst = function (prodOccurrence, actionORMethodDef) {
+        var key = this.getKeyForAutomaticLookahead(keys_1.AT_LEAST_ONE_IDX, prodOccurrence);
+        this.atLeastOneInternalLogic(prodOccurrence, actionORMethodDef, key);
+    };
+    RecognizerEngine.prototype.atLeastOneInternalLogic = function (prodOccurrence, actionORMethodDef, key) {
+        var _this = this;
+        var lookAheadFunc = this.getLookaheadFuncForAtLeastOne(key, prodOccurrence);
+        var action;
+        var predicate;
+        if (actionORMethodDef.DEF !== undefined) {
+            action = actionORMethodDef.DEF;
+            predicate = actionORMethodDef.GATE;
+            // predicate present
+            if (predicate !== undefined) {
+                var orgLookaheadFunction_2 = lookAheadFunc;
+                lookAheadFunc = function () {
+                    return (predicate.call(_this) && orgLookaheadFunction_2.call(_this));
+                };
+            }
+        }
+        else {
+            action = actionORMethodDef;
+        }
+        if (lookAheadFunc.call(this) === true) {
+            var notStuck = this.doSingleRepetition(action);
+            while (lookAheadFunc.call(this) === true &&
+                notStuck === true) {
+                notStuck = this.doSingleRepetition(action);
+            }
+        }
+        else {
+            throw this.raiseEarlyExitException(prodOccurrence, lookahead_1.PROD_TYPE.REPETITION_MANDATORY, actionORMethodDef.ERR_MSG);
+        }
+        // note that while it may seem that this can cause an error because by using a recursive call to
+        // AT_LEAST_ONE we change the grammar to AT_LEAST_TWO, AT_LEAST_THREE ... , the possible recursive call
+        // from the tryInRepetitionRecovery(...) will only happen IFF there really are TWO/THREE/.... items.
+        // Performance optimization: "attemptInRepetitionRecovery" will be defined as NOOP unless recovery is enabled
+        this.attemptInRepetitionRecovery(this.atLeastOneInternal, [prodOccurrence, actionORMethodDef], lookAheadFunc, keys_1.AT_LEAST_ONE_IDX, prodOccurrence, interpreter_1.NextTerminalAfterAtLeastOneWalker);
+    };
+    RecognizerEngine.prototype.atLeastOneSepFirstInternal = function (prodOccurrence, options) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.AT_LEAST_ONE_SEP_IDX, prodOccurrence);
+        var nestedName = this.nestedRuleBeforeClause(options, laKey);
+        try {
+            this.atLeastOneSepFirstInternalLogic(prodOccurrence, options, laKey);
+        }
+        finally {
+            if (nestedName !== undefined) {
+                this.nestedRuleFinallyClause(laKey, nestedName);
+            }
+        }
+    };
+    RecognizerEngine.prototype.atLeastOneSepFirstInternalNoCst = function (prodOccurrence, options) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.AT_LEAST_ONE_SEP_IDX, prodOccurrence);
+        this.atLeastOneSepFirstInternalLogic(prodOccurrence, options, laKey);
+    };
+    RecognizerEngine.prototype.atLeastOneSepFirstInternalLogic = function (prodOccurrence, options, key) {
+        var _this = this;
+        var action = options.DEF;
+        var separator = options.SEP;
+        var firstIterationLookaheadFunc = this.getLookaheadFuncForAtLeastOneSep(key, prodOccurrence);
+        // 1st iteration
+        if (firstIterationLookaheadFunc.call(this) === true) {
+            ;
+            action.call(this);
+            //  TODO: Optimization can move this function construction into "attemptInRepetitionRecovery"
+            //  because it is only needed in error recovery scenarios.
+            var separatorLookAheadFunc = function () {
+                return _this.tokenMatcher(_this.LA(1), separator);
+            };
+            // 2nd..nth iterations
+            while (this.tokenMatcher(this.LA(1), separator) === true) {
+                // note that this CONSUME will never enter recovery because
+                // the separatorLookAheadFunc checks that the separator really does exist.
+                this.CONSUME(separator);
+                action.call(this);
+            }
+            // Performance optimization: "attemptInRepetitionRecovery" will be defined as NOOP unless recovery is enabled
+            this.attemptInRepetitionRecovery(this.repetitionSepSecondInternal, [
+                prodOccurrence,
+                separator,
+                separatorLookAheadFunc,
+                action,
+                interpreter_1.NextTerminalAfterAtLeastOneSepWalker
+            ], separatorLookAheadFunc, keys_1.AT_LEAST_ONE_SEP_IDX, prodOccurrence, interpreter_1.NextTerminalAfterAtLeastOneSepWalker);
+        }
+        else {
+            throw this.raiseEarlyExitException(prodOccurrence, lookahead_1.PROD_TYPE.REPETITION_MANDATORY_WITH_SEPARATOR, options.ERR_MSG);
+        }
+    };
+    RecognizerEngine.prototype.manyInternal = function (prodOccurrence, actionORMethodDef) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.MANY_IDX, prodOccurrence);
+        var nestedName = this.nestedRuleBeforeClause(actionORMethodDef, laKey);
+        try {
+            return this.manyInternalLogic(prodOccurrence, actionORMethodDef, laKey);
+        }
+        finally {
+            if (nestedName !== undefined) {
+                this.nestedRuleFinallyClause(laKey, nestedName);
+            }
+        }
+    };
+    RecognizerEngine.prototype.manyInternalNoCst = function (prodOccurrence, actionORMethodDef) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.MANY_IDX, prodOccurrence);
+        return this.manyInternalLogic(prodOccurrence, actionORMethodDef, laKey);
+    };
+    RecognizerEngine.prototype.manyInternalLogic = function (prodOccurrence, actionORMethodDef, key) {
+        var _this = this;
+        var lookaheadFunction = this.getLookaheadFuncForMany(key, prodOccurrence);
+        var action;
+        var predicate;
+        if (actionORMethodDef.DEF !== undefined) {
+            action = actionORMethodDef.DEF;
+            predicate = actionORMethodDef.GATE;
+            // predicate present
+            if (predicate !== undefined) {
+                var orgLookaheadFunction_3 = lookaheadFunction;
+                lookaheadFunction = function () {
+                    return (predicate.call(_this) && orgLookaheadFunction_3.call(_this));
+                };
+            }
+        }
+        else {
+            action = actionORMethodDef;
+        }
+        var notStuck = true;
+        while (lookaheadFunction.call(this) === true && notStuck === true) {
+            notStuck = this.doSingleRepetition(action);
+        }
+        // Performance optimization: "attemptInRepetitionRecovery" will be defined as NOOP unless recovery is enabled
+        this.attemptInRepetitionRecovery(this.manyInternal, [prodOccurrence, actionORMethodDef], lookaheadFunction, keys_1.MANY_IDX, prodOccurrence, interpreter_1.NextTerminalAfterManyWalker);
+    };
+    RecognizerEngine.prototype.manySepFirstInternal = function (prodOccurrence, options) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.MANY_SEP_IDX, prodOccurrence);
+        var nestedName = this.nestedRuleBeforeClause(options, laKey);
+        try {
+            this.manySepFirstInternalLogic(prodOccurrence, options, laKey);
+        }
+        finally {
+            if (nestedName !== undefined) {
+                this.nestedRuleFinallyClause(laKey, nestedName);
+            }
+        }
+    };
+    RecognizerEngine.prototype.manySepFirstInternalNoCst = function (prodOccurrence, options) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.MANY_SEP_IDX, prodOccurrence);
+        this.manySepFirstInternalLogic(prodOccurrence, options, laKey);
+    };
+    RecognizerEngine.prototype.manySepFirstInternalLogic = function (prodOccurrence, options, key) {
+        var _this = this;
+        var action = options.DEF;
+        var separator = options.SEP;
+        var firstIterationLaFunc = this.getLookaheadFuncForManySep(key, prodOccurrence);
+        // 1st iteration
+        if (firstIterationLaFunc.call(this) === true) {
+            action.call(this);
+            var separatorLookAheadFunc = function () {
+                return _this.tokenMatcher(_this.LA(1), separator);
+            };
+            // 2nd..nth iterations
+            while (this.tokenMatcher(this.LA(1), separator) === true) {
+                // note that this CONSUME will never enter recovery because
+                // the separatorLookAheadFunc checks that the separator really does exist.
+                this.CONSUME(separator);
+                // No need for checking infinite loop here due to consuming the separator.
+                action.call(this);
+            }
+            // Performance optimization: "attemptInRepetitionRecovery" will be defined as NOOP unless recovery is enabled
+            this.attemptInRepetitionRecovery(this.repetitionSepSecondInternal, [
+                prodOccurrence,
+                separator,
+                separatorLookAheadFunc,
+                action,
+                interpreter_1.NextTerminalAfterManySepWalker
+            ], separatorLookAheadFunc, keys_1.MANY_SEP_IDX, prodOccurrence, interpreter_1.NextTerminalAfterManySepWalker);
+        }
+    };
+    RecognizerEngine.prototype.repetitionSepSecondInternal = function (prodOccurrence, separator, separatorLookAheadFunc, action, nextTerminalAfterWalker) {
+        while (separatorLookAheadFunc()) {
+            // note that this CONSUME will never enter recovery because
+            // the separatorLookAheadFunc checks that the separator really does exist.
+            this.CONSUME(separator);
+            action.call(this);
+        }
+        // we can only arrive to this function after an error
+        // has occurred (hence the name 'second') so the following
+        // IF will always be entered, its possible to remove it...
+        // however it is kept to avoid confusion and be consistent.
+        // Performance optimization: "attemptInRepetitionRecovery" will be defined as NOOP unless recovery is enabled
+        /* istanbul ignore else */
+        this.attemptInRepetitionRecovery(this.repetitionSepSecondInternal, [
+            prodOccurrence,
+            separator,
+            separatorLookAheadFunc,
+            action,
+            nextTerminalAfterWalker
+        ], separatorLookAheadFunc, keys_1.AT_LEAST_ONE_SEP_IDX, prodOccurrence, nextTerminalAfterWalker);
+    };
+    RecognizerEngine.prototype.doSingleRepetition = function (action) {
+        var beforeIteration = this.getLexerPosition();
+        action.call(this);
+        var afterIteration = this.getLexerPosition();
+        // This boolean will indicate if this repetition progressed
+        // or if we are "stuck" (potential infinite loop in the repetition).
+        return afterIteration > beforeIteration;
+    };
+    RecognizerEngine.prototype.orInternalNoCst = function (altsOrOpts, occurrence) {
+        var alts = utils_1.isArray(altsOrOpts)
+            ? altsOrOpts
+            : altsOrOpts.DEF;
+        var laFunc = this.getLookaheadFuncForOr(occurrence, alts);
+        var altIdxToTake = laFunc.call(this, alts);
+        if (altIdxToTake !== undefined) {
+            var chosenAlternative = alts[altIdxToTake];
+            return chosenAlternative.ALT.call(this);
+        }
+        this.raiseNoAltException(occurrence, altsOrOpts.ERR_MSG);
+    };
+    RecognizerEngine.prototype.orInternal = function (altsOrOpts, occurrence) {
+        var laKey = this.getKeyForAutomaticLookahead(keys_1.OR_IDX, occurrence);
+        var nestedName = this.nestedRuleBeforeClause(altsOrOpts, laKey);
+        try {
+            var alts = utils_1.isArray(altsOrOpts)
+                ? altsOrOpts
+                : altsOrOpts.DEF;
+            var laFunc = this.getLookaheadFuncForOr(occurrence, alts);
+            var altIdxToTake = laFunc.call(this, alts);
+            if (altIdxToTake !== undefined) {
+                var chosenAlternative = alts[altIdxToTake];
+                var nestedAltBeforeClauseResult = this.nestedAltBeforeClause(chosenAlternative, occurrence, keys_1.OR_IDX, altIdxToTake);
+                try {
+                    return chosenAlternative.ALT.call(this);
+                }
+                finally {
+                    if (nestedAltBeforeClauseResult !== undefined) {
+                        this.nestedRuleFinallyClause(nestedAltBeforeClauseResult.shortName, nestedAltBeforeClauseResult.nestedName);
+                    }
+                }
+            }
+            this.raiseNoAltException(occurrence, altsOrOpts.ERR_MSG);
+        }
+        finally {
+            if (nestedName !== undefined) {
+                this.nestedRuleFinallyClause(laKey, nestedName);
+            }
+        }
+    };
+    RecognizerEngine.prototype.ruleFinallyStateUpdate = function () {
+        this.RULE_STACK.pop();
+        this.RULE_OCCURRENCE_STACK.pop();
+        // NOOP when cst is disabled
+        this.cstFinallyStateUpdate();
+        if (this.RULE_STACK.length === 0 && !this.isAtEndOfInput()) {
+            var firstRedundantTok = this.LA(1);
+            var errMsg = this.errorMessageProvider.buildNotAllInputParsedMessage({
+                firstRedundant: firstRedundantTok,
+                ruleName: this.getCurrRuleFullName()
+            });
+            this.SAVE_ERROR(new exceptions_public_1.NotAllInputParsedException(errMsg, firstRedundantTok));
+        }
+    };
+    RecognizerEngine.prototype.subruleInternal = function (ruleToCall, idx, options) {
+        var ruleResult;
+        try {
+            var args = options !== undefined ? options.ARGS : undefined;
+            ruleResult = ruleToCall.call(this, idx, args);
+            this.cstPostNonTerminal(ruleResult, options !== undefined && options.LABEL !== undefined
+                ? options.LABEL
+                : ruleToCall.ruleName);
+            return ruleResult;
+        }
+        catch (e) {
+            if (exceptions_public_1.isRecognitionException(e) && e.partialCstResult !== undefined) {
+                this.cstPostNonTerminal(e.partialCstResult, options !== undefined && options.LABEL !== undefined
+                    ? options.LABEL
+                    : ruleToCall.ruleName);
+                delete e.partialCstResult;
+            }
+            throw e;
+        }
+    };
+    RecognizerEngine.prototype.consumeInternal = function (tokType, idx, options) {
+        var consumedToken;
+        try {
+            var nextToken = this.LA(1);
+            if (this.tokenMatcher(nextToken, tokType) === true) {
+                this.consumeToken();
+                consumedToken = nextToken;
+            }
+            else {
+                var msg = void 0;
+                var previousToken = this.LA(0);
+                if (options !== undefined && options.ERR_MSG) {
+                    msg = options.ERR_MSG;
+                }
+                else {
+                    msg = this.errorMessageProvider.buildMismatchTokenMessage({
+                        expected: tokType,
+                        actual: nextToken,
+                        previous: previousToken,
+                        ruleName: this.getCurrRuleFullName()
+                    });
+                }
+                throw this.SAVE_ERROR(new exceptions_public_1.MismatchedTokenException(msg, nextToken, previousToken));
+            }
+        }
+        catch (eFromConsumption) {
+            // no recovery allowed during backtracking, otherwise backtracking may recover invalid syntax and accept it
+            // but the original syntax could have been parsed successfully without any backtracking + recovery
+            if (this.recoveryEnabled &&
+                // TODO: more robust checking of the exception type. Perhaps Typescript extending expressions?
+                eFromConsumption.name === "MismatchedTokenException" &&
+                !this.isBackTracking()) {
+                var follows = this.getFollowsForInRuleRecovery(tokType, idx);
+                try {
+                    consumedToken = this.tryInRuleRecovery(tokType, follows);
+                }
+                catch (eFromInRuleRecovery) {
+                    if (eFromInRuleRecovery.name === recoverable_1.IN_RULE_RECOVERY_EXCEPTION) {
+                        // failed in RuleRecovery.
+                        // throw the original error in order to trigger reSync error recovery
+                        throw eFromConsumption;
+                    }
+                    else {
+                        throw eFromInRuleRecovery;
+                    }
+                }
+            }
+            else {
+                throw eFromConsumption;
+            }
+        }
+        this.cstPostTerminal(options !== undefined && options.LABEL !== undefined
+            ? options.LABEL
+            : tokType.tokenName, consumedToken);
+        return consumedToken;
+    };
+    RecognizerEngine.prototype.saveRecogState = function () {
+        // errors is a getter which will clone the errors array
+        var savedErrors = this.errors;
+        var savedRuleStack = utils_1.cloneArr(this.RULE_STACK);
+        return {
+            errors: savedErrors,
+            lexerState: this.exportLexerState(),
+            RULE_STACK: savedRuleStack,
+            CST_STACK: this.CST_STACK,
+            LAST_EXPLICIT_RULE_STACK: this.LAST_EXPLICIT_RULE_STACK
+        };
+    };
+    RecognizerEngine.prototype.reloadRecogState = function (newState) {
+        this.errors = newState.errors;
+        this.importLexerState(newState.lexerState);
+        this.RULE_STACK = newState.RULE_STACK;
+    };
+    RecognizerEngine.prototype.ruleInvocationStateUpdate = function (shortName, fullName, idxInCallingRule) {
+        this.RULE_OCCURRENCE_STACK.push(idxInCallingRule);
+        this.RULE_STACK.push(shortName);
+        // NOOP when cst is disabled
+        this.cstInvocationStateUpdate(fullName, shortName);
+    };
+    RecognizerEngine.prototype.isBackTracking = function () {
+        return !utils_1.isEmpty(this.isBackTrackingStack);
+    };
+    RecognizerEngine.prototype.getCurrRuleFullName = function () {
+        var shortName = this.getLastExplicitRuleShortName();
+        return this.shortRuleNameToFull.get(shortName);
+    };
+    RecognizerEngine.prototype.shortRuleNameToFullName = function (shortName) {
+        return this.shortRuleNameToFull.get(shortName);
+    };
+    RecognizerEngine.prototype.isAtEndOfInput = function () {
+        return this.tokenMatcher(this.LA(1), tokens_public_1.EOF);
+    };
+    RecognizerEngine.prototype.reset = function () {
+        this.resetLexerState();
+        this.isBackTrackingStack = [];
+        this.errors = [];
+        this.RULE_STACK = [];
+        this.LAST_EXPLICIT_RULE_STACK = [];
+        // TODO: extract a specific rest for TreeBuilder trait
+        this.CST_STACK = [];
+        this.RULE_OCCURRENCE_STACK = [];
+    };
+    return RecognizerEngine;
+}());
+exports.RecognizerEngine = RecognizerEngine;
+//# sourceMappingURL=recognizer_engine.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/recoverable.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/recoverable.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var tokens_public_1 = __webpack_require__(/*! ../../../scan/tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var exceptions_public_1 = __webpack_require__(/*! ../../exceptions_public */ "./node_modules/chevrotain/lib/src/parse/exceptions_public.js");
+var constants_1 = __webpack_require__(/*! ../../constants */ "./node_modules/chevrotain/lib/src/parse/constants.js");
+var lang_extensions_1 = __webpack_require__(/*! ../../../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+exports.EOF_FOLLOW_KEY = {};
+exports.IN_RULE_RECOVERY_EXCEPTION = "InRuleRecoveryException";
+function InRuleRecoveryException(message) {
+    this.name = exports.IN_RULE_RECOVERY_EXCEPTION;
+    this.message = message;
+}
+exports.InRuleRecoveryException = InRuleRecoveryException;
+InRuleRecoveryException.prototype = Error.prototype;
+/**
+ * This trait is responsible for the error recovery and fault tolerant logic
+ */
+var Recoverable = /** @class */ (function () {
+    function Recoverable() {
+    }
+    Recoverable.prototype.initRecoverable = function (config) {
+        this.firstAfterRepMap = new lang_extensions_1.HashTable();
+        this.resyncFollows = new lang_extensions_1.HashTable();
+        this.recoveryEnabled = utils_1.has(config, "recoveryEnabled")
+            ? config.recoveryEnabled
+            : parser_1.DEFAULT_PARSER_CONFIG.recoveryEnabled;
+        // performance optimization, NOOP will be inlined which
+        // effectively means that this optional feature does not exist
+        // when not used.
+        if (this.recoveryEnabled) {
+            this.attemptInRepetitionRecovery = attemptInRepetitionRecovery;
+        }
+    };
+    Recoverable.prototype.getTokenToInsert = function (tokType) {
+        var tokToInsert = tokens_public_1.createTokenInstance(tokType, "", NaN, NaN, NaN, NaN, NaN, NaN);
+        tokToInsert.isInsertedInRecovery = true;
+        return tokToInsert;
+    };
+    Recoverable.prototype.canTokenTypeBeInsertedInRecovery = function (tokType) {
+        return true;
+    };
+    Recoverable.prototype.tryInRepetitionRecovery = function (grammarRule, grammarRuleArgs, lookAheadFunc, expectedTokType) {
+        var _this = this;
+        // TODO: can the resyncTokenType be cached?
+        var reSyncTokType = this.findReSyncTokenType();
+        var savedLexerState = this.exportLexerState();
+        var resyncedTokens = [];
+        var passedResyncPoint = false;
+        var nextTokenWithoutResync = this.LA(1);
+        var currToken = this.LA(1);
+        var generateErrorMessage = function () {
+            var previousToken = _this.LA(0);
+            // we are preemptively re-syncing before an error has been detected, therefor we must reproduce
+            // the error that would have been thrown
+            var msg = _this.errorMessageProvider.buildMismatchTokenMessage({
+                expected: expectedTokType,
+                actual: nextTokenWithoutResync,
+                previous: previousToken,
+                ruleName: _this.getCurrRuleFullName()
+            });
+            var error = new exceptions_public_1.MismatchedTokenException(msg, nextTokenWithoutResync, _this.LA(0));
+            // the first token here will be the original cause of the error, this is not part of the resyncedTokens property.
+            error.resyncedTokens = utils_1.dropRight(resyncedTokens);
+            _this.SAVE_ERROR(error);
+        };
+        while (!passedResyncPoint) {
+            // re-synced to a point where we can safely exit the repetition/
+            if (this.tokenMatcher(currToken, expectedTokType)) {
+                generateErrorMessage();
+                return; // must return here to avoid reverting the inputIdx
+            }
+            else if (lookAheadFunc.call(this)) {
+                // we skipped enough tokens so we can resync right back into another iteration of the repetition grammar rule
+                generateErrorMessage();
+                // recursive invocation in other to support multiple re-syncs in the same top level repetition grammar rule
+                grammarRule.apply(this, grammarRuleArgs);
+                return; // must return here to avoid reverting the inputIdx
+            }
+            else if (this.tokenMatcher(currToken, reSyncTokType)) {
+                passedResyncPoint = true;
+            }
+            else {
+                currToken = this.SKIP_TOKEN();
+                this.addToResyncTokens(currToken, resyncedTokens);
+            }
+        }
+        // we were unable to find a CLOSER point to resync inside the Repetition, reset the state.
+        // The parsing exception we were trying to prevent will happen in the NEXT parsing step. it may be handled by
+        // "between rules" resync recovery later in the flow.
+        this.importLexerState(savedLexerState);
+    };
+    Recoverable.prototype.shouldInRepetitionRecoveryBeTried = function (expectTokAfterLastMatch, nextTokIdx) {
+        // arguments to try and perform resync into the next iteration of the many are missing
+        if (expectTokAfterLastMatch === undefined || nextTokIdx === undefined) {
+            return false;
+        }
+        // no need to recover, next token is what we expect...
+        if (this.tokenMatcher(this.LA(1), expectTokAfterLastMatch)) {
+            return false;
+        }
+        // error recovery is disabled during backtracking as it can make the parser ignore a valid grammar path
+        // and prefer some backtracking path that includes recovered errors.
+        if (this.isBackTracking()) {
+            return false;
+        }
+        // if we can perform inRule recovery (single token insertion or deletion) we always prefer that recovery algorithm
+        // because if it works, it makes the least amount of changes to the input stream (greedy algorithm)
+        //noinspection RedundantIfStatementJS
+        if (this.canPerformInRuleRecovery(expectTokAfterLastMatch, this.getFollowsForInRuleRecovery(expectTokAfterLastMatch, nextTokIdx))) {
+            return false;
+        }
+        return true;
+    };
+    // Error Recovery functionality
+    Recoverable.prototype.getFollowsForInRuleRecovery = function (tokType, tokIdxInRule) {
+        var grammarPath = this.getCurrentGrammarPath(tokType, tokIdxInRule);
+        var follows = this.getNextPossibleTokenTypes(grammarPath);
+        return follows;
+    };
+    Recoverable.prototype.tryInRuleRecovery = function (expectedTokType, follows) {
+        if (this.canRecoverWithSingleTokenInsertion(expectedTokType, follows)) {
+            var tokToInsert = this.getTokenToInsert(expectedTokType);
+            return tokToInsert;
+        }
+        if (this.canRecoverWithSingleTokenDeletion(expectedTokType)) {
+            var nextTok = this.SKIP_TOKEN();
+            this.consumeToken();
+            return nextTok;
+        }
+        throw new InRuleRecoveryException("sad sad panda");
+    };
+    Recoverable.prototype.canPerformInRuleRecovery = function (expectedToken, follows) {
+        return (this.canRecoverWithSingleTokenInsertion(expectedToken, follows) ||
+            this.canRecoverWithSingleTokenDeletion(expectedToken));
+    };
+    Recoverable.prototype.canRecoverWithSingleTokenInsertion = function (expectedTokType, follows) {
+        var _this = this;
+        if (!this.canTokenTypeBeInsertedInRecovery(expectedTokType)) {
+            return false;
+        }
+        // must know the possible following tokens to perform single token insertion
+        if (utils_1.isEmpty(follows)) {
+            return false;
+        }
+        var mismatchedTok = this.LA(1);
+        var isMisMatchedTokInFollows = utils_1.find(follows, function (possibleFollowsTokType) {
+            return _this.tokenMatcher(mismatchedTok, possibleFollowsTokType);
+        }) !== undefined;
+        return isMisMatchedTokInFollows;
+    };
+    Recoverable.prototype.canRecoverWithSingleTokenDeletion = function (expectedTokType) {
+        var isNextTokenWhatIsExpected = this.tokenMatcher(this.LA(2), expectedTokType);
+        return isNextTokenWhatIsExpected;
+    };
+    Recoverable.prototype.isInCurrentRuleReSyncSet = function (tokenTypeIdx) {
+        var followKey = this.getCurrFollowKey();
+        var currentRuleReSyncSet = this.getFollowSetFromFollowKey(followKey);
+        return utils_1.contains(currentRuleReSyncSet, tokenTypeIdx);
+    };
+    Recoverable.prototype.findReSyncTokenType = function () {
+        var allPossibleReSyncTokTypes = this.flattenFollowSet();
+        // this loop will always terminate as EOF is always in the follow stack and also always (virtually) in the input
+        var nextToken = this.LA(1);
+        var k = 2;
+        while (true) {
+            var nextTokenType = nextToken.tokenType;
+            if (utils_1.contains(allPossibleReSyncTokTypes, nextTokenType)) {
+                return nextTokenType;
+            }
+            nextToken = this.LA(k);
+            k++;
+        }
+    };
+    Recoverable.prototype.getCurrFollowKey = function () {
+        // the length is at least one as we always add the ruleName to the stack before invoking the rule.
+        if (this.RULE_STACK.length === 1) {
+            return exports.EOF_FOLLOW_KEY;
+        }
+        var currRuleShortName = this.getLastExplicitRuleShortName();
+        var currRuleIdx = this.getLastExplicitRuleOccurrenceIndex();
+        var prevRuleShortName = this.getPreviousExplicitRuleShortName();
+        return {
+            ruleName: this.shortRuleNameToFullName(currRuleShortName),
+            idxInCallingRule: currRuleIdx,
+            inRule: this.shortRuleNameToFullName(prevRuleShortName)
+        };
+    };
+    Recoverable.prototype.buildFullFollowKeyStack = function () {
+        var _this = this;
+        var explicitRuleStack = this.RULE_STACK;
+        var explicitOccurrenceStack = this.RULE_OCCURRENCE_STACK;
+        if (!utils_1.isEmpty(this.LAST_EXPLICIT_RULE_STACK)) {
+            explicitRuleStack = utils_1.map(this.LAST_EXPLICIT_RULE_STACK, function (idx) { return _this.RULE_STACK[idx]; });
+            explicitOccurrenceStack = utils_1.map(this.LAST_EXPLICIT_RULE_STACK, function (idx) { return _this.RULE_OCCURRENCE_STACK[idx]; });
+        }
+        // TODO: only iterate over explicit rules here
+        return utils_1.map(explicitRuleStack, function (ruleName, idx) {
+            if (idx === 0) {
+                return exports.EOF_FOLLOW_KEY;
+            }
+            return {
+                ruleName: _this.shortRuleNameToFullName(ruleName),
+                idxInCallingRule: explicitOccurrenceStack[idx],
+                inRule: _this.shortRuleNameToFullName(explicitRuleStack[idx - 1])
+            };
+        });
+    };
+    Recoverable.prototype.flattenFollowSet = function () {
+        var _this = this;
+        var followStack = utils_1.map(this.buildFullFollowKeyStack(), function (currKey) {
+            return _this.getFollowSetFromFollowKey(currKey);
+        });
+        return utils_1.flatten(followStack);
+    };
+    Recoverable.prototype.getFollowSetFromFollowKey = function (followKey) {
+        if (followKey === exports.EOF_FOLLOW_KEY) {
+            return [tokens_public_1.EOF];
+        }
+        var followName = followKey.ruleName +
+            followKey.idxInCallingRule +
+            constants_1.IN +
+            followKey.inRule;
+        return this.resyncFollows.get(followName);
+    };
+    // It does not make any sense to include a virtual EOF token in the list of resynced tokens
+    // as EOF does not really exist and thus does not contain any useful information (line/column numbers)
+    Recoverable.prototype.addToResyncTokens = function (token, resyncTokens) {
+        if (!this.tokenMatcher(token, tokens_public_1.EOF)) {
+            resyncTokens.push(token);
+        }
+        return resyncTokens;
+    };
+    Recoverable.prototype.reSyncTo = function (tokType) {
+        var resyncedTokens = [];
+        var nextTok = this.LA(1);
+        while (this.tokenMatcher(nextTok, tokType) === false) {
+            nextTok = this.SKIP_TOKEN();
+            this.addToResyncTokens(nextTok, resyncedTokens);
+        }
+        // the last token is not part of the error.
+        return utils_1.dropRight(resyncedTokens);
+    };
+    Recoverable.prototype.attemptInRepetitionRecovery = function (prodFunc, args, lookaheadFunc, dslMethodIdx, prodOccurrence, nextToksWalker) {
+        // by default this is a NO-OP
+        // The actual implementation is with the function(not method) below
+    };
+    Recoverable.prototype.getCurrentGrammarPath = function (tokType, tokIdxInRule) {
+        var pathRuleStack = this.getHumanReadableRuleStack();
+        var pathOccurrenceStack = utils_1.cloneArr(this.RULE_OCCURRENCE_STACK);
+        var grammarPath = {
+            ruleStack: pathRuleStack,
+            occurrenceStack: pathOccurrenceStack,
+            lastTok: tokType,
+            lastTokOccurrence: tokIdxInRule
+        };
+        return grammarPath;
+    };
+    Recoverable.prototype.getHumanReadableRuleStack = function () {
+        var _this = this;
+        if (!utils_1.isEmpty(this.LAST_EXPLICIT_RULE_STACK)) {
+            return utils_1.map(this.LAST_EXPLICIT_RULE_STACK, function (currIdx) {
+                return _this.shortRuleNameToFullName(_this.RULE_STACK[currIdx]);
+            });
+        }
+        else {
+            return utils_1.map(this.RULE_STACK, function (currShortName) {
+                return _this.shortRuleNameToFullName(currShortName);
+            });
+        }
+    };
+    return Recoverable;
+}());
+exports.Recoverable = Recoverable;
+function attemptInRepetitionRecovery(prodFunc, args, lookaheadFunc, dslMethodIdx, prodOccurrence, nextToksWalker) {
+    var key = this.getKeyForAutomaticLookahead(dslMethodIdx, prodOccurrence);
+    var firstAfterRepInfo = this.firstAfterRepMap.get(key);
+    if (firstAfterRepInfo === undefined) {
+        var currRuleName = this.getCurrRuleFullName();
+        var ruleGrammar = this.getGAstProductions().get(currRuleName);
+        var walker = new nextToksWalker(ruleGrammar, prodOccurrence);
+        firstAfterRepInfo = walker.startWalking();
+        this.firstAfterRepMap.put(key, firstAfterRepInfo);
+    }
+    var expectTokAfterLastMatch = firstAfterRepInfo.token;
+    var nextTokIdx = firstAfterRepInfo.occurrence;
+    var isEndOfRule = firstAfterRepInfo.isEndOfRule;
+    // special edge case of a TOP most repetition after which the input should END.
+    // this will force an attempt for inRule recovery in that scenario.
+    if (this.RULE_STACK.length === 1 &&
+        isEndOfRule &&
+        expectTokAfterLastMatch === undefined) {
+        expectTokAfterLastMatch = tokens_public_1.EOF;
+        nextTokIdx = 1;
+    }
+    if (this.shouldInRepetitionRecoveryBeTried(expectTokAfterLastMatch, nextTokIdx)) {
+        // TODO: performance optimization: instead of passing the original args here, we modify
+        // the args param (or create a new one) and make sure the lookahead func is explicitly provided
+        // to avoid searching the cache for it once more.
+        this.tryInRepetitionRecovery(prodFunc, args, lookaheadFunc, expectTokAfterLastMatch);
+    }
+}
+exports.attemptInRepetitionRecovery = attemptInRepetitionRecovery;
+//# sourceMappingURL=recoverable.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/parse/parser/traits/tree_builder.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/parse/parser/traits/tree_builder.js ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var cst_1 = __webpack_require__(/*! ../../cst/cst */ "./node_modules/chevrotain/lib/src/parse/cst/cst.js");
+var utils_1 = __webpack_require__(/*! ../../../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var cst_visitor_1 = __webpack_require__(/*! ../../cst/cst_visitor */ "./node_modules/chevrotain/lib/src/parse/cst/cst_visitor.js");
+var keys_1 = __webpack_require__(/*! ../../grammar/keys */ "./node_modules/chevrotain/lib/src/parse/grammar/keys.js");
+var parser_1 = __webpack_require__(/*! ../parser */ "./node_modules/chevrotain/lib/src/parse/parser/parser.js");
+/**
+ * This trait is responsible for the CST building logic.
+ */
+var TreeBuilder = /** @class */ (function () {
+    function TreeBuilder() {
+    }
+    TreeBuilder.prototype.initTreeBuilder = function (config) {
+        this.LAST_EXPLICIT_RULE_STACK = [];
+        this.CST_STACK = [];
+        this.outputCst = utils_1.has(config, "outputCst")
+            ? config.outputCst
+            : parser_1.DEFAULT_PARSER_CONFIG.outputCst;
+        if (!this.outputCst) {
+            this.cstInvocationStateUpdate = utils_1.NOOP;
+            this.cstFinallyStateUpdate = utils_1.NOOP;
+            this.cstPostTerminal = utils_1.NOOP;
+            this.cstPostNonTerminal = utils_1.NOOP;
+            this.getLastExplicitRuleShortName = this.getLastExplicitRuleShortNameNoCst;
+            this.getPreviousExplicitRuleShortName = this.getPreviousExplicitRuleShortNameNoCst;
+            this.getLastExplicitRuleOccurrenceIndex = this.getLastExplicitRuleOccurrenceIndexNoCst;
+            this.manyInternal = this.manyInternalNoCst;
+            this.orInternal = this.orInternalNoCst;
+            this.optionInternal = this.optionInternalNoCst;
+            this.atLeastOneInternal = this.atLeastOneInternalNoCst;
+            this.manySepFirstInternal = this.manySepFirstInternalNoCst;
+            this.atLeastOneSepFirstInternal = this.atLeastOneSepFirstInternalNoCst;
+        }
+    };
+    // CST
+    TreeBuilder.prototype.cstNestedInvocationStateUpdate = function (nestedName, shortName) {
+        this.CST_STACK.push({
+            name: nestedName,
+            fullName: this.shortRuleNameToFull.get(this.getLastExplicitRuleShortName()) + nestedName,
+            children: {}
+        });
+    };
+    TreeBuilder.prototype.cstInvocationStateUpdate = function (fullRuleName, shortName) {
+        this.LAST_EXPLICIT_RULE_STACK.push(this.RULE_STACK.length - 1);
+        this.CST_STACK.push({
+            name: fullRuleName,
+            children: {}
+        });
+    };
+    TreeBuilder.prototype.cstFinallyStateUpdate = function () {
+        this.LAST_EXPLICIT_RULE_STACK.pop();
+        this.CST_STACK.pop();
+    };
+    TreeBuilder.prototype.cstNestedFinallyStateUpdate = function () {
+        this.CST_STACK.pop();
+    };
+    TreeBuilder.prototype.cstPostTerminal = function (key, consumedToken) {
+        // TODO: would save the "current rootCST be faster than locating it for each terminal?
+        var rootCst = this.CST_STACK[this.CST_STACK.length - 1];
+        cst_1.addTerminalToCst(rootCst, consumedToken, key);
+    };
+    TreeBuilder.prototype.cstPostNonTerminal = function (ruleCstResult, ruleName) {
+        cst_1.addNoneTerminalToCst(this.CST_STACK[this.CST_STACK.length - 1], ruleName, ruleCstResult);
+    };
+    TreeBuilder.prototype.getBaseCstVisitorConstructor = function () {
+        if (utils_1.isUndefined(this.baseCstVisitorConstructor)) {
+            var newBaseCstVisitorConstructor = cst_visitor_1.createBaseSemanticVisitorConstructor(this.className, this.allRuleNames);
+            this.baseCstVisitorConstructor = newBaseCstVisitorConstructor;
+            return newBaseCstVisitorConstructor;
+        }
+        return this.baseCstVisitorConstructor;
+    };
+    TreeBuilder.prototype.getBaseCstVisitorConstructorWithDefaults = function () {
+        if (utils_1.isUndefined(this.baseCstVisitorWithDefaultsConstructor)) {
+            var newConstructor = cst_visitor_1.createBaseVisitorConstructorWithDefaults(this.className, this.allRuleNames, this.getBaseCstVisitorConstructor());
+            this.baseCstVisitorWithDefaultsConstructor = newConstructor;
+            return newConstructor;
+        }
+        return this.baseCstVisitorWithDefaultsConstructor;
+    };
+    TreeBuilder.prototype.nestedRuleBeforeClause = function (methodOpts, laKey) {
+        var nestedName;
+        if (methodOpts.NAME !== undefined) {
+            nestedName = methodOpts.NAME;
+            this.nestedRuleInvocationStateUpdate(nestedName, laKey);
+            return nestedName;
+        }
+        else {
+            return undefined;
+        }
+    };
+    TreeBuilder.prototype.nestedAltBeforeClause = function (methodOpts, occurrence, methodKeyIdx, altIdx) {
+        var ruleIdx = this.getLastExplicitRuleShortName();
+        var shortName = keys_1.getKeyForAltIndex(ruleIdx, methodKeyIdx, occurrence, altIdx);
+        var nestedName;
+        if (methodOpts.NAME !== undefined) {
+            nestedName = methodOpts.NAME;
+            this.nestedRuleInvocationStateUpdate(nestedName, shortName);
+            return {
+                shortName: shortName,
+                nestedName: nestedName
+            };
+        }
+        else {
+            return undefined;
+        }
+    };
+    TreeBuilder.prototype.nestedRuleFinallyClause = function (laKey, nestedName) {
+        var cstStack = this.CST_STACK;
+        var nestedRuleCst = cstStack[cstStack.length - 1];
+        this.nestedRuleFinallyStateUpdate();
+        // this return a different result than the previous invocation because "nestedRuleFinallyStateUpdate" pops the cst stack
+        var parentCstNode = cstStack[cstStack.length - 1];
+        cst_1.addNoneTerminalToCst(parentCstNode, nestedName, nestedRuleCst);
+    };
+    TreeBuilder.prototype.getLastExplicitRuleShortName = function () {
+        var lastExplictIndex = this.LAST_EXPLICIT_RULE_STACK[this.LAST_EXPLICIT_RULE_STACK.length - 1];
+        return this.RULE_STACK[lastExplictIndex];
+    };
+    TreeBuilder.prototype.getLastExplicitRuleShortNameNoCst = function () {
+        var ruleStack = this.RULE_STACK;
+        return ruleStack[ruleStack.length - 1];
+    };
+    TreeBuilder.prototype.getPreviousExplicitRuleShortName = function () {
+        var lastExplicitIndex = this.LAST_EXPLICIT_RULE_STACK[this.LAST_EXPLICIT_RULE_STACK.length - 2];
+        return this.RULE_STACK[lastExplicitIndex];
+    };
+    TreeBuilder.prototype.getPreviousExplicitRuleShortNameNoCst = function () {
+        var ruleStack = this.RULE_STACK;
+        return ruleStack[ruleStack.length - 2];
+    };
+    TreeBuilder.prototype.getLastExplicitRuleOccurrenceIndex = function () {
+        var lastExplicitIndex = this.LAST_EXPLICIT_RULE_STACK[this.LAST_EXPLICIT_RULE_STACK.length - 1];
+        return this.RULE_OCCURRENCE_STACK[lastExplicitIndex];
+    };
+    TreeBuilder.prototype.getLastExplicitRuleOccurrenceIndexNoCst = function () {
+        var occurrenceStack = this.RULE_OCCURRENCE_STACK;
+        return occurrenceStack[occurrenceStack.length - 1];
+    };
+    TreeBuilder.prototype.nestedRuleInvocationStateUpdate = function (nestedRuleName, shortNameKey) {
+        this.RULE_OCCURRENCE_STACK.push(1);
+        this.RULE_STACK.push(shortNameKey);
+        this.cstNestedInvocationStateUpdate(nestedRuleName, shortNameKey);
+    };
+    TreeBuilder.prototype.nestedRuleFinallyStateUpdate = function () {
+        this.RULE_STACK.pop();
+        this.RULE_OCCURRENCE_STACK.pop();
+        // NOOP when cst is disabled
+        this.cstNestedFinallyStateUpdate();
+    };
+    return TreeBuilder;
+}());
+exports.TreeBuilder = TreeBuilder;
+//# sourceMappingURL=tree_builder.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/scan/lexer.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/scan/lexer.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var regexp_to_ast_1 = __webpack_require__(/*! regexp-to-ast */ "./node_modules/regexp-to-ast/lib/regexp-to-ast.js");
+var tokens_public_1 = __webpack_require__(/*! ./tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+var lexer_public_1 = __webpack_require__(/*! ./lexer_public */ "./node_modules/chevrotain/lib/src/scan/lexer_public.js");
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var reg_exp_1 = __webpack_require__(/*! ./reg_exp */ "./node_modules/chevrotain/lib/src/scan/reg_exp.js");
+var regExpParser = new regexp_to_ast_1.RegExpParser();
+var PATTERN = "PATTERN";
+exports.DEFAULT_MODE = "defaultMode";
+exports.MODES = "modes";
+exports.SUPPORT_STICKY = typeof new RegExp("(?:)").sticky === "boolean";
+function disableSticky() {
+    exports.SUPPORT_STICKY = false;
+}
+exports.disableSticky = disableSticky;
+function enableSticky() {
+    exports.SUPPORT_STICKY = true;
+}
+exports.enableSticky = enableSticky;
+function analyzeTokenTypes(tokenTypes, options) {
+    options = utils_1.defaults(options, {
+        useSticky: exports.SUPPORT_STICKY,
+        debug: false,
+        safeMode: false,
+        positionTracking: "full",
+        lineTerminatorCharacters: ["\r", "\n"]
+    });
+    var onlyRelevantTypes = utils_1.reject(tokenTypes, function (currType) {
+        return currType[PATTERN] === lexer_public_1.Lexer.NA;
+    });
+    var hasCustom = false;
+    var allTransformedPatterns = utils_1.map(onlyRelevantTypes, function (currType) {
+        var currPattern = currType[PATTERN];
+        /* istanbul ignore else */
+        if (utils_1.isRegExp(currPattern)) {
+            var regExpSource = currPattern.source;
+            if (regExpSource.length === 1 &&
+                // only these regExp meta characters which can appear in a length one regExp
+                regExpSource !== "^" &&
+                regExpSource !== "$" &&
+                regExpSource !== ".") {
+                return regExpSource;
+            }
+            else if (regExpSource.length === 2 &&
+                regExpSource[0] === "\\" &&
+                // not a meta character
+                !utils_1.contains([
+                    "d",
+                    "D",
+                    "s",
+                    "S",
+                    "t",
+                    "r",
+                    "n",
+                    "t",
+                    "0",
+                    "c",
+                    "b",
+                    "B",
+                    "f",
+                    "v",
+                    "w",
+                    "W"
+                ], regExpSource[1])) {
+                // escaped meta Characters: /\+/ /\[/
+                // or redundant escaping: /\a/
+                // without the escaping "\"
+                return regExpSource[1];
+            }
+            else {
+                return options.useSticky
+                    ? addStickyFlag(currPattern)
+                    : addStartOfInput(currPattern);
+            }
+        }
+        else if (utils_1.isFunction(currPattern)) {
+            hasCustom = true;
+            // CustomPatternMatcherFunc - custom patterns do not require any transformations, only wrapping in a RegExp Like object
+            return { exec: currPattern };
+        }
+        else if (utils_1.has(currPattern, "exec")) {
+            hasCustom = true;
+            // ICustomPattern
+            return currPattern;
+        }
+        else if (typeof currPattern === "string") {
+            // IGNORE ABOVE ELSE
+            if (currPattern.length === 1) {
+                return currPattern;
+            }
+            else {
+                var escapedRegExpString = currPattern.replace(/[\\^$.*+?()[\]{}|]/g, "\\$&");
+                var wrappedRegExp = new RegExp(escapedRegExpString);
+                return options.useSticky
+                    ? addStickyFlag(wrappedRegExp)
+                    : addStartOfInput(wrappedRegExp);
+            }
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+    });
+    var patternIdxToType = utils_1.map(onlyRelevantTypes, function (currType) { return currType.tokenTypeIdx; });
+    var patternIdxToGroup = utils_1.map(onlyRelevantTypes, function (clazz) {
+        var groupName = clazz.GROUP;
+        /* istanbul ignore next */
+        if (groupName === lexer_public_1.Lexer.SKIPPED) {
+            return undefined;
+        }
+        else if (utils_1.isString(groupName)) {
+            return groupName;
+        }
+        else if (utils_1.isUndefined(groupName)) {
+            return false;
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+    });
+    var patternIdxToLongerAltIdx = utils_1.map(onlyRelevantTypes, function (clazz) {
+        var longerAltType = clazz.LONGER_ALT;
+        if (longerAltType) {
+            var longerAltIdx = utils_1.indexOf(onlyRelevantTypes, longerAltType);
+            return longerAltIdx;
+        }
+    });
+    var patternIdxToPushMode = utils_1.map(onlyRelevantTypes, function (clazz) { return clazz.PUSH_MODE; });
+    var patternIdxToPopMode = utils_1.map(onlyRelevantTypes, function (clazz) {
+        return utils_1.has(clazz, "POP_MODE");
+    });
+    var lineTerminatorCharCodes = getCharCodes(options.lineTerminatorCharacters);
+    var patternIdxToCanLineTerminator = utils_1.map(onlyRelevantTypes, function (tokType) { return false; });
+    if (options.positionTracking !== "onlyOffset") {
+        patternIdxToCanLineTerminator = utils_1.map(onlyRelevantTypes, function (tokType) {
+            if (utils_1.has(tokType, "LINE_BREAKS")) {
+                return tokType.LINE_BREAKS;
+            }
+            else {
+                if (checkLineBreaksIssues(tokType, lineTerminatorCharCodes) ===
+                    false) {
+                    return reg_exp_1.canMatchCharCode(lineTerminatorCharCodes, tokType.PATTERN);
+                }
+            }
+        });
+    }
+    var patternIdxToIsCustom = utils_1.map(onlyRelevantTypes, isCustomPattern);
+    var patternIdxToShort = utils_1.map(allTransformedPatterns, isShortPattern);
+    var emptyGroups = utils_1.reduce(onlyRelevantTypes, function (acc, clazz) {
+        var groupName = clazz.GROUP;
+        if (utils_1.isString(groupName) && !(groupName === lexer_public_1.Lexer.SKIPPED)) {
+            acc[groupName] = [];
+        }
+        return acc;
+    }, {});
+    var patternIdxToConfig = utils_1.map(allTransformedPatterns, function (x, idx) {
+        return {
+            pattern: allTransformedPatterns[idx],
+            longerAlt: patternIdxToLongerAltIdx[idx],
+            canLineTerminator: patternIdxToCanLineTerminator[idx],
+            isCustom: patternIdxToIsCustom[idx],
+            short: patternIdxToShort[idx],
+            group: patternIdxToGroup[idx],
+            push: patternIdxToPushMode[idx],
+            pop: patternIdxToPopMode[idx],
+            tokenTypeIdx: patternIdxToType[idx],
+            tokenType: onlyRelevantTypes[idx]
+        };
+    });
+    function addToMapOfArrays(map, key, value) {
+        if (map[key] === undefined) {
+            map[key] = [];
+        }
+        map[key].push(value);
+    }
+    var canBeOptimized = true;
+    var charCodeToPatternIdxToConfig = [];
+    if (!options.safeMode) {
+        charCodeToPatternIdxToConfig = utils_1.reduce(onlyRelevantTypes, function (result, currTokType, idx) {
+            if (typeof currTokType.PATTERN === "string") {
+                var key = currTokType.PATTERN.charCodeAt(0);
+                addToMapOfArrays(result, key, patternIdxToConfig[idx]);
+            }
+            else if (utils_1.isArray(currTokType.START_CHARS_HINT)) {
+                utils_1.forEach(currTokType.START_CHARS_HINT, function (charOrInt) {
+                    var key = typeof charOrInt === "string"
+                        ? charOrInt.charCodeAt(0)
+                        : charOrInt;
+                    addToMapOfArrays(result, key, patternIdxToConfig[idx]);
+                });
+            }
+            else if (utils_1.isRegExp(currTokType.PATTERN)) {
+                if (currTokType.PATTERN.unicode) {
+                    canBeOptimized = false;
+                    if (options.ensureOptimizations) {
+                        utils_1.PRINT_ERROR("" + reg_exp_1.failedOptimizationPrefixMsg +
+                            ("\tUnable to analyze < " + currTokType.PATTERN.toString() + " > pattern.\n") +
+                            "\tThe regexp unicode flag is not currently supported by the regexp-to-ast library.\n" +
+                            "\tThis will disable the lexer's first char optimizations.\n" +
+                            "\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#UNICODE_OPTIMIZE");
+                    }
+                }
+                else {
+                    var startCodes = reg_exp_1.getStartCodes(currTokType.PATTERN, options.ensureOptimizations);
+                    /* istanbul ignore if */
+                    // start code will only be empty given an empty regExp or failure of regexp-to-ast library
+                    // the first should be a different validation and the second cannot be tested.
+                    if (utils_1.isEmpty(startCodes)) {
+                        // we cannot understand what codes may start possible matches
+                        // The optimization correctness requires knowing start codes for ALL patterns.
+                        // Not actually sure this is an error, no debug message
+                        canBeOptimized = false;
+                    }
+                    utils_1.forEach(startCodes, function (code) {
+                        addToMapOfArrays(result, code, patternIdxToConfig[idx]);
+                    });
+                }
+            }
+            else {
+                if (options.ensureOptimizations) {
+                    utils_1.PRINT_ERROR("" + reg_exp_1.failedOptimizationPrefixMsg +
+                        ("\tTokenType: <" + tokens_public_1.tokenName(currTokType) + "> is using a custom token pattern without providing <start_chars_hint> parameter.\n") +
+                        "\tThis will disable the lexer's first char optimizations.\n" +
+                        "\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#CUSTOM_OPTIMIZE");
+                }
+                canBeOptimized = false;
+            }
+            return result;
+        }, []);
+    }
+    if (canBeOptimized && charCodeToPatternIdxToConfig.length < 65536) {
+        charCodeToPatternIdxToConfig = utils_1.packArray(charCodeToPatternIdxToConfig);
+    }
+    return {
+        emptyGroups: emptyGroups,
+        patternIdxToConfig: patternIdxToConfig,
+        charCodeToPatternIdxToConfig: charCodeToPatternIdxToConfig,
+        hasCustom: hasCustom,
+        canBeOptimized: canBeOptimized
+    };
+}
+exports.analyzeTokenTypes = analyzeTokenTypes;
+function validatePatterns(tokenTypes, validModesNames) {
+    var errors = [];
+    var missingResult = findMissingPatterns(tokenTypes);
+    errors = errors.concat(missingResult.errors);
+    var invalidResult = findInvalidPatterns(missingResult.valid);
+    var validTokenTypes = invalidResult.valid;
+    errors = errors.concat(invalidResult.errors);
+    errors = errors.concat(validateRegExpPattern(validTokenTypes));
+    errors = errors.concat(findInvalidGroupType(validTokenTypes));
+    errors = errors.concat(findModesThatDoNotExist(validTokenTypes, validModesNames));
+    errors = errors.concat(findUnreachablePatterns(validTokenTypes));
+    return errors;
+}
+exports.validatePatterns = validatePatterns;
+function validateRegExpPattern(tokenTypes) {
+    var errors = [];
+    var withRegExpPatterns = utils_1.filter(tokenTypes, function (currTokType) {
+        return utils_1.isRegExp(currTokType[PATTERN]);
+    });
+    errors = errors.concat(findEndOfInputAnchor(withRegExpPatterns));
+    errors = errors.concat(findStartOfInputAnchor(withRegExpPatterns));
+    errors = errors.concat(findUnsupportedFlags(withRegExpPatterns));
+    errors = errors.concat(findDuplicatePatterns(withRegExpPatterns));
+    errors = errors.concat(findEmptyMatchRegExps(withRegExpPatterns));
+    return errors;
+}
+function findMissingPatterns(tokenTypes) {
+    var tokenTypesWithMissingPattern = utils_1.filter(tokenTypes, function (currType) {
+        return !utils_1.has(currType, PATTERN);
+    });
+    var errors = utils_1.map(tokenTypesWithMissingPattern, function (currType) {
+        return {
+            message: "Token Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- missing static 'PATTERN' property",
+            type: lexer_public_1.LexerDefinitionErrorType.MISSING_PATTERN,
+            tokenTypes: [currType]
+        };
+    });
+    var valid = utils_1.difference(tokenTypes, tokenTypesWithMissingPattern);
+    return { errors: errors, valid: valid };
+}
+exports.findMissingPatterns = findMissingPatterns;
+function findInvalidPatterns(tokenTypes) {
+    var tokenTypesWithInvalidPattern = utils_1.filter(tokenTypes, function (currType) {
+        var pattern = currType[PATTERN];
+        return (!utils_1.isRegExp(pattern) &&
+            !utils_1.isFunction(pattern) &&
+            !utils_1.has(pattern, "exec") &&
+            !utils_1.isString(pattern));
+    });
+    var errors = utils_1.map(tokenTypesWithInvalidPattern, function (currType) {
+        return {
+            message: "Token Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- static 'PATTERN' can only be a RegExp, a" +
+                " Function matching the {CustomPatternMatcherFunc} type or an Object matching the {ICustomPattern} interface.",
+            type: lexer_public_1.LexerDefinitionErrorType.INVALID_PATTERN,
+            tokenTypes: [currType]
+        };
+    });
+    var valid = utils_1.difference(tokenTypes, tokenTypesWithInvalidPattern);
+    return { errors: errors, valid: valid };
+}
+exports.findInvalidPatterns = findInvalidPatterns;
+var end_of_input = /[^\\][\$]/;
+function findEndOfInputAnchor(tokenTypes) {
+    var EndAnchorFinder = /** @class */ (function (_super) {
+        __extends(EndAnchorFinder, _super);
+        function EndAnchorFinder() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.found = false;
+            return _this;
+        }
+        EndAnchorFinder.prototype.visitEndAnchor = function (node) {
+            this.found = true;
+        };
+        return EndAnchorFinder;
+    }(regexp_to_ast_1.BaseRegExpVisitor));
+    var invalidRegex = utils_1.filter(tokenTypes, function (currType) {
+        var pattern = currType[PATTERN];
+        try {
+            var regexpAst = regExpParser.pattern(pattern.toString());
+            var endAnchorVisitor = new EndAnchorFinder();
+            endAnchorVisitor.visit(regexpAst);
+            return endAnchorVisitor.found;
+        }
+        catch (e) {
+            // old behavior in case of runtime exceptions with regexp-to-ast.
+            /* istanbul ignore next - cannot ensure an error in regexp-to-ast*/
+            return end_of_input.test(pattern.source);
+        }
+    });
+    var errors = utils_1.map(invalidRegex, function (currType) {
+        return {
+            message: "Unexpected RegExp Anchor Error:\n" +
+                "\tToken Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- static 'PATTERN' cannot contain end of input anchor '$'\n" +
+                "\tSee sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#ANCHORS" +
+                "\tfor details.",
+            type: lexer_public_1.LexerDefinitionErrorType.EOI_ANCHOR_FOUND,
+            tokenTypes: [currType]
+        };
+    });
+    return errors;
+}
+exports.findEndOfInputAnchor = findEndOfInputAnchor;
+function findEmptyMatchRegExps(tokenTypes) {
+    var matchesEmptyString = utils_1.filter(tokenTypes, function (currType) {
+        var pattern = currType[PATTERN];
+        return pattern.test("");
+    });
+    var errors = utils_1.map(matchesEmptyString, function (currType) {
+        return {
+            message: "Token Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- static 'PATTERN' must not match an empty string",
+            type: lexer_public_1.LexerDefinitionErrorType.EMPTY_MATCH_PATTERN,
+            tokenTypes: [currType]
+        };
+    });
+    return errors;
+}
+exports.findEmptyMatchRegExps = findEmptyMatchRegExps;
+var start_of_input = /[^\\[][\^]|^\^/;
+function findStartOfInputAnchor(tokenTypes) {
+    var StartAnchorFinder = /** @class */ (function (_super) {
+        __extends(StartAnchorFinder, _super);
+        function StartAnchorFinder() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.found = false;
+            return _this;
+        }
+        StartAnchorFinder.prototype.visitStartAnchor = function (node) {
+            this.found = true;
+        };
+        return StartAnchorFinder;
+    }(regexp_to_ast_1.BaseRegExpVisitor));
+    var invalidRegex = utils_1.filter(tokenTypes, function (currType) {
+        var pattern = currType[PATTERN];
+        try {
+            var regexpAst = regExpParser.pattern(pattern.toString());
+            var startAnchorVisitor = new StartAnchorFinder();
+            startAnchorVisitor.visit(regexpAst);
+            return startAnchorVisitor.found;
+        }
+        catch (e) {
+            // old behavior in case of runtime exceptions with regexp-to-ast.
+            /* istanbul ignore next - cannot ensure an error in regexp-to-ast*/
+            return start_of_input.test(pattern.source);
+        }
+    });
+    var errors = utils_1.map(invalidRegex, function (currType) {
+        return {
+            message: "Unexpected RegExp Anchor Error:\n" +
+                "\tToken Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- static 'PATTERN' cannot contain start of input anchor '^'\n" +
+                "\tSee https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#ANCHORS" +
+                "\tfor details.",
+            type: lexer_public_1.LexerDefinitionErrorType.SOI_ANCHOR_FOUND,
+            tokenTypes: [currType]
+        };
+    });
+    return errors;
+}
+exports.findStartOfInputAnchor = findStartOfInputAnchor;
+function findUnsupportedFlags(tokenTypes) {
+    var invalidFlags = utils_1.filter(tokenTypes, function (currType) {
+        var pattern = currType[PATTERN];
+        return (pattern instanceof RegExp && (pattern.multiline || pattern.global));
+    });
+    var errors = utils_1.map(invalidFlags, function (currType) {
+        return {
+            message: "Token Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- static 'PATTERN' may NOT contain global('g') or multiline('m')",
+            type: lexer_public_1.LexerDefinitionErrorType.UNSUPPORTED_FLAGS_FOUND,
+            tokenTypes: [currType]
+        };
+    });
+    return errors;
+}
+exports.findUnsupportedFlags = findUnsupportedFlags;
+// This can only test for identical duplicate RegExps, not semantically equivalent ones.
+function findDuplicatePatterns(tokenTypes) {
+    var found = [];
+    var identicalPatterns = utils_1.map(tokenTypes, function (outerType) {
+        return utils_1.reduce(tokenTypes, function (result, innerType) {
+            if (outerType.PATTERN.source === innerType.PATTERN.source &&
+                !utils_1.contains(found, innerType) &&
+                innerType.PATTERN !== lexer_public_1.Lexer.NA) {
+                // this avoids duplicates in the result, each Token Type may only appear in one "set"
+                // in essence we are creating Equivalence classes on equality relation.
+                found.push(innerType);
+                result.push(innerType);
+                return result;
+            }
+            return result;
+        }, []);
+    });
+    identicalPatterns = utils_1.compact(identicalPatterns);
+    var duplicatePatterns = utils_1.filter(identicalPatterns, function (currIdenticalSet) {
+        return currIdenticalSet.length > 1;
+    });
+    var errors = utils_1.map(duplicatePatterns, function (setOfIdentical) {
+        var tokenTypeNames = utils_1.map(setOfIdentical, function (currType) {
+            return tokens_public_1.tokenName(currType);
+        });
+        var dupPatternSrc = utils_1.first(setOfIdentical).PATTERN;
+        return {
+            message: "The same RegExp pattern ->" + dupPatternSrc + "<-" +
+                ("has been used in all of the following Token Types: " + tokenTypeNames.join(", ") + " <-"),
+            type: lexer_public_1.LexerDefinitionErrorType.DUPLICATE_PATTERNS_FOUND,
+            tokenTypes: setOfIdentical
+        };
+    });
+    return errors;
+}
+exports.findDuplicatePatterns = findDuplicatePatterns;
+function findInvalidGroupType(tokenTypes) {
+    var invalidTypes = utils_1.filter(tokenTypes, function (clazz) {
+        if (!utils_1.has(clazz, "GROUP")) {
+            return false;
+        }
+        var group = clazz.GROUP;
+        return group !== lexer_public_1.Lexer.SKIPPED && group !== lexer_public_1.Lexer.NA && !utils_1.isString(group);
+    });
+    var errors = utils_1.map(invalidTypes, function (currType) {
+        return {
+            message: "Token Type: ->" +
+                tokens_public_1.tokenName(currType) +
+                "<- static 'GROUP' can only be Lexer.SKIPPED/Lexer.NA/A String",
+            type: lexer_public_1.LexerDefinitionErrorType.INVALID_GROUP_TYPE_FOUND,
+            tokenTypes: [currType]
+        };
+    });
+    return errors;
+}
+exports.findInvalidGroupType = findInvalidGroupType;
+function findModesThatDoNotExist(tokenTypes, validModes) {
+    var invalidModes = utils_1.filter(tokenTypes, function (clazz) {
+        return (clazz.PUSH_MODE !== undefined &&
+            !utils_1.contains(validModes, clazz.PUSH_MODE));
+    });
+    var errors = utils_1.map(invalidModes, function (clazz) {
+        var msg = "Token Type: ->" + tokens_public_1.tokenName(clazz) + "<- static 'PUSH_MODE' value cannot refer to a Lexer Mode ->" + clazz.PUSH_MODE + "<-" + "which does not exist";
+        return {
+            message: msg,
+            type: lexer_public_1.LexerDefinitionErrorType.PUSH_MODE_DOES_NOT_EXIST,
+            tokenTypes: [clazz]
+        };
+    });
+    return errors;
+}
+exports.findModesThatDoNotExist = findModesThatDoNotExist;
+function findUnreachablePatterns(tokenTypes) {
+    var errors = [];
+    var canBeTested = utils_1.reduce(tokenTypes, function (result, tokType, idx) {
+        var pattern = tokType.PATTERN;
+        if (pattern === lexer_public_1.Lexer.NA) {
+            return result;
+        }
+        // a more comprehensive validation for all forms of regExps would require
+        // deeper regExp analysis capabilities
+        if (utils_1.isString(pattern)) {
+            result.push({ str: pattern, idx: idx, tokenType: tokType });
+        }
+        else if (utils_1.isRegExp(pattern) && noMetaChar(pattern)) {
+            result.push({ str: pattern.source, idx: idx, tokenType: tokType });
+        }
+        return result;
+    }, []);
+    utils_1.forEach(tokenTypes, function (tokType, testIdx) {
+        utils_1.forEach(canBeTested, function (_a) {
+            var str = _a.str, idx = _a.idx, tokenType = _a.tokenType;
+            if (testIdx < idx && testTokenType(str, tokType.PATTERN)) {
+                var msg = "Token: ->" + tokens_public_1.tokenName(tokenType) + "<- can never be matched.\n" +
+                    ("Because it appears AFTER the Token Type ->" + tokens_public_1.tokenName(tokType) + "<-") +
+                    "in the lexer's definition.\n" +
+                    "See https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#UNREACHABLE";
+                errors.push({
+                    message: msg,
+                    type: lexer_public_1.LexerDefinitionErrorType.UNREACHABLE_PATTERN,
+                    tokenTypes: [tokType, tokenType]
+                });
+            }
+        });
+    });
+    return errors;
+}
+exports.findUnreachablePatterns = findUnreachablePatterns;
+function testTokenType(str, pattern) {
+    /* istanbul ignore else */
+    if (utils_1.isRegExp(pattern)) {
+        var regExpArray = pattern.exec(str);
+        return regExpArray !== null && regExpArray.index === 0;
+    }
+    else if (utils_1.isFunction(pattern)) {
+        // maintain the API of custom patterns
+        return pattern(str, 0, [], {});
+    }
+    else if (utils_1.has(pattern, "exec")) {
+        // maintain the API of custom patterns
+        return pattern.exec(str, 0, [], {});
+    }
+    else if (typeof pattern === "string") {
+        return pattern === str;
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+function noMetaChar(regExp) {
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+    var metaChars = [
+        ".",
+        "\\",
+        "[",
+        "]",
+        "|",
+        "^",
+        "$",
+        "(",
+        ")",
+        "?",
+        "*",
+        "+",
+        "{"
+    ];
+    return (utils_1.find(metaChars, function (char) { return regExp.source.indexOf(char) !== -1; }) ===
+        undefined);
+}
+function addStartOfInput(pattern) {
+    var flags = pattern.ignoreCase ? "i" : "";
+    // always wrapping in a none capturing group preceded by '^' to make sure matching can only work on start of input.
+    // duplicate/redundant start of input markers have no meaning (/^^^^A/ === /^A/)
+    return new RegExp("^(?:" + pattern.source + ")", flags);
+}
+exports.addStartOfInput = addStartOfInput;
+function addStickyFlag(pattern) {
+    var flags = pattern.ignoreCase ? "iy" : "y";
+    // always wrapping in a none capturing group preceded by '^' to make sure matching can only work on start of input.
+    // duplicate/redundant start of input markers have no meaning (/^^^^A/ === /^A/)
+    return new RegExp("" + pattern.source, flags);
+}
+exports.addStickyFlag = addStickyFlag;
+function performRuntimeChecks(lexerDefinition, trackLines, lineTerminatorCharacters) {
+    var errors = [];
+    // some run time checks to help the end users.
+    if (!utils_1.has(lexerDefinition, exports.DEFAULT_MODE)) {
+        errors.push({
+            message: "A MultiMode Lexer cannot be initialized without a <" +
+                exports.DEFAULT_MODE +
+                "> property in its definition\n",
+            type: lexer_public_1.LexerDefinitionErrorType.MULTI_MODE_LEXER_WITHOUT_DEFAULT_MODE
+        });
+    }
+    if (!utils_1.has(lexerDefinition, exports.MODES)) {
+        errors.push({
+            message: "A MultiMode Lexer cannot be initialized without a <" +
+                exports.MODES +
+                "> property in its definition\n",
+            type: lexer_public_1.LexerDefinitionErrorType.MULTI_MODE_LEXER_WITHOUT_MODES_PROPERTY
+        });
+    }
+    if (utils_1.has(lexerDefinition, exports.MODES) &&
+        utils_1.has(lexerDefinition, exports.DEFAULT_MODE) &&
+        !utils_1.has(lexerDefinition.modes, lexerDefinition.defaultMode)) {
+        errors.push({
+            message: "A MultiMode Lexer cannot be initialized with a " + exports.DEFAULT_MODE + ": <" + lexerDefinition.defaultMode + ">" + "which does not exist\n",
+            type: lexer_public_1.LexerDefinitionErrorType.MULTI_MODE_LEXER_DEFAULT_MODE_VALUE_DOES_NOT_EXIST
+        });
+    }
+    if (utils_1.has(lexerDefinition, exports.MODES)) {
+        utils_1.forEach(lexerDefinition.modes, function (currModeValue, currModeName) {
+            utils_1.forEach(currModeValue, function (currTokType, currIdx) {
+                if (utils_1.isUndefined(currTokType)) {
+                    errors.push({
+                        message: "A Lexer cannot be initialized using an undefined Token Type. Mode:" +
+                            ("<" + currModeName + "> at index: <" + currIdx + ">\n"),
+                        type: lexer_public_1.LexerDefinitionErrorType.LEXER_DEFINITION_CANNOT_CONTAIN_UNDEFINED
+                    });
+                }
+            });
+        });
+    }
+    return errors;
+}
+exports.performRuntimeChecks = performRuntimeChecks;
+function performWarningRuntimeChecks(lexerDefinition, trackLines, lineTerminatorCharacters) {
+    var warnings = [];
+    var hasAnyLineBreak = false;
+    var allTokenTypes = utils_1.compact(utils_1.flatten(utils_1.mapValues(lexerDefinition.modes, function (tokTypes) { return tokTypes; })));
+    var concreteTokenTypes = utils_1.reject(allTokenTypes, function (currType) { return currType[PATTERN] === lexer_public_1.Lexer.NA; });
+    var terminatorCharCodes = getCharCodes(lineTerminatorCharacters);
+    if (trackLines) {
+        utils_1.forEach(concreteTokenTypes, function (tokType) {
+            var currIssue = checkLineBreaksIssues(tokType, terminatorCharCodes);
+            if (currIssue !== false) {
+                var message = buildLineBreakIssueMessage(tokType, currIssue);
+                var warningDescriptor = {
+                    message: message,
+                    type: currIssue.issue,
+                    tokenType: tokType
+                };
+                warnings.push(warningDescriptor);
+            }
+            else {
+                // we don't want to attempt to scan if the user explicitly specified the line_breaks option.
+                if (utils_1.has(tokType, "LINE_BREAKS")) {
+                    if (tokType.LINE_BREAKS === true) {
+                        hasAnyLineBreak = true;
+                    }
+                }
+                else {
+                    if (reg_exp_1.canMatchCharCode(terminatorCharCodes, tokType.PATTERN)) {
+                        hasAnyLineBreak = true;
+                    }
+                }
+            }
+        });
+    }
+    if (trackLines && !hasAnyLineBreak) {
+        warnings.push({
+            message: "Warning: No LINE_BREAKS Found.\n" +
+                "\tThis Lexer has been defined to track line and column information,\n" +
+                "\tBut none of the Token Types can be identified as matching a line terminator.\n" +
+                "\tSee https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#LINE_BREAKS \n" +
+                "\tfor details.",
+            type: lexer_public_1.LexerDefinitionErrorType.NO_LINE_BREAKS_FLAGS
+        });
+    }
+    return warnings;
+}
+exports.performWarningRuntimeChecks = performWarningRuntimeChecks;
+function cloneEmptyGroups(emptyGroups) {
+    var clonedResult = {};
+    var groupKeys = utils_1.keys(emptyGroups);
+    utils_1.forEach(groupKeys, function (currKey) {
+        var currGroupValue = emptyGroups[currKey];
+        /* istanbul ignore else */
+        if (utils_1.isArray(currGroupValue)) {
+            clonedResult[currKey] = [];
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+    });
+    return clonedResult;
+}
+exports.cloneEmptyGroups = cloneEmptyGroups;
+// TODO: refactor to avoid duplication
+function isCustomPattern(tokenType) {
+    var pattern = tokenType.PATTERN;
+    /* istanbul ignore else */
+    if (utils_1.isRegExp(pattern)) {
+        return false;
+    }
+    else if (utils_1.isFunction(pattern)) {
+        // CustomPatternMatcherFunc - custom patterns do not require any transformations, only wrapping in a RegExp Like object
+        return true;
+    }
+    else if (utils_1.has(pattern, "exec")) {
+        // ICustomPattern
+        return true;
+    }
+    else if (utils_1.isString(pattern)) {
+        return false;
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.isCustomPattern = isCustomPattern;
+function isShortPattern(pattern) {
+    if (utils_1.isString(pattern) && pattern.length === 1) {
+        return pattern.charCodeAt(0);
+    }
+    else {
+        return false;
+    }
+}
+exports.isShortPattern = isShortPattern;
+/**
+ * Faster than using a RegExp for default newline detection during lexing.
+ */
+exports.LineTerminatorOptimizedTester = {
+    // implements /\n|\r\n?/g.test
+    test: function (text) {
+        var len = text.length;
+        for (var i = this.lastIndex; i < len; i++) {
+            var c = text.charCodeAt(i);
+            if (c === 10) {
+                this.lastIndex = i + 1;
+                return true;
+            }
+            else if (c === 13) {
+                if (text.charCodeAt(i + 1) === 10) {
+                    this.lastIndex = i + 2;
+                }
+                else {
+                    this.lastIndex = i + 1;
+                }
+                return true;
+            }
+        }
+        return false;
+    },
+    lastIndex: 0
+};
+function checkLineBreaksIssues(tokType, lineTerminatorCharCodes) {
+    if (utils_1.has(tokType, "LINE_BREAKS")) {
+        // if the user explicitly declared the line_breaks option we will respect their choice
+        // and assume it is correct.
+        return false;
+    }
+    else {
+        /* istanbul ignore else */
+        if (utils_1.isRegExp(tokType.PATTERN)) {
+            try {
+                reg_exp_1.canMatchCharCode(lineTerminatorCharCodes, tokType.PATTERN);
+            }
+            catch (e) {
+                /* istanbul ignore next - to test this we would have to mock <canMatchCharCode> to throw an error */
+                return {
+                    issue: lexer_public_1.LexerDefinitionErrorType.IDENTIFY_TERMINATOR,
+                    errMsg: e.message
+                };
+            }
+            return false;
+        }
+        else if (utils_1.isString(tokType.PATTERN)) {
+            // string literal patterns can always be analyzed to detect line terminator usage
+            return false;
+        }
+        else if (isCustomPattern(tokType)) {
+            // custom token types
+            return { issue: lexer_public_1.LexerDefinitionErrorType.CUSTOM_LINE_BREAK };
+        }
+        else {
+            throw Error("non exhaustive match");
+        }
+    }
+}
+function buildLineBreakIssueMessage(tokType, details) {
+    /* istanbul ignore else */
+    if (details.issue === lexer_public_1.LexerDefinitionErrorType.IDENTIFY_TERMINATOR) {
+        return ("Warning: unable to identify line terminator usage in pattern.\n" +
+            ("\tThe problem is in the <" + tokType.name + "> Token Type\n") +
+            ("\t Root cause: " + details.errMsg + ".\n") +
+            "\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#IDENTIFY_TERMINATOR");
+    }
+    else if (details.issue === lexer_public_1.LexerDefinitionErrorType.CUSTOM_LINE_BREAK) {
+        return ("Warning: A Custom Token Pattern should specify the <line_breaks> option.\n" +
+            ("\tThe problem is in the <" + tokType.name + "> Token Type\n") +
+            "\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#CUSTOM_LINE_BREAK");
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.buildLineBreakIssueMessage = buildLineBreakIssueMessage;
+function getCharCodes(charsOrCodes) {
+    var charCodes = utils_1.map(charsOrCodes, function (numOrString) {
+        if (utils_1.isString(numOrString) && numOrString.length > 0) {
+            return numOrString.charCodeAt(0);
+        }
+        else {
+            return numOrString;
+        }
+    });
+    return charCodes;
+}
+//# sourceMappingURL=lexer.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/scan/lexer_errors_public.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/scan/lexer_errors_public.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.defaultLexerErrorProvider = {
+    buildUnableToPopLexerModeMessage: function (token) {
+        return "Unable to pop Lexer Mode after encountering Token ->" + token.image + "<- The Mode Stack is empty";
+    },
+    buildUnexpectedCharactersMessage: function (fullText, startOffset, length, line, column) {
+        return ("unexpected character: ->" + fullText.charAt(startOffset) + "<- at offset: " + startOffset + "," + (" skipped " + length + " characters."));
+    }
+};
+//# sourceMappingURL=lexer_errors_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/scan/lexer_public.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/scan/lexer_public.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lexer_1 = __webpack_require__(/*! ./lexer */ "./node_modules/chevrotain/lib/src/scan/lexer.js");
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var tokens_1 = __webpack_require__(/*! ./tokens */ "./node_modules/chevrotain/lib/src/scan/tokens.js");
+var lexer_errors_public_1 = __webpack_require__(/*! ../scan/lexer_errors_public */ "./node_modules/chevrotain/lib/src/scan/lexer_errors_public.js");
+var LexerDefinitionErrorType;
+(function (LexerDefinitionErrorType) {
+    LexerDefinitionErrorType[LexerDefinitionErrorType["MISSING_PATTERN"] = 0] = "MISSING_PATTERN";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["INVALID_PATTERN"] = 1] = "INVALID_PATTERN";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["EOI_ANCHOR_FOUND"] = 2] = "EOI_ANCHOR_FOUND";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["UNSUPPORTED_FLAGS_FOUND"] = 3] = "UNSUPPORTED_FLAGS_FOUND";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["DUPLICATE_PATTERNS_FOUND"] = 4] = "DUPLICATE_PATTERNS_FOUND";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["INVALID_GROUP_TYPE_FOUND"] = 5] = "INVALID_GROUP_TYPE_FOUND";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["PUSH_MODE_DOES_NOT_EXIST"] = 6] = "PUSH_MODE_DOES_NOT_EXIST";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["MULTI_MODE_LEXER_WITHOUT_DEFAULT_MODE"] = 7] = "MULTI_MODE_LEXER_WITHOUT_DEFAULT_MODE";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["MULTI_MODE_LEXER_WITHOUT_MODES_PROPERTY"] = 8] = "MULTI_MODE_LEXER_WITHOUT_MODES_PROPERTY";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["MULTI_MODE_LEXER_DEFAULT_MODE_VALUE_DOES_NOT_EXIST"] = 9] = "MULTI_MODE_LEXER_DEFAULT_MODE_VALUE_DOES_NOT_EXIST";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["LEXER_DEFINITION_CANNOT_CONTAIN_UNDEFINED"] = 10] = "LEXER_DEFINITION_CANNOT_CONTAIN_UNDEFINED";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["SOI_ANCHOR_FOUND"] = 11] = "SOI_ANCHOR_FOUND";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["EMPTY_MATCH_PATTERN"] = 12] = "EMPTY_MATCH_PATTERN";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["NO_LINE_BREAKS_FLAGS"] = 13] = "NO_LINE_BREAKS_FLAGS";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["UNREACHABLE_PATTERN"] = 14] = "UNREACHABLE_PATTERN";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["IDENTIFY_TERMINATOR"] = 15] = "IDENTIFY_TERMINATOR";
+    LexerDefinitionErrorType[LexerDefinitionErrorType["CUSTOM_LINE_BREAK"] = 16] = "CUSTOM_LINE_BREAK";
+})(LexerDefinitionErrorType = exports.LexerDefinitionErrorType || (exports.LexerDefinitionErrorType = {}));
+var DEFAULT_LEXER_CONFIG = {
+    deferDefinitionErrorsHandling: false,
+    positionTracking: "full",
+    lineTerminatorsPattern: /\n|\r\n?/g,
+    lineTerminatorCharacters: ["\n", "\r"],
+    ensureOptimizations: false,
+    safeMode: false,
+    errorMessageProvider: lexer_errors_public_1.defaultLexerErrorProvider
+};
+Object.freeze(DEFAULT_LEXER_CONFIG);
+var Lexer = /** @class */ (function () {
+    function Lexer(lexerDefinition, config) {
+        if (config === void 0) { config = DEFAULT_LEXER_CONFIG; }
+        var _this = this;
+        this.lexerDefinition = lexerDefinition;
+        this.lexerDefinitionErrors = [];
+        this.lexerDefinitionWarning = [];
+        this.patternIdxToConfig = {};
+        this.charCodeToPatternIdxToConfig = {};
+        this.modes = [];
+        this.emptyGroups = {};
+        this.config = undefined;
+        this.trackStartLines = true;
+        this.trackEndLines = true;
+        this.hasCustom = false;
+        this.canModeBeOptimized = {};
+        if (typeof config === "boolean") {
+            throw Error("The second argument to the Lexer constructor is now an ILexerConfig Object.\n" +
+                "a boolean 2nd argument is no longer supported");
+        }
+        // todo: defaults func?
+        this.config = utils_1.merge(DEFAULT_LEXER_CONFIG, config);
+        if (this.config.lineTerminatorsPattern ===
+            DEFAULT_LEXER_CONFIG.lineTerminatorsPattern) {
+            // optimized built-in implementation for the defaults definition of lineTerminators
+            this.config.lineTerminatorsPattern = lexer_1.LineTerminatorOptimizedTester;
+        }
+        else {
+            if (this.config.lineTerminatorCharacters ===
+                DEFAULT_LEXER_CONFIG.lineTerminatorCharacters) {
+                throw Error("Error: Missing <lineTerminatorCharacters> property on the Lexer config.\n" +
+                    "\tFor details See: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#MISSING_LINE_TERM_CHARS");
+            }
+        }
+        if (config.safeMode && config.ensureOptimizations) {
+            throw Error('"safeMode" and "ensureOptimizations" flags are mutually exclusive.');
+        }
+        this.trackStartLines = /full|onlyStart/i.test(this.config.positionTracking);
+        this.trackEndLines = /full/i.test(this.config.positionTracking);
+        var hasOnlySingleMode = true;
+        var actualDefinition;
+        // Convert SingleModeLexerDefinition into a IMultiModeLexerDefinition.
+        if (utils_1.isArray(lexerDefinition)) {
+            actualDefinition = { modes: {} };
+            actualDefinition.modes[lexer_1.DEFAULT_MODE] = utils_1.cloneArr((lexerDefinition));
+            actualDefinition[lexer_1.DEFAULT_MODE] = lexer_1.DEFAULT_MODE;
+        }
+        else {
+            // no conversion needed, input should already be a IMultiModeLexerDefinition
+            hasOnlySingleMode = false;
+            actualDefinition = utils_1.cloneObj((lexerDefinition));
+        }
+        this.lexerDefinitionErrors = this.lexerDefinitionErrors.concat(lexer_1.performRuntimeChecks(actualDefinition, this.trackStartLines, this.config.lineTerminatorCharacters));
+        this.lexerDefinitionWarning = this.lexerDefinitionWarning.concat(lexer_1.performWarningRuntimeChecks(actualDefinition, this.trackStartLines, this.config.lineTerminatorCharacters));
+        // for extra robustness to avoid throwing an none informative error message
+        actualDefinition.modes = actualDefinition.modes
+            ? actualDefinition.modes
+            : {};
+        // an error of undefined TokenTypes will be detected in "performRuntimeChecks" above.
+        // this transformation is to increase robustness in the case of partially invalid lexer definition.
+        utils_1.forEach(actualDefinition.modes, function (currModeValue, currModeName) {
+            actualDefinition.modes[currModeName] = utils_1.reject(currModeValue, function (currTokType) { return utils_1.isUndefined(currTokType); });
+        });
+        var allModeNames = utils_1.keys(actualDefinition.modes);
+        utils_1.forEach(actualDefinition.modes, function (currModDef, currModName) {
+            _this.modes.push(currModName);
+            _this.lexerDefinitionErrors = _this.lexerDefinitionErrors.concat(lexer_1.validatePatterns(currModDef, allModeNames));
+            // If definition errors were encountered, the analysis phase may fail unexpectedly/
+            // Considering a lexer with definition errors may never be used, there is no point
+            // to performing the analysis anyhow...
+            if (utils_1.isEmpty(_this.lexerDefinitionErrors)) {
+                tokens_1.augmentTokenTypes(currModDef);
+                var currAnalyzeResult = lexer_1.analyzeTokenTypes(currModDef, {
+                    lineTerminatorCharacters: _this.config
+                        .lineTerminatorCharacters,
+                    positionTracking: config.positionTracking,
+                    ensureOptimizations: config.ensureOptimizations,
+                    safeMode: config.safeMode
+                });
+                _this.patternIdxToConfig[currModName] =
+                    currAnalyzeResult.patternIdxToConfig;
+                _this.charCodeToPatternIdxToConfig[currModName] =
+                    currAnalyzeResult.charCodeToPatternIdxToConfig;
+                _this.emptyGroups = utils_1.merge(_this.emptyGroups, currAnalyzeResult.emptyGroups);
+                _this.hasCustom =
+                    currAnalyzeResult.hasCustom || _this.hasCustom;
+                _this.canModeBeOptimized[currModName] =
+                    currAnalyzeResult.canBeOptimized;
+            }
+        });
+        this.defaultMode = actualDefinition.defaultMode;
+        if (!utils_1.isEmpty(this.lexerDefinitionErrors) &&
+            !this.config.deferDefinitionErrorsHandling) {
+            var allErrMessages = utils_1.map(this.lexerDefinitionErrors, function (error) {
+                return error.message;
+            });
+            var allErrMessagesString = allErrMessages.join("-----------------------\n");
+            throw new Error("Errors detected in definition of Lexer:\n" +
+                allErrMessagesString);
+        }
+        // Only print warning if there are no errors, This will avoid pl
+        utils_1.forEach(this.lexerDefinitionWarning, function (warningDescriptor) {
+            utils_1.PRINT_WARNING(warningDescriptor.message);
+        });
+        // Choose the relevant internal implementations for this specific parser.
+        // These implementations should be in-lined by the JavaScript engine
+        // to provide optimal performance in each scenario.
+        if (lexer_1.SUPPORT_STICKY) {
+            this.chopInput = utils_1.IDENTITY;
+            this.match = this.matchWithTest;
+        }
+        else {
+            this.updateLastIndex = utils_1.NOOP;
+            this.match = this.matchWithExec;
+        }
+        if (hasOnlySingleMode) {
+            this.handleModes = utils_1.NOOP;
+        }
+        if (this.trackStartLines === false) {
+            this.computeNewColumn = utils_1.IDENTITY;
+        }
+        if (this.trackEndLines === false) {
+            this.updateTokenEndLineColumnLocation = utils_1.NOOP;
+        }
+        if (/full/i.test(this.config.positionTracking)) {
+            this.createTokenInstance = this.createFullToken;
+        }
+        else if (/onlyStart/i.test(this.config.positionTracking)) {
+            this.createTokenInstance = this.createStartOnlyToken;
+        }
+        else if (/onlyOffset/i.test(this.config.positionTracking)) {
+            this.createTokenInstance = this.createOffsetOnlyToken;
+        }
+        else {
+            throw Error("Invalid <positionTracking> config option: \"" + this.config.positionTracking + "\"");
+        }
+        if (this.hasCustom) {
+            this.addToken = this.addTokenUsingPush;
+        }
+        else {
+            this.addToken = this.addTokenUsingMemberAccess;
+        }
+        var unOptimizedModes = utils_1.reduce(this.canModeBeOptimized, function (cannotBeOptimized, canBeOptimized, modeName) {
+            if (canBeOptimized === false) {
+                cannotBeOptimized.push(modeName);
+            }
+            return cannotBeOptimized;
+        }, []);
+        if (config.ensureOptimizations && !utils_1.isEmpty(unOptimizedModes)) {
+            throw Error("Lexer Modes: < " + unOptimizedModes.join(", ") + " > cannot be optimized.\n" +
+                '\t Disable the "ensureOptimizations" lexer config flag to silently ignore this and run the lexer in an un-optimized mode.\n' +
+                "\t Or inspect the console log for details on how to resolve these issues.");
+        }
+    }
+    Lexer.prototype.tokenize = function (text, initialMode) {
+        if (initialMode === void 0) { initialMode = this.defaultMode; }
+        if (!utils_1.isEmpty(this.lexerDefinitionErrors)) {
+            var allErrMessages = utils_1.map(this.lexerDefinitionErrors, function (error) {
+                return error.message;
+            });
+            var allErrMessagesString = allErrMessages.join("-----------------------\n");
+            throw new Error("Unable to Tokenize because Errors detected in definition of Lexer:\n" +
+                allErrMessagesString);
+        }
+        var lexResult = this.tokenizeInternal(text, initialMode);
+        return lexResult;
+    };
+    // There is quite a bit of duplication between this and "tokenizeInternalLazy"
+    // This is intentional due to performance considerations.
+    Lexer.prototype.tokenizeInternal = function (text, initialMode) {
+        var _this = this;
+        var i, j, matchAltImage, longerAltIdx, matchedImage, imageLength, group, tokType, newToken, errLength, droppedChar, msg, match;
+        var orgText = text;
+        var orgLength = orgText.length;
+        var offset = 0;
+        var matchedTokensIndex = 0;
+        // initializing the tokensArray to the "guessed" size.
+        // guessing too little will still reduce the number of array re-sizes on pushes.
+        // guessing too large (Tested by guessing x4 too large) may cost a bit more of memory
+        // but would still have a faster runtime by avoiding (All but one) array resizing.
+        var guessedNumberOfTokens = this.hasCustom
+            ? 0 // will break custom token pattern APIs the matchedTokens array will contain undefined elements.
+            : Math.floor(text.length / 10);
+        var matchedTokens = new Array(guessedNumberOfTokens);
+        var errors = [];
+        var line = this.trackStartLines ? 1 : undefined;
+        var column = this.trackStartLines ? 1 : undefined;
+        var groups = lexer_1.cloneEmptyGroups(this.emptyGroups);
+        var trackLines = this.trackStartLines;
+        var lineTerminatorPattern = this.config.lineTerminatorsPattern;
+        var currModePatternsLength = 0;
+        var patternIdxToConfig = [];
+        var currCharCodeToPatternIdxToConfig = [];
+        var modeStack = [];
+        var emptyArray = [];
+        Object.freeze(emptyArray);
+        var getPossiblePatterns = undefined;
+        var pop_mode = function (popToken) {
+            // TODO: perhaps avoid this error in the edge case there is no more input?
+            if (modeStack.length === 1 &&
+                // if we have both a POP_MODE and a PUSH_MODE this is in-fact a "transition"
+                // So no error should occur.
+                popToken.tokenType.PUSH_MODE === undefined) {
+                // if we try to pop the last mode there lexer will no longer have ANY mode.
+                // thus the pop is ignored, an error will be created and the lexer will continue parsing in the previous mode.
+                var msg_1 = _this.config.errorMessageProvider.buildUnableToPopLexerModeMessage(popToken);
+                errors.push({
+                    offset: popToken.startOffset,
+                    line: popToken.startLine !== undefined
+                        ? popToken.startLine
+                        : undefined,
+                    column: popToken.startColumn !== undefined
+                        ? popToken.startColumn
+                        : undefined,
+                    length: popToken.image.length,
+                    message: msg_1
+                });
+            }
+            else {
+                modeStack.pop();
+                var newMode = utils_1.last(modeStack);
+                patternIdxToConfig = _this.patternIdxToConfig[newMode];
+                currCharCodeToPatternIdxToConfig = _this
+                    .charCodeToPatternIdxToConfig[newMode];
+                currModePatternsLength = patternIdxToConfig.length;
+                var modeCanBeOptimized = _this.canModeBeOptimized[newMode] &&
+                    _this.config.safeMode === false;
+                if (currCharCodeToPatternIdxToConfig && modeCanBeOptimized) {
+                    getPossiblePatterns = function (charCode) {
+                        var possiblePatterns = currCharCodeToPatternIdxToConfig[charCode];
+                        if (possiblePatterns === undefined) {
+                            return emptyArray;
+                        }
+                        else {
+                            return possiblePatterns;
+                        }
+                    };
+                }
+                else {
+                    getPossiblePatterns = function () {
+                        return patternIdxToConfig;
+                    };
+                }
+            }
+        };
+        function push_mode(newMode) {
+            modeStack.push(newMode);
+            currCharCodeToPatternIdxToConfig = this
+                .charCodeToPatternIdxToConfig[newMode];
+            patternIdxToConfig = this.patternIdxToConfig[newMode];
+            currModePatternsLength = patternIdxToConfig.length;
+            currModePatternsLength = patternIdxToConfig.length;
+            var modeCanBeOptimized = this.canModeBeOptimized[newMode] &&
+                this.config.safeMode === false;
+            if (currCharCodeToPatternIdxToConfig && modeCanBeOptimized) {
+                getPossiblePatterns = function (charCode) {
+                    var possiblePatterns = currCharCodeToPatternIdxToConfig[charCode];
+                    if (possiblePatterns === undefined) {
+                        return emptyArray;
+                    }
+                    else {
+                        return possiblePatterns;
+                    }
+                };
+            }
+            else {
+                getPossiblePatterns = function () {
+                    return patternIdxToConfig;
+                };
+            }
+        }
+        // this pattern seems to avoid a V8 de-optimization, although that de-optimization does not
+        // seem to matter performance wise.
+        push_mode.call(this, initialMode);
+        var currConfig;
+        while (offset < orgLength) {
+            matchedImage = null;
+            var nextCharCode = orgText.charCodeAt(offset);
+            var chosenPatternIdxToConfig = getPossiblePatterns(nextCharCode);
+            var chosenPatternsLength = chosenPatternIdxToConfig.length;
+            for (i = 0; i < chosenPatternsLength; i++) {
+                currConfig = chosenPatternIdxToConfig[i];
+                var currPattern = currConfig.pattern;
+                // manually in-lined because > 600 chars won't be in-lined in V8
+                var singleCharCode = currConfig.short;
+                if (singleCharCode !== false) {
+                    if (nextCharCode === singleCharCode) {
+                        // single character string
+                        matchedImage = currPattern;
+                    }
+                }
+                else if (currConfig.isCustom === true) {
+                    match = currPattern.exec(orgText, offset, matchedTokens, groups);
+                    matchedImage = match !== null ? match[0] : match;
+                }
+                else {
+                    this.updateLastIndex(currPattern, offset);
+                    matchedImage = this.match(currPattern, text, offset);
+                }
+                if (matchedImage !== null) {
+                    // even though this pattern matched we must try a another longer alternative.
+                    // this can be used to prioritize keywords over identifiers
+                    longerAltIdx = currConfig.longerAlt;
+                    if (longerAltIdx !== undefined) {
+                        // TODO: micro optimize, avoid extra prop access
+                        // by saving/linking longerAlt on the original config?
+                        var longerAltConfig = patternIdxToConfig[longerAltIdx];
+                        var longerAltPattern = longerAltConfig.pattern;
+                        // single Char can never be a longer alt so no need to test it.
+                        // manually in-lined because > 600 chars won't be in-lined in V8
+                        if (longerAltConfig.isCustom === true) {
+                            match = longerAltPattern.exec(orgText, offset, matchedTokens, groups);
+                            matchAltImage = match !== null ? match[0] : match;
+                        }
+                        else {
+                            this.updateLastIndex(longerAltPattern, offset);
+                            matchAltImage = this.match(longerAltPattern, text, offset);
+                        }
+                        if (matchAltImage &&
+                            matchAltImage.length > matchedImage.length) {
+                            matchedImage = matchAltImage;
+                            currConfig = longerAltConfig;
+                        }
+                    }
+                    break;
+                }
+            }
+            // successful match
+            if (matchedImage !== null) {
+                // matchedImage = match[0]
+                imageLength = matchedImage.length;
+                group = currConfig.group;
+                if (group !== undefined) {
+                    tokType = currConfig.tokenTypeIdx;
+                    // TODO: "offset + imageLength" and the new column may be computed twice in case of "full" location information inside
+                    // createFullToken method
+                    newToken = this.createTokenInstance(matchedImage, offset, tokType, currConfig.tokenType, line, column, imageLength);
+                    if (group === false) {
+                        matchedTokensIndex = this.addToken(matchedTokens, matchedTokensIndex, newToken);
+                    }
+                    else {
+                        groups[group].push(newToken);
+                    }
+                }
+                text = this.chopInput(text, imageLength);
+                offset = offset + imageLength;
+                // TODO: with newlines the column may be assigned twice
+                column = this.computeNewColumn(column, imageLength);
+                if (trackLines === true &&
+                    currConfig.canLineTerminator === true) {
+                    var numOfLTsInMatch = 0;
+                    var foundTerminator = void 0;
+                    var lastLTEndOffset = void 0;
+                    lineTerminatorPattern.lastIndex = 0;
+                    do {
+                        foundTerminator = lineTerminatorPattern.test(matchedImage);
+                        if (foundTerminator === true) {
+                            lastLTEndOffset =
+                                lineTerminatorPattern.lastIndex - 1;
+                            numOfLTsInMatch++;
+                        }
+                    } while (foundTerminator);
+                    if (numOfLTsInMatch !== 0) {
+                        line = line + numOfLTsInMatch;
+                        column = imageLength - lastLTEndOffset;
+                        this.updateTokenEndLineColumnLocation(newToken, group, lastLTEndOffset, numOfLTsInMatch, line, column, imageLength);
+                    }
+                }
+                // will be NOOP if no modes present
+                this.handleModes(currConfig, pop_mode, push_mode, newToken);
+            }
+            else {
+                // error recovery, drop characters until we identify a valid token's start point
+                var errorStartOffset = offset;
+                var errorLine = line;
+                var errorColumn = column;
+                var foundResyncPoint = false;
+                while (!foundResyncPoint && offset < orgLength) {
+                    // drop chars until we succeed in matching something
+                    droppedChar = orgText.charCodeAt(offset);
+                    // Identity Func (when sticky flag is enabled)
+                    text = this.chopInput(text, 1);
+                    offset++;
+                    for (j = 0; j < currModePatternsLength; j++) {
+                        var currConfig_1 = patternIdxToConfig[j];
+                        var currPattern = currConfig_1.pattern;
+                        // manually in-lined because > 600 chars won't be in-lined in V8
+                        var singleCharCode = currConfig_1.short;
+                        if (singleCharCode !== false) {
+                            if (orgText.charCodeAt(offset) === singleCharCode) {
+                                // single character string
+                                foundResyncPoint = true;
+                            }
+                        }
+                        else if (currConfig_1.isCustom === true) {
+                            foundResyncPoint =
+                                currPattern.exec(orgText, offset, matchedTokens, groups) !== null;
+                        }
+                        else {
+                            this.updateLastIndex(currPattern, offset);
+                            foundResyncPoint = currPattern.exec(text) !== null;
+                        }
+                        if (foundResyncPoint === true) {
+                            break;
+                        }
+                    }
+                }
+                errLength = offset - errorStartOffset;
+                // at this point we either re-synced or reached the end of the input text
+                msg = this.config.errorMessageProvider.buildUnexpectedCharactersMessage(orgText, errorStartOffset, errLength, errorLine, errorColumn);
+                errors.push({
+                    offset: errorStartOffset,
+                    line: errorLine,
+                    column: errorColumn,
+                    length: errLength,
+                    message: msg
+                });
+            }
+        }
+        // if we do have custom patterns which push directly into the
+        if (!this.hasCustom) {
+            // if we guessed a too large size for the tokens array this will shrink it to the right size.
+            matchedTokens.length = matchedTokensIndex;
+        }
+        return {
+            tokens: matchedTokens,
+            groups: groups,
+            errors: errors
+        };
+    };
+    Lexer.prototype.handleModes = function (config, pop_mode, push_mode, newToken) {
+        if (config.pop === true) {
+            // need to save the PUSH_MODE property as if the mode is popped
+            // patternIdxToPopMode is updated to reflect the new mode after popping the stack
+            var pushMode = config.push;
+            pop_mode(newToken);
+            if (pushMode !== undefined) {
+                push_mode.call(this, pushMode);
+            }
+        }
+        else if (config.push !== undefined) {
+            push_mode.call(this, config.push);
+        }
+    };
+    Lexer.prototype.chopInput = function (text, length) {
+        return text.substring(length);
+    };
+    Lexer.prototype.updateLastIndex = function (regExp, newLastIndex) {
+        regExp.lastIndex = newLastIndex;
+    };
+    // TODO: decrease this under 600 characters? inspect stripping comments option in TSC compiler
+    Lexer.prototype.updateTokenEndLineColumnLocation = function (newToken, group, lastLTIdx, numOfLTsInMatch, line, column, imageLength) {
+        var lastCharIsLT, fixForEndingInLT;
+        if (group !== undefined) {
+            // a none skipped multi line Token, need to update endLine/endColumn
+            lastCharIsLT = lastLTIdx === imageLength - 1;
+            fixForEndingInLT = lastCharIsLT ? -1 : 0;
+            if (!(numOfLTsInMatch === 1 && lastCharIsLT === true)) {
+                // if a token ends in a LT that last LT only affects the line numbering of following Tokens
+                newToken.endLine = line + fixForEndingInLT;
+                // the last LT in a token does not affect the endColumn either as the [columnStart ... columnEnd)
+                // inclusive to exclusive range.
+                newToken.endColumn = column - 1 + -fixForEndingInLT;
+            }
+            // else single LT in the last character of a token, no need to modify the endLine/EndColumn
+        }
+    };
+    Lexer.prototype.computeNewColumn = function (oldColumn, imageLength) {
+        return oldColumn + imageLength;
+    };
+    // Place holder, will be replaced by the correct variant according to the locationTracking option at runtime.
+    /* istanbul ignore next - place holder */
+    Lexer.prototype.createTokenInstance = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        return null;
+    };
+    Lexer.prototype.createOffsetOnlyToken = function (image, startOffset, tokenTypeIdx, tokenType) {
+        return {
+            image: image,
+            startOffset: startOffset,
+            tokenTypeIdx: tokenTypeIdx,
+            tokenType: tokenType
+        };
+    };
+    Lexer.prototype.createStartOnlyToken = function (image, startOffset, tokenTypeIdx, tokenType, startLine, startColumn) {
+        return {
+            image: image,
+            startOffset: startOffset,
+            startLine: startLine,
+            startColumn: startColumn,
+            tokenTypeIdx: tokenTypeIdx,
+            tokenType: tokenType
+        };
+    };
+    Lexer.prototype.createFullToken = function (image, startOffset, tokenTypeIdx, tokenType, startLine, startColumn, imageLength) {
+        return {
+            image: image,
+            startOffset: startOffset,
+            endOffset: startOffset + imageLength - 1,
+            startLine: startLine,
+            endLine: startLine,
+            startColumn: startColumn,
+            endColumn: startColumn + imageLength - 1,
+            tokenTypeIdx: tokenTypeIdx,
+            tokenType: tokenType
+        };
+    };
+    // Place holder, will be replaced by the correct variant according to the locationTracking option at runtime.
+    /* istanbul ignore next - place holder */
+    Lexer.prototype.addToken = function (tokenVector, index, tokenToAdd) {
+        return 666;
+    };
+    Lexer.prototype.addTokenUsingPush = function (tokenVector, index, tokenToAdd) {
+        tokenVector.push(tokenToAdd);
+        return index;
+    };
+    Lexer.prototype.addTokenUsingMemberAccess = function (tokenVector, index, tokenToAdd) {
+        tokenVector[index] = tokenToAdd;
+        index++;
+        return index;
+    };
+    /* istanbul ignore next - place holder to be replaced with chosen alternative at runtime */
+    Lexer.prototype.match = function (pattern, text, offset) {
+        return null;
+    };
+    Lexer.prototype.matchWithTest = function (pattern, text, offset) {
+        var found = pattern.test(text);
+        if (found === true) {
+            return text.substring(offset, pattern.lastIndex);
+        }
+        return null;
+    };
+    Lexer.prototype.matchWithExec = function (pattern, text) {
+        var regExpArray = pattern.exec(text);
+        return regExpArray !== null ? regExpArray[0] : regExpArray;
+    };
+    Lexer.SKIPPED = "This marks a skipped Token pattern, this means each token identified by it will" +
+        "be consumed and then thrown into oblivion, this can be used to for example to completely ignore whitespace.";
+    Lexer.NA = /NOT_APPLICABLE/;
+    return Lexer;
+}());
+exports.Lexer = Lexer;
+//# sourceMappingURL=lexer_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/scan/reg_exp.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/scan/reg_exp.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var regexp_to_ast_1 = __webpack_require__(/*! regexp-to-ast */ "./node_modules/regexp-to-ast/lib/regexp-to-ast.js");
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var regExpParser = new regexp_to_ast_1.RegExpParser();
+var complementErrorMessage = "Complement Sets are not supported for first char optimization";
+exports.failedOptimizationPrefixMsg = 'Unable to use "first char" lexer optimizations:\n';
+function getStartCodes(regExp, ensureOptimizations) {
+    if (ensureOptimizations === void 0) { ensureOptimizations = false; }
+    try {
+        var ast = regExpParser.pattern(regExp.toString());
+        var firstChars = firstChar(ast.value);
+        if (ast.flags.ignoreCase) {
+            firstChars = applyIgnoreCase(firstChars);
+        }
+        return firstChars;
+    }
+    catch (e) {
+        /* istanbul ignore next */
+        // Testing this relies on the regexp-to-ast library having a bug... */
+        // TODO: only the else branch needs to be ignored, try to fix with newer prettier / tsc
+        if (e.message === complementErrorMessage) {
+            if (ensureOptimizations) {
+                utils_1.PRINT_WARNING("" + exports.failedOptimizationPrefixMsg +
+                    ("\tUnable to optimize: < " + regExp.toString() + " >\n") +
+                    "\tComplement Sets cannot be automatically optimized.\n" +
+                    "\tThis will disable the lexer's first char optimizations.\n" +
+                    "\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#COMPLEMENT for details.");
+            }
+        }
+        else {
+            var msgSuffix = "";
+            if (ensureOptimizations) {
+                msgSuffix =
+                    "\n\tThis will disable the lexer's first char optimizations.\n" +
+                        "\tSee: https://sap.github.io/chevrotain/docs/guide/resolving_lexer_errors.html#REGEXP_PARSING for details.";
+            }
+            utils_1.PRINT_ERROR(exports.failedOptimizationPrefixMsg + "\n" +
+                ("\tFailed parsing: < " + regExp.toString() + " >\n") +
+                ("\tUsing the regexp-to-ast library version: " + regexp_to_ast_1.VERSION + "\n") +
+                "\tPlease open an issue at: https://github.com/bd82/regexp-to-ast/issues" +
+                msgSuffix);
+        }
+    }
+    return [];
+}
+exports.getStartCodes = getStartCodes;
+function firstChar(ast) {
+    switch (ast.type) {
+        case "Disjunction":
+            return utils_1.flatten(utils_1.map(ast.value, firstChar));
+        case "Alternative":
+            var startChars_1 = [];
+            var terms = ast.value;
+            for (var i = 0; i < terms.length; i++) {
+                var term = terms[i];
+                if (utils_1.contains([
+                    // A group back reference cannot affect potential starting char.
+                    // because if a back reference is the first production than automatically
+                    // the group being referenced has had to come BEFORE so its codes have already been added
+                    "GroupBackReference",
+                    // assertions do not affect potential starting codes
+                    "Lookahead",
+                    "NegativeLookahead",
+                    "StartAnchor",
+                    "EndAnchor",
+                    "WordBoundary",
+                    "NonWordBoundary"
+                ], term.type)) {
+                    continue;
+                }
+                var atom = term;
+                switch (atom.type) {
+                    case "Character":
+                        startChars_1.push(atom.value);
+                        break;
+                    case "Set":
+                        if (atom.complement === true) {
+                            throw Error(complementErrorMessage);
+                        }
+                        // TODO: this may still be slow when there are many codes
+                        utils_1.forEach(atom.value, function (code) {
+                            if (typeof code === "number") {
+                                startChars_1.push(code);
+                            }
+                            else {
+                                //range
+                                var range = code;
+                                for (var rangeCode = range.from; rangeCode <= range.to; rangeCode++) {
+                                    startChars_1.push(rangeCode);
+                                }
+                            }
+                        });
+                        break;
+                    case "Group":
+                        var groupCodes = firstChar(atom.value);
+                        utils_1.forEach(groupCodes, function (code) { return startChars_1.push(code); });
+                        break;
+                    /* istanbul ignore next */
+                    default:
+                        throw Error("Non Exhaustive Match");
+                }
+                // reached a mandatory production, no more **start** codes can be found on this alternative
+                var isOptionalQuantifier = atom.quantifier !== undefined &&
+                    atom.quantifier.atLeast === 0;
+                if (
+                // A group may be optional due to empty contents /(?:)/
+                // or if everything inside it is optional /((a)?)/
+                (atom.type === "Group" &&
+                    isWholeOptional(atom) === false) ||
+                    // If this term is not a group it may only be optional if it has an optional quantifier
+                    (atom.type !== "Group" && isOptionalQuantifier === false)) {
+                    break;
+                }
+            }
+            return startChars_1;
+        /* istanbul ignore next */
+        default:
+            throw Error("non exhaustive match!");
+    }
+}
+exports.firstChar = firstChar;
+function applyIgnoreCase(firstChars) {
+    var firstCharsCase = [];
+    utils_1.forEach(firstChars, function (charCode) {
+        firstCharsCase.push(charCode);
+        var char = String.fromCharCode(charCode);
+        /* istanbul ignore else */
+        if (char.toUpperCase() !== char) {
+            firstCharsCase.push(char.toUpperCase().charCodeAt(0));
+        }
+        else if (char.toLowerCase() !== char) {
+            firstCharsCase.push(char.toLowerCase().charCodeAt(0));
+        }
+    });
+    return firstCharsCase;
+}
+exports.applyIgnoreCase = applyIgnoreCase;
+function findCode(setNode, targetCharCodes) {
+    return utils_1.find(setNode.value, function (codeOrRange) {
+        if (typeof codeOrRange === "number") {
+            return utils_1.contains(targetCharCodes, codeOrRange);
+        }
+        else {
+            // range
+            var range_1 = codeOrRange;
+            return (utils_1.find(targetCharCodes, function (targetCode) {
+                return range_1.from <= targetCode && targetCode <= range_1.to;
+            }) !== undefined);
+        }
+    });
+}
+function isWholeOptional(ast) {
+    if (ast.quantifier && ast.quantifier.atLeast === 0) {
+        return true;
+    }
+    if (!ast.value) {
+        return false;
+    }
+    return utils_1.isArray(ast.value)
+        ? utils_1.every(ast.value, isWholeOptional)
+        : isWholeOptional(ast.value);
+}
+var CharCodeFinder = /** @class */ (function (_super) {
+    __extends(CharCodeFinder, _super);
+    function CharCodeFinder(targetCharCodes) {
+        var _this = _super.call(this) || this;
+        _this.targetCharCodes = targetCharCodes;
+        _this.found = false;
+        return _this;
+    }
+    CharCodeFinder.prototype.visitChildren = function (node) {
+        // switch lookaheads as they do not actually consume any characters thus
+        // finding a charCode at lookahead context does not mean that regexp can actually contain it in a match.
+        switch (node.type) {
+            case "Lookahead":
+                this.visitLookahead(node);
+                return;
+            case "NegativeLookahead":
+                this.visitNegativeLookahead(node);
+                return;
+        }
+        _super.prototype.visitChildren.call(this, node);
+    };
+    CharCodeFinder.prototype.visitCharacter = function (node) {
+        if (utils_1.contains(this.targetCharCodes, node.value)) {
+            this.found = true;
+        }
+    };
+    CharCodeFinder.prototype.visitSet = function (node) {
+        if (node.complement) {
+            if (findCode(node, this.targetCharCodes) === undefined) {
+                this.found = true;
+            }
+        }
+        else {
+            if (findCode(node, this.targetCharCodes) !== undefined) {
+                this.found = true;
+            }
+        }
+    };
+    return CharCodeFinder;
+}(regexp_to_ast_1.BaseRegExpVisitor));
+function canMatchCharCode(charCodes, pattern) {
+    if (pattern instanceof RegExp) {
+        var ast = regExpParser.pattern(pattern.toString());
+        var charCodeFinder = new CharCodeFinder(charCodes);
+        charCodeFinder.visit(ast);
+        return charCodeFinder.found;
+    }
+    else {
+        return (utils_1.find(pattern, function (char) {
+            return utils_1.contains(charCodes, char.charCodeAt(0));
+        }) !== undefined);
+    }
+}
+exports.canMatchCharCode = canMatchCharCode;
+//# sourceMappingURL=reg_exp.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/scan/tokens.js":
+/*!********************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/scan/tokens.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var lang_extensions_1 = __webpack_require__(/*! ../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var tokens_public_1 = __webpack_require__(/*! ./tokens_public */ "./node_modules/chevrotain/lib/src/scan/tokens_public.js");
+function tokenStructuredMatcher(tokInstance, tokConstructor) {
+    var instanceType = tokInstance.tokenTypeIdx;
+    if (instanceType === tokConstructor.tokenTypeIdx) {
+        return true;
+    }
+    else {
+        return (tokConstructor.isParent === true &&
+            tokConstructor.categoryMatchesMap[instanceType] === true);
+    }
+}
+exports.tokenStructuredMatcher = tokenStructuredMatcher;
+// Optimized tokenMatcher in case our grammar does not use token categories
+// Being so tiny it is much more likely to be in-lined and this avoid the function call overhead
+function tokenStructuredMatcherNoCategories(token, tokType) {
+    return token.tokenTypeIdx === tokType.tokenTypeIdx;
+}
+exports.tokenStructuredMatcherNoCategories = tokenStructuredMatcherNoCategories;
+exports.tokenShortNameIdx = 1;
+exports.tokenIdxToClass = new lang_extensions_1.HashTable();
+function augmentTokenTypes(tokenTypes) {
+    // collect the parent Token Types as well.
+    var tokenTypesAndParents = expandCategories(tokenTypes);
+    // add required tokenType and categoryMatches properties
+    assignTokenDefaultProps(tokenTypesAndParents);
+    // fill up the categoryMatches
+    assignCategoriesMapProp(tokenTypesAndParents);
+    assignCategoriesTokensProp(tokenTypesAndParents);
+    utils_1.forEach(tokenTypesAndParents, function (tokType) {
+        tokType.isParent = tokType.categoryMatches.length > 0;
+    });
+}
+exports.augmentTokenTypes = augmentTokenTypes;
+function expandCategories(tokenTypes) {
+    var result = utils_1.cloneArr(tokenTypes);
+    var categories = tokenTypes;
+    var searching = true;
+    while (searching) {
+        categories = utils_1.compact(utils_1.flatten(utils_1.map(categories, function (currTokType) { return currTokType.CATEGORIES; })));
+        var newCategories = utils_1.difference(categories, result);
+        result = result.concat(newCategories);
+        if (utils_1.isEmpty(newCategories)) {
+            searching = false;
+        }
+        else {
+            categories = newCategories;
+        }
+    }
+    return result;
+}
+exports.expandCategories = expandCategories;
+function assignTokenDefaultProps(tokenTypes) {
+    utils_1.forEach(tokenTypes, function (currTokType) {
+        if (!hasShortKeyProperty(currTokType)) {
+            exports.tokenIdxToClass.put(exports.tokenShortNameIdx, currTokType);
+            currTokType.tokenTypeIdx = exports.tokenShortNameIdx++;
+        }
+        // CATEGORIES? : TokenType | TokenType[]
+        if (hasCategoriesProperty(currTokType) &&
+            !utils_1.isArray(currTokType.CATEGORIES)
+        // &&
+        // !isUndefined(currTokType.CATEGORIES.PATTERN)
+        ) {
+            currTokType.CATEGORIES = [currTokType.CATEGORIES];
+        }
+        if (!hasCategoriesProperty(currTokType)) {
+            currTokType.CATEGORIES = [];
+        }
+        if (!hasExtendingTokensTypesProperty(currTokType)) {
+            currTokType.categoryMatches = [];
+        }
+        if (!hasExtendingTokensTypesMapProperty(currTokType)) {
+            currTokType.categoryMatchesMap = {};
+        }
+        if (!hasTokenNameProperty(currTokType)) {
+            // saved for fast access during CST building.
+            currTokType.tokenName = tokens_public_1.tokenName(currTokType);
+        }
+    });
+}
+exports.assignTokenDefaultProps = assignTokenDefaultProps;
+function assignCategoriesTokensProp(tokenTypes) {
+    utils_1.forEach(tokenTypes, function (currTokType) {
+        // avoid duplications
+        currTokType.categoryMatches = [];
+        utils_1.forEach(currTokType.categoryMatchesMap, function (val, key) {
+            currTokType.categoryMatches.push(exports.tokenIdxToClass.get(key).tokenTypeIdx);
+        });
+    });
+}
+exports.assignCategoriesTokensProp = assignCategoriesTokensProp;
+function assignCategoriesMapProp(tokenTypes) {
+    utils_1.forEach(tokenTypes, function (currTokType) {
+        singleAssignCategoriesToksMap([], currTokType);
+    });
+}
+exports.assignCategoriesMapProp = assignCategoriesMapProp;
+function singleAssignCategoriesToksMap(path, nextNode) {
+    utils_1.forEach(path, function (pathNode) {
+        nextNode.categoryMatchesMap[pathNode.tokenTypeIdx] = true;
+    });
+    utils_1.forEach(nextNode.CATEGORIES, function (nextCategory) {
+        var newPath = path.concat(nextNode);
+        // avoids infinite loops due to cyclic categories.
+        if (!utils_1.contains(newPath, nextCategory)) {
+            singleAssignCategoriesToksMap(newPath, nextCategory);
+        }
+    });
+}
+exports.singleAssignCategoriesToksMap = singleAssignCategoriesToksMap;
+function hasShortKeyProperty(tokType) {
+    return utils_1.has(tokType, "tokenTypeIdx");
+}
+exports.hasShortKeyProperty = hasShortKeyProperty;
+function hasCategoriesProperty(tokType) {
+    return utils_1.has(tokType, "CATEGORIES");
+}
+exports.hasCategoriesProperty = hasCategoriesProperty;
+function hasExtendingTokensTypesProperty(tokType) {
+    return utils_1.has(tokType, "categoryMatches");
+}
+exports.hasExtendingTokensTypesProperty = hasExtendingTokensTypesProperty;
+function hasExtendingTokensTypesMapProperty(tokType) {
+    return utils_1.has(tokType, "categoryMatchesMap");
+}
+exports.hasExtendingTokensTypesMapProperty = hasExtendingTokensTypesMapProperty;
+function hasTokenNameProperty(tokType) {
+    return utils_1.has(tokType, "tokenName");
+}
+exports.hasTokenNameProperty = hasTokenNameProperty;
+function isTokenType(tokType) {
+    return utils_1.has(tokType, "tokenTypeIdx");
+}
+exports.isTokenType = isTokenType;
+//# sourceMappingURL=tokens.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/scan/tokens_public.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/scan/tokens_public.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var utils_1 = __webpack_require__(/*! ../utils/utils */ "./node_modules/chevrotain/lib/src/utils/utils.js");
+var lang_extensions_1 = __webpack_require__(/*! ../lang/lang_extensions */ "./node_modules/chevrotain/lib/src/lang/lang_extensions.js");
+var lexer_public_1 = __webpack_require__(/*! ./lexer_public */ "./node_modules/chevrotain/lib/src/scan/lexer_public.js");
+var tokens_1 = __webpack_require__(/*! ./tokens */ "./node_modules/chevrotain/lib/src/scan/tokens.js");
+function tokenLabel(clazz) {
+    if (hasTokenLabel(clazz)) {
+        return clazz.LABEL;
+    }
+    else {
+        return tokenName(clazz);
+    }
+}
+exports.tokenLabel = tokenLabel;
+function hasTokenLabel(obj) {
+    return utils_1.isString(obj.LABEL) && obj.LABEL !== "";
+}
+exports.hasTokenLabel = hasTokenLabel;
+function tokenName(obj) {
+    // The tokenName property is needed under some old versions of node.js (0.10/0.12)
+    // where the Function.prototype.name property is not defined as a 'configurable' property
+    // enable producing readable error messages.
+    /* istanbul ignore if -> will only run in old versions of node.js */
+    if (utils_1.isObject(obj) &&
+        obj.hasOwnProperty("tokenName") &&
+        utils_1.isString(obj.tokenName)) {
+        return obj.tokenName;
+    }
+    else {
+        return lang_extensions_1.functionName(obj);
+    }
+}
+exports.tokenName = tokenName;
+var PARENT = "parent";
+var CATEGORIES = "categories";
+var LABEL = "label";
+var GROUP = "group";
+var PUSH_MODE = "push_mode";
+var POP_MODE = "pop_mode";
+var LONGER_ALT = "longer_alt";
+var LINE_BREAKS = "line_breaks";
+var START_CHARS_HINT = "start_chars_hint";
+function createToken(config) {
+    return createTokenInternal(config);
+}
+exports.createToken = createToken;
+function createTokenInternal(config) {
+    var tokenName = config.name;
+    var pattern = config.pattern;
+    var tokenType = {};
+    // can be overwritten according to:
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/
+    // name?redirectlocale=en-US&redirectslug=JavaScript%2FReference%2FGlobal_Objects%2FFunction%2Fname
+    /* istanbul ignore if -> will only run in old versions of node.js */
+    if (!lang_extensions_1.defineNameProp(tokenType, tokenName)) {
+        // hack to save the tokenName in situations where the constructor's name property cannot be reconfigured
+        tokenType.tokenName = tokenName;
+    }
+    if (!utils_1.isUndefined(pattern)) {
+        tokenType.PATTERN = pattern;
+    }
+    if (utils_1.has(config, PARENT)) {
+        throw "The parent property is no longer supported.\n" +
+            "See: https://github.com/SAP/chevrotain/issues/564#issuecomment-349062346 for details.";
+    }
+    if (utils_1.has(config, CATEGORIES)) {
+        tokenType.CATEGORIES = config[CATEGORIES];
+    }
+    tokens_1.augmentTokenTypes([tokenType]);
+    if (utils_1.has(config, LABEL)) {
+        tokenType.LABEL = config[LABEL];
+    }
+    if (utils_1.has(config, GROUP)) {
+        tokenType.GROUP = config[GROUP];
+    }
+    if (utils_1.has(config, POP_MODE)) {
+        tokenType.POP_MODE = config[POP_MODE];
+    }
+    if (utils_1.has(config, PUSH_MODE)) {
+        tokenType.PUSH_MODE = config[PUSH_MODE];
+    }
+    if (utils_1.has(config, LONGER_ALT)) {
+        tokenType.LONGER_ALT = config[LONGER_ALT];
+    }
+    if (utils_1.has(config, LINE_BREAKS)) {
+        tokenType.LINE_BREAKS = config[LINE_BREAKS];
+    }
+    if (utils_1.has(config, START_CHARS_HINT)) {
+        tokenType.START_CHARS_HINT = config[START_CHARS_HINT];
+    }
+    return tokenType;
+}
+exports.EOF = createToken({ name: "EOF", pattern: lexer_public_1.Lexer.NA });
+tokens_1.augmentTokenTypes([exports.EOF]);
+function createTokenInstance(tokType, image, startOffset, endOffset, startLine, endLine, startColumn, endColumn) {
+    return {
+        image: image,
+        startOffset: startOffset,
+        endOffset: endOffset,
+        startLine: startLine,
+        endLine: endLine,
+        startColumn: startColumn,
+        endColumn: endColumn,
+        tokenTypeIdx: tokType.tokenTypeIdx,
+        tokenType: tokType
+    };
+}
+exports.createTokenInstance = createTokenInstance;
+function tokenMatcher(token, tokType) {
+    return tokens_1.tokenStructuredMatcher(token, tokType);
+}
+exports.tokenMatcher = tokenMatcher;
+//# sourceMappingURL=tokens_public.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/text/range.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/text/range.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Range = /** @class */ (function () {
+    function Range(start, end) {
+        this.start = start;
+        this.end = end;
+        if (!isValidRange(start, end)) {
+            throw new Error("INVALID RANGE");
+        }
+    }
+    Range.prototype.contains = function (num) {
+        return this.start <= num && this.end >= num;
+    };
+    Range.prototype.containsRange = function (other) {
+        return this.start <= other.start && this.end >= other.end;
+    };
+    Range.prototype.isContainedInRange = function (other) {
+        return other.containsRange(this);
+    };
+    Range.prototype.strictlyContainsRange = function (other) {
+        return this.start < other.start && this.end > other.end;
+    };
+    Range.prototype.isStrictlyContainedInRange = function (other) {
+        return other.strictlyContainsRange(this);
+    };
+    return Range;
+}());
+exports.Range = Range;
+function isValidRange(start, end) {
+    return !(start < 0 || end < start);
+}
+exports.isValidRange = isValidRange;
+//# sourceMappingURL=range.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/utils/utils.js":
+/*!********************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/utils/utils.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/*
+ Utils using lodash style API. (not necessarily 100% compliant) for functional and other utils.
+ These utils should replace usage of lodash in the production code base. not because they are any better...
+ but for the purpose of being a dependency free library.
+
+ The hotspots in the code are already written in imperative style for performance reasons.
+ so writing several dozen utils which may be slower than the original lodash, does not matter as much
+ considering they will not be invoked in hotspots...
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+function isEmpty(arr) {
+    return arr && arr.length === 0;
+}
+exports.isEmpty = isEmpty;
+function keys(obj) {
+    if (obj === undefined || obj === null) {
+        return [];
+    }
+    return Object.keys(obj);
+}
+exports.keys = keys;
+function values(obj) {
+    var vals = [];
+    var keys = Object.keys(obj);
+    for (var i = 0; i < keys.length; i++) {
+        vals.push(obj[keys[i]]);
+    }
+    return vals;
+}
+exports.values = values;
+function mapValues(obj, callback) {
+    var result = [];
+    var objKeys = keys(obj);
+    for (var idx = 0; idx < objKeys.length; idx++) {
+        var currKey = objKeys[idx];
+        result.push(callback.call(null, obj[currKey], currKey));
+    }
+    return result;
+}
+exports.mapValues = mapValues;
+function map(arr, callback) {
+    var result = [];
+    for (var idx = 0; idx < arr.length; idx++) {
+        result.push(callback.call(null, arr[idx], idx));
+    }
+    return result;
+}
+exports.map = map;
+function flatten(arr) {
+    var result = [];
+    for (var idx = 0; idx < arr.length; idx++) {
+        var currItem = arr[idx];
+        if (Array.isArray(currItem)) {
+            result = result.concat(flatten(currItem));
+        }
+        else {
+            result.push(currItem);
+        }
+    }
+    return result;
+}
+exports.flatten = flatten;
+function first(arr) {
+    return isEmpty(arr) ? undefined : arr[0];
+}
+exports.first = first;
+function last(arr) {
+    var len = arr && arr.length;
+    return len ? arr[len - 1] : undefined;
+}
+exports.last = last;
+function forEach(collection, iteratorCallback) {
+    /* istanbul ignore else */
+    if (Array.isArray(collection)) {
+        for (var i = 0; i < collection.length; i++) {
+            iteratorCallback.call(null, collection[i], i);
+        }
+    }
+    else if (isObject(collection)) {
+        var colKeys = keys(collection);
+        for (var i = 0; i < colKeys.length; i++) {
+            var key = colKeys[i];
+            var value = collection[key];
+            iteratorCallback.call(null, value, key);
+        }
+    }
+    else {
+        throw Error("non exhaustive match");
+    }
+}
+exports.forEach = forEach;
+function isString(item) {
+    return typeof item === "string";
+}
+exports.isString = isString;
+function isUndefined(item) {
+    return item === undefined;
+}
+exports.isUndefined = isUndefined;
+function isFunction(item) {
+    return item instanceof Function;
+}
+exports.isFunction = isFunction;
+function drop(arr, howMuch) {
+    if (howMuch === void 0) { howMuch = 1; }
+    return arr.slice(howMuch, arr.length);
+}
+exports.drop = drop;
+function dropRight(arr, howMuch) {
+    if (howMuch === void 0) { howMuch = 1; }
+    return arr.slice(0, arr.length - howMuch);
+}
+exports.dropRight = dropRight;
+function filter(arr, predicate) {
+    var result = [];
+    if (Array.isArray(arr)) {
+        for (var i = 0; i < arr.length; i++) {
+            var item = arr[i];
+            if (predicate.call(null, item)) {
+                result.push(item);
+            }
+        }
+    }
+    return result;
+}
+exports.filter = filter;
+function reject(arr, predicate) {
+    return filter(arr, function (item) { return !predicate(item); });
+}
+exports.reject = reject;
+function pick(obj, predicate) {
+    var keys = Object.keys(obj);
+    var result = {};
+    for (var i = 0; i < keys.length; i++) {
+        var currKey = keys[i];
+        var currItem = obj[currKey];
+        if (predicate(currItem)) {
+            result[currKey] = currItem;
+        }
+    }
+    return result;
+}
+exports.pick = pick;
+function has(obj, prop) {
+    if (isObject(obj)) {
+        return obj.hasOwnProperty(prop);
+    }
+    return false;
+}
+exports.has = has;
+function contains(arr, item) {
+    return find(arr, function (currItem) { return currItem === item; }) !== undefined ? true : false;
+}
+exports.contains = contains;
+/**
+ * shallow clone
+ */
+function cloneArr(arr) {
+    var newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        newArr.push(arr[i]);
+    }
+    return newArr;
+}
+exports.cloneArr = cloneArr;
+/**
+ * shallow clone
+ */
+function cloneObj(obj) {
+    var clonedObj = {};
+    for (var key in obj) {
+        /* istanbul ignore else */
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            clonedObj[key] = obj[key];
+        }
+    }
+    return clonedObj;
+}
+exports.cloneObj = cloneObj;
+function find(arr, predicate) {
+    for (var i = 0; i < arr.length; i++) {
+        var item = arr[i];
+        if (predicate.call(null, item)) {
+            return item;
+        }
+    }
+    return undefined;
+}
+exports.find = find;
+function findAll(arr, predicate) {
+    var found = [];
+    for (var i = 0; i < arr.length; i++) {
+        var item = arr[i];
+        if (predicate.call(null, item)) {
+            found.push(item);
+        }
+    }
+    return found;
+}
+exports.findAll = findAll;
+function reduce(arrOrObj, iterator, initial) {
+    var isArr = Array.isArray(arrOrObj);
+    var vals = isArr ? arrOrObj : values(arrOrObj);
+    var objKeys = isArr ? [] : keys(arrOrObj);
+    var accumulator = initial;
+    for (var i = 0; i < vals.length; i++) {
+        accumulator = iterator.call(null, accumulator, vals[i], isArr ? i : objKeys[i]);
+    }
+    return accumulator;
+}
+exports.reduce = reduce;
+function compact(arr) {
+    return reject(arr, function (item) { return item === null || item === undefined; });
+}
+exports.compact = compact;
+function uniq(arr, identity) {
+    if (identity === void 0) { identity = function (item) { return item; }; }
+    var identities = [];
+    return reduce(arr, function (result, currItem) {
+        var currIdentity = identity(currItem);
+        if (contains(identities, currIdentity)) {
+            return result;
+        }
+        else {
+            identities.push(currIdentity);
+            return result.concat(currItem);
+        }
+    }, []);
+}
+exports.uniq = uniq;
+function partial(func) {
+    var restArgs = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        restArgs[_i - 1] = arguments[_i];
+    }
+    var firstArg = [null];
+    var allArgs = firstArg.concat(restArgs);
+    return Function.bind.apply(func, allArgs);
+}
+exports.partial = partial;
+function isArray(obj) {
+    return Array.isArray(obj);
+}
+exports.isArray = isArray;
+function isRegExp(obj) {
+    return obj instanceof RegExp;
+}
+exports.isRegExp = isRegExp;
+function isObject(obj) {
+    return obj instanceof Object;
+}
+exports.isObject = isObject;
+function every(arr, predicate) {
+    for (var i = 0; i < arr.length; i++) {
+        if (!predicate(arr[i], i)) {
+            return false;
+        }
+    }
+    return true;
+}
+exports.every = every;
+function difference(arr, values) {
+    return reject(arr, function (item) { return contains(values, item); });
+}
+exports.difference = difference;
+function some(arr, predicate) {
+    for (var i = 0; i < arr.length; i++) {
+        if (predicate(arr[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+exports.some = some;
+function indexOf(arr, value) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
+exports.indexOf = indexOf;
+function sortBy(arr, orderFunc) {
+    var result = cloneArr(arr);
+    result.sort(function (a, b) { return orderFunc(a) - orderFunc(b); });
+    return result;
+}
+exports.sortBy = sortBy;
+function zipObject(keys, values) {
+    if (keys.length !== values.length) {
+        throw Error("can't zipObject with different number of keys and values!");
+    }
+    var result = {};
+    for (var i = 0; i < keys.length; i++) {
+        result[keys[i]] = values[i];
+    }
+    return result;
+}
+exports.zipObject = zipObject;
+/**
+ * mutates! (and returns) target
+ */
+function assign(target) {
+    var sources = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        sources[_i - 1] = arguments[_i];
+    }
+    for (var i = 0; i < sources.length; i++) {
+        var curSource = sources[i];
+        var currSourceKeys = keys(curSource);
+        for (var j = 0; j < currSourceKeys.length; j++) {
+            var currKey = currSourceKeys[j];
+            target[currKey] = curSource[currKey];
+        }
+    }
+    return target;
+}
+exports.assign = assign;
+/**
+ * mutates! (and returns) target
+ */
+function assignNoOverwrite(target) {
+    var sources = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        sources[_i - 1] = arguments[_i];
+    }
+    for (var i = 0; i < sources.length; i++) {
+        var curSource = sources[i];
+        if (isUndefined(curSource)) {
+            continue;
+        }
+        var currSourceKeys = keys(curSource);
+        for (var j = 0; j < currSourceKeys.length; j++) {
+            var currKey = currSourceKeys[j];
+            if (!has(target, currKey)) {
+                target[currKey] = curSource[currKey];
+            }
+        }
+    }
+    return target;
+}
+exports.assignNoOverwrite = assignNoOverwrite;
+function defaults() {
+    var sources = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        sources[_i] = arguments[_i];
+    }
+    return assignNoOverwrite.apply(null, [{}].concat(sources));
+}
+exports.defaults = defaults;
+function groupBy(arr, groupKeyFunc) {
+    var result = {};
+    forEach(arr, function (item) {
+        var currGroupKey = groupKeyFunc(item);
+        var currGroupArr = result[currGroupKey];
+        if (currGroupArr) {
+            currGroupArr.push(item);
+        }
+        else {
+            result[currGroupKey] = [item];
+        }
+    });
+    return result;
+}
+exports.groupBy = groupBy;
+/**
+ * Merge obj2 into obj1.
+ * Will overwrite existing properties with the same name
+ */
+function merge(obj1, obj2) {
+    var result = cloneObj(obj1);
+    var keys2 = keys(obj2);
+    for (var i = 0; i < keys2.length; i++) {
+        var key = keys2[i];
+        var value = obj2[key];
+        result[key] = value;
+    }
+    return result;
+}
+exports.merge = merge;
+function NOOP() { }
+exports.NOOP = NOOP;
+function IDENTITY(item) {
+    return item;
+}
+exports.IDENTITY = IDENTITY;
+/**
+ * Will return a new packed array with same values.
+ */
+function packArray(holeyArr) {
+    var result = [];
+    for (var i = 0; i < holeyArr.length; i++) {
+        var orgValue = holeyArr[i];
+        result.push(orgValue !== undefined ? orgValue : undefined);
+    }
+    return result;
+}
+exports.packArray = packArray;
+function PRINT_ERROR(msg) {
+    /* istanbul ignore else - can't override global.console in node.js */
+    if (console && console.error) {
+        console.error("Error: " + msg);
+    }
+}
+exports.PRINT_ERROR = PRINT_ERROR;
+function PRINT_WARNING(msg) {
+    /* istanbul ignore else - can't override global.console in node.js*/
+    if (console && console.warn) {
+        // TODO: modify docs accordingly
+        console.warn("Warning: " + msg);
+    }
+}
+exports.PRINT_WARNING = PRINT_WARNING;
+function isES2015MapSupported() {
+    return typeof Map === "function";
+}
+exports.isES2015MapSupported = isES2015MapSupported;
+function applyMixins(derivedCtor, baseCtors) {
+    baseCtors.forEach(function (baseCtor) {
+        var baseProto = baseCtor.prototype;
+        Object.getOwnPropertyNames(baseProto).forEach(function (propName) {
+            if (propName === "constructor") {
+                return;
+            }
+            var basePropDescriptor = Object.getOwnPropertyDescriptor(baseProto, propName);
+            // Handle Accessors
+            if (basePropDescriptor &&
+                (basePropDescriptor.get || basePropDescriptor.set)) {
+                Object.defineProperty(derivedCtor.prototype, propName, basePropDescriptor);
+            }
+            else {
+                derivedCtor.prototype[propName] = baseCtor.prototype[propName];
+            }
+        });
+    });
+}
+exports.applyMixins = applyMixins;
+// base on: https://github.com/petkaantonov/bluebird/blob/b97c0d2d487e8c5076e8bd897e0dcd4622d31846/src/util.js#L201-L216
+function toFastProperties(toBecomeFast) {
+    function FakeConstructor() { }
+    // If our object is used as a constructor it would receive
+    FakeConstructor.prototype = toBecomeFast;
+    var fakeInstance = new FakeConstructor();
+    function fakeAccess() {
+        return typeof fakeInstance.bar;
+    }
+    // help V8 understand this is a "real" prototype by actually using
+    // the fake instance.
+    fakeAccess();
+    fakeAccess();
+    return toBecomeFast;
+    // Eval prevents optimization of this method (even though this is dead code)
+    /* istanbul ignore next */
+    // tslint:disable-next-line
+    eval(toBecomeFast);
+}
+exports.toFastProperties = toFastProperties;
+//# sourceMappingURL=utils.js.map
+
+/***/ }),
+
+/***/ "./node_modules/chevrotain/lib/src/version.js":
+/*!****************************************************!*\
+  !*** ./node_modules/chevrotain/lib/src/version.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// needs a separate module as this is required inside chevrotain productive code
+// and also in the entry point for webpack(api.ts).
+// A separate file avoids cyclic dependencies and webpack errors.
+exports.VERSION = "4.4.0";
+//# sourceMappingURL=version.js.map
+
+/***/ }),
+
+/***/ "./node_modules/regexp-to-ast/lib/regexp-to-ast.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/regexp-to-ast/lib/regexp-to-ast.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;;(function(root, factory) {
+    // istanbul ignore next
+    if (true) {
+        // istanbul ignore next
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+    } else {}
+})(
+    typeof self !== "undefined"
+        ? // istanbul ignore next
+          self
+        : this,
+    function() {
+        // references
+        // https://hackernoon.com/the-madness-of-parsing-real-world-javascript-regexps-d9ee336df983
+        // https://www.ecma-international.org/ecma-262/8.0/index.html#prod-Pattern
+        function RegExpParser() {}
+
+        RegExpParser.prototype.saveState = function() {
+            return {
+                idx: this.idx,
+                input: this.input,
+                groupIdx: this.groupIdx
+            }
+        }
+
+        RegExpParser.prototype.restoreState = function(newState) {
+            this.idx = newState.idx
+            this.input = newState.input
+            this.groupIdx = newState.groupIdx
+        }
+
+        RegExpParser.prototype.pattern = function(input) {
+            // parser state
+            this.idx = 0
+            this.input = input
+            this.groupIdx = 0
+
+            this.consumeChar("/")
+            var value = this.disjunction()
+            this.consumeChar("/")
+
+            var flags = {
+                type: "Flags",
+                global: false,
+                ignoreCase: false,
+                multiLine: false,
+                unicode: false,
+                sticky: false
+            }
+
+            while (this.isRegExpFlag()) {
+                switch (this.popChar()) {
+                    case "g":
+                        addFlag(flags, "global")
+                        break
+                    case "i":
+                        addFlag(flags, "ignoreCase")
+                        break
+                    case "m":
+                        addFlag(flags, "multiLine")
+                        break
+                    case "u":
+                        addFlag(flags, "unicode")
+                        break
+                    case "y":
+                        addFlag(flags, "sticky")
+                        break
+                }
+            }
+
+            if (this.idx !== this.input.length) {
+                throw Error(
+                    "Redundant input: " + this.input.substring(this.idx)
+                )
+            }
+            return { type: "Pattern", flags: flags, value: value }
+        }
+
+        RegExpParser.prototype.disjunction = function() {
+            var alts = []
+            alts.push(this.alternative())
+
+            while (this.peekChar() === "|") {
+                this.consumeChar("|")
+                alts.push(this.alternative())
+            }
+
+            return { type: "Disjunction", value: alts }
+        }
+
+        RegExpParser.prototype.alternative = function() {
+            var terms = []
+
+            while (this.isTerm()) {
+                terms.push(this.term())
+            }
+
+            return { type: "Alternative", value: terms }
+        }
+
+        RegExpParser.prototype.term = function() {
+            if (this.isAssertion()) {
+                return this.assertion()
+            } else {
+                return this.atom()
+            }
+        }
+
+        RegExpParser.prototype.assertion = function() {
+            switch (this.popChar()) {
+                case "^":
+                    return { type: "StartAnchor" }
+                case "$":
+                    return { type: "EndAnchor" }
+                // '\b' or '\B'
+                case "\\":
+                    switch (this.popChar()) {
+                        case "b":
+                            return { type: "WordBoundary" }
+                        case "B":
+                            return { type: "NonWordBoundary" }
+                    }
+                    // istanbul ignore next
+                    throw Error("Invalid Assertion Escape")
+                // '(?=' or '(?!'
+                case "(":
+                    this.consumeChar("?")
+
+                    var type
+                    switch (this.popChar()) {
+                        case "=":
+                            type = "Lookahead"
+                            break
+                        case "!":
+                            type = "NegativeLookahead"
+                            break
+                    }
+                    ASSERT_EXISTS(type)
+
+                    var disjunction = this.disjunction()
+
+                    this.consumeChar(")")
+
+                    return { type: type, value: disjunction }
+            }
+            // istanbul ignore next
+            ASSERT_NEVER_REACH_HERE()
+        }
+
+        RegExpParser.prototype.quantifier = function(isBacktracking) {
+            var range
+            switch (this.popChar()) {
+                case "*":
+                    range = {
+                        atLeast: 0,
+                        atMost: Infinity
+                    }
+                    break
+                case "+":
+                    range = {
+                        atLeast: 1,
+                        atMost: Infinity
+                    }
+                    break
+                case "?":
+                    range = {
+                        atLeast: 0,
+                        atMost: 1
+                    }
+                    break
+                case "{":
+                    var atLeast = this.integerIncludingZero()
+                    switch (this.popChar()) {
+                        case "}":
+                            range = {
+                                atLeast: atLeast,
+                                atMost: atLeast
+                            }
+                            break
+                        case ",":
+                            var atMost
+                            if (this.isDigit()) {
+                                atMost = this.integerIncludingZero()
+                                range = {
+                                    atLeast: atLeast,
+                                    atMost: atMost
+                                }
+                            } else {
+                                range = {
+                                    atLeast: atLeast,
+                                    atMost: Infinity
+                                }
+                            }
+                            this.consumeChar("}")
+                            break
+                    }
+                    // throwing exceptions from "ASSERT_EXISTS" during backtracking
+                    // causes severe performance degradations
+                    if (isBacktracking === true && range === undefined) {
+                        return undefined
+                    }
+                    ASSERT_EXISTS(range)
+                    break
+            }
+
+            // throwing exceptions from "ASSERT_EXISTS" during backtracking
+            // causes severe performance degradations
+            if (isBacktracking === true && range === undefined) {
+                return undefined
+            }
+
+            ASSERT_EXISTS(range)
+
+            if (this.peekChar(0) === "?") {
+                this.consumeChar("?")
+                range.greedy = false
+            } else {
+                range.greedy = true
+            }
+
+            range.type = "Quantifier"
+            return range
+        }
+
+        RegExpParser.prototype.atom = function() {
+            var atom
+            switch (this.peekChar()) {
+                case ".":
+                    atom = this.dotAll()
+                    break
+                case "\\":
+                    atom = this.atomEscape()
+                    break
+                case "[":
+                    atom = this.characterClass()
+                    break
+                case "(":
+                    atom = this.group()
+                    break
+            }
+
+            if (atom === undefined && this.isPatternCharacter()) {
+                atom = this.patternCharacter()
+            }
+
+            ASSERT_EXISTS(atom)
+
+            if (this.isQuantifier()) {
+                atom.quantifier = this.quantifier()
+            }
+
+            return atom
+        }
+
+        RegExpParser.prototype.dotAll = function() {
+            this.consumeChar(".")
+            return {
+                type: "Set",
+                complement: true,
+                value: [cc("\n"), cc("\r"), cc("\u2028"), cc("\u2029")]
+            }
+        }
+
+        RegExpParser.prototype.atomEscape = function() {
+            this.consumeChar("\\")
+
+            switch (this.peekChar()) {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                    return this.decimalEscapeAtom()
+                case "d":
+                case "D":
+                case "s":
+                case "S":
+                case "w":
+                case "W":
+                    return this.characterClassEscape()
+                case "f":
+                case "n":
+                case "r":
+                case "t":
+                case "v":
+                    return this.controlEscapeAtom()
+                case "c":
+                    return this.controlLetterEscapeAtom()
+                case "0":
+                    return this.nulCharacterAtom()
+                case "x":
+                    return this.hexEscapeSequenceAtom()
+                case "u":
+                    return this.regExpUnicodeEscapeSequenceAtom()
+                default:
+                    return this.identityEscapeAtom()
+            }
+        }
+
+        RegExpParser.prototype.decimalEscapeAtom = function() {
+            var value = this.positiveInteger()
+
+            return { type: "GroupBackReference", value: value }
+        }
+
+        RegExpParser.prototype.characterClassEscape = function() {
+            var set
+            var complement = false
+            switch (this.popChar()) {
+                case "d":
+                    set = digitsCharCodes
+                    break
+                case "D":
+                    set = digitsCharCodes
+                    complement = true
+                    break
+                case "s":
+                    set = whitespaceCodes
+                    break
+                case "S":
+                    set = whitespaceCodes
+                    complement = true
+                    break
+                case "w":
+                    set = wordCharCodes
+                    break
+                case "W":
+                    set = wordCharCodes
+                    complement = true
+                    break
+            }
+
+            ASSERT_EXISTS(set)
+
+            return { type: "Set", value: set, complement: complement }
+        }
+
+        RegExpParser.prototype.controlEscapeAtom = function() {
+            var escapeCode
+            switch (this.popChar()) {
+                case "f":
+                    escapeCode = cc("\f")
+                    break
+                case "n":
+                    escapeCode = cc("\n")
+                    break
+                case "r":
+                    escapeCode = cc("\r")
+                    break
+                case "t":
+                    escapeCode = cc("\t")
+                    break
+                case "v":
+                    escapeCode = cc("\v")
+                    break
+            }
+            ASSERT_EXISTS(escapeCode)
+
+            return { type: "Character", value: escapeCode }
+        }
+
+        RegExpParser.prototype.controlLetterEscapeAtom = function() {
+            this.consumeChar("c")
+            var letter = this.popChar()
+            if (/[a-zA-Z]/.test(letter) === false) {
+                throw Error("Invalid ")
+            }
+
+            var letterCode = letter.toUpperCase().charCodeAt(0) - 64
+            return { type: "Character", value: letterCode }
+        }
+
+        RegExpParser.prototype.nulCharacterAtom = function() {
+            // TODO implement '[lookahead ∉ DecimalDigit]'
+            // TODO: for the deprecated octal escape sequence
+            this.consumeChar("0")
+            return { type: "Character", value: cc("\0") }
+        }
+
+        RegExpParser.prototype.hexEscapeSequenceAtom = function() {
+            this.consumeChar("x")
+            return this.parseHexDigits(2)
+        }
+
+        RegExpParser.prototype.regExpUnicodeEscapeSequenceAtom = function() {
+            this.consumeChar("u")
+            return this.parseHexDigits(4)
+        }
+
+        RegExpParser.prototype.identityEscapeAtom = function() {
+            // TODO: implement "SourceCharacter but not UnicodeIDContinue"
+            // // http://unicode.org/reports/tr31/#Specific_Character_Adjustments
+            var escapedChar = this.popChar()
+            return { type: "Character", value: cc(escapedChar) }
+        }
+
+        RegExpParser.prototype.classPatternCharacterAtom = function() {
+            switch (this.peekChar()) {
+                // istanbul ignore next
+                case "\n":
+                // istanbul ignore next
+                case "\r":
+                // istanbul ignore next
+                case "\u2028":
+                // istanbul ignore next
+                case "\u2029":
+                // istanbul ignore next
+                case "\\":
+                // istanbul ignore next
+                case "]":
+                    throw Error("TBD")
+                default:
+                    var nextChar = this.popChar()
+                    return { type: "Character", value: cc(nextChar) }
+            }
+        }
+
+        RegExpParser.prototype.characterClass = function() {
+            var set = []
+            var complement = false
+            this.consumeChar("[")
+            if (this.peekChar(0) === "^") {
+                this.consumeChar("^")
+                complement = true
+            }
+
+            while (this.isClassAtom()) {
+                var from = this.classAtom()
+                var isFromSingleChar = from.type === "Character"
+                if (isFromSingleChar && this.isRangeDash()) {
+                    this.consumeChar("-")
+                    var to = this.classAtom()
+                    var isToSingleChar = to.type === "Character"
+
+                    // a range can only be used when both sides are single characters
+                    if (isToSingleChar) {
+                        if (to.value < from.value) {
+                            throw Error("Range out of order in character class")
+                        }
+                        set.push({ from: from.value, to: to.value })
+                    } else {
+                        // literal dash
+                        insertToSet(from.value, set)
+                        set.push(cc("-"))
+                        insertToSet(to.value, set)
+                    }
+                } else {
+                    insertToSet(from.value, set)
+                }
+            }
+
+            this.consumeChar("]")
+
+            return { type: "Set", complement: complement, value: set }
+        }
+
+        RegExpParser.prototype.classAtom = function() {
+            switch (this.peekChar()) {
+                // istanbul ignore next
+                case "]":
+                // istanbul ignore next
+                case "\n":
+                // istanbul ignore next
+                case "\r":
+                // istanbul ignore next
+                case "\u2028":
+                // istanbul ignore next
+                case "\u2029":
+                    throw Error("TBD")
+                case "\\":
+                    return this.classEscape()
+                default:
+                    return this.classPatternCharacterAtom()
+            }
+        }
+
+        RegExpParser.prototype.classEscape = function() {
+            this.consumeChar("\\")
+            switch (this.peekChar()) {
+                // Matches a backspace.
+                // (Not to be confused with \b word boundary outside characterClass)
+                case "b":
+                    this.consumeChar("b")
+                    return { type: "Character", value: cc("\u0008") }
+                case "d":
+                case "D":
+                case "s":
+                case "S":
+                case "w":
+                case "W":
+                    return this.characterClassEscape()
+                case "f":
+                case "n":
+                case "r":
+                case "t":
+                case "v":
+                    return this.controlEscapeAtom()
+                case "c":
+                    return this.controlLetterEscapeAtom()
+                case "0":
+                    return this.nulCharacterAtom()
+                case "x":
+                    return this.hexEscapeSequenceAtom()
+                case "u":
+                    return this.regExpUnicodeEscapeSequenceAtom()
+                default:
+                    return this.identityEscapeAtom()
+            }
+        }
+
+        RegExpParser.prototype.group = function() {
+            var capturing = true
+            this.consumeChar("(")
+            switch (this.peekChar(0)) {
+                case "?":
+                    this.consumeChar("?")
+                    this.consumeChar(":")
+                    capturing = false
+                    break
+                default:
+                    this.groupIdx++
+                    break
+            }
+            var value = this.disjunction()
+            this.consumeChar(")")
+
+            var groupAst = {
+                type: "Group",
+                capturing: capturing,
+                value: value
+            }
+
+            if (capturing) {
+                groupAst.idx = this.groupIdx
+            }
+
+            return groupAst
+        }
+
+        RegExpParser.prototype.positiveInteger = function() {
+            var number = this.popChar()
+
+            // istanbul ignore next - can't ever get here due to previous lookahead checks
+            // still implementing this error checking in case this ever changes.
+            if (decimalPatternNoZero.test(number) === false) {
+                throw Error("Expecting a positive integer")
+            }
+
+            while (decimalPattern.test(this.peekChar(0))) {
+                number += this.popChar()
+            }
+
+            return parseInt(number, 10)
+        }
+
+        RegExpParser.prototype.integerIncludingZero = function() {
+            var number = this.popChar()
+            if (decimalPattern.test(number) === false) {
+                throw Error("Expecting an integer")
+            }
+
+            while (decimalPattern.test(this.peekChar(0))) {
+                number += this.popChar()
+            }
+
+            return parseInt(number, 10)
+        }
+
+        RegExpParser.prototype.patternCharacter = function() {
+            var nextChar = this.popChar()
+            switch (nextChar) {
+                // istanbul ignore next
+                case "\n":
+                // istanbul ignore next
+                case "\r":
+                // istanbul ignore next
+                case "\u2028":
+                // istanbul ignore next
+                case "\u2029":
+                // istanbul ignore next
+                case "^":
+                // istanbul ignore next
+                case "$":
+                // istanbul ignore next
+                case "\\":
+                // istanbul ignore next
+                case ".":
+                // istanbul ignore next
+                case "*":
+                // istanbul ignore next
+                case "+":
+                // istanbul ignore next
+                case "?":
+                // istanbul ignore next
+                case "(":
+                // istanbul ignore next
+                case ")":
+                // istanbul ignore next
+                case "[":
+                // istanbul ignore next
+                case "|":
+                    // istanbul ignore next
+                    throw Error("TBD")
+                default:
+                    return { type: "Character", value: cc(nextChar) }
+            }
+        }
+        RegExpParser.prototype.isRegExpFlag = function() {
+            switch (this.peekChar(0)) {
+                case "g":
+                case "i":
+                case "m":
+                case "u":
+                case "y":
+                    return true
+                default:
+                    return false
+            }
+        }
+
+        RegExpParser.prototype.isRangeDash = function() {
+            return this.peekChar() === "-" && this.isClassAtom(1)
+        }
+
+        RegExpParser.prototype.isDigit = function() {
+            return decimalPattern.test(this.peekChar(0))
+        }
+
+        RegExpParser.prototype.isClassAtom = function(howMuch) {
+            if (howMuch === undefined) {
+                howMuch = 0
+            }
+
+            switch (this.peekChar(howMuch)) {
+                case "]":
+                case "\n":
+                case "\r":
+                case "\u2028":
+                case "\u2029":
+                    return false
+                default:
+                    return true
+            }
+        }
+
+        RegExpParser.prototype.isTerm = function() {
+            return this.isAtom() || this.isAssertion()
+        }
+
+        RegExpParser.prototype.isAtom = function() {
+            if (this.isPatternCharacter()) {
+                return true
+            }
+
+            switch (this.peekChar(0)) {
+                case ".":
+                case "\\": // atomEscape
+                case "[": // characterClass
+                // TODO: isAtom must be called before isAssertion - disambiguate
+                case "(": // group
+                    return true
+                default:
+                    return false
+            }
+        }
+
+        RegExpParser.prototype.isAssertion = function() {
+            switch (this.peekChar(0)) {
+                case "^":
+                case "$":
+                    return true
+                // '\b' or '\B'
+                case "\\":
+                    switch (this.peekChar(1)) {
+                        case "b":
+                        case "B":
+                            return true
+                        default:
+                            return false
+                    }
+                // '(?=' or '(?!'
+                case "(":
+                    return (
+                        this.peekChar(1) === "?" &&
+                        (this.peekChar(2) === "=" || this.peekChar(2) === "!")
+                    )
+                default:
+                    return false
+            }
+        }
+
+        RegExpParser.prototype.isQuantifier = function() {
+            var prevState = this.saveState()
+            try {
+                return this.quantifier(true) !== undefined
+            } catch (e) {
+                return false
+            } finally {
+                this.restoreState(prevState)
+            }
+        }
+
+        RegExpParser.prototype.isPatternCharacter = function() {
+            switch (this.peekChar()) {
+                case "^":
+                case "$":
+                case "\\":
+                case ".":
+                case "*":
+                case "+":
+                case "?":
+                case "(":
+                case ")":
+                case "[":
+                case "|":
+                case "/":
+                case "\n":
+                case "\r":
+                case "\u2028":
+                case "\u2029":
+                    return false
+                default:
+                    return true
+            }
+        }
+
+        RegExpParser.prototype.parseHexDigits = function(howMany) {
+            var hexString = ""
+            for (var i = 0; i < howMany; i++) {
+                var hexChar = this.popChar()
+                if (hexDigitPattern.test(hexChar) === false) {
+                    throw Error("Expecting a HexDecimal digits")
+                }
+                hexString += hexChar
+            }
+            var charCode = parseInt(hexString, 16)
+            return { type: "Character", value: charCode }
+        }
+
+        RegExpParser.prototype.peekChar = function(howMuch) {
+            if (howMuch === undefined) {
+                howMuch = 0
+            }
+            return this.input[this.idx + howMuch]
+        }
+
+        RegExpParser.prototype.popChar = function() {
+            var nextChar = this.peekChar(0)
+            this.consumeChar()
+            return nextChar
+        }
+
+        RegExpParser.prototype.consumeChar = function(char) {
+            if (char !== undefined && this.input[this.idx] !== char) {
+                throw Error(
+                    "Expected: '" +
+                        char +
+                        "' but found: '" +
+                        this.input[this.idx] +
+                        "' at offset: " +
+                        this.idx
+                )
+            }
+
+            if (this.idx >= this.input.length) {
+                throw Error("Unexpected end of input")
+            }
+            this.idx++
+        }
+
+        // consts and utilities
+        var hexDigitPattern = /[0-9a-fA-F]/
+        var decimalPattern = /[0-9]/
+        var decimalPatternNoZero = /[1-9]/
+
+        function cc(char) {
+            return char.charCodeAt(0)
+        }
+
+        function insertToSet(item, set) {
+            if (item.length !== undefined) {
+                item.forEach(function(subItem) {
+                    set.push(subItem)
+                })
+            } else {
+                set.push(item)
+            }
+        }
+
+        function addFlag(flagObj, flagKey) {
+            if (flagObj[flagKey] === true) {
+                throw "duplicate flag " + flagKey
+            }
+
+            flagObj[flagKey] = true
+        }
+
+        function ASSERT_EXISTS(obj) {
+            // istanbul ignore next
+            if (obj === undefined) {
+                throw Error("Internal Error - Should never get here!")
+            }
+        }
+
+        // istanbul ignore next
+        function ASSERT_NEVER_REACH_HERE() {
+            throw Error("Internal Error - Should never get here!")
+        }
+
+        var i
+        var digitsCharCodes = []
+        for (i = cc("0"); i <= cc("9"); i++) {
+            digitsCharCodes.push(i)
+        }
+
+        var wordCharCodes = [cc("_")].concat(digitsCharCodes)
+        for (i = cc("a"); i <= cc("z"); i++) {
+            wordCharCodes.push(i)
+        }
+
+        for (i = cc("A"); i <= cc("Z"); i++) {
+            wordCharCodes.push(i)
+        }
+
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp#character-classes
+        var whitespaceCodes = [
+            cc(" "),
+            cc("\f"),
+            cc("\n"),
+            cc("\r"),
+            cc("\t"),
+            cc("\v"),
+            cc("\t"),
+            cc("\u00a0"),
+            cc("\u1680"),
+            cc("\u2000"),
+            cc("\u2001"),
+            cc("\u2002"),
+            cc("\u2003"),
+            cc("\u2004"),
+            cc("\u2005"),
+            cc("\u2006"),
+            cc("\u2007"),
+            cc("\u2008"),
+            cc("\u2009"),
+            cc("\u200a"),
+            cc("\u2028"),
+            cc("\u2029"),
+            cc("\u202f"),
+            cc("\u205f"),
+            cc("\u3000"),
+            cc("\ufeff")
+        ]
+
+        function BaseRegExpVisitor() {}
+
+        BaseRegExpVisitor.prototype.visitChildren = function(node) {
+            for (var key in node) {
+                var child = node[key]
+                /* istanbul ignore else */
+                if (node.hasOwnProperty(key)) {
+                    if (child.type !== undefined) {
+                        this.visit(child)
+                    } else if (Array.isArray(child)) {
+                        child.forEach(function(subChild) {
+                            this.visit(subChild)
+                        }, this)
+                    }
+                }
+            }
+        }
+
+        BaseRegExpVisitor.prototype.visit = function(node) {
+            switch (node.type) {
+                case "Pattern":
+                    this.visitPattern(node)
+                    break
+                case "Flags":
+                    this.visitFlags(node)
+                    break
+                case "Disjunction":
+                    this.visitDisjunction(node)
+                    break
+                case "Alternative":
+                    this.visitAlternative(node)
+                    break
+                case "StartAnchor":
+                    this.visitStartAnchor(node)
+                    break
+                case "EndAnchor":
+                    this.visitEndAnchor(node)
+                    break
+                case "WordBoundary":
+                    this.visitWordBoundary(node)
+                    break
+                case "NonWordBoundary":
+                    this.visitNonWordBoundary(node)
+                    break
+                case "Lookahead":
+                    this.visitLookahead(node)
+                    break
+                case "NegativeLookahead":
+                    this.visitNegativeLookahead(node)
+                    break
+                case "Character":
+                    this.visitCharacter(node)
+                    break
+                case "Set":
+                    this.visitSet(node)
+                    break
+                case "Group":
+                    this.visitGroup(node)
+                    break
+                case "GroupBackReference":
+                    this.visitGroupBackReference(node)
+                    break
+                case "Quantifier":
+                    this.visitQuantifier(node)
+                    break
+            }
+
+            this.visitChildren(node)
+        }
+
+        BaseRegExpVisitor.prototype.visitPattern = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitFlags = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitDisjunction = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitAlternative = function(node) {}
+
+        // Assertion
+        BaseRegExpVisitor.prototype.visitStartAnchor = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitEndAnchor = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitWordBoundary = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitNonWordBoundary = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitLookahead = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitNegativeLookahead = function(node) {}
+
+        // atoms
+        BaseRegExpVisitor.prototype.visitCharacter = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitSet = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitGroup = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitGroupBackReference = function(node) {}
+
+        BaseRegExpVisitor.prototype.visitQuantifier = function(node) {}
+
+        return {
+            RegExpParser: RegExpParser,
+            BaseRegExpVisitor: BaseRegExpVisitor,
+            VERSION: "0.4.0"
+        }
+    }
+)
+
+
+/***/ }),
+
+/***/ "./src/helpers/matchers.ts":
+/*!*********************************!*\
+  !*** ./src/helpers/matchers.ts ***!
+  \*********************************/
+/*! exports provided: CATCH_ALL, CATCH_ALL_AT_LEAST_ONE, IRIREF, PN_CHARS_BASE, LANGTAG, INTEGER, DECIMAL, EXPONENT, ECHAR, WS, HEX, PN_LOCAL_ESC, PN_CHARS_U, PN_CHARS, PN_PREFIX, PERCENT, PLX, PN_LOCAL, VARNAME, ANON, NIL, STRING_LITERAL1, STRING_LITERAL2, STRING_LITERAL_LONG1, STRING_LITERAL_LONG2, DOUBLE, INTEGER_POSITIVE, DECIMAL_POSITIVE, DOUBLE_POSITIVE, INTEGER_NEGATIVE, DECIMAL_NEGATIVE, DOUBLE_NEGATIVE, VAR1, VAR2, BLANK_NODE_LABEL, PNAME_NS, PNAME_LN */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATCH_ALL", function() { return CATCH_ALL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CATCH_ALL_AT_LEAST_ONE", function() { return CATCH_ALL_AT_LEAST_ONE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IRIREF", function() { return IRIREF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PN_CHARS_BASE", function() { return PN_CHARS_BASE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LANGTAG", function() { return LANGTAG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INTEGER", function() { return INTEGER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECIMAL", function() { return DECIMAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EXPONENT", function() { return EXPONENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ECHAR", function() { return ECHAR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WS", function() { return WS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HEX", function() { return HEX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PN_LOCAL_ESC", function() { return PN_LOCAL_ESC; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PN_CHARS_U", function() { return PN_CHARS_U; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PN_CHARS", function() { return PN_CHARS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PN_PREFIX", function() { return PN_PREFIX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PERCENT", function() { return PERCENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PLX", function() { return PLX; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PN_LOCAL", function() { return PN_LOCAL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VARNAME", function() { return VARNAME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ANON", function() { return ANON; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NIL", function() { return NIL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STRING_LITERAL1", function() { return STRING_LITERAL1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STRING_LITERAL2", function() { return STRING_LITERAL2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STRING_LITERAL_LONG1", function() { return STRING_LITERAL_LONG1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STRING_LITERAL_LONG2", function() { return STRING_LITERAL_LONG2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOUBLE", function() { return DOUBLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INTEGER_POSITIVE", function() { return INTEGER_POSITIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECIMAL_POSITIVE", function() { return DECIMAL_POSITIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOUBLE_POSITIVE", function() { return DOUBLE_POSITIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INTEGER_NEGATIVE", function() { return INTEGER_NEGATIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECIMAL_NEGATIVE", function() { return DECIMAL_NEGATIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOUBLE_NEGATIVE", function() { return DOUBLE_NEGATIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VAR1", function() { return VAR1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VAR2", function() { return VAR2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BLANK_NODE_LABEL", function() { return BLANK_NODE_LABEL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PNAME_NS", function() { return PNAME_NS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PNAME_LN", function() { return PNAME_LN; });
+/* harmony import */ var _regex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./regex */ "./src/helpers/regex.ts");
+
+var CATCH_ALL = /[\s\S]*/; // equivalent to /.*/s, which isn't a JS standard yet
+var CATCH_ALL_AT_LEAST_ONE = /[\s\S]+/; // equivalent to /.+/s, which isn't a JS standard yet
+var IRIREF = /<[^<>\\{}|\^`\u0000-\u0020]*>/;
+var PN_CHARS_BASE = /[A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDBFF][\uDC00-\uDFFF]/;
+var LANGTAG = /@[a-zA-Z]+(-[a-zA-Z0-9]+)*/;
+var INTEGER = /\d+/;
+var DECIMAL = /(\d*\.\d+)|(\d+\.\d*)/;
+var EXPONENT = /[eE][+-]?\d+/;
+var ECHAR = /\\[tbnrf"'\\]/;
+var WS = /[\u0020\u0009\u000d\u000a]/;
+var HEX = /[0-9A-Fa-f]/;
+var PN_LOCAL_ESC = /\\[_~.\-!\$&'()*+,=\/?#@%;]/;
+var PN_CHARS_U = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS_BASE, /_/);
+var PN_CHARS = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS_U, /-/, /\d/, /\u00b7/, /[\u0300-\u036f]/, /[\u203f-\u2040]/);
+var PN_PREFIX = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(PN_CHARS_BASE, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].option(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS, /\./)), PN_CHARS)));
+var PERCENT = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/%/, HEX, HEX);
+var PLX = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PERCENT, PN_LOCAL_ESC);
+var PN_LOCAL = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS_U, /:/, /\d/, PLX), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].option(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS, /\./, /:/, PLX)), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS, /:/, PLX))));
+var VARNAME = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS_U, /\d/), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS_U, /\d/, /\u00b7/, /[\u0300-\u036f]/, /[\u203f-\u2040]/)));
+var ANON = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\[/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(WS), /\]/);
+var NIL = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\(/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(WS), /\)/);
+var STRING_LITERAL1 = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/'/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(/[^\u0027\u005C\u000A\u000D]/, ECHAR)), /'/);
+var STRING_LITERAL2 = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/"/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(/[^\u0022\u005C\u000A\u000D]/, ECHAR)), /"/);
+var STRING_LITERAL_LONG1 = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/'''/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].option(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(/'/, /''/)), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(/[^'\\]/, ECHAR))), /'''/);
+var STRING_LITERAL_LONG2 = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/"""/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].option(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(/"/, /""/)), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(/[^"\\]/, ECHAR))), /"""/);
+var DOUBLE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\d+\.\d*/, EXPONENT), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\.\d+/, EXPONENT), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\d+/, EXPONENT));
+var INTEGER_POSITIVE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\+/, INTEGER);
+var DECIMAL_POSITIVE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\+/, DECIMAL);
+var DOUBLE_POSITIVE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\+/, DOUBLE);
+var INTEGER_NEGATIVE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/-/, INTEGER);
+var DECIMAL_NEGATIVE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/-/, DECIMAL);
+var DOUBLE_NEGATIVE = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/-/, DOUBLE);
+var VAR1 = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\?/, VARNAME);
+var VAR2 = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/\$/, VARNAME);
+var BLANK_NODE_LABEL = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(/_:/, _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS_U, /\d/), _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].option(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].many(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].or(PN_CHARS, /\./)), PN_CHARS)));
+var PNAME_NS = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(_regex__WEBPACK_IMPORTED_MODULE_0__["regex"].option(PN_PREFIX), /:/);
+var PNAME_LN = _regex__WEBPACK_IMPORTED_MODULE_0__["regex"].and(PNAME_NS, PN_LOCAL);
+
+
+/***/ }),
+
+/***/ "./src/helpers/regex.ts":
+/*!******************************!*\
+  !*** ./src/helpers/regex.ts ***!
+  \******************************/
+/*! exports provided: regex */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "regex", function() { return regex; });
+var regex = {
+    or: function () {
+        var r = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            r[_i] = arguments[_i];
+        }
+        return new RegExp(r.map(function (_a) {
+            var source = _a.source;
+            return "(" + source + ")";
+        }).join('|'));
+    },
+    and: function () {
+        var r = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            r[_i] = arguments[_i];
+        }
+        return new RegExp(r.map(function (_a) {
+            var source = _a.source;
+            return "(" + source + ")";
+        }).join(''));
+    },
+    option: function (r) {
+        return new RegExp("(" + r.source + ")?");
+    },
+    many: function (r) {
+        return new RegExp("(" + r.source + ")*");
+    },
+};
+
+
+/***/ }),
+
+/***/ "./src/sms/SmsParser.ts":
+/*!******************************!*\
+  !*** ./src/sms/SmsParser.ts ***!
+  \******************************/
+/*! exports provided: SmsParser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmsParser", function() { return SmsParser; });
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chevrotain */ "./node_modules/chevrotain/lib/src/api.js");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chevrotain__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var _a = __webpack_require__(/*! ./tokens */ "./src/sms/tokens.ts"), smsTokenTypes = _a.smsTokenTypes, smsTokenMap = _a.smsTokenMap;
+
+var SmsParser = /** @class */ (function (_super) {
+    __extends(SmsParser, _super);
+    function SmsParser(config) {
+        var _this = _super.call(this, smsTokenTypes, __assign({ outputCst: true, recoveryEnabled: true }, config)) || this;
+        _this.tokenize = function (document) {
+            return _this.lexer.tokenize(document).tokens;
+        };
+        _this.parse = function (document) {
+            _this.input = _this.lexer.tokenize(document).tokens;
+            var cst = _this.MappingDoc();
+            var errors = _this.errors;
+            return {
+                errors: errors,
+                cst: cst,
+            };
+        };
+        _this.MappingDoc = _this.RULE('MappingDoc', function () {
+            _this.MANY(function () { return _this.SUBRULE(_this.PrefixDecl); });
+            _this.SUBRULE(_this.MappingClause);
+            _this.MANY1(function () {
+                _this.CONSUME(smsTokenMap.Semicolon);
+                _this.SUBRULE1(_this.MappingClause);
+            });
+        });
+        _this.MappingClause = _this.RULE('MappingClause', function () {
+            _this.SUBRULE(_this.MappingDecl);
+            _this.SUBRULE(_this.FromClause);
+            _this.SUBRULE(_this.ToClause);
+            _this.SUBRULE(_this.WhereClause);
+        });
+        _this.MappingDecl = _this.RULE('MappingDecl', function () {
+            _this.CONSUME(smsTokenMap.Mapping);
+            _this.OPTION(function () { return _this.SUBRULE(_this.iri); });
+        });
+        _this.FromClause = _this.RULE('FromClause', function () {
+            _this.CONSUME(smsTokenMap.FROM);
+            _this.OR([
+                {
+                    ALT: function () { return _this.SUBRULE(_this.SqlClause); },
+                },
+                {
+                    ALT: function () { return _this.SUBRULE(_this.JsonClause); },
+                },
+                {
+                    ALT: function () { return _this.SUBRULE(_this.GraphQlClause); },
+                },
+            ]);
+        });
+        _this.JsonClause = _this.RULE('JsonClause', function () {
+            _this.CONSUME(smsTokenMap.Json);
+            _this.CONSUME(smsTokenMap.JsonBlock);
+        });
+        _this.GraphQlClause = _this.RULE('GraphQlClause', function () {
+            _this.CONSUME(smsTokenMap.GraphQl);
+            _this.CONSUME(smsTokenMap.LCurly);
+            _this.CONSUME(smsTokenMap.GraphQlBlock);
+            _this.CONSUME(smsTokenMap.RCurly);
+        });
+        _this.SqlClause = _this.RULE('SqlClause', function () {
+            _this.CONSUME(smsTokenMap.Sql);
+            _this.CONSUME(smsTokenMap.LCurly);
+            _this.CONSUME(smsTokenMap.SqlBlock);
+            _this.CONSUME(smsTokenMap.RCurly);
+        });
+        _this.ToClause = _this.RULE('ToClause', function () {
+            _this.CONSUME(smsTokenMap.TO);
+            _this.SUBRULE(_this.ConstructTemplate);
+        });
+        _this.WhereClause = _this.RULE('WhereClause', function () {
+            _this.CONSUME(smsTokenMap.WHERE);
+            _this.CONSUME(smsTokenMap.LCurly);
+            _this.MANY(function () { return _this.SUBRULE(_this.Bind); });
+            _this.CONSUME(smsTokenMap.RCurly);
+        });
+        _this.Bind = _this.RULE('Bind', function () {
+            _this.CONSUME(smsTokenMap.BIND);
+            _this.CONSUME(smsTokenMap.LParen);
+            _this.SUBRULE(_this.TemplateOrCast);
+            _this.CONSUME(smsTokenMap.AS);
+            _this.SUBRULE(_this.Var);
+            _this.CONSUME(smsTokenMap.RParen);
+        });
+        _this.TemplateOrCast = _this.RULE('TemplateOrCast', function () {
+            _this.OR([
+                {
+                    ALT: function () { return _this.SUBRULE(_this.TemplateFunc); },
+                },
+                {
+                    ALT: function () { return _this.SUBRULE(_this.CastFunc); },
+                },
+            ]);
+        });
+        _this.CastFunc = _this.RULE('CastFunc', function () {
+            _this.SUBRULE(_this.iri);
+            _this.CONSUME(smsTokenMap.LParen);
+            _this.SUBRULE(_this.Var);
+            _this.CONSUME(smsTokenMap.RParen);
+        });
+        _this.TemplateFunc = _this.RULE('TemplateFunc', function () {
+            _this.CONSUME(smsTokenMap.Template);
+            _this.CONSUME(smsTokenMap.LParen);
+            _this.SUBRULE(_this.String);
+            _this.CONSUME(smsTokenMap.RParen);
+        });
+        //
+        // Dupes from Sparql
+        //
+        _this.PrefixDecl = _this.RULE('PrefixDecl', function () {
+            _this.CONSUME(smsTokenMap.PREFIX);
+            _this.CONSUME(smsTokenMap.PNAME_NS);
+            _this.CONSUME(smsTokenMap.IRIREF);
+        });
+        _this.iri = _this.RULE('iri', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.IRIREF); } },
+                { ALT: function () { return _this.SUBRULE(_this.PrefixedName); } },
+            ]);
+        });
+        _this.PrefixedName = _this.RULE('PrefixedName', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.PNAME_LN); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.PNAME_NS); } },
+            ]);
+        });
+        _this.ConstructTemplate = _this.RULE('ConstructTemplate', function () {
+            _this.CONSUME(smsTokenMap.LCurly);
+            _this.OPTION(function () { return _this.SUBRULE(_this.ConstructTriples); });
+            _this.CONSUME(smsTokenMap.RCurly);
+        });
+        _this.ConstructTriples = _this.RULE('ConstructTriples', function () {
+            _this.SUBRULE(_this.TriplesSameSubject);
+            _this.OPTION(function () {
+                _this.CONSUME(smsTokenMap.Period);
+                _this.OPTION1(function () { return _this.SUBRULE(_this.ConstructTriples); });
+            });
+        });
+        _this.TriplesSameSubject = _this.RULE('TriplesSameSubject', function () {
+            _this.OR([
+                {
+                    ALT: function () {
+                        _this.SUBRULE(_this.VarOrTerm);
+                        _this.SUBRULE(_this.PropertyListNotEmpty);
+                    },
+                },
+                {
+                    ALT: function () {
+                        _this.SUBRULE(_this.TriplesNode);
+                        _this.SUBRULE(_this.PropertyList);
+                    },
+                },
+            ]);
+        });
+        _this.VarOrTerm = _this.RULE('VarOrTerm', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.Var); } },
+                { ALT: function () { return _this.SUBRULE(_this.GraphTerm); } },
+            ]);
+        });
+        _this.PropertyListNotEmpty = _this.RULE('PropertyListNotEmpty', function () {
+            _this.SUBRULE(_this.Verb);
+            _this.SUBRULE(_this.ObjectList);
+            _this.MANY(function () {
+                _this.CONSUME(smsTokenMap.Semicolon);
+                _this.OPTION(function () {
+                    _this.SUBRULE1(_this.Verb);
+                    _this.SUBRULE1(_this.ObjectList);
+                });
+            });
+        });
+        _this.TriplesNode = _this.RULE('TriplesNode', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.Collection); } },
+                { ALT: function () { return _this.SUBRULE(_this.BlankNodePropertyList); } },
+            ]);
+        });
+        _this.PropertyList = _this.RULE('PropertyList', function () {
+            _this.OPTION(function () { return _this.SUBRULE(_this.PropertyListNotEmpty); });
+        });
+        _this.GraphTerm = _this.RULE('GraphTerm', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.iri); } },
+                { ALT: function () { return _this.SUBRULE(_this.RDFLiteral); } },
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteral); } },
+                { ALT: function () { return _this.SUBRULE(_this.BooleanLiteral); } },
+                { ALT: function () { return _this.SUBRULE(_this.BlankNode); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.NIL); } },
+            ]);
+        });
+        _this.Verb = _this.RULE('Verb', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.VarOrIri); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.A); } },
+            ]);
+        });
+        _this.ObjectList = _this.RULE('ObjectList', function () {
+            _this.AT_LEAST_ONE_SEP({
+                SEP: smsTokenMap.Comma,
+                DEF: function () { return _this.SUBRULE(_this.Object); },
+            });
+        });
+        _this.Object = _this.RULE('Object', function () {
+            _this.SUBRULE(_this.GraphNode);
+        });
+        _this.Collection = _this.RULE('Collection', function () {
+            _this.CONSUME(smsTokenMap.LParen);
+            _this.AT_LEAST_ONE(function () { return _this.SUBRULE(_this.GraphNode); });
+            _this.CONSUME(smsTokenMap.RParen);
+        });
+        _this.BlankNodePropertyList = _this.RULE('BlankNodePropertyList', function () {
+            _this.CONSUME(smsTokenMap.LBracket);
+            _this.SUBRULE(_this.PropertyListNotEmpty);
+            _this.CONSUME(smsTokenMap.RBracket);
+        });
+        _this.VarOrIri = _this.RULE('VarOrIri', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.Var); } },
+                { ALT: function () { return _this.SUBRULE(_this.iri); } },
+            ]);
+        });
+        _this.RDFLiteral = _this.RULE('RDFLiteral', function () {
+            _this.SUBRULE(_this.String);
+            _this.OPTION(function () {
+                return _this.OR([
+                    { ALT: function () { return _this.CONSUME(smsTokenMap.LANGTAG); } },
+                    {
+                        ALT: function () {
+                            _this.CONSUME(smsTokenMap.DoubleCaret);
+                            _this.SUBRULE(_this.iri);
+                        },
+                    },
+                ]);
+            });
+        });
+        _this.NumericLiteral = _this.RULE('NumericLiteral', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteralUnsigned); } },
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteralPositive); } },
+                { ALT: function () { return _this.SUBRULE(_this.NumericLiteralNegative); } },
+            ]);
+        });
+        _this.NumericLiteralUnsigned = _this.RULE('NumericLiteralUnsigned', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.INTEGER); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.DECIMAL); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.DOUBLE); } },
+            ]);
+        });
+        _this.NumericLiteralPositive = _this.RULE('NumericLiteralPositive', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.INTEGER_POSITIVE); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.DECIMAL_POSITIVE); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.DOUBLE_POSITIVE); } },
+            ]);
+        });
+        _this.NumericLiteralNegative = _this.RULE('NumericLiteralNegative', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.INTEGER_NEGATIVE); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.DECIMAL_NEGATIVE); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.DOUBLE_NEGATIVE); } },
+            ]);
+        });
+        _this.BooleanLiteral = _this.RULE('BooleanLiteral', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.TRUE); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.FALSE); } },
+            ]);
+        });
+        _this.BlankNode = _this.RULE('BlankNode', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.BLANK_NODE_LABEL); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.ANON); } },
+            ]);
+        });
+        _this.GraphNode = _this.RULE('GraphNode', function () {
+            _this.OR([
+                { ALT: function () { return _this.SUBRULE(_this.VarOrTerm); } },
+                { ALT: function () { return _this.SUBRULE(_this.TriplesNode); } },
+            ]);
+        });
+        _this.Var = _this.RULE('Var', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.VAR1); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.VAR2); } },
+            ]);
+        });
+        _this.String = _this.RULE('String', function () {
+            _this.OR([
+                { ALT: function () { return _this.CONSUME(smsTokenMap.STRING_LITERAL1); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.STRING_LITERAL2); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.STRING_LITERAL_LONG1); } },
+                { ALT: function () { return _this.CONSUME(smsTokenMap.STRING_LITERAL_LONG2); } },
+            ]);
+        });
+        _this.lexer = new chevrotain__WEBPACK_IMPORTED_MODULE_0__["Lexer"](smsTokenTypes);
+        chevrotain__WEBPACK_IMPORTED_MODULE_0__["Parser"].performSelfAnalysis(_this);
+        return _this;
+    }
+    return SmsParser;
+}(chevrotain__WEBPACK_IMPORTED_MODULE_0__["Parser"]));
+
+
+
+/***/ }),
+
+/***/ "./src/sms/index.ts":
+/*!**************************!*\
+  !*** ./src/sms/index.ts ***!
+  \**************************/
+/*! exports provided: smsTokens, SmsParser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smsTokens", function() { return smsTokens; });
+/* harmony import */ var _SmsParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SmsParser */ "./src/sms/SmsParser.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SmsParser", function() { return _SmsParser__WEBPACK_IMPORTED_MODULE_0__["SmsParser"]; });
+
+
+// Convenience imports/exports that aren't core functionality:
+// NOTE: Tokens MUST be imported using CommonJS syntax; see here: https://github.com/SAP/chevrotain/issues/345
+var smsTokens = __webpack_require__(/*! ./tokens */ "./src/sms/tokens.ts");
+
+
+/***/ }),
+
+/***/ "./src/sms/tokens.ts":
+/*!***************************!*\
+  !*** ./src/sms/tokens.ts ***!
+  \***************************/
+/*! exports provided: smsTokenMap, smsTokenTypes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smsTokenMap", function() { return smsTokenMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "smsTokenTypes", function() { return smsTokenTypes; });
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chevrotain */ "./node_modules/chevrotain/lib/src/api.js");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chevrotain__WEBPACK_IMPORTED_MODULE_0__);
+var sparqlTokenMap = __webpack_require__(/*! ../sparql/tokens */ "./src/sparql/tokens.ts").sparqlTokenMap;
+
+var FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
+var FROM_JSON_BLOCK_END_MATCHER = /((?:.|\s)*?)to\s*{/i;
+// Because the end of `FROM` clauses in SMS are not explicit, tokenizing them
+// using regexes can be incredibly inefficient. This function gives us a bit
+// more control; it scans through the document character by character until
+// it finds a character which is _likely_ to be followed by an ending pattern,
+// and only then does it use a regex to confirm.
+var explicitEndMatcher = function (textToMatch, endCandidateChar, // Char which, if found, triggers an exec of endMatcher
+endMatcher // Regex which matches an end pattern
+) {
+    for (var offset = 0, char = void 0; offset < textToMatch.length; offset++) {
+        char = textToMatch[offset];
+        if (char === endCandidateChar) {
+            var blockEndCandidate = textToMatch.slice(offset + 1);
+            var match = endMatcher.exec(blockEndCandidate);
+            if (!match) {
+                continue;
+            }
+            else {
+                var blockText = textToMatch.slice(0, offset);
+                var response = [blockText];
+                return response;
+            }
+        }
+    }
+    return null;
+};
+var smsTokenMap = {
+    STRING_LITERAL1: sparqlTokenMap.STRING_LITERAL1,
+    STRING_LITERAL2: sparqlTokenMap.STRING_LITERAL2,
+    STRING_LITERAL_LONG1: sparqlTokenMap.STRING_LITERAL_LONG1,
+    STRING_LITERAL_LONG2: sparqlTokenMap.STRING_LITERAL_LONG2,
+    IRIREF: sparqlTokenMap.IRIREF,
+    PNAME_LN: sparqlTokenMap.PNAME_LN,
+    PNAME_NS: sparqlTokenMap.PNAME_NS,
+    NIL: sparqlTokenMap.NIL,
+    DISTINCT: sparqlTokenMap.DISTINCT,
+    VAR1: sparqlTokenMap.VAR1,
+    VAR2: sparqlTokenMap.VAR2,
+    BIND: sparqlTokenMap.BIND,
+    AS: sparqlTokenMap.AS,
+    WHERE: sparqlTokenMap.WHERE,
+    LANGTAG: sparqlTokenMap.LANGTAG,
+    INTEGER: sparqlTokenMap.INTEGER,
+    DECIMAL: sparqlTokenMap.DECIMAL,
+    DOUBLE: sparqlTokenMap.DOUBLE,
+    INTEGER_POSITIVE: sparqlTokenMap.INTEGER_POSITIVE,
+    DECIMAL_POSITIVE: sparqlTokenMap.DECIMAL_POSITIVE,
+    DOUBLE_POSITIVE: sparqlTokenMap.DOUBLE_POSITIVE,
+    INTEGER_NEGATIVE: sparqlTokenMap.INTEGER_NEGATIVE,
+    DECIMAL_NEGATIVE: sparqlTokenMap.DECIMAL_NEGATIVE,
+    DOUBLE_NEGATIVE: sparqlTokenMap.DOUBLE_NEGATIVE,
+    TRUE: sparqlTokenMap.TRUE,
+    FALSE: sparqlTokenMap.FALSE,
+    BLANK_NODE_LABEL: sparqlTokenMap.BLANK_NODE_LABEL,
+    ANON: sparqlTokenMap.ANON,
+    A: sparqlTokenMap.A,
+    FROM: sparqlTokenMap.FROM,
+    PREFIX: sparqlTokenMap.PREFIX,
+    Comment: sparqlTokenMap.Comment,
+    Period: sparqlTokenMap.Period,
+    Comma: sparqlTokenMap.Comma,
+    LCurly: sparqlTokenMap.LCurly,
+    RCurly: sparqlTokenMap.RCurly,
+    LParen: sparqlTokenMap.LParen,
+    RParen: sparqlTokenMap.RParen,
+    WhiteSpace: sparqlTokenMap.WhiteSpace,
+    DoubleCaret: sparqlTokenMap.DoubleCaret,
+    Semicolon: sparqlTokenMap.Semicolon,
+    LBracket: sparqlTokenMap.LBracket,
+    RBracket: sparqlTokenMap.RBracket,
+    Template: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Template',
+        pattern: /template/i,
+    }),
+    TO: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'TO',
+        pattern: /to/i,
+    }),
+    Sql: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Sql',
+        pattern: /sql/i,
+    }),
+    GraphQl: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GraphQl',
+        pattern: /graphql/i,
+    }),
+    Json: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Json',
+        pattern: /json/i,
+    }),
+    Mapping: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Mapping',
+        pattern: /mapping/i,
+    }),
+    SqlBlock: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SqlBlock',
+        pattern: function (text, startOffset, matchedTokensSoFar) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var _a = matchedTokensSoFar.slice(-2), secondToLastToken = _a[0], lastToken = _a[1];
+            if (!secondToLastToken ||
+                !lastToken ||
+                secondToLastToken.tokenType.tokenName !== smsTokenMap.Sql.tokenName ||
+                lastToken.tokenType.tokenName !== smsTokenMap.LCurly.tokenName) {
+                return null;
+            }
+            var textToMatch = text.slice(startOffset);
+            return explicitEndMatcher(textToMatch, '}', FROM_BLOCK_END_MATCHER);
+        },
+        line_breaks: true,
+    }),
+    JsonBlock: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'JsonBlock',
+        pattern: function (text, startOffset, matchedTokensSoFar) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var lastToken = matchedTokensSoFar.slice(-1)[0];
+            if (!lastToken ||
+                lastToken.tokenType.tokenName !== smsTokenMap.Json.tokenName) {
+                return null;
+            }
+            var textToMatch = text.slice(startOffset);
+            var match = FROM_JSON_BLOCK_END_MATCHER.exec(textToMatch);
+            if (!match) {
+                return null;
+            }
+            var capturedMatch = match.slice(1);
+            return capturedMatch;
+        },
+        line_breaks: true,
+    }),
+    GraphQlBlock: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GraphQlBlock',
+        pattern: function (text, startOffset, matchedTokensSoFar) {
+            if (startOffset === void 0) { startOffset = 0; }
+            var _a = matchedTokensSoFar.slice(-2), secondToLastToken = _a[0], lastToken = _a[1];
+            if (!secondToLastToken ||
+                !lastToken ||
+                secondToLastToken.tokenType.tokenName !==
+                    smsTokenMap.GraphQl.tokenName ||
+                lastToken.tokenType.tokenName !== smsTokenMap.LCurly.tokenName) {
+                return null;
+            }
+            var textToMatch = text.slice(startOffset);
+            return explicitEndMatcher(textToMatch, '}', FROM_BLOCK_END_MATCHER);
+        },
+        line_breaks: true,
+    }),
+};
+var smsTokenTypes = [
+    smsTokenMap.WhiteSpace,
+    smsTokenMap.Comment,
+    smsTokenMap.LParen,
+    smsTokenMap.RParen,
+    smsTokenMap.Period,
+    smsTokenMap.Template,
+    smsTokenMap.IRIREF,
+    smsTokenMap.PNAME_LN,
+    smsTokenMap.PNAME_NS,
+    smsTokenMap.NIL,
+    smsTokenMap.DISTINCT,
+    smsTokenMap.VAR1,
+    smsTokenMap.VAR2,
+    smsTokenMap.BIND,
+    smsTokenMap.AS,
+    smsTokenMap.WHERE,
+    smsTokenMap.TO,
+    smsTokenMap.LANGTAG,
+    smsTokenMap.INTEGER,
+    smsTokenMap.DECIMAL,
+    smsTokenMap.DOUBLE,
+    smsTokenMap.INTEGER_POSITIVE,
+    smsTokenMap.DECIMAL_POSITIVE,
+    smsTokenMap.DOUBLE_POSITIVE,
+    smsTokenMap.INTEGER_NEGATIVE,
+    smsTokenMap.DECIMAL_NEGATIVE,
+    smsTokenMap.DOUBLE_NEGATIVE,
+    smsTokenMap.TRUE,
+    smsTokenMap.FALSE,
+    smsTokenMap.BLANK_NODE_LABEL,
+    smsTokenMap.ANON,
+    smsTokenMap.A,
+    smsTokenMap.FROM,
+    smsTokenMap.PREFIX,
+    smsTokenMap.Comma,
+    smsTokenMap.DoubleCaret,
+    smsTokenMap.Semicolon,
+    smsTokenMap.LBracket,
+    smsTokenMap.RBracket,
+    smsTokenMap.Sql,
+    smsTokenMap.GraphQl,
+    smsTokenMap.Json,
+    smsTokenMap.Mapping,
+    smsTokenMap.SqlBlock,
+    smsTokenMap.JsonBlock,
+    smsTokenMap.GraphQlBlock,
+    smsTokenMap.LCurly,
+    smsTokenMap.RCurly,
+    smsTokenMap.STRING_LITERAL1,
+    smsTokenMap.STRING_LITERAL2,
+    smsTokenMap.STRING_LITERAL_LONG1,
+    smsTokenMap.STRING_LITERAL_LONG2,
+];
+
+
+/***/ }),
+
+/***/ "./src/sparql/keywords.ts":
+/*!********************************!*\
+  !*** ./src/sparql/keywords.ts ***!
+  \********************************/
+/*! exports provided: keywords */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keywords", function() { return keywords; });
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chevrotain */ "./node_modules/chevrotain/lib/src/api.js");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chevrotain__WEBPACK_IMPORTED_MODULE_0__);
+// @ts-ignore: import types for declarations
+
+var MAX_LENGTH = Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+    name: 'MAX_LENGTH',
+    pattern: /MAX LENGTH/i,
+});
+var keywords = {
+    SELECT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SELECT',
+        pattern: /SELECT/i,
+    }),
+    CONSTRUCT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CONSTRUCT',
+        pattern: /CONSTRUCT/i,
+    }),
+    DISTINCT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DISTINCT',
+        pattern: /DISTINCT/i,
+    }),
+    START: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'START',
+        pattern: /START/i,
+    }),
+    END: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'END',
+        pattern: /END/i,
+    }),
+    VIA: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'VIA',
+        pattern: /VIA/i,
+    }),
+    PATHS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'PATHS',
+        pattern: /PATHS/i,
+    }),
+    PATHS_ALL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'PATHS_ALL',
+        pattern: /PATHS ALL/i,
+    }),
+    PATHS_SHORTEST: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'PATHS_SHORTEST',
+        pattern: /PATHS SHORTEST/i,
+    }),
+    CYCLIC: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CYCLIC',
+        pattern: /CYCLIC/i,
+    }),
+    AS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'AS',
+        pattern: /AS/i,
+    }),
+    WHERE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'WHERE',
+        pattern: /WHERE/i,
+    }),
+    A: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'A',
+        pattern: /a/i,
+    }),
+    GroupBy: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GroupBy',
+        pattern: /group by/i,
+    }),
+    OrderBy: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'OrderBy',
+        pattern: /order by/i,
+    }),
+    By: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'By',
+        pattern: /By/i,
+    }),
+    BASE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'BASE',
+        pattern: /BASE/i,
+    }),
+    PREFIX: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'PREFIX',
+        pattern: /PREFIX/i,
+    }),
+    DESCRIBE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DESCRIBE',
+        pattern: /DESCRIBE/i,
+    }),
+    ASK: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ASK',
+        pattern: /ASK/i,
+    }),
+    FROM: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'FROM',
+        pattern: /FROM/i,
+    }),
+    REDUCED: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'REDUCED',
+        pattern: /REDUCED/i,
+    }),
+    NAMED: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'NAMED',
+        pattern: /NAMED/i,
+    }),
+    HAVING: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'HAVING',
+        pattern: /HAVING/i,
+    }),
+    ASC: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ASC',
+        pattern: /ASC/i,
+    }),
+    DESC: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DESC',
+        pattern: /DESC/i,
+    }),
+    OFFSET: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'OFFSET',
+        pattern: /OFFSET/i,
+    }),
+    LIMIT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LIMIT',
+        pattern: /LIMIT/i,
+    }),
+    VALUES: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'VALUES',
+        pattern: /VALUES/i,
+    }),
+    LOAD: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LOAD',
+        pattern: /LOAD/i,
+    }),
+    SILENT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SILENT',
+        pattern: /SILENT/i,
+    }),
+    INTO: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'INTO',
+        pattern: /INTO/i,
+    }),
+    CLEAR: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CLEAR',
+        pattern: /CLEAR/i,
+    }),
+    DROP: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DROP',
+        pattern: /DROP/i,
+    }),
+    CREATE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CREATE',
+        pattern: /CREATE/i,
+    }),
+    ADD: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ADD',
+        pattern: /ADD/i,
+    }),
+    TO: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'TO',
+        pattern: /TO/i,
+    }),
+    MOVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MOVE',
+        pattern: /MOVE/i,
+    }),
+    COPY: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'COPY',
+        pattern: /COPY/i,
+    }),
+    INSERT_DATA: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'INSERT_DATA',
+        pattern: /Insert +Data/i,
+    }),
+    DELETE_DATA: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DELETE_DATA',
+        pattern: /Delete +Data/i,
+    }),
+    DELETE_WHERE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DELETE_WHERE',
+        pattern: /Delete +Where/i,
+    }),
+    WITH: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'WITH',
+        pattern: /WITH/i,
+    }),
+    DELETE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DELETE',
+        pattern: /DELETE/i,
+    }),
+    INSERT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'INSERT',
+        pattern: /INSERT/i,
+    }),
+    USING: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'USING',
+        pattern: /USING/i,
+    }),
+    DEFAULT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DEFAULT',
+        pattern: /DEFAULT/i,
+    }),
+    GRAPH: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GRAPH',
+        pattern: /GRAPH/i,
+    }),
+    ALL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ALL',
+        pattern: /ALL/i,
+    }),
+    OPTIONAL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'OPTIONAL',
+        pattern: /OPTIONAL/i,
+    }),
+    SERVICE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SERVICE',
+        pattern: /SERVICE/i,
+    }),
+    BIND: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'BIND',
+        pattern: /BIND/i,
+    }),
+    UNNEST: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'UNNEST',
+        pattern: /UNNEST/i,
+    }),
+    UNDEF: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'UNDEF',
+        pattern: /UNDEF/i,
+    }),
+    MINUS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MINUS',
+        pattern: /MINUS/i,
+    }),
+    UNION: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'UNION',
+        pattern: /UNION/i,
+    }),
+    FILTER: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'FILTER',
+        pattern: /FILTER/i,
+    }),
+    STR: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STR',
+        pattern: /STR/i,
+    }),
+    LANG: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LANG',
+        pattern: /LANG/i,
+    }),
+    LANGMATCHES: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LANGMATCHES',
+        pattern: /LANGMATCHES/i,
+    }),
+    DATATYPE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DATATYPE',
+        pattern: /DATATYPE/i,
+    }),
+    BOUND: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'BOUND',
+        pattern: /BOUND/i,
+    }),
+    IRI: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'IRI',
+        pattern: /IRI/i,
+    }),
+    URI: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'URI',
+        pattern: /URI/i,
+    }),
+    BNODE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'BNODE',
+        pattern: /BNODE/i,
+    }),
+    RAND: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'RAND',
+        pattern: /RAND/i,
+    }),
+    ABS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ABS',
+        pattern: /ABS/i,
+    }),
+    CEIL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CEIL',
+        pattern: /CEIL/i,
+    }),
+    FLOOR: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'FLOOR',
+        pattern: /FLOOR/i,
+    }),
+    ROUND: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ROUND',
+        pattern: /ROUND/i,
+    }),
+    CONCAT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CONCAT',
+        pattern: /CONCAT/i,
+    }),
+    STRLEN: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRLEN',
+        pattern: /STRLEN/i,
+    }),
+    UCASE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'UCASE',
+        pattern: /UCASE/i,
+    }),
+    LCASE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LCASE',
+        pattern: /LCASE/i,
+    }),
+    ENCODE_FOR_URI: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ENCODE_FOR_URI',
+        pattern: /ENCODE_FOR_URI/i,
+    }),
+    CONTAINS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'CONTAINS',
+        pattern: /CONTAINS/i,
+    }),
+    STRSTARTS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRSTARTS',
+        pattern: /STRSTARTS/i,
+    }),
+    STRENDS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRENDS',
+        pattern: /STRENDS/i,
+    }),
+    STRBEFORE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRBEFORE',
+        pattern: /STRBEFORE/i,
+    }),
+    STRAFTER: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRAFTER',
+        pattern: /STRAFTER/i,
+    }),
+    YEAR: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'YEAR',
+        pattern: /YEAR/i,
+    }),
+    MONTH: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MONTH',
+        pattern: /MONTH/i,
+    }),
+    DAY: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DAY',
+        pattern: /DAY/i,
+    }),
+    HOURS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'HOURS',
+        pattern: /HOURS/i,
+    }),
+    MINUTES: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MINUTES',
+        pattern: /MINUTES/i,
+    }),
+    SECONDS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SECONDS',
+        pattern: /SECONDS/i,
+    }),
+    TIMEZONE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'TIMEZONE',
+        pattern: /TIMEZONE/i,
+    }),
+    TZ: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'TZ',
+        pattern: /TZ/i,
+    }),
+    NOW: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'NOW',
+        pattern: /NOW/i,
+    }),
+    UUID: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'UUID',
+        pattern: /UUID/i,
+    }),
+    STRUUID: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRUUID',
+        pattern: /STRUUID/i,
+    }),
+    MD5: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MD5',
+        pattern: /MD5/i,
+    }),
+    SHA1: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SHA1',
+        pattern: /SHA1/i,
+    }),
+    SHA256: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SHA256',
+        pattern: /SHA256/i,
+    }),
+    SHA384: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SHA384',
+        pattern: /SHA384/i,
+    }),
+    SHA512: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SHA512',
+        pattern: /SHA512/i,
+    }),
+    COALESCE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'COALESCE',
+        pattern: /COALESCE/i,
+    }),
+    IF: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'IF',
+        pattern: /IF/i,
+    }),
+    STRLANG: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRLANG',
+        pattern: /STRLANG/i,
+    }),
+    STRDT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRDT',
+        pattern: /STRDT/i,
+    }),
+    sameTerm: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'sameTerm',
+        pattern: /sameTerm/i,
+    }),
+    isIRI: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'isIRI',
+        pattern: /isIRI/i,
+    }),
+    isURI: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'isURI',
+        pattern: /isURI/i,
+    }),
+    isBlank: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'isBlank',
+        pattern: /isBlank/i,
+    }),
+    isLiteral: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'isLiteral',
+        pattern: /isLiteral/i,
+    }),
+    isNumeric: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'isNumeric',
+        pattern: /isNumeric/i,
+    }),
+    REGEX: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'REGEX',
+        pattern: /REGEX/i,
+    }),
+    SUBSTR: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SUBSTR',
+        pattern: /SUBSTR/i,
+    }),
+    REPLACE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'REPLACE',
+        pattern: /REPLACE/i,
+    }),
+    EXISTS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'EXISTS',
+        pattern: /EXISTS/i,
+    }),
+    NOT_EXISTS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'NOT_EXISTS',
+        pattern: /NOT EXISTS/i,
+    }),
+    COUNT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'COUNT',
+        pattern: /COUNT/i,
+    }),
+    SUM: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SUM',
+        pattern: /SUM/i,
+    }),
+    MIN: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MIN',
+        pattern: /MIN/i,
+    }),
+    AVG: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'AVG',
+        pattern: /AVG/i,
+    }),
+    SAMPLE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SAMPLE',
+        pattern: /SAMPLE/i,
+    }),
+    GROUP_CONCAT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GROUP_CONCAT',
+        pattern: /GROUP_CONCAT/i,
+    }),
+    SEPARATOR: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'SEPARATOR',
+        pattern: /SEPARATOR/i,
+    }),
+    TRUE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'TRUE',
+        pattern: /TRUE/i,
+    }),
+    FALSE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'FALSE',
+        pattern: /FALSE/i,
+    }),
+    IN: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'IN',
+        pattern: /IN/i,
+    }),
+    NOT_IN: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'NOT_IN',
+        pattern: /NOT IN/i,
+    }),
+    MAX_LENGTH: MAX_LENGTH,
+    MAX: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'MAX',
+        pattern: /MAX/i,
+        longer_alt: MAX_LENGTH,
+    }),
+};
+
+
+/***/ }),
+
+/***/ "./src/sparql/terminals.ts":
+/*!*********************************!*\
+  !*** ./src/sparql/terminals.ts ***!
+  \*********************************/
+/*! exports provided: terminals */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "terminals", function() { return terminals; });
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chevrotain */ "./node_modules/chevrotain/lib/src/api.js");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chevrotain__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var helpers_matchers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! helpers/matchers */ "./src/helpers/matchers.ts");
+// @ts-ignore: import types for declarations
+
+
+var STRING_LITERAL_LONG1_TOKEN = Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+    name: 'STRING_LITERAL_LONG1',
+    pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["STRING_LITERAL_LONG1"],
+});
+var STRING_LITERAL_LONG2_TOKEN = Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+    name: 'STRING_LITERAL_LONG2',
+    pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["STRING_LITERAL_LONG2"],
+});
+var PNAME_LN_TOKEN = Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+    name: 'PNAME_LN',
+    pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["PNAME_LN"],
+});
+var terminals = {
+    IRIREF: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'IRIREF',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["IRIREF"],
+        label: '<http://example.com>',
+    }),
+    LANGTAG: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LANGTAG',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["LANGTAG"],
+    }),
+    INTEGER: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'INTEGER',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["INTEGER"],
+    }),
+    DECIMAL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DECIMAL',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["DECIMAL"],
+    }),
+    DOUBLE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DOUBLE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["DOUBLE"],
+    }),
+    INTEGER_POSITIVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'INTEGER_POSITIVE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["INTEGER_POSITIVE"],
+    }),
+    DECIMAL_POSITIVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DECIMAL_POSITIVE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["DECIMAL_POSITIVE"],
+    }),
+    DOUBLE_POSITIVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DOUBLE_POSITIVE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["DOUBLE_POSITIVE"],
+    }),
+    INTEGER_NEGATIVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'INTEGER_NEGATIVE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["INTEGER_NEGATIVE"],
+    }),
+    DECIMAL_NEGATIVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DECIMAL_NEGATIVE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["DECIMAL_NEGATIVE"],
+    }),
+    DOUBLE_NEGATIVE: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DOUBLE_NEGATIVE',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["DOUBLE_NEGATIVE"],
+    }),
+    STRING_LITERAL_LONG1: STRING_LITERAL_LONG1_TOKEN,
+    STRING_LITERAL_LONG2: STRING_LITERAL_LONG2_TOKEN,
+    STRING_LITERAL1: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRING_LITERAL1',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["STRING_LITERAL1"],
+        longer_alt: STRING_LITERAL_LONG1_TOKEN,
+    }),
+    STRING_LITERAL2: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'STRING_LITERAL2',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["STRING_LITERAL2"],
+        longer_alt: STRING_LITERAL_LONG2_TOKEN,
+    }),
+    NIL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'NIL',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["NIL"],
+        label: '()',
+    }),
+    ANON: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ANON',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["ANON"],
+        label: '[]',
+    }),
+    PNAME_LN: PNAME_LN_TOKEN,
+    PNAME_NS: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'PNAME_NS',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["PNAME_NS"],
+        longer_alt: PNAME_LN_TOKEN,
+    }),
+    BLANK_NODE_LABEL: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'BLANK_NODE_LABEL',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["BLANK_NODE_LABEL"],
+    }),
+    VAR1: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'VAR1',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["VAR1"],
+        label: '?foo',
+    }),
+    VAR2: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'VAR2',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["VAR2"],
+        label: '?bar',
+    }),
+    PERCENT: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'PERCENT',
+        pattern: helpers_matchers__WEBPACK_IMPORTED_MODULE_1__["PERCENT"],
+    }),
+};
+
+
+/***/ }),
+
+/***/ "./src/sparql/tokens.ts":
+/*!******************************!*\
+  !*** ./src/sparql/tokens.ts ***!
+  \******************************/
+/*! exports provided: sparqlTokenMap, baseTokens, pathsTokens, nonStandardTokens, stardogSparqlTokens, sparqlTokenTypes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sparqlTokenMap", function() { return sparqlTokenMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "baseTokens", function() { return baseTokens; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pathsTokens", function() { return pathsTokens; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nonStandardTokens", function() { return nonStandardTokens; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stardogSparqlTokens", function() { return stardogSparqlTokens; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sparqlTokenTypes", function() { return sparqlTokenTypes; });
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chevrotain */ "./node_modules/chevrotain/lib/src/api.js");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chevrotain__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _terminals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./terminals */ "./src/sparql/terminals.ts");
+/* harmony import */ var _keywords__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./keywords */ "./src/sparql/keywords.ts");
+// @ts-ignore: import types for declarations
+
+
+
+var sparqlTokenMap = {
+    IRIREF: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].IRIREF,
+    LANGTAG: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].LANGTAG,
+    INTEGER: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].INTEGER,
+    DECIMAL: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].DECIMAL,
+    DOUBLE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].DOUBLE,
+    INTEGER_POSITIVE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].INTEGER_POSITIVE,
+    DECIMAL_POSITIVE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].DECIMAL_POSITIVE,
+    DOUBLE_POSITIVE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].DOUBLE_POSITIVE,
+    INTEGER_NEGATIVE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].INTEGER_NEGATIVE,
+    DECIMAL_NEGATIVE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].DECIMAL_NEGATIVE,
+    DOUBLE_NEGATIVE: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].DOUBLE_NEGATIVE,
+    STRING_LITERAL1: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].STRING_LITERAL1,
+    STRING_LITERAL2: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].STRING_LITERAL2,
+    STRING_LITERAL_LONG1: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].STRING_LITERAL_LONG1,
+    STRING_LITERAL_LONG2: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].STRING_LITERAL_LONG2,
+    NIL: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].NIL,
+    ANON: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].ANON,
+    PNAME_NS: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].PNAME_NS,
+    PNAME_LN: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].PNAME_LN,
+    BLANK_NODE_LABEL: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].BLANK_NODE_LABEL,
+    VAR1: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].VAR1,
+    VAR2: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].VAR2,
+    PERCENT: _terminals__WEBPACK_IMPORTED_MODULE_1__["terminals"].PERCENT,
+    Comment: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Comment',
+        pattern: /#[^\n]*/,
+        group: 'comments',
+    }),
+    LCurly: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({ name: 'LCurly', pattern: '{' }),
+    RCurly: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({ name: 'RCurly', pattern: '}' }),
+    LParen: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({ name: 'LParen', pattern: '(' }),
+    RParen: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({ name: 'RParen', pattern: ')' }),
+    WhiteSpace: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'WhiteSpace',
+        pattern: /\s+/,
+        group: chevrotain__WEBPACK_IMPORTED_MODULE_0__["Lexer"].SKIPPED,
+        line_breaks: true,
+    }),
+    Star: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Star',
+        pattern: '*',
+    }),
+    Unknown: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Unknown',
+        pattern: /\w+/,
+    }),
+    Period: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Period',
+        pattern: '.',
+    }),
+    QuestionMark: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'QuestionMark',
+        pattern: '?',
+    }),
+    Plus: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Plus',
+        pattern: '+',
+    }),
+    Minus: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Minus',
+        pattern: '-',
+    }),
+    LBracket: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LBracket',
+        pattern: '[',
+    }),
+    RBracket: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'RBracket',
+        pattern: ']',
+    }),
+    Semicolon: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Semicolon',
+        pattern: ';',
+    }),
+    Comma: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Comma',
+        pattern: ',',
+    }),
+    Pipe: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Pipe',
+        pattern: '|',
+    }),
+    ForwardSlash: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'ForwardSlash',
+        pattern: '/',
+    }),
+    Caret: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Caret',
+        pattern: '^',
+    }),
+    DoubleCaret: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'DoubleCaret',
+        pattern: '^^',
+    }),
+    Bang: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Bang',
+        pattern: '!',
+    }),
+    LogicalOr: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LogicalOr',
+        pattern: '||',
+    }),
+    LogicalAnd: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LogicalAnd',
+        pattern: '&&',
+    }),
+    Equals: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'Equals',
+        pattern: '=',
+    }),
+    NotEquals: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'NotEquals',
+        pattern: '!=',
+    }),
+    LessThan: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LessThan',
+        pattern: '<',
+    }),
+    GreaterThan: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GreaterThan',
+        pattern: '>',
+    }),
+    LessThanEquals: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'LessThanEquals',
+        pattern: '<=',
+    }),
+    GreaterThanEquals: Object(chevrotain__WEBPACK_IMPORTED_MODULE_0__["createToken"])({
+        name: 'GreaterThanEquals',
+        pattern: '>=',
+    }),
+    SELECT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SELECT,
+    CONSTRUCT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CONSTRUCT,
+    DISTINCT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DISTINCT,
+    START: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].START,
+    END: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].END,
+    VIA: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].VIA,
+    CYCLIC: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CYCLIC,
+    PATHS_SHORTEST: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].PATHS_SHORTEST,
+    PATHS_ALL: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].PATHS_ALL,
+    PATHS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].PATHS,
+    AS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].AS,
+    WHERE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].WHERE,
+    A: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].A,
+    GroupBy: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].GroupBy,
+    OrderBy: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].OrderBy,
+    By: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].By,
+    BASE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].BASE,
+    PREFIX: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].PREFIX,
+    DESCRIBE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DESCRIBE,
+    ASK: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ASK,
+    FROM: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].FROM,
+    REDUCED: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].REDUCED,
+    NAMED: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].NAMED,
+    HAVING: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].HAVING,
+    ASC: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ASC,
+    DESC: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DESC,
+    OFFSET: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].OFFSET,
+    LIMIT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].LIMIT,
+    VALUES: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].VALUES,
+    LOAD: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].LOAD,
+    SILENT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SILENT,
+    INTO: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].INTO,
+    CLEAR: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CLEAR,
+    DROP: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DROP,
+    CREATE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CREATE,
+    ADD: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ADD,
+    TO: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].TO,
+    MOVE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MOVE,
+    COPY: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].COPY,
+    INSERT_DATA: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].INSERT_DATA,
+    DELETE_DATA: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DELETE_DATA,
+    DELETE_WHERE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DELETE_WHERE,
+    WITH: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].WITH,
+    DELETE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DELETE,
+    INSERT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].INSERT,
+    USING: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].USING,
+    DEFAULT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DEFAULT,
+    GRAPH: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].GRAPH,
+    ALL: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ALL,
+    OPTIONAL: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].OPTIONAL,
+    SERVICE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SERVICE,
+    BIND: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].BIND,
+    UNNEST: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].UNNEST,
+    UNDEF: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].UNDEF,
+    MINUS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MINUS,
+    UNION: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].UNION,
+    FILTER: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].FILTER,
+    STR: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STR,
+    LANG: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].LANG,
+    LANGMATCHES: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].LANGMATCHES,
+    DATATYPE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DATATYPE,
+    BOUND: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].BOUND,
+    IRI: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].IRI,
+    URI: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].URI,
+    BNODE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].BNODE,
+    RAND: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].RAND,
+    ABS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ABS,
+    CEIL: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CEIL,
+    FLOOR: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].FLOOR,
+    ROUND: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ROUND,
+    CONCAT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CONCAT,
+    STRLEN: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRLEN,
+    UCASE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].UCASE,
+    LCASE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].LCASE,
+    ENCODE_FOR_URI: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].ENCODE_FOR_URI,
+    CONTAINS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].CONTAINS,
+    STRSTARTS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRSTARTS,
+    STRENDS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRENDS,
+    STRBEFORE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRBEFORE,
+    STRAFTER: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRAFTER,
+    YEAR: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].YEAR,
+    MONTH: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MONTH,
+    DAY: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].DAY,
+    HOURS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].HOURS,
+    MINUTES: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MINUTES,
+    SECONDS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SECONDS,
+    TIMEZONE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].TIMEZONE,
+    TZ: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].TZ,
+    NOW: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].NOW,
+    UUID: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].UUID,
+    STRUUID: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRUUID,
+    MD5: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MD5,
+    SHA1: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SHA1,
+    SHA256: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SHA256,
+    SHA384: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SHA384,
+    SHA512: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SHA512,
+    COALESCE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].COALESCE,
+    IF: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].IF,
+    STRLANG: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRLANG,
+    STRDT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].STRDT,
+    sameTerm: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].sameTerm,
+    isIRI: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].isIRI,
+    isURI: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].isURI,
+    isBlank: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].isBlank,
+    isLiteral: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].isLiteral,
+    isNumeric: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].isNumeric,
+    REGEX: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].REGEX,
+    SUBSTR: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SUBSTR,
+    REPLACE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].REPLACE,
+    EXISTS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].EXISTS,
+    NOT_EXISTS: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].NOT_EXISTS,
+    COUNT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].COUNT,
+    SUM: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SUM,
+    MIN: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MIN,
+    AVG: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].AVG,
+    SAMPLE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SAMPLE,
+    GROUP_CONCAT: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].GROUP_CONCAT,
+    SEPARATOR: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].SEPARATOR,
+    TRUE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].TRUE,
+    FALSE: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].FALSE,
+    IN: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].IN,
+    NOT_IN: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].NOT_IN,
+    MAX_LENGTH: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MAX_LENGTH,
+    MAX: _keywords__WEBPACK_IMPORTED_MODULE_2__["keywords"].MAX,
+};
+var baseTokens = [
+    sparqlTokenMap.NIL,
+    sparqlTokenMap.ANON,
+    sparqlTokenMap.LCurly,
+    sparqlTokenMap.RCurly,
+    sparqlTokenMap.LParen,
+    sparqlTokenMap.RParen,
+    sparqlTokenMap.WhiteSpace,
+    sparqlTokenMap.IRIREF,
+    sparqlTokenMap.LANGTAG,
+    sparqlTokenMap.DOUBLE,
+    sparqlTokenMap.DECIMAL,
+    sparqlTokenMap.INTEGER,
+    sparqlTokenMap.DOUBLE_POSITIVE,
+    sparqlTokenMap.DECIMAL_POSITIVE,
+    sparqlTokenMap.INTEGER_POSITIVE,
+    sparqlTokenMap.DOUBLE_NEGATIVE,
+    sparqlTokenMap.DECIMAL_NEGATIVE,
+    sparqlTokenMap.INTEGER_NEGATIVE,
+    sparqlTokenMap.STRING_LITERAL1,
+    sparqlTokenMap.STRING_LITERAL2,
+    sparqlTokenMap.STRING_LITERAL_LONG1,
+    sparqlTokenMap.STRING_LITERAL_LONG2,
+    sparqlTokenMap.PNAME_NS,
+    sparqlTokenMap.PNAME_LN,
+    sparqlTokenMap.BLANK_NODE_LABEL,
+    sparqlTokenMap.VAR1,
+    sparqlTokenMap.VAR2,
+    sparqlTokenMap.Comment,
+    sparqlTokenMap.SELECT,
+    sparqlTokenMap.CONSTRUCT,
+    sparqlTokenMap.DISTINCT,
+    sparqlTokenMap.Star,
+    sparqlTokenMap.WHERE,
+    sparqlTokenMap.GroupBy,
+    sparqlTokenMap.OrderBy,
+    sparqlTokenMap.By,
+    sparqlTokenMap.Period,
+    sparqlTokenMap.QuestionMark,
+    sparqlTokenMap.Plus,
+    sparqlTokenMap.Minus,
+    sparqlTokenMap.LBracket,
+    sparqlTokenMap.RBracket,
+    sparqlTokenMap.PERCENT,
+    sparqlTokenMap.BASE,
+    sparqlTokenMap.PREFIX,
+    sparqlTokenMap.DESCRIBE,
+    sparqlTokenMap.ASK,
+    sparqlTokenMap.FROM,
+    sparqlTokenMap.REDUCED,
+    sparqlTokenMap.NAMED,
+    sparqlTokenMap.HAVING,
+    sparqlTokenMap.ASC,
+    sparqlTokenMap.DESC,
+    sparqlTokenMap.OFFSET,
+    sparqlTokenMap.LIMIT,
+    sparqlTokenMap.VALUES,
+    sparqlTokenMap.LOAD,
+    sparqlTokenMap.SILENT,
+    sparqlTokenMap.INTO,
+    sparqlTokenMap.AS,
+    sparqlTokenMap.CLEAR,
+    sparqlTokenMap.DROP,
+    sparqlTokenMap.CREATE,
+    sparqlTokenMap.ADD,
+    sparqlTokenMap.TO,
+    sparqlTokenMap.MOVE,
+    sparqlTokenMap.COPY,
+    sparqlTokenMap.INSERT_DATA,
+    sparqlTokenMap.DELETE_DATA,
+    sparqlTokenMap.DELETE_WHERE,
+    sparqlTokenMap.WITH,
+    sparqlTokenMap.DELETE,
+    sparqlTokenMap.INSERT,
+    sparqlTokenMap.USING,
+    sparqlTokenMap.DEFAULT,
+    sparqlTokenMap.GRAPH,
+    sparqlTokenMap.ALL,
+    sparqlTokenMap.OPTIONAL,
+    sparqlTokenMap.SERVICE,
+    sparqlTokenMap.BIND,
+    sparqlTokenMap.UNDEF,
+    sparqlTokenMap.MINUS,
+    sparqlTokenMap.UNION,
+    sparqlTokenMap.FILTER,
+    sparqlTokenMap.LANGMATCHES,
+    sparqlTokenMap.LANG,
+    sparqlTokenMap.DATATYPE,
+    sparqlTokenMap.BOUND,
+    sparqlTokenMap.IRI,
+    sparqlTokenMap.URI,
+    sparqlTokenMap.BNODE,
+    sparqlTokenMap.RAND,
+    sparqlTokenMap.ABS,
+    sparqlTokenMap.CEIL,
+    sparqlTokenMap.FLOOR,
+    sparqlTokenMap.ROUND,
+    sparqlTokenMap.CONCAT,
+    sparqlTokenMap.STRLEN,
+    sparqlTokenMap.UCASE,
+    sparqlTokenMap.LCASE,
+    sparqlTokenMap.ENCODE_FOR_URI,
+    sparqlTokenMap.CONTAINS,
+    sparqlTokenMap.STRSTARTS,
+    sparqlTokenMap.STRENDS,
+    sparqlTokenMap.STRBEFORE,
+    sparqlTokenMap.STRAFTER,
+    sparqlTokenMap.YEAR,
+    sparqlTokenMap.MONTH,
+    sparqlTokenMap.DAY,
+    sparqlTokenMap.HOURS,
+    sparqlTokenMap.MINUTES,
+    sparqlTokenMap.SECONDS,
+    sparqlTokenMap.TIMEZONE,
+    sparqlTokenMap.TZ,
+    sparqlTokenMap.NOW,
+    sparqlTokenMap.UUID,
+    sparqlTokenMap.STRUUID,
+    sparqlTokenMap.MD5,
+    sparqlTokenMap.SHA1,
+    sparqlTokenMap.SHA256,
+    sparqlTokenMap.SHA384,
+    sparqlTokenMap.SHA512,
+    sparqlTokenMap.COALESCE,
+    sparqlTokenMap.IF,
+    sparqlTokenMap.STRLANG,
+    sparqlTokenMap.STRDT,
+    sparqlTokenMap.STR,
+    sparqlTokenMap.sameTerm,
+    sparqlTokenMap.isIRI,
+    sparqlTokenMap.isURI,
+    sparqlTokenMap.isBlank,
+    sparqlTokenMap.isLiteral,
+    sparqlTokenMap.isNumeric,
+    sparqlTokenMap.REGEX,
+    sparqlTokenMap.SUBSTR,
+    sparqlTokenMap.REPLACE,
+    sparqlTokenMap.EXISTS,
+    sparqlTokenMap.NOT_EXISTS,
+    sparqlTokenMap.COUNT,
+    sparqlTokenMap.SUM,
+    sparqlTokenMap.MIN,
+    sparqlTokenMap.MAX_LENGTH,
+    sparqlTokenMap.MAX,
+    sparqlTokenMap.AVG,
+    sparqlTokenMap.SAMPLE,
+    sparqlTokenMap.GROUP_CONCAT,
+    sparqlTokenMap.SEPARATOR,
+    sparqlTokenMap.TRUE,
+    sparqlTokenMap.FALSE,
+    sparqlTokenMap.Semicolon,
+    sparqlTokenMap.Comma,
+    sparqlTokenMap.ForwardSlash,
+    sparqlTokenMap.DoubleCaret,
+    sparqlTokenMap.Caret,
+    sparqlTokenMap.LogicalOr,
+    sparqlTokenMap.Pipe,
+    sparqlTokenMap.LogicalAnd,
+    sparqlTokenMap.NotEquals,
+    sparqlTokenMap.Bang,
+    sparqlTokenMap.Equals,
+    sparqlTokenMap.LessThanEquals,
+    sparqlTokenMap.GreaterThanEquals,
+    sparqlTokenMap.LessThan,
+    sparqlTokenMap.GreaterThan,
+    sparqlTokenMap.IN,
+    sparqlTokenMap.NOT_IN,
+    sparqlTokenMap.A,
+    sparqlTokenMap.Unknown,
+];
+var pathsTokens = [
+    sparqlTokenMap.START,
+    sparqlTokenMap.END,
+    sparqlTokenMap.VIA,
+    sparqlTokenMap.CYCLIC,
+    sparqlTokenMap.PATHS_SHORTEST,
+    sparqlTokenMap.PATHS_ALL,
+    sparqlTokenMap.PATHS,
+];
+var nonStandardTokens = pathsTokens.concat([sparqlTokenMap.UNNEST]);
+var indexOfSelect = baseTokens.indexOf(sparqlTokenMap.SELECT);
+var stardogSparqlTokens = baseTokens.slice(0, indexOfSelect).concat(nonStandardTokens, baseTokens.slice(indexOfSelect));
+var sparqlTokenTypes = baseTokens.concat(nonStandardTokens);
+
+
+/***/ })
+
+/******/ });
+});
 //# sourceMappingURL=millan.sms.js.map

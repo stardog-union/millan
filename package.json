@@ -1,6 +1,6 @@
 {
   "name": "millan",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "The Stardog Whisperer (error-tolerant parsers for languages used with Stardog)",
   "keywords": [
     "stardog",
@@ -50,7 +50,7 @@
     }
   ],
   "dependencies": {
-    "chevrotain": "^4.3.3",
+    "chevrotain": "4.4.0",
     "escape-string-regexp": "^2.0.0",
     "lodash.isequal": "^4.5.0"
   },

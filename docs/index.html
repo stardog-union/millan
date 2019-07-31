@@ -97,17 +97,17 @@
 				<p>In Node/CommonJS:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> millan = <span class="hljs-built_in">require</span>(<span class="hljs-string">'millan'</span>);
 <span class="hljs-comment">// or, if you only need some part of millan (e.g., only _one_ of the parsers):</span>
-<span class="hljs-keyword">const</span> graphql = <span class="hljs-built_in">require</span>(<span class="hljs-string">'millan/standalone/millan.graphql'</span>);</code></pre>
+<span class="hljs-keyword">const</span> graphql = <span class="hljs-built_in">require</span>(<span class="hljs-string">'millan/dist/standalone/millan.graphql'</span>);</code></pre>
 				<p>As an ES module:</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> millan <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;
 <span class="hljs-comment">// or, if you only need some part of millan (e.g., only _one_ of the parsers):</span>
-<span class="hljs-keyword">import</span> { StardogSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan/standalone/millan.sparql'</span>;</code></pre>
+<span class="hljs-keyword">import</span> { StardogSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan/dist/standalone/millan.sparql'</span>;</code></pre>
 				<p>In the browser, importing everything at once:</p>
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/millan.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>In the browser, importing only what is needed:</p>
 				<pre><code class="language-html"><span class="hljs-comment">&lt;!-- Here, we first load any shared chunks needed by 'sms' (as indicated by the filename), then the SMS-related Javacript only --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/browser/millan.vendors~graphql~shacl~sms~sparql~srs~turtle.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/browser/millan.sms.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/dist/browser/millan.vendors~graphql~shacl~sms~sparql~srs~turtle.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"path/to/millan/dist/browser/millan.sms.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>When used in the browser via <code>script</code> tags, the API will be exposed on a global <code>millan</code> variable.</p>
 				<h2 id="basic-usage">Basic Usage</h2>
 				<p>Import Millan or the specific parts of Millan that you need, e.g.:</p>
@@ -564,6 +564,9 @@
 						<a href="globals.html#pn_prefix" class="tsd-kind-icon">PN_<wbr>PREFIX</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#punctuator" class="tsd-kind-icon">Punctuator</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#rule" class="tsd-kind-icon">Rule</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
@@ -814,6 +817,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#addthenclauseerrorstoerrors" class="tsd-kind-icon">add<wbr>Then<wbr>Clause<wbr>Errors<wbr>ToErrors</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#createandpushpunctuator" class="tsd-kind-icon">create<wbr>And<wbr>Push<wbr>Punctuator</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-not-exported">
 						<a href="globals.html#createandpushtoken" class="tsd-kind-icon">create<wbr>And<wbr>Push<wbr>Token</a>

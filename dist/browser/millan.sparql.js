@@ -1,2 +1,245 @@
-!function(n,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define("sparql",[],t):"object"==typeof exports?exports.sparql=t():(n.millan=n.millan||{},n.millan.sparql=t())}("undefined"!=typeof self?self:this,function(){return function(n){function t(t){for(var u,o,l=t[0],U=t[1],a=t[2],c=0,f=[];c<l.length;c++)o=l[c],e[o]&&f.push(e[o][0]),e[o]=0;for(u in U)Object.prototype.hasOwnProperty.call(U,u)&&(n[u]=U[u]);for(L&&L(t);f.length;)f.shift()();return i.push.apply(i,a||[]),r()}function r(){for(var n,t=0;t<i.length;t++){for(var r=i[t],u=!0,l=1;l<r.length;l++){var U=r[l];0!==e[U]&&(u=!1)}u&&(i.splice(t--,1),n=o(o.s=r[0]))}return n}var u={},e={5:0},i=[];function o(t){if(u[t])return u[t].exports;var r=u[t]={i:t,l:!1,exports:{}};return n[t].call(r.exports,r,r.exports,o),r.l=!0,r.exports}o.m=n,o.c=u,o.d=function(n,t,r){o.o(n,t)||Object.defineProperty(n,t,{enumerable:!0,get:r})},o.r=function(n){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(n,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(n,"__esModule",{value:!0})},o.t=function(n,t){if(1&t&&(n=o(n)),8&t)return n;if(4&t&&"object"==typeof n&&n&&n.__esModule)return n;var r=Object.create(null);if(o.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:n}),2&t&&"string"!=typeof n)for(var u in n)o.d(r,u,function(t){return n[t]}.bind(null,u));return r},o.n=function(n){var t=n&&n.__esModule?function(){return n.default}:function(){return n};return o.d(t,"a",t),t},o.o=function(n,t){return Object.prototype.hasOwnProperty.call(n,t)},o.p="";var l=("undefined"!=typeof self?self:this).webpackJsonp=("undefined"!=typeof self?self:this).webpackJsonp||[],U=l.push.bind(l);l.push=t,l=l.slice();for(var a=0;a<l.length;a++)t(l[a]);var L=U;return i.push([62,0,1]),r()}({17:function(n,t,r){"use strict";r.d(t,"a",function(){return StardogSparqlParser});var u,e=r(12),i=r(0),o=(u=function(n,t){return(u=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(n,t){n.__proto__=t}||function(n,t){for(var r in t)t.hasOwnProperty(r)&&(n[r]=t[r])})(n,t)},function(n,t){function r(){this.constructor=n}u(n,t),n.prototype=null===t?Object.create(t):(r.prototype=t.prototype,new r)}),l=r(5),U=l.sparqlTokenMap,a=l.stardogSparqlTokens,StardogSparqlParser=function(n){function StardogSparqlParser(t){var r=n.call(this,t,a)||this;return r.Query=r.OVERRIDE_RULE("Query",function(){r.OR([{ALT:function(){return r.SUBRULE(r.SelectQuery)}},{ALT:function(){return r.SUBRULE(r.ConstructQuery)}},{ALT:function(){return r.SUBRULE(r.DescribeQuery)}},{ALT:function(){return r.SUBRULE(r.AskQuery)}},{ALT:function(){return r.SUBRULE(r.PathQuery)}}]),r.SUBRULE(r.ValuesClause)}),r.PathQuery=r.RULE("PathQuery",function(){r.SUBRULE(r.PathSpec),r.MANY(function(){return r.SUBRULE(r.DatasetClause)}),r.CONSUME(U.START),r.SUBRULE(r.PathTerminal),r.CONSUME(U.END),r.SUBRULE1(r.PathTerminal),r.SUBRULE(r.Via),r.OPTION(function(){return r.SUBRULE(r.MaxLength)}),r.SUBRULE(r.SolutionModifier)}),r.Via=r.RULE("Via",function(){r.CONSUME(U.VIA),r.OR([{ALT:function(){return r.SUBRULE(r.GroupGraphPattern)}},{ALT:function(){return r.SUBRULE(r.Var)}},{ALT:function(){return r.SUBRULE(r.Path)}}])}),r.PathTerminal=r.RULE("PathTerminal",function(){r.SUBRULE(r.Var),r.OPTION(function(){r.OR([{ALT:function(){r.CONSUME(U.Equals),r.SUBRULE(r.iri)}},{ALT:function(){return r.SUBRULE(r.GroupGraphPattern)}}])})}),r.PathSpec=r.RULE("PathSpec",function(){r.OR([{ALT:function(){return r.CONSUME(U.PATHS)}},{ALT:function(){return r.CONSUME(U.PATHS_SHORTEST)}},{ALT:function(){return r.CONSUME(U.PATHS_ALL)}}]),r.OPTION1(function(){return r.CONSUME(U.CYCLIC)})}),r.GraphPatternNotTriples=r.OVERRIDE_RULE("GraphPatternNotTriples",function(){r.OR([{ALT:function(){return r.SUBRULE(r.GroupOrUnionGraphPattern)}},{ALT:function(){return r.SUBRULE(r.OptionalGraphPattern)}},{ALT:function(){return r.SUBRULE(r.MinusGraphPattern)}},{ALT:function(){return r.SUBRULE(r.GraphGraphPattern)}},{ALT:function(){return r.SUBRULE(r.ServiceGraphPattern)}},{ALT:function(){return r.SUBRULE(r.Filter)}},{ALT:function(){return r.SUBRULE(r.Bind)}},{ALT:function(){return r.SUBRULE(r.Unnest)}},{ALT:function(){return r.SUBRULE(r.InlineData)}}])}),r.Unnest=r.RULE("Unnest",function(){r.CONSUME(U.UNNEST),r.CONSUME(U.LParen),r.SUBRULE(r.Expression),r.CONSUME(U.AS),r.SUBRULE(r.Var),r.CONSUME(U.RParen)}),r.BuiltInCall=r.OVERRIDE_RULE("BuiltInCall",function(){r.OR([{ALT:function(){return r.SUBRULE(r.Aggregate)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STR)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_LANG)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_LANGMATCHES)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_DATATYPE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_BOUND)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_IRI)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_URI)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_BNODE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_RAND)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_ABS)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_CEIL)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_FLOOR)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_ROUND)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_CONCAT)}},{ALT:function(){return r.SUBRULE(r.SubstringExpression)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRLEN)}},{ALT:function(){return r.SUBRULE(r.StrReplaceExpression)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_UCASE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_LCASE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_ENCODE_FOR_URI)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_CONTAINS)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRSTARTS)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRENDS)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRBEFORE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRAFTER)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_YEAR)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_MONTH)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_DAY)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_HOURS)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_MINUTES)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_SECONDS)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_TIMEZONE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_TZ)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_NOW)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_UUID)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRUUID)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_MD5)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_SHA1)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_SHA256)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_SHA384)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_SHA512)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_COALESCE)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_IF)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRLANG)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_STRDT)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_sameTerm)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_isIRI)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_isURI)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_isBlank)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_isLiteral)}},{ALT:function(){return r.SUBRULE(r.BuiltInCall_isNumeric)}},{ALT:function(){return r.SUBRULE(r.RegexExpression)}},{ALT:function(){return r.SUBRULE(r.ExistsFunction)}},{ALT:function(){return r.SUBRULE(r.NotExistsFunction)}},{ALT:function(){return r.SUBRULE(r.StardogOrCustomFunction)}}])}),r.StardogOrCustomFunction=r.RULE("StardogOrCustomFunction",function(){r.CONSUME(U.Unknown),r.SUBRULE(r.ExpressionList)}),r.ConstructTemplate=r.OVERRIDE_RULE("ConstructTemplate",function(){r.CONSUME(U.LCurly),r.OPTION(function(){return r.SUBRULE(r.Quads)}),r.CONSUME(U.RCurly)}),i.Parser.performSelfAnalysis(r),r}return o(StardogSparqlParser,n),StardogSparqlParser}(e.a)},18:function(n,t,r){"use strict";r.d(t,"a",function(){return W3SpecSparqlParser});var u,e=r(12),i=r(0),o=(u=function(n,t){return(u=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(n,t){n.__proto__=t}||function(n,t){for(var r in t)t.hasOwnProperty(r)&&(n[r]=t[r])})(n,t)},function(n,t){function r(){this.constructor=n}u(n,t),n.prototype=null===t?Object.create(t):(r.prototype=t.prototype,new r)}),l=r(5).baseTokens,W3SpecSparqlParser=function(n){function W3SpecSparqlParser(t){var r=n.call(this,t,l)||this;return i.Parser.performSelfAnalysis(r),r}return o(W3SpecSparqlParser,n),W3SpecSparqlParser}(e.a)},62:function(n,t,r){"use strict";r.r(t),r.d(t,"sparqlTokens",function(){return o}),r.d(t,"keywords",function(){return l}),r.d(t,"terminals",function(){return U});var u=r(12);r.d(t,"BaseSparqlParser",function(){return u.a});var e=r(18);r.d(t,"W3SpecSparqlParser",function(){return e.a});var i=r(17);r.d(t,"StardogSparqlParser",function(){return i.a});var o=r(5),l=r(1).keywords,U=r(4).terminals}})});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define("sparql", [], factory);
+	else if(typeof exports === 'object')
+		exports["sparql"] = factory();
+	else
+		root["millan"] = root["millan"] || {}, root["millan"]["sparql"] = factory();
+})((typeof self !== 'undefined' ? self : this), function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/ 		return result;
+/******/ 	}
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"sparql": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	var jsonpArray = (typeof self !== 'undefined' ? self : this)["webpackJsonp"] = (typeof self !== 'undefined' ? self : this)["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
+/******/
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push(["./src/sparql/index.ts","vendors~graphql~shacl~sms~sparql~srs~turtle","graphql~shacl~sms~sparql~srs~turtle","graphql~sparql~srs","graphql~sparql"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/sparql/W3SpecSparqlParser.ts":
+/*!******************************************!*\
+  !*** ./src/sparql/W3SpecSparqlParser.ts ***!
+  \******************************************/
+/*! exports provided: W3SpecSparqlParser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W3SpecSparqlParser", function() { return W3SpecSparqlParser; });
+/* harmony import */ var _BaseSparqlParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BaseSparqlParser */ "./src/sparql/BaseSparqlParser.ts");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chevrotain */ "./node_modules/chevrotain/lib/src/api.js");
+/* harmony import */ var chevrotain__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chevrotain__WEBPACK_IMPORTED_MODULE_1__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var baseTokens = __webpack_require__(/*! ./tokens */ "./src/sparql/tokens.ts").baseTokens;
+
+
+var W3SpecSparqlParser = /** @class */ (function (_super) {
+    __extends(W3SpecSparqlParser, _super);
+    function W3SpecSparqlParser(options) {
+        var _this = _super.call(this, options, baseTokens) || this;
+        chevrotain__WEBPACK_IMPORTED_MODULE_1__["Parser"].performSelfAnalysis(_this);
+        return _this;
+    }
+    return W3SpecSparqlParser;
+}(_BaseSparqlParser__WEBPACK_IMPORTED_MODULE_0__["BaseSparqlParser"]));
+
+
+
+/***/ }),
+
+/***/ "./src/sparql/index.ts":
+/*!*****************************!*\
+  !*** ./src/sparql/index.ts ***!
+  \*****************************/
+/*! exports provided: sparqlTokens, keywords, terminals, BaseSparqlParser, W3SpecSparqlParser, StardogSparqlParser */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sparqlTokens", function() { return sparqlTokens; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "keywords", function() { return keywords; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "terminals", function() { return terminals; });
+/* harmony import */ var _BaseSparqlParser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BaseSparqlParser */ "./src/sparql/BaseSparqlParser.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BaseSparqlParser", function() { return _BaseSparqlParser__WEBPACK_IMPORTED_MODULE_0__["BaseSparqlParser"]; });
+
+/* harmony import */ var _W3SpecSparqlParser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./W3SpecSparqlParser */ "./src/sparql/W3SpecSparqlParser.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "W3SpecSparqlParser", function() { return _W3SpecSparqlParser__WEBPACK_IMPORTED_MODULE_1__["W3SpecSparqlParser"]; });
+
+/* harmony import */ var _StardogSparqlParser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StardogSparqlParser */ "./src/sparql/StardogSparqlParser.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "StardogSparqlParser", function() { return _StardogSparqlParser__WEBPACK_IMPORTED_MODULE_2__["StardogSparqlParser"]; });
+
+
+
+
+// Convenience imports/exports that aren't core functionality:
+// NOTE: Tokens MUST be imported using CommonJS syntax; see here: https://github.com/SAP/chevrotain/issues/345
+var sparqlTokens = __webpack_require__(/*! ./tokens */ "./src/sparql/tokens.ts");
+var keywords = __webpack_require__(/*! ./keywords */ "./src/sparql/keywords.ts").keywords;
+var terminals = __webpack_require__(/*! ./terminals */ "./src/sparql/terminals.ts").terminals;
+
+
+/***/ })
+
+/******/ });
+});
 //# sourceMappingURL=millan.sparql.js.map

@@ -56,6 +56,13 @@ export const getStardogGraphQlVisitor = (
       }
 
       const [stringValueNode] = ctx.StringValue;
+
+      if (!stringValueNode.children.StringValueToken) {
+        // A bind directive can be identified at times by the parser even when
+        // there is no StringValueToken yet, due to error recovery.
+        return;
+      }
+
       const [stringValueToken] = stringValueNode.children
         .StringValueToken as IToken[];
       const { errors } = this.$parseSparqlExpression(stringValueToken);

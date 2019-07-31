@@ -58,6 +58,7 @@ declare const graphQlTokenMap: {
     RCurly: TokenType;
     Pipe: TokenType;
     Amp: TokenType;
+    Punctuator: TokenType;
     WhiteSpace: TokenType;
     UnicodeBOM: TokenType;
     LineTerminator: TokenType;
@@ -141,6 +142,7 @@ declare const stardogGraphQlTokenMap: {
     RCurly: TokenType;
     Pipe: TokenType;
     Amp: TokenType;
+    Punctuator: TokenType;
     WhiteSpace: TokenType;
     UnicodeBOM: TokenType;
     LineTerminator: TokenType;

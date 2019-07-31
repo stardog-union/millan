@@ -52,6 +52,12 @@ const createAndPushTokenWithNameAlt = (config: ITokenConfig) => {
   });
 };
 
+const createAndPushPunctuator = (config: ITokenConfig) =>
+  createAndPushToken({
+    ...config,
+    categories: [Punctuator],
+  });
+
 // Simple wrapper for `createToken` that also pushes the created token into
 // `graphQlTokens` at the time of creation, since order matters.
 const createAndPushToken = (config: ITokenConfig) => {
@@ -75,9 +81,13 @@ const FragmentName = createToken({
   name: 'FragmentName',
   pattern: Lexer.NA,
 });
-// `StringValueToken` will make either BlockStrings or Strings.
+// `StringValueToken` will match either BlockStrings or Strings.
 const StringValueToken = createToken({
   name: 'StringValueToken',
+  pattern: Lexer.NA,
+});
+const Punctuator = createToken({
+  name: 'Punctuator',
   pattern: Lexer.NA,
 });
 
@@ -121,20 +131,21 @@ const ignoredTokens = {
 };
 
 const punctuators = {
-  Bang: createAndPushToken({ name: 'Bang', pattern: '!' }),
-  Dollar: createAndPushToken({ name: 'Dollar', pattern: '$' }),
-  LParen: createAndPushToken({ name: 'LParen', pattern: '(' }),
-  RParen: createAndPushToken({ name: 'RParen', pattern: ')' }),
-  Spread: createAndPushToken({ name: 'Spread', pattern: '...' }),
-  Colon: createAndPushToken({ name: 'Colon', pattern: ':' }),
-  Equals: createAndPushToken({ name: 'Equals', pattern: '=' }),
-  At: createAndPushToken({ name: 'At', pattern: '@' }),
-  LBracket: createAndPushToken({ name: 'LBracket', pattern: '[' }),
-  RBracket: createAndPushToken({ name: 'RBracket', pattern: ']' }),
-  LCurly: createAndPushToken({ name: 'LCurly', pattern: '{' }),
-  RCurly: createAndPushToken({ name: 'RCurly', pattern: '}' }),
-  Pipe: createAndPushToken({ name: 'Pipe', pattern: '|' }),
-  Amp: createAndPushToken({ name: 'Amp', pattern: '&' }), // not listed in the spec as a punctuator, for some reason
+  Bang: createAndPushPunctuator({ name: 'Bang', pattern: '!' }),
+  Dollar: createAndPushPunctuator({ name: 'Dollar', pattern: '$' }),
+  LParen: createAndPushPunctuator({ name: 'LParen', pattern: '(' }),
+  RParen: createAndPushPunctuator({ name: 'RParen', pattern: ')' }),
+  Spread: createAndPushPunctuator({ name: 'Spread', pattern: '...' }),
+  Colon: createAndPushPunctuator({ name: 'Colon', pattern: ':' }),
+  Equals: createAndPushPunctuator({ name: 'Equals', pattern: '=' }),
+  At: createAndPushPunctuator({ name: 'At', pattern: '@' }),
+  LBracket: createAndPushPunctuator({ name: 'LBracket', pattern: '[' }),
+  RBracket: createAndPushPunctuator({ name: 'RBracket', pattern: ']' }),
+  LCurly: createAndPushPunctuator({ name: 'LCurly', pattern: '{' }),
+  RCurly: createAndPushPunctuator({ name: 'RCurly', pattern: '}' }),
+  Pipe: createAndPushPunctuator({ name: 'Pipe', pattern: '|' }),
+  Amp: createAndPushPunctuator({ name: 'Amp', pattern: '&' }), // not listed in the spec as a punctuator, for some reason
+  Punctuator,
 };
 
 const nonKeywordTerminals = {
@@ -426,7 +437,13 @@ const stardogGraphQlTokens = [
 ];
 
 // Add shared category and catch-all tokens.
-const finalTokens = [FragmentName, EnumValueToken, Name, StringValueToken];
+const finalTokens = [
+  FragmentName,
+  EnumValueToken,
+  Name,
+  StringValueToken,
+  Punctuator,
+];
 graphQlTokens.push(...finalTokens);
 stardogGraphQlTokens.push(...finalTokens);
 
