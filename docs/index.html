@@ -68,6 +68,7 @@
 				<p>Millan is the <a href="https://www.stardog.com">Stardog</a> whisperer -- a set of parsers
 					for languages used with Stardog (currently <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a>,
 					<a href="https://en.wikipedia.org/wiki/Turtle_(syntax)">Turtle</a>,
+					<a href="https://en.wikipedia.org/wiki/TriG_(syntax)">TriG</a>,
 					<a href="https://www.stardog.com/docs/#_stardog_mapping_syntax_2">Stardog Mapping Syntax 2 (SMS)</a>,
 				<a href="https://www.stardog.com/docs/#_stardog_rules_syntax">Stardog Rules Syntax</a>, the Turtle serialization of <a href="https://www.w3.org/TR/shacl/">SHACL</a>, and <a href="https://graphql.github.io/graphql-spec/">GraphQL</a>).</p>
 				<h2 id="features">Features</h2>
@@ -75,6 +76,7 @@
 					<li>Error-tolerant parsing for W3C-compliant SPARQL and SPARQL with
 					<a href="https://www.stardog.com/docs/#_path_queries">Stardog extensions</a>.</li>
 					<li>Error-tolerant parsing for W3C-compliant Turtle</li>
+					<li>Error-tolerant parsing for W3C-compliant TriG</li>
 					<li>Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)</li>
 					<li>Error-tolerant parsing for Stardog Rules Syntax (SRS)</li>
 					<li>Error-tolerant parsing for the Turtle serialization of the W3C Shapes Constraints Language (SHACL)</li>
@@ -349,6 +351,9 @@
 					</li>
 					<li class=" tsd-kind-class tsd-is-not-exported">
 						<a href="classes/traversecontext.html" class="tsd-kind-icon">Traverse<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/trigparser.html" class="tsd-kind-icon">Trig<wbr>Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/turtleparser.html" class="tsd-kind-icon">Turtle<wbr>Parser</a>
@@ -774,6 +779,15 @@
 						<a href="globals.html#subexpressionmatcher" class="tsd-kind-icon">sub<wbr>Expression<wbr>Matcher</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#triglexer" class="tsd-kind-icon">trig<wbr>Lexer</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#trigtokentypes" class="tsd-kind-icon">trig<wbr>Token<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#trigtokens" class="tsd-kind-icon">trig<wbr>Tokens</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#turtlelexer" class="tsd-kind-icon">turtle<wbr>Lexer</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
@@ -982,6 +996,9 @@
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="globals.html#terminals" class="tsd-kind-icon">terminals</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#trigtokenmap" class="tsd-kind-icon">trig<wbr>Token<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#turtletokenmap" class="tsd-kind-icon">turtle<wbr>Token<wbr>Map</a>
