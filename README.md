@@ -3,6 +3,7 @@
 Millan is the [Stardog](https://www.stardog.com) whisperer -- a set of parsers
 for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wiki/SPARQL),
 [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)),
+[TriG](https://en.wikipedia.org/wiki/TriG_(syntax)),
 [Stardog Mapping Syntax 2 (SMS)](https://www.stardog.com/docs/#_stardog_mapping_syntax_2),
 [Stardog Rules Syntax](https://www.stardog.com/docs/#_stardog_rules_syntax), the Turtle serialization of [SHACL](https://www.w3.org/TR/shacl/), and [GraphQL](https://graphql.github.io/graphql-spec/)).
 
@@ -11,6 +12,7 @@ for languages used with Stardog (currently [SPARQL](https://en.wikipedia.org/wik
 - Error-tolerant parsing for W3C-compliant SPARQL and SPARQL with
 [Stardog extensions](https://www.stardog.com/docs/#_path_queries).
 - Error-tolerant parsing for W3C-compliant Turtle
+- Error-tolerant parsing for W3C-compliant TriG
 - Error-tolerant parsing for Stardog Mapping Syntax 2 (SMS)
 - Error-tolerant parsing for Stardog Rules Syntax (SRS)
 - Error-tolerant parsing for the Turtle serialization of the W3C Shapes Constraints Language (SHACL)

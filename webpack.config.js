@@ -15,6 +15,7 @@ const reserved = [
   'SrsParser',
   'SmsParser',
   'TurtleParser',
+  'TrigParser',
   'BaseGraphQlParser',
   'StandardGraphQlParser',
   'StardogGraphQlParser',
@@ -43,6 +44,7 @@ const individualEntryData = [
   'sparql',
   'srs',
   'turtle',
+  'trig',
 ].reduce(
   (entries, languageId) => ({
     ...entries,
