@@ -1,4 +1,4 @@
-const { trigTokenTypes } = require('../../trig/tokens');
+const { trigTokenMap, trigTokenTypes } = require('../../trig/tokens');
 import { Lexer } from 'chevrotain';
 import { resolve, extname } from 'path';
 import { readDirAsync, readFileAsync } from '../utils';
@@ -55,6 +55,18 @@ describe('trig tokenizer', () => {
       console.log(JSON.stringify(result, null, 2));
     }
     expect(result.errors).toHaveLength(0);
+  });
+  it('tokenizes "graph" as a keyword', () => {
+    const result = lexer.tokenize('graph');
+    expect(result.errors).toHaveLength(0);
+    expect(result.tokens).toHaveLength(1);
+    expect(result.tokens[0].tokenType).toBe(trigTokenMap.GRAPH);
+  });
+  it('tokenizes prefixes starting with "graph" as prefixes', () => {
+    const result = lexer.tokenize('graphPrefix:Graph');
+    expect(result.errors).toHaveLength(0);
+    expect(result.tokens).toHaveLength(1);
+    expect(result.tokens[0].tokenType).toBe(trigTokenMap.PNAME_LN);
   });
   it('produces errors when tokenizing invalid terminals', () => {
     const terminals = ['d', 'f'];
