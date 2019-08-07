@@ -10,9 +10,13 @@ export const trigTokenMap = {
   ...turtleTokenMap,
 };
 
+const indexOfPnCharsBase = turtleTokenTypes.indexOf(
+  turtleTokenMap.PN_CHARS_BASE
+);
 export const trigTokenTypes: TokenType[] = [
   sparqlTokenMap.LCurly,
   sparqlTokenMap.RCurly,
+  ...turtleTokenTypes.slice(0, indexOfPnCharsBase),
   sparqlTokenMap.GRAPH,
-  ...turtleTokenTypes,
+  ...turtleTokenTypes.slice(indexOfPnCharsBase),
 ];
