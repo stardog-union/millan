@@ -48,6 +48,10 @@
     {
       "name": "Annee Barrett",
       "email": "annee@stardog.com"
+    },
+    {
+      "name": "Brian Rubinton",
+      "email": "brian.rubinton@stardog.com"
     }
   ],
   "dependencies": {
