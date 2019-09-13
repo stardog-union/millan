@@ -188,9 +188,9 @@ export declare class BaseSparqlParser extends Parser implements IStardogParser {
     BuiltInCall_sameTerm: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_isIRI: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall_isURI: (idxInCallingRule?: number, ...args: any[]) => any;
-    BuiltInCall_isBlank: (idxInCallingRule?: number, ...args: any[]) => any;
-    BuiltInCall_isLiteral: (idxInCallingRule?: number, ...args: any[]) => any;
-    BuiltInCall_isNumeric: (idxInCallingRule?: number, ...args: any[]) => any;
+    BuiltInCall_isBLANK: (idxInCallingRule?: number, ...args: any[]) => any;
+    BuiltInCall_isLITERAL: (idxInCallingRule?: number, ...args: any[]) => any;
+    BuiltInCall_isNUMERIC: (idxInCallingRule?: number, ...args: any[]) => any;
     BuiltInCall: (idxInCallingRule?: number, ...args: any[]) => any;
     RegexExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     SubstringExpression: (idxInCallingRule?: number, ...args: any[]) => any;
