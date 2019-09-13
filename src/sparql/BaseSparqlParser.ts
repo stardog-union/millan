@@ -255,7 +255,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
   GroupClause = this.RULE('GroupClause', () => {
     log('GroupClause');
-    this.CONSUME(sparqlTokenMap.GroupBy);
+    this.CONSUME(sparqlTokenMap.GROUP_BY);
     this.AT_LEAST_ONE(() => this.SUBRULE(this.GroupCondition));
   });
 
@@ -292,7 +292,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
   OrderClause = this.RULE('OrderClause', () => {
     log('OrderClause');
-    this.CONSUME(sparqlTokenMap.OrderBy);
+    this.CONSUME(sparqlTokenMap.ORDER_BY);
     this.AT_LEAST_ONE(() => this.SUBRULE(this.OrderCondition));
   });
 
@@ -1651,25 +1651,25 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     this.CONSUME(sparqlTokenMap.RParen);
   });
 
-  BuiltInCall_isBlank = this.RULE('BuiltInCall_isBlank', () => {
-    log('BuiltInCall_isBlank');
-    this.CONSUME(sparqlTokenMap.isBlank);
+  BuiltInCall_isBLANK = this.RULE('BuiltInCall_isBLANK', () => {
+    log('BuiltInCall_isBLANK');
+    this.CONSUME(sparqlTokenMap.isBLANK);
     this.CONSUME(sparqlTokenMap.LParen);
     this.SUBRULE(this.Expression);
     this.CONSUME(sparqlTokenMap.RParen);
   });
 
-  BuiltInCall_isLiteral = this.RULE('BuiltInCall_isLiteral', () => {
-    log('BuiltInCall_isLiteral');
-    this.CONSUME(sparqlTokenMap.isLiteral);
+  BuiltInCall_isLITERAL = this.RULE('BuiltInCall_isLITERAL', () => {
+    log('BuiltInCall_isLITERAL');
+    this.CONSUME(sparqlTokenMap.isLITERAL);
     this.CONSUME(sparqlTokenMap.LParen);
     this.SUBRULE(this.Expression);
     this.CONSUME(sparqlTokenMap.RParen);
   });
 
-  BuiltInCall_isNumeric = this.RULE('BuiltInCall_isNumeric', () => {
-    log('BuiltInCall_isNumeric');
-    this.CONSUME(sparqlTokenMap.isNumeric);
+  BuiltInCall_isNUMERIC = this.RULE('BuiltInCall_isNUMERIC', () => {
+    log('BuiltInCall_isNUMERIC');
+    this.CONSUME(sparqlTokenMap.isNUMERIC);
     this.CONSUME(sparqlTokenMap.LParen);
     this.SUBRULE(this.Expression);
     this.CONSUME(sparqlTokenMap.RParen);
@@ -1727,9 +1727,9 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
       { ALT: () => this.SUBRULE(this.BuiltInCall_sameTerm) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_isIRI) },
       { ALT: () => this.SUBRULE(this.BuiltInCall_isURI) },
-      { ALT: () => this.SUBRULE(this.BuiltInCall_isBlank) },
-      { ALT: () => this.SUBRULE(this.BuiltInCall_isLiteral) },
-      { ALT: () => this.SUBRULE(this.BuiltInCall_isNumeric) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_isBLANK) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_isLITERAL) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_isNUMERIC) },
       { ALT: () => this.SUBRULE(this.RegexExpression) },
       { ALT: () => this.SUBRULE(this.ExistsFunction) },
       { ALT: () => this.SUBRULE(this.NotExistsFunction) },

@@ -13,9 +13,9 @@ export declare const keywords: {
     AS: TokenType;
     WHERE: TokenType;
     A: TokenType;
-    GroupBy: TokenType;
-    OrderBy: TokenType;
-    By: TokenType;
+    GROUP_BY: TokenType;
+    ORDER_BY: TokenType;
+    BY: TokenType;
     BASE: TokenType;
     PREFIX: TokenType;
     DESCRIBE: TokenType;
@@ -103,9 +103,9 @@ export declare const keywords: {
     sameTerm: TokenType;
     isIRI: TokenType;
     isURI: TokenType;
-    isBlank: TokenType;
-    isLiteral: TokenType;
-    isNumeric: TokenType;
+    isBLANK: TokenType;
+    isLITERAL: TokenType;
+    isNUMERIC: TokenType;
     REGEX: TokenType;
     SUBSTR: TokenType;
     REPLACE: TokenType;

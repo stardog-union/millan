@@ -69,23 +69,24 @@ export const keywords = {
 
   A: createToken({
     name: 'A',
-    pattern: /a/i,
+    pattern: /a/,
   }),
 
-  GroupBy: createToken({
-    name: 'GroupBy',
-    pattern: /group by/i,
+  GROUP_BY: createToken({
+    name: 'GROUP_BY',
+    pattern: /GROUP BY/i,
   }),
 
-  OrderBy: createToken({
-    name: 'OrderBy',
-    pattern: /order by/i,
+  ORDER_BY: createToken({
+    name: 'ORDER_BY',
+    pattern: /ORDER BY/i,
   }),
 
-  By: createToken({
-    name: 'By',
-    pattern: /By/i,
+  BY: createToken({
+    name: 'BY',
+    pattern: /BY/i,
   }),
+
   BASE: createToken({
     name: 'BASE',
     pattern: /BASE/i,
@@ -203,17 +204,17 @@ export const keywords = {
 
   INSERT_DATA: createToken({
     name: 'INSERT_DATA',
-    pattern: /Insert +Data/i,
+    pattern: /INSERT +DATA/i,
   }),
 
   DELETE_DATA: createToken({
     name: 'DELETE_DATA',
-    pattern: /Delete +Data/i,
+    pattern: /DELETE +DATA/i,
   }),
 
   DELETE_WHERE: createToken({
     name: 'DELETE_WHERE',
-    pattern: /Delete +Where/i,
+    pattern: /DELETE +WHERE/i,
   }),
 
   WITH: createToken({
@@ -521,19 +522,19 @@ export const keywords = {
     pattern: /isURI/i,
   }),
 
-  isBlank: createToken({
-    name: 'isBlank',
-    pattern: /isBlank/i,
+  isBLANK: createToken({
+    name: 'isBLANK',
+    pattern: /isBLANK/i,
   }),
 
-  isLiteral: createToken({
-    name: 'isLiteral',
-    pattern: /isLiteral/i,
+  isLITERAL: createToken({
+    name: 'isLITERAL',
+    pattern: /isLITERAL/i,
   }),
 
-  isNumeric: createToken({
-    name: 'isNumeric',
-    pattern: /isNumeric/i,
+  isNUMERIC: createToken({
+    name: 'isNUMERIC',
+    pattern: /isNUMERIC/i,
   }),
 
   REGEX: createToken({

@@ -7,8 +7,8 @@ export declare const turtleTokenMap: {
     RParen: any;
     Period: any;
     WhiteSpace: any;
-    TRUE: any;
-    FALSE: any;
+    TRUE: TokenType;
+    FALSE: TokenType;
     DoubleCaret: any;
     Comma: any;
     Semicolon: any;

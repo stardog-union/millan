@@ -40,8 +40,16 @@ export const turtleTokenMap = {
   RParen: sparqlTokenMap.RParen,
   Period: sparqlTokenMap.Period,
   WhiteSpace: sparqlTokenMap.WhiteSpace,
-  TRUE: sparqlTokenMap.TRUE,
-  FALSE: sparqlTokenMap.FALSE,
+  // 'true' and 'false' are case sensitive in Turtle but not in SPARQL
+  TRUE: createToken({
+    name: 'TRUE',
+    pattern: /true/,
+  }),
+
+  FALSE: createToken({
+    name: 'FALSE',
+    pattern: /false/,
+  }),
   DoubleCaret: sparqlTokenMap.DoubleCaret,
   Comma: sparqlTokenMap.Comma,
   Semicolon: sparqlTokenMap.Semicolon,
@@ -208,8 +216,8 @@ export const turtleTokenTypes: TokenType[] = [
   sparqlTokenMap.LParen,
   sparqlTokenMap.RParen,
   sparqlTokenMap.WhiteSpace,
-  sparqlTokenMap.TRUE,
-  sparqlTokenMap.FALSE,
+  turtleTokenMap.TRUE,
+  turtleTokenMap.FALSE,
   sparqlTokenMap.Comma,
   sparqlTokenMap.Semicolon,
   sparqlTokenMap.PNAME_NS,
