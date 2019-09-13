@@ -37,10 +37,12 @@ export class SmsParser extends Parser {
   MappingDoc = this.RULE('MappingDoc', () => {
     this.MANY(() => this.SUBRULE(this.PrefixDecl));
 
-    this.SUBRULE(this.MappingClause);
-    this.MANY1(() => {
-      this.CONSUME(smsTokenMap.Semicolon);
-      this.SUBRULE1(this.MappingClause);
+    this.OPTION(() => {
+      this.SUBRULE(this.MappingClause);
+      this.MANY1(() => {
+        this.CONSUME(smsTokenMap.Semicolon);
+        this.SUBRULE1(this.MappingClause);
+      });
     });
   });
 
