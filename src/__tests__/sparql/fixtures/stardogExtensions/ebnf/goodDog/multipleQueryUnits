@@ -1,0 +1,11 @@
+select * {
+  ?s ?p ?o
+}
+
+construct { ?s ?p ?o } { ?s ?p ?o }
+
+select ?s {
+  ?s :test :Test1 .
+}
+
+ask { ?s ?p ?o }

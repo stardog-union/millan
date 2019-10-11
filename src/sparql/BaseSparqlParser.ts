@@ -56,7 +56,10 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     log('SparqlDoc');
     this.SUBRULE(this.Prologue);
     this.OR([
-      { ALT: () => this.SUBRULE(this.QueryUnit) },
+      // NOTE: The SPARQL spec allows only one of either QueryUnit or
+      // UpdateUnit. Our grammar allows more than one QueryUnit, for better
+      // editor functionality.
+      { ALT: () => this.AT_LEAST_ONE(() => this.SUBRULE(this.QueryUnit)) },
       { ALT: () => this.SUBRULE(this.UpdateUnit) },
     ]);
   });

@@ -1,0 +1,3 @@
+select * { ?s ?p ?o }
+
+sel * { ?s } # this is an error
