@@ -47,7 +47,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
         {
           ALT: () => {
             this.CONSUME(sparqlTokenMap.Equals);
-            this.SUBRULE(this.iri);
+            this.SUBRULE(this.Constant);
           },
         },
         { ALT: () => this.SUBRULE(this.GroupGraphPattern) },
