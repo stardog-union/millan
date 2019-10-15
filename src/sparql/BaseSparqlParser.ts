@@ -373,7 +373,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
   Update = this.RULE('Update', () => {
     log('Update');
     this.SUBRULE(this.Update1);
-    this.OPTION1(() => {
+    this.OPTION(() => {
       this.CONSUME(sparqlTokenMap.Semicolon);
       this.SUBRULE(this.Update);
     });
