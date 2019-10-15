@@ -52,13 +52,32 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     this.lexer = new Lexer(tokenVocab);
   }
 
+  // NOTE: For the sake of usability in text editors/IDEs, this parser encodes
+  // a grammar that is slightly different from the official SPARQL spec. The
+  // main differences are in the `SparqlDoc`, rule, the `Prologue` rule, and
+  // the `Update` rule. Essentially, the grammar encoded by this parser should
+  // allow any number of interspered Prologues (PREFIX/BASE), QueryUnits, and
+  // UpdateUnits, so that, e.g., this is valid:
+  //
+  //  select * { ?s ?p ?o }
+  //  prefix foo: <bar>
+  //  clear all
+  //  prefix x: <y>
+  //  construct { ?s ?p ?o }
+  //  ask { ?s ?p ?o }
+  //
+  // This is not valid according to the official spec. However, line 1 is
+  // valid, lines 2-3 are valid, lines 4-5 are valid, and line 6 is valid. In a
+  // text editor, a user might want to select and execute only those lines.
   SparqlDoc = this.RULE('SparqlDoc', () => {
     log('SparqlDoc');
-    this.SUBRULE(this.Prologue);
-    this.OR([
-      { ALT: () => this.SUBRULE(this.QueryUnit) },
-      { ALT: () => this.SUBRULE(this.UpdateUnit) },
-    ]);
+    this.MANY(() =>
+      this.OR([
+        { ALT: () => this.SUBRULE(this.Prologue) },
+        { ALT: () => this.SUBRULE(this.QueryUnit) },
+        { ALT: () => this.SUBRULE(this.UpdateUnit) },
+      ])
+    );
   });
 
   QueryUnit = this.RULE('QueryUnit', () => {
@@ -98,7 +117,7 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
   Prologue = this.RULE('Prologue', () => {
     log('Prologue');
-    this.MANY(() =>
+    this.AT_LEAST_ONE(() =>
       this.OR([
         { ALT: () => this.SUBRULE(this.BaseDecl) },
         { ALT: () => this.SUBRULE(this.PrefixDecl) },
@@ -353,13 +372,10 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
   Update = this.RULE('Update', () => {
     log('Update');
-    this.SUBRULE(this.Prologue);
+    this.SUBRULE(this.Update1);
     this.OPTION(() => {
-      this.SUBRULE(this.Update1);
-      this.OPTION1(() => {
-        this.CONSUME(sparqlTokenMap.Semicolon);
-        this.SUBRULE(this.Update);
-      });
+      this.CONSUME(sparqlTokenMap.Semicolon);
+      this.SUBRULE(this.Update);
     });
   });
 

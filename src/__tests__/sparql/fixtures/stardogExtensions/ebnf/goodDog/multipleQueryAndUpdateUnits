@@ -1,0 +1,13 @@
+prefix somePrefix: <test>
+clear all
+
+prefix anotherPrefix: <another>
+prefix testing: <testing>
+select * {
+  ?s ?p ?o
+}
+
+drop all
+construct { ?s ?p ?o } { ?s a :Thing }
+
+prefix foo: <bar>
