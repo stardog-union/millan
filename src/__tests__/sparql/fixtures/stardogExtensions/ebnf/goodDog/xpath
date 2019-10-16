@@ -1,0 +1,3 @@
+select * {
+  bind(atan(1) as ?s)
+}
