@@ -1,0 +1,8 @@
+
+prefix : <urn:>
+
+SELECT *
+WHERE {
+  << << ?s :p ?o >> :t ?u >> :q ?o1 ;
+                 :r ?o2
+}
