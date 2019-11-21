@@ -1,14 +1,15 @@
-const { trigTokenMap, trigTokenTypes } = require('./tokens');
 import {
+  IParserConfig,
+  IMultiModeLexerDefinition,
+  TokenType,
   Parser,
   IRecognitionException,
-  IParserConfig,
-  TokenType,
-  IMultiModeLexerDefinition,
 } from 'chevrotain';
+import { StardogTurtleParser } from '../turtle/StardogTurtleParser';
 import { TurtleParser } from '../turtle/TurtleParser';
+const { trigTokenTypes, trigTokenMap } = require('./tokens');
 
-export class TrigParser extends TurtleParser {
+export class StardogTrigParser extends StardogTurtleParser {
   constructor(
     config?: Partial<IParserConfig>,
     tokens = trigTokenTypes,
