@@ -1,101 +1,88 @@
 import { resolve, extname } from 'path';
 import { TurtleParser } from '../../turtle/TurtleParser';
-import { StardogTurtleParser } from '../../turtle/StardogTurtleParser';
 import { readDirAsync, readFileAsync } from '../utils';
+import { ModeString } from '../../helpers/types';
+
+const parser = new TurtleParser();
+
+const testFilesInDirectory = async (
+  directoryPath: string,
+  parser: TurtleParser,
+  parseMode: ModeString,
+  filenameFilter: (filename: string) => boolean
+) => {
+  const files = (await readDirAsync(directoryPath)).filter(filenameFilter);
+
+  return Promise.all(
+    files.map(async (fileName) => {
+      const testDocument = await readFileAsync(
+        resolve(directoryPath, fileName)
+      );
+      const { errors, semanticErrors } = parser.parse(testDocument, parseMode);
+      const isBad = fileName.search('-bad-') > -1;
+      if (!isBad) {
+        if (errors.length > 0 || semanticErrors.length > 0) {
+          console.log(fileName);
+        }
+        expect(errors).toHaveLength(0);
+        expect(semanticErrors).toHaveLength(0);
+      } else {
+        if (errors.length === 0 && semanticErrors.length === 0) {
+          console.log(fileName);
+        }
+        expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
+      }
+    })
+  );
+};
 
 describe('TurtleParser', () => {
-  const parser = new TurtleParser();
-
-  it('produces no errors when parsing the w3 turtle test suite', async (done) => {
-    const pathName = resolve(__dirname, 'fixtures', 'tests-ttl-w3c-20131121');
-    const files = (await readDirAsync(pathName)).filter((fileName) => {
-      const ext = extname(fileName);
-      if (fileName === 'manifest.ttl') {
-        return false;
-      }
-      return ext === '.ttl' || ext === '.nt';
-    });
-    await Promise.all(
-      files.map(async (fileName) => {
-        const testDocument = await readFileAsync(resolve(pathName, fileName));
-        const { errors, semanticErrors } = parser.parse(testDocument);
-        const isBad = fileName.search('-bad-') > -1;
-        if (!isBad) {
-          if (errors.length > 0 || semanticErrors.length > 0) {
-            console.log(fileName);
-          }
-          expect(errors).toHaveLength(0);
-          expect(semanticErrors).toHaveLength(0);
-        } else {
-          if (errors.length === 0 && semanticErrors.length === 0) {
-            console.log(fileName);
-          }
-          expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
-        }
-      })
+  it('produces no errors when parsing the w3 turtle test suite', () => {
+    const directoryPath = resolve(
+      __dirname,
+      'fixtures',
+      'tests-ttl-w3c-20131121'
     );
-    done();
+    return testFilesInDirectory(
+      directoryPath,
+      parser,
+      'standard',
+      (filename) => {
+        const ext = extname(filename);
+        if (filename === 'manifest.ttl') {
+          return false;
+        }
+        return ext === '.ttl' || ext === '.nt';
+      }
+    );
   });
 });
 
 describe('StardogTurtleParser', () => {
-  const parser = new StardogTurtleParser();
-
-  it('produces no errors when parsing the w3 turtle test suite', async (done) => {
-    const pathName = resolve(__dirname, 'fixtures', 'tests-ttl-w3c-20131121');
-    const files = (await readDirAsync(pathName)).filter((fileName) => {
-      const ext = extname(fileName);
-      if (fileName === 'manifest.ttl') {
-        return false;
-      }
-      return ext === '.ttl' || ext === '.nt';
-    });
-    await Promise.all(
-      files.map(async (fileName) => {
-        const testDocument = await readFileAsync(resolve(pathName, fileName));
-        const { errors, semanticErrors } = parser.parse(testDocument);
-        const isBad = fileName.search('-bad-') > -1;
-        if (!isBad) {
-          if (errors.length > 0 || semanticErrors.length > 0) {
-            console.log(fileName);
-          }
-          expect(errors).toHaveLength(0);
-          expect(semanticErrors).toHaveLength(0);
-        } else {
-          if (errors.length === 0 && semanticErrors.length === 0) {
-            console.log(fileName);
-          }
-          expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
-        }
-      })
+  it('produces no errors when parsing the w3 turtle test suite', () => {
+    const directoryPath = resolve(
+      __dirname,
+      'fixtures',
+      'tests-ttl-w3c-20131121'
     );
-    done();
+    return testFilesInDirectory(
+      directoryPath,
+      parser,
+      'stardog',
+      (filename) => {
+        const ext = extname(filename);
+        if (filename === 'manifest.ttl') {
+          return false;
+        }
+        return ext === '.ttl' || ext === '.nt';
+      }
+    );
   });
 
-  it('produces no errors when parsing RDF*-like embedded triples', async (done) => {
-    const pathName = resolve(__dirname, 'fixtures', 'stardog-extensions');
-    const files = (await readDirAsync(pathName)).filter((fileName) =>
-      fileName.startsWith('embedded')
+  it('produces no errors when parsing RDF*-like embedded triples', () => {
+    const directoryPath = resolve(__dirname, 'fixtures', 'stardog-extensions');
+    return testFilesInDirectory(directoryPath, parser, 'stardog', (filename) =>
+      filename.startsWith('embedded')
     );
-    await Promise.all(
-      files.map(async (fileName) => {
-        const testDocument = await readFileAsync(resolve(pathName, fileName));
-        const { errors, semanticErrors } = parser.parse(testDocument);
-        const isBad = fileName.search('-bad-') > -1;
-        if (!isBad) {
-          if (errors.length > 0 || semanticErrors.length > 0) {
-            console.log(fileName);
-          }
-          expect(errors).toHaveLength(0);
-          expect(semanticErrors).toHaveLength(0);
-        } else {
-          if (errors.length === 0 && semanticErrors.length === 0) {
-            console.log(fileName);
-          }
-          expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
-        }
-      })
-    );
-    done();
   });
 });

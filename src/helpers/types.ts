@@ -30,6 +30,8 @@ export interface ISemanticError
   context?: IRecognizerContext;
 }
 
+export type ModeString = 'stardog' | 'standard';
+
 type Lit = string | number | boolean | undefined | null | void | symbol | {};
 export const getAsTypedTuple = <T extends Lit[]>(...args: T): T => args;
 

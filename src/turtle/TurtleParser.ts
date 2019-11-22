@@ -8,7 +8,7 @@ import {
   IMultiModeLexerDefinition,
   TokenType,
 } from 'chevrotain';
-import { IStardogParser } from '../helpers/types';
+import { IStardogParser, ModeString } from '../helpers/types';
 
 export class TurtleParser extends Parser implements IStardogParser {
   protected lexer: Lexer;
@@ -33,14 +33,15 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.lexer.tokenize(document).tokens;
 
   public parse = (
-    document: string
+    document: string,
+    mode: ModeString = 'standard'
   ): {
     errors: IRecognitionException[];
     semanticErrors: IRecognitionException[];
     cst: any;
   } => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.turtleDoc();
+    const cst = this.turtleDoc(0, [mode]);
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];
@@ -55,7 +56,7 @@ export class TurtleParser extends Parser implements IStardogParser {
   };
 
   constructor(
-    config?: Partial<IParserConfig>,
+    config: Partial<IParserConfig> = {},
     tokens = turtleTokenTypes,
     lexerDefinition: TokenType[] | IMultiModeLexerDefinition = tokens,
     performSelfAnalysis = true
@@ -72,16 +73,16 @@ export class TurtleParser extends Parser implements IStardogParser {
     }
   }
 
-  turtleDoc = this.RULE('turtleDoc', () => {
-    this.MANY(() => this.SUBRULE(this.statement));
+  turtleDoc = this.RULE('turtleDoc', (mode: ModeString) => {
+    this.MANY(() => this.SUBRULE(this.statement, { ARGS: [mode] }));
   });
 
-  statement = this.RULE('statement', () => {
+  statement = this.RULE('statement', (mode: ModeString) => {
     this.OR([
       { ALT: () => this.SUBRULE(this.directive) },
       {
         ALT: () => {
-          this.SUBRULE(this.triples);
+          this.SUBRULE(this.triples, { ARGS: [mode] });
           this.CONSUME(turtleTokenMap.Period);
         },
       },
@@ -129,7 +130,34 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.namespacesMap[pnameImageWithoutColon] = iriImage;
   });
 
-  triples = this.RULE('triples', () => {
+  triples = this.RULE('triples', (mode: ModeString) => {
+    this.OR([
+      {
+        ALT: () => {
+          this.OR1([
+            {
+              ALT: () => this.SUBRULE(this.subject),
+            },
+            {
+              GATE: () => mode === 'stardog',
+              ALT: () => this.SUBRULE(this.EmbeddedTriplePattern),
+            },
+          ]);
+          this.SUBRULE(this.predicateObjectList);
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE(this.blankNodePropertyList);
+          this.OPTION(() => this.SUBRULE1(this.predicateObjectList));
+        },
+      },
+    ]);
+  });
+
+  // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
+  // properties/embedded triples/a subset of RDF*.
+  triplesNotEmbedded = this.RULE('triplesNotEmbedded', () => {
     this.OR([
       {
         ALT: () => {
@@ -144,6 +172,16 @@ export class TurtleParser extends Parser implements IStardogParser {
         },
       },
     ]);
+  });
+
+  // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
+  // properties/embedded triples/a subset of RDF*.
+  // ALSO NOTE: Intentionally does not conform to the RDF* spec. Stardog does
+  // not allow nesting of embedded triples.
+  EmbeddedTriplePattern = this.RULE('EmbeddedTriplePattern', () => {
+    this.CONSUME(turtleTokenMap.LEmbed);
+    this.SUBRULE(this.triplesNotEmbedded);
+    this.CONSUME(turtleTokenMap.REmbed);
   });
 
   predicateObjectList = this.RULE('predicateObjectList', () => {
