@@ -32,6 +32,9 @@ export class TurtleParser extends Parser implements IStardogParser {
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
+  // NOTE: This parser can parse in two modes, 'standard' and 'stardog'. The
+  // latter includes non-standard features like embedded triples patterns (edge
+  // properties).
   public parse = (
     document: string,
     mode: ModeString = 'standard'
