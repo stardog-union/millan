@@ -25,6 +25,7 @@ import {
   addThenClauseErrorsToErrors,
   addIfClauseErrorsToErrors,
 } from './customErrors';
+import { ModeString } from 'helpers/types';
 
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor: ReturnType<typeof getSparqlSrsVisitor>;
@@ -90,11 +91,14 @@ export class SrsParser extends TurtleParser {
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
-  public parse = (document: string): ReturnType<TurtleParser['parse']> => {
+  public parse = (
+    document: string,
+    mode: ModeString = 'standard'
+  ): ReturnType<TurtleParser['parse']> => {
     this.resetManagedState();
     this.input = this.lexer.tokenize(document).tokens;
 
-    const cst = this.SrsDoc();
+    const cst = this.SrsDoc(0, [mode]);
     const {
       groupGraphPatterns,
       triplesBlocks,
@@ -183,12 +187,12 @@ export class SrsParser extends TurtleParser {
     };
   };
 
-  SrsDoc = this.RULE('SrsDoc', () => {
-    this.SUBRULE(this.turtleDoc);
+  SrsDoc = this.RULE('SrsDoc', (mode: ModeString) => {
+    this.SUBRULE(this.turtleDoc, { ARGS: [mode] });
     this.MANY(() => {
       this.SUBRULE(this.RuleDoc);
       this.MANY1(() => {
-        this.SUBRULE(this.triples);
+        this.SUBRULE(this.triples, { ARGS: [mode] });
         this.CONSUME(sparqlTokenMap.Period);
       });
     });

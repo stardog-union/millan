@@ -69,6 +69,20 @@ const ungeneratedFixtures = {
       'THEN {' +
       '   ?t :area ?area\n' +
       '}',
+    // NOTE: These are valid only when the parser is run in 'stardog' mode.
+    embedded_basic:
+      '@prefix : <http://example.org/> .\n' +
+      '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+      'RULE :FatherRule\n' +
+      'IF {\n' +
+      '   ?x a <http://example.org/Male> , <http://example.org/Parent> .\n' +
+      '}\n' +
+      'THEN {\n' +
+      '   ?x a <http://example.org/Father> .\n' +
+      '}\n' +
+      ':FatherRule rdfs:comment "This rule defines fathers" ;\n' +
+      '  a :MyRule .\n' +
+      '<< :FatherRule a :MyRule >> :createdAt "2019-10-26" .',
   },
   invalid: {
     lex: {

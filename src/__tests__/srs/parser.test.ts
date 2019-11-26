@@ -2,8 +2,40 @@ import * as path from 'path';
 import { SrsParser } from '../../srs/SrsParser';
 import { fixtures } from './fixtures';
 import { readDirAsync, readFileAsync } from '../utils';
+import { ModeString } from '../../helpers/types';
 
 const parser = new SrsParser();
+
+const testFilesInDirectory = async (
+  directoryPath: string,
+  parser: SrsParser,
+  parseMode: ModeString,
+  filenameFilter: (filename: string) => boolean
+) => {
+  const files = (await readDirAsync(directoryPath)).filter(filenameFilter);
+
+  return Promise.all(
+    files.map(async (fileName) => {
+      const testDocument = await readFileAsync(
+        path.resolve(directoryPath, fileName)
+      );
+      const { errors, semanticErrors } = parser.parse(testDocument, parseMode);
+      const isBad = fileName.search('-bad-') > -1;
+      if (!isBad) {
+        if (errors.length > 0 || semanticErrors.length > 0) {
+          console.log(fileName);
+        }
+        expect(errors).toHaveLength(0);
+        expect(semanticErrors).toHaveLength(0);
+      } else {
+        if (errors.length === 0 && semanticErrors.length === 0) {
+          console.log(fileName);
+        }
+        expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
+      }
+    })
+  );
+};
 
 describe('srs parser', () => {
   beforeEach(() => {
@@ -22,15 +54,17 @@ describe('srs parser', () => {
 
   it('parses valid SRS documents with no errors', () => {
     const validDocuments = fixtures.valid;
-    Object.keys(validDocuments).forEach((docKey) => {
-      const { errors } = parser.parse(validDocuments[docKey]);
+    Object.keys(validDocuments)
+      .filter((key) => !key.startsWith('embedded_'))
+      .forEach((docKey) => {
+        const { errors } = parser.parse(validDocuments[docKey]);
 
-      if (errors.length > 0) {
-        console.log('Error in', docKey);
-      }
+        if (errors.length > 0) {
+          console.log('Error in', docKey);
+        }
 
-      expect(errors).toHaveLength(0);
-    });
+        expect(errors).toHaveLength(0);
+      });
   });
 
   it('recognizes restricted SPARQL calls in the If clause', () => {
@@ -107,7 +141,7 @@ describe('srs parser', () => {
     ).toHaveLength(0);
   });
 
-  it('produces no errors when parsing the w3 turtle test suite', async (done) => {
+  it('produces no errors when parsing the w3 turtle test suite', async () => {
     const pathName = path.resolve(
       __dirname,
       '..',
@@ -115,7 +149,7 @@ describe('srs parser', () => {
       'fixtures',
       'tests-ttl-w3c-20131121'
     );
-    const files = (await readDirAsync(pathName)).filter((fileName) => {
+    const filter = (fileName) => {
       const ext = path.extname(fileName);
       if (
         fileName === 'manifest.ttl' ||
@@ -128,32 +162,62 @@ describe('srs parser', () => {
         return false;
       }
       return ext === '.ttl' || ext === '.nt';
+    };
+
+    return testFilesInDirectory(pathName, parser, 'standard', filter);
+  });
+
+  describe('in stardog mode', () => {
+    it('parses valid SRS documents, including embedded triples, with no errors', () => {
+      const validDocuments = fixtures.valid;
+      Object.keys(validDocuments).forEach((docKey) => {
+        const { errors } = parser.parse(validDocuments[docKey], 'stardog');
+
+        if (errors.length > 0) {
+          console.log('Error in', docKey);
+        }
+
+        expect(errors).toHaveLength(0);
+      });
     });
 
-    await Promise.all(
-      files.map(async (fileName) => {
-        const testDocument = await readFileAsync(
-          path.resolve(pathName, fileName)
-        );
-        const { errors, semanticErrors } = parser.parse(testDocument);
-        const isBad = fileName.search('-bad-') > -1;
-        if (!isBad) {
-          if (errors.length > 0 || semanticErrors.length > 0) {
-            console.log(fileName);
-          }
-          expect(errors).toHaveLength(0);
-          if (semanticErrors.length > 0) {
-            console.log(JSON.stringify(semanticErrors, null, 2));
-          }
-          expect(semanticErrors).toHaveLength(0);
-        } else {
-          if (errors.length === 0 && semanticErrors.length === 0) {
-            console.log(fileName);
-          }
-          expect(Boolean(errors.length || semanticErrors.length)).toBe(true);
+    it('produces no errors when parsing the w3 turtle test suite', async () => {
+      const pathName = path.resolve(
+        __dirname,
+        '..',
+        'turtle',
+        'fixtures',
+        'tests-ttl-w3c-20131121'
+      );
+      const filter = (fileName) => {
+        const ext = path.extname(fileName);
+        if (
+          fileName === 'manifest.ttl' ||
+          fileName === 'turtle-syntax-bad-prefix-01.ttl' ||
+          fileName === 'turtle-syntax-bad-prefix-02.ttl'
+        ) {
+          // In addition to the manifest, the two above turtle tests are skipped
+          // for the SRS parser because the SRS parser assumes some default
+          // namespaces, including the empty namespace.
+          return false;
         }
-      })
-    );
-    done();
+        return ext === '.ttl' || ext === '.nt';
+      };
+
+      return testFilesInDirectory(pathName, parser, 'stardog', filter);
+    });
+
+    it('produces no errors when parsing the turtle stardog extensions', async () => {
+      const pathName = path.resolve(
+        __dirname,
+        '..',
+        'turtle',
+        'fixtures',
+        'stardog-extensions'
+      );
+      const filter = (fileName: string) => !fileName.includes('-bad-');
+
+      return testFilesInDirectory(pathName, parser, 'stardog', filter);
+    });
   });
 });
