@@ -219,5 +219,29 @@ describe('srs parser', () => {
 
       return testFilesInDirectory(pathName, parser, 'stardog', filter);
     });
+
+    it('catches errors in invalid SRS documents', () => {
+      const invalidDocs = {
+        // only pull wrongBraceMatch3 for now as wrongBraceMatch isn't catching errors
+        wrongBraceMatch3: fixtures.invalid.lex.wrongBraceMatch3,
+        ...fixtures.invalid.parse,
+      };
+      Object.keys(invalidDocs).forEach((key) => {
+        const { errors, semanticErrors } = parser.parse(
+          invalidDocs[key],
+          'stardog'
+        );
+
+        if (errors.length === 0 && semanticErrors.length === 0) {
+          console.log('No errors caught in', key);
+        }
+
+        if (errors.length === 0) {
+          expect(semanticErrors).not.toHaveLength(0);
+        } else if (semanticErrors.length === 0) {
+          expect(errors).not.toHaveLength(0);
+        }
+      });
+    });
   });
 });
