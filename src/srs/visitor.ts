@@ -4,8 +4,8 @@ import {
   ICstVisitor,
   CstNode,
 } from 'chevrotain';
-import { W3SpecSparqlParser } from '../sparql/W3SpecSparqlParser';
 import { ITokensMap } from '../helpers/types';
+import { StardogSparqlParser } from '../sparql';
 
 interface SparqlSrsVisitorItem {
   parseResult: {
@@ -31,13 +31,13 @@ export const getSparqlSrsVisitor = (
   BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>
 ): ISparqlSrsVisitor => {
   class SparqlSrsVisitor extends BaseVisitor implements ISparqlSrsVisitor {
-    private sparqlParser: W3SpecSparqlParser;
+    private sparqlParser: StardogSparqlParser;
     private groupGraphPatterns: SparqlSrsVisitorItem[] = [];
     private triplesBlocks: SparqlSrsVisitorItem[] = [];
 
     constructor() {
       super();
-      this.sparqlParser = new W3SpecSparqlParser();
+      this.sparqlParser = new StardogSparqlParser();
       this.validateVisitor();
     }
 
