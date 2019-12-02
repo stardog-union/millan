@@ -69,6 +69,23 @@ const ungeneratedFixtures = {
       'THEN {' +
       '   ?t :area ?area\n' +
       '}',
+    stardogOrCustomFunctions:
+      'PREFIX rule: <tag:stardog:api:rule:>\n\n' +
+      'RULE rules:LeaseTerminatedEarlyRule\n' +
+      'IF {\n' +
+      '    ?l a ro:ActiveLease .\n' +
+      '    ?lease_event ro:lease ?l ;\n' +
+      '        a ro:LeaseEvent ;\n' +
+      '        ops:EventDate ?event_dt ;\n' +
+      '       rdfs:label ?event_name .\n' +
+      '    BIND (IF(strstarts(?event_name, "Early Termination"), "true"^^xsd:boolean, "false"^^xsd:boolean) as ?terminated_early)\n' +
+      '    # Stardog-supported function:\n' +
+      '    BIND (date(?event_dt) as ?event_date)\n' +
+      '}\n' +
+      'THEN {\n' +
+      '    ?l ro:terminatedEarly ?terminated_early ;\n' +
+      '        ro:earlyTerminationDate ?event_date .\n' +
+      '}\n',
     // NOTE: These are valid only when the parser is run in 'stardog' mode.
     embedded_basic:
       '@prefix : <http://example.org/> .\n' +
