@@ -46,6 +46,29 @@ const disallowedSparqlLiteralTokenNames = [
   sparqlTokenMap.STRING_LITERAL_LONG2,
 ].map((token) => token.tokenName);
 
+// Helper functions for more "literate" code.
+const isCstNodeTraverseContext = (ctx): ctx is CstNodeTraverseContext =>
+  Boolean(ctx && ctx.node);
+// Is the parent node an Expression child of a Bind node or an Expression
+// child of an ExpressionOrEmbeddedTriplePattern node that is itself a child
+// of a Bind node? The former accounts for standard SPARQL; the latter accounts
+// for Stardog SPARQL with edge properties. This lets certain custom errors
+// work with the output of either the W3CSpecSparqlParser or the
+// StardogSparqlParser.
+const isParentBindOrBoundExpressionOrEmbeddedTriplePattern = (parentCtx) => {
+  if (!isCstNodeTraverseContext(parentCtx)) {
+    return false;
+  }
+
+  const parentNodeName = parentCtx.node.name;
+  return (
+    parentNodeName === 'Bind' ||
+    (parentNodeName === 'ExpressionOrEmbeddedTriplePattern' &&
+      isCstNodeTraverseContext(parentCtx.parentCtx) &&
+      parentCtx.parentCtx.node.name === 'Bind')
+  );
+};
+
 // Walks back up the tree to construct the rule stack, first going upward
 // through the provided `traverseCtx`, and then continuing up through the
 // `fullCtx`. `traverseCtx` is intended to be the "inner" ITraverseContext
@@ -156,9 +179,7 @@ const getNoPrefixError = (
 ) =>
   getCustomIRecognitionException({
     name: 'NoNamespacePrefixError',
-    message: `A prefix ("${
-      node.image
-    }") was used for which there was no namespace defined.`,
+    message: `A prefix ("${node.image}") was used for which there was no namespace defined.`,
     node,
     ruleStack: getCustomErrorRuleStack(
       parentCtx,
@@ -176,9 +197,7 @@ const getDisallowedTokenError = (
 ) =>
   getCustomIRecognitionException({
     name: 'DisallowedTokenError',
-    message: `Token ${
-      node.tokenType.tokenName
-    } cannot be used in Stardog Rules.`,
+    message: `Token ${node.tokenType.tokenName} cannot be used in Stardog Rules.`,
     node,
     ruleStack: getCustomErrorRuleStack(
       parentCtx,
@@ -233,13 +252,13 @@ const getDisallowedLiteralError = (
 
       const isBoundExpressionWithLiteralSubject =
         isExpression &&
-        (<CstNode>parentCtx.node).name === 'Bind' &&
         // If we've found a sub-expression with multiple children, it's highly
         // likely (maybe definite?) that this `Bind` does not include an invalid
         // literal as a subject, so we don't count this as an error. This _may_
         // allow rare false positives, but it definitely prevents false
         // negatives of the sort described in https://github.com/stardog-union/millan/issues/22
-        !didFindSubExpressionWithMultipleChildren;
+        !didFindSubExpressionWithMultipleChildren &&
+        isParentBindOrBoundExpressionOrEmbeddedTriplePattern(parentCtx);
       const isTriplesBlockSubject =
         isTriplesBlock &&
         (!foundPropertyListPathNotEmptyCtx ||
@@ -267,9 +286,7 @@ const getDisallowedLiteralError = (
 
   return getCustomIRecognitionException({
     name: 'DisallowedLiteralError',
-    message: `Token ${node.tokenType.tokenName} (${
-      node.image
-    }) cannot be used as a subject inside of a ${errorContext} in Stardog Rules Syntax.`,
+    message: `Token ${node.tokenType.tokenName} (${node.image}) cannot be used as a subject inside of a ${errorContext} in Stardog Rules Syntax.`,
     node,
     ruleStack: errorRuleStack,
   });
@@ -301,11 +318,13 @@ export function addIfClauseErrorsToErrors({
     const { tokenName } = node.tokenType;
 
     if (disallowedSparqlTokenNames.some((name) => name === tokenName)) {
-      errors.push(getDisallowedTokenError(
-        node,
-        parentCtx as CstNodeTraverseContext,
-        fullCtx
-      ) as IRecognitionException);
+      errors.push(
+        getDisallowedTokenError(
+          node,
+          parentCtx as CstNodeTraverseContext,
+          fullCtx
+        ) as IRecognitionException
+      );
     }
 
     if (

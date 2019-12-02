@@ -546,7 +546,7 @@ Object {
                                                             "GraphNodePath": Array [
                                                               Object {
                                                                 "children": Object {
-                                                                  "VarOrTerm": Array [
+                                                                  "VarOrTermOrEmbeddedTriplePattern": Array [
                                                                     Object {
                                                                       "children": Object {
                                                                         "GraphTerm": Array [
@@ -586,7 +586,7 @@ Object {
                                                                           },
                                                                         ],
                                                                       },
-                                                                      "name": "VarOrTerm",
+                                                                      "name": "VarOrTermOrEmbeddedTriplePattern",
                                                                     },
                                                                   ],
                                                                 },
@@ -675,7 +675,7 @@ Object {
                                               "name": "PropertyListPathNotEmpty",
                                             },
                                           ],
-                                          "VarOrTerm": Array [
+                                          "VarOrTermOrEmbeddedTriplePattern": Array [
                                             Object {
                                               "children": Object {
                                                 "Var": Array [
@@ -708,7 +708,7 @@ Object {
                                                   },
                                                 ],
                                               },
-                                              "name": "VarOrTerm",
+                                              "name": "VarOrTermOrEmbeddedTriplePattern",
                                             },
                                           ],
                                         },
@@ -902,7 +902,7 @@ Object {
                                                 "GraphNodePath": Array [
                                                   Object {
                                                     "children": Object {
-                                                      "VarOrTerm": Array [
+                                                      "VarOrTermOrEmbeddedTriplePattern": Array [
                                                         Object {
                                                           "children": Object {
                                                             "GraphTerm": Array [
@@ -942,7 +942,7 @@ Object {
                                                               },
                                                             ],
                                                           },
-                                                          "name": "VarOrTerm",
+                                                          "name": "VarOrTermOrEmbeddedTriplePattern",
                                                         },
                                                       ],
                                                     },
@@ -1031,7 +1031,7 @@ Object {
                                   "name": "PropertyListPathNotEmpty",
                                 },
                               ],
-                              "VarOrTerm": Array [
+                              "VarOrTermOrEmbeddedTriplePattern": Array [
                                 Object {
                                   "children": Object {
                                     "Var": Array [
@@ -1064,7 +1064,7 @@ Object {
                                       },
                                     ],
                                   },
-                                  "name": "VarOrTerm",
+                                  "name": "VarOrTermOrEmbeddedTriplePattern",
                                 },
                               ],
                             },
@@ -1194,7 +1194,7 @@ Object {
                                                             "GraphNodePath": Array [
                                                               Object {
                                                                 "children": Object {
-                                                                  "VarOrTerm": Array [
+                                                                  "VarOrTermOrEmbeddedTriplePattern": Array [
                                                                     Object {
                                                                       "children": Object {
                                                                         "GraphTerm": Array [
@@ -1234,7 +1234,7 @@ Object {
                                                                           },
                                                                         ],
                                                                       },
-                                                                      "name": "VarOrTerm",
+                                                                      "name": "VarOrTermOrEmbeddedTriplePattern",
                                                                     },
                                                                   ],
                                                                 },
@@ -1249,7 +1249,7 @@ Object {
                                                             "GraphNodePath": Array [
                                                               Object {
                                                                 "children": Object {
-                                                                  "VarOrTerm": Array [
+                                                                  "VarOrTermOrEmbeddedTriplePattern": Array [
                                                                     Object {
                                                                       "children": Object {
                                                                         "GraphTerm": Array [
@@ -1289,7 +1289,7 @@ Object {
                                                                           },
                                                                         ],
                                                                       },
-                                                                      "name": "VarOrTerm",
+                                                                      "name": "VarOrTermOrEmbeddedTriplePattern",
                                                                     },
                                                                   ],
                                                                 },
@@ -1378,7 +1378,7 @@ Object {
                                               "name": "PropertyListPathNotEmpty",
                                             },
                                           ],
-                                          "VarOrTerm": Array [
+                                          "VarOrTermOrEmbeddedTriplePattern": Array [
                                             Object {
                                               "children": Object {
                                                 "Var": Array [
@@ -1411,7 +1411,7 @@ Object {
                                                   },
                                                 ],
                                               },
-                                              "name": "VarOrTerm",
+                                              "name": "VarOrTermOrEmbeddedTriplePattern",
                                             },
                                           ],
                                         },
@@ -1668,7 +1668,7 @@ Object {
                                                 "GraphNodePath": Array [
                                                   Object {
                                                     "children": Object {
-                                                      "VarOrTerm": Array [
+                                                      "VarOrTermOrEmbeddedTriplePattern": Array [
                                                         Object {
                                                           "children": Object {
                                                             "GraphTerm": Array [
@@ -1708,7 +1708,7 @@ Object {
                                                               },
                                                             ],
                                                           },
-                                                          "name": "VarOrTerm",
+                                                          "name": "VarOrTermOrEmbeddedTriplePattern",
                                                         },
                                                       ],
                                                     },
@@ -1797,7 +1797,7 @@ Object {
                                   "name": "PropertyListPathNotEmpty",
                                 },
                               ],
-                              "VarOrTerm": Array [
+                              "VarOrTermOrEmbeddedTriplePattern": Array [
                                 Object {
                                   "children": Object {
                                     "Var": Array [
@@ -1830,7 +1830,7 @@ Object {
                                       },
                                     ],
                                   },
-                                  "name": "VarOrTerm",
+                                  "name": "VarOrTermOrEmbeddedTriplePattern",
                                 },
                               ],
                             },
