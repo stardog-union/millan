@@ -78,6 +78,114 @@ export class StardogSparqlParser extends BaseSparqlParser {
     ]);
   });
 
+  TriplesSameSubject = this.OVERRIDE_RULE('TriplesSameSubject', () => {
+    this.OR([
+      {
+        ALT: () => {
+          this.SUBRULE(this.VarOrTermOrEmbeddedTriplePattern);
+          this.SUBRULE(this.PropertyListNotEmpty);
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE(this.TriplesNode);
+          this.SUBRULE(this.PropertyList);
+        },
+      },
+    ]);
+  });
+
+  Object = this.OVERRIDE_RULE('Object', () => {
+    this.OR([
+      {
+        ALT: () => this.SUBRULE(this.GraphNode),
+      },
+      {
+        ALT: () => this.SUBRULE(this.EmbeddedTriplePattern),
+      },
+    ]);
+  });
+
+  TriplesSameSubjectPath = this.OVERRIDE_RULE('TriplesSameSubjectPath', () => {
+    this.OR([
+      {
+        ALT: () => {
+          this.SUBRULE(this.TriplesNodePath);
+          this.SUBRULE(this.PropertyListPath);
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE(this.VarOrTermOrEmbeddedTriplePattern);
+          this.SUBRULE(this.PropertyListPathNotEmpty);
+        },
+      },
+    ]);
+  });
+
+  GraphNodePath = this.OVERRIDE_RULE('GraphNodePath', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.VarOrTermOrEmbeddedTriplePattern) },
+      { ALT: () => this.SUBRULE(this.TriplesNodePath) },
+    ]);
+  });
+
+  // NOTE: Intentionally does not conform to the SPARQL* spec. Stardog does not
+  // allow nesting of embedded triples.
+  EmbeddedTriplePattern = this.RULE('EmbeddedTriplePattern', () => {
+    this.CONSUME(sparqlTokenMap.LEmbed);
+    this.SUBRULE(this.VarOrBlankNodeOrIriOrLit);
+    this.SUBRULE(this.Verb);
+    this.SUBRULE1(this.VarOrBlankNodeOrIriOrLit);
+    this.CONSUME(sparqlTokenMap.REmbed);
+  });
+
+  VarOrTermOrEmbeddedTriplePattern = this.RULE(
+    'VarOrTermOrEmbeddedTriplePattern',
+    () => {
+      this.OR([
+        { ALT: () => this.SUBRULE(this.Var) },
+        { ALT: () => this.SUBRULE(this.GraphTerm) },
+        { ALT: () => this.SUBRULE(this.EmbeddedTriplePattern) },
+      ]);
+    }
+  );
+
+  Bind = this.OVERRIDE_RULE('Bind', () => {
+    this.CONSUME(sparqlTokenMap.BIND);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.ExpressionOrEmbeddedTriplePattern);
+    this.CONSUME(sparqlTokenMap.AS);
+    this.SUBRULE(this.Var);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  ExpressionOrEmbeddedTriplePattern = this.RULE(
+    'ExpressionOrEmbeddedTriplePattern',
+    () => {
+      this.OR([
+        {
+          ALT: () => this.SUBRULE(this.Expression),
+        },
+        {
+          ALT: () => this.SUBRULE(this.EmbeddedTriplePattern),
+        },
+      ]);
+    }
+  );
+
+  // NOTE: This is nearly equivalent to VarOrTerm, but excludes NIL.
+  VarOrBlankNodeOrIriOrLit = this.RULE('VarOrBlankNodeOrIriOrLit', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+    ]);
+  });
+
   Unnest = this.RULE('Unnest', () => {
     this.CONSUME(sparqlTokenMap.UNNEST);
     this.CONSUME(sparqlTokenMap.LParen);

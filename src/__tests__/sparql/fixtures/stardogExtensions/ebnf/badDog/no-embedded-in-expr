@@ -1,0 +1,6 @@
+prefix : <urn:>
+
+SELECT *
+WHERE {
+  bind((<< ?s :p ?o >> + 42) as ?x)
+}
