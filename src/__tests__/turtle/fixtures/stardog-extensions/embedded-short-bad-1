@@ -1,0 +1,2 @@
+@prefix : <stardog> .
+:s :p << :x :y :z >> .

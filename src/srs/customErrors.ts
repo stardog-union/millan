@@ -21,6 +21,8 @@ const disallowedSparqlTokenNameToRuleMap = {
   [sparqlTokenMap.EXISTS.tokenName]: 'ExistsFunction',
   [sparqlTokenMap.NOT_EXISTS.tokenName]: 'NotExistsFunction',
   [sparqlTokenMap.NOW.tokenName]: 'BuiltInCall_NOW',
+  [sparqlTokenMap.LEmbed.tokenName]: 'LeftEmbed',
+  [sparqlTokenMap.REmbed.tokenName]: 'RightEmbed',
 };
 const disallowedSparqlTokenNames = Object.keys(
   disallowedSparqlTokenNameToRuleMap
@@ -190,7 +192,8 @@ const getNoPrefixError = (
 const getDisallowedTokenError = (
   node: IToken,
   parentCtx: CstNodeTraverseContext,
-  fullCtx: ITraverseContext
+  fullCtx: ITraverseContext,
+  subParserRuleName = 'GroupGraphPattern'
 ) =>
   getCustomIRecognitionException({
     name: 'DisallowedTokenError',
@@ -200,7 +203,7 @@ const getDisallowedTokenError = (
       parentCtx,
       fullCtx,
       [disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]],
-      'GroupGraphPattern'
+      subParserRuleName
     ),
   });
 
@@ -400,6 +403,21 @@ export function addThenClauseErrorsToErrors({
       if (error) {
         errors.push(error as IRecognitionException);
       }
+    }
+
+    // No embedded triple patterns in SRS THEN clauses.
+    if (
+      tokenName === sparqlTokenMap.LEmbed.name ||
+      tokenName === sparqlTokenMap.REmbed.name
+    ) {
+      errors.push(
+        getDisallowedTokenError(
+          node,
+          parentCtx as CstNodeTraverseContext,
+          fullCtx,
+          'TriplesBlock'
+        )
+      );
     }
 
     if (tokenName === 'PNAME_NS' || tokenName === 'PNAME_LN') {

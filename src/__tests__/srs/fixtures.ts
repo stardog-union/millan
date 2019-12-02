@@ -86,6 +86,20 @@ const ungeneratedFixtures = {
       '    ?l ro:terminatedEarly ?terminated_early ;\n' +
       '        ro:earlyTerminationDate ?event_date .\n' +
       '}\n',
+    // NOTE: These are valid only when the parser is run in 'stardog' mode.
+    embedded_basic:
+      '@prefix : <http://example.org/> .\n' +
+      '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+      'RULE :FatherRule\n' +
+      'IF {\n' +
+      '   ?x a <http://example.org/Male> , <http://example.org/Parent> .\n' +
+      '}\n' +
+      'THEN {\n' +
+      '   ?x a <http://example.org/Father> .\n' +
+      '}\n' +
+      ':FatherRule rdfs:comment "This rule defines fathers" ;\n' +
+      '  a :MyRule .\n' +
+      '<< :FatherRule a :MyRule >> :createdAt "2019-10-26" .',
   },
   invalid: {
     lex: {
@@ -320,6 +334,46 @@ const ungeneratedFixtures = {
       unsupportedSPARQLInIfClause:
         'IF { ?x a <http://example.org/Male> . FILTER EXISTS {}}\n' +
         'THEN { ?x a <http://example.org/Father> . }',
+      noEmbeddedTripleIf:
+        '@prefix : <http://example.org/> .\n' +
+        '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+        'RULE :FatherRule\n' +
+        'IF {\n' +
+        '   << :s :p :o >> a <http://example.org/Male> , <http://example.org/Parent> .\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?x a <http://example.org/Father> .\n' +
+        '}\n',
+      noEmbeddedTripleThen:
+        '@prefix : <http://example.org/> .\n' +
+        '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+        'RULE :FatherRule\n' +
+        'IF {\n' +
+        '   ?x a <http://example.org/Male> , <http://example.org/Parent> .\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   << :s :p :o >> a <http://example.org/Father> .\n' +
+        '}\n',
+      noEmbeddedTripleIfObject:
+        '@prefix : <http://example.org/> .\n' +
+        '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+        'RULE :FatherRule\n' +
+        'IF {\n' +
+        '   ?x a <http://example.org/Male> , << :s :p :o >> .\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?x a <http://example.org/Father> .\n' +
+        '}\n',
+      noEmbeddedTripleThenObject:
+        '@prefix : <http://example.org/> .\n' +
+        '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n' +
+        'RULE :FatherRule\n' +
+        'IF {\n' +
+        '   ?x a <http://example.org/Male> , <http://example.org/Parent> .\n' +
+        '}\n' +
+        'THEN {\n' +
+        '   ?x a << :s :p :o >> .\n' +
+        '}\n',
     },
   },
 };

@@ -1,8 +1,7 @@
-const { turtleTokenTypes } = require('../turtle/tokens');
+const { turtleTokenTypes, turtleTokenMap } = require('../turtle/tokens');
+const { sparqlTokenMap } = require('../sparql/tokens');
 import { createToken, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
-import { CATCH_ALL_AT_LEAST_ONE } from 'helpers/matchers';
-import { turtleTokenMap } from 'turtle/tokens';
-import { sparqlTokenMap } from 'sparql/tokens';
+import { CATCH_ALL_AT_LEAST_ONE } from '../helpers/matchers';
 
 enum LexerMode {
   TURTLE = 'turtle',

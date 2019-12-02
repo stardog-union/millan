@@ -164,6 +164,16 @@ export const sparqlTokenMap = {
     pattern: '>=',
   }),
 
+  LEmbed: createToken({
+    name: 'LEmbed',
+    pattern: '<<',
+  }),
+
+  REmbed: createToken({
+    name: 'REmbed',
+    pattern: '>>',
+  }),
+
   SELECT: keywords.SELECT,
   CONSTRUCT: keywords.CONSTRUCT,
   DISTINCT: keywords.DISTINCT,
@@ -453,6 +463,8 @@ export const baseTokens = [
   sparqlTokenMap.Equals,
   sparqlTokenMap.LessThanEquals,
   sparqlTokenMap.GreaterThanEquals,
+  sparqlTokenMap.LEmbed,
+  sparqlTokenMap.REmbed,
   sparqlTokenMap.LessThan,
   sparqlTokenMap.GreaterThan,
   sparqlTokenMap.IN,

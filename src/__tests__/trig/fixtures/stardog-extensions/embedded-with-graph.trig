@@ -1,0 +1,2 @@
+PREFIX : <http://example/> 
+GRAPH :g { << :s :p :o >> :p2 :o2 }

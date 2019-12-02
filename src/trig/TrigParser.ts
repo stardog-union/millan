@@ -1,16 +1,39 @@
 const { trigTokenMap, trigTokenTypes } = require('./tokens');
-import { Parser, IRecognitionException, IParserConfig } from 'chevrotain';
+import {
+  Parser,
+  IRecognitionException,
+  IParserConfig,
+  TokenType,
+  IMultiModeLexerDefinition,
+} from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
+import { ModeString } from '../helpers/types';
 
 export class TrigParser extends TurtleParser {
-  constructor(config?: Partial<IParserConfig>) {
-    super(config, trigTokenTypes, trigTokenTypes, false);
-    Parser.performSelfAnalysis(this);
+  constructor(
+    config?: Partial<IParserConfig>,
+    tokens = trigTokenTypes,
+    lexerDefinition: TokenType[] | IMultiModeLexerDefinition = trigTokenTypes,
+    performSelfAnalysis = true
+  ) {
+    super(config, tokens, lexerDefinition, false);
+    if (performSelfAnalysis) {
+      Parser.performSelfAnalysis(this);
+    }
   }
 
-  public parse = (document: string): ReturnType<TurtleParser['parse']> => {
+  // NOTE: This parser can parse in two modes, 'standard' and 'stardog'. The
+  // latter includes non-standard features like embedded triples patterns (edge
+  // properties). Things are done this way to avoid deep inheritance trees
+  // (e.g., one alternative is to create a StardogTurtleParser that extends
+  // TurtleParser, then a StardogTrigParser that extends the
+  // StardogTurtleParser, but that gets ugly...).
+  public parse = (
+    document: string,
+    mode: ModeString = 'standard'
+  ): ReturnType<TurtleParser['parse']> => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.trigDoc();
+    const cst = this.trigDoc(0, [mode]);
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];
@@ -24,34 +47,34 @@ export class TrigParser extends TurtleParser {
     };
   };
 
-  trigDoc = this.RULE('trigDoc', () => {
+  trigDoc = this.RULE('trigDoc', (mode: ModeString) => {
     this.MANY(() => {
       this.OR([
         { ALT: () => this.SUBRULE(this.directive) },
-        { ALT: () => this.SUBRULE(this.block) },
+        { ALT: () => this.SUBRULE(this.block, { ARGS: [mode] }) },
       ]);
     });
   });
 
-  block = this.RULE('block', () => {
+  block = this.RULE('block', (mode: ModeString) => {
     this.OR([
-      { ALT: () => this.SUBRULE(this.triplesOrGraph) },
-      { ALT: () => this.SUBRULE(this.wrappedGraph) },
+      { ALT: () => this.SUBRULE(this.triplesOrGraph, { ARGS: [mode] }) },
+      { ALT: () => this.SUBRULE(this.wrappedGraph, { ARGS: [mode] }) },
       { ALT: () => this.SUBRULE(this.triples2) },
       {
         ALT: () => {
           this.CONSUME(trigTokenMap.GRAPH);
           this.SUBRULE(this.labelOrSubject);
-          this.SUBRULE1(this.wrappedGraph);
+          this.SUBRULE1(this.wrappedGraph, { ARGS: [mode] });
         },
       },
     ]);
   });
 
-  triplesOrGraph = this.RULE('triplesOrGraph', () => {
+  triplesOrGraph = this.RULE('triplesOrGraph', (mode: ModeString) => {
     this.SUBRULE(this.labelOrSubject);
     this.OR([
-      { ALT: () => this.SUBRULE(this.wrappedGraph) },
+      { ALT: () => this.SUBRULE(this.wrappedGraph, { ARGS: [mode] }) },
       {
         ALT: () => {
           this.SUBRULE(this.predicateObjectList);
@@ -80,17 +103,17 @@ export class TrigParser extends TurtleParser {
     ]);
   });
 
-  wrappedGraph = this.RULE('wrappedGraph', () => {
+  wrappedGraph = this.RULE('wrappedGraph', (mode: ModeString) => {
     this.CONSUME(trigTokenMap.LCurly);
-    this.OPTION(() => this.SUBRULE(this.triplesBlock));
+    this.OPTION(() => this.SUBRULE(this.triplesBlock, { ARGS: [mode] }));
     this.CONSUME(trigTokenMap.RCurly);
   });
 
-  triplesBlock = this.RULE('triplesBlock', () => {
-    this.SUBRULE(this.triples);
+  triplesBlock = this.RULE('triplesBlock', (mode: ModeString) => {
+    this.SUBRULE(this.triples, { ARGS: [mode] });
     this.OPTION(() => {
       this.CONSUME(trigTokenMap.Period);
-      this.OPTION1(() => this.SUBRULE(this.triplesBlock));
+      this.OPTION1(() => this.SUBRULE(this.triplesBlock, { ARGS: [mode] }));
     });
   });
 
