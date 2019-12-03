@@ -1,5 +1,6 @@
 import { Lexer, IToken, IRecognitionException, IParserConfig } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
+import { ModeString } from 'helpers/types';
 export declare class SrsParser extends TurtleParser {
     private sparqlSrsVisitor;
     protected lexer: Lexer;
@@ -15,7 +16,7 @@ export declare class SrsParser extends TurtleParser {
         [key: string]: boolean;
     }) => void;
     tokenize: (document: string) => IToken[];
-    parse: (document: string) => {
+    parse: (document: string, mode?: ModeString) => {
         errors: IRecognitionException[];
         semanticErrors: IRecognitionException[];
         cst: any;

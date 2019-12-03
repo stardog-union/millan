@@ -16,6 +16,7 @@ export interface ISemanticError extends Pick<IRecognitionException, Exclude<keyo
     resyncedTokens?: IToken[];
     context?: IRecognizerContext;
 }
+export declare type ModeString = 'stardog' | 'standard';
 declare type Lit = string | number | boolean | undefined | null | void | symbol | {};
 export declare const getAsTypedTuple: <T extends Lit[]>(...args: T) => T;
 export { IToken, CstNode, TokenType };

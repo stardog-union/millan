@@ -100,6 +100,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#blanknode" class="tsd-kind-icon">Blank<wbr>Node</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#booleanliteral" class="tsd-kind-icon">Boolean<wbr>Literal</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#embeddedtriplepattern" class="tsd-kind-icon">Embedded<wbr>Triple<wbr>Pattern</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="srsparser.html#ifclause" class="tsd-kind-icon">If<wbr>Clause</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#numericliteral" class="tsd-kind-icon">Numeric<wbr>Literal</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#prefixedname" class="tsd-kind-icon">Prefixed<wbr>Name</a></li>
@@ -132,6 +133,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#statement" class="tsd-kind-icon">statement</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#subject" class="tsd-kind-icon">subject</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#triples" class="tsd-kind-icon">triples</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#triplesnotembedded" class="tsd-kind-icon">triples<wbr>Not<wbr>Embedded</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#turtledoc" class="tsd-kind-icon">turtle<wbr>Doc</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="srsparser.html#verb" class="tsd-kind-icon">verb</a></li>
 							</ul>
@@ -187,7 +189,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L35">srs/SrsParser.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L36">srs/SrsParser.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -210,7 +212,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#blanknode">BlankNode</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L290">turtle/TurtleParser.ts:290</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L331">turtle/TurtleParser.ts:331</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -248,7 +250,45 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#booleanliteral">BooleanLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L241">turtle/TurtleParser.ts:241</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L282">turtle/TurtleParser.ts:282</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>idxInCallingRule<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> idxInCallingRule: <span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>
+											<span class="tsd-signature-symbol"> | </span>
+											<span class="tsd-signature-type">any</span>
+										</h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="embeddedtriplepattern" class="tsd-anchor"></a>
+					<h3>Embedded<wbr>Triple<wbr>Pattern</h3>
+					<div class="tsd-signature tsd-kind-icon">Embedded<wbr>Triple<wbr>Pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;EmbeddedTriplePattern&#x27;, () &#x3D;&gt; {this.CONSUME(turtleTokenMap.LEmbed);this.SUBRULE(this.triplesNotEmbedded);this.CONSUME(turtleTokenMap.REmbed);})</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#embeddedtriplepattern">EmbeddedTriplePattern</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L184">turtle/TurtleParser.ts:184</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -285,7 +325,7 @@
 					<div class="tsd-signature tsd-kind-icon">If<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;IfClause&#x27;, () &#x3D;&gt; {this.CONSUME(srsTokenMap.If);this.CONSUME(srsTokenMap.GroupGraphPattern);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L208">srs/SrsParser.ts:208</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L212">srs/SrsParser.ts:212</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -323,7 +363,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#numericliteral">NumericLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L218">turtle/TurtleParser.ts:218</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L259">turtle/TurtleParser.ts:259</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -361,7 +401,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#prefixedname">PrefixedName</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L267">turtle/TurtleParser.ts:267</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L308">turtle/TurtleParser.ts:308</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -399,7 +439,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#rdfliteral">RDFLiteral</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L226">turtle/TurtleParser.ts:226</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L267">turtle/TurtleParser.ts:267</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -436,7 +476,7 @@
 					<div class="tsd-signature tsd-kind-icon">Rule<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RuleClause&#x27;, () &#x3D;&gt; {this.CONSUME(srsTokenMap.Rule);this.SUBRULE(this.iri);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L203">srs/SrsParser.ts:203</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L207">srs/SrsParser.ts:207</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -473,7 +513,7 @@
 					<div class="tsd-signature tsd-kind-icon">Rule<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;RuleDoc&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.RuleClause));this.SUBRULE(this.IfClause);this.SUBRULE(this.ThenClause);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L197">srs/SrsParser.ts:197</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L201">srs/SrsParser.ts:201</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -507,10 +547,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="srsdoc" class="tsd-anchor"></a>
 					<h3>Srs<wbr>Doc</h3>
-					<div class="tsd-signature tsd-kind-icon">Srs<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SrsDoc&#x27;, () &#x3D;&gt; {this.SUBRULE(this.turtleDoc);this.MANY(() &#x3D;&gt; {this.SUBRULE(this.RuleDoc);this.MANY1(() &#x3D;&gt; {this.SUBRULE(this.triples);this.CONSUME(sparqlTokenMap.Period);});});})</span></div>
+					<div class="tsd-signature tsd-kind-icon">Srs<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SrsDoc&#x27;, (mode: ModeString) &#x3D;&gt; {this.SUBRULE(this.turtleDoc, { ARGS: [mode] });this.MANY(() &#x3D;&gt; {this.SUBRULE(this.RuleDoc);this.MANY1(() &#x3D;&gt; {this.SUBRULE(this.triples, { ARGS: [mode] });this.CONSUME(sparqlTokenMap.Period);});});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L186">srs/SrsParser.ts:186</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L190">srs/SrsParser.ts:190</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -548,7 +588,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#string">String</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L248">turtle/TurtleParser.ts:248</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L289">turtle/TurtleParser.ts:289</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -585,7 +625,7 @@
 					<div class="tsd-signature tsd-kind-icon">Then<wbr>Clause<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ThenClause&#x27;, () &#x3D;&gt; {this.CONSUME(srsTokenMap.Then);this.CONSUME(sparqlTokenMap.LCurly);this.CONSUME(srsTokenMap.TriplesBlock);this.CONSUME(srsTokenMap.EndThen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L213">srs/SrsParser.ts:213</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L217">srs/SrsParser.ts:217</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -623,7 +663,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#base">base</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L112">turtle/TurtleParser.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L116">turtle/TurtleParser.ts:116</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -660,7 +700,7 @@
 					<div class="tsd-signature tsd-kind-icon">base<wbr>Namespaces<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> =&nbsp;Object.freeze({...defaultNamespacesMap,})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L32">srs/SrsParser.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L33">srs/SrsParser.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -676,7 +716,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#blanknodepropertylist">blankNodePropertyList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L196">turtle/TurtleParser.ts:196</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L237">turtle/TurtleParser.ts:237</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -714,7 +754,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#collection">collection</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L212">turtle/TurtleParser.ts:212</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L253">turtle/TurtleParser.ts:253</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -752,7 +792,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#directive">directive</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L91">turtle/TurtleParser.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L95">turtle/TurtleParser.ts:95</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -812,7 +852,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#iri">iri</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L260">turtle/TurtleParser.ts:260</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L301">turtle/TurtleParser.ts:301</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -850,7 +890,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#lexer">lexer</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L31">srs/SrsParser.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L32">srs/SrsParser.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -861,7 +901,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#literal">literal</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L188">turtle/TurtleParser.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L229">turtle/TurtleParser.ts:229</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -899,7 +939,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#namespacesmap">namespacesMap</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L35">srs/SrsParser.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L36">srs/SrsParser.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -918,7 +958,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#object">object</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L202">turtle/TurtleParser.ts:202</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L243">turtle/TurtleParser.ts:243</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -956,7 +996,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#objectlist">objectList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L173">turtle/TurtleParser.ts:173</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L214">turtle/TurtleParser.ts:214</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -994,7 +1034,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#predicate">predicate</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L169">turtle/TurtleParser.ts:169</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L210">turtle/TurtleParser.ts:210</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1032,7 +1072,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#predicateobjectlist">predicateObjectList</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L149">turtle/TurtleParser.ts:149</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L190">turtle/TurtleParser.ts:190</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1070,7 +1110,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#prefixid">prefixID</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L100">turtle/TurtleParser.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L104">turtle/TurtleParser.ts:104</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1108,7 +1148,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#semanticerrors">semanticErrors</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L23">turtle/TurtleParser.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L23">turtle/TurtleParser.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -1119,7 +1159,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#sparqlbase">sparqlBase</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L118">turtle/TurtleParser.ts:118</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L122">turtle/TurtleParser.ts:122</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1157,7 +1197,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#sparqlprefix">sparqlPrefix</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L123">turtle/TurtleParser.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L127">turtle/TurtleParser.ts:127</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1194,18 +1234,18 @@
 					<div class="tsd-signature tsd-kind-icon">sparql<wbr>Srs<wbr>Visitor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><a href="" class="tsd-signature-type">getSparqlSrsVisitor</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L30">srs/SrsParser.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L31">srs/SrsParser.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="statement" class="tsd-anchor"></a>
 					<h3>statement</h3>
-					<div class="tsd-signature tsd-kind-icon">statement<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;statement&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.directive) },{ALT: () &#x3D;&gt; {this.SUBRULE(this.triples);this.CONSUME(turtleTokenMap.Period);},},]);})</span></div>
+					<div class="tsd-signature tsd-kind-icon">statement<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;statement&#x27;, (mode: ModeString) &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.directive) },{ALT: () &#x3D;&gt; {this.SUBRULE(this.triples, { ARGS: [mode] });this.CONSUME(turtleTokenMap.Period);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#statement">statement</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L79">turtle/TurtleParser.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L83">turtle/TurtleParser.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1243,7 +1283,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#subject">subject</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L161">turtle/TurtleParser.ts:161</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L202">turtle/TurtleParser.ts:202</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1277,11 +1317,49 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="triples" class="tsd-anchor"></a>
 					<h3>triples</h3>
-					<div class="tsd-signature tsd-kind-icon">triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;triples&#x27;, () &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.subject);this.SUBRULE(this.predicateObjectList);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.blankNodePropertyList);this.OPTION(() &#x3D;&gt; this.SUBRULE1(this.predicateObjectList));},},]);})</span></div>
+					<div class="tsd-signature tsd-kind-icon">triples<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;triples&#x27;, (mode: ModeString) &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; {this.OR1([{ALT: () &#x3D;&gt; this.SUBRULE(this.subject),},{GATE: () &#x3D;&gt; mode &#x3D;&#x3D;&#x3D; &#x27;stardog&#x27;,ALT: () &#x3D;&gt; this.SUBRULE(this.EmbeddedTriplePattern),},]);this.SUBRULE(this.predicateObjectList);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.blankNodePropertyList);this.OPTION(() &#x3D;&gt; this.SUBRULE1(this.predicateObjectList));},},]);})</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#triples">triples</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L132">turtle/TurtleParser.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L136">turtle/TurtleParser.ts:136</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>idxInCallingRule<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, <span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> idxInCallingRule: <span class="tsd-signature-type">number</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span>
+											<span class="tsd-signature-symbol"> | </span>
+											<span class="tsd-signature-type">any</span>
+										</h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="triplesnotembedded" class="tsd-anchor"></a>
+					<h3>triples<wbr>Not<wbr>Embedded</h3>
+					<div class="tsd-signature tsd-kind-icon">triples<wbr>Not<wbr>Embedded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;triplesNotEmbedded&#x27;, () &#x3D;&gt; {this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.subject);this.SUBRULE(this.predicateObjectList);},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.blankNodePropertyList);this.OPTION(() &#x3D;&gt; this.SUBRULE1(this.predicateObjectList));},},]);})</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#triplesnotembedded">triplesNotEmbedded</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L163">turtle/TurtleParser.ts:163</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1315,11 +1393,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="turtledoc" class="tsd-anchor"></a>
 					<h3>turtle<wbr>Doc</h3>
-					<div class="tsd-signature tsd-kind-icon">turtle<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;turtleDoc&#x27;, () &#x3D;&gt; {this.MANY(() &#x3D;&gt; this.SUBRULE(this.statement));})</span></div>
+					<div class="tsd-signature tsd-kind-icon">turtle<wbr>Doc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;turtleDoc&#x27;, (mode: ModeString) &#x3D;&gt; {this.MANY(() &#x3D;&gt; this.SUBRULE(this.statement, { ARGS: [mode] }));})</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#turtledoc">turtleDoc</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L75">turtle/TurtleParser.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L79">turtle/TurtleParser.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1357,7 +1435,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#verb">verb</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/turtle/TurtleParser.ts#L181">turtle/TurtleParser.ts:181</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/turtle/TurtleParser.ts#L222">turtle/TurtleParser.ts:222</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2350,7 +2428,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L66">srs/SrsParser.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L67">srs/SrsParser.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2406,20 +2484,23 @@
 					<a name="parse" class="tsd-anchor"></a>
 					<h3>parse</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><a href="" class="tsd-signature-type">parse</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>document<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mode<span class="tsd-signature-symbol">?: </span><a href="../globals.html#modestring" class="tsd-signature-type">ModeString</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><a href="" class="tsd-signature-type">parse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#parse">parse</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L93">srs/SrsParser.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L94">srs/SrsParser.ts:94</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>document: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> mode: <a href="../globals.html#modestring" class="tsd-signature-type">ModeString</a><span class="tsd-signature-symbol"> =&nbsp;&quot;standard&quot;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><a href="" class="tsd-signature-type">parse</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -2485,7 +2566,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#resetmanagedstate">resetManagedState</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L75">srs/SrsParser.ts:75</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L76">srs/SrsParser.ts:76</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -2502,7 +2583,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L82">srs/SrsParser.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L83">srs/SrsParser.ts:83</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2531,7 +2612,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="turtleparser.html">TurtleParser</a>.<a href="turtleparser.html#tokenize">tokenize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L90">srs/SrsParser.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L91">srs/SrsParser.ts:91</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2554,7 +2635,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/d43c0e4/src/srs/SrsParser.ts#L54">srs/SrsParser.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8274476/src/srs/SrsParser.ts#L55">srs/SrsParser.ts:55</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -2623,6 +2704,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="srsparser.html#booleanliteral" class="tsd-kind-icon">Boolean<wbr>Literal</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="srsparser.html#embeddedtriplepattern" class="tsd-kind-icon">Embedded<wbr>Triple<wbr>Pattern</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="srsparser.html#ifclause" class="tsd-kind-icon">If<wbr>Clause</a>
@@ -2719,6 +2803,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="srsparser.html#triples" class="tsd-kind-icon">triples</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="srsparser.html#triplesnotembedded" class="tsd-kind-icon">triples<wbr>Not<wbr>Embedded</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="srsparser.html#turtledoc" class="tsd-kind-icon">turtle<wbr>Doc</a>

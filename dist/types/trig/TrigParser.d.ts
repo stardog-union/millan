@@ -1,8 +1,9 @@
-import { IRecognitionException, IParserConfig } from 'chevrotain';
+import { IRecognitionException, IParserConfig, TokenType, IMultiModeLexerDefinition } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
+import { ModeString } from '../helpers/types';
 export declare class TrigParser extends TurtleParser {
-    constructor(config?: Partial<IParserConfig>);
-    parse: (document: string) => {
+    constructor(config?: Partial<IParserConfig>, tokens?: any, lexerDefinition?: TokenType[] | IMultiModeLexerDefinition, performSelfAnalysis?: boolean);
+    parse: (document: string, mode?: ModeString) => {
         errors: IRecognitionException[];
         semanticErrors: IRecognitionException[];
         cst: any;

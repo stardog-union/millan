@@ -1,12 +1,12 @@
 import { Parser, IParserConfig, Lexer, IToken, IRecognitionException, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
-import { IStardogParser } from '../helpers/types';
+import { IStardogParser, ModeString } from '../helpers/types';
 export declare class TurtleParser extends Parser implements IStardogParser {
     protected lexer: Lexer;
     protected namespacesMap: {};
     protected semanticErrors: IRecognitionException[];
     protected resetManagedState: () => void;
     tokenize: (document: string) => IToken[];
-    parse: (document: string) => {
+    parse: (document: string, mode?: ModeString) => {
         errors: IRecognitionException[];
         semanticErrors: IRecognitionException[];
         cst: any;
@@ -20,6 +20,8 @@ export declare class TurtleParser extends Parser implements IStardogParser {
     sparqlBase: (idxInCallingRule?: number, ...args: any[]) => any;
     sparqlPrefix: (idxInCallingRule?: number, ...args: any[]) => any;
     triples: (idxInCallingRule?: number, ...args: any[]) => any;
+    triplesNotEmbedded: (idxInCallingRule?: number, ...args: any[]) => any;
+    EmbeddedTriplePattern: (idxInCallingRule?: number, ...args: any[]) => any;
     predicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
     subject: (idxInCallingRule?: number, ...args: any[]) => any;
     predicate: (idxInCallingRule?: number, ...args: any[]) => any;

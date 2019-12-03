@@ -52,6 +52,8 @@ export declare const sparqlTokenMap: {
     GreaterThan: TokenType;
     LessThanEquals: TokenType;
     GreaterThanEquals: TokenType;
+    LEmbed: TokenType;
+    REmbed: TokenType;
     SELECT: TokenType;
     CONSTRUCT: TokenType;
     DISTINCT: TokenType;

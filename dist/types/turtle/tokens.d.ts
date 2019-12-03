@@ -10,6 +10,8 @@ export declare const turtleTokenMap: {
     TRUE: TokenType;
     FALSE: TokenType;
     DoubleCaret: any;
+    LEmbed: any;
+    REmbed: any;
     Comma: any;
     Semicolon: any;
     A: any;
