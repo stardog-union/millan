@@ -1,6 +1,6 @@
 import { Lexer, IToken, IRecognitionException, IParserConfig } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
-import { ModeString } from 'helpers/types';
+import { ModeString } from '../helpers/types';
 export declare class SrsParser extends TurtleParser {
     private sparqlSrsVisitor;
     protected lexer: Lexer;
