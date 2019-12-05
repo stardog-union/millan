@@ -72,9 +72,28 @@ export class TrigParser extends TurtleParser {
   });
 
   triplesOrGraph = this.RULE('triplesOrGraph', (mode: ModeString) => {
-    this.SUBRULE(this.labelOrSubject);
+    let didParseEmbeddedTriplePattern = false;
+
     this.OR([
-      { ALT: () => this.SUBRULE(this.wrappedGraph, { ARGS: [mode] }) },
+      {
+        ALT: () => this.SUBRULE(this.labelOrSubject),
+      },
+
+      {
+        GATE: () => mode === 'stardog',
+        ALT: () => {
+          const result = this.SUBRULE(this.EmbeddedTriplePattern);
+          didParseEmbeddedTriplePattern =
+            result.name === 'EmbeddedTriplePattern';
+        },
+      },
+    ]);
+    this.OR1([
+      {
+        // embedded triple patterns cannot precede wrapped graphs
+        GATE: () => !didParseEmbeddedTriplePattern,
+        ALT: () => this.SUBRULE(this.wrappedGraph, { ARGS: [mode] }),
+      },
       {
         ALT: () => {
           this.SUBRULE(this.predicateObjectList);
