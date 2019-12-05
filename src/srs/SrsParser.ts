@@ -25,7 +25,7 @@ import {
   addThenClauseErrorsToErrors,
   addIfClauseErrorsToErrors,
 } from './customErrors';
-import { ModeString } from 'helpers/types';
+import { ModeString } from '../helpers/types';
 
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor: ReturnType<typeof getSparqlSrsVisitor>;
