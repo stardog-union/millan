@@ -2,7 +2,8 @@ import { join } from 'path';
 import { getAllFileContents, makeExpectExtensionForParse } from './utils/main';
 import { StardogSparqlParser } from '../..';
 
-const { parse } = new StardogSparqlParser();
+const parser = new StardogSparqlParser();
+const { parse } = parser;
 
 expect.extend(makeExpectExtensionForParse(parse));
 

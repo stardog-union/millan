@@ -1,0 +1,6 @@
+prefix : <urn:>
+
+SELECT ?s ?o ?startTime
+WHERE {
+    ?s :worksAt { :startedAt ?startTime } ?o
+}
