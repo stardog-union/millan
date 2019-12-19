@@ -136,7 +136,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.namespacesMap[pnameImageWithoutColon] = iriImage;
   });
 
-  triples = this.RULE('triples', (allowEdgeProperties: boolean) => {
+  triples = this.RULE('triples', (allowEdgeProperties: boolean = false) => {
     this.OR([
       {
         ALT: () => {
@@ -173,7 +173,7 @@ export class TurtleParser extends Parser implements IStardogParser {
 
   predicateObjectList = this.RULE(
     'predicateObjectList',
-    (allowEdgeProperties: boolean) => {
+    (allowEdgeProperties: boolean = false) => {
       this.SUBRULE(this.verb);
       this.OPTION({
         GATE: () => allowEdgeProperties,

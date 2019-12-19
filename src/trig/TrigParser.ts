@@ -82,7 +82,7 @@ export class TrigParser extends TurtleParser {
 
   triplesOrGraph = this.RULE(
     'triplesOrGraph',
-    (allowEdgeProperties: boolean) => {
+    (allowEdgeProperties: boolean = false) => {
       let didParseEmbeddedTriplePattern = false;
 
       this.OR([
