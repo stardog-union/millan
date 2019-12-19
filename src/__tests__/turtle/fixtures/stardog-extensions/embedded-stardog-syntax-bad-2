@@ -1,0 +1,5 @@
+# nested edge properties are not allowed
+
+@prefix : <stardog> .
+
+:s1 :p1 {:p2 {:p3 :o3} :o2} :o1 .

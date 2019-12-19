@@ -1,0 +1,5 @@
+# inline edge property cannot be used with object lists
+
+@prefix : <stardog> .
+
+:s :p {:x :y} :o1 , :o2 .

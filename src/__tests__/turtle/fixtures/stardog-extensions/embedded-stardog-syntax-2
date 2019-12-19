@@ -1,0 +1,9 @@
+PREFIX : <http://example.com/>
+
+[] :p1 { :q1 :o1 } [
+   :p2 { :q2 :o2 } [
+     :p3 [
+       :p4 { :q4 :o4 } "x"
+     ]
+   ]
+] .

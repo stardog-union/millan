@@ -1,0 +1,10 @@
+@prefix : <stardog> .
+@prefix rdfs: <http://example.com/> .
+
+:Alice rdfs:label "Alice" ;
+       :worksAt{:startedAt 2009 ; :endedAt 2015} :Alpha ;
+       :worksAt {  :startedAt 2015 } :Beta ;
+       :supervises {:startedAt 2013 ; :endedAt 2015} [
+          :worksAt {:startedAt 2012} :Alpha ;
+          rdfs:label "Bob"
+        ] .

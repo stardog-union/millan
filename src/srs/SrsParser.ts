@@ -188,11 +188,12 @@ export class SrsParser extends TurtleParser {
   };
 
   SrsDoc = this.RULE('SrsDoc', (mode: ModeString) => {
+    const allowEdgeProperties = mode === 'stardog';
     this.SUBRULE(this.turtleDoc, { ARGS: [mode] });
     this.MANY(() => {
       this.SUBRULE(this.RuleDoc);
       this.MANY1(() => {
-        this.SUBRULE(this.triples, { ARGS: [mode] });
+        this.SUBRULE(this.triples, { ARGS: [allowEdgeProperties] });
         this.CONSUME(sparqlTokenMap.Period);
       });
     });

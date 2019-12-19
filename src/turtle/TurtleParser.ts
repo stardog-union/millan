@@ -77,15 +77,18 @@ export class TurtleParser extends Parser implements IStardogParser {
   }
 
   turtleDoc = this.RULE('turtleDoc', (mode: ModeString) => {
-    this.MANY(() => this.SUBRULE(this.statement, { ARGS: [mode] }));
+    const allowEdgeProperties = mode === 'stardog';
+    this.MANY(() =>
+      this.SUBRULE(this.statement, { ARGS: [allowEdgeProperties] })
+    );
   });
 
-  statement = this.RULE('statement', (mode: ModeString) => {
+  statement = this.RULE('statement', (allowEdgeProperties: boolean) => {
     this.OR([
       { ALT: () => this.SUBRULE(this.directive) },
       {
         ALT: () => {
-          this.SUBRULE(this.triples, { ARGS: [mode] });
+          this.SUBRULE(this.triples, { ARGS: [allowEdgeProperties] });
           this.CONSUME(turtleTokenMap.Period);
         },
       },
@@ -133,7 +136,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.namespacesMap[pnameImageWithoutColon] = iriImage;
   });
 
-  triples = this.RULE('triples', (mode: ModeString) => {
+  triples = this.RULE('triples', (allowEdgeProperties: boolean) => {
     this.OR([
       {
         ALT: () => {
@@ -142,7 +145,7 @@ export class TurtleParser extends Parser implements IStardogParser {
               ALT: () => this.SUBRULE(this.subject),
             },
             {
-              GATE: () => mode === 'stardog',
+              GATE: () => allowEdgeProperties,
               ALT: () => this.SUBRULE(this.EmbeddedTriplePattern),
             },
           ]);
@@ -160,43 +163,45 @@ export class TurtleParser extends Parser implements IStardogParser {
 
   // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
   // properties/embedded triples/a subset of RDF*.
-  triplesNotEmbedded = this.RULE('triplesNotEmbedded', () => {
-    this.OR([
-      {
-        ALT: () => {
-          this.SUBRULE(this.subject);
-          this.SUBRULE(this.predicateObjectList);
-        },
-      },
-      {
-        ALT: () => {
-          this.SUBRULE(this.blankNodePropertyList);
-          this.OPTION(() => this.SUBRULE1(this.predicateObjectList));
-        },
-      },
-    ]);
-  });
-
-  // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
-  // properties/embedded triples/a subset of RDF*.
-  // ALSO NOTE: Intentionally does not conform to the RDF* spec. Stardog does
-  // not allow nesting of embedded triples.
+  // ALSO NOTE: Intentionally does not conform to the RDF* spec.
+  // Stardog does not allow nesting of embedded triples.
   EmbeddedTriplePattern = this.RULE('EmbeddedTriplePattern', () => {
     this.CONSUME(turtleTokenMap.LEmbed);
-    this.SUBRULE(this.triplesNotEmbedded);
+    this.SUBRULE(this.triples);
     this.CONSUME(turtleTokenMap.REmbed);
   });
 
-  predicateObjectList = this.RULE('predicateObjectList', () => {
-    this.SUBRULE(this.verb);
-    this.SUBRULE(this.objectList);
-    this.MANY(() => {
-      this.CONSUME(turtleTokenMap.Semicolon);
-      this.OPTION(() => {
-        this.SUBRULE1(this.verb);
-        this.SUBRULE1(this.objectList);
+  predicateObjectList = this.RULE(
+    'predicateObjectList',
+    (allowEdgeProperties: boolean) => {
+      this.SUBRULE(this.verb);
+      this.OPTION({
+        GATE: () => allowEdgeProperties,
+        DEF: () => this.SUBRULE(this.EmbeddedPredicateObjectList),
       });
-    });
+      this.SUBRULE(this.objectList, { ARGS: [allowEdgeProperties] });
+      this.MANY(() => {
+        this.CONSUME(turtleTokenMap.Semicolon);
+        this.OPTION1(() => {
+          this.SUBRULE1(this.verb);
+          this.OPTION2({
+            GATE: () => allowEdgeProperties,
+            DEF: () => this.SUBRULE1(this.EmbeddedPredicateObjectList),
+          });
+          this.SUBRULE1(this.objectList, { ARGS: [allowEdgeProperties] });
+        });
+      });
+    }
+  );
+
+  // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
+  // properties/embedded triples/a subset of RDF*.
+  // ALSO NOTE: Intentionally does not conform to the RDF* spec.
+  // Stardog does not allow nesting of embedded triples.
+  EmbeddedPredicateObjectList = this.RULE('EmbeddedPredicateObjectList', () => {
+    this.CONSUME(turtleTokenMap.LCurly);
+    this.SUBRULE(this.predicateObjectList);
+    this.CONSUME(turtleTokenMap.RCurly);
   });
 
   subject = this.RULE('subject', () => {
@@ -211,11 +216,11 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.SUBRULE(this.iri);
   });
 
-  objectList = this.RULE('objectList', () => {
-    this.SUBRULE(this.object);
+  objectList = this.RULE('objectList', (allowEdgeProperties: boolean) => {
+    this.SUBRULE(this.object, { ARGS: [allowEdgeProperties] });
     this.MANY(() => {
       this.CONSUME(turtleTokenMap.Comma);
-      this.SUBRULE1(this.object);
+      this.SUBRULE1(this.object, { ARGS: [allowEdgeProperties] });
     });
   });
 
@@ -234,18 +239,26 @@ export class TurtleParser extends Parser implements IStardogParser {
     ]);
   });
 
-  blankNodePropertyList = this.RULE('blankNodePropertyList', () => {
-    this.CONSUME(turtleTokenMap.LBracket);
-    this.SUBRULE(this.predicateObjectList);
-    this.CONSUME(turtleTokenMap.RBracket);
-  });
+  blankNodePropertyList = this.RULE(
+    'blankNodePropertyList',
+    (allowEdgeProperties: boolean) => {
+      this.CONSUME(turtleTokenMap.LBracket);
+      this.SUBRULE(this.predicateObjectList, { ARGS: [allowEdgeProperties] });
+      this.CONSUME(turtleTokenMap.RBracket);
+    }
+  );
 
-  object = this.RULE('object', () => {
+  object = this.RULE('object', (allowEdgeProperties: boolean) => {
     this.OR([
       { ALT: () => this.SUBRULE(this.iri) },
       { ALT: () => this.SUBRULE(this.BlankNode) },
       { ALT: () => this.SUBRULE(this.collection) },
-      { ALT: () => this.SUBRULE(this.blankNodePropertyList) },
+      {
+        ALT: () =>
+          this.SUBRULE(this.blankNodePropertyList, {
+            ARGS: [allowEdgeProperties],
+          }),
+      },
       { ALT: () => this.SUBRULE(this.literal) },
     ]);
   });
