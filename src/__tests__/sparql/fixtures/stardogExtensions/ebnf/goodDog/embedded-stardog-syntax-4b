@@ -5,6 +5,3 @@ WHERE {
     [ rdfs:label ?name ;
       :worksAt { :startedAt ?startTime } ?company ]
 }
-
-
-

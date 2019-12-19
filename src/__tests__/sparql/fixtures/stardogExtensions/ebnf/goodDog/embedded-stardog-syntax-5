@@ -7,6 +7,3 @@ WHERE {
   ?p2 :worksAt { :startedAt ?startTime } ?c .
   FILTER (?superviseTime = ?startTime +1)
 }
-
-
-
