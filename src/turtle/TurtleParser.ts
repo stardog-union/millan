@@ -136,26 +136,37 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.namespacesMap[pnameImageWithoutColon] = iriImage;
   });
 
-  triples = this.RULE('triples', (allowEdgeProperties: boolean = false) => {
+  // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
+  // properties/embedded triples/a subset of RDF*.
+  // ALSO NOTE: Intentionally does not conform to the RDF* spec.
+  // Stardog does not allow nesting of embedded triples.
+  triples = this.RULE('triples', (allowEdgeProperties: boolean) => {
     this.OR([
       {
         ALT: () => {
-          this.OR1([
-            {
-              ALT: () => this.SUBRULE(this.subject),
-            },
-            {
-              GATE: () => allowEdgeProperties,
-              ALT: () => this.SUBRULE(this.EmbeddedTriplePattern),
-            },
-          ]);
+          this.SUBRULE(this.subject);
+          this.SUBRULE1(this.predicateObjectList, {
+            ARGS: [allowEdgeProperties],
+          });
+        },
+      },
+      {
+        GATE: () => Boolean(allowEdgeProperties),
+        ALT: () => {
+          this.SUBRULE(this.EmbeddedTriplePattern);
           this.SUBRULE(this.predicateObjectList);
         },
       },
       {
         ALT: () => {
-          this.SUBRULE(this.blankNodePropertyList);
-          this.OPTION(() => this.SUBRULE1(this.predicateObjectList));
+          this.SUBRULE(this.blankNodePropertyList, {
+            ARGS: [allowEdgeProperties],
+          });
+          this.OPTION(() =>
+            this.SUBRULE2(this.predicateObjectList, {
+              ARGS: [allowEdgeProperties],
+            })
+          );
         },
       },
     ]);
@@ -171,24 +182,44 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.CONSUME(turtleTokenMap.REmbed);
   });
 
+  // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
+  // properties/embedded triples/a subset of RDF*.
+  // ALSO NOTE: Intentionally does not conform to the RDF* spec.
+  // Stardog does not allow embedded triples with object lists.
   predicateObjectList = this.RULE(
     'predicateObjectList',
-    (allowEdgeProperties: boolean = false) => {
+    (allowEdgeProperties: boolean) => {
       this.SUBRULE(this.verb);
-      this.OPTION({
-        GATE: () => allowEdgeProperties,
-        DEF: () => this.SUBRULE(this.EmbeddedPredicateObjectList),
-      });
-      this.SUBRULE(this.objectList, { ARGS: [allowEdgeProperties] });
+      this.OR([
+        {
+          ALT: () =>
+            this.SUBRULE(this.objectList, { ARGS: [allowEdgeProperties] }),
+        },
+        {
+          GATE: () => Boolean(allowEdgeProperties),
+          ALT: () => {
+            this.SUBRULE(this.EmbeddedPredicateObjectList);
+            this.SUBRULE(this.object, { ARGS: [allowEdgeProperties] });
+          },
+        },
+      ]);
       this.MANY(() => {
         this.CONSUME(turtleTokenMap.Semicolon);
-        this.OPTION1(() => {
+        this.OPTION(() => {
           this.SUBRULE1(this.verb);
-          this.OPTION2({
-            GATE: () => allowEdgeProperties,
-            DEF: () => this.SUBRULE1(this.EmbeddedPredicateObjectList),
-          });
-          this.SUBRULE1(this.objectList, { ARGS: [allowEdgeProperties] });
+          this.OR1([
+            {
+              ALT: () =>
+                this.SUBRULE1(this.objectList, { ARGS: [allowEdgeProperties] }),
+            },
+            {
+              GATE: () => Boolean(allowEdgeProperties),
+              ALT: () => {
+                this.SUBRULE1(this.EmbeddedPredicateObjectList);
+                this.SUBRULE1(this.object, { ARGS: [allowEdgeProperties] });
+              },
+            },
+          ]);
         });
       });
     }
