@@ -1,0 +1,6 @@
+prefix : <urn:>
+
+SELECT ?s ?p ?o ?startTime ?endTime
+WHERE {
+    ?s ?p { :startedAt ?startTime ; :endedAt ?endTime} ?o
+}

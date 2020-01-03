@@ -82,8 +82,16 @@ export class StardogSparqlParser extends BaseSparqlParser {
     this.OR([
       {
         ALT: () => {
-          this.SUBRULE(this.VarOrTermOrEmbeddedTriplePattern);
+          this.SUBRULE(this.VarOrTerm);
           this.SUBRULE(this.PropertyListNotEmpty);
+        },
+      },
+      {
+        ALT: () => {
+          // NOTE: Intentionally does not conform to the SPARQL* spec.
+          // Stardog does not allow nesting of embedded triples.
+          this.SUBRULE(this.EmbeddedTriplePattern);
+          this.SUBRULE1(this.PropertyListNotEmpty, { ARGS: [true] });
         },
       },
       {
@@ -93,6 +101,57 @@ export class StardogSparqlParser extends BaseSparqlParser {
         },
       },
     ]);
+  });
+
+  // NOTE: Intentionally does not conform to the SPARQL* spec.
+  // Stardog does not allow embedded triples with object lists.
+  PropertyListNotEmpty = this.OVERRIDE_RULE(
+    'PropertyListNotEmpty',
+    (disallowEdgeProperties: boolean) => {
+      this.SUBRULE(this.Verb);
+      this.OR([
+        {
+          ALT: () => {
+            this.SUBRULE(this.ObjectList);
+          },
+        },
+        {
+          GATE: () => !disallowEdgeProperties,
+          ALT: () => {
+            this.SUBRULE(this.EmbeddedPropertyList);
+            this.SUBRULE(this.Object);
+          },
+        },
+      ]);
+      this.MANY(() => {
+        this.CONSUME(sparqlTokenMap.Semicolon);
+        this.OPTION(() => {
+          this.SUBRULE1(this.Verb);
+          this.OR1([
+            {
+              ALT: () => {
+                this.SUBRULE1(this.ObjectList);
+              },
+            },
+            {
+              GATE: () => !disallowEdgeProperties,
+              ALT: () => {
+                this.SUBRULE1(this.EmbeddedPropertyList);
+                this.SUBRULE1(this.Object);
+              },
+            },
+          ]);
+        });
+      });
+    }
+  );
+
+  // NOTE: Intentionally does not conform to the SPARQL* spec.
+  // Stardog does not allow nesting of embedded triples.
+  EmbeddedPropertyList = this.RULE('EmbeddedPropertyList', () => {
+    this.CONSUME(sparqlTokenMap.LCurly);
+    this.SUBRULE(this.PropertyListNotEmpty, { ARGS: [true] });
+    this.CONSUME(sparqlTokenMap.RCurly);
   });
 
   Object = this.OVERRIDE_RULE('Object', () => {
@@ -110,17 +169,84 @@ export class StardogSparqlParser extends BaseSparqlParser {
     this.OR([
       {
         ALT: () => {
-          this.SUBRULE(this.TriplesNodePath);
-          this.SUBRULE(this.PropertyListPath);
+          this.SUBRULE(this.VarOrTerm);
+          this.SUBRULE(this.PropertyListPathNotEmpty);
         },
       },
       {
         ALT: () => {
-          this.SUBRULE(this.VarOrTermOrEmbeddedTriplePattern);
-          this.SUBRULE(this.PropertyListPathNotEmpty);
+          // NOTE: Intentionally does not conform to the SPARQL* spec.
+          // Stardog does not allow nesting of embedded triples.
+          this.SUBRULE(this.EmbeddedTriplePattern);
+          this.SUBRULE1(this.PropertyListPathNotEmpty, { ARGS: [true] });
+        },
+      },
+      {
+        ALT: () => {
+          this.SUBRULE(this.TriplesNodePath);
+          this.SUBRULE(this.PropertyListPath);
         },
       },
     ]);
+  });
+
+  // NOTE: Intentionally does not conform to the SPARQL* spec.
+  // Stardog does not allow embedded triples with paths or object lists.
+  PropertyListPathNotEmpty = this.OVERRIDE_RULE(
+    'PropertyListPathNotEmpty',
+    (disallowEdgeProperties: boolean) => {
+      this.OR([
+        {
+          ALT: () => {
+            this.OR1([
+              { ALT: () => this.SUBRULE(this.VerbPath) },
+              { ALT: () => this.SUBRULE1(this.VerbSimple) },
+            ]);
+            this.SUBRULE(this.ObjectListPath);
+          },
+        },
+        {
+          GATE: () => !disallowEdgeProperties,
+          ALT: () => {
+            this.SUBRULE(this.Verb);
+            this.SUBRULE(this.EmbeddedPropertyListPath);
+            this.SUBRULE(this.ObjectPath);
+          },
+        },
+      ]);
+      this.MANY(() => {
+        this.CONSUME(sparqlTokenMap.Semicolon);
+        this.OPTION(() => {
+          this.OR2([
+            {
+              ALT: () => {
+                this.OR3([
+                  { ALT: () => this.SUBRULE1(this.VerbPath) },
+                  { ALT: () => this.SUBRULE2(this.VerbSimple) },
+                ]);
+                this.SUBRULE1(this.ObjectListPath);
+              },
+            },
+            {
+              GATE: () => !disallowEdgeProperties,
+              ALT: () => {
+                this.SUBRULE1(this.Verb);
+                this.SUBRULE1(this.EmbeddedPropertyListPath);
+                this.SUBRULE1(this.ObjectPath);
+              },
+            },
+          ]);
+        });
+      });
+    }
+  );
+
+  // NOTE: Intentionally does not conform to the SPARQL* spec.
+  // Stardog does not allow nesting of embedded triples.
+  EmbeddedPropertyListPath = this.RULE('EmbeddedPropertyListPath', () => {
+    this.CONSUME(sparqlTokenMap.LCurly);
+    this.SUBRULE(this.PropertyListPathNotEmpty, { ARGS: [true] });
+    this.CONSUME(sparqlTokenMap.RCurly);
   });
 
   GraphNodePath = this.OVERRIDE_RULE('GraphNodePath', () => {

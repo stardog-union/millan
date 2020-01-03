@@ -48,60 +48,73 @@ export class TrigParser extends TurtleParser {
   };
 
   trigDoc = this.RULE('trigDoc', (mode: ModeString) => {
+    const allowEdgeProperties = mode === 'stardog';
     this.MANY(() => {
       this.OR([
         { ALT: () => this.SUBRULE(this.directive) },
-        { ALT: () => this.SUBRULE(this.block, { ARGS: [mode] }) },
+        {
+          ALT: () => this.SUBRULE(this.block, { ARGS: [allowEdgeProperties] }),
+        },
       ]);
     });
   });
 
-  block = this.RULE('block', (mode: ModeString) => {
+  block = this.RULE('block', (allowEdgeProperties: boolean) => {
     this.OR([
-      { ALT: () => this.SUBRULE(this.triplesOrGraph, { ARGS: [mode] }) },
-      { ALT: () => this.SUBRULE(this.wrappedGraph, { ARGS: [mode] }) },
+      {
+        ALT: () =>
+          this.SUBRULE(this.triplesOrGraph, { ARGS: [allowEdgeProperties] }),
+      },
+      {
+        ALT: () =>
+          this.SUBRULE(this.wrappedGraph, { ARGS: [allowEdgeProperties] }),
+      },
       { ALT: () => this.SUBRULE(this.triples2) },
       {
         ALT: () => {
           this.CONSUME(trigTokenMap.GRAPH);
           this.SUBRULE(this.labelOrSubject);
-          this.SUBRULE1(this.wrappedGraph, { ARGS: [mode] });
+          this.SUBRULE1(this.wrappedGraph, { ARGS: [allowEdgeProperties] });
         },
       },
     ]);
   });
 
-  triplesOrGraph = this.RULE('triplesOrGraph', (mode: ModeString) => {
-    let didParseEmbeddedTriplePattern = false;
+  triplesOrGraph = this.RULE(
+    'triplesOrGraph',
+    (allowEdgeProperties: boolean) => {
+      let didParseEmbeddedTriplePattern = false;
 
-    this.OR([
-      {
-        ALT: () => this.SUBRULE(this.labelOrSubject),
-      },
+      this.OR([
+        {
+          ALT: () => this.SUBRULE(this.labelOrSubject),
+        },
 
-      {
-        GATE: () => mode === 'stardog',
-        ALT: () => {
-          const result = this.SUBRULE(this.EmbeddedTriplePattern);
-          didParseEmbeddedTriplePattern =
-            result.name === 'EmbeddedTriplePattern';
+        {
+          GATE: () => Boolean(allowEdgeProperties),
+          ALT: () => {
+            const result = this.SUBRULE(this.EmbeddedTriplePattern);
+            didParseEmbeddedTriplePattern =
+              result.name === 'EmbeddedTriplePattern';
+          },
         },
-      },
-    ]);
-    this.OR1([
-      {
-        // embedded triple patterns cannot precede wrapped graphs
-        GATE: () => !didParseEmbeddedTriplePattern,
-        ALT: () => this.SUBRULE(this.wrappedGraph, { ARGS: [mode] }),
-      },
-      {
-        ALT: () => {
-          this.SUBRULE(this.predicateObjectList);
-          this.CONSUME(trigTokenMap.Period);
+      ]);
+      this.OR1([
+        {
+          // embedded triple patterns cannot precede wrapped graphs
+          GATE: () => !didParseEmbeddedTriplePattern,
+          ALT: () =>
+            this.SUBRULE(this.wrappedGraph, { ARGS: [allowEdgeProperties] }),
         },
-      },
-    ]);
-  });
+        {
+          ALT: () => {
+            this.SUBRULE(this.predicateObjectList);
+            this.CONSUME(trigTokenMap.Period);
+          },
+        },
+      ]);
+    }
+  );
 
   triples2 = this.RULE('triples2', () => {
     this.OR([
@@ -122,17 +135,21 @@ export class TrigParser extends TurtleParser {
     ]);
   });
 
-  wrappedGraph = this.RULE('wrappedGraph', (mode: ModeString) => {
+  wrappedGraph = this.RULE('wrappedGraph', (allowEdgeProperties: boolean) => {
     this.CONSUME(trigTokenMap.LCurly);
-    this.OPTION(() => this.SUBRULE(this.triplesBlock, { ARGS: [mode] }));
+    this.OPTION(() =>
+      this.SUBRULE(this.triplesBlock, { ARGS: [allowEdgeProperties] })
+    );
     this.CONSUME(trigTokenMap.RCurly);
   });
 
-  triplesBlock = this.RULE('triplesBlock', (mode: ModeString) => {
-    this.SUBRULE(this.triples, { ARGS: [mode] });
+  triplesBlock = this.RULE('triplesBlock', (allowEdgeProperties: boolean) => {
+    this.SUBRULE(this.triples, { ARGS: [allowEdgeProperties] });
     this.OPTION(() => {
       this.CONSUME(trigTokenMap.Period);
-      this.OPTION1(() => this.SUBRULE(this.triplesBlock, { ARGS: [mode] }));
+      this.OPTION1(() =>
+        this.SUBRULE(this.triplesBlock, { ARGS: [allowEdgeProperties] })
+      );
     });
   });
 

@@ -1,0 +1,9 @@
+prefix : <urn:>
+
+SELECT ?p1 ?p2
+WHERE {
+  ?p1 :worksAt ?c ;
+      :supervises { :startedAt ?superviseTime } ?p2 .
+  ?p2 :worksAt { :startedAt ?startTime } ?c .
+  FILTER (?superviseTime = ?startTime +1)
+}

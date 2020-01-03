@@ -839,7 +839,6 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
 
   PropertyListNotEmpty = this.RULE('PropertyListNotEmpty', () => {
     log('PropertyListNotEmpty');
-
     this.SUBRULE(this.Verb);
     this.SUBRULE(this.ObjectList);
     this.MANY(() => {

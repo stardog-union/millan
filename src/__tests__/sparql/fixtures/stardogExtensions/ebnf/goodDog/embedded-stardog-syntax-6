@@ -1,0 +1,6 @@
+prefix : <urn:>
+
+SELECT ?supervisor ?employee
+{
+  [ rdfs:label ?supervisor ] :supervises{:startedAt ?startTime} [ rdfs:label ?employee ]
+}

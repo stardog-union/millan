@@ -1,0 +1,7 @@
+prefix : <urn:>
+
+SELECT ?name ?company ?startTime
+WHERE {
+    [ rdfs:label ?name ;
+      :worksAt { :startedAt ?startTime } ?company ]
+}

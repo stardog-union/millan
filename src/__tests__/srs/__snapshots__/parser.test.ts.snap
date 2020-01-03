@@ -675,7 +675,7 @@ Object {
                                               "name": "PropertyListPathNotEmpty",
                                             },
                                           ],
-                                          "VarOrTermOrEmbeddedTriplePattern": Array [
+                                          "VarOrTerm": Array [
                                             Object {
                                               "children": Object {
                                                 "Var": Array [
@@ -708,7 +708,7 @@ Object {
                                                   },
                                                 ],
                                               },
-                                              "name": "VarOrTermOrEmbeddedTriplePattern",
+                                              "name": "VarOrTerm",
                                             },
                                           ],
                                         },
@@ -1031,7 +1031,7 @@ Object {
                                   "name": "PropertyListPathNotEmpty",
                                 },
                               ],
-                              "VarOrTermOrEmbeddedTriplePattern": Array [
+                              "VarOrTerm": Array [
                                 Object {
                                   "children": Object {
                                     "Var": Array [
@@ -1064,7 +1064,7 @@ Object {
                                       },
                                     ],
                                   },
-                                  "name": "VarOrTermOrEmbeddedTriplePattern",
+                                  "name": "VarOrTerm",
                                 },
                               ],
                             },
@@ -1378,7 +1378,7 @@ Object {
                                               "name": "PropertyListPathNotEmpty",
                                             },
                                           ],
-                                          "VarOrTermOrEmbeddedTriplePattern": Array [
+                                          "VarOrTerm": Array [
                                             Object {
                                               "children": Object {
                                                 "Var": Array [
@@ -1411,7 +1411,7 @@ Object {
                                                   },
                                                 ],
                                               },
-                                              "name": "VarOrTermOrEmbeddedTriplePattern",
+                                              "name": "VarOrTerm",
                                             },
                                           ],
                                         },
@@ -1797,7 +1797,7 @@ Object {
                                   "name": "PropertyListPathNotEmpty",
                                 },
                               ],
-                              "VarOrTermOrEmbeddedTriplePattern": Array [
+                              "VarOrTerm": Array [
                                 Object {
                                   "children": Object {
                                     "Var": Array [
@@ -1830,7 +1830,7 @@ Object {
                                       },
                                     ],
                                   },
-                                  "name": "VarOrTermOrEmbeddedTriplePattern",
+                                  "name": "VarOrTerm",
                                 },
                               ],
                             },
