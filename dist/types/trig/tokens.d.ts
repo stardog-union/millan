@@ -3,6 +3,8 @@ export declare const trigTokenMap: {
     Comment: TokenType;
     LBracket: any;
     RBracket: any;
+    LCurly: any;
+    RCurly: any;
     LParen: any;
     RParen: any;
     Period: any;
@@ -45,8 +47,6 @@ export declare const trigTokenMap: {
     PN_LOCAL: TokenType;
     PN_LOCAL_ESC: TokenType;
     Unknown: TokenType;
-    LCurly: TokenType;
-    RCurly: TokenType;
     GRAPH: TokenType;
 };
 export declare const trigTokenTypes: TokenType[];

@@ -8,8 +8,12 @@ export declare class StardogSparqlParser extends BaseSparqlParser {
     PathSpec: (idxInCallingRule?: number, ...args: any[]) => any;
     GraphPatternNotTriples: (idxInCallingRule?: number, ...args: any[]) => void;
     TriplesSameSubject: (idxInCallingRule?: number, ...args: any[]) => void;
+    PropertyListNotEmpty: (idxInCallingRule?: number, ...args: any[]) => void;
+    EmbeddedPropertyList: (idxInCallingRule?: number, ...args: any[]) => any;
     Object: (idxInCallingRule?: number, ...args: any[]) => void;
     TriplesSameSubjectPath: (idxInCallingRule?: number, ...args: any[]) => void;
+    PropertyListPathNotEmpty: (idxInCallingRule?: number, ...args: any[]) => void;
+    EmbeddedPropertyListPath: (idxInCallingRule?: number, ...args: any[]) => any;
     GraphNodePath: (idxInCallingRule?: number, ...args: any[]) => void;
     EmbeddedTriplePattern: (idxInCallingRule?: number, ...args: any[]) => any;
     VarOrTermOrEmbeddedTriplePattern: (idxInCallingRule?: number, ...args: any[]) => any;

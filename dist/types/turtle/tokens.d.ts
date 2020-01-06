@@ -3,6 +3,8 @@ export declare const turtleTokenMap: {
     Comment: TokenType;
     LBracket: any;
     RBracket: any;
+    LCurly: any;
+    RCurly: any;
     LParen: any;
     RParen: any;
     Period: any;

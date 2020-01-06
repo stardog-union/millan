@@ -20,9 +20,9 @@ export declare class TurtleParser extends Parser implements IStardogParser {
     sparqlBase: (idxInCallingRule?: number, ...args: any[]) => any;
     sparqlPrefix: (idxInCallingRule?: number, ...args: any[]) => any;
     triples: (idxInCallingRule?: number, ...args: any[]) => any;
-    triplesNotEmbedded: (idxInCallingRule?: number, ...args: any[]) => any;
     EmbeddedTriplePattern: (idxInCallingRule?: number, ...args: any[]) => any;
     predicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
+    EmbeddedPredicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
     subject: (idxInCallingRule?: number, ...args: any[]) => any;
     predicate: (idxInCallingRule?: number, ...args: any[]) => any;
     objectList: (idxInCallingRule?: number, ...args: any[]) => any;
