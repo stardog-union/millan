@@ -1,6 +1,6 @@
 {
   "name": "millan",
-  "version": "3.2.2",
+  "version": "4.0.0",
   "description": "The Stardog Whisperer (error-tolerant parsers for languages used with Stardog)",
   "keywords": [
     "stardog",
