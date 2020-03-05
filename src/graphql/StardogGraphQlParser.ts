@@ -291,14 +291,21 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
     this.CONSUME(stardogGraphQlTokenMap.GraphArgumentToken);
     this.CONSUME(stardogGraphQlTokenMap.Colon);
     this.OR([
-      { ALT: () => this.SUBRULE(this.EnumValue) },
+      { ALT: () => this.SUBRULE(this.EnumValueOrString) },
       {
         ALT: () => {
           this.CONSUME(stardogGraphQlTokenMap.LBracket);
-          this.MANY(() => this.SUBRULE1(this.EnumValue));
+          this.MANY(() => this.SUBRULE1(this.EnumValueOrString));
           this.CONSUME(stardogGraphQlTokenMap.RBracket);
         },
       },
+    ]);
+  });
+
+  EnumValueOrString = this.RULE('EnumValueOrString', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.EnumValue) },
+      { ALT: () => this.CONSUME(stardogGraphQlTokenMap.StringToken) },
     ]);
   });
 
