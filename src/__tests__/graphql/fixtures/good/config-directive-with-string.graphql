@@ -1,0 +1,27 @@
+query onlyCreditGraph @config(graph: "virtual://amgen")
+{
+  bank_CreditAccount {
+    bank_ownedBy
+  }
+}
+
+query onlyCreditGraph @config(graph: ["virtual://amgen"])
+{
+  bank_CreditAccount {
+    bank_ownedBy
+  }
+}
+
+query onlyCreditGraph @config(graph: ["virtual://amgen", "my:graph"])
+{
+  bank_CreditAccount {
+    bank_ownedBy
+  }
+}
+
+query onlyCreditGraph @config(graph: ["virtual://amgen", Human])
+{
+  bank_CreditAccount {
+    bank_ownedBy
+  }
+}

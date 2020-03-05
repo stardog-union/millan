@@ -31,6 +31,7 @@ export declare class StardogGraphQlParser extends BaseGraphQlParser {
     AliasArgument: (idxInCallingRule?: number, ...args: any[]) => any;
     AliasArgumentField: (idxInCallingRule?: number, ...args: any[]) => any;
     GraphArgument: (idxInCallingRule?: number, ...args: any[]) => any;
+    EnumValueOrString: (idxInCallingRule?: number, ...args: any[]) => any;
     TypeArgument: (idxInCallingRule?: number, ...args: any[]) => any;
     OrderByArgument: (idxInCallingRule?: number, ...args: any[]) => any;
     OrderByArgumentField: (idxInCallingRule?: number, ...args: any[]) => any;
