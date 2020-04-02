@@ -3,9 +3,12 @@ import { BaseSparqlParser } from './BaseSparqlParser';
 import { Parser } from 'chevrotain';
 
 export class StardogSparqlParser extends BaseSparqlParser {
-  constructor(options?) {
-    super(options, stardogSparqlTokens);
-    Parser.performSelfAnalysis(this);
+  constructor(options?, tokens = stardogSparqlTokens, shouldSkipAnalysis?) {
+    super(options, tokens);
+
+    if (!shouldSkipAnalysis) {
+      Parser.performSelfAnalysis(this);
+    }
   }
 
   Query = this.OVERRIDE_RULE('Query', () => {

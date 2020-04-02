@@ -179,4 +179,42 @@ export const fixtures = {
     BIND(xsd:integer(?rating4) AS ?rating4)
   }
   `,
+  bind: `
+  PREFIX : <http://example.com/>
+  MAPPING <urn:misc>
+  FROM JSON {
+    {
+      "datasets" : {
+        "?datasetName" : { "?datasetKey" : "?datasetVal" },
+        "dataset1" : { "x" : "?dataset1x" }
+      },
+      "bind_chain" : "?bindChainRoot",
+      "bind_chain_str" : "?bindChainStr"
+    }
+  }
+  TO {
+    ?datasetIri a :Dataset ;
+      :formalName ?formalName ;
+      ?datasetProp ?datasetVal .
+    # Constant in the subject position
+    <urn:root> :bindChain ?bindChainFinal ;
+      # shouldn't show up
+      :missing ?missing ;
+      :templateExprArg ?templateExprArg ;
+      :dataset1x ?dataset1x .
+  }
+  WHERE {
+    # chain of binds with multiple variable dependencies
+    bind(xsd:integer(?bindChainRoot) as ?bindChainInt)
+    bind(?bindChainInt + 1 as ?bindChainAdded)
+    bind(str(?bindChainAdded) as ?bindChainAddedStr)
+    bind(concat(?bindChainStr, ?bindChainAddedStr) as ?bindChainFinal)
+    # template with expr args
+    bind(template("http://example.com/something/{bindChainAddedStr}") as ?templateExprArg)
+    bind(template("http://example.com/dataset/{datasetName}") as ?datasetIri)
+    bind(template("http://example.com/dataset/{datasetKey}") as ?datasetProp)
+    # Regex with escaped chars
+    bind(replace(?datasetName, "dataset(\\d)", "This is #$1") as ?formalName)
+  }
+  `,
 };
