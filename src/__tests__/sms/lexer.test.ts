@@ -48,4 +48,30 @@ describe('sms lexer', () => {
       smsTokenMap.TO.tokenName
     );
   });
+  describe('tokenizes a csv mapping', () => {
+    it('with brace', () => {
+      const { tokens, errors } = lexer.tokenize(fixtures.csvMapping.brace);
+      const index = tokens.findIndex(
+        (token) => token.tokenType.tokenName === smsTokenMap.Csv.tokenName
+      );
+
+      expect(errors).toHaveLength(0);
+      expect(tokens[index].tokenType.tokenName).toBe(smsTokenMap.Csv.tokenName);
+      expect(tokens[index + 1].tokenType.tokenName).toBe(
+        smsTokenMap.LCurly.tokenName
+      );
+    });
+    it('no brace', () => {
+      const { tokens, errors } = lexer.tokenize(fixtures.csvMapping.no_brace);
+      const index = tokens.findIndex(
+        (token) => token.tokenType.tokenName === smsTokenMap.Csv.tokenName
+      );
+
+      expect(errors).toHaveLength(0);
+      expect(tokens[index].tokenType.tokenName).toBe(smsTokenMap.Csv.tokenName);
+      expect(tokens[index + 1].tokenType.tokenName).toBe(
+        smsTokenMap.TO.tokenName
+      );
+    });
+  });
 });

@@ -13,6 +13,7 @@ export declare class SmsParser extends StardogSparqlParser {
     JsonClause: (idxInCallingRule?: number, ...args: any[]) => any;
     GraphQlClause: (idxInCallingRule?: number, ...args: any[]) => any;
     SqlClause: (idxInCallingRule?: number, ...args: any[]) => any;
+    CsvClause: (idxInCallingRule?: number, ...args: any[]) => any;
     ToClause: (idxInCallingRule?: number, ...args: any[]) => any;
     WhereClause: (idxInCallingRule?: number, ...args: any[]) => void;
     Bind: (idxInCallingRule?: number, ...args: any[]) => void;

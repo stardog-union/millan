@@ -63,6 +63,9 @@ export class SmsParser extends StardogSparqlParser {
       {
         ALT: () => this.SUBRULE(this.GraphQlClause),
       },
+      {
+        ALT: () => this.SUBRULE(this.CsvClause),
+      },
     ]);
   });
 
@@ -83,6 +86,14 @@ export class SmsParser extends StardogSparqlParser {
     this.CONSUME(smsTokenMap.LCurly);
     this.CONSUME(smsTokenMap.SqlBlock);
     this.CONSUME(smsTokenMap.RCurly);
+  });
+
+  CsvClause = this.RULE('CsvClause', () => {
+    this.CONSUME(smsTokenMap.Csv);
+    this.OPTION(() => {
+      this.CONSUME(smsTokenMap.LCurly);
+      this.CONSUME(smsTokenMap.RCurly);
+    });
   });
 
   ToClause = this.RULE('ToClause', () => {
@@ -121,7 +132,7 @@ export class SmsParser extends StardogSparqlParser {
   });
 
   //
-  // Dupes from Sparql
+  // Sparql/Base Parser Overrides
   //
   TriplesSameSubject = this.OVERRIDE_RULE('TriplesSameSubject', () => {
     this.OR([

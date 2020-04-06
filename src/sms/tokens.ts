@@ -49,6 +49,10 @@ export const smsTokenMap = {
     name: 'Json',
     pattern: /json/i,
   }),
+  Csv: createToken({
+    name: 'Csv',
+    pattern: /csv/i,
+  }),
   Mapping: createToken({
     name: 'Mapping',
     pattern: /mapping/i,
@@ -134,6 +138,7 @@ const smsOnlyTokens: TokenType[] = [
   smsTokenMap.Sql,
   smsTokenMap.GraphQl,
   smsTokenMap.Json,
+  smsTokenMap.Csv,
   smsTokenMap.Mapping,
   smsTokenMap.SqlBlock,
   smsTokenMap.JsonBlock,
