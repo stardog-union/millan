@@ -1,6 +1,6 @@
 import { BaseSparqlParser } from './BaseSparqlParser';
 export declare class StardogSparqlParser extends BaseSparqlParser {
-    constructor(options?: any);
+    constructor(options?: any, tokens?: any, shouldSkipAnalysis?: any);
     Query: (idxInCallingRule?: number, ...args: any[]) => void;
     PathQuery: (idxInCallingRule?: number, ...args: any[]) => any;
     Via: (idxInCallingRule?: number, ...args: any[]) => any;

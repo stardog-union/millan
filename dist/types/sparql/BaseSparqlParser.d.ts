@@ -7,6 +7,7 @@ export declare class BaseSparqlParser extends Parser implements IStardogParser {
         errors: IRecognitionException[];
         cst: any;
     };
+    getInput: () => IToken[];
     parseGroupGraphPattern: (document: string) => {
         errors: IRecognitionException[];
         cst: any;

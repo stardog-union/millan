@@ -16,6 +16,16 @@ describe('SmsParser', () => {
     const { errors } = parser.parse(fixtures.graphQlMapping);
     expect(errors).toHaveLength(0);
   });
+  describe('parses the csv clause', () => {
+    it('with brace', () => {
+      const { errors } = parser.parse(fixtures.csvMapping.brace);
+      expect(errors).toHaveLength(0);
+    });
+    it('no brace', () => {
+      const { errors } = parser.parse(fixtures.csvMapping.no_brace);
+      expect(errors).toHaveLength(0);
+    });
+  });
   it('parses multiple json mappings with comments and prefixes', () => {
     const { errors } = parser.parse(fixtures.multipleJsonWithComments);
     expect(errors).toHaveLength(0);
@@ -26,6 +36,10 @@ describe('SmsParser', () => {
   });
   it('parses comments', () => {
     const { errors } = parser.parse(fixtures.comments);
+    expect(errors).toHaveLength(0);
+  });
+  it('parses valid bind inputs', () => {
+    const { errors } = parser.parse(fixtures.bind);
     expect(errors).toHaveLength(0);
   });
 });

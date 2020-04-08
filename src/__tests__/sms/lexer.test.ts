@@ -21,7 +21,7 @@ describe('sms lexer', () => {
   });
   it('successfully fails to tokenize a sql clause with a missing closing bracket, rather than hanging', () => {
     const { errors } = lexer.tokenize(fixtures.nonTerminatedSqlBlock);
-    expect(errors).toHaveLength(3);
+    expect(errors).toBeDefined();
   });
   it('tokenizes a json mapping', () => {
     const { tokens, errors } = lexer.tokenize(fixtures.jsonMapping);
@@ -47,5 +47,31 @@ describe('sms lexer', () => {
     expect(tokens[graphQlBlockIdx + 2].tokenType.tokenName).toBe(
       smsTokenMap.TO.tokenName
     );
+  });
+  describe('tokenizes a csv mapping', () => {
+    it('with brace', () => {
+      const { tokens, errors } = lexer.tokenize(fixtures.csvMapping.brace);
+      const index = tokens.findIndex(
+        (token) => token.tokenType.tokenName === smsTokenMap.Csv.tokenName
+      );
+
+      expect(errors).toHaveLength(0);
+      expect(tokens[index].tokenType.tokenName).toBe(smsTokenMap.Csv.tokenName);
+      expect(tokens[index + 1].tokenType.tokenName).toBe(
+        smsTokenMap.LCurly.tokenName
+      );
+    });
+    it('no brace', () => {
+      const { tokens, errors } = lexer.tokenize(fixtures.csvMapping.no_brace);
+      const index = tokens.findIndex(
+        (token) => token.tokenType.tokenName === smsTokenMap.Csv.tokenName
+      );
+
+      expect(errors).toHaveLength(0);
+      expect(tokens[index].tokenType.tokenName).toBe(smsTokenMap.Csv.tokenName);
+      expect(tokens[index + 1].tokenType.tokenName).toBe(
+        smsTokenMap.TO.tokenName
+      );
+    });
   });
 });
