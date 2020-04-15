@@ -609,7 +609,7 @@ export const keywords = {
 
   IN: createToken({
     name: 'IN',
-    pattern: /IN/i,
+    pattern: /\bIN\b/i,
   }),
 
   NOT_IN: createToken({
