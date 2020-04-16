@@ -6,18 +6,6 @@ const MAX_LENGTH = createToken({
   pattern: /MAX LENGTH/i,
 });
 
-const Unknown = createToken({
-  name: 'Unknown',
-  pattern: /(?:a\S|[^a\s])\w*/i,
-});
-
-const createKeyword = (name: string, pattern: string = name) =>
-  createToken({
-    name: name.toString(),
-    pattern: new RegExp(pattern, 'i').toString(),
-    longer_alt: Unknown,
-  });
-
 export const keywords = {
   SELECT: createToken({
     name: 'SELECT',
@@ -619,7 +607,10 @@ export const keywords = {
     pattern: /FALSE/i,
   }),
 
-  IN: createKeyword('IN'),
+  IN: createToken({
+    name: 'IN',
+    pattern: /\bIN\b/i,
+  }),
 
   NOT_IN: createToken({
     name: 'NOT_IN',
