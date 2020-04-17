@@ -1,635 +1,152 @@
-// @ts-ignore: import types for declarations
-import { createToken, TokenType } from 'chevrotain';
+import { ITokenConfig } from 'chevrotain';
+import helper from 'helpers/chevrotain';
 
-const MAX_LENGTH = createToken({
+export const createKeyword = ({
+  longer_alt = UNKNOWN,
+  ...props
+}: ITokenConfig) =>
+  helper.createKeyword({
+    longer_alt,
+    ...props,
+  });
+
+const UNKNOWN = createKeyword({ name: 'UNKNOWN', pattern: /\w+/i });
+const MAX_LENGTH = createKeyword({
   name: 'MAX_LENGTH',
   pattern: /MAX LENGTH/i,
 });
 
-const Unknown = createToken({
-  name: 'Unknown',
-  pattern: /(?:a\S|[^a\s])\w*/i,
-});
-
-const createKeyword = (name: string, pattern: string = name) =>
-  createToken({
-    name: name.toString(),
-    pattern: new RegExp(pattern, 'i').toString(),
-    longer_alt: Unknown,
-  });
-
 export const keywords = {
-  SELECT: createToken({
-    name: 'SELECT',
-    pattern: /SELECT/i,
-  }),
-
-  CONSTRUCT: createToken({
-    name: 'CONSTRUCT',
-    pattern: /CONSTRUCT/i,
-  }),
-
-  DISTINCT: createToken({
-    name: 'DISTINCT',
-    pattern: /DISTINCT/i,
-  }),
-
-  START: createToken({
-    name: 'START',
-    pattern: /START/i,
-  }),
-
-  END: createToken({
-    name: 'END',
-    pattern: /END/i,
-  }),
-
-  VIA: createToken({
-    name: 'VIA',
-    pattern: /VIA/i,
-  }),
-
-  PATHS: createToken({
-    name: 'PATHS',
-    pattern: /PATHS/i,
-  }),
-
-  PATHS_ALL: createToken({
-    name: 'PATHS_ALL',
-    pattern: /PATHS ALL/i,
-  }),
-
-  PATHS_SHORTEST: createToken({
+  SELECT: createKeyword({ name: 'SELECT' }),
+  CONSTRUCT: createKeyword({ name: 'CONSTRUCT' }),
+  DISTINCT: createKeyword({ name: 'DISTINCT' }),
+  START: createKeyword({ name: 'START' }),
+  END: createKeyword({ name: 'END' }),
+  VIA: createKeyword({ name: 'VIA' }),
+  PATHS: createKeyword({ name: 'PATHS' }),
+  PATHS_ALL: createKeyword({ name: 'PATHS_ALL', pattern: /PATHS ALL/i }),
+  PATHS_SHORTEST: createKeyword({
     name: 'PATHS_SHORTEST',
     pattern: /PATHS SHORTEST/i,
   }),
-
-  CYCLIC: createToken({
-    name: 'CYCLIC',
-    pattern: /CYCLIC/i,
-  }),
-
-  AS: createToken({
-    name: 'AS',
-    pattern: /AS/i,
-  }),
-
-  WHERE: createToken({
-    name: 'WHERE',
-    pattern: /WHERE/i,
-  }),
-
-  A: createToken({
-    name: 'A',
-    pattern: /a/,
-  }),
-
-  GROUP_BY: createToken({
-    name: 'GROUP_BY',
-    pattern: /GROUP BY/i,
-  }),
-
-  ORDER_BY: createToken({
-    name: 'ORDER_BY',
-    pattern: /ORDER BY/i,
-  }),
-
-  BY: createToken({
-    name: 'BY',
-    pattern: /BY/i,
-  }),
-
-  BASE: createToken({
-    name: 'BASE',
-    pattern: /BASE/i,
-  }),
-
-  PREFIX: createToken({
-    name: 'PREFIX',
-    pattern: /PREFIX/i,
-  }),
-
-  DESCRIBE: createToken({
-    name: 'DESCRIBE',
-    pattern: /DESCRIBE/i,
-  }),
-
-  ASK: createToken({
-    name: 'ASK',
-    pattern: /ASK/i,
-  }),
-
-  FROM: createToken({
-    name: 'FROM',
-    pattern: /FROM/i,
-  }),
-
-  REDUCED: createToken({
-    name: 'REDUCED',
-    pattern: /REDUCED/i,
-  }),
-
-  NAMED: createToken({
-    name: 'NAMED',
-    pattern: /NAMED/i,
-  }),
-
-  HAVING: createToken({
-    name: 'HAVING',
-    pattern: /HAVING/i,
-  }),
-
-  ASC: createToken({
-    name: 'ASC',
-    pattern: /ASC/i,
-  }),
-
-  DESC: createToken({
-    name: 'DESC',
-    pattern: /DESC/i,
-  }),
-
-  OFFSET: createToken({
-    name: 'OFFSET',
-    pattern: /OFFSET/i,
-  }),
-
-  LIMIT: createToken({
-    name: 'LIMIT',
-    pattern: /LIMIT/i,
-  }),
-
-  VALUES: createToken({
-    name: 'VALUES',
-    pattern: /VALUES/i,
-  }),
-
-  LOAD: createToken({
-    name: 'LOAD',
-    pattern: /LOAD/i,
-  }),
-
-  SILENT: createToken({
-    name: 'SILENT',
-    pattern: /SILENT/i,
-  }),
-
-  INTO: createToken({
-    name: 'INTO',
-    pattern: /INTO/i,
-  }),
-
-  CLEAR: createToken({
-    name: 'CLEAR',
-    pattern: /CLEAR/i,
-  }),
-
-  DROP: createToken({
-    name: 'DROP',
-    pattern: /DROP/i,
-  }),
-
-  CREATE: createToken({
-    name: 'CREATE',
-    pattern: /CREATE/i,
-  }),
-
-  ADD: createToken({
-    name: 'ADD',
-    pattern: /ADD/i,
-  }),
-
-  TO: createToken({
-    name: 'TO',
-    pattern: /TO/i,
-  }),
-
-  MOVE: createToken({
-    name: 'MOVE',
-    pattern: /MOVE/i,
-  }),
-
-  COPY: createToken({
-    name: 'COPY',
-    pattern: /COPY/i,
-  }),
-
-  INSERT_DATA: createToken({
-    name: 'INSERT_DATA',
-    pattern: /INSERT +DATA/i,
-  }),
-
-  DELETE_DATA: createToken({
-    name: 'DELETE_DATA',
-    pattern: /DELETE +DATA/i,
-  }),
-
-  DELETE_WHERE: createToken({
+  CYCLIC: createKeyword({ name: 'CYCLIC' }),
+  AS: createKeyword({ name: 'AS' }),
+  WHERE: createKeyword({ name: 'WHERE' }),
+  A: createKeyword({ name: 'A', pattern: /a/ }),
+  GROUP_BY: createKeyword({ name: 'GROUP_BY', pattern: /GROUP BY/i }),
+  ORDER_BY: createKeyword({ name: 'ORDER_BY', pattern: /ORDER BY/i }),
+  BY: createKeyword({ name: 'BY' }),
+  BASE: createKeyword({ name: 'BASE' }),
+  PREFIX: createKeyword({ name: 'PREFIX' }),
+  DESCRIBE: createKeyword({ name: 'DESCRIBE' }),
+  ASK: createKeyword({ name: 'ASK' }),
+  FROM: createKeyword({ name: 'FROM' }),
+  REDUCED: createKeyword({ name: 'REDUCED' }),
+  NAMED: createKeyword({ name: 'NAMED' }),
+  HAVING: createKeyword({ name: 'HAVING' }),
+  ASC: createKeyword({ name: 'ASC' }),
+  DESC: createKeyword({ name: 'DESC' }),
+  OFFSET: createKeyword({ name: 'OFFSET' }),
+  LIMIT: createKeyword({ name: 'LIMIT' }),
+  VALUES: createKeyword({ name: 'VALUES' }),
+  LOAD: createKeyword({ name: 'LOAD' }),
+  SILENT: createKeyword({ name: 'SILENT' }),
+  INTO: createKeyword({ name: 'INTO' }),
+  CLEAR: createKeyword({ name: 'CLEAR' }),
+  DROP: createKeyword({ name: 'DROP' }),
+  CREATE: createKeyword({ name: 'CREATE' }),
+  ADD: createKeyword({ name: 'ADD' }),
+  TO: createKeyword({ name: 'TO' }),
+  MOVE: createKeyword({ name: 'MOVE' }),
+  COPY: createKeyword({ name: 'COPY' }),
+  INSERT_DATA: createKeyword({ name: 'INSERT_DATA', pattern: /INSERT +DATA/i }),
+  DELETE_DATA: createKeyword({ name: 'DELETE_DATA', pattern: /DELETE +DATA/i }),
+  DELETE_WHERE: createKeyword({
     name: 'DELETE_WHERE',
     pattern: /DELETE +WHERE/i,
   }),
-
-  WITH: createToken({
-    name: 'WITH',
-    pattern: /WITH/i,
-  }),
-
-  DELETE: createToken({
-    name: 'DELETE',
-    pattern: /DELETE/i,
-  }),
-
-  INSERT: createToken({
-    name: 'INSERT',
-    pattern: /INSERT/i,
-  }),
-
-  USING: createToken({
-    name: 'USING',
-    pattern: /USING/i,
-  }),
-
-  DEFAULT: createToken({
-    name: 'DEFAULT',
-    pattern: /DEFAULT/i,
-  }),
-
-  GRAPH: createToken({
-    name: 'GRAPH',
-    pattern: /GRAPH/i,
-  }),
-
-  ALL: createToken({
-    name: 'ALL',
-    pattern: /ALL/i,
-  }),
-
-  OPTIONAL: createToken({
-    name: 'OPTIONAL',
-    pattern: /OPTIONAL/i,
-  }),
-
-  SERVICE: createToken({
-    name: 'SERVICE',
-    pattern: /SERVICE/i,
-  }),
-
-  BIND: createToken({
-    name: 'BIND',
-    pattern: /BIND/i,
-  }),
-
-  UNNEST: createToken({
-    name: 'UNNEST',
-    pattern: /UNNEST/i,
-  }),
-
-  UNDEF: createToken({
-    name: 'UNDEF',
-    pattern: /UNDEF/i,
-  }),
-
-  MINUS: createToken({
-    name: 'MINUS',
-    pattern: /MINUS/i,
-  }),
-
-  UNION: createToken({
-    name: 'UNION',
-    pattern: /UNION/i,
-  }),
-
-  FILTER: createToken({
-    name: 'FILTER',
-    pattern: /FILTER/i,
-  }),
-
-  STR: createToken({
-    name: 'STR',
-    pattern: /STR/i,
-  }),
-
-  LANG: createToken({
-    name: 'LANG',
-    pattern: /LANG/i,
-  }),
-
-  LANGMATCHES: createToken({
-    name: 'LANGMATCHES',
-    pattern: /LANGMATCHES/i,
-  }),
-
-  DATATYPE: createToken({
-    name: 'DATATYPE',
-    pattern: /DATATYPE/i,
-  }),
-
-  BOUND: createToken({
-    name: 'BOUND',
-    pattern: /BOUND/i,
-  }),
-
-  IRI: createToken({
-    name: 'IRI',
-    pattern: /IRI/i,
-  }),
-
-  URI: createToken({
-    name: 'URI',
-    pattern: /URI/i,
-  }),
-
-  BNODE: createToken({
-    name: 'BNODE',
-    pattern: /BNODE/i,
-  }),
-
-  RAND: createToken({
-    name: 'RAND',
-    pattern: /RAND/i,
-  }),
-
-  ABS: createToken({
-    name: 'ABS',
-    pattern: /ABS/i,
-  }),
-
-  CEIL: createToken({
-    name: 'CEIL',
-    pattern: /CEIL/i,
-  }),
-
-  FLOOR: createToken({
-    name: 'FLOOR',
-    pattern: /FLOOR/i,
-  }),
-
-  ROUND: createToken({
-    name: 'ROUND',
-    pattern: /ROUND/i,
-  }),
-
-  CONCAT: createToken({
-    name: 'CONCAT',
-    pattern: /CONCAT/i,
-  }),
-
-  STRLEN: createToken({
-    name: 'STRLEN',
-    pattern: /STRLEN/i,
-  }),
-
-  UCASE: createToken({
-    name: 'UCASE',
-    pattern: /UCASE/i,
-  }),
-
-  LCASE: createToken({
-    name: 'LCASE',
-    pattern: /LCASE/i,
-  }),
-
-  ENCODE_FOR_URI: createToken({
-    name: 'ENCODE_FOR_URI',
-    pattern: /ENCODE_FOR_URI/i,
-  }),
-
-  CONTAINS: createToken({
-    name: 'CONTAINS',
-    pattern: /CONTAINS/i,
-  }),
-
-  STRSTARTS: createToken({
-    name: 'STRSTARTS',
-    pattern: /STRSTARTS/i,
-  }),
-
-  STRENDS: createToken({
-    name: 'STRENDS',
-    pattern: /STRENDS/i,
-  }),
-
-  STRBEFORE: createToken({
-    name: 'STRBEFORE',
-    pattern: /STRBEFORE/i,
-  }),
-
-  STRAFTER: createToken({
-    name: 'STRAFTER',
-    pattern: /STRAFTER/i,
-  }),
-
-  YEAR: createToken({
-    name: 'YEAR',
-    pattern: /YEAR/i,
-  }),
-
-  MONTH: createToken({
-    name: 'MONTH',
-    pattern: /MONTH/i,
-  }),
-
-  DAY: createToken({
-    name: 'DAY',
-    pattern: /DAY/i,
-  }),
-
-  HOURS: createToken({
-    name: 'HOURS',
-    pattern: /HOURS/i,
-  }),
-
-  MINUTES: createToken({
-    name: 'MINUTES',
-    pattern: /MINUTES/i,
-  }),
-
-  SECONDS: createToken({
-    name: 'SECONDS',
-    pattern: /SECONDS/i,
-  }),
-
-  TIMEZONE: createToken({
-    name: 'TIMEZONE',
-    pattern: /TIMEZONE/i,
-  }),
-
-  TZ: createToken({
-    name: 'TZ',
-    pattern: /TZ/i,
-  }),
-
-  NOW: createToken({
-    name: 'NOW',
-    pattern: /NOW/i,
-  }),
-
-  UUID: createToken({
-    name: 'UUID',
-    pattern: /UUID/i,
-  }),
-
-  STRUUID: createToken({
-    name: 'STRUUID',
-    pattern: /STRUUID/i,
-  }),
-
-  MD5: createToken({
-    name: 'MD5',
-    pattern: /MD5/i,
-  }),
-
-  SHA1: createToken({
-    name: 'SHA1',
-    pattern: /SHA1/i,
-  }),
-
-  SHA256: createToken({
-    name: 'SHA256',
-    pattern: /SHA256/i,
-  }),
-
-  SHA384: createToken({
-    name: 'SHA384',
-    pattern: /SHA384/i,
-  }),
-
-  SHA512: createToken({
-    name: 'SHA512',
-    pattern: /SHA512/i,
-  }),
-
-  COALESCE: createToken({
-    name: 'COALESCE',
-    pattern: /COALESCE/i,
-  }),
-
-  IF: createToken({
-    name: 'IF',
-    pattern: /IF/i,
-  }),
-
-  STRLANG: createToken({
-    name: 'STRLANG',
-    pattern: /STRLANG/i,
-  }),
-
-  STRDT: createToken({
-    name: 'STRDT',
-    pattern: /STRDT/i,
-  }),
-
-  sameTerm: createToken({
-    name: 'sameTerm',
-    pattern: /sameTerm/i,
-  }),
-
-  isIRI: createToken({
-    name: 'isIRI',
-    pattern: /isIRI/i,
-  }),
-
-  isURI: createToken({
-    name: 'isURI',
-    pattern: /isURI/i,
-  }),
-
-  isBLANK: createToken({
-    name: 'isBLANK',
-    pattern: /isBLANK/i,
-  }),
-
-  isLITERAL: createToken({
-    name: 'isLITERAL',
-    pattern: /isLITERAL/i,
-  }),
-
-  isNUMERIC: createToken({
-    name: 'isNUMERIC',
-    pattern: /isNUMERIC/i,
-  }),
-
-  REGEX: createToken({
-    name: 'REGEX',
-    pattern: /REGEX/i,
-  }),
-
-  SUBSTR: createToken({
-    name: 'SUBSTR',
-    pattern: /SUBSTR/i,
-  }),
-
-  REPLACE: createToken({
-    name: 'REPLACE',
-    pattern: /REPLACE/i,
-  }),
-
-  EXISTS: createToken({
-    name: 'EXISTS',
-    pattern: /EXISTS/i,
-  }),
-
-  NOT_EXISTS: createToken({
-    name: 'NOT_EXISTS',
-    pattern: /NOT EXISTS/i,
-  }),
-
-  COUNT: createToken({
-    name: 'COUNT',
-    pattern: /COUNT/i,
-  }),
-
-  SUM: createToken({
-    name: 'SUM',
-    pattern: /SUM/i,
-  }),
-
-  MIN: createToken({
-    name: 'MIN',
-    pattern: /MIN/i,
-  }),
-
-  AVG: createToken({
-    name: 'AVG',
-    pattern: /AVG/i,
-  }),
-
-  SAMPLE: createToken({
-    name: 'SAMPLE',
-    pattern: /SAMPLE/i,
-  }),
-
-  GROUP_CONCAT: createToken({
-    name: 'GROUP_CONCAT',
-    pattern: /GROUP_CONCAT/i,
-  }),
-
-  SEPARATOR: createToken({
-    name: 'SEPARATOR',
-    pattern: /SEPARATOR/i,
-  }),
-
-  TRUE: createToken({
-    name: 'TRUE',
-    pattern: /TRUE/i,
-  }),
-
-  FALSE: createToken({
-    name: 'FALSE',
-    pattern: /FALSE/i,
-  }),
-
-  IN: createKeyword('IN'),
-
-  NOT_IN: createToken({
-    name: 'NOT_IN',
-    pattern: /NOT IN/i,
-  }),
+  WITH: createKeyword({ name: 'WITH' }),
+  DELETE: createKeyword({ name: 'DELETE' }),
+  INSERT: createKeyword({ name: 'INSERT' }),
+  USING: createKeyword({ name: 'USING' }),
+  DEFAULT: createKeyword({ name: 'DEFAULT' }),
+  GRAPH: createKeyword({ name: 'GRAPH' }),
+  ALL: createKeyword({ name: 'ALL' }),
+  OPTIONAL: createKeyword({ name: 'OPTIONAL' }),
+  SERVICE: createKeyword({ name: 'SERVICE' }),
+  BIND: createKeyword({ name: 'BIND' }),
+  UNNEST: createKeyword({ name: 'UNNEST' }),
+  UNDEF: createKeyword({ name: 'UNDEF' }),
+  MINUS: createKeyword({ name: 'MINUS' }),
+  UNION: createKeyword({ name: 'UNION' }),
+  FILTER: createKeyword({ name: 'FILTER' }),
+  STR: createKeyword({ name: 'STR' }),
+  LANG: createKeyword({ name: 'LANG' }),
+  LANGMATCHES: createKeyword({ name: 'LANGMATCHES' }),
+  DATATYPE: createKeyword({ name: 'DATATYPE' }),
+  BOUND: createKeyword({ name: 'BOUND' }),
+  IRI: createKeyword({ name: 'IRI' }),
+  URI: createKeyword({ name: 'URI' }),
+  BNODE: createKeyword({ name: 'BNODE' }),
+  RAND: createKeyword({ name: 'RAND' }),
+  ABS: createKeyword({ name: 'ABS' }),
+  CEIL: createKeyword({ name: 'CEIL' }),
+  FLOOR: createKeyword({ name: 'FLOOR' }),
+  ROUND: createKeyword({ name: 'ROUND' }),
+  CONCAT: createKeyword({ name: 'CONCAT' }),
+  STRLEN: createKeyword({ name: 'STRLEN' }),
+  UCASE: createKeyword({ name: 'UCASE' }),
+  LCASE: createKeyword({ name: 'LCASE' }),
+  ENCODE_FOR_URI: createKeyword({ name: 'ENCODE_FOR_URI' }),
+  CONTAINS: createKeyword({ name: 'CONTAINS' }),
+  STRSTARTS: createKeyword({ name: 'STRSTARTS' }),
+  STRENDS: createKeyword({ name: 'STRENDS' }),
+  STRBEFORE: createKeyword({ name: 'STRBEFORE' }),
+  STRAFTER: createKeyword({ name: 'STRAFTER' }),
+  YEAR: createKeyword({ name: 'YEAR' }),
+  MONTH: createKeyword({ name: 'MONTH' }),
+  DAY: createKeyword({ name: 'DAY' }),
+  HOURS: createKeyword({ name: 'HOURS' }),
+  MINUTES: createKeyword({ name: 'MINUTES' }),
+  SECONDS: createKeyword({ name: 'SECONDS' }),
+  TIMEZONE: createKeyword({ name: 'TIMEZONE' }),
+  TZ: createKeyword({ name: 'TZ' }),
+  NOW: createKeyword({ name: 'NOW' }),
+  UUID: createKeyword({ name: 'UUID' }),
+  STRUUID: createKeyword({ name: 'STRUUID' }),
+  MD5: createKeyword({ name: 'MD5' }),
+  SHA1: createKeyword({ name: 'SHA1' }),
+  SHA256: createKeyword({ name: 'SHA256' }),
+  SHA384: createKeyword({ name: 'SHA384' }),
+  SHA512: createKeyword({ name: 'SHA512' }),
+  COALESCE: createKeyword({ name: 'COALESCE' }),
+  IF: createKeyword({ name: 'IF' }),
+  STRLANG: createKeyword({ name: 'STRLANG' }),
+  STRDT: createKeyword({ name: 'STRDT' }),
+  sameTerm: createKeyword({ name: 'sameTerm' }),
+  isIRI: createKeyword({ name: 'isIRI' }),
+  isURI: createKeyword({ name: 'isURI' }),
+  isBLANK: createKeyword({ name: 'isBLANK' }),
+  isLITERAL: createKeyword({ name: 'isLITERAL' }),
+  isNUMERIC: createKeyword({ name: 'isNUMERIC' }),
+  REGEX: createKeyword({ name: 'REGEX' }),
+  SUBSTR: createKeyword({ name: 'SUBSTR' }),
+  REPLACE: createKeyword({ name: 'REPLACE' }),
+  EXISTS: createKeyword({ name: 'EXISTS' }),
+  NOT_EXISTS: createKeyword({ name: 'NOT_EXISTS', pattern: /NOT EXISTS/i }),
+  COUNT: createKeyword({ name: 'COUNT' }),
+  SUM: createKeyword({ name: 'SUM' }),
+  MIN: createKeyword({ name: 'MIN' }),
+  AVG: createKeyword({ name: 'AVG' }),
+  SAMPLE: createKeyword({ name: 'SAMPLE' }),
+  GROUP_CONCAT: createKeyword({ name: 'GROUP_CONCAT' }),
+  SEPARATOR: createKeyword({ name: 'SEPARATOR' }),
+  TRUE: createKeyword({ name: 'TRUE' }),
+  FALSE: createKeyword({ name: 'FALSE' }),
+  IN: createKeyword({ name: 'IN' }),
+  NOT_IN: createKeyword({ name: 'NOT_IN', pattern: /NOT IN/i }),
+  MAX: createKeyword({ name: 'MAX', longer_alt: MAX_LENGTH }),
 
   MAX_LENGTH,
-  MAX: createToken({
-    name: 'MAX',
-    pattern: /MAX/i,
-    longer_alt: MAX_LENGTH,
-  }),
+  UNKNOWN,
 };

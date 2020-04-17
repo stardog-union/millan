@@ -39626,7 +39626,7 @@ Object {
   63. [REGEX]
   64. [EXISTS]
   65. [NOT_EXISTS]
-  66. [Unknown]
+  66. [UNKNOWN]
   67. [<http://example.com>]
   68. [PNAME_LN]
   69. [PNAME_NS]
@@ -39703,9 +39703,9 @@ but found: '='",
           "PATTERN": ")",
           "isParent": false,
           "tokenName": "RParen",
-          "tokenTypeIdx": 235,
+          "tokenTypeIdx": 236,
         },
-        "tokenTypeIdx": 235,
+        "tokenTypeIdx": 236,
       },
     },
     Object {
