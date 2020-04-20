@@ -1,16 +1,16 @@
-import { ITokenConfig } from 'chevrotain';
-import helper from 'helpers/chevrotain';
+import { createToken, ITokenConfig } from 'chevrotain';
+import { createKeyword as createKeywordToken } from 'helpers/chevrotainHelper';
 
 export const createKeyword = ({
   longer_alt = UNKNOWN,
   ...props
 }: ITokenConfig) =>
-  helper.createKeyword({
+  createKeywordToken({
     longer_alt,
     ...props,
   });
 
-const UNKNOWN = createKeyword({ name: 'UNKNOWN', pattern: /\w+/i });
+const UNKNOWN = createToken({ name: 'UNKNOWN', pattern: /\w+/i });
 const MAX_LENGTH = createKeyword({
   name: 'MAX_LENGTH',
   pattern: /MAX LENGTH/i,

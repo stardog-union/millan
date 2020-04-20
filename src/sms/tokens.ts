@@ -1,5 +1,5 @@
 const { sparqlTokenMap, stardogSparqlTokens } = require('../sparql/tokens');
-import { TokenType, IToken } from 'chevrotain';
+import { createToken, TokenType, IToken } from 'chevrotain';
 import { createKeyword } from '../sparql/keywords';
 
 const FROM_BLOCK_END_MATCHER = /^\s*to\s*{/i;
@@ -40,7 +40,7 @@ export const smsTokenMap = {
   Json: createKeyword({ name: 'Json' }),
   Csv: createKeyword({ name: 'Csv' }),
   Mapping: createKeyword({ name: 'Mapping' }),
-  SqlBlock: createKeyword({
+  SqlBlock: createToken({
     name: 'SqlBlock',
     pattern: (
       text: string,
@@ -63,7 +63,7 @@ export const smsTokenMap = {
     },
     line_breaks: true,
   }),
-  JsonBlock: createKeyword({
+  JsonBlock: createToken({
     name: 'JsonBlock',
     pattern: (
       text: string,
@@ -90,7 +90,7 @@ export const smsTokenMap = {
     },
     line_breaks: true,
   }),
-  GraphQlBlock: createKeyword({
+  GraphQlBlock: createToken({
     name: 'GraphQlBlock',
     pattern: (
       text: string,

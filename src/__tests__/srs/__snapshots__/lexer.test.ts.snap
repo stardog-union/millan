@@ -119,7 +119,6 @@ Array [
       "CATEGORIES": Array [],
       "LONGER_ALT": Object {
         "CATEGORIES": Array [],
-        "LONGER_ALT": undefined,
         "PATTERN": /\\\\w\\+/i,
         "categoryMatches": Array [],
         "categoryMatchesMap": Object {},
