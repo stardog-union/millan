@@ -7,7 +7,7 @@ import {
   IParserConfig,
   IRecognitionException,
 } from 'chevrotain';
-import { IStardogParser } from '../helpers/types';
+import { IStardogParser } from '../helpers/chevrotain/types';
 
 export class BaseGraphQlParser extends Parser implements IStardogParser {
   private lexer: Lexer;

@@ -23,9 +23,9 @@ export interface CstNodeMap {
 
 export interface ISemanticError
   extends Pick<
-      IRecognitionException,
-      Exclude<keyof IRecognitionException, 'resyncedTokens' | 'context'>
-    > {
+    IRecognitionException,
+    Exclude<keyof IRecognitionException, 'resyncedTokens' | 'context'>
+  > {
   resyncedTokens?: IToken[];
   context?: IRecognizerContext;
 }

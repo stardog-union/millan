@@ -1,5 +1,5 @@
 import { createToken, ITokenConfig } from 'chevrotain';
-import { createKeyword as createKeywordToken } from 'helpers/chevrotainHelper';
+import { createKeyword as createKeywordToken } from 'helpers/chevrotain/tokens';
 
 export const createKeyword = ({
   longer_alt = UNKNOWN,

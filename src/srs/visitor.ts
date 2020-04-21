@@ -4,7 +4,7 @@ import {
   ICstVisitor,
   CstNode,
 } from 'chevrotain';
-import { ITokensMap } from '../helpers/types';
+import { ITokensMap } from '../helpers/chevrotain/types';
 import { StardogSparqlParser } from '../sparql';
 
 interface SparqlSrsVisitorItem {

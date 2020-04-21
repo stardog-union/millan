@@ -1,4 +1,8 @@
-import { ITraverseContext, isCstNode, traverse } from '../helpers/cst';
+import {
+  ITraverseContext,
+  isCstNode,
+  traverse,
+} from '../helpers/chevrotain/cst';
 import { CstNode, IToken, CstElement, IRecognitionException } from 'chevrotain';
 import { sparqlTokenMap } from '../sparql/tokens';
 import { TurtleParser } from '../turtle/TurtleParser';
