@@ -11,10 +11,6 @@ export const createKeyword = ({
   });
 
 const UNKNOWN = createToken({ name: 'UNKNOWN', pattern: /\w+/i });
-const MAX_LENGTH = createKeyword({
-  name: 'MAX_LENGTH',
-  pattern: /MAX LENGTH/i,
-});
 
 export const keywords = {
   SELECT: createKeyword({ name: 'SELECT' }),
@@ -24,7 +20,10 @@ export const keywords = {
   END: createKeyword({ name: 'END' }),
   VIA: createKeyword({ name: 'VIA' }),
   PATHS: createKeyword({ name: 'PATHS' }),
-  PATHS_ALL: createKeyword({ name: 'PATHS_ALL', pattern: /PATHS ALL/i }),
+  PATHS_ALL: createKeyword({
+    name: 'PATHS_ALL',
+    pattern: /PATHS ALL/i,
+  }),
   PATHS_SHORTEST: createKeyword({
     name: 'PATHS_SHORTEST',
     pattern: /PATHS SHORTEST/i,
@@ -33,8 +32,14 @@ export const keywords = {
   AS: createKeyword({ name: 'AS' }),
   WHERE: createKeyword({ name: 'WHERE' }),
   A: createKeyword({ name: 'A', pattern: /a/ }),
-  GROUP_BY: createKeyword({ name: 'GROUP_BY', pattern: /GROUP BY/i }),
-  ORDER_BY: createKeyword({ name: 'ORDER_BY', pattern: /ORDER BY/i }),
+  GROUP_BY: createKeyword({
+    name: 'GROUP_BY',
+    pattern: /GROUP BY/i,
+  }),
+  ORDER_BY: createKeyword({
+    name: 'ORDER_BY',
+    pattern: /ORDER BY/i,
+  }),
   BY: createKeyword({ name: 'BY' }),
   BASE: createKeyword({ name: 'BASE' }),
   PREFIX: createKeyword({ name: 'PREFIX' }),
@@ -59,8 +64,14 @@ export const keywords = {
   TO: createKeyword({ name: 'TO' }),
   MOVE: createKeyword({ name: 'MOVE' }),
   COPY: createKeyword({ name: 'COPY' }),
-  INSERT_DATA: createKeyword({ name: 'INSERT_DATA', pattern: /INSERT +DATA/i }),
-  DELETE_DATA: createKeyword({ name: 'DELETE_DATA', pattern: /DELETE +DATA/i }),
+  INSERT_DATA: createKeyword({
+    name: 'INSERT_DATA',
+    pattern: /INSERT +DATA/i,
+  }),
+  DELETE_DATA: createKeyword({
+    name: 'DELETE_DATA',
+    pattern: /DELETE +DATA/i,
+  }),
   DELETE_WHERE: createKeyword({
     name: 'DELETE_WHERE',
     pattern: /DELETE +WHERE/i,
@@ -133,7 +144,10 @@ export const keywords = {
   SUBSTR: createKeyword({ name: 'SUBSTR' }),
   REPLACE: createKeyword({ name: 'REPLACE' }),
   EXISTS: createKeyword({ name: 'EXISTS' }),
-  NOT_EXISTS: createKeyword({ name: 'NOT_EXISTS', pattern: /NOT EXISTS/i }),
+  NOT_EXISTS: createKeyword({
+    name: 'NOT_EXISTS',
+    pattern: /NOT EXISTS/i,
+  }),
   COUNT: createKeyword({ name: 'COUNT' }),
   SUM: createKeyword({ name: 'SUM' }),
   MIN: createKeyword({ name: 'MIN' }),
@@ -144,9 +158,15 @@ export const keywords = {
   TRUE: createKeyword({ name: 'TRUE' }),
   FALSE: createKeyword({ name: 'FALSE' }),
   IN: createKeyword({ name: 'IN' }),
-  NOT_IN: createKeyword({ name: 'NOT_IN', pattern: /NOT IN/i }),
-  MAX: createKeyword({ name: 'MAX', longer_alt: MAX_LENGTH }),
+  NOT_IN: createKeyword({
+    name: 'NOT_IN',
+    pattern: /NOT IN/i,
+  }),
+  MAX_LENGTH: createKeyword({
+    name: 'MAX_LENGTH',
+    pattern: /MAX LENGTH/i,
+  }),
+  MAX: createKeyword({ name: 'MAX' }),
 
-  MAX_LENGTH,
   UNKNOWN,
 };
