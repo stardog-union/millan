@@ -1,5 +1,5 @@
 import { Parser, TokenType, IToken, IParserConfig, IRecognitionException } from 'chevrotain';
-import { IStardogParser } from '../helpers/types';
+import { IStardogParser } from '../helpers/chevrotain/types';
 export declare class BaseGraphQlParser extends Parser implements IStardogParser {
     private lexer;
     tokenize: (document: string) => IToken[];

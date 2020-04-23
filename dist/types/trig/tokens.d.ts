@@ -46,7 +46,7 @@ export declare const trigTokenMap: {
     PN_PREFIX: TokenType;
     PN_LOCAL: TokenType;
     PN_LOCAL_ESC: TokenType;
-    Unknown: TokenType;
+    UNKNOWN: any;
     GRAPH: TokenType;
 };
 export declare const trigTokenTypes: TokenType[];

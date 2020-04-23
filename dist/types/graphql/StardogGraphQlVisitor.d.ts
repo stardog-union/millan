@@ -1,6 +1,6 @@
 import { ICstVisitor } from 'chevrotain';
 import { StardogSparqlParser } from '../sparql/StardogSparqlParser';
-import { CstNodeMap } from 'helpers/types';
+import { CstNodeMap } from 'helpers/chevrotain/types';
 export declare type StardogSparqlParserResult = ReturnType<StardogSparqlParser['parse']>;
 export interface IStardogGraphQlVisitor extends ICstVisitor<any, Pick<StardogSparqlParserResult, 'errors'>> {
     BindDirective(ctx: CstNodeMap): void;

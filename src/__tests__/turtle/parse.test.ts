@@ -1,7 +1,7 @@
 import { resolve, extname } from 'path';
 import { TurtleParser } from '../../turtle/TurtleParser';
 import { readDirAsync, readFileAsync } from '../utils';
-import { ModeString } from '../../helpers/types';
+import { ModeString } from '../../helpers/chevrotain/types';
 
 const parser = new TurtleParser();
 

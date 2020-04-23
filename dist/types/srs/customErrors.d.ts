@@ -1,4 +1,4 @@
-import { ITraverseContext } from '../helpers/cst';
+import { ITraverseContext } from '../helpers/chevrotain/cst';
 import { CstElement, IRecognitionException } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
 export declare function addIfClauseErrorsToErrors({ cst, namespacesMap, fullCtx, errors, semanticErrors, }: {
