@@ -2,7 +2,7 @@ const { turtleTokenTypes, turtleTokenMap } = require('../turtle/tokens');
 const { sparqlTokenMap } = require('../sparql/tokens');
 import { TokenType, createToken, Lexer } from 'chevrotain';
 import memoize from 'memoize-one';
-import { getAsTypedTuple } from 'helpers/types';
+import { getAsTypedTuple } from 'helpers/chevrotain/types';
 import isDeepEqual from 'lodash.isequal';
 
 const shaclIriNamespace = 'http://www.w3.org/ns/shacl#';
@@ -223,7 +223,7 @@ const makePrefixer = (prefix: string) => (localName: string) =>
 type LocalName = {
   [K in keyof typeof localNamesByCategory]: typeof localNamesByCategory[K] extends (infer T)[]
     ? T
-    : never
+    : never;
 }[keyof typeof localNamesByCategory];
 
 type TokenMap = { [K in LocalName]: TokenType };
@@ -237,9 +237,10 @@ type TokenMap = { [K in LocalName]: TokenType };
 // This function is called by the SHACL parser. It is memoized because the
 // arguments are small and unlikely to change often, and the parser needs to be
 // fast, so we should avoid re-computing.
-export const getShaclTokenMap: (
-  prefixes: { shacl: string; xsd: string }
-) => TokenMap = memoize((prefixes: { shacl: string; xsd: string }) => {
+export const getShaclTokenMap: (prefixes: {
+  shacl: string;
+  xsd: string;
+}) => TokenMap = memoize((prefixes: { shacl: string; xsd: string }) => {
   const prefixWithShacl = makePrefixer(prefixes.shacl);
   const prefixWithXsd = makePrefixer(prefixes.xsd);
 
@@ -312,9 +313,10 @@ const reverseSort = (a, b) => {
 // SHACL/XSD tokens, including tokens for prefixed local names, with the
 // SHACL/XSD tokens inserted at the proper positions so that they are matched
 // before the more generic Turtle tokens.
-export const getShaclTokenTypes: (
-  prefixes: { shacl: string; xsd: string }
-) => TokenType[] = memoize((prefixes: { shacl: string; xsd: string }) => {
+export const getShaclTokenTypes: (prefixes: {
+  shacl: string;
+  xsd: string;
+}) => TokenType[] = memoize((prefixes: { shacl: string; xsd: string }) => {
   const tokenMap = getShaclTokenMap(prefixes);
   const { pnameTokens, iriTokens } = Object.keys(tokenMap)
     .sort(reverseSort)

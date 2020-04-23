@@ -5,7 +5,7 @@ import {
   CstNode,
 } from 'chevrotain';
 import { StardogSparqlParser } from '../sparql/StardogSparqlParser';
-import { CstNodeMap } from 'helpers/types';
+import { CstNodeMap } from 'helpers/chevrotain/types';
 
 export type StardogSparqlParserResult = ReturnType<
   StardogSparqlParser['parse']

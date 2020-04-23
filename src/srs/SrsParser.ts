@@ -14,7 +14,7 @@ import {
   CstNode,
 } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
-import { isCstNode, unsafeTraverse } from '../helpers/cst';
+import { isCstNode, unsafeTraverse } from '../helpers/chevrotain/cst';
 import { defaultNamespacesMap } from 'turtle/defaultNamespaces';
 import {
   getSparqlSrsVisitor,
@@ -25,7 +25,7 @@ import {
   addThenClauseErrorsToErrors,
   addIfClauseErrorsToErrors,
 } from './customErrors';
-import { ModeString } from '../helpers/types';
+import { ModeString } from '../helpers/chevrotain/types';
 
 export class SrsParser extends TurtleParser {
   private sparqlSrsVisitor: ReturnType<typeof getSparqlSrsVisitor>;

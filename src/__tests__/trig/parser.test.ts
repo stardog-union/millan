@@ -1,7 +1,7 @@
 import { resolve, extname } from 'path';
 import { TrigParser } from '../../trig/TrigParser';
 import { readDirAsync, readFileAsync } from '../utils';
-import { ModeString } from '../../helpers/types';
+import { ModeString } from '../../helpers/chevrotain/types';
 
 const parser = new TrigParser();
 

@@ -206,10 +206,7 @@ export const turtleTokenMap = {
   PN_PREFIX: createToken({ name: 'PN_PREFIX', pattern: PN_PREFIX }),
   PN_LOCAL: createToken({ name: 'PN_LOCAL', pattern: PN_LOCAL }),
   PN_LOCAL_ESC: createToken({ name: 'PN_LOCAL_ESC', pattern: PN_LOCAL_ESC }),
-  Unknown: createToken({
-    name: 'Unknown',
-    pattern: /\w+/,
-  }),
+  UNKNOWN: sparqlTokenMap.UNKNOWN,
 };
 
 export const turtleTokenTypes: TokenType[] = [
@@ -259,5 +256,5 @@ export const turtleTokenTypes: TokenType[] = [
   turtleTokenMap.PN_LOCAL_ESC,
   turtleTokenMap.ECHAR,
   turtleTokenMap.UCHAR,
-  turtleTokenMap.Unknown,
+  turtleTokenMap.UNKNOWN,
 ];

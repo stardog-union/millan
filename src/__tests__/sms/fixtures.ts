@@ -126,7 +126,7 @@ export const fixtures = {
       }
       where {
         bind(coalesce(?x, ?y) as ?id)
-        # bind(if(bound(?x), concat("x + 1 = ", str(integer(?x) + 1)), "x is not bound") as ?expr2)
+        bind(if(bound(?x), concat("x + 1 = ", str(integer(?x) + 1)), "x is not bound") as ?expr2)
         bind(template("http://example.com/{id}") as ?subj)
       }`,
   },

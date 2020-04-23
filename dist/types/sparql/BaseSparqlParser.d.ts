@@ -1,5 +1,5 @@
 import { Parser, TokenType, IToken, IParserConfig, IRecognitionException } from 'chevrotain';
-import { IStardogParser } from '../helpers/types';
+import { IStardogParser } from '../helpers/chevrotain/types';
 export declare class BaseSparqlParser extends Parser implements IStardogParser {
     private lexer;
     tokenize: (document: string) => IToken[];
@@ -7,7 +7,6 @@ export declare class BaseSparqlParser extends Parser implements IStardogParser {
         errors: IRecognitionException[];
         cst: any;
     };
-    getInput: () => IToken[];
     parseGroupGraphPattern: (document: string) => {
         errors: IRecognitionException[];
         cst: any;

@@ -46,6 +46,6 @@ export declare const turtleTokenMap: {
     PN_PREFIX: TokenType;
     PN_LOCAL: TokenType;
     PN_LOCAL_ESC: TokenType;
-    Unknown: TokenType;
+    UNKNOWN: any;
 };
 export declare const turtleTokenTypes: TokenType[];

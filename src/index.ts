@@ -9,8 +9,8 @@ export * from './shacl/ShaclParser';
 export * from './graphql/BaseGraphQlParser';
 export * from './graphql/StandardGraphQlParser';
 export * from './graphql/StardogGraphQlParser';
-export * from './helpers/cst';
-export * from './helpers/types';
+export * from './helpers/chevrotain/cst';
+export * from './helpers/chevrotain/types';
 
 // Convenience imports/exports that aren't core functionality:
 // NOTE: Tokens MUST be imported using CommonJS syntax; see here: https://github.com/SAP/chevrotain/issues/345

@@ -1,5 +1,5 @@
 import { IToken, IRecognitionException, ICstVisitor, CstNode } from 'chevrotain';
-import { ITokensMap } from '../helpers/types';
+import { ITokensMap } from '../helpers/chevrotain/types';
 interface SparqlSrsVisitorItem {
     parseResult: {
         errors: IRecognitionException[];

@@ -7,7 +7,7 @@ import {
   IMultiModeLexerDefinition,
 } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
-import { ModeString } from '../helpers/types';
+import { ModeString } from '../helpers/chevrotain/types';
 
 export class TrigParser extends TurtleParser {
   constructor(

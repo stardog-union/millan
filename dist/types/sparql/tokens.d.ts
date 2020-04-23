@@ -30,7 +30,7 @@ export declare const sparqlTokenMap: {
     RParen: TokenType;
     WhiteSpace: TokenType;
     Star: TokenType;
-    Unknown: TokenType;
+    UNKNOWN: TokenType;
     Period: TokenType;
     QuestionMark: TokenType;
     Plus: TokenType;

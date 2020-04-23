@@ -2,7 +2,7 @@ import * as path from 'path';
 import { SrsParser } from '../../srs/SrsParser';
 import { fixtures } from './fixtures';
 import { readDirAsync, readFileAsync } from '../utils';
-import { ModeString } from '../../helpers/types';
+import { ModeString } from '../../helpers/chevrotain/types';
 
 const parser = new SrsParser();
 

@@ -49,15 +49,7 @@ export const sparqlTokenMap = {
     pattern: '*',
   }),
 
-  Unknown: createToken({
-    name: 'Unknown',
-    // Unknown comes _before_ `A` in the token ordering because we need it to
-    // match custom/XPath functions like `atan`, etc. But we also need it to
-    // _not_ capture `A` tokens. This pattern catches anything that is either
-    // (1) 'a' followed by non-whitespace (up to the next non-word character) or
-    // (2) not 'a' or whitespace (up to the next non-word character).
-    pattern: /(?:a\S|[^a\s])\w*/i,
-  }),
+  UNKNOWN: keywords.UNKNOWN,
 
   Period: createToken({
     name: 'Period',
@@ -469,8 +461,8 @@ export const baseTokens = [
   sparqlTokenMap.GreaterThan,
   sparqlTokenMap.IN,
   sparqlTokenMap.NOT_IN,
-  sparqlTokenMap.Unknown,
   sparqlTokenMap.A,
+  sparqlTokenMap.UNKNOWN,
 ];
 
 export const pathsTokens = [

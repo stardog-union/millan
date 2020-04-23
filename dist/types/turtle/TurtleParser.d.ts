@@ -1,5 +1,5 @@
 import { Parser, IParserConfig, Lexer, IToken, IRecognitionException, IMultiModeLexerDefinition, TokenType } from 'chevrotain';
-import { IStardogParser, ModeString } from '../helpers/types';
+import { IStardogParser, ModeString } from '../helpers/chevrotain/types';
 export declare class TurtleParser extends Parser implements IStardogParser {
     protected lexer: Lexer;
     protected namespacesMap: {};

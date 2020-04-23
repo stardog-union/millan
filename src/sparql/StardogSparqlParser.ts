@@ -387,7 +387,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
   });
 
   StardogOrCustomFunction = this.RULE('StardogOrCustomFunction', () => {
-    this.CONSUME(sparqlTokenMap.Unknown);
+    this.CONSUME(sparqlTokenMap.UNKNOWN);
     this.SUBRULE(this.ExpressionList);
   });
 

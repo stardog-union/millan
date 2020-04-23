@@ -8,7 +8,7 @@ import {
   IMultiModeLexerDefinition,
   TokenType,
 } from 'chevrotain';
-import { IStardogParser, ModeString } from '../helpers/types';
+import { IStardogParser, ModeString } from '../helpers/chevrotain/types';
 
 export class TurtleParser extends Parser implements IStardogParser {
   protected lexer: Lexer;

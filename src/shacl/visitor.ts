@@ -6,7 +6,7 @@ import {
   IToken,
 } from 'chevrotain';
 import escapeStringRegexp from 'escape-string-regexp';
-import { isCstNode } from 'helpers/cst';
+import { isCstNode } from 'helpers/chevrotain/cst';
 
 export interface IShaclVisitor extends ICstVisitor<any, any> {
   triples(ctx: { [key: string]: CstNode | CstNode[] }): void;
@@ -107,14 +107,16 @@ const addPredicatesAndTypesToShape = (
         if (child.children.SingleIriTakingPredicate) {
           shape.predicates.push({
             type: 'SingleIriTakingPredicate',
-            token: getUnderlyingStartToken(child.children
-              .SingleIriTakingPredicate[0] as CstNode),
+            token: getUnderlyingStartToken(
+              child.children.SingleIriTakingPredicate[0] as CstNode
+            ),
           });
         } else if (child.children.ManyIriTakingPredicate) {
           shape.predicates.push({
             type: 'ManyIriTakingPredicate',
-            token: getUnderlyingStartToken(child.children
-              .ManyIriTakingPredicate[0] as CstNode),
+            token: getUnderlyingStartToken(
+              child.children.ManyIriTakingPredicate[0] as CstNode
+            ),
           });
         }
         break;
