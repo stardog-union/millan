@@ -1,6 +1,6 @@
 const { smsTokenTypes, smsTokenMap } = require('./tokens');
 import { Parser, IRecognitionException, IParserConfig } from 'chevrotain';
-import { StardogSparqlParser } from 'sparql';
+import { StardogSparqlParser } from '../sparql';
 
 export class SmsParser extends StardogSparqlParser {
   public parse = (document: string) => {
