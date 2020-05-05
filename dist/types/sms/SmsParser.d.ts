@@ -1,5 +1,5 @@
 import { IRecognitionException, IParserConfig } from 'chevrotain';
-import { StardogSparqlParser } from 'sparql';
+import { StardogSparqlParser } from '../sparql';
 export declare class SmsParser extends StardogSparqlParser {
     parse: (document: string) => {
         errors: IRecognitionException[];
