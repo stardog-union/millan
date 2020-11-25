@@ -1222,10 +1222,10 @@ chalk@^2.4.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chevrotain@4.4.0:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/chevrotain/-/chevrotain-4.4.0.tgz#552366430143c8b28cad654f92aa83711edbd1c9"
-  integrity sha512-CS0auzIhlLxo9RCVarVZJIsKj339jJrLIdCbX3rwk/kTu7+VkYdiXiAD8aJOXJEcRc1GGcbOQ587e/85+xLxaA==
+chevrotain@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/chevrotain/-/chevrotain-4.7.0.tgz#1a1acab4275cee8b1e208e6a10b1622c5b92b02e"
+  integrity sha512-FmXTi1hMN/6TT9NlrYP1kHHW6P7qpVzQD2vGrbsfI7wbFXXg2ANpIaN3pHPnVx/ZPHOnConE0TmyP6rguyzkZQ==
   dependencies:
     regexp-to-ast "0.4.0"
 

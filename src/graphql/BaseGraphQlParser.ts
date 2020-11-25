@@ -36,6 +36,17 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
       recoveryEnabled: true,
       outputCst: true,
       ...options.config,
+      ignoredIssues: {
+        Arguments: {
+          OR: true,
+        },
+        Directives: {
+          OR: true,
+        },
+        Value: {
+          OR: true,
+        },
+      },
     });
 
     this.lexer = new Lexer(tokenVocab);
