@@ -7,10 +7,10 @@ export declare class StardogGraphQlParser extends BaseGraphQlParser {
         errors: any[];
         cst: any;
     };
-    OperationDefinition: (idxInCallingRule?: number, ...args: any[]) => void;
-    Directives: (idxInCallingRule?: number, ...args: any[]) => void;
-    Field: (idxInCallingRule?: number, ...args: any[]) => void;
-    Arguments: (idxInCallingRule?: number, ...args: any[]) => void;
+    OperationDefinition: (idxInCallingRule?: number, ...args: any[]) => any;
+    Directives: (idxInCallingRule?: number, ...args: any[]) => any;
+    Field: (idxInCallingRule?: number, ...args: any[]) => any;
+    Arguments: (idxInCallingRule?: number, ...args: any[]) => any;
     StardogArgument: (idxInCallingRule?: number, ...args: any[]) => any;
     StardogDirective: (idxInCallingRule?: number, ...args: any[]) => any;
     ConditionalStardogDirective: (idxInCallingRule?: number, ...args: any[]) => any;
