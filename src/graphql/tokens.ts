@@ -51,12 +51,22 @@ const createAndPushTokenWithNameAlt = (config: ITokenConfig) => {
     categories,
   });
 };
+// const createAndPushTokenWithNameAlt = (config: ITokenConfig) =>
+//   createAndPushToken({
+//     ...config,
+//     longer_alt: Name,
+//   });
 
 const createAndPushPunctuator = (config: ITokenConfig) =>
   createAndPushToken({
     ...config,
     categories: [Punctuator],
   });
+
+// const createAndPushTokenWithNameButNot = (config: ITokenConfig, not: TokenType[]) => {
+//   const token = createToken(config);
+//   const matchingKeywordsObject.keys(keywords).f
+// }
 
 // Simple wrapper for `createToken` that also pushes the created token into
 // `graphQlTokens` at the time of creation, since order matters.
@@ -173,13 +183,15 @@ const nonKeywordTerminals = {
     pattern: STRING_CHARACTER_PATTERN,
     categories: [StringValueToken],
   }),
-  BooleanValueToken: createAndPushTokenWithNameAlt({
+  BooleanValueToken: createAndPushToken({
     name: 'BooleanValueToken',
     pattern: BOOLEAN_PATTERN,
+    longer_alt: Name,
   }),
-  NullValueToken: createAndPushTokenWithNameAlt({
+  NullValueToken: createAndPushToken({
     name: 'NullValueToken',
     pattern: NULL_PATTERN,
+    longer_alt: Name,
   }),
   EnumValueToken,
   FragmentName,
@@ -355,7 +367,6 @@ const stardogDirectives = [
       const token = createToken({
         name: key,
         pattern: name,
-        categories: [Name, EnumValueToken, FragmentName],
         longer_alt: Name,
       });
 
@@ -389,7 +400,6 @@ const stardogArguments = [
       const token = createToken({
         name: key,
         pattern: name,
-        categories: [Name, EnumValueToken, FragmentName],
         longer_alt: Name,
       });
 
@@ -410,13 +420,11 @@ const stardogArguments = [
 const stardogOrderByArgumentFieldPropertyToken = createToken({
   name: 'OrderByArgumentFieldPropertyToken',
   pattern: 'field',
-  categories: [Name, EnumValueToken, FragmentName],
   longer_alt: Name,
 });
 const stardogOrderByArgumentDescPropertyToken = createToken({
   name: 'OrderByArgumentDescPropertyToken',
   pattern: 'desc',
-  categories: [Name, EnumValueToken, FragmentName],
   longer_alt: Name,
 });
 

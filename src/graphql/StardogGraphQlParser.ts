@@ -28,33 +28,34 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
   public parse = (document: string, entryRule = this.Document) => {
     this.input = this.tokenize(document);
     const cst = entryRule.call(this);
-    const { errors: sparqlErrors } = this.visitCst(cst);
+    //  const { errors: sparqlErrors } = this.visitCst(cst);
     const graphQlErrors: IRecognitionException[] = this.errors;
 
     return {
-      errors: [...graphQlErrors, ...sparqlErrors],
+      errors: graphQlErrors,
+      //  errors: [...graphQlErrors, ...sparqlErrors],
       cst,
     };
   };
 
-  OperationDefinition = this.OVERRIDE_RULE('OperationDefinition', () => {
-    this.OR([
-      { ALT: () => this.SUBRULE(this.SelectionSet) },
-      {
-        ALT: () => {
-          this.SUBRULE(this.OperationType);
-          this.OPTION(() => this.CONSUME(stardogGraphQlTokenMap.Name));
-          this.OPTION1(() => this.SUBRULE(this.VariableDefinitions));
-          this.OPTION2(() =>
-            this.SUBRULE(this.Directives, {
-              ARGS: [false /* isConst */, true /* isTopLevel */],
-            })
-          );
-          this.SUBRULE1(this.SelectionSet);
-        },
-      },
-    ]);
-  });
+  //  OperationDefinition = this.OVERRIDE_RULE('OperationDefinition', () => {
+  //    this.OR([
+  //      { ALT: () => this.SUBRULE(this.SelectionSet) },
+  //      {
+  //        ALT: () => {
+  //          this.SUBRULE(this.OperationType);
+  //          this.OPTION(() => this.CONSUME(stardogGraphQlTokenMap.Name));
+  //          this.OPTION1(() => this.SUBRULE(this.VariableDefinitions));
+  //          this.OPTION2(() =>
+  //            this.SUBRULE(this.Directives, {
+  //              ARGS: [false /* isConst */, true /* isTopLevel */],
+  //            })
+  //          );
+  //          this.SUBRULE1(this.SelectionSet);
+  //        },
+  //      },
+  //    ]);
+  //  });
 
   Directives = this.OVERRIDE_RULE(
     'Directives',
@@ -63,9 +64,13 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
         this.OR([
           {
             ALT: () =>
-              this.SUBRULE(this.StardogDirective, { ARGS: [isTopLevel] }),
+              this.SUBRULE(this.StardogDirective, {
+                ARGS: [isTopLevel],
+              }),
           },
-          { ALT: () => this.SUBRULE(this.Directive, { ARGS: [isConst] }) },
+          {
+            ALT: () => this.SUBRULE(this.Directive, { ARGS: [isConst] }),
+          },
         ]);
       });
     }
@@ -93,7 +98,9 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
             GATE: () => isField,
             ALT: () => this.SUBRULE(this.StardogArgument),
           },
-          { ALT: () => this.SUBRULE(this.Argument, { ARGS: [isConst] }) },
+          {
+            ALT: () => this.SUBRULE(this.Argument, { ARGS: [isConst] }),
+          },
         ]);
       });
       this.CONSUME(stardogGraphQlTokenMap.RParen);
@@ -122,9 +129,18 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
         GATE: () => !isTopLevel,
         ALT: () => this.SUBRULE(this.BareStardogDirective),
       },
-      { GATE: () => !isTopLevel, ALT: () => this.SUBRULE(this.BindDirective) },
-      { GATE: () => isTopLevel, ALT: () => this.SUBRULE(this.PrefixDirective) },
-      { GATE: () => isTopLevel, ALT: () => this.SUBRULE(this.ConfigDirective) },
+      {
+        GATE: () => !isTopLevel,
+        ALT: () => this.SUBRULE(this.BindDirective),
+      },
+      {
+        GATE: () => isTopLevel,
+        ALT: () => this.SUBRULE(this.PrefixDirective),
+      },
+      {
+        GATE: () => isTopLevel,
+        ALT: () => this.SUBRULE(this.ConfigDirective),
+      },
     ]);
   });
 
