@@ -68,6 +68,7 @@ declare const graphQlTokenMap: {
 declare const stardogGraphQlTokenMap: {
     OrderByArgumentFieldPropertyToken: TokenType;
     OrderByArgumentDescPropertyToken: TokenType;
+    ConditionalStardogDirective: TokenType;
     OrderByArgumentToken: TokenType;
     FirstArgumentToken: TokenType;
     ToArgumentToken: TokenType;

@@ -1,7 +1,6 @@
 import * as path from 'path';
 import { StandardGraphQlParser } from '../../graphql/StandardGraphQlParser';
-// import { StardogGraphQlParser } from '../../graphql/StardogGraphQlParser';
-import { parse } from '../../graphql/graphql';
+import { StardogGraphQlParser } from '../../graphql/StardogGraphQlParser';
 import { readDirAsync, readFileAsync } from '../utils';
 
 const GOOD_FIXTURES_DIR = path.join(__dirname, 'fixtures', 'good');
@@ -17,7 +16,7 @@ const getSnapshotObj = (input: object) =>
   JSON.parse(JSON.stringify(input, jsonStringifyReplacer, 2));
 
 const standardParser = new StandardGraphQlParser();
-// const stardogGraphQlParser = new StardogGraphQlParser();
+const stardogGraphQlParser = new StardogGraphQlParser();
 
 const getAllGoodFixtures = () =>
   readDirAsync(GOOD_FIXTURES_DIR).then((filenames) =>
@@ -75,7 +74,6 @@ describe('StandardGraphQlParser', () => {
 
       if (errors.length) {
         filesWithErrors.push(filename);
-        console.log(errors);
       }
 
       // No snapshot for the GitHub schema, as it's much too large.
@@ -104,173 +102,164 @@ describe('StandardGraphQlParser', () => {
   });
 });
 
-// describe('StardogGraphqlParser', () => {
-//   it.only('correctly parses all graphql-js fixtures', async () => {
-//     const fixtures = await getAllGoodFixtures();
-//     const filesWithErrors = [];
-//     const cstsForSnapshot = {};
+describe('StardogGraphqlParser', () => {
+  it('correctly parses all graphql-js fixtures', async () => {
+    const fixtures = await getAllGoodFixtures();
+    const filesWithErrors = [];
+    const cstsForSnapshot = {};
 
-//     fixtures.forEach(({ fileContents, filename }) => {
-//       if (invalidTestsFilenames.includes(filename)) {
-//         return;
-//       }
+    fixtures.forEach(({ fileContents, filename }) => {
+      if (invalidTestsFilenames.includes(filename)) {
+        return;
+      }
 
-//       const { errors, cst } = standardParser.parse(fileContents);
-//       // const { lexErrors, parseErrors, value, lexResult } = parse(fileContents);
+      const { errors, cst } = stardogGraphQlParser.parse(fileContents);
 
-//       // if (lexErrors.length || parseErrors.length) {
-//       //   console.log(parseErrors);
-//       //   console.log(lexResult);
-//       //   filesWithErrors.push(filename);
-//       // }
+      if (errors.length) {
+        filesWithErrors.push(filename);
+      }
 
-//       if (errors.length) {
-//         console.log(errors);
-//         filesWithErrors.push(filename);
-//       }
+      // No snapshot for the GitHub schema, as it's much too large.
+      if (!filename.endsWith('github-schema.graphql')) {
+        cstsForSnapshot[filename] = cst;
+      }
+    });
 
-//       // No snapshot for the GitHub schema, as it's much too large.
-//       if (!filename.endsWith('github-schema.graphql')) {
-//         // cstsForSnapshot[filename] = value;
-//         cstsForSnapshot[filename] = cst;
-//       }
-//     });
+    const snapshotObj = getSnapshotObj(cstsForSnapshot);
 
-//     // const snapshotObj = getSnapshotObj(cstsForSnapshot);
+    expect(filesWithErrors).toHaveLength(0);
+    expect(snapshotObj).toMatchSnapshot();
+  });
 
-//     expect(filesWithErrors).toHaveLength(0);
-//     // expect(snapshotObj).toMatchSnapshot();
-//   });
+  it('parses special Stardog arguments', () => {
+    // Fixture taken from stardog.com docs.
+    const fixture = `
+      {
+        Human(orderBy: name) {
+          name
+        }
+      }
 
-//   it('parses special Stardog arguments', () => {
-//     // Fixture taken from stardog.com docs.
-//     const fixture = `
-//       {
-//         Human(orderBy: name) {
-//           name
-//         }
-//       }
+      {
+        Human(orderBy: {field: name, desc: true}) {
+          name
+        }
+      }
 
-//       {
-//         Human(orderBy: {field: name, desc: true}) {
-//           name
-//         }
-//       }
+      {
+        Human(orderBy: [homePlanet,
+                        {field: name, desc: false}]) {
+          name
+          homePlanet @optional
+        }
+      }
 
-//       {
-//         Human(orderBy: [homePlanet,
-//                         {field: name, desc: false}]) {
-//           name
-//           homePlanet @optional
-//         }
-//       }
+      {
+        Human(orderBy: name, first: 3) {
+          name
+        }
+      }
 
-//       {
-//         Human(orderBy: name, first: 3) {
-//           name
-//         }
-//       }
+      {
+        Human(orderBy: name, skip:1, first: 2) {
+          name
+        }
+      }
+    `;
 
-//       {
-//         Human(orderBy: name, skip:1, first: 2) {
-//           name
-//         }
-//       }
-//     `;
+    const { cst, errors } = stardogGraphQlParser.parse(fixture);
+    expect(errors).toHaveLength(0);
+    expect(getSnapshotObj(cst)).toMatchSnapshot();
+  });
 
-//     const { cst, errors } = stardogGraphQlParser.parse(fixture);
-//     expect(errors).toHaveLength(0);
-//     expect(getSnapshotObj(cst)).toMatchSnapshot();
-//   });
+  it('parses special Stardog directives', () => {
+    // Fixture taken from stardog.com docs.
+    const fixture = `
+      {
+        Human {
+          id
+          name @skip(if: "strstarts($name, 'L')")
+        }
+      }
 
-//   it('parses special Stardog directives', () => {
-//     // Fixture taken from stardog.com docs.
-//     const fixture = `
-//       {
-//         Human {
-//           id
-//           name @skip(if: "strstarts($name, 'L')")
-//         }
-//       }
+      query HumanAndFriends($withFriends: Boolean) {
+        Human @type {
+          name
+          friends @include(if: $withFriends) {
+            name
+          }
+        }
+      }
 
-//       query HumanAndFriends($withFriends: Boolean) {
-//         Human @type {
-//           name
-//           friends @include(if: $withFriends) {
-//             name
-//           }
-//         }
-//       }
+      {
+        Human {
+          name
+          id @filter(if: "$id < 1003")
+        }
+      }
 
-//       {
-//         Human {
-//           name
-//           id @filter(if: "$id < 1003")
-//         }
-//       }
+      {
+        Human {
+          name
+          homePlanet @optional
+        }
+      }
 
-//       {
-//         Human {
-//           name
-//           homePlanet @optional
-//         }
-//       }
+      {
+        Human {
+          name
+          friends {
+            Droid @type
+            name
+          }
+        }
+      }
 
-//       {
-//         Human {
-//           name
-//           friends {
-//             Droid @type
-//             name
-//           }
-//         }
-//       }
+      {
+        Human {
+          name @hide
+          firstName @bind(to: "strbefore($name, ' ')")
+          lastName @bind(to: "strafter($name, ' ')")
+        }
+      }
 
-//       {
-//         Human {
-//           name @hide
-//           firstName @bind(to: "strbefore($name, ' ')")
-//           lastName @bind(to: "strafter($name, ' ')")
-//         }
-//       }
+      {
+        Human {
+          name
+          appearsIn @hide {
+            episodes: index
+          }
+        }
+      }
 
-//       {
-//         Human {
-//           name
-//           appearsIn @hide {
-//             episodes: index
-//           }
-//         }
-//       }
+      query onlyHumanGraph @config(graph: Human) {
+        Character {
+          name
+        }
+      }
 
-//       query onlyHumanGraph @config(graph: Human) {
-//         Character {
-//           name
-//         }
-//       }
+      query bothGraphs @config(graph: [Human, Droid]) {
+        Character {
+          name
+        }
+      }
+    `;
 
-//       query bothGraphs @config(graph: [Human, Droid]) {
-//         Character {
-//           name
-//         }
-//       }
-//     `;
+    const { cst, errors } = stardogGraphQlParser.parse(fixture);
+    expect(errors).toHaveLength(0);
+    expect(getSnapshotObj(cst)).toMatchSnapshot();
+  });
 
-//     const { cst, errors } = stardogGraphQlParser.parse(fixture);
-//     expect(errors).toHaveLength(0);
-//     expect(getSnapshotObj(cst)).toMatchSnapshot();
-//   });
+  it('correctly reports errors', async () => {
+    const fixtures = await getAllBadStardogFixtures();
+    const errorsForSnapshot = {};
 
-//   it('correctly reports errors', async () => {
-//     const fixtures = await getAllBadStardogFixtures();
-//     const errorsForSnapshot = {};
+    fixtures.forEach(({ fileContents, filename }) => {
+      const { errors } = stardogGraphQlParser.parse(fileContents);
+      errorsForSnapshot[filename] = errors;
+    });
 
-//     fixtures.forEach(({ fileContents, filename }) => {
-//       const { errors } = stardogGraphQlParser.parse(fileContents);
-//       errorsForSnapshot[filename] = errors;
-//     });
-
-//     const snapshotObj = getSnapshotObj(errorsForSnapshot);
-//     expect(snapshotObj).toMatchSnapshot();
-//   });
-// });
+    const snapshotObj = getSnapshotObj(errorsForSnapshot);
+    expect(snapshotObj).toMatchSnapshot();
+  });
+});

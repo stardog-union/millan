@@ -3,9 +3,14 @@ import {
   IRecognitionException,
   ICstVisitor,
   CstNode,
+  tokenMatcher,
+  CstChildrenDictionary,
+  TokenType,
 } from 'chevrotain';
 import { StardogSparqlParser } from '../sparql/StardogSparqlParser';
 import { CstNodeMap } from 'helpers/chevrotain/types';
+import { isCstNode } from 'helpers/chevrotain/cst';
+const { stardogGraphQlTokenMap } = require('./tokens');
 
 export type StardogSparqlParserResult = ReturnType<
   StardogSparqlParser['parse']
@@ -13,9 +18,52 @@ export type StardogSparqlParserResult = ReturnType<
 
 export interface IStardogGraphQlVisitor
   extends ICstVisitor<any, Pick<StardogSparqlParserResult, 'errors'>> {
-  BindDirective(ctx: CstNodeMap): void;
-  ConditionalStardogDirective(ctx: CstNodeMap): void;
+  Directive(ctx: CstChildrenDictionary): void;
+  $parseSparqlExpression(
+    stringValueToken: IToken
+  ): ReturnType<StardogSparqlParser['parse']>;
   $resetState(): void;
+}
+
+function getValueNodeForStardogDirective(
+  directive: CstChildrenDictionary,
+  argumentTokenType: TokenType
+) {
+  if (!directive.Arguments) {
+    return;
+  }
+
+  const [directiveArguments] = directive.Arguments;
+
+  if (!isCstNode(directiveArguments) || !directiveArguments.children.Argument) {
+    return;
+  }
+
+  const directiveArgumentNode = directiveArguments.children.Argument.find(
+    (argumentNode: CstNode) => {
+      if (!argumentNode.children.Alias) {
+        return false;
+      }
+
+      const [argumentAlias] = argumentNode.children.Alias;
+
+      if (!isCstNode(argumentAlias) || !argumentAlias.children.Name) {
+        return false;
+      }
+
+      const [aliasNameToken] = argumentAlias.children.Name;
+      return tokenMatcher(aliasNameToken as IToken, argumentTokenType);
+    }
+  );
+
+  if (
+    !isCstNode(directiveArgumentNode) ||
+    !directiveArgumentNode.children.Value
+  ) {
+    return;
+  }
+
+  return directiveArgumentNode.children.Value[0] as CstNode;
 }
 
 // Returns a custom visitor that extends the BaseVisitor for the
@@ -47,7 +95,44 @@ export const getStardogGraphQlVisitor = (
       };
     };
 
-    BindDirective = (ctx: CstNodeMap) => {
+    Directive = (ctx: CstChildrenDictionary) => {
+      if (!ctx.Name) {
+        return;
+      }
+
+      const nameToken = ctx.Name[0] as IToken;
+      let directiveArgumentTokenType: TokenType;
+
+      if (tokenMatcher(nameToken, stardogGraphQlTokenMap.BindDirectiveToken)) {
+        directiveArgumentTokenType = stardogGraphQlTokenMap.ToArgumentToken;
+      } else if (
+        tokenMatcher(
+          nameToken,
+          stardogGraphQlTokenMap.ConditionalStardogDirective
+        )
+      ) {
+        directiveArgumentTokenType = stardogGraphQlTokenMap.IfArgumentToken;
+      }
+
+      if (!directiveArgumentTokenType) {
+        return;
+      }
+
+      const directiveValueNode = getValueNodeForStardogDirective(
+        ctx,
+        directiveArgumentTokenType
+      );
+
+      if (!isCstNode(directiveValueNode)) {
+        return;
+      }
+
+      this.$accumulateBindDirectiveSparqlErrors(
+        directiveValueNode.children as CstNodeMap
+      );
+    };
+
+    private $accumulateBindDirectiveSparqlErrors = (ctx: CstNodeMap) => {
       if (!ctx.StringValue) {
         // This directive uses a variable for the expression, rather than a
         // string, so we cannot parse the expression.
@@ -68,32 +153,6 @@ export const getStardogGraphQlVisitor = (
       const { errors } = this.$parseSparqlExpression(stringValueToken);
 
       // Possible future TODO: replace the CST nodes with thoe returned from
-      // the stardogSparqlParser, like we do for the IfClause and ThenClause
-      // in the SRS Parser
-      if (errors.length > 0) {
-        this.sparqlErrors.push(...this.$mapErrors(errors, stringValueToken, 1));
-      }
-    };
-
-    ConditionalStardogDirective = (ctx: CstNodeMap) => {
-      const [
-        conditionalStardogDirectiveArgumentsNode,
-      ] = ctx.ConditionalStardogDirectiveArguments;
-
-      if (!conditionalStardogDirectiveArgumentsNode.children.StringValue) {
-        // This directive uses a variable for the expression, rather than a
-        // string, so we cannot parse the expression.
-        // Possible TODO in future: locate the matching variable and parse it?
-        return;
-      }
-
-      const [stringValueNode] = conditionalStardogDirectiveArgumentsNode
-        .children.StringValue as CstNode[];
-      const [stringValueToken] = stringValueNode.children
-        .StringValueToken as IToken[];
-      const { errors } = this.$parseSparqlExpression(stringValueToken);
-
-      // Possible future TODO: replace the CST nodes with those returned from
       // the stardogSparqlParser, like we do for the IfClause and ThenClause
       // in the SRS Parser
       if (errors.length > 0) {

@@ -51,22 +51,12 @@ const createAndPushTokenWithNameAlt = (config: ITokenConfig) => {
     categories,
   });
 };
-// const createAndPushTokenWithNameAlt = (config: ITokenConfig) =>
-//   createAndPushToken({
-//     ...config,
-//     longer_alt: Name,
-//   });
 
 const createAndPushPunctuator = (config: ITokenConfig) =>
   createAndPushToken({
     ...config,
     categories: [Punctuator],
   });
-
-// const createAndPushTokenWithNameButNot = (config: ITokenConfig, not: TokenType[]) => {
-//   const token = createToken(config);
-//   const matchingKeywordsObject.keys(keywords).f
-// }
 
 // Simple wrapper for `createToken` that also pushes the created token into
 // `graphQlTokens` at the time of creation, since order matters.
@@ -350,6 +340,12 @@ interface StardogArgumentHolder {
   orderedTokens: TokenType[];
 }
 
+// Category token for special Stardog directives:
+const ConditionalStardogDirective = createToken({
+  name: 'ConditionalStardogDirective',
+  pattern: Lexer.NA,
+});
+
 const stardogDirectives = [
   'optional',
   'bind',
@@ -364,9 +360,14 @@ const stardogDirectives = [
   .reduce(
     (accumulator, name) => {
       const key = `${name[0].toUpperCase()}${name.slice(1)}DirectiveToken`;
+      const categories = [Name, EnumValueToken, FragmentName];
+      if (['skip', 'include', 'filter'].includes(name)) {
+        categories.push(ConditionalStardogDirective);
+      }
       const token = createToken({
         name: key,
         pattern: name,
+        categories,
         longer_alt: Name,
       });
 
@@ -400,6 +401,7 @@ const stardogArguments = [
       const token = createToken({
         name: key,
         pattern: name,
+        categories: [Name, EnumValueToken, FragmentName],
         longer_alt: Name,
       });
 
@@ -420,11 +422,13 @@ const stardogArguments = [
 const stardogOrderByArgumentFieldPropertyToken = createToken({
   name: 'OrderByArgumentFieldPropertyToken',
   pattern: 'field',
+  categories: [Name, EnumValueToken, FragmentName],
   longer_alt: Name,
 });
 const stardogOrderByArgumentDescPropertyToken = createToken({
   name: 'OrderByArgumentDescPropertyToken',
   pattern: 'desc',
+  categories: [Name, EnumValueToken, FragmentName],
   longer_alt: Name,
 });
 
@@ -434,6 +438,7 @@ const stardogGraphQlTokenMap = {
   ...stardogArguments.tokenMap,
   OrderByArgumentFieldPropertyToken: stardogOrderByArgumentFieldPropertyToken,
   OrderByArgumentDescPropertyToken: stardogOrderByArgumentDescPropertyToken,
+  ConditionalStardogDirective,
 };
 
 const stardogGraphQlTokens = [
@@ -446,6 +451,7 @@ const stardogGraphQlTokens = [
 
 // Add shared category and catch-all tokens.
 const finalTokens = [
+  ConditionalStardogDirective,
   FragmentName,
   EnumValueToken,
   Name,
