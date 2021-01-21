@@ -2,215 +2,334 @@ import {
   IToken,
   IRecognitionException,
   ICstVisitor,
-  CstNode,
-  tokenMatcher,
   CstChildrenDictionary,
   TokenType,
+  CstNode,
 } from 'chevrotain';
 import { StardogSparqlParser } from '../sparql/StardogSparqlParser';
-import { CstNodeMap } from 'helpers/chevrotain/types';
-import { isCstNode } from 'helpers/chevrotain/cst';
-const { stardogGraphQlTokenMap } = require('./tokens');
+import {
+  getFirstChildCstElementByRuleStack,
+  isIToken,
+} from 'helpers/chevrotain/cst';
+import { StardogGraphQlParser } from 'graphql/StardogGraphQlParser';
+import { graphQlUtils } from 'graphql/utils';
+
+const {
+  getArgumentNodes,
+  getArgumentTokenTypesForDirectiveNameToken,
+  isSparqlReceivingStardogDirective,
+} = graphQlUtils;
+
+export type PartialRecognitionException = Pick<
+  IRecognitionException,
+  'name' | 'message'
+>;
+
+export interface ErrorAccumulator {
+  sparqlErrors: IRecognitionException[];
+  stardogGraphQlErrors: PartialRecognitionException[];
+}
+
+export interface ArgumentValidatorOptions {
+  allowedArgumentTokenTypes: TokenType[];
+  directiveImage: string | RegExp;
+  errorAccumulator: ErrorAccumulator;
+  numMinimumArguments: number;
+  sparqlParser: StardogSparqlParser;
+  suppliedArgumentNodes: CstNode[];
+}
+
+export interface ArgumentValidator {
+  (validatorOptions: ArgumentValidatorOptions): void;
+}
 
 export type StardogSparqlParserResult = ReturnType<
   StardogSparqlParser['parse']
 >;
 
-export interface IStardogGraphQlVisitor
-  extends ICstVisitor<any, Pick<StardogSparqlParserResult, 'errors'>> {
+export interface IStardogGraphQlVisitor extends ICstVisitor<any, any> {
   Directive(ctx: CstChildrenDictionary): void;
-  $parseSparqlExpression(
-    stringValueToken: IToken
-  ): ReturnType<StardogSparqlParser['parse']>;
   $resetState(): void;
 }
 
-function getValueNodeForStardogDirective(
-  directive: CstChildrenDictionary,
-  argumentTokenType: TokenType
+function parseSparqlExpression(
+  stringValueToken: IToken,
+  stardogSparqlParser: StardogSparqlParser
 ) {
-  if (!directive.Arguments) {
-    return;
-  }
-
-  const [directiveArguments] = directive.Arguments;
-
-  if (!isCstNode(directiveArguments) || !directiveArguments.children.Argument) {
-    return;
-  }
-
-  const directiveArgumentNode = directiveArguments.children.Argument.find(
-    (argumentNode: CstNode) => {
-      if (!argumentNode.children.Alias) {
-        return false;
-      }
-
-      const [argumentAlias] = argumentNode.children.Alias;
-
-      if (!isCstNode(argumentAlias) || !argumentAlias.children.Name) {
-        return false;
-      }
-
-      const [aliasNameToken] = argumentAlias.children.Name;
-      return tokenMatcher(aliasNameToken as IToken, argumentTokenType);
-    }
+  const innerExpressionImage = stringValueToken.image.slice(1, -1); // remove quotes
+  return stardogSparqlParser.parse(
+    innerExpressionImage,
+    stardogSparqlParser.Expression
   );
+}
 
-  if (
-    !isCstNode(directiveArgumentNode) ||
-    !directiveArgumentNode.children.Value
-  ) {
-    return;
+// Make the embedded SPARQL errors have proper locations for use in error
+// diagnostics. NOTE: This does NOT modify the locations of the error's
+// `previousToken` property. If that ends up being needed, it's a TODO.
+function mapSparqlErrors(
+  sparqlErrors: IRecognitionException[],
+  tokenForOffset: IToken,
+  offsetPadding: number = 0
+) {
+  const {
+    startOffset: tokenStartOffset,
+    endOffset: tokenEndOffset,
+    startColumn: tokenStartColumn,
+    endColumn: tokenEndColumn,
+  } = tokenForOffset;
+
+  return sparqlErrors.map((error) => {
+    const { token } = error;
+    const {
+      startOffset: errorStartOffset,
+      endOffset: errorEndOffset,
+      startColumn: errorStartColumn,
+      endColumn: errorEndColumn,
+    } = token;
+
+    return {
+      ...error,
+      token: {
+        ...token,
+        // error token's offsets might be set explicitly to null
+        startOffset: tokenStartOffset + (errorStartOffset || 0) + offsetPadding,
+        endOffset: tokenEndOffset + (errorEndOffset || 0) + offsetPadding,
+        startColumn: tokenStartColumn + (errorStartColumn || 0) + offsetPadding,
+        endColumn: tokenEndColumn + (errorEndColumn || 0) + offsetPadding,
+        startLine: tokenForOffset.startLine,
+        endLine: tokenForOffset.endLine,
+      },
+    };
+  });
+}
+
+// Checks that the right number of arguments are supplied, accumulating errors
+// otherwise.
+function validateDirectiveArgumentsArity({
+  allowedArgumentTokenTypes,
+  directiveImage,
+  errorAccumulator,
+  numMinimumArguments,
+  suppliedArgumentNodes,
+}: ArgumentValidatorOptions) {
+  const numSuppliedArguments = suppliedArgumentNodes.length;
+  const numAllowedArguments = allowedArgumentTokenTypes.length;
+  const validArgumentsPhrase = `valid arguments: ${allowedArgumentTokenTypes
+    .map((argumentTokenType) => `\`${argumentTokenType.PATTERN}\``)
+    .join(', ')}`;
+  const errorTypeName = 'ArgumentArityError';
+
+  if (numSuppliedArguments < numMinimumArguments) {
+    const requiresPhrase = `requires ${numMinimumArguments} argument${
+      numMinimumArguments > 1 ? 's' : ''
+    }`;
+    errorAccumulator.stardogGraphQlErrors.push({
+      name: errorTypeName,
+      message: `The ${directiveImage} directive ${requiresPhrase} (${validArgumentsPhrase})`,
+    });
+  } else if (numSuppliedArguments > numAllowedArguments) {
+    errorAccumulator.stardogGraphQlErrors.push({
+      name: errorTypeName,
+      message: `Too many arguments provided to ${directiveImage} directive (${validArgumentsPhrase})`,
+    });
   }
+}
 
-  return directiveArgumentNode.children.Value[0] as CstNode;
+// Checks that the supplied argument names and values conform to the allowed
+// arguments of a directive and have valid embedded SPARQL.
+function validateDirectiveArgumentsNameAndValue({
+  allowedArgumentTokenTypes,
+  directiveImage,
+  errorAccumulator,
+  sparqlParser,
+  suppliedArgumentNodes,
+}: Partial<ArgumentValidatorOptions>) {
+  const validArgumentsPhrase = `valid arguments: ${allowedArgumentTokenTypes
+    .map((argumentTokenType) => `\`${argumentTokenType.PATTERN}\``)
+    .join(', ')}`;
+
+  suppliedArgumentNodes.forEach((argumentNode) => {
+    const argumentNameToken = getFirstChildCstElementByRuleStack(
+      ['Alias', 'Name'],
+      argumentNode
+    ) as IToken;
+
+    if (!isIToken(argumentNameToken)) {
+      // This should never be an actual possibility, but we'll be safe in
+      // case it somehow occurs.
+      return;
+    }
+
+    const argumentTokenTypeName = argumentNameToken.tokenType.name;
+    const isAllowedArgument = allowedArgumentTokenTypes.some(
+      (argumentTokenType) => argumentTokenType.name === argumentTokenTypeName
+    );
+
+    if (!isAllowedArgument) {
+      errorAccumulator.stardogGraphQlErrors.push({
+        name: 'InvalidArgumentError',
+        message: `Invalid argument \`${argumentNameToken.image}\` for ${directiveImage} directive (${validArgumentsPhrase})`,
+      });
+    } else {
+      // For allowed arguments, we provide embedded SPARQL parsing. Note
+      // again that we are currently *only* handling Stardog-specific
+      // directives that receive SPARQL here.
+      const argumentStringValueToken = getFirstChildCstElementByRuleStack(
+        ['Value', 'StringValue', 'StringValueToken'],
+        argumentNode
+      );
+
+      if (!isIToken(argumentStringValueToken)) {
+        // More safety; should not be a real possibility.
+        return;
+      }
+
+      const { errors } = parseSparqlExpression(
+        argumentStringValueToken,
+        sparqlParser
+      );
+
+      // Possible future TODO: replace the CST nodes with those returned
+      // from the stardogSparqlParser, like we do for the IfClause and
+      // ThenClause in the SRS Parser
+      if (errors.length > 0) {
+        errorAccumulator.sparqlErrors.push(
+          ...mapSparqlErrors(errors, argumentStringValueToken, 1)
+        );
+      }
+    }
+  });
+}
+
+function validateDirectiveArguments({
+  validators,
+  ...validatorOptions
+}: ArgumentValidatorOptions & { validators: ArgumentValidator[] }) {
+  validators.forEach((validator) => validator(validatorOptions));
+}
+
+// Delegates to the appropriate validator for a specific directive.
+function validateSuppliedArgumentsForDirective(
+  suppliedArgumentNodes: CstNode[],
+  directiveNameToken: IToken,
+  sparqlParser: StardogSparqlParser
+) {
+  const errorAccumulator: ErrorAccumulator = {
+    stardogGraphQlErrors: [],
+    sparqlErrors: [],
+  };
+  const allowedArgumentTokenTypes = getArgumentTokenTypesForDirectiveNameToken(
+    directiveNameToken
+  );
+  const directiveImage = directiveNameToken.tokenType.PATTERN;
+
+  validateDirectiveArguments({
+    allowedArgumentTokenTypes,
+    directiveImage,
+    errorAccumulator,
+    numMinimumArguments: 1,
+    sparqlParser,
+    suppliedArgumentNodes,
+    // We do things this way to be "forward-looking." In the future, we may
+    // want to define custom validators for certain directives that have
+    // special rules. In that case, we could add custom validators here based
+    // on the type of the `directiveNameToken`.
+    validators: [
+      validateDirectiveArgumentsArity,
+      validateDirectiveArgumentsNameAndValue,
+    ],
+  });
+
+  return errorAccumulator;
 }
 
 // Returns a custom visitor that extends the BaseVisitor for the
 // StardogGraphQlParser. When the visitor encounters any custom Stardog
 // directive that can contain a SPARQL expression, it locates the expression
 // and ensures that it parses as valid SPARQL (by delegating to the
-// StardogSparqlParser).
+// StardogSparqlParser). Similarly, the visitor applies some special checks
+// (with corresponding error messages) for Stardog-specific GraphQL directives
+// that are not built into the GraphQL grammar itself.
 export const getStardogGraphQlVisitor = (
-  BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>
+  BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>,
+  parserInstance: StardogGraphQlParser
 ): IStardogGraphQlVisitor => {
+  const stardogSparqlParser = new StardogSparqlParser(); // for parsing embedded SPARQL;
+
   class StardogGraphQlVisitor extends BaseVisitor
     implements IStardogGraphQlVisitor {
-    private stardogSparqlParser: StardogSparqlParser;
     private sparqlErrors: IRecognitionException[] = [];
+    private stardogGraphQlErrors: IRecognitionException[] = [];
 
     constructor() {
       super();
-      this.stardogSparqlParser = new StardogSparqlParser();
       this.validateVisitor();
     }
 
     visit = (...args: Parameters<IStardogGraphQlVisitor['visit']>) => {
       super.visit(...args);
       return {
-        errors: this.sparqlErrors.map((error) => ({
-          ...error,
-          name: `SPARQL Error: ${error.name}`,
-        })),
+        sparqlErrors: this.sparqlErrors,
+        stardogGraphQlErrors: this.stardogGraphQlErrors,
       };
     };
 
     Directive = (ctx: CstChildrenDictionary) => {
-      if (!ctx.Name) {
+      if (!ctx.Name || !ctx.Name[0]) {
+        // Somehow we have a directive with no Name token. This shouldn't be
+        // possible, but we check just to be safe (and bail otherwise).
         return;
       }
 
-      const nameToken = ctx.Name[0] as IToken;
-      let directiveArgumentTokenType: TokenType;
+      const [directiveNameToken] = ctx.Name as IToken[];
 
-      if (tokenMatcher(nameToken, stardogGraphQlTokenMap.BindDirectiveToken)) {
-        directiveArgumentTokenType = stardogGraphQlTokenMap.ToArgumentToken;
-      } else if (
-        tokenMatcher(
-          nameToken,
-          stardogGraphQlTokenMap.ConditionalStardogDirective
-        )
+      // NOTE: We currently only provide special handling for Stardog-specific
+      // directives that accept SPARQL, so we bail early in all other cases.
+      // We may want to expand this later.
+      if (
+        !directiveNameToken ||
+        !isSparqlReceivingStardogDirective(directiveNameToken)
       ) {
-        directiveArgumentTokenType = stardogGraphQlTokenMap.IfArgumentToken;
-      }
-
-      if (!directiveArgumentTokenType) {
         return;
       }
 
-      const directiveValueNode = getValueNodeForStardogDirective(
-        ctx,
-        directiveArgumentTokenType
+      const suppliedArguments = getArgumentNodes(ctx);
+      const accumulatedErrors = validateSuppliedArgumentsForDirective(
+        suppliedArguments,
+        directiveNameToken,
+        stardogSparqlParser
       );
 
-      if (!isCstNode(directiveValueNode)) {
-        return;
+      if (accumulatedErrors.stardogGraphQlErrors.length > 0) {
+        // The accumulated errors up to this point do not have stack
+        // information. We add it here (only once, for performance reasons).
+        const ruleStack = (parserInstance as any).getHumanReadableRuleStack();
+        const ruleOccurrenceStack = (parserInstance as any)
+          .RULE_OCCURRENCE_STACK;
+
+        this.stardogGraphQlErrors.push(
+          ...accumulatedErrors.stardogGraphQlErrors.map((partialError) => ({
+            ...partialError,
+            token: directiveNameToken,
+            context: {
+              ruleStack,
+              ruleOccurrenceStack,
+            },
+            resyncedTokens: [],
+          }))
+        );
       }
 
-      this.$accumulateBindDirectiveSparqlErrors(
-        directiveValueNode.children as CstNodeMap
-      );
-    };
-
-    private $accumulateBindDirectiveSparqlErrors = (ctx: CstNodeMap) => {
-      if (!ctx.StringValue) {
-        // This directive uses a variable for the expression, rather than a
-        // string, so we cannot parse the expression.
-        // Possible TODO in future: locate the matching variable and parse it?
-        return;
-      }
-
-      const [stringValueNode] = ctx.StringValue;
-
-      if (!stringValueNode.children.StringValueToken) {
-        // A bind directive can be identified at times by the parser even when
-        // there is no StringValueToken yet, due to error recovery.
-        return;
-      }
-
-      const [stringValueToken] = stringValueNode.children
-        .StringValueToken as IToken[];
-      const { errors } = this.$parseSparqlExpression(stringValueToken);
-
-      // Possible future TODO: replace the CST nodes with thoe returned from
-      // the stardogSparqlParser, like we do for the IfClause and ThenClause
-      // in the SRS Parser
-      if (errors.length > 0) {
-        this.sparqlErrors.push(...this.$mapErrors(errors, stringValueToken, 1));
-      }
-    };
-
-    // Make the SPARQL errors have proper locations for use in error
-    // diagnostics. NOTE: This does NOT modify the locations of the error's
-    // `previousToken` property. If that ends up being needed, it's a TODO.
-    private $mapErrors = (
-      errors: IRecognitionException[],
-      tokenForOffset: IToken,
-      offsetPadding: number = 0
-    ) => {
-      const {
-        startOffset: tokenStartOffset,
-        endOffset: tokenEndOffset,
-        startColumn: tokenStartColumn,
-        endColumn: tokenEndColumn,
-      } = tokenForOffset;
-
-      return errors.map((error) => {
-        const { token } = error;
-        const {
-          startOffset: errorStartOffset,
-          endOffset: errorEndOffset,
-          startColumn: errorStartColumn,
-          endColumn: errorEndColumn,
-        } = token;
-
-        return {
-          ...error,
-          token: {
-            ...token,
-            // error token's offsets might be set explicitly to null
-            startOffset:
-              tokenStartOffset + (errorStartOffset || 0) + offsetPadding,
-            endOffset: tokenEndOffset + (errorEndOffset || 0) + offsetPadding,
-            startColumn:
-              tokenStartColumn + (errorStartColumn || 0) + offsetPadding,
-            endColumn: tokenEndColumn + (errorEndColumn || 0) + offsetPadding,
-            startLine: tokenForOffset.startLine,
-            endLine: tokenForOffset.endLine,
-          },
-        };
-      });
-    };
-
-    $parseSparqlExpression = (stringValueToken: IToken) => {
-      const innerExpressionImage = stringValueToken.image.slice(1, -1); // remove quotes
-      return this.stardogSparqlParser.parse(
-        innerExpressionImage,
-        this.stardogSparqlParser.Expression
+      this.sparqlErrors.push(
+        ...accumulatedErrors.sparqlErrors.map((sparqlError) => ({
+          ...sparqlError,
+          name: `SPARQL Error: ${sparqlError.name}`,
+        }))
       );
     };
 
     $resetState = () => {
+      this.stardogGraphQlErrors = [];
       this.sparqlErrors = [];
     };
   }

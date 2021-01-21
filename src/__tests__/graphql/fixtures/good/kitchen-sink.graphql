@@ -11,7 +11,7 @@ query queryName($foo: ComplexType, $site: Site = MOBILE) @onQuery {
         }
       }
     }
-    ... @skip(unless: $foo) {
+    ... @skip(if: $foo) {
       id
     }
     ... {

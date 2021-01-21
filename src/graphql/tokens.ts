@@ -340,9 +340,22 @@ interface StardogArgumentHolder {
   orderedTokens: TokenType[];
 }
 
-// Category token for special Stardog directives:
-const ConditionalStardogDirective = createToken({
-  name: 'ConditionalStardogDirective',
+// Category tokens for special Stardog directives/arguments. These are
+// especially useful in tools that use the parser, such as language servers
+const StardogDirective = createToken({
+  name: 'StardogDirective',
+  pattern: Lexer.NA,
+});
+const SparqlReceivingStardogDirective = createToken({
+  name: 'SparqlReceivingStardogDirective',
+  pattern: Lexer.NA,
+});
+const StardogArgument = createToken({
+  name: 'StardogArgument',
+  pattern: Lexer.NA,
+});
+const TopLevel = createToken({
+  name: 'TopLevel',
   pattern: Lexer.NA,
 });
 
@@ -360,9 +373,12 @@ const stardogDirectives = [
   .reduce(
     (accumulator, name) => {
       const key = `${name[0].toUpperCase()}${name.slice(1)}DirectiveToken`;
-      const categories = [Name, EnumValueToken, FragmentName];
-      if (['skip', 'include', 'filter'].includes(name)) {
-        categories.push(ConditionalStardogDirective);
+      const categories = [Name, EnumValueToken, FragmentName, StardogDirective];
+      if (['prefix', 'config'].includes(name)) {
+        categories.push(TopLevel);
+      }
+      if (['bind', 'skip', 'include', 'filter'].includes(name)) {
+        categories.push(SparqlReceivingStardogDirective);
       }
       const token = createToken({
         name: key,
@@ -398,10 +414,14 @@ const stardogArguments = [
   .reduce(
     (accumulator, name) => {
       const key = `${name[0].toUpperCase()}${name.slice(1)}ArgumentToken`;
+      const categories = [Name, EnumValueToken, FragmentName, StardogArgument];
+      if (['orderBy', 'first', 'limit', 'offset'].includes(name)) {
+        categories.push(TopLevel);
+      }
       const token = createToken({
         name: key,
         pattern: name,
-        categories: [Name, EnumValueToken, FragmentName],
+        categories,
         longer_alt: Name,
       });
 
@@ -438,7 +458,10 @@ const stardogGraphQlTokenMap = {
   ...stardogArguments.tokenMap,
   OrderByArgumentFieldPropertyToken: stardogOrderByArgumentFieldPropertyToken,
   OrderByArgumentDescPropertyToken: stardogOrderByArgumentDescPropertyToken,
-  ConditionalStardogDirective,
+  StardogDirective,
+  SparqlReceivingStardogDirective,
+  StardogArgument,
+  TopLevel,
 };
 
 const stardogGraphQlTokens = [
@@ -447,11 +470,14 @@ const stardogGraphQlTokens = [
   ...stardogArguments.orderedTokens,
   stardogOrderByArgumentFieldPropertyToken,
   stardogOrderByArgumentDescPropertyToken,
+  StardogDirective,
+  SparqlReceivingStardogDirective,
+  StardogArgument,
+  TopLevel,
 ];
 
 // Add shared category and catch-all tokens.
 const finalTokens = [
-  ConditionalStardogDirective,
   FragmentName,
   EnumValueToken,
   Name,

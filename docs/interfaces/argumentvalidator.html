@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LexerMode | millan</title>
+	<title>ArgumentValidator | millan</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,63 +56,45 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="lexermode.html">LexerMode</a>
+					<a href="argumentvalidator.html">ArgumentValidator</a>
 				</li>
 			</ul>
-			<h1>Enumeration LexerMode</h1>
+			<h1>Interface ArgumentValidator</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Enumeration members</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="lexermode.html#ifclause" class="tsd-kind-icon">IFCLAUSE</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="lexermode.html#thenclause" class="tsd-kind-icon">THENCLAUSE</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="lexermode.html#turtle" class="tsd-kind-icon">TURTLE</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ArgumentValidator</span>
+					</li>
+				</ul>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-					<a name="ifclause" class="tsd-anchor"></a>
-					<h3>IFCLAUSE</h3>
-					<div class="tsd-signature tsd-kind-icon">IFCLAUSE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;ifclause&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/517128a/src/srs/tokens.ts#L8">srs/tokens.ts:8</a></li>
+			<section class="tsd-panel">
+				<h3 class="tsd-before-signature">Callable</h3>
+				<ul class="tsd-signatures tsd-kind-interface">
+					<li class="tsd-signature tsd-kind-icon">__call<span class="tsd-signature-symbol">(</span>validatorOptions<span class="tsd-signature-symbol">: </span><a href="argumentvalidatoroptions.html" class="tsd-signature-type">ArgumentValidatorOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/stardog-union/millan/blob/517128a/src/graphql/StardogGraphQlVisitor.ts#L42">graphql/StardogGraphQlVisitor.ts:42</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>validatorOptions: <a href="argumentvalidatoroptions.html" class="tsd-signature-type">ArgumentValidatorOptions</a></h5>
+							</li>
 						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-					<a name="thenclause" class="tsd-anchor"></a>
-					<h3>THENCLAUSE</h3>
-					<div class="tsd-signature tsd-kind-icon">THENCLAUSE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;thenclause&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/517128a/src/srs/tokens.ts#L9">srs/tokens.ts:9</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-					<a name="turtle" class="tsd-anchor"></a>
-					<h3>TURTLE</h3>
-					<div class="tsd-signature tsd-kind-icon">TURTLE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;&quot;turtle&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/517128a/src/srs/tokens.ts#L7">srs/tokens.ts:7</a></li>
-						</ul>
-					</aside>
-				</section>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -127,19 +109,8 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum tsd-is-not-exported">
-						<a href="lexermode.html" class="tsd-kind-icon">Lexer<wbr>Mode</a>
-						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-								<a href="lexermode.html#ifclause" class="tsd-kind-icon">IFCLAUSE</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-								<a href="lexermode.html#thenclause" class="tsd-kind-icon">THENCLAUSE</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
-								<a href="lexermode.html#turtle" class="tsd-kind-icon">TURTLE</a>
-							</li>
-						</ul>
+					<li class="current tsd-kind-interface">
+						<a href="argumentvalidator.html" class="tsd-kind-icon">Argument<wbr>Validator</a>
 					</li>
 				</ul>
 				<ul class="after-current">

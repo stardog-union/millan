@@ -6,8 +6,17 @@ import { getStardogGraphQlVisitor } from 'graphql/StardogGraphQlVisitor';
 export class StardogGraphQlParser extends BaseGraphQlParser {
   private stardogGraphQlVisitor;
 
-  constructor(options?) {
-    super(options, stardogGraphQlTokens);
+  constructor(options = {} as any) {
+    super(
+      {
+        ...options,
+        config: {
+          ...options.config,
+          nodeLocationTracking: 'full',
+        },
+      },
+      stardogGraphQlTokens
+    );
     Parser.performSelfAnalysis(this);
   }
 
@@ -16,7 +25,8 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
     if (!this.stardogGraphQlVisitor) {
       const BaseStardogGraphQlVisitor = this.getBaseCstVisitorConstructorWithDefaults();
       this.stardogGraphQlVisitor = getStardogGraphQlVisitor(
-        BaseStardogGraphQlVisitor
+        BaseStardogGraphQlVisitor,
+        this
       );
     } else {
       this.stardogGraphQlVisitor.$resetState();
@@ -28,11 +38,11 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
   public parse = (document: string, entryRule = this.Document) => {
     this.input = this.tokenize(document);
     const cst = entryRule.call(this);
-    const { errors: sparqlErrors } = this.visitCst(cst);
+    const { sparqlErrors, stardogGraphQlErrors } = this.visitCst(cst);
     const graphQlErrors: IRecognitionException[] = this.errors;
 
     return {
-      errors: [...graphQlErrors, ...sparqlErrors],
+      errors: [...graphQlErrors, ...stardogGraphQlErrors, ...sparqlErrors],
       cst,
     };
   };
