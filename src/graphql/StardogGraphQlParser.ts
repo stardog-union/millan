@@ -1,23 +1,14 @@
 const { stardogGraphQlTokens } = require('./tokens');
 import { BaseGraphQlParser } from './BaseGraphQlParser';
-import { Parser, IRecognitionException } from 'chevrotain';
+import { IRecognitionException } from 'chevrotain';
 import { getStardogGraphQlVisitor } from 'graphql/StardogGraphQlVisitor';
 
 export class StardogGraphQlParser extends BaseGraphQlParser {
   private stardogGraphQlVisitor;
 
-  constructor(options = {} as any) {
-    super(
-      {
-        ...options,
-        config: {
-          ...options.config,
-          nodeLocationTracking: 'full',
-        },
-      },
-      stardogGraphQlTokens
-    );
-    Parser.performSelfAnalysis(this);
+  constructor(options?) {
+    super(options, stardogGraphQlTokens);
+    this.performSelfAnalysis();
   }
 
   private visitCst = (cst: any) => {
