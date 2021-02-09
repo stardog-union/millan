@@ -180,7 +180,9 @@ function validateDirectiveArgumentsNameAndValue({
       );
 
       if (!isIToken(argumentStringValueToken)) {
-        // More safety; should not be a real possibility.
+        // As noted above, we are currently only checking string arguments to
+        // ensure they parse as valid SPARQL expressions. We bail on
+        // non-strings.
         return;
       }
 
@@ -202,9 +204,12 @@ function validateDirectiveArgumentsNameAndValue({
 }
 
 function validateDirectiveArguments({
+  validatorOptions,
   validators,
-  ...validatorOptions
-}: ArgumentValidatorOptions & { validators: ArgumentValidator[] }) {
+}: {
+  validatorOptions: ArgumentValidatorOptions;
+  validators: ArgumentValidator[];
+}) {
   validators.forEach((validator) => validator(validatorOptions));
 }
 
@@ -224,12 +229,14 @@ function validateSuppliedArgumentsForDirective(
   const directiveImage = directiveNameToken.tokenType.PATTERN;
 
   validateDirectiveArguments({
-    allowedArgumentTokenTypes,
-    directiveImage,
-    errorAccumulator,
-    numMinimumArguments: 1,
-    sparqlParser,
-    suppliedArgumentNodes,
+    validatorOptions: {
+      allowedArgumentTokenTypes,
+      directiveImage,
+      errorAccumulator,
+      numMinimumArguments: 1,
+      sparqlParser,
+      suppliedArgumentNodes,
+    },
     // We do things this way to be "forward-looking." In the future, we may
     // want to define custom validators for certain directives that have
     // special rules. In that case, we could add custom validators here based
@@ -286,10 +293,7 @@ export const getStardogGraphQlVisitor = (
       // NOTE: We currently only provide special handling for Stardog-specific
       // directives that accept SPARQL, so we bail early in all other cases.
       // We may want to expand this later.
-      if (
-        !directiveNameToken ||
-        !isSparqlReceivingStardogDirective(directiveNameToken)
-      ) {
+      if (!isSparqlReceivingStardogDirective(directiveNameToken)) {
         return;
       }
 
