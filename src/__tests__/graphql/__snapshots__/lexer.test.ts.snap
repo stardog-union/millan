@@ -2291,10 +2291,10 @@ Object {
       "tokenTypeIdx": 14,
     },
     Object {
-      "endColumn": 20,
+      "endColumn": 16,
       "endLine": 14,
-      "endOffset": 364,
-      "image": "unless",
+      "endOffset": 360,
+      "image": "if",
       "startColumn": 15,
       "startLine": 14,
       "startOffset": 359,
@@ -2307,13 +2307,13 @@ Object {
       "tokenTypeIdx": 2,
     },
     Object {
-      "endColumn": 21,
+      "endColumn": 17,
       "endLine": 14,
-      "endOffset": 365,
+      "endOffset": 361,
       "image": ":",
-      "startColumn": 21,
+      "startColumn": 17,
       "startLine": 14,
-      "startOffset": 365,
+      "startOffset": 361,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -2323,13 +2323,13 @@ Object {
       "tokenTypeIdx": 17,
     },
     Object {
-      "endColumn": 23,
+      "endColumn": 19,
       "endLine": 14,
-      "endOffset": 367,
+      "endOffset": 363,
       "image": "$",
-      "startColumn": 23,
+      "startColumn": 19,
       "startLine": 14,
-      "startOffset": 367,
+      "startOffset": 363,
       "tokenType": Object {
         "PATTERN": "$",
         "isParent": false,
@@ -2339,13 +2339,13 @@ Object {
       "tokenTypeIdx": 13,
     },
     Object {
-      "endColumn": 26,
+      "endColumn": 22,
       "endLine": 14,
-      "endOffset": 370,
+      "endOffset": 366,
       "image": "foo",
-      "startColumn": 24,
+      "startColumn": 20,
       "startLine": 14,
-      "startOffset": 368,
+      "startOffset": 364,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2355,13 +2355,13 @@ Object {
       "tokenTypeIdx": 2,
     },
     Object {
-      "endColumn": 27,
+      "endColumn": 23,
       "endLine": 14,
-      "endOffset": 371,
+      "endOffset": 367,
       "image": ")",
-      "startColumn": 27,
+      "startColumn": 23,
       "startLine": 14,
-      "startOffset": 371,
+      "startOffset": 367,
       "tokenType": Object {
         "PATTERN": ")",
         "isParent": false,
@@ -2371,13 +2371,13 @@ Object {
       "tokenTypeIdx": 15,
     },
     Object {
-      "endColumn": 29,
+      "endColumn": 25,
       "endLine": 14,
-      "endOffset": 373,
+      "endOffset": 369,
       "image": "{",
-      "startColumn": 29,
+      "startColumn": 25,
       "startLine": 14,
-      "startOffset": 373,
+      "startOffset": 369,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -2389,11 +2389,11 @@ Object {
     Object {
       "endColumn": 8,
       "endLine": 15,
-      "endOffset": 382,
+      "endOffset": 378,
       "image": "id",
       "startColumn": 7,
       "startLine": 15,
-      "startOffset": 381,
+      "startOffset": 377,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2405,11 +2405,11 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 16,
-      "endOffset": 388,
+      "endOffset": 384,
       "image": "}",
       "startColumn": 5,
       "startLine": 16,
-      "startOffset": 388,
+      "startOffset": 384,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2421,11 +2421,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 17,
-      "endOffset": 396,
+      "endOffset": 392,
       "image": "...",
       "startColumn": 5,
       "startLine": 17,
-      "startOffset": 394,
+      "startOffset": 390,
       "tokenType": Object {
         "PATTERN": "...",
         "isParent": false,
@@ -2437,11 +2437,11 @@ Object {
     Object {
       "endColumn": 9,
       "endLine": 17,
-      "endOffset": 398,
+      "endOffset": 394,
       "image": "{",
       "startColumn": 9,
       "startLine": 17,
-      "startOffset": 398,
+      "startOffset": 394,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -2453,11 +2453,11 @@ Object {
     Object {
       "endColumn": 8,
       "endLine": 18,
-      "endOffset": 407,
+      "endOffset": 403,
       "image": "id",
       "startColumn": 7,
       "startLine": 18,
-      "startOffset": 406,
+      "startOffset": 402,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2469,11 +2469,11 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 19,
-      "endOffset": 413,
+      "endOffset": 409,
       "image": "}",
       "startColumn": 5,
       "startLine": 19,
-      "startOffset": 413,
+      "startOffset": 409,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2485,11 +2485,11 @@ Object {
     Object {
       "endColumn": 3,
       "endLine": 20,
-      "endOffset": 417,
+      "endOffset": 413,
       "image": "}",
       "startColumn": 3,
       "startLine": 20,
-      "startOffset": 417,
+      "startOffset": 413,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2501,11 +2501,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 21,
-      "endOffset": 419,
+      "endOffset": 415,
       "image": "}",
       "startColumn": 1,
       "startLine": 21,
-      "startOffset": 419,
+      "startOffset": 415,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2517,11 +2517,11 @@ Object {
     Object {
       "endColumn": 8,
       "endLine": 23,
-      "endOffset": 429,
+      "endOffset": 425,
       "image": "mutation",
       "startColumn": 1,
       "startLine": 23,
-      "startOffset": 422,
+      "startOffset": 418,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -2539,11 +2539,11 @@ Object {
     Object {
       "endColumn": 18,
       "endLine": 23,
-      "endOffset": 439,
+      "endOffset": 435,
       "image": "likeStory",
       "startColumn": 10,
       "startLine": 23,
-      "startOffset": 431,
+      "startOffset": 427,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2555,11 +2555,11 @@ Object {
     Object {
       "endColumn": 20,
       "endLine": 23,
-      "endOffset": 441,
+      "endOffset": 437,
       "image": "@",
       "startColumn": 20,
       "startLine": 23,
-      "startOffset": 441,
+      "startOffset": 437,
       "tokenType": Object {
         "PATTERN": "@",
         "isParent": false,
@@ -2571,11 +2571,11 @@ Object {
     Object {
       "endColumn": 30,
       "endLine": 23,
-      "endOffset": 451,
+      "endOffset": 447,
       "image": "onMutation",
       "startColumn": 21,
       "startLine": 23,
-      "startOffset": 442,
+      "startOffset": 438,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2587,11 +2587,11 @@ Object {
     Object {
       "endColumn": 32,
       "endLine": 23,
-      "endOffset": 453,
+      "endOffset": 449,
       "image": "{",
       "startColumn": 32,
       "startLine": 23,
-      "startOffset": 453,
+      "startOffset": 449,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -2603,11 +2603,11 @@ Object {
     Object {
       "endColumn": 6,
       "endLine": 24,
-      "endOffset": 460,
+      "endOffset": 456,
       "image": "like",
       "startColumn": 3,
       "startLine": 24,
-      "startOffset": 457,
+      "startOffset": 453,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2619,11 +2619,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 24,
-      "endOffset": 461,
+      "endOffset": 457,
       "image": "(",
       "startColumn": 7,
       "startLine": 24,
-      "startOffset": 461,
+      "startOffset": 457,
       "tokenType": Object {
         "PATTERN": "(",
         "isParent": false,
@@ -2635,11 +2635,11 @@ Object {
     Object {
       "endColumn": 12,
       "endLine": 24,
-      "endOffset": 466,
+      "endOffset": 462,
       "image": "story",
       "startColumn": 8,
       "startLine": 24,
-      "startOffset": 462,
+      "startOffset": 458,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2651,11 +2651,11 @@ Object {
     Object {
       "endColumn": 13,
       "endLine": 24,
-      "endOffset": 467,
+      "endOffset": 463,
       "image": ":",
       "startColumn": 13,
       "startLine": 24,
-      "startOffset": 467,
+      "startOffset": 463,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -2667,11 +2667,11 @@ Object {
     Object {
       "endColumn": 17,
       "endLine": 24,
-      "endOffset": 471,
+      "endOffset": 467,
       "image": "123",
       "startColumn": 15,
       "startLine": 24,
-      "startOffset": 469,
+      "startOffset": 465,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": false,
@@ -2683,11 +2683,11 @@ Object {
     Object {
       "endColumn": 18,
       "endLine": 24,
-      "endOffset": 472,
+      "endOffset": 468,
       "image": ")",
       "startColumn": 18,
       "startLine": 24,
-      "startOffset": 472,
+      "startOffset": 468,
       "tokenType": Object {
         "PATTERN": ")",
         "isParent": false,
@@ -2699,11 +2699,11 @@ Object {
     Object {
       "endColumn": 20,
       "endLine": 24,
-      "endOffset": 474,
+      "endOffset": 470,
       "image": "@",
       "startColumn": 20,
       "startLine": 24,
-      "startOffset": 474,
+      "startOffset": 470,
       "tokenType": Object {
         "PATTERN": "@",
         "isParent": false,
@@ -2715,11 +2715,11 @@ Object {
     Object {
       "endColumn": 27,
       "endLine": 24,
-      "endOffset": 481,
+      "endOffset": 477,
       "image": "onField",
       "startColumn": 21,
       "startLine": 24,
-      "startOffset": 475,
+      "startOffset": 471,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2731,11 +2731,11 @@ Object {
     Object {
       "endColumn": 29,
       "endLine": 24,
-      "endOffset": 483,
+      "endOffset": 479,
       "image": "{",
       "startColumn": 29,
       "startLine": 24,
-      "startOffset": 483,
+      "startOffset": 479,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -2747,11 +2747,11 @@ Object {
     Object {
       "endColumn": 9,
       "endLine": 25,
-      "endOffset": 493,
+      "endOffset": 489,
       "image": "story",
       "startColumn": 5,
       "startLine": 25,
-      "startOffset": 489,
+      "startOffset": 485,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2763,11 +2763,11 @@ Object {
     Object {
       "endColumn": 11,
       "endLine": 25,
-      "endOffset": 495,
+      "endOffset": 491,
       "image": "{",
       "startColumn": 11,
       "startLine": 25,
-      "startOffset": 495,
+      "startOffset": 491,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -2779,11 +2779,11 @@ Object {
     Object {
       "endColumn": 8,
       "endLine": 26,
-      "endOffset": 504,
+      "endOffset": 500,
       "image": "id",
       "startColumn": 7,
       "startLine": 26,
-      "startOffset": 503,
+      "startOffset": 499,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2795,11 +2795,11 @@ Object {
     Object {
       "endColumn": 10,
       "endLine": 26,
-      "endOffset": 506,
+      "endOffset": 502,
       "image": "@",
       "startColumn": 10,
       "startLine": 26,
-      "startOffset": 506,
+      "startOffset": 502,
       "tokenType": Object {
         "PATTERN": "@",
         "isParent": false,
@@ -2811,11 +2811,11 @@ Object {
     Object {
       "endColumn": 17,
       "endLine": 26,
-      "endOffset": 513,
+      "endOffset": 509,
       "image": "onField",
       "startColumn": 11,
       "startLine": 26,
-      "startOffset": 507,
+      "startOffset": 503,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2827,11 +2827,11 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 27,
-      "endOffset": 519,
+      "endOffset": 515,
       "image": "}",
       "startColumn": 5,
       "startLine": 27,
-      "startOffset": 519,
+      "startOffset": 515,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2843,11 +2843,11 @@ Object {
     Object {
       "endColumn": 3,
       "endLine": 28,
-      "endOffset": 523,
+      "endOffset": 519,
       "image": "}",
       "startColumn": 3,
       "startLine": 28,
-      "startOffset": 523,
+      "startOffset": 519,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2859,11 +2859,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 29,
-      "endOffset": 525,
+      "endOffset": 521,
       "image": "}",
       "startColumn": 1,
       "startLine": 29,
-      "startOffset": 525,
+      "startOffset": 521,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -2875,11 +2875,11 @@ Object {
     Object {
       "endColumn": 12,
       "endLine": 31,
-      "endOffset": 539,
+      "endOffset": 535,
       "image": "subscription",
       "startColumn": 1,
       "startLine": 31,
-      "startOffset": 528,
+      "startOffset": 524,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -2897,11 +2897,11 @@ Object {
     Object {
       "endColumn": 34,
       "endLine": 31,
-      "endOffset": 561,
+      "endOffset": 557,
       "image": "StoryLikeSubscription",
       "startColumn": 14,
       "startLine": 31,
-      "startOffset": 541,
+      "startOffset": 537,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2913,11 +2913,11 @@ Object {
     Object {
       "endColumn": 35,
       "endLine": 31,
-      "endOffset": 562,
+      "endOffset": 558,
       "image": "(",
       "startColumn": 35,
       "startLine": 31,
-      "startOffset": 562,
+      "startOffset": 558,
       "tokenType": Object {
         "PATTERN": "(",
         "isParent": false,
@@ -2929,11 +2929,11 @@ Object {
     Object {
       "endColumn": 3,
       "endLine": 32,
-      "endOffset": 566,
+      "endOffset": 562,
       "image": "$",
       "startColumn": 3,
       "startLine": 32,
-      "startOffset": 566,
+      "startOffset": 562,
       "tokenType": Object {
         "PATTERN": "$",
         "isParent": false,
@@ -2945,11 +2945,11 @@ Object {
     Object {
       "endColumn": 8,
       "endLine": 32,
-      "endOffset": 571,
+      "endOffset": 567,
       "image": "input",
       "startColumn": 4,
       "startLine": 32,
-      "startOffset": 567,
+      "startOffset": 563,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -2967,11 +2967,11 @@ Object {
     Object {
       "endColumn": 9,
       "endLine": 32,
-      "endOffset": 572,
+      "endOffset": 568,
       "image": ":",
       "startColumn": 9,
       "startLine": 32,
-      "startOffset": 572,
+      "startOffset": 568,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -2983,11 +2983,11 @@ Object {
     Object {
       "endColumn": 33,
       "endLine": 32,
-      "endOffset": 596,
+      "endOffset": 592,
       "image": "StoryLikeSubscribeInput",
       "startColumn": 11,
       "startLine": 32,
-      "startOffset": 574,
+      "startOffset": 570,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -2999,11 +2999,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 33,
-      "endOffset": 598,
+      "endOffset": 594,
       "image": ")",
       "startColumn": 1,
       "startLine": 33,
-      "startOffset": 598,
+      "startOffset": 594,
       "tokenType": Object {
         "PATTERN": ")",
         "isParent": false,
@@ -3015,11 +3015,11 @@ Object {
     Object {
       "endColumn": 3,
       "endLine": 33,
-      "endOffset": 600,
+      "endOffset": 596,
       "image": "@",
       "startColumn": 3,
       "startLine": 33,
-      "startOffset": 600,
+      "startOffset": 596,
       "tokenType": Object {
         "PATTERN": "@",
         "isParent": false,
@@ -3031,11 +3031,11 @@ Object {
     Object {
       "endColumn": 17,
       "endLine": 33,
-      "endOffset": 614,
+      "endOffset": 610,
       "image": "onSubscription",
       "startColumn": 4,
       "startLine": 33,
-      "startOffset": 601,
+      "startOffset": 597,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3047,11 +3047,11 @@ Object {
     Object {
       "endColumn": 19,
       "endLine": 33,
-      "endOffset": 616,
+      "endOffset": 612,
       "image": "{",
       "startColumn": 19,
       "startLine": 33,
-      "startOffset": 616,
+      "startOffset": 612,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3063,11 +3063,11 @@ Object {
     Object {
       "endColumn": 20,
       "endLine": 34,
-      "endOffset": 637,
+      "endOffset": 633,
       "image": "storyLikeSubscribe",
       "startColumn": 3,
       "startLine": 34,
-      "startOffset": 620,
+      "startOffset": 616,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3079,11 +3079,11 @@ Object {
     Object {
       "endColumn": 21,
       "endLine": 34,
-      "endOffset": 638,
+      "endOffset": 634,
       "image": "(",
       "startColumn": 21,
       "startLine": 34,
-      "startOffset": 638,
+      "startOffset": 634,
       "tokenType": Object {
         "PATTERN": "(",
         "isParent": false,
@@ -3095,11 +3095,11 @@ Object {
     Object {
       "endColumn": 26,
       "endLine": 34,
-      "endOffset": 643,
+      "endOffset": 639,
       "image": "input",
       "startColumn": 22,
       "startLine": 34,
-      "startOffset": 639,
+      "startOffset": 635,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -3117,11 +3117,11 @@ Object {
     Object {
       "endColumn": 27,
       "endLine": 34,
-      "endOffset": 644,
+      "endOffset": 640,
       "image": ":",
       "startColumn": 27,
       "startLine": 34,
-      "startOffset": 644,
+      "startOffset": 640,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3133,11 +3133,11 @@ Object {
     Object {
       "endColumn": 29,
       "endLine": 34,
-      "endOffset": 646,
+      "endOffset": 642,
       "image": "$",
       "startColumn": 29,
       "startLine": 34,
-      "startOffset": 646,
+      "startOffset": 642,
       "tokenType": Object {
         "PATTERN": "$",
         "isParent": false,
@@ -3149,11 +3149,11 @@ Object {
     Object {
       "endColumn": 34,
       "endLine": 34,
-      "endOffset": 651,
+      "endOffset": 647,
       "image": "input",
       "startColumn": 30,
       "startLine": 34,
-      "startOffset": 647,
+      "startOffset": 643,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -3171,11 +3171,11 @@ Object {
     Object {
       "endColumn": 35,
       "endLine": 34,
-      "endOffset": 652,
+      "endOffset": 648,
       "image": ")",
       "startColumn": 35,
       "startLine": 34,
-      "startOffset": 652,
+      "startOffset": 648,
       "tokenType": Object {
         "PATTERN": ")",
         "isParent": false,
@@ -3187,11 +3187,11 @@ Object {
     Object {
       "endColumn": 37,
       "endLine": 34,
-      "endOffset": 654,
+      "endOffset": 650,
       "image": "{",
       "startColumn": 37,
       "startLine": 34,
-      "startOffset": 654,
+      "startOffset": 650,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3203,11 +3203,11 @@ Object {
     Object {
       "endColumn": 9,
       "endLine": 35,
-      "endOffset": 664,
+      "endOffset": 660,
       "image": "story",
       "startColumn": 5,
       "startLine": 35,
-      "startOffset": 660,
+      "startOffset": 656,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3219,11 +3219,11 @@ Object {
     Object {
       "endColumn": 11,
       "endLine": 35,
-      "endOffset": 666,
+      "endOffset": 662,
       "image": "{",
       "startColumn": 11,
       "startLine": 35,
-      "startOffset": 666,
+      "startOffset": 662,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3235,11 +3235,11 @@ Object {
     Object {
       "endColumn": 12,
       "endLine": 36,
-      "endOffset": 679,
+      "endOffset": 675,
       "image": "likers",
       "startColumn": 7,
       "startLine": 36,
-      "startOffset": 674,
+      "startOffset": 670,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3251,11 +3251,11 @@ Object {
     Object {
       "endColumn": 14,
       "endLine": 36,
-      "endOffset": 681,
+      "endOffset": 677,
       "image": "{",
       "startColumn": 14,
       "startLine": 36,
-      "startOffset": 681,
+      "startOffset": 677,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3267,11 +3267,11 @@ Object {
     Object {
       "endColumn": 13,
       "endLine": 37,
-      "endOffset": 695,
+      "endOffset": 691,
       "image": "count",
       "startColumn": 9,
       "startLine": 37,
-      "startOffset": 691,
+      "startOffset": 687,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3283,11 +3283,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 38,
-      "endOffset": 703,
+      "endOffset": 699,
       "image": "}",
       "startColumn": 7,
       "startLine": 38,
-      "startOffset": 703,
+      "startOffset": 699,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3299,11 +3299,11 @@ Object {
     Object {
       "endColumn": 18,
       "endLine": 39,
-      "endOffset": 722,
+      "endOffset": 718,
       "image": "likeSentence",
       "startColumn": 7,
       "startLine": 39,
-      "startOffset": 711,
+      "startOffset": 707,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3315,11 +3315,11 @@ Object {
     Object {
       "endColumn": 20,
       "endLine": 39,
-      "endOffset": 724,
+      "endOffset": 720,
       "image": "{",
       "startColumn": 20,
       "startLine": 39,
-      "startOffset": 724,
+      "startOffset": 720,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3331,11 +3331,11 @@ Object {
     Object {
       "endColumn": 12,
       "endLine": 40,
-      "endOffset": 737,
+      "endOffset": 733,
       "image": "text",
       "startColumn": 9,
       "startLine": 40,
-      "startOffset": 734,
+      "startOffset": 730,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3347,11 +3347,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 41,
-      "endOffset": 745,
+      "endOffset": 741,
       "image": "}",
       "startColumn": 7,
       "startLine": 41,
-      "startOffset": 745,
+      "startOffset": 741,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3363,11 +3363,11 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 42,
-      "endOffset": 751,
+      "endOffset": 747,
       "image": "}",
       "startColumn": 5,
       "startLine": 42,
-      "startOffset": 751,
+      "startOffset": 747,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3379,11 +3379,11 @@ Object {
     Object {
       "endColumn": 3,
       "endLine": 43,
-      "endOffset": 755,
+      "endOffset": 751,
       "image": "}",
       "startColumn": 3,
       "startLine": 43,
-      "startOffset": 755,
+      "startOffset": 751,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3395,11 +3395,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 44,
-      "endOffset": 757,
+      "endOffset": 753,
       "image": "}",
       "startColumn": 1,
       "startLine": 44,
-      "startOffset": 757,
+      "startOffset": 753,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3411,11 +3411,11 @@ Object {
     Object {
       "endColumn": 8,
       "endLine": 46,
-      "endOffset": 767,
+      "endOffset": 763,
       "image": "fragment",
       "startColumn": 1,
       "startLine": 46,
-      "startOffset": 760,
+      "startOffset": 756,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -3433,11 +3433,11 @@ Object {
     Object {
       "endColumn": 13,
       "endLine": 46,
-      "endOffset": 772,
+      "endOffset": 768,
       "image": "frag",
       "startColumn": 10,
       "startLine": 46,
-      "startOffset": 769,
+      "startOffset": 765,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3449,11 +3449,11 @@ Object {
     Object {
       "endColumn": 16,
       "endLine": 46,
-      "endOffset": 775,
+      "endOffset": 771,
       "image": "on",
       "startColumn": 15,
       "startLine": 46,
-      "startOffset": 774,
+      "startOffset": 770,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -3471,11 +3471,11 @@ Object {
     Object {
       "endColumn": 23,
       "endLine": 46,
-      "endOffset": 782,
+      "endOffset": 778,
       "image": "Friend",
       "startColumn": 18,
       "startLine": 46,
-      "startOffset": 777,
+      "startOffset": 773,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3487,11 +3487,11 @@ Object {
     Object {
       "endColumn": 25,
       "endLine": 46,
-      "endOffset": 784,
+      "endOffset": 780,
       "image": "@",
       "startColumn": 25,
       "startLine": 46,
-      "startOffset": 784,
+      "startOffset": 780,
       "tokenType": Object {
         "PATTERN": "@",
         "isParent": false,
@@ -3503,11 +3503,11 @@ Object {
     Object {
       "endColumn": 45,
       "endLine": 46,
-      "endOffset": 804,
+      "endOffset": 800,
       "image": "onFragmentDefinition",
       "startColumn": 26,
       "startLine": 46,
-      "startOffset": 785,
+      "startOffset": 781,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3519,11 +3519,11 @@ Object {
     Object {
       "endColumn": 47,
       "endLine": 46,
-      "endOffset": 806,
+      "endOffset": 802,
       "image": "{",
       "startColumn": 47,
       "startLine": 46,
-      "startOffset": 806,
+      "startOffset": 802,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3535,9 +3535,41 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 47,
-      "endOffset": 812,
+      "endOffset": 808,
       "image": "foo",
       "startColumn": 3,
+      "startLine": 47,
+      "startOffset": 806,
+      "tokenType": Object {
+        "PATTERN": Object {},
+        "isParent": true,
+        "tokenName": "Name",
+        "tokenTypeIdx": 2,
+      },
+      "tokenTypeIdx": 2,
+    },
+    Object {
+      "endColumn": 6,
+      "endLine": 47,
+      "endOffset": 809,
+      "image": "(",
+      "startColumn": 6,
+      "startLine": 47,
+      "startOffset": 809,
+      "tokenType": Object {
+        "PATTERN": "(",
+        "isParent": false,
+        "tokenName": "LParen",
+        "tokenTypeIdx": 14,
+      },
+      "tokenTypeIdx": 14,
+    },
+    Object {
+      "endColumn": 10,
+      "endLine": 47,
+      "endOffset": 813,
+      "image": "size",
+      "startColumn": 7,
       "startLine": 47,
       "startOffset": 810,
       "tokenType": Object {
@@ -3549,45 +3581,13 @@ Object {
       "tokenTypeIdx": 2,
     },
     Object {
-      "endColumn": 6,
-      "endLine": 47,
-      "endOffset": 813,
-      "image": "(",
-      "startColumn": 6,
-      "startLine": 47,
-      "startOffset": 813,
-      "tokenType": Object {
-        "PATTERN": "(",
-        "isParent": false,
-        "tokenName": "LParen",
-        "tokenTypeIdx": 14,
-      },
-      "tokenTypeIdx": 14,
-    },
-    Object {
-      "endColumn": 10,
-      "endLine": 47,
-      "endOffset": 817,
-      "image": "size",
-      "startColumn": 7,
-      "startLine": 47,
-      "startOffset": 814,
-      "tokenType": Object {
-        "PATTERN": Object {},
-        "isParent": true,
-        "tokenName": "Name",
-        "tokenTypeIdx": 2,
-      },
-      "tokenTypeIdx": 2,
-    },
-    Object {
       "endColumn": 11,
       "endLine": 47,
-      "endOffset": 818,
+      "endOffset": 814,
       "image": ":",
       "startColumn": 11,
       "startLine": 47,
-      "startOffset": 818,
+      "startOffset": 814,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3599,11 +3599,11 @@ Object {
     Object {
       "endColumn": 13,
       "endLine": 47,
-      "endOffset": 820,
+      "endOffset": 816,
       "image": "$",
       "startColumn": 13,
       "startLine": 47,
-      "startOffset": 820,
+      "startOffset": 816,
       "tokenType": Object {
         "PATTERN": "$",
         "isParent": false,
@@ -3615,11 +3615,11 @@ Object {
     Object {
       "endColumn": 17,
       "endLine": 47,
-      "endOffset": 824,
+      "endOffset": 820,
       "image": "size",
       "startColumn": 14,
       "startLine": 47,
-      "startOffset": 821,
+      "startOffset": 817,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3631,11 +3631,11 @@ Object {
     Object {
       "endColumn": 22,
       "endLine": 47,
-      "endOffset": 829,
+      "endOffset": 825,
       "image": "bar",
       "startColumn": 20,
       "startLine": 47,
-      "startOffset": 827,
+      "startOffset": 823,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3647,11 +3647,11 @@ Object {
     Object {
       "endColumn": 23,
       "endLine": 47,
-      "endOffset": 830,
+      "endOffset": 826,
       "image": ":",
       "startColumn": 23,
       "startLine": 47,
-      "startOffset": 830,
+      "startOffset": 826,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3663,11 +3663,11 @@ Object {
     Object {
       "endColumn": 25,
       "endLine": 47,
-      "endOffset": 832,
+      "endOffset": 828,
       "image": "$",
       "startColumn": 25,
       "startLine": 47,
-      "startOffset": 832,
+      "startOffset": 828,
       "tokenType": Object {
         "PATTERN": "$",
         "isParent": false,
@@ -3679,11 +3679,11 @@ Object {
     Object {
       "endColumn": 26,
       "endLine": 47,
-      "endOffset": 833,
+      "endOffset": 829,
       "image": "b",
       "startColumn": 26,
       "startLine": 47,
-      "startOffset": 833,
+      "startOffset": 829,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3695,11 +3695,11 @@ Object {
     Object {
       "endColumn": 31,
       "endLine": 47,
-      "endOffset": 838,
+      "endOffset": 834,
       "image": "obj",
       "startColumn": 29,
       "startLine": 47,
-      "startOffset": 836,
+      "startOffset": 832,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3711,11 +3711,11 @@ Object {
     Object {
       "endColumn": 32,
       "endLine": 47,
-      "endOffset": 839,
+      "endOffset": 835,
       "image": ":",
       "startColumn": 32,
       "startLine": 47,
-      "startOffset": 839,
+      "startOffset": 835,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3727,11 +3727,11 @@ Object {
     Object {
       "endColumn": 34,
       "endLine": 47,
-      "endOffset": 841,
+      "endOffset": 837,
       "image": "{",
       "startColumn": 34,
       "startLine": 47,
-      "startOffset": 841,
+      "startOffset": 837,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3743,11 +3743,11 @@ Object {
     Object {
       "endColumn": 37,
       "endLine": 47,
-      "endOffset": 844,
+      "endOffset": 840,
       "image": "key",
       "startColumn": 35,
       "startLine": 47,
-      "startOffset": 842,
+      "startOffset": 838,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3759,11 +3759,11 @@ Object {
     Object {
       "endColumn": 38,
       "endLine": 47,
-      "endOffset": 845,
+      "endOffset": 841,
       "image": ":",
       "startColumn": 38,
       "startLine": 47,
-      "startOffset": 845,
+      "startOffset": 841,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3775,11 +3775,11 @@ Object {
     Object {
       "endColumn": 46,
       "endLine": 47,
-      "endOffset": 853,
+      "endOffset": 849,
       "image": "\\"value\\"",
       "startColumn": 40,
       "startLine": 47,
-      "startOffset": 847,
+      "startOffset": 843,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": false,
@@ -3791,11 +3791,11 @@ Object {
     Object {
       "endColumn": 53,
       "endLine": 47,
-      "endOffset": 860,
+      "endOffset": 856,
       "image": "block",
       "startColumn": 49,
       "startLine": 47,
-      "startOffset": 856,
+      "startOffset": 852,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3807,11 +3807,11 @@ Object {
     Object {
       "endColumn": 54,
       "endLine": 47,
-      "endOffset": 861,
+      "endOffset": 857,
       "image": ":",
       "startColumn": 54,
       "startLine": 47,
-      "startOffset": 861,
+      "startOffset": 857,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3823,7 +3823,7 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 51,
-      "endOffset": 902,
+      "endOffset": 898,
       "image": "\\"\\"\\"
 
       block string uses \\\\\\"\\"\\"
@@ -3831,7 +3831,7 @@ Object {
   \\"\\"\\"",
       "startColumn": 56,
       "startLine": 47,
-      "startOffset": 863,
+      "startOffset": 859,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": false,
@@ -3843,11 +3843,11 @@ Object {
     Object {
       "endColumn": 6,
       "endLine": 51,
-      "endOffset": 903,
+      "endOffset": 899,
       "image": "}",
       "startColumn": 6,
       "startLine": 51,
-      "startOffset": 903,
+      "startOffset": 899,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3859,11 +3859,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 51,
-      "endOffset": 904,
+      "endOffset": 900,
       "image": ")",
       "startColumn": 7,
       "startLine": 51,
-      "startOffset": 904,
+      "startOffset": 900,
       "tokenType": Object {
         "PATTERN": ")",
         "isParent": false,
@@ -3875,11 +3875,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 52,
-      "endOffset": 906,
+      "endOffset": 902,
       "image": "}",
       "startColumn": 1,
       "startLine": 52,
-      "startOffset": 906,
+      "startOffset": 902,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -3891,11 +3891,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 54,
-      "endOffset": 909,
+      "endOffset": 905,
       "image": "{",
       "startColumn": 1,
       "startLine": 54,
-      "startOffset": 909,
+      "startOffset": 905,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -3907,11 +3907,11 @@ Object {
     Object {
       "endColumn": 9,
       "endLine": 55,
-      "endOffset": 919,
+      "endOffset": 915,
       "image": "unnamed",
       "startColumn": 3,
       "startLine": 55,
-      "startOffset": 913,
+      "startOffset": 909,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3923,11 +3923,11 @@ Object {
     Object {
       "endColumn": 10,
       "endLine": 55,
-      "endOffset": 920,
+      "endOffset": 916,
       "image": "(",
       "startColumn": 10,
       "startLine": 55,
-      "startOffset": 920,
+      "startOffset": 916,
       "tokenType": Object {
         "PATTERN": "(",
         "isParent": false,
@@ -3939,11 +3939,11 @@ Object {
     Object {
       "endColumn": 16,
       "endLine": 55,
-      "endOffset": 926,
+      "endOffset": 922,
       "image": "truthy",
       "startColumn": 11,
       "startLine": 55,
-      "startOffset": 921,
+      "startOffset": 917,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -3955,11 +3955,11 @@ Object {
     Object {
       "endColumn": 17,
       "endLine": 55,
-      "endOffset": 927,
+      "endOffset": 923,
       "image": ":",
       "startColumn": 17,
       "startLine": 55,
-      "startOffset": 927,
+      "startOffset": 923,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -3971,11 +3971,11 @@ Object {
     Object {
       "endColumn": 22,
       "endLine": 55,
-      "endOffset": 932,
+      "endOffset": 928,
       "image": "true",
       "startColumn": 19,
       "startLine": 55,
-      "startOffset": 929,
+      "startOffset": 925,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -3993,11 +3993,11 @@ Object {
     Object {
       "endColumn": 30,
       "endLine": 55,
-      "endOffset": 940,
+      "endOffset": 936,
       "image": "falsey",
       "startColumn": 25,
       "startLine": 55,
-      "startOffset": 935,
+      "startOffset": 931,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -4009,11 +4009,11 @@ Object {
     Object {
       "endColumn": 31,
       "endLine": 55,
-      "endOffset": 941,
+      "endOffset": 937,
       "image": ":",
       "startColumn": 31,
       "startLine": 55,
-      "startOffset": 941,
+      "startOffset": 937,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -4025,11 +4025,11 @@ Object {
     Object {
       "endColumn": 37,
       "endLine": 55,
-      "endOffset": 947,
+      "endOffset": 943,
       "image": "false",
       "startColumn": 33,
       "startLine": 55,
-      "startOffset": 943,
+      "startOffset": 939,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -4047,11 +4047,11 @@ Object {
     Object {
       "endColumn": 46,
       "endLine": 55,
-      "endOffset": 956,
+      "endOffset": 952,
       "image": "nullish",
       "startColumn": 40,
       "startLine": 55,
-      "startOffset": 950,
+      "startOffset": 946,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -4063,11 +4063,11 @@ Object {
     Object {
       "endColumn": 47,
       "endLine": 55,
-      "endOffset": 957,
+      "endOffset": 953,
       "image": ":",
       "startColumn": 47,
       "startLine": 55,
-      "startOffset": 957,
+      "startOffset": 953,
       "tokenType": Object {
         "PATTERN": ":",
         "isParent": false,
@@ -4079,11 +4079,11 @@ Object {
     Object {
       "endColumn": 52,
       "endLine": 55,
-      "endOffset": 962,
+      "endOffset": 958,
       "image": "null",
       "startColumn": 49,
       "startLine": 55,
-      "startOffset": 959,
+      "startOffset": 955,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -4101,11 +4101,11 @@ Object {
     Object {
       "endColumn": 53,
       "endLine": 55,
-      "endOffset": 963,
+      "endOffset": 959,
       "image": ")",
       "startColumn": 53,
       "startLine": 55,
-      "startOffset": 963,
+      "startOffset": 959,
       "tokenType": Object {
         "PATTERN": ")",
         "isParent": false,
@@ -4117,11 +4117,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 56,
-      "endOffset": 972,
+      "endOffset": 968,
       "image": "query",
       "startColumn": 3,
       "startLine": 56,
-      "startOffset": 968,
+      "startOffset": 964,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -4139,11 +4139,11 @@ Object {
     Object {
       "endColumn": 1,
       "endLine": 57,
-      "endOffset": 974,
+      "endOffset": 970,
       "image": "}",
       "startColumn": 1,
       "startLine": 57,
-      "startOffset": 974,
+      "startOffset": 970,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,
@@ -4155,11 +4155,11 @@ Object {
     Object {
       "endColumn": 5,
       "endLine": 59,
-      "endOffset": 981,
+      "endOffset": 977,
       "image": "query",
       "startColumn": 1,
       "startLine": 59,
-      "startOffset": 977,
+      "startOffset": 973,
       "tokenType": Object {
         "LONGER_ALT": Object {
           "PATTERN": Object {},
@@ -4177,11 +4177,11 @@ Object {
     Object {
       "endColumn": 7,
       "endLine": 59,
-      "endOffset": 983,
+      "endOffset": 979,
       "image": "{",
       "startColumn": 7,
       "startLine": 59,
-      "startOffset": 983,
+      "startOffset": 979,
       "tokenType": Object {
         "PATTERN": "{",
         "isParent": false,
@@ -4193,11 +4193,11 @@ Object {
     Object {
       "endColumn": 18,
       "endLine": 59,
-      "endOffset": 994,
+      "endOffset": 990,
       "image": "__typename",
       "startColumn": 9,
       "startLine": 59,
-      "startOffset": 985,
+      "startOffset": 981,
       "tokenType": Object {
         "PATTERN": Object {},
         "isParent": true,
@@ -4209,11 +4209,11 @@ Object {
     Object {
       "endColumn": 20,
       "endLine": 59,
-      "endOffset": 996,
+      "endOffset": 992,
       "image": "}",
       "startColumn": 20,
       "startLine": 59,
-      "startOffset": 996,
+      "startOffset": 992,
       "tokenType": Object {
         "PATTERN": "}",
         "isParent": false,

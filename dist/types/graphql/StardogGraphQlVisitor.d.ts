@@ -1,10 +1,25 @@
-import { ICstVisitor } from 'chevrotain';
+import { IRecognitionException, ICstVisitor, CstChildrenDictionary, TokenType, CstNode } from 'chevrotain';
 import { StardogSparqlParser } from '../sparql/StardogSparqlParser';
-import { CstNodeMap } from 'helpers/chevrotain/types';
+import { StardogGraphQlParser } from 'graphql/StardogGraphQlParser';
+export declare type PartialRecognitionException = Pick<IRecognitionException, 'name' | 'message'>;
+export interface ErrorAccumulator {
+    sparqlErrors: IRecognitionException[];
+    stardogGraphQlErrors: PartialRecognitionException[];
+}
+export interface ArgumentValidatorOptions {
+    allowedArgumentTokenTypes: TokenType[];
+    directiveImage: string | RegExp;
+    errorAccumulator: ErrorAccumulator;
+    numMinimumArguments: number;
+    sparqlParser: StardogSparqlParser;
+    suppliedArgumentNodes: CstNode[];
+}
+export interface ArgumentValidator {
+    (validatorOptions: ArgumentValidatorOptions): void;
+}
 export declare type StardogSparqlParserResult = ReturnType<StardogSparqlParser['parse']>;
-export interface IStardogGraphQlVisitor extends ICstVisitor<any, Pick<StardogSparqlParserResult, 'errors'>> {
-    BindDirective(ctx: CstNodeMap): void;
-    ConditionalStardogDirective(ctx: CstNodeMap): void;
+export interface IStardogGraphQlVisitor extends ICstVisitor<any, any> {
+    Directive(ctx: CstChildrenDictionary): void;
     $resetState(): void;
 }
-export declare const getStardogGraphQlVisitor: (BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>) => IStardogGraphQlVisitor;
+export declare const getStardogGraphQlVisitor: (BaseVisitor: new (...args: any[]) => ICstVisitor<any, any>, parserInstance: StardogGraphQlParser) => IStardogGraphQlVisitor;

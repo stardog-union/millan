@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="tsd-signature-type">ICstVisitor</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#stardogsparqlparserresult" class="tsd-signature-type">StardogSparqlParserResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"errors"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>
+						<span class="tsd-signature-type">ICstVisitor</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">IStardogGraphQlVisitor</span>
@@ -87,8 +87,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="istardoggraphqlvisitor.html#_resetstate" class="tsd-kind-icon">$reset<wbr>State</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="istardoggraphqlvisitor.html#binddirective" class="tsd-kind-icon">Bind<wbr>Directive</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="istardoggraphqlvisitor.html#conditionalstardogdirective" class="tsd-kind-icon">Conditional<wbr>Stardog<wbr>Directive</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="istardoggraphqlvisitor.html#directive" class="tsd-kind-icon">Directive</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="istardoggraphqlvisitor.html#validatevisitor" class="tsd-kind-icon">validate<wbr>Visitor</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="istardoggraphqlvisitor.html#visit" class="tsd-kind-icon">visit</a></li>
 							</ul>
@@ -108,7 +107,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8da9041/src/graphql/StardogGraphQlVisitor.ts#L18">graphql/StardogGraphQlVisitor.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/graphql/StardogGraphQlVisitor.ts#L52">graphql/StardogGraphQlVisitor.ts:52</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -116,45 +115,22 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="binddirective" class="tsd-anchor"></a>
-					<h3>Bind<wbr>Directive</h3>
+					<a name="directive" class="tsd-anchor"></a>
+					<h3>Directive</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">Bind<wbr>Directive<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><a href="cstnodemap.html" class="tsd-signature-type">CstNodeMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">Directive<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CstChildrenDictionary</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8da9041/src/graphql/StardogGraphQlVisitor.ts#L16">graphql/StardogGraphQlVisitor.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/graphql/StardogGraphQlVisitor.ts#L51">graphql/StardogGraphQlVisitor.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>ctx: <a href="cstnodemap.html" class="tsd-signature-type">CstNodeMap</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="conditionalstardogdirective" class="tsd-anchor"></a>
-					<h3>Conditional<wbr>Stardog<wbr>Directive</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">Conditional<wbr>Stardog<wbr>Directive<span class="tsd-signature-symbol">(</span>ctx<span class="tsd-signature-symbol">: </span><a href="cstnodemap.html" class="tsd-signature-type">CstNodeMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/8da9041/src/graphql/StardogGraphQlVisitor.ts#L17">graphql/StardogGraphQlVisitor.ts:17</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>ctx: <a href="cstnodemap.html" class="tsd-signature-type">CstNodeMap</a></h5>
+									<h5>ctx: <span class="tsd-signature-type">CstChildrenDictionary</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -172,7 +148,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from ICstVisitor.validateVisitor</p>
 								<ul>
-									<li>Defined in /Users/carl.chaffatt/git/github.remote/stardog-union/millan.git/node_modules/chevrotain/lib/chevrotain.d.ts:1606</li>
+									<li>Defined in /Users/jason/Projects/millan/node_modules/chevrotain/lib/chevrotain.d.ts:1865</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -183,14 +159,14 @@
 					<a name="visit" class="tsd-anchor"></a>
 					<h3>visit</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">visit<span class="tsd-signature-symbol">(</span>cstNode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CstNode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CstNode</span><span class="tsd-signature-symbol">[]</span>, param<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#stardogsparqlparserresult" class="tsd-signature-type">StardogSparqlParserResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"errors"</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">visit<span class="tsd-signature-symbol">(</span>cstNode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CstNode</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CstNode</span><span class="tsd-signature-symbol">[]</span>, param<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from ICstVisitor.visit</p>
 								<ul>
-									<li>Defined in /Users/carl.chaffatt/git/github.remote/stardog-union/millan.git/node_modules/chevrotain/lib/chevrotain.d.ts:1605</li>
+									<li>Defined in /Users/jason/Projects/millan/node_modules/chevrotain/lib/chevrotain.d.ts:1864</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -202,7 +178,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> param: <span class="tsd-signature-type">any</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#stardogsparqlparserresult" class="tsd-signature-type">StardogSparqlParserResult</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"errors"</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -227,10 +203,7 @@
 								<a href="istardoggraphqlvisitor.html#_resetstate" class="tsd-kind-icon">$reset<wbr>State</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="istardoggraphqlvisitor.html#binddirective" class="tsd-kind-icon">Bind<wbr>Directive</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="istardoggraphqlvisitor.html#conditionalstardogdirective" class="tsd-kind-icon">Conditional<wbr>Stardog<wbr>Directive</a>
+								<a href="istardoggraphqlvisitor.html#directive" class="tsd-kind-icon">Directive</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
 								<a href="istardoggraphqlvisitor.html#validatevisitor" class="tsd-kind-icon">validate<wbr>Visitor</a>

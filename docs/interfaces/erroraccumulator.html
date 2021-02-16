@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TraverseContext | millan</title>
+	<title>ErrorAccumulator | millan</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="traversecontext.html">TraverseContext</a>
+					<a href="erroraccumulator.html">ErrorAccumulator</a>
 				</li>
 			</ul>
-			<h1>Class TraverseContext</h1>
+			<h1>Interface ErrorAccumulator</h1>
 		</div>
 	</div>
 </header>
@@ -70,91 +70,43 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">TraverseContext</span>
+						<span class="target">ErrorAccumulator</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/itraversecontext.html" class="tsd-signature-type">ITraverseContext</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported"><a href="traversecontext.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="traversecontext.html#node" class="tsd-kind-icon">node</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="traversecontext.html#parentctx" class="tsd-kind-icon">parent<wbr>Ctx</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="erroraccumulator.html#sparqlerrors" class="tsd-kind-icon">sparql<wbr>Errors</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="erroraccumulator.html#stardoggraphqlerrors" class="tsd-kind-icon">stardog<wbr>Graph<wbr>QlErrors</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Traverse<wbr>Context<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="traversecontext.html" class="tsd-signature-type">TraverseContext</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/helpers/chevrotain/cst.ts#L65">helpers/chevrotain/cst.ts:65</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>__namedParameters: <span class="tsd-signature-type">object</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter">
-											<h5>node<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IToken</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CstNode</span></h5>
-										</li>
-										<li class="tsd-parameter">
-											<h5>parent<wbr>Ctx<span class="tsd-signature-symbol">: </span><a href="traversecontext.html" class="tsd-signature-type">TraverseContext</a></h5>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="traversecontext.html" class="tsd-signature-type">TraverseContext</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-					<a name="node" class="tsd-anchor"></a>
-					<h3>node</h3>
-					<div class="tsd-signature tsd-kind-icon">node<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CstElement</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sparqlerrors" class="tsd-anchor"></a>
+					<h3>sparql<wbr>Errors</h3>
+					<div class="tsd-signature tsd-kind-icon">sparql<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IRecognitionException</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/itraversecontext.html">ITraverseContext</a>.<a href="../interfaces/itraversecontext.html#node">node</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/helpers/chevrotain/cst.ts#L64">helpers/chevrotain/cst.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/graphql/StardogGraphQlVisitor.ts#L29">graphql/StardogGraphQlVisitor.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-					<a name="parentctx" class="tsd-anchor"></a>
-					<h3>parent<wbr>Ctx</h3>
-					<div class="tsd-signature tsd-kind-icon">parent<wbr>Ctx<span class="tsd-signature-symbol">:</span> <a href="traversecontext.html" class="tsd-signature-type">TraverseContext</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stardoggraphqlerrors" class="tsd-anchor"></a>
+					<h3>stardog<wbr>Graph<wbr>QlErrors</h3>
+					<div class="tsd-signature tsd-kind-icon">stardog<wbr>Graph<wbr>QlErrors<span class="tsd-signature-symbol">:</span> <a href="../globals.html#partialrecognitionexception" class="tsd-signature-type">PartialRecognitionException</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/itraversecontext.html">ITraverseContext</a>.<a href="../interfaces/itraversecontext.html#parentctx">parentCtx</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/helpers/chevrotain/cst.ts#L65">helpers/chevrotain/cst.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/602d054/src/graphql/StardogGraphQlVisitor.ts#L30">graphql/StardogGraphQlVisitor.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,17 +124,14 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-is-not-exported">
-						<a href="traversecontext.html" class="tsd-kind-icon">Traverse<wbr>Context</a>
+					<li class="current tsd-kind-interface">
+						<a href="erroraccumulator.html" class="tsd-kind-icon">Error<wbr>Accumulator</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-								<a href="traversecontext.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="erroraccumulator.html#sparqlerrors" class="tsd-kind-icon">sparql<wbr>Errors</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-								<a href="traversecontext.html#node" class="tsd-kind-icon">node</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
-								<a href="traversecontext.html#parentctx" class="tsd-kind-icon">parent<wbr>Ctx</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="erroraccumulator.html#stardoggraphqlerrors" class="tsd-kind-icon">stardog<wbr>Graph<wbr>QlErrors</a>
 							</li>
 						</ul>
 					</li>

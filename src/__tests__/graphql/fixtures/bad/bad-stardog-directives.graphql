@@ -19,3 +19,10 @@ query anotherWithAliases @config(alias: {myType: "http://example.com/my-type" # 
     myProp
   }
 }
+
+query invalidArguments {
+  myType {
+    # Valid SPARQL expression, but invalid argument to @skip directive
+    myProp @skip(unless: "$id < 1003")
+  }
+}

@@ -9,6 +9,7 @@ export * from './shacl/ShaclParser';
 export * from './graphql/BaseGraphQlParser';
 export * from './graphql/StandardGraphQlParser';
 export * from './graphql/StardogGraphQlParser';
+export * from './graphql/utils';
 export * from './helpers/chevrotain/cst';
 export * from './helpers/chevrotain/types';
 declare const sparqlTokens: any;

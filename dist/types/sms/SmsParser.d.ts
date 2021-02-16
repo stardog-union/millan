@@ -15,11 +15,11 @@ export declare class SmsParser extends StardogSparqlParser {
     SqlClause: (idxInCallingRule?: number, ...args: any[]) => any;
     CsvClause: (idxInCallingRule?: number, ...args: any[]) => any;
     ToClause: (idxInCallingRule?: number, ...args: any[]) => any;
-    WhereClause: (idxInCallingRule?: number, ...args: any[]) => void;
-    Bind: (idxInCallingRule?: number, ...args: any[]) => void;
+    WhereClause: (idxInCallingRule?: number, ...args: any[]) => any;
+    Bind: (idxInCallingRule?: number, ...args: any[]) => any;
     BindExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     TemplateFunc: (idxInCallingRule?: number, ...args: any[]) => any;
-    TriplesSameSubject: (idxInCallingRule?: number, ...args: any[]) => void;
-    PropertyListNotEmpty: (idxInCallingRule?: number, ...args: any[]) => void;
-    Object: (idxInCallingRule?: number, ...args: any[]) => void;
+    TriplesSameSubject: (idxInCallingRule?: number, ...args: any[]) => any;
+    PropertyListNotEmpty: (idxInCallingRule?: number, ...args: any[]) => any;
+    Object: (idxInCallingRule?: number, ...args: any[]) => any;
 }

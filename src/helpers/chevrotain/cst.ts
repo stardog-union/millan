@@ -1,5 +1,5 @@
 // @ts-ignore: import types for declarations
-import { CstElement, CstNode, ICstVisitor } from 'chevrotain';
+import { CstElement, CstNode, ICstVisitor, IToken } from 'chevrotain';
 
 export const traverse = (
   root: CstElement,
@@ -17,6 +17,41 @@ export const unsafeTraverse = (
 
 export function isCstNode(object: CstElement): object is CstNode {
   return Boolean(object && 'name' in object);
+}
+
+export function isIToken(object: CstElement): object is IToken {
+  return Boolean(object && 'tokenType' in object);
+}
+
+// Given a chevrotain ruleStack (array of rule parser rule names) and a root
+// CstNode, attempts to walk down the tree branching out from that node by
+// following the rule stack to its end, and returns the first CstElement found
+// at that point (or undefined if the ruleStack path cannot be completed).
+// Useful to avoid lots of boilerplate.
+export function getFirstChildCstElementByRuleStack(
+  ruleStack: string[],
+  rootCstNode: CstNode
+): CstElement | undefined {
+  if (!ruleStack || !ruleStack.length) {
+    // No stack to follow, so just return the root node provided.
+    return rootCstNode;
+  }
+
+  let currentCstElement: CstElement = rootCstNode;
+
+  for (const ruleName of ruleStack) {
+    if (
+      !isCstNode(currentCstElement) ||
+      !currentCstElement.children[ruleName]
+    ) {
+      // The ruleStack was not exhausted and yet we can go no further; return
+      // `undefined`, since there is no value at the specified path.
+      return;
+    }
+    currentCstElement = currentCstElement.children[ruleName][0];
+  }
+
+  return currentCstElement;
 }
 
 export interface ITraverseContext {

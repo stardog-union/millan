@@ -16,7 +16,7 @@ export declare class ShaclParser extends TurtleParser {
         shacl: string;
         xsd: string;
     });
-    predicateObjectList: (idxInCallingRule?: number, ...args: any[]) => void;
+    predicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclRulePredicateObjectList: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclPredicateIRI: (idxInCallingRule?: number, ...args: any[]) => any;
     shaclNodeKind: (idxInCallingRule?: number, ...args: any[]) => any;
