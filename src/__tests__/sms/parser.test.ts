@@ -42,4 +42,16 @@ describe('SmsParser', () => {
     const { errors } = parser.parse(fixtures.bind);
     expect(errors).toHaveLength(0);
   });
+  it('parses mappings with longhand edge properties', () => {
+    let { errors } = parser.parse(fixtures.edgePropertiesEmbeddedTriples);
+    expect(errors).toHaveLength(0);
+    errors = parser.parse(fixtures.edgePropertiesEmbeddedTriples2).errors;
+    expect(errors).toHaveLength(0);
+  });
+  it('parses mappings with shorthand edge properties', () => {
+    let { errors } = parser.parse(fixtures.edgePropertiesEmbeddedPropertyList);
+    expect(errors).toHaveLength(0);
+    errors = parser.parse(fixtures.edgePropertiesEmbeddedPropertyList2).errors;
+    expect(errors).toHaveLength(0);
+  });
 });

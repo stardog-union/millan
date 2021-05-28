@@ -337,4 +337,84 @@ export const fixtures = {
     BIND(template("http://api.stardog.com/sms_bind/template={id}") AS ?template)
   }
   `,
+  // Taken from Stardog docs: https://docs.stardog.com/virtual-graphs/mapping-data-sources#edge-properties-in-sms2
+  edgePropertiesEmbeddedTriples: `
+  PREFIX emp: <http://example.com/emp>
+
+  MAPPING
+  FROM SQL {
+    select * from employees
+  }
+  TO {
+    ?emp a emp:Employee .
+
+    <<?emp emp:firstName ?first_name>> emp:since "?birth_date"^^xsd:date .
+  }
+  WHERE {
+    BIND(template("http://employee/{emp_no}") as ?emp)
+  }`,
+  // Taken from Stardog:
+  edgePropertiesEmbeddedTriples2: `
+  # Employees mappings with edge properties
+
+  PREFIX emp: <http://example.com/emp/>
+
+  MAPPING
+  FROM SQL {
+    select * from employees
+  }
+  TO {
+    ?emp a emp:Employee .
+
+    # TODO: Should we avoid duplication of implicit ordinary scans?
+    <<?emp emp:firstName ?first_name>> emp:since "?birth_date"^^xsd:date .
+
+    <<?emp emp:firstName ?first_name>> emp:justAnotherFirstNameEdgeProp "?hire_date"^^xsd:date .
+
+    <<?emp emp:firstName ?first_name>> emp:beginsAt "?birth_date"^^xsd:date .
+    <<?emp emp:lastName ?last_name>> emp:beginsAt "?birth_date"^^xsd:date .
+    <<?emp emp:worksFor emp:TheCompany>> emp:beginsAt "?hire_date"^^xsd:date .
+  }
+  WHERE {
+    BIND(template("http://employee/{emp_no}") as ?emp)
+  }`,
+  edgePropertiesEmbeddedPropertyList: `
+  PREFIX emp: <http://example.com/emp>
+
+  MAPPING
+  FROM SQL {
+    select * from employees
+  }
+  TO {
+    ?emp a { :since 2010 } emp:Employee .
+  }
+  WHERE {
+    BIND(template("http://employee/{emp_no}") as ?emp)
+  }
+  `,
+  // Taken from Stardog:
+  edgePropertiesEmbeddedPropertyList2: `
+  # Employees mappings with edge properties using Stardog syntax
+
+  PREFIX emp: <http://example.com/emp/>
+
+  MAPPING
+  FROM SQL {
+    select * from employees
+  }
+  TO {
+    ?emp a emp:Employee .
+
+    ?emp emp:firstName {
+      emp:since "?birth_date"^^xsd:date ;
+      emp:justAnotherFirstNameEdgeProp "?hire_date"^^xsd:date ;
+      emp:beginsAt "?birth_date"^^xsd:date
+    } ?first_name .
+
+    ?emp emp:lastName { emp:beginsAt "?birth_date"^^xsd:date } ?last_name .
+    ?emp emp:worksFor { emp:beginsAt "?hire_date"^^xsd:date } emp:TheCompany .
+  }
+  WHERE {
+    BIND(template("http://employee/{emp_no}") as ?emp)
+  }`,
 };

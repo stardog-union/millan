@@ -19,7 +19,5 @@ export declare class SmsParser extends StardogSparqlParser {
     Bind: (idxInCallingRule?: number, ...args: any[]) => any;
     BindExpression: (idxInCallingRule?: number, ...args: any[]) => any;
     TemplateFunc: (idxInCallingRule?: number, ...args: any[]) => any;
-    TriplesSameSubject: (idxInCallingRule?: number, ...args: any[]) => any;
-    PropertyListNotEmpty: (idxInCallingRule?: number, ...args: any[]) => any;
     Object: (idxInCallingRule?: number, ...args: any[]) => any;
 }
