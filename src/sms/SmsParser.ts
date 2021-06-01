@@ -131,38 +131,6 @@ export class SmsParser extends StardogSparqlParser {
     this.CONSUME(smsTokenMap.RParen);
   });
 
-  //
-  // Sparql/Base Parser Overrides
-  //
-  TriplesSameSubject = this.OVERRIDE_RULE('TriplesSameSubject', () => {
-    this.OR([
-      {
-        ALT: () => {
-          this.SUBRULE(this.VarOrTerm);
-          this.SUBRULE(this.PropertyListNotEmpty);
-        },
-      },
-      {
-        ALT: () => {
-          this.SUBRULE(this.TriplesNode);
-          this.SUBRULE(this.PropertyList);
-        },
-      },
-    ]);
-  });
-
-  PropertyListNotEmpty = this.OVERRIDE_RULE('PropertyListNotEmpty', () => {
-    this.SUBRULE(this.Verb);
-    this.SUBRULE(this.ObjectList);
-    this.MANY(() => {
-      this.CONSUME(smsTokenMap.Semicolon);
-      this.OPTION(() => {
-        this.SUBRULE1(this.Verb);
-        this.SUBRULE1(this.ObjectList);
-      });
-    });
-  });
-
   Object = this.OVERRIDE_RULE('Object', () => {
     this.SUBRULE(this.GraphNode);
   });
