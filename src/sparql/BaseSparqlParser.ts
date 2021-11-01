@@ -21,23 +21,24 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
-  public parse = (document: string, entryRule = this.SparqlDoc) => {
+  public parse = (
+    document: string,
+    entryRule = this.SparqlDoc
+  ): {
+    errors: IRecognitionException[];
+    comments?: IToken[];
+    cst: CstNode;
+  } => {
     const lexerResult = this.lexer.tokenize(document);
     this.input = lexerResult.tokens;
     const comments = lexerResult.groups.comments || [];
 
     const cst: CstNode = entryRule.call(this);
-    const cstWithComments: CstNode = {
-      ...cst,
-      children: {
-        ...cst.children,
-        Comment: comments,
-      },
-    };
     const errors: IRecognitionException[] = this.errors;
     return {
       errors,
-      cst: comments.length ? cstWithComments : cst,
+      comments,
+      cst,
     };
   };
 

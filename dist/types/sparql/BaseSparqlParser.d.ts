@@ -5,14 +5,17 @@ export declare class BaseSparqlParser extends Parser implements IStardogParser {
     tokenize: (document: string) => IToken[];
     parse: (document: string, entryRule?: (idxInCallingRule?: number, ...args: any[]) => any) => {
         errors: IRecognitionException[];
+        comments?: IToken[];
         cst: CstNode;
     };
     parseGroupGraphPattern: (document: string) => {
         errors: IRecognitionException[];
+        comments?: IToken[];
         cst: CstNode;
     };
     parseTriplesBlock: (document: string) => {
         errors: IRecognitionException[];
+        comments?: IToken[];
         cst: CstNode;
     };
     constructor(options: {
