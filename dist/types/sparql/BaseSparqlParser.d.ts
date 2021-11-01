@@ -1,19 +1,19 @@
-import { Parser, TokenType, IToken, IParserConfig, IRecognitionException } from 'chevrotain';
+import { Parser, TokenType, IToken, IParserConfig, IRecognitionException, CstNode } from 'chevrotain';
 import { IStardogParser } from '../helpers/chevrotain/types';
 export declare class BaseSparqlParser extends Parser implements IStardogParser {
     private lexer;
     tokenize: (document: string) => IToken[];
     parse: (document: string, entryRule?: (idxInCallingRule?: number, ...args: any[]) => any) => {
         errors: IRecognitionException[];
-        cst: any;
+        cst: CstNode;
     };
     parseGroupGraphPattern: (document: string) => {
         errors: IRecognitionException[];
-        cst: any;
+        cst: CstNode;
     };
     parseTriplesBlock: (document: string) => {
         errors: IRecognitionException[];
-        cst: any;
+        cst: CstNode;
     };
     constructor(options: {
         input?: IToken[];

@@ -6,6 +6,7 @@ import {
   Lexer,
   IParserConfig,
   IRecognitionException,
+  CstNode,
 } from 'chevrotain';
 import { IStardogParser } from '../helpers/chevrotain/types';
 
@@ -21,12 +22,22 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
     this.lexer.tokenize(document).tokens;
 
   public parse = (document: string, entryRule = this.SparqlDoc) => {
-    this.input = this.lexer.tokenize(document).tokens;
-    const cst = entryRule.call(this);
+    const lexerResult = this.lexer.tokenize(document);
+    this.input = lexerResult.tokens;
+    const comments = lexerResult.groups.comments || [];
+
+    const cst: CstNode = entryRule.call(this);
+    const cstWithComments: CstNode = {
+      ...cst,
+      children: {
+        ...cst.children,
+        Comment: comments,
+      },
+    };
     const errors: IRecognitionException[] = this.errors;
     return {
       errors,
-      cst,
+      cst: comments.length ? cstWithComments : cst,
     };
   };
 
