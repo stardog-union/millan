@@ -75,13 +75,13 @@ When used in the browser via `script` tags, the API will be exposed on a global 
 Import Millan or the specific parts of Millan that you need, e.g.:
 
 ```javascript
-import { W3CSpecSparqlParser } from 'millan';
+import { W3SpecSparqlParser } from 'millan';
 ```
 
 Parsing a document requires a parser instance, so you should get one:
 
 ```javascript
-const sparqlParser = new W3CSpecSparqlParser();
+const sparqlParser = new W3SpecSparqlParser();
 ```
 
 Every parser instance has essentially the same API. They are all instances of the
