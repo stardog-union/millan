@@ -167,6 +167,7 @@ export const keywords = {
     pattern: /MAX LENGTH/i,
   }),
   MAX: createKeyword({ name: 'MAX' }),
+  VALIDATE: createKeyword({ name: 'VALIDATE' }),
 
   UNKNOWN,
 };

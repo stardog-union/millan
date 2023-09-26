@@ -11,6 +11,22 @@ export class StardogSparqlParser extends BaseSparqlParser {
     }
   }
 
+  ValidateQuery = this.RULE('ValidateQuery', () => {
+    // log('ValidateQuery');
+    this.CONSUME(sparqlTokenMap.VALIDATE);
+    this.OR([
+      {
+        ALT: () => {
+          this.AT_LEAST_ONE(() => this.SUBRULE(this.VarOrIri));
+        },
+      },
+      { ALT: () => this.CONSUME(sparqlTokenMap.Star) },
+    ]);
+    this.MANY(() => this.SUBRULE(this.DatasetClause));
+    this.OPTION(() => this.SUBRULE(this.WhereClause));
+    this.SUBRULE(this.SolutionModifier);
+  });
+
   Query = this.OVERRIDE_RULE('Query', () => {
     this.OR([
       { ALT: () => this.SUBRULE(this.SelectQuery) },
@@ -18,6 +34,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
       { ALT: () => this.SUBRULE(this.DescribeQuery) },
       { ALT: () => this.SUBRULE(this.AskQuery) },
       { ALT: () => this.SUBRULE(this.PathQuery) },
+      { ALT: () => this.SUBRULE(this.ValidateQuery) },
     ]);
     this.SUBRULE(this.ValuesClause);
   });

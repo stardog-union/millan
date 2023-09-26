@@ -290,6 +290,7 @@ export const sparqlTokenMap = {
   NOT_IN: keywords.NOT_IN,
   MAX_LENGTH: keywords.MAX_LENGTH,
   MAX: keywords.MAX,
+  VALIDATE: keywords.VALIDATE,
 };
 
 export const baseTokens = [
@@ -475,7 +476,11 @@ export const pathsTokens = [
   sparqlTokenMap.PATHS,
 ];
 
-export const nonStandardTokens = [...pathsTokens, sparqlTokenMap.UNNEST];
+export const nonStandardTokens = [
+  ...pathsTokens,
+  sparqlTokenMap.UNNEST,
+  sparqlTokenMap.VALIDATE,
+];
 
 const indexOfSelect = baseTokens.indexOf(sparqlTokenMap.SELECT);
 export const stardogSparqlTokens = [
