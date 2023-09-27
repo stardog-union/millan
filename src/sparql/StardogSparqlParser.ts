@@ -12,19 +12,51 @@ export class StardogSparqlParser extends BaseSparqlParser {
   }
 
   ValidateQuery = this.RULE('ValidateQuery', () => {
-    // log('ValidateQuery');
     this.CONSUME(sparqlTokenMap.VALIDATE);
     this.OR([
+      { ALT: () => this.CONSUME(sparqlTokenMap.ALL) },
       {
         ALT: () => {
-          this.AT_LEAST_ONE(() => this.SUBRULE(this.VarOrIri));
+          this.AT_LEAST_ONE(() =>
+            this.OR1([
+              { ALT: () => this.AT_LEAST_ONE1(() => this.SUBRULE(this.iri)) },
+              {
+                ALT: () => {
+                  this.CONSUME(sparqlTokenMap.GRAPH);
+                  this.AT_LEAST_ONE2(() => this.SUBRULE1(this.iri));
+                },
+              },
+            ])
+          );
         },
       },
-      { ALT: () => this.CONSUME(sparqlTokenMap.Star) },
     ]);
-    this.MANY(() => this.SUBRULE(this.DatasetClause));
-    this.OPTION(() => this.SUBRULE(this.WhereClause));
-    this.SUBRULE(this.SolutionModifier);
+    this.OPTION(() => {
+      this.CONSUME(sparqlTokenMap.USING);
+      this.CONSUME(sparqlTokenMap.SHAPES);
+      this.OR2([
+        { ALT: () => this.AT_LEAST_ONE3(() => this.SUBRULE2(this.iri)) },
+        {
+          ALT: () => {
+            this.CONSUME2(sparqlTokenMap.GRAPH);
+            this.AT_LEAST_ONE4(() => {
+              this.SUBRULE3(this.iri);
+            });
+          },
+        },
+        { ALT: () => this.SUBRULE4(this.QuadData) },
+      ]);
+    });
+    this.OPTION1(() => {
+      this.CONSUME(sparqlTokenMap.LIMIT);
+      this.CONSUME(sparqlTokenMap.INTEGER);
+    });
+    this.OPTION2(() => {
+      this.CONSUME1(sparqlTokenMap.LIMIT);
+      this.CONSUME(sparqlTokenMap.PER);
+      this.CONSUME(sparqlTokenMap.SHAPE);
+      this.CONSUME1(sparqlTokenMap.INTEGER);
+    });
   });
 
   Query = this.OVERRIDE_RULE('Query', () => {
