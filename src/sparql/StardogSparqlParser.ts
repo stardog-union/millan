@@ -15,7 +15,6 @@ export class StardogSparqlParser extends BaseSparqlParser {
     this.CONSUME(sparqlTokenMap.VALIDATE);
     this.OR([
       { ALT: () => this.CONSUME(sparqlTokenMap.ALL) },
-      // { ALT: () => this.AT_LEAST_ONE(() => this.SUBRULE(this.iri)) },
       {
         ALT: () => {
           this.CONSUME(sparqlTokenMap.GRAPH);
