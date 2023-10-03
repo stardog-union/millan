@@ -1,0 +1,3 @@
+PREFIX icv: <tag:stardog:api:icv:>
+PREFIX : <tag:stardog:example:>
+VALIDATE USING SHAPES :SongShape :AlbumShape

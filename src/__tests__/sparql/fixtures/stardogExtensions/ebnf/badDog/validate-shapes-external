@@ -1,0 +1,14 @@
+
+PREFIX icv: <tag:stardog:api:icv:>
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX : <tag:stardog:example:>
+
+VALIDATE ALL LIMIT 10 USING SHAPES {
+    :NameShape a sh:NodeShape ;
+       sh:property [
+         sh:path :name ;
+         sh:minCount 1 ;
+         sh:datatype xsd:string
+       ] .
+}

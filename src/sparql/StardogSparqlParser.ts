@@ -15,43 +15,44 @@ export class StardogSparqlParser extends BaseSparqlParser {
     this.CONSUME(sparqlTokenMap.VALIDATE);
     this.OR([
       { ALT: () => this.CONSUME(sparqlTokenMap.ALL) },
+      // { ALT: () => this.AT_LEAST_ONE(() => this.SUBRULE(this.iri)) },
       {
         ALT: () => {
-          this.AT_LEAST_ONE(() =>
-            this.OR1([
-              { ALT: () => this.AT_LEAST_ONE1(() => this.SUBRULE(this.iri)) },
-              {
-                ALT: () => {
-                  this.CONSUME(sparqlTokenMap.GRAPH);
-                  this.AT_LEAST_ONE2(() => this.SUBRULE1(this.iri));
-                },
-              },
-            ])
-          );
+          this.CONSUME(sparqlTokenMap.GRAPH);
+          this.AT_LEAST_ONE(() => this.SUBRULE(this.iri));
+        },
+      },
+      {
+        ALT: () => {
+          this.AT_LEAST_ONE1(() => this.SUBRULE1(this.iri));
+          this.OPTION(() => {
+            this.CONSUME1(sparqlTokenMap.GRAPH);
+            this.AT_LEAST_ONE2(() => this.SUBRULE2(this.iri));
+          });
         },
       },
     ]);
-    this.OPTION(() => {
+    this.OPTION1(() => {
       this.CONSUME(sparqlTokenMap.USING);
       this.CONSUME(sparqlTokenMap.SHAPES);
-      this.OR2([
-        { ALT: () => this.AT_LEAST_ONE3(() => this.SUBRULE2(this.iri)) },
+      this.OR1([
+        { ALT: () => this.AT_LEAST_ONE3(() => this.SUBRULE3(this.iri)) },
         {
           ALT: () => {
             this.CONSUME2(sparqlTokenMap.GRAPH);
             this.AT_LEAST_ONE4(() => {
-              this.SUBRULE3(this.iri);
+              this.SUBRULE4(this.iri);
             });
           },
         },
-        { ALT: () => this.SUBRULE4(this.QuadData) },
+        { ALT: () => this.SUBRULE5(this.QuadData) },
       ]);
     });
-    this.OPTION1(() => {
+    this.OPTION2(() => {
       this.CONSUME(sparqlTokenMap.LIMIT);
       this.CONSUME(sparqlTokenMap.INTEGER);
     });
-    this.OPTION2(() => {
+    this.OPTION3(() => {
       this.CONSUME1(sparqlTokenMap.LIMIT);
       this.CONSUME(sparqlTokenMap.PER);
       this.CONSUME(sparqlTokenMap.SHAPE);

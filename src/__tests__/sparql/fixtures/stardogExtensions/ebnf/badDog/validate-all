@@ -1,0 +1,2 @@
+PREFIX icv: <tag:stardog:api:icv:>
+VALIDATE ALL something:else
