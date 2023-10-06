@@ -15,48 +15,39 @@ export class StardogSparqlParser extends BaseSparqlParser {
     this.CONSUME(sparqlTokenMap.VALIDATE);
     this.OR([
       { ALT: () => this.CONSUME(sparqlTokenMap.ALL) },
+      { ALT: () => this.SUBRULE(this.MultiGraphRef) },
       {
         ALT: () => {
-          this.CONSUME(sparqlTokenMap.GRAPH);
-          this.AT_LEAST_ONE(() => this.SUBRULE(this.iri));
-        },
-      },
-      {
-        ALT: () => {
-          this.AT_LEAST_ONE1(() => this.SUBRULE1(this.iri));
-          this.OPTION(() => {
-            this.CONSUME1(sparqlTokenMap.GRAPH);
-            this.AT_LEAST_ONE2(() => this.SUBRULE2(this.iri));
-          });
+          this.AT_LEAST_ONE(() => this.SUBRULE1(this.iri));
+          this.OPTION(() => this.SUBRULE2(this.MultiGraphRef));
         },
       },
     ]);
-    this.OPTION1(() => {
-      this.CONSUME(sparqlTokenMap.USING);
-      this.CONSUME(sparqlTokenMap.SHAPES);
-      this.OR1([
-        { ALT: () => this.AT_LEAST_ONE3(() => this.SUBRULE3(this.iri)) },
-        {
-          ALT: () => {
-            this.CONSUME2(sparqlTokenMap.GRAPH);
-            this.AT_LEAST_ONE4(() => {
-              this.SUBRULE4(this.iri);
-            });
-          },
-        },
-        { ALT: () => this.SUBRULE5(this.QuadData) },
-      ]);
-    });
-    this.OPTION2(() => {
-      this.CONSUME(sparqlTokenMap.LIMIT);
-      this.CONSUME(sparqlTokenMap.INTEGER);
-    });
-    this.OPTION3(() => {
-      this.CONSUME1(sparqlTokenMap.LIMIT);
-      this.CONSUME(sparqlTokenMap.PER);
-      this.CONSUME(sparqlTokenMap.SHAPE);
-      this.CONSUME1(sparqlTokenMap.INTEGER);
-    });
+    this.OPTION1(() => this.SUBRULE3(this.UsingShapesClause));
+    this.OPTION2(() => this.SUBRULE4(this.LimitClause));
+    this.OPTION3(() => this.SUBRULE5(this.LimitPerShapeClause));
+  });
+
+  MultiGraphRef = this.RULE('MultiGraphRef', () => {
+    this.CONSUME(sparqlTokenMap.GRAPH);
+    this.AT_LEAST_ONE(() => this.SUBRULE(this.iri));
+  });
+
+  UsingShapesClause = this.RULE('UsingShapesClause', () => {
+    this.CONSUME(sparqlTokenMap.USING);
+    this.CONSUME(sparqlTokenMap.SHAPES);
+    this.OR([
+      { ALT: () => this.AT_LEAST_ONE(() => this.SUBRULE(this.iri)) },
+      { ALT: () => this.SUBRULE1(this.MultiGraphRef) },
+      { ALT: () => this.SUBRULE2(this.QuadData) },
+    ]);
+  });
+
+  LimitPerShapeClause = this.RULE('LimitPerShapeClause', () => {
+    this.CONSUME(sparqlTokenMap.LIMIT);
+    this.CONSUME(sparqlTokenMap.PER);
+    this.CONSUME(sparqlTokenMap.SHAPE);
+    this.CONSUME(sparqlTokenMap.INTEGER);
   });
 
   Query = this.OVERRIDE_RULE('Query', () => {
