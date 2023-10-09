@@ -1,0 +1,4 @@
+# taken from Stardog docs: https://docs.stardog.com/data-quality-constraints#validate-sparql-service
+PREFIX icv: <tag:stardog:api:icv:>
+PREFIX : <tag:stardog:example:>
+VALIDATE ALL USING SHAPES :SongShape :AlbumShape

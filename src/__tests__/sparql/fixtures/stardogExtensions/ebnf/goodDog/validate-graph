@@ -1,0 +1,4 @@
+# taken from Stardog docs: https://docs.stardog.com/data-quality-constraints#validate-sparql-service
+PREFIX icv: <tag:stardog:api:icv:>
+PREFIX ex: <tag:stardog:example:>
+VALIDATE GRAPH ex:graph1 ex:graph2

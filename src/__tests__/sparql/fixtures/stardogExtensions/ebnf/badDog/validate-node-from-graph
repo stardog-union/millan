@@ -1,0 +1,3 @@
+PREFIX icv: <tag:stardog:api:icv:>
+PREFIX ex: <tag:stardog:example:>
+VALIDATE ex:MyNode GRAPH ex:graph1 ALL

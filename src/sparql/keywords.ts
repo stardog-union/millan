@@ -167,6 +167,10 @@ export const keywords = {
     pattern: /MAX LENGTH/i,
   }),
   MAX: createKeyword({ name: 'MAX' }),
+  VALIDATE: createKeyword({ name: 'VALIDATE' }),
+  SHAPES: createKeyword({ name: 'SHAPES' }),
+  SHAPE: createKeyword({ name: 'SHAPE' }),
+  PER: createKeyword({ name: 'PER' }),
 
   UNKNOWN,
 };

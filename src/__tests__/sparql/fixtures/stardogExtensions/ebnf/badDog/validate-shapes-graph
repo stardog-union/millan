@@ -1,0 +1,10 @@
+PREFIX icv: <tag:stardog:api:icv:>
+PREFIX ex: <tag:stardog:example:>
+VALIDATE ALL USING SHAPES GRAPH ex:constraintGraph {
+    :NameShape a sh:NodeShape ;
+       sh:property [
+         sh:path :name ;
+         sh:minCount 1 ;
+         sh:datatype xsd:string
+       ] .
+}
