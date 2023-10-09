@@ -1,6 +1,10 @@
 import { BaseSparqlParser } from './BaseSparqlParser';
 export declare class StardogSparqlParser extends BaseSparqlParser {
     constructor(options?: any, tokens?: any, shouldSkipAnalysis?: any);
+    ValidateQuery: (idxInCallingRule?: number, ...args: any[]) => any;
+    MultiGraphRef: (idxInCallingRule?: number, ...args: any[]) => any;
+    UsingShapesClause: (idxInCallingRule?: number, ...args: any[]) => any;
+    LimitPerShapeClause: (idxInCallingRule?: number, ...args: any[]) => any;
     Query: (idxInCallingRule?: number, ...args: any[]) => any;
     PathQuery: (idxInCallingRule?: number, ...args: any[]) => any;
     Via: (idxInCallingRule?: number, ...args: any[]) => any;

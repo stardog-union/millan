@@ -125,5 +125,9 @@ export declare const keywords: {
     NOT_IN: import("chevrotain").TokenType;
     MAX_LENGTH: import("chevrotain").TokenType;
     MAX: import("chevrotain").TokenType;
+    VALIDATE: import("chevrotain").TokenType;
+    SHAPES: import("chevrotain").TokenType;
+    SHAPE: import("chevrotain").TokenType;
+    PER: import("chevrotain").TokenType;
     UNKNOWN: import("chevrotain").TokenType;
 };

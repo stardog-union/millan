@@ -113,9 +113,9 @@
 				<p>When used in the browser via <code>script</code> tags, the API will be exposed on a global <code>millan</code> variable.</p>
 				<h2 id="basic-usage">Basic Usage</h2>
 				<p>Import Millan or the specific parts of Millan that you need, e.g.:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { W3CSpecSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { W3SpecSparqlParser } <span class="hljs-keyword">from</span> <span class="hljs-string">'millan'</span>;</code></pre>
 				<p>Parsing a document requires a parser instance, so you should get one:</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sparqlParser = <span class="hljs-keyword">new</span> W3CSpecSparqlParser();</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">const</span> sparqlParser = <span class="hljs-keyword">new</span> W3SpecSparqlParser();</code></pre>
 				<p>Every parser instance has essentially the same API. They are all instances of the
 				Parser base class from <a href="https://github.com/SAP/chevrotain">chevrotain</a>, and they all implement the <a href="https://stardog-union.github.io/millan/interfaces/istardogparser.html">IStardogParser</a> interface.</p>
 				<p>The two parser methods you&#39;ll use most often are <code>parse</code> and <code>tokenize</code>. Use

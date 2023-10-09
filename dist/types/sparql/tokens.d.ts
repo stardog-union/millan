@@ -178,6 +178,10 @@ export declare const sparqlTokenMap: {
     NOT_IN: TokenType;
     MAX_LENGTH: TokenType;
     MAX: TokenType;
+    VALIDATE: TokenType;
+    SHAPES: TokenType;
+    SHAPE: TokenType;
+    PER: TokenType;
 };
 export declare const baseTokens: TokenType[];
 export declare const pathsTokens: TokenType[];
