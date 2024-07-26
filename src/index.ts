@@ -12,6 +12,7 @@ export * from './graphql/StardogGraphQlParser';
 export * from './graphql/utils';
 export * from './helpers/chevrotain/cst';
 export * from './helpers/chevrotain/types';
+export * from './helpers/matchers';
 
 // Convenience imports/exports that aren't core functionality:
 // NOTE: Tokens MUST be imported using CommonJS syntax; see here: https://github.com/SAP/chevrotain/issues/345
