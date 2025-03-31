@@ -112,15 +112,21 @@ export const getSparqlSrsVisitor = (
       // matches the start line and offset of the token we are replacing. This
       // ensures that all tokens have the right positions in the resulting CST
       // (otherwise, the sub-parsers assume that the text starts at offset 0).
-      const { image, startLine, startColumn } = originalToken;
+      const { image, startOffset, startLine, startColumn } = originalToken;
       let frontPadding = '';
 
-      for (let line = 0; line < (startLine || 0); line++) {
+      for (let line = 1; line < (startLine || 1); line++) {
         frontPadding += '\n';
       }
 
-      for (let column = 0; column < (startColumn || 0); column++) {
+      for (let column = 1; column < (startColumn || 1); column++) {
         frontPadding += ' ';
+      }
+
+      if (frontPadding.length < startOffset) {
+        frontPadding = `${' '.repeat(
+          startOffset - frontPadding.length
+        )}${frontPadding}`;
       }
 
       return subParserRule(`${frontPadding}${image}`);

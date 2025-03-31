@@ -84,12 +84,12 @@ Object {
                                                                                                                                                                 "LogicalAnd": Array [
                                                                                                                                                                   Object {
                                                                                                                                                                     "endColumn": 48,
-                                                                                                                                                                    "endLine": 17,
-                                                                                                                                                                    "endOffset": 275,
+                                                                                                                                                                    "endLine": 16,
+                                                                                                                                                                    "endOffset": 615,
                                                                                                                                                                     "image": "&&",
                                                                                                                                                                     "startColumn": 47,
-                                                                                                                                                                    "startLine": 17,
-                                                                                                                                                                    "startOffset": 274,
+                                                                                                                                                                    "startLine": 16,
+                                                                                                                                                                    "startOffset": 614,
                                                                                                                                                                     "tokenType": Object {
                                                                                                                                                                       "CATEGORIES": Array [],
                                                                                                                                                                       "PATTERN": "&&",
@@ -111,12 +111,12 @@ Object {
                                                                                                                                                                             "LessThanEquals": Array [
                                                                                                                                                                               Object {
                                                                                                                                                                                 "endColumn": 38,
-                                                                                                                                                                                "endLine": 17,
-                                                                                                                                                                                "endOffset": 265,
+                                                                                                                                                                                "endLine": 16,
+                                                                                                                                                                                "endOffset": 605,
                                                                                                                                                                                 "image": "<=",
                                                                                                                                                                                 "startColumn": 37,
-                                                                                                                                                                                "startLine": 17,
-                                                                                                                                                                                "startOffset": 264,
+                                                                                                                                                                                "startLine": 16,
+                                                                                                                                                                                "startOffset": 604,
                                                                                                                                                                                 "tokenType": Object {
                                                                                                                                                                                   "CATEGORIES": Array [],
                                                                                                                                                                                   "PATTERN": "<=",
@@ -150,12 +150,12 @@ Object {
                                                                                                                                                                                                                 "DoubleCaret": Array [
                                                                                                                                                                                                                   Object {
                                                                                                                                                                                                                     "endColumn": 27,
-                                                                                                                                                                                                                    "endLine": 17,
-                                                                                                                                                                                                                    "endOffset": 254,
+                                                                                                                                                                                                                    "endLine": 16,
+                                                                                                                                                                                                                    "endOffset": 594,
                                                                                                                                                                                                                     "image": "^^",
                                                                                                                                                                                                                     "startColumn": 26,
-                                                                                                                                                                                                                    "startLine": 17,
-                                                                                                                                                                                                                    "startOffset": 253,
+                                                                                                                                                                                                                    "startLine": 16,
+                                                                                                                                                                                                                    "startOffset": 593,
                                                                                                                                                                                                                     "tokenType": Object {
                                                                                                                                                                                                                       "CATEGORIES": Array [],
                                                                                                                                                                                                                       "PATTERN": "^^",
@@ -174,12 +174,12 @@ Object {
                                                                                                                                                                                                                       "STRING_LITERAL2": Array [
                                                                                                                                                                                                                         Object {
                                                                                                                                                                                                                           "endColumn": 25,
-                                                                                                                                                                                                                          "endLine": 17,
-                                                                                                                                                                                                                          "endOffset": 252,
+                                                                                                                                                                                                                          "endLine": 16,
+                                                                                                                                                                                                                          "endOffset": 592,
                                                                                                                                                                                                                           "image": "\\"2022-01-01\\"",
                                                                                                                                                                                                                           "startColumn": 14,
-                                                                                                                                                                                                                          "startLine": 17,
-                                                                                                                                                                                                                          "startOffset": 241,
+                                                                                                                                                                                                                          "startLine": 16,
+                                                                                                                                                                                                                          "startOffset": 581,
                                                                                                                                                                                                                           "tokenType": Object {
                                                                                                                                                                                                                             "CATEGORIES": Array [],
                                                                                                                                                                                                                             "LONGER_ALT": Object {
@@ -214,12 +214,12 @@ Object {
                                                                                                                                                                                                                             "PNAME_LN": Array [
                                                                                                                                                                                                                               Object {
                                                                                                                                                                                                                                 "endColumn": 35,
-                                                                                                                                                                                                                                "endLine": 17,
-                                                                                                                                                                                                                                "endOffset": 262,
+                                                                                                                                                                                                                                "endLine": 16,
+                                                                                                                                                                                                                                "endOffset": 602,
                                                                                                                                                                                                                                 "image": "xsd:date",
                                                                                                                                                                                                                                 "startColumn": 28,
-                                                                                                                                                                                                                                "startLine": 17,
-                                                                                                                                                                                                                                "startOffset": 255,
+                                                                                                                                                                                                                                "startLine": 16,
+                                                                                                                                                                                                                                "startOffset": 595,
                                                                                                                                                                                                                                 "tokenType": Object {
                                                                                                                                                                                                                                   "CATEGORIES": Array [],
                                                                                                                                                                                                                                   "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -283,12 +283,12 @@ Object {
                                                                                                                                                                                                                 "VAR1": Array [
                                                                                                                                                                                                                   Object {
                                                                                                                                                                                                                     "endColumn": 45,
-                                                                                                                                                                                                                    "endLine": 17,
-                                                                                                                                                                                                                    "endOffset": 272,
+                                                                                                                                                                                                                    "endLine": 16,
+                                                                                                                                                                                                                    "endOffset": 612,
                                                                                                                                                                                                                     "image": "?dat_0",
                                                                                                                                                                                                                     "startColumn": 40,
-                                                                                                                                                                                                                    "startLine": 17,
-                                                                                                                                                                                                                    "startOffset": 267,
+                                                                                                                                                                                                                    "startLine": 16,
+                                                                                                                                                                                                                    "startOffset": 607,
                                                                                                                                                                                                                     "tokenType": Object {
                                                                                                                                                                                                                       "CATEGORIES": Array [],
                                                                                                                                                                                                                       "LABEL": "?foo",
@@ -341,12 +341,12 @@ Object {
                                                                                                                                                                             "GreaterThanEquals": Array [
                                                                                                                                                                               Object {
                                                                                                                                                                                 "endColumn": 74,
-                                                                                                                                                                                "endLine": 17,
-                                                                                                                                                                                "endOffset": 301,
+                                                                                                                                                                                "endLine": 16,
+                                                                                                                                                                                "endOffset": 641,
                                                                                                                                                                                 "image": ">=",
                                                                                                                                                                                 "startColumn": 73,
-                                                                                                                                                                                "startLine": 17,
-                                                                                                                                                                                "startOffset": 300,
+                                                                                                                                                                                "startLine": 16,
+                                                                                                                                                                                "startOffset": 640,
                                                                                                                                                                                 "tokenType": Object {
                                                                                                                                                                                   "CATEGORIES": Array [],
                                                                                                                                                                                   "PATTERN": ">=",
@@ -380,12 +380,12 @@ Object {
                                                                                                                                                                                                                 "DoubleCaret": Array [
                                                                                                                                                                                                                   Object {
                                                                                                                                                                                                                     "endColumn": 63,
-                                                                                                                                                                                                                    "endLine": 17,
-                                                                                                                                                                                                                    "endOffset": 290,
+                                                                                                                                                                                                                    "endLine": 16,
+                                                                                                                                                                                                                    "endOffset": 630,
                                                                                                                                                                                                                     "image": "^^",
                                                                                                                                                                                                                     "startColumn": 62,
-                                                                                                                                                                                                                    "startLine": 17,
-                                                                                                                                                                                                                    "startOffset": 289,
+                                                                                                                                                                                                                    "startLine": 16,
+                                                                                                                                                                                                                    "startOffset": 629,
                                                                                                                                                                                                                     "tokenType": Object {
                                                                                                                                                                                                                       "CATEGORIES": Array [],
                                                                                                                                                                                                                       "PATTERN": "^^",
@@ -404,12 +404,12 @@ Object {
                                                                                                                                                                                                                       "STRING_LITERAL2": Array [
                                                                                                                                                                                                                         Object {
                                                                                                                                                                                                                           "endColumn": 61,
-                                                                                                                                                                                                                          "endLine": 17,
-                                                                                                                                                                                                                          "endOffset": 288,
+                                                                                                                                                                                                                          "endLine": 16,
+                                                                                                                                                                                                                          "endOffset": 628,
                                                                                                                                                                                                                           "image": "\\"2022-02-01\\"",
                                                                                                                                                                                                                           "startColumn": 50,
-                                                                                                                                                                                                                          "startLine": 17,
-                                                                                                                                                                                                                          "startOffset": 277,
+                                                                                                                                                                                                                          "startLine": 16,
+                                                                                                                                                                                                                          "startOffset": 617,
                                                                                                                                                                                                                           "tokenType": Object {
                                                                                                                                                                                                                             "CATEGORIES": Array [],
                                                                                                                                                                                                                             "LONGER_ALT": Object {
@@ -444,12 +444,12 @@ Object {
                                                                                                                                                                                                                             "PNAME_LN": Array [
                                                                                                                                                                                                                               Object {
                                                                                                                                                                                                                                 "endColumn": 71,
-                                                                                                                                                                                                                                "endLine": 17,
-                                                                                                                                                                                                                                "endOffset": 298,
+                                                                                                                                                                                                                                "endLine": 16,
+                                                                                                                                                                                                                                "endOffset": 638,
                                                                                                                                                                                                                                 "image": "xsd:date",
                                                                                                                                                                                                                                 "startColumn": 64,
-                                                                                                                                                                                                                                "startLine": 17,
-                                                                                                                                                                                                                                "startOffset": 291,
+                                                                                                                                                                                                                                "startLine": 16,
+                                                                                                                                                                                                                                "startOffset": 631,
                                                                                                                                                                                                                                 "tokenType": Object {
                                                                                                                                                                                                                                   "CATEGORIES": Array [],
                                                                                                                                                                                                                                   "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -513,12 +513,12 @@ Object {
                                                                                                                                                                                                                 "VAR1": Array [
                                                                                                                                                                                                                   Object {
                                                                                                                                                                                                                     "endColumn": 81,
-                                                                                                                                                                                                                    "endLine": 17,
-                                                                                                                                                                                                                    "endOffset": 308,
+                                                                                                                                                                                                                    "endLine": 16,
+                                                                                                                                                                                                                    "endOffset": 648,
                                                                                                                                                                                                                     "image": "?dat_0",
                                                                                                                                                                                                                     "startColumn": 76,
-                                                                                                                                                                                                                    "startLine": 17,
-                                                                                                                                                                                                                    "startOffset": 303,
+                                                                                                                                                                                                                    "startLine": 16,
+                                                                                                                                                                                                                    "startOffset": 643,
                                                                                                                                                                                                                     "tokenType": Object {
                                                                                                                                                                                                                       "CATEGORIES": Array [],
                                                                                                                                                                                                                       "LABEL": "?foo",
@@ -579,12 +579,12 @@ Object {
                                                                                                                                               "LParen": Array [
                                                                                                                                                 Object {
                                                                                                                                                   "endColumn": 13,
-                                                                                                                                                  "endLine": 17,
-                                                                                                                                                  "endOffset": 240,
+                                                                                                                                                  "endLine": 16,
+                                                                                                                                                  "endOffset": 580,
                                                                                                                                                   "image": "(",
                                                                                                                                                   "startColumn": 13,
-                                                                                                                                                  "startLine": 17,
-                                                                                                                                                  "startOffset": 240,
+                                                                                                                                                  "startLine": 16,
+                                                                                                                                                  "startOffset": 580,
                                                                                                                                                   "tokenType": Object {
                                                                                                                                                     "CATEGORIES": Array [],
                                                                                                                                                     "PATTERN": "(",
@@ -600,12 +600,12 @@ Object {
                                                                                                                                               "RParen": Array [
                                                                                                                                                 Object {
                                                                                                                                                   "endColumn": 82,
-                                                                                                                                                  "endLine": 17,
-                                                                                                                                                  "endOffset": 309,
+                                                                                                                                                  "endLine": 16,
+                                                                                                                                                  "endOffset": 649,
                                                                                                                                                   "image": ")",
                                                                                                                                                   "startColumn": 82,
-                                                                                                                                                  "startLine": 17,
-                                                                                                                                                  "startOffset": 309,
+                                                                                                                                                  "startLine": 16,
+                                                                                                                                                  "startOffset": 649,
                                                                                                                                                   "tokenType": Object {
                                                                                                                                                     "CATEGORIES": Array [],
                                                                                                                                                     "PATTERN": ")",
@@ -665,12 +665,12 @@ Object {
                                                                             "LParen": Array [
                                                                               Object {
                                                                                 "endColumn": 12,
-                                                                                "endLine": 17,
-                                                                                "endOffset": 239,
+                                                                                "endLine": 16,
+                                                                                "endOffset": 579,
                                                                                 "image": "(",
                                                                                 "startColumn": 12,
-                                                                                "startLine": 17,
-                                                                                "startOffset": 239,
+                                                                                "startLine": 16,
+                                                                                "startOffset": 579,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "PATTERN": "(",
@@ -686,12 +686,12 @@ Object {
                                                                             "RParen": Array [
                                                                               Object {
                                                                                 "endColumn": 83,
-                                                                                "endLine": 17,
-                                                                                "endOffset": 310,
+                                                                                "endLine": 16,
+                                                                                "endOffset": 650,
                                                                                 "image": ")",
                                                                                 "startColumn": 83,
-                                                                                "startLine": 17,
-                                                                                "startOffset": 310,
+                                                                                "startLine": 16,
+                                                                                "startOffset": 650,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "PATTERN": ")",
@@ -715,12 +715,12 @@ Object {
                                                                 "FILTER": Array [
                                                                   Object {
                                                                     "endColumn": 10,
-                                                                    "endLine": 17,
-                                                                    "endOffset": 237,
+                                                                    "endLine": 16,
+                                                                    "endOffset": 577,
                                                                     "image": "FILTER",
                                                                     "startColumn": 5,
-                                                                    "startLine": 17,
-                                                                    "startOffset": 232,
+                                                                    "startLine": 16,
+                                                                    "startOffset": 572,
                                                                     "tokenType": Object {
                                                                       "CATEGORIES": Array [],
                                                                       "LONGER_ALT": Object {
@@ -756,12 +756,12 @@ Object {
                                                           "Period": Array [
                                                             Object {
                                                               "endColumn": 41,
-                                                              "endLine": 13,
-                                                              "endOffset": 60,
+                                                              "endLine": 12,
+                                                              "endOffset": 400,
                                                               "image": ".",
                                                               "startColumn": 41,
-                                                              "startLine": 13,
-                                                              "startOffset": 60,
+                                                              "startLine": 12,
+                                                              "startOffset": 400,
                                                               "tokenType": Object {
                                                                 "CATEGORIES": Array [],
                                                                 "PATTERN": ".",
@@ -780,12 +780,12 @@ Object {
                                                                 "Period": Array [
                                                                   Object {
                                                                     "endColumn": 58,
-                                                                    "endLine": 14,
-                                                                    "endOffset": 119,
+                                                                    "endLine": 13,
+                                                                    "endOffset": 459,
                                                                     "image": ".",
                                                                     "startColumn": 58,
-                                                                    "startLine": 14,
-                                                                    "startOffset": 119,
+                                                                    "startLine": 13,
+                                                                    "startOffset": 459,
                                                                     "tokenType": Object {
                                                                       "CATEGORIES": Array [],
                                                                       "PATTERN": ".",
@@ -804,12 +804,12 @@ Object {
                                                                       "Period": Array [
                                                                         Object {
                                                                           "endColumn": 53,
-                                                                          "endLine": 15,
-                                                                          "endOffset": 173,
+                                                                          "endLine": 14,
+                                                                          "endOffset": 513,
                                                                           "image": ".",
                                                                           "startColumn": 53,
-                                                                          "startLine": 15,
-                                                                          "startOffset": 173,
+                                                                          "startLine": 14,
+                                                                          "startOffset": 513,
                                                                           "tokenType": Object {
                                                                             "CATEGORIES": Array [],
                                                                             "PATTERN": ".",
@@ -828,12 +828,12 @@ Object {
                                                                             "Period": Array [
                                                                               Object {
                                                                                 "endColumn": 52,
-                                                                                "endLine": 16,
-                                                                                "endOffset": 226,
+                                                                                "endLine": 15,
+                                                                                "endOffset": 566,
                                                                                 "image": ".",
                                                                                 "startColumn": 52,
-                                                                                "startLine": 16,
-                                                                                "startOffset": 226,
+                                                                                "startLine": 15,
+                                                                                "startOffset": 566,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "PATTERN": ".",
@@ -870,12 +870,12 @@ Object {
                                                                                                                       "VAR1": Array [
                                                                                                                         Object {
                                                                                                                           "endColumn": 50,
-                                                                                                                          "endLine": 16,
-                                                                                                                          "endOffset": 224,
+                                                                                                                          "endLine": 15,
+                                                                                                                          "endOffset": 564,
                                                                                                                           "image": "?dat_0",
                                                                                                                           "startColumn": 45,
-                                                                                                                          "startLine": 16,
-                                                                                                                          "startOffset": 219,
+                                                                                                                          "startLine": 15,
+                                                                                                                          "startOffset": 559,
                                                                                                                           "tokenType": Object {
                                                                                                                             "CATEGORIES": Array [],
                                                                                                                             "LABEL": "?foo",
@@ -939,12 +939,12 @@ Object {
                                                                                                                                               "PNAME_LN": Array [
                                                                                                                                                 Object {
                                                                                                                                                   "endColumn": 43,
-                                                                                                                                                  "endLine": 16,
-                                                                                                                                                  "endOffset": 217,
+                                                                                                                                                  "endLine": 15,
+                                                                                                                                                  "endOffset": 557,
                                                                                                                                                   "image": "stardog:ecomm:openDate",
                                                                                                                                                   "startColumn": 22,
-                                                                                                                                                  "startLine": 16,
-                                                                                                                                                  "startOffset": 196,
+                                                                                                                                                  "startLine": 15,
+                                                                                                                                                  "startOffset": 536,
                                                                                                                                                   "tokenType": Object {
                                                                                                                                                     "CATEGORIES": Array [],
                                                                                                                                                     "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -1006,12 +1006,12 @@ Object {
                                                                                               "VAR1": Array [
                                                                                                 Object {
                                                                                                   "endColumn": 20,
-                                                                                                  "endLine": 16,
-                                                                                                  "endOffset": 194,
+                                                                                                  "endLine": 15,
+                                                                                                  "endOffset": 534,
                                                                                                   "image": "?rewardsAccount0",
                                                                                                   "startColumn": 5,
-                                                                                                  "startLine": 16,
-                                                                                                  "startOffset": 179,
+                                                                                                  "startLine": 15,
+                                                                                                  "startOffset": 519,
                                                                                                   "tokenType": Object {
                                                                                                     "CATEGORIES": Array [],
                                                                                                     "LABEL": "?foo",
@@ -1071,12 +1071,12 @@ Object {
                                                                                                                             "PNAME_LN": Array [
                                                                                                                               Object {
                                                                                                                                 "endColumn": 51,
-                                                                                                                                "endLine": 15,
-                                                                                                                                "endOffset": 171,
+                                                                                                                                "endLine": 14,
+                                                                                                                                "endOffset": 511,
                                                                                                                                 "image": "stardog:ecomm:RewardsAccount",
                                                                                                                                 "startColumn": 24,
-                                                                                                                                "startLine": 15,
-                                                                                                                                "startOffset": 144,
+                                                                                                                                "startLine": 14,
+                                                                                                                                "startOffset": 484,
                                                                                                                                 "tokenType": Object {
                                                                                                                                   "CATEGORIES": Array [],
                                                                                                                                   "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -1141,12 +1141,12 @@ Object {
                                                                                                                             "A": Array [
                                                                                                                               Object {
                                                                                                                                 "endColumn": 22,
-                                                                                                                                "endLine": 15,
-                                                                                                                                "endOffset": 142,
+                                                                                                                                "endLine": 14,
+                                                                                                                                "endOffset": 482,
                                                                                                                                 "image": "a",
                                                                                                                                 "startColumn": 22,
-                                                                                                                                "startLine": 15,
-                                                                                                                                "startOffset": 142,
+                                                                                                                                "startLine": 14,
+                                                                                                                                "startOffset": 482,
                                                                                                                                 "tokenType": Object {
                                                                                                                                   "CATEGORIES": Array [],
                                                                                                                                   "LONGER_ALT": Object {
@@ -1209,12 +1209,12 @@ Object {
                                                                                         "VAR1": Array [
                                                                                           Object {
                                                                                             "endColumn": 20,
-                                                                                            "endLine": 15,
-                                                                                            "endOffset": 140,
+                                                                                            "endLine": 14,
+                                                                                            "endOffset": 480,
                                                                                             "image": "?rewardsAccount0",
                                                                                             "startColumn": 5,
-                                                                                            "startLine": 15,
-                                                                                            "startOffset": 125,
+                                                                                            "startLine": 14,
+                                                                                            "startOffset": 465,
                                                                                             "tokenType": Object {
                                                                                               "CATEGORIES": Array [],
                                                                                               "LABEL": "?foo",
@@ -1268,12 +1268,12 @@ Object {
                                                                                                           "VAR1": Array [
                                                                                                             Object {
                                                                                                               "endColumn": 56,
-                                                                                                              "endLine": 14,
-                                                                                                              "endOffset": 117,
+                                                                                                              "endLine": 13,
+                                                                                                              "endOffset": 457,
                                                                                                               "image": "?rewardsAccount0",
                                                                                                               "startColumn": 41,
-                                                                                                              "startLine": 14,
-                                                                                                              "startOffset": 102,
+                                                                                                              "startLine": 13,
+                                                                                                              "startOffset": 442,
                                                                                                               "tokenType": Object {
                                                                                                                 "CATEGORIES": Array [],
                                                                                                                 "LABEL": "?foo",
@@ -1337,12 +1337,12 @@ Object {
                                                                                                                                   "PNAME_LN": Array [
                                                                                                                                     Object {
                                                                                                                                       "endColumn": 39,
-                                                                                                                                      "endLine": 14,
-                                                                                                                                      "endOffset": 100,
+                                                                                                                                      "endLine": 13,
+                                                                                                                                      "endOffset": 440,
                                                                                                                                       "image": "stardog:ecomm:hasRewards",
                                                                                                                                       "startColumn": 16,
-                                                                                                                                      "startLine": 14,
-                                                                                                                                      "startOffset": 77,
+                                                                                                                                      "startLine": 13,
+                                                                                                                                      "startOffset": 417,
                                                                                                                                       "tokenType": Object {
                                                                                                                                         "CATEGORIES": Array [],
                                                                                                                                         "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -1404,12 +1404,12 @@ Object {
                                                                                   "VAR1": Array [
                                                                                     Object {
                                                                                       "endColumn": 14,
-                                                                                      "endLine": 14,
-                                                                                      "endOffset": 75,
+                                                                                      "endLine": 13,
+                                                                                      "endOffset": 415,
                                                                                       "image": "?customer0",
                                                                                       "startColumn": 5,
-                                                                                      "startLine": 14,
-                                                                                      "startOffset": 66,
+                                                                                      "startLine": 13,
+                                                                                      "startOffset": 406,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "LABEL": "?foo",
@@ -1469,12 +1469,12 @@ Object {
                                                                                                                 "PNAME_LN": Array [
                                                                                                                   Object {
                                                                                                                     "endColumn": 39,
-                                                                                                                    "endLine": 13,
-                                                                                                                    "endOffset": 58,
+                                                                                                                    "endLine": 12,
+                                                                                                                    "endOffset": 398,
                                                                                                                     "image": "stardog:ecomm:Customer",
                                                                                                                     "startColumn": 18,
-                                                                                                                    "startLine": 13,
-                                                                                                                    "startOffset": 37,
+                                                                                                                    "startLine": 12,
+                                                                                                                    "startOffset": 377,
                                                                                                                     "tokenType": Object {
                                                                                                                       "CATEGORIES": Array [],
                                                                                                                       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -1539,12 +1539,12 @@ Object {
                                                                                                                 "A": Array [
                                                                                                                   Object {
                                                                                                                     "endColumn": 16,
-                                                                                                                    "endLine": 13,
-                                                                                                                    "endOffset": 35,
+                                                                                                                    "endLine": 12,
+                                                                                                                    "endOffset": 375,
                                                                                                                     "image": "a",
                                                                                                                     "startColumn": 16,
-                                                                                                                    "startLine": 13,
-                                                                                                                    "startOffset": 35,
+                                                                                                                    "startLine": 12,
+                                                                                                                    "startOffset": 375,
                                                                                                                     "tokenType": Object {
                                                                                                                       "CATEGORIES": Array [],
                                                                                                                       "LONGER_ALT": Object {
@@ -1607,12 +1607,12 @@ Object {
                                                                             "VAR1": Array [
                                                                               Object {
                                                                                 "endColumn": 14,
-                                                                                "endLine": 13,
-                                                                                "endOffset": 33,
+                                                                                "endLine": 12,
+                                                                                "endOffset": 373,
                                                                                 "image": "?customer0",
                                                                                 "startColumn": 5,
-                                                                                "startLine": 13,
-                                                                                "startOffset": 24,
+                                                                                "startLine": 12,
+                                                                                "startOffset": 364,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "LABEL": "?foo",
@@ -1649,12 +1649,12 @@ Object {
                                               "LCurly": Array [
                                                 Object {
                                                   "endColumn": 3,
-                                                  "endLine": 12,
-                                                  "endOffset": 18,
+                                                  "endLine": 11,
+                                                  "endOffset": 358,
                                                   "image": "{",
                                                   "startColumn": 3,
-                                                  "startLine": 12,
-                                                  "startOffset": 18,
+                                                  "startLine": 11,
+                                                  "startOffset": 358,
                                                   "tokenType": Object {
                                                     "CATEGORIES": Array [],
                                                     "PATTERN": "{",
@@ -1670,12 +1670,12 @@ Object {
                                               "RCurly": Array [
                                                 Object {
                                                   "endColumn": 3,
-                                                  "endLine": 18,
-                                                  "endOffset": 314,
+                                                  "endLine": 17,
+                                                  "endOffset": 654,
                                                   "image": "}",
                                                   "startColumn": 3,
-                                                  "startLine": 18,
-                                                  "startOffset": 314,
+                                                  "startLine": 17,
+                                                  "startOffset": 654,
                                                   "tokenType": Object {
                                                     "CATEGORIES": Array [],
                                                     "PATTERN": "}",
@@ -1706,13 +1706,13 @@ Object {
                       ],
                       "LCurly": Array [
                         Object {
-                          "endColumn": 5,
-                          "endLine": 11,
-                          "endOffset": 14,
+                          "endColumn": 4,
+                          "endLine": 10,
+                          "endOffset": 354,
                           "image": "{",
-                          "startColumn": 5,
-                          "startLine": 11,
-                          "startOffset": 14,
+                          "startColumn": 4,
+                          "startLine": 10,
+                          "startOffset": 354,
                           "tokenType": Object {
                             "CATEGORIES": Array [],
                             "PATTERN": "{",
@@ -1728,12 +1728,12 @@ Object {
                       "RCurly": Array [
                         Object {
                           "endColumn": 1,
-                          "endLine": 19,
-                          "endOffset": 316,
+                          "endLine": 18,
+                          "endOffset": 656,
                           "image": "}",
                           "startColumn": 1,
-                          "startLine": 19,
-                          "startOffset": 316,
+                          "startLine": 18,
+                          "startOffset": 656,
                           "tokenType": Object {
                             "CATEGORIES": Array [],
                             "PATTERN": "}",
@@ -1849,13 +1849,13 @@ Object {
                     "children": Object {
                       "Period": Array [
                         Object {
-                          "endColumn": 40,
-                          "endLine": 21,
-                          "endOffset": 59,
+                          "endColumn": 39,
+                          "endLine": 20,
+                          "endOffset": 703,
                           "image": ".",
-                          "startColumn": 40,
-                          "startLine": 21,
-                          "startOffset": 59,
+                          "startColumn": 39,
+                          "startLine": 20,
+                          "startOffset": 703,
                           "tokenType": Object {
                             "CATEGORIES": Array [],
                             "PATTERN": ".",
@@ -1874,12 +1874,12 @@ Object {
                             "Period": Array [
                               Object {
                                 "endColumn": 56,
-                                "endLine": 22,
-                                "endOffset": 116,
+                                "endLine": 21,
+                                "endOffset": 760,
                                 "image": ".",
                                 "startColumn": 56,
-                                "startLine": 22,
-                                "startOffset": 116,
+                                "startLine": 21,
+                                "startOffset": 760,
                                 "tokenType": Object {
                                   "CATEGORIES": Array [],
                                   "PATTERN": ".",
@@ -1898,12 +1898,12 @@ Object {
                                   "Period": Array [
                                     Object {
                                       "endColumn": 51,
-                                      "endLine": 23,
-                                      "endOffset": 168,
+                                      "endLine": 22,
+                                      "endOffset": 812,
                                       "image": ".",
                                       "startColumn": 51,
-                                      "startLine": 23,
-                                      "startOffset": 168,
+                                      "startLine": 22,
+                                      "startOffset": 812,
                                       "tokenType": Object {
                                         "CATEGORIES": Array [],
                                         "PATTERN": ".",
@@ -1922,12 +1922,12 @@ Object {
                                         "Period": Array [
                                           Object {
                                             "endColumn": 50,
-                                            "endLine": 24,
-                                            "endOffset": 219,
+                                            "endLine": 23,
+                                            "endOffset": 863,
                                             "image": ".",
                                             "startColumn": 50,
-                                            "startLine": 24,
-                                            "startOffset": 219,
+                                            "startLine": 23,
+                                            "startOffset": 863,
                                             "tokenType": Object {
                                               "CATEGORIES": Array [],
                                               "PATTERN": ".",
@@ -1964,12 +1964,12 @@ Object {
                                                                                   "VAR1": Array [
                                                                                     Object {
                                                                                       "endColumn": 48,
-                                                                                      "endLine": 24,
-                                                                                      "endOffset": 217,
+                                                                                      "endLine": 23,
+                                                                                      "endOffset": 861,
                                                                                       "image": "?dat_0",
                                                                                       "startColumn": 43,
-                                                                                      "startLine": 24,
-                                                                                      "startOffset": 212,
+                                                                                      "startLine": 23,
+                                                                                      "startOffset": 856,
                                                                                       "tokenType": Object {
                                                                                         "CATEGORIES": Array [],
                                                                                         "LABEL": "?foo",
@@ -2033,12 +2033,12 @@ Object {
                                                                                                           "PNAME_LN": Array [
                                                                                                             Object {
                                                                                                               "endColumn": 41,
-                                                                                                              "endLine": 24,
-                                                                                                              "endOffset": 210,
+                                                                                                              "endLine": 23,
+                                                                                                              "endOffset": 854,
                                                                                                               "image": "stardog:ecomm:openDate",
                                                                                                               "startColumn": 20,
-                                                                                                              "startLine": 24,
-                                                                                                              "startOffset": 189,
+                                                                                                              "startLine": 23,
+                                                                                                              "startOffset": 833,
                                                                                                               "tokenType": Object {
                                                                                                                 "CATEGORIES": Array [],
                                                                                                                 "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -2100,12 +2100,12 @@ Object {
                                                           "VAR1": Array [
                                                             Object {
                                                               "endColumn": 18,
-                                                              "endLine": 24,
-                                                              "endOffset": 187,
+                                                              "endLine": 23,
+                                                              "endOffset": 831,
                                                               "image": "?rewardsAccount0",
                                                               "startColumn": 3,
-                                                              "startLine": 24,
-                                                              "startOffset": 172,
+                                                              "startLine": 23,
+                                                              "startOffset": 816,
                                                               "tokenType": Object {
                                                                 "CATEGORIES": Array [],
                                                                 "LABEL": "?foo",
@@ -2165,12 +2165,12 @@ Object {
                                                                                         "PNAME_LN": Array [
                                                                                           Object {
                                                                                             "endColumn": 49,
-                                                                                            "endLine": 23,
-                                                                                            "endOffset": 166,
+                                                                                            "endLine": 22,
+                                                                                            "endOffset": 810,
                                                                                             "image": "stardog:ecomm:RewardsAccount",
                                                                                             "startColumn": 22,
-                                                                                            "startLine": 23,
-                                                                                            "startOffset": 139,
+                                                                                            "startLine": 22,
+                                                                                            "startOffset": 783,
                                                                                             "tokenType": Object {
                                                                                               "CATEGORIES": Array [],
                                                                                               "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -2235,12 +2235,12 @@ Object {
                                                                                         "A": Array [
                                                                                           Object {
                                                                                             "endColumn": 20,
-                                                                                            "endLine": 23,
-                                                                                            "endOffset": 137,
+                                                                                            "endLine": 22,
+                                                                                            "endOffset": 781,
                                                                                             "image": "a",
                                                                                             "startColumn": 20,
-                                                                                            "startLine": 23,
-                                                                                            "startOffset": 137,
+                                                                                            "startLine": 22,
+                                                                                            "startOffset": 781,
                                                                                             "tokenType": Object {
                                                                                               "CATEGORIES": Array [],
                                                                                               "LONGER_ALT": Object {
@@ -2303,12 +2303,12 @@ Object {
                                                     "VAR1": Array [
                                                       Object {
                                                         "endColumn": 18,
-                                                        "endLine": 23,
-                                                        "endOffset": 135,
+                                                        "endLine": 22,
+                                                        "endOffset": 779,
                                                         "image": "?rewardsAccount0",
                                                         "startColumn": 3,
-                                                        "startLine": 23,
-                                                        "startOffset": 120,
+                                                        "startLine": 22,
+                                                        "startOffset": 764,
                                                         "tokenType": Object {
                                                           "CATEGORIES": Array [],
                                                           "LABEL": "?foo",
@@ -2362,12 +2362,12 @@ Object {
                                                                       "VAR1": Array [
                                                                         Object {
                                                                           "endColumn": 54,
-                                                                          "endLine": 22,
-                                                                          "endOffset": 114,
+                                                                          "endLine": 21,
+                                                                          "endOffset": 758,
                                                                           "image": "?rewardsAccount0",
                                                                           "startColumn": 39,
-                                                                          "startLine": 22,
-                                                                          "startOffset": 99,
+                                                                          "startLine": 21,
+                                                                          "startOffset": 743,
                                                                           "tokenType": Object {
                                                                             "CATEGORIES": Array [],
                                                                             "LABEL": "?foo",
@@ -2431,12 +2431,12 @@ Object {
                                                                                               "PNAME_LN": Array [
                                                                                                 Object {
                                                                                                   "endColumn": 37,
-                                                                                                  "endLine": 22,
-                                                                                                  "endOffset": 97,
+                                                                                                  "endLine": 21,
+                                                                                                  "endOffset": 741,
                                                                                                   "image": "stardog:ecomm:hasRewards",
                                                                                                   "startColumn": 14,
-                                                                                                  "startLine": 22,
-                                                                                                  "startOffset": 74,
+                                                                                                  "startLine": 21,
+                                                                                                  "startOffset": 718,
                                                                                                   "tokenType": Object {
                                                                                                     "CATEGORIES": Array [],
                                                                                                     "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -2498,12 +2498,12 @@ Object {
                                               "VAR1": Array [
                                                 Object {
                                                   "endColumn": 12,
-                                                  "endLine": 22,
-                                                  "endOffset": 72,
+                                                  "endLine": 21,
+                                                  "endOffset": 716,
                                                   "image": "?customer0",
                                                   "startColumn": 3,
-                                                  "startLine": 22,
-                                                  "startOffset": 63,
+                                                  "startLine": 21,
+                                                  "startOffset": 707,
                                                   "tokenType": Object {
                                                     "CATEGORIES": Array [],
                                                     "LABEL": "?foo",
@@ -2562,13 +2562,13 @@ Object {
                                                                           "children": Object {
                                                                             "PNAME_LN": Array [
                                                                               Object {
-                                                                                "endColumn": 38,
-                                                                                "endLine": 21,
-                                                                                "endOffset": 57,
+                                                                                "endColumn": 37,
+                                                                                "endLine": 20,
+                                                                                "endOffset": 701,
                                                                                 "image": "stardog:ecomm:Customer",
-                                                                                "startColumn": 17,
-                                                                                "startLine": 21,
-                                                                                "startOffset": 36,
+                                                                                "startColumn": 16,
+                                                                                "startLine": 20,
+                                                                                "startOffset": 680,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
@@ -2632,13 +2632,13 @@ Object {
                                                                           "children": Object {
                                                                             "A": Array [
                                                                               Object {
-                                                                                "endColumn": 15,
-                                                                                "endLine": 21,
-                                                                                "endOffset": 34,
+                                                                                "endColumn": 14,
+                                                                                "endLine": 20,
+                                                                                "endOffset": 678,
                                                                                 "image": "a",
-                                                                                "startColumn": 15,
-                                                                                "startLine": 21,
-                                                                                "startOffset": 34,
+                                                                                "startColumn": 14,
+                                                                                "startLine": 20,
+                                                                                "startOffset": 678,
                                                                                 "tokenType": Object {
                                                                                   "CATEGORIES": Array [],
                                                                                   "LONGER_ALT": Object {
@@ -2700,13 +2700,13 @@ Object {
                                       "children": Object {
                                         "VAR1": Array [
                                           Object {
-                                            "endColumn": 13,
-                                            "endLine": 21,
-                                            "endOffset": 32,
+                                            "endColumn": 12,
+                                            "endLine": 20,
+                                            "endOffset": 676,
                                             "image": "?customer0",
-                                            "startColumn": 4,
-                                            "startLine": 21,
-                                            "startOffset": 23,
+                                            "startColumn": 3,
+                                            "startLine": 20,
+                                            "startOffset": 667,
                                             "tokenType": Object {
                                               "CATEGORIES": Array [],
                                               "LABEL": "?foo",
@@ -3525,13 +3525,13 @@ Object {
                                                                                         "children": Object {
                                                                                           "Comma": Array [
                                                                                             Object {
-                                                                                              "endColumn": 65,
-                                                                                              "endLine": 2,
-                                                                                              "endOffset": 65,
+                                                                                              "endColumn": 64,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 63,
                                                                                               "image": ",",
-                                                                                              "startColumn": 65,
-                                                                                              "startLine": 2,
-                                                                                              "startOffset": 65,
+                                                                                              "startColumn": 64,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 63,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
                                                                                                 "PATTERN": ",",
@@ -3582,13 +3582,13 @@ Object {
                                                                                                                                                                 "children": Object {
                                                                                                                                                                   "IRIREF": Array [
                                                                                                                                                                     Object {
-                                                                                                                                                                      "endColumn": 64,
-                                                                                                                                                                      "endLine": 2,
-                                                                                                                                                                      "endOffset": 64,
+                                                                                                                                                                      "endColumn": 63,
+                                                                                                                                                                      "endLine": 1,
+                                                                                                                                                                      "endOffset": 62,
                                                                                                                                                                       "image": "<urn:a>",
-                                                                                                                                                                      "startColumn": 58,
-                                                                                                                                                                      "startLine": 2,
-                                                                                                                                                                      "startOffset": 58,
+                                                                                                                                                                      "startColumn": 57,
+                                                                                                                                                                      "startLine": 1,
+                                                                                                                                                                      "startOffset": 56,
                                                                                                                                                                       "tokenType": Object {
                                                                                                                                                                         "CATEGORIES": Array [],
                                                                                                                                                                         "LABEL": "<http://example.com>",
@@ -3686,13 +3686,13 @@ Object {
                                                                                                                                                                 "children": Object {
                                                                                                                                                                   "IRIREF": Array [
                                                                                                                                                                     Object {
-                                                                                                                                                                      "endColumn": 73,
-                                                                                                                                                                      "endLine": 2,
-                                                                                                                                                                      "endOffset": 73,
+                                                                                                                                                                      "endColumn": 72,
+                                                                                                                                                                      "endLine": 1,
+                                                                                                                                                                      "endOffset": 71,
                                                                                                                                                                       "image": "<urn:b>",
-                                                                                                                                                                      "startColumn": 67,
-                                                                                                                                                                      "startLine": 2,
-                                                                                                                                                                      "startOffset": 67,
+                                                                                                                                                                      "startColumn": 66,
+                                                                                                                                                                      "startLine": 1,
+                                                                                                                                                                      "startOffset": 65,
                                                                                                                                                                       "tokenType": Object {
                                                                                                                                                                         "CATEGORIES": Array [],
                                                                                                                                                                         "LABEL": "<http://example.com>",
@@ -3756,13 +3756,13 @@ Object {
                                                                                           ],
                                                                                           "LParen": Array [
                                                                                             Object {
-                                                                                              "endColumn": 57,
-                                                                                              "endLine": 2,
-                                                                                              "endOffset": 57,
+                                                                                              "endColumn": 56,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 55,
                                                                                               "image": "(",
-                                                                                              "startColumn": 57,
-                                                                                              "startLine": 2,
-                                                                                              "startOffset": 57,
+                                                                                              "startColumn": 56,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 55,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
                                                                                                 "PATTERN": "(",
@@ -3777,13 +3777,13 @@ Object {
                                                                                           ],
                                                                                           "RParen": Array [
                                                                                             Object {
-                                                                                              "endColumn": 74,
-                                                                                              "endLine": 2,
-                                                                                              "endOffset": 74,
+                                                                                              "endColumn": 73,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 72,
                                                                                               "image": ")",
-                                                                                              "startColumn": 74,
-                                                                                              "startLine": 2,
-                                                                                              "startOffset": 74,
+                                                                                              "startColumn": 73,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 72,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
                                                                                                 "PATTERN": ")",
@@ -3802,13 +3802,13 @@ Object {
                                                                                     ],
                                                                                     "NOT_IN": Array [
                                                                                       Object {
-                                                                                        "endColumn": 55,
-                                                                                        "endLine": 2,
-                                                                                        "endOffset": 55,
+                                                                                        "endColumn": 54,
+                                                                                        "endLine": 1,
+                                                                                        "endOffset": 53,
                                                                                         "image": "NOT IN",
-                                                                                        "startColumn": 50,
-                                                                                        "startLine": 2,
-                                                                                        "startOffset": 50,
+                                                                                        "startColumn": 49,
+                                                                                        "startLine": 1,
+                                                                                        "startOffset": 48,
                                                                                         "tokenType": Object {
                                                                                           "CATEGORIES": Array [],
                                                                                           "LONGER_ALT": Object {
@@ -3850,13 +3850,13 @@ Object {
                                                                                                                       "children": Object {
                                                                                                                         "VAR1": Array [
                                                                                                                           Object {
-                                                                                                                            "endColumn": 48,
-                                                                                                                            "endLine": 2,
-                                                                                                                            "endOffset": 48,
+                                                                                                                            "endColumn": 47,
+                                                                                                                            "endLine": 1,
+                                                                                                                            "endOffset": 46,
                                                                                                                             "image": "?x",
-                                                                                                                            "startColumn": 47,
-                                                                                                                            "startLine": 2,
-                                                                                                                            "startOffset": 47,
+                                                                                                                            "startColumn": 46,
+                                                                                                                            "startLine": 1,
+                                                                                                                            "startOffset": 45,
                                                                                                                             "tokenType": Object {
                                                                                                                               "CATEGORIES": Array [],
                                                                                                                               "LABEL": "?foo",
@@ -3916,13 +3916,13 @@ Object {
                                                       ],
                                                       "LParen": Array [
                                                         Object {
-                                                          "endColumn": 46,
-                                                          "endLine": 2,
-                                                          "endOffset": 46,
+                                                          "endColumn": 45,
+                                                          "endLine": 1,
+                                                          "endOffset": 44,
                                                           "image": "(",
-                                                          "startColumn": 46,
-                                                          "startLine": 2,
-                                                          "startOffset": 46,
+                                                          "startColumn": 45,
+                                                          "startLine": 1,
+                                                          "startOffset": 44,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "PATTERN": "(",
@@ -3937,13 +3937,13 @@ Object {
                                                       ],
                                                       "RParen": Array [
                                                         Object {
-                                                          "endColumn": 75,
-                                                          "endLine": 2,
-                                                          "endOffset": 75,
+                                                          "endColumn": 74,
+                                                          "endLine": 1,
+                                                          "endOffset": 73,
                                                           "image": ")",
-                                                          "startColumn": 75,
-                                                          "startLine": 2,
-                                                          "startOffset": 75,
+                                                          "startColumn": 74,
+                                                          "startLine": 1,
+                                                          "startOffset": 73,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "PATTERN": ")",
@@ -3966,13 +3966,13 @@ Object {
                                           ],
                                           "FILTER": Array [
                                             Object {
-                                              "endColumn": 45,
-                                              "endLine": 2,
-                                              "endOffset": 45,
+                                              "endColumn": 44,
+                                              "endLine": 1,
+                                              "endOffset": 43,
                                               "image": "FILTER",
-                                              "startColumn": 40,
-                                              "startLine": 2,
-                                              "startOffset": 40,
+                                              "startColumn": 39,
+                                              "startLine": 1,
+                                              "startOffset": 38,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
                                                 "LONGER_ALT": Object {
@@ -4007,13 +4007,13 @@ Object {
                                   "children": Object {
                                     "Period": Array [
                                       Object {
-                                        "endColumn": 38,
-                                        "endLine": 2,
-                                        "endOffset": 38,
+                                        "endColumn": 37,
+                                        "endLine": 1,
+                                        "endOffset": 36,
                                         "image": ".",
-                                        "startColumn": 38,
-                                        "startLine": 2,
-                                        "startOffset": 38,
+                                        "startColumn": 37,
+                                        "startLine": 1,
+                                        "startOffset": 36,
                                         "tokenType": Object {
                                           "CATEGORIES": Array [],
                                           "PATTERN": ".",
@@ -4052,13 +4052,13 @@ Object {
                                                                                   "children": Object {
                                                                                     "IRIREF": Array [
                                                                                       Object {
-                                                                                        "endColumn": 36,
-                                                                                        "endLine": 2,
-                                                                                        "endOffset": 36,
+                                                                                        "endColumn": 35,
+                                                                                        "endLine": 1,
+                                                                                        "endOffset": 34,
                                                                                         "image": "<http://example.org/Male>",
-                                                                                        "startColumn": 12,
-                                                                                        "startLine": 2,
-                                                                                        "startOffset": 12,
+                                                                                        "startColumn": 11,
+                                                                                        "startLine": 1,
+                                                                                        "startOffset": 10,
                                                                                         "tokenType": Object {
                                                                                           "CATEGORIES": Array [],
                                                                                           "LABEL": "<http://example.com>",
@@ -4119,13 +4119,13 @@ Object {
                                                                                         "children": Object {
                                                                                           "A": Array [
                                                                                             Object {
-                                                                                              "endColumn": 10,
-                                                                                              "endLine": 2,
-                                                                                              "endOffset": 10,
+                                                                                              "endColumn": 9,
+                                                                                              "endLine": 1,
+                                                                                              "endOffset": 8,
                                                                                               "image": "a",
-                                                                                              "startColumn": 10,
-                                                                                              "startLine": 2,
-                                                                                              "startOffset": 10,
+                                                                                              "startColumn": 9,
+                                                                                              "startLine": 1,
+                                                                                              "startOffset": 8,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
                                                                                                 "LONGER_ALT": Object {
@@ -4187,13 +4187,13 @@ Object {
                                                     "children": Object {
                                                       "VAR1": Array [
                                                         Object {
-                                                          "endColumn": 8,
-                                                          "endLine": 2,
-                                                          "endOffset": 8,
+                                                          "endColumn": 7,
+                                                          "endLine": 1,
+                                                          "endOffset": 6,
                                                           "image": "?x",
-                                                          "startColumn": 7,
-                                                          "startLine": 2,
-                                                          "startOffset": 7,
+                                                          "startColumn": 6,
+                                                          "startLine": 1,
+                                                          "startOffset": 5,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "LABEL": "?foo",
@@ -4229,13 +4229,13 @@ Object {
                         ],
                         "LCurly": Array [
                           Object {
-                            "endColumn": 5,
-                            "endLine": 2,
-                            "endOffset": 5,
+                            "endColumn": 4,
+                            "endLine": 1,
+                            "endOffset": 3,
                             "image": "{",
-                            "startColumn": 5,
-                            "startLine": 2,
-                            "startOffset": 5,
+                            "startColumn": 4,
+                            "startLine": 1,
+                            "startOffset": 3,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": "{",
@@ -4250,13 +4250,13 @@ Object {
                         ],
                         "RCurly": Array [
                           Object {
-                            "endColumn": 76,
-                            "endLine": 2,
-                            "endOffset": 76,
+                            "endColumn": 75,
+                            "endLine": 1,
+                            "endOffset": 74,
                             "image": "}",
-                            "startColumn": 76,
-                            "startLine": 2,
-                            "startOffset": 76,
+                            "startColumn": 75,
+                            "startLine": 1,
+                            "startOffset": 74,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": "}",
@@ -4372,13 +4372,13 @@ Object {
                       "children": Object {
                         "Period": Array [
                           Object {
-                            "endColumn": 117,
-                            "endLine": 2,
-                            "endOffset": 117,
+                            "endColumn": 116,
+                            "endLine": 1,
+                            "endOffset": 115,
                             "image": ".",
-                            "startColumn": 117,
-                            "startLine": 2,
-                            "startOffset": 117,
+                            "startColumn": 116,
+                            "startLine": 1,
+                            "startOffset": 115,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": ".",
@@ -4417,13 +4417,13 @@ Object {
                                                                       "children": Object {
                                                                         "IRIREF": Array [
                                                                           Object {
-                                                                            "endColumn": 115,
-                                                                            "endLine": 2,
-                                                                            "endOffset": 115,
+                                                                            "endColumn": 114,
+                                                                            "endLine": 1,
+                                                                            "endOffset": 113,
                                                                             "image": "<http://example.org/Father>",
-                                                                            "startColumn": 89,
-                                                                            "startLine": 2,
-                                                                            "startOffset": 89,
+                                                                            "startColumn": 88,
+                                                                            "startLine": 1,
+                                                                            "startOffset": 87,
                                                                             "tokenType": Object {
                                                                               "CATEGORIES": Array [],
                                                                               "LABEL": "<http://example.com>",
@@ -4484,13 +4484,13 @@ Object {
                                                                             "children": Object {
                                                                               "A": Array [
                                                                                 Object {
-                                                                                  "endColumn": 87,
-                                                                                  "endLine": 2,
-                                                                                  "endOffset": 87,
+                                                                                  "endColumn": 86,
+                                                                                  "endLine": 1,
+                                                                                  "endOffset": 85,
                                                                                   "image": "a",
-                                                                                  "startColumn": 87,
-                                                                                  "startLine": 2,
-                                                                                  "startOffset": 87,
+                                                                                  "startColumn": 86,
+                                                                                  "startLine": 1,
+                                                                                  "startOffset": 85,
                                                                                   "tokenType": Object {
                                                                                     "CATEGORIES": Array [],
                                                                                     "LONGER_ALT": Object {
@@ -4552,13 +4552,13 @@ Object {
                                         "children": Object {
                                           "VAR1": Array [
                                             Object {
-                                              "endColumn": 85,
-                                              "endLine": 2,
-                                              "endOffset": 85,
+                                              "endColumn": 84,
+                                              "endLine": 1,
+                                              "endOffset": 83,
                                               "image": "?x",
-                                              "startColumn": 84,
-                                              "startLine": 2,
-                                              "startOffset": 84,
+                                              "startColumn": 83,
+                                              "startLine": 1,
+                                              "startOffset": 82,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
                                                 "LABEL": "?foo",
@@ -4653,12 +4653,12 @@ Object {
                                     "Period": Array [
                                       Object {
                                         "endColumn": 65,
-                                        "endLine": 6,
-                                        "endOffset": 74,
+                                        "endLine": 5,
+                                        "endOffset": 176,
                                         "image": ".",
                                         "startColumn": 65,
-                                        "startLine": 6,
-                                        "startOffset": 74,
+                                        "startLine": 5,
+                                        "startOffset": 176,
                                         "tokenType": Object {
                                           "CATEGORIES": Array [],
                                           "PATTERN": ".",
@@ -4683,12 +4683,12 @@ Object {
                                                       "Comma": Array [
                                                         Object {
                                                           "endColumn": 35,
-                                                          "endLine": 6,
-                                                          "endOffset": 44,
+                                                          "endLine": 5,
+                                                          "endOffset": 146,
                                                           "image": ",",
                                                           "startColumn": 35,
-                                                          "startLine": 6,
-                                                          "startOffset": 44,
+                                                          "startLine": 5,
+                                                          "startOffset": 146,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "PATTERN": ",",
@@ -4719,12 +4719,12 @@ Object {
                                                                                     "IRIREF": Array [
                                                                                       Object {
                                                                                         "endColumn": 33,
-                                                                                        "endLine": 6,
-                                                                                        "endOffset": 42,
+                                                                                        "endLine": 5,
+                                                                                        "endOffset": 144,
                                                                                         "image": "<http://example.org/Male>",
                                                                                         "startColumn": 9,
-                                                                                        "startLine": 6,
-                                                                                        "startOffset": 18,
+                                                                                        "startLine": 5,
+                                                                                        "startOffset": 120,
                                                                                         "tokenType": Object {
                                                                                           "CATEGORIES": Array [],
                                                                                           "LABEL": "<http://example.com>",
@@ -4774,12 +4774,12 @@ Object {
                                                                                     "IRIREF": Array [
                                                                                       Object {
                                                                                         "endColumn": 63,
-                                                                                        "endLine": 6,
-                                                                                        "endOffset": 72,
+                                                                                        "endLine": 5,
+                                                                                        "endOffset": 174,
                                                                                         "image": "<http://example.org/Parent>",
                                                                                         "startColumn": 37,
-                                                                                        "startLine": 6,
-                                                                                        "startOffset": 46,
+                                                                                        "startLine": 5,
+                                                                                        "startOffset": 148,
                                                                                         "tokenType": Object {
                                                                                           "CATEGORIES": Array [],
                                                                                           "LABEL": "<http://example.com>",
@@ -4841,12 +4841,12 @@ Object {
                                                                                           "A": Array [
                                                                                             Object {
                                                                                               "endColumn": 7,
-                                                                                              "endLine": 6,
-                                                                                              "endOffset": 16,
+                                                                                              "endLine": 5,
+                                                                                              "endOffset": 118,
                                                                                               "image": "a",
                                                                                               "startColumn": 7,
-                                                                                              "startLine": 6,
-                                                                                              "startOffset": 16,
+                                                                                              "startLine": 5,
+                                                                                              "startOffset": 118,
                                                                                               "tokenType": Object {
                                                                                                 "CATEGORIES": Array [],
                                                                                                 "LONGER_ALT": Object {
@@ -4909,12 +4909,12 @@ Object {
                                                       "VAR1": Array [
                                                         Object {
                                                           "endColumn": 5,
-                                                          "endLine": 6,
-                                                          "endOffset": 14,
+                                                          "endLine": 5,
+                                                          "endOffset": 116,
                                                           "image": "?x",
                                                           "startColumn": 4,
-                                                          "startLine": 6,
-                                                          "startOffset": 13,
+                                                          "startLine": 5,
+                                                          "startOffset": 115,
                                                           "tokenType": Object {
                                                             "CATEGORIES": Array [],
                                                             "LABEL": "?foo",
@@ -4950,13 +4950,13 @@ Object {
                         ],
                         "LCurly": Array [
                           Object {
-                            "endColumn": 5,
-                            "endLine": 5,
-                            "endOffset": 8,
+                            "endColumn": 4,
+                            "endLine": 4,
+                            "endOffset": 110,
                             "image": "{",
-                            "startColumn": 5,
-                            "startLine": 5,
-                            "startOffset": 8,
+                            "startColumn": 4,
+                            "startLine": 4,
+                            "startOffset": 110,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": "{",
@@ -4972,12 +4972,12 @@ Object {
                         "RCurly": Array [
                           Object {
                             "endColumn": 1,
-                            "endLine": 7,
-                            "endOffset": 76,
+                            "endLine": 6,
+                            "endOffset": 178,
                             "image": "}",
                             "startColumn": 1,
-                            "startLine": 7,
-                            "startOffset": 76,
+                            "startLine": 6,
+                            "startOffset": 178,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": "}",
@@ -5156,13 +5156,13 @@ Object {
                       "children": Object {
                         "Period": Array [
                           Object {
-                            "endColumn": 38,
-                            "endLine": 9,
-                            "endOffset": 45,
+                            "endColumn": 37,
+                            "endLine": 8,
+                            "endOffset": 223,
                             "image": ".",
-                            "startColumn": 38,
-                            "startLine": 9,
-                            "startOffset": 45,
+                            "startColumn": 37,
+                            "startLine": 8,
+                            "startOffset": 223,
                             "tokenType": Object {
                               "CATEGORIES": Array [],
                               "PATTERN": ".",
@@ -5201,13 +5201,13 @@ Object {
                                                                       "children": Object {
                                                                         "IRIREF": Array [
                                                                           Object {
-                                                                            "endColumn": 36,
-                                                                            "endLine": 9,
-                                                                            "endOffset": 43,
+                                                                            "endColumn": 35,
+                                                                            "endLine": 8,
+                                                                            "endOffset": 221,
                                                                             "image": "<http://example.org/Father>",
-                                                                            "startColumn": 10,
-                                                                            "startLine": 9,
-                                                                            "startOffset": 17,
+                                                                            "startColumn": 9,
+                                                                            "startLine": 8,
+                                                                            "startOffset": 195,
                                                                             "tokenType": Object {
                                                                               "CATEGORIES": Array [],
                                                                               "LABEL": "<http://example.com>",
@@ -5268,13 +5268,13 @@ Object {
                                                                             "children": Object {
                                                                               "A": Array [
                                                                                 Object {
-                                                                                  "endColumn": 8,
-                                                                                  "endLine": 9,
-                                                                                  "endOffset": 15,
+                                                                                  "endColumn": 7,
+                                                                                  "endLine": 8,
+                                                                                  "endOffset": 193,
                                                                                   "image": "a",
-                                                                                  "startColumn": 8,
-                                                                                  "startLine": 9,
-                                                                                  "startOffset": 15,
+                                                                                  "startColumn": 7,
+                                                                                  "startLine": 8,
+                                                                                  "startOffset": 193,
                                                                                   "tokenType": Object {
                                                                                     "CATEGORIES": Array [],
                                                                                     "LONGER_ALT": Object {
@@ -5336,13 +5336,13 @@ Object {
                                         "children": Object {
                                           "VAR1": Array [
                                             Object {
-                                              "endColumn": 6,
-                                              "endLine": 9,
-                                              "endOffset": 13,
+                                              "endColumn": 5,
+                                              "endLine": 8,
+                                              "endOffset": 191,
                                               "image": "?x",
-                                              "startColumn": 5,
-                                              "startLine": 9,
-                                              "startOffset": 12,
+                                              "startColumn": 4,
+                                              "startLine": 8,
+                                              "startOffset": 190,
                                               "tokenType": Object {
                                                 "CATEGORIES": Array [],
                                                 "LABEL": "?foo",
