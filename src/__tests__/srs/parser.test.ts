@@ -167,6 +167,11 @@ describe('srs parser', () => {
     return testFilesInDirectory(pathName, parser, 'standard', filter);
   });
 
+  it('correctly computes the adjusted token positions for the SPARQL visitor', () => {
+    const { cst } = parser.parse(fixtures.valid.visitorPositions);
+    expect(cst).toMatchSnapshot();
+  });
+
   describe('in stardog mode', () => {
     it('parses valid SRS documents, including embedded triples, with no errors', () => {
       const validDocuments = fixtures.valid;

@@ -100,6 +100,31 @@ const ungeneratedFixtures = {
       ':FatherRule rdfs:comment "This rule defines fathers" ;\n' +
       '  a :MyRule .\n' +
       '<< :FatherRule a :MyRule >> :createdAt "2019-10-26" .',
+    visitorPositions:
+      '#pragma join.choice.strategy standard\n' +
+      '\n' +
+      '@prefix ecomm: <tag:stardog:api:ecomm:> .\n' +
+      'prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n' +
+      'prefix owl: <http://www.w3.org/2002/07/owl#>\n' +
+      'prefix so: <https://schema.org/>\n' +
+      'prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n' +
+      'prefix xsd: <http://www.w3.org/2001/XMLSchema#>\n' +
+      'prefix m: <urn:stardog:modules:>\n' +
+      'IF {\n' +
+      '  {\n' +
+      '    ?customer0 a stardog:ecomm:Customer .\n' +
+      '    ?customer0 stardog:ecomm:hasRewards ?rewardsAccount0 .\n' +
+      '    ?rewardsAccount0 a stardog:ecomm:RewardsAccount .\n' +
+      '    ?rewardsAccount0 stardog:ecomm:openDate ?dat_0 .\n' +
+      '    FILTER (("2022-01-01"^^xsd:date <= ?dat_0 && "2022-02-01"^^xsd:date >= ?dat_0))\n' +
+      '  }\n' +
+      '}\n' +
+      'THEN {\n' +
+      '  ?customer0 a stardog:ecomm:Customer .\n' +
+      '  ?customer0 stardog:ecomm:hasRewards ?rewardsAccount0 .\n' +
+      '  ?rewardsAccount0 a stardog:ecomm:RewardsAccount .\n' +
+      '  ?rewardsAccount0 stardog:ecomm:openDate ?dat_0 .\n' +
+      '}\n',
   },
   invalid: {
     lex: {
