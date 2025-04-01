@@ -227,7 +227,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides BaseParser.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L26">graphql/BaseGraphQlParser.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L26">graphql/BaseGraphQlParser.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -260,7 +260,7 @@
 					<div class="tsd-signature tsd-kind-icon">Alias<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Alias&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Name);this.CONSUME(graphQlTokenMap.Colon);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L110">graphql/BaseGraphQlParser.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L110">graphql/BaseGraphQlParser.ts:110</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -297,7 +297,7 @@
 					<div class="tsd-signature tsd-kind-icon">Argument<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Argument&#x27;, (isConst: boolean) &#x3D;&gt; {this.SUBRULE(this.Alias);this.SUBRULE(this.Value, { ARGS: [isConst] });})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L121">graphql/BaseGraphQlParser.ts:121</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L121">graphql/BaseGraphQlParser.ts:121</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -334,7 +334,7 @@
 					<div class="tsd-signature tsd-kind-icon">Arguments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Arguments&#x27;, (isConst: boolean) &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LParen);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.Argument, { ARGS: [isConst] }));this.CONSUME(graphQlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L115">graphql/BaseGraphQlParser.ts:115</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L115">graphql/BaseGraphQlParser.ts:115</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -371,7 +371,7 @@
 					<div class="tsd-signature tsd-kind-icon">Arguments<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ArgumentsDefinition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LParen);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.InputValueDefinition));this.CONSUME(graphQlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L413">graphql/BaseGraphQlParser.ts:413</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L413">graphql/BaseGraphQlParser.ts:413</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -408,7 +408,7 @@
 					<div class="tsd-signature tsd-kind-icon">Boolean<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;BooleanValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.BooleanValueToken);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L178">graphql/BaseGraphQlParser.ts:178</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L178">graphql/BaseGraphQlParser.ts:178</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -445,7 +445,7 @@
 					<div class="tsd-signature tsd-kind-icon">Default<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DefaultValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Equals);this.SUBRULE(this.Value, { ARGS: [true /* isConst */] });})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L225">graphql/BaseGraphQlParser.ts:225</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L225">graphql/BaseGraphQlParser.ts:225</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -482,7 +482,7 @@
 					<div class="tsd-signature tsd-kind-icon">Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Definition&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.ExecutableDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TypeSystemDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TypeSystemExtension) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L48">graphql/BaseGraphQlParser.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L48">graphql/BaseGraphQlParser.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -519,7 +519,7 @@
 					<div class="tsd-signature tsd-kind-icon">Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Description&#x27;, () &#x3D;&gt; {this.SUBRULE(this.StringValue);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L309">graphql/BaseGraphQlParser.ts:309</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L309">graphql/BaseGraphQlParser.ts:309</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -556,7 +556,7 @@
 					<div class="tsd-signature tsd-kind-icon">Directive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Directive&#x27;, (isConst: boolean) &#x3D;&gt; {this.CONSUME(graphQlTokenMap.At);this.CONSUME(graphQlTokenMap.Name);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Arguments, { ARGS: [isConst] }));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L252">graphql/BaseGraphQlParser.ts:252</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L252">graphql/BaseGraphQlParser.ts:252</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -593,7 +593,7 @@
 					<div class="tsd-signature tsd-kind-icon">Directive<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DirectiveDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.DirectiveToken);this.CONSUME(graphQlTokenMap.At);this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.ArgumentsDefinition));this.CONSUME(graphQlTokenMap.On);this.SUBRULE(this.DirectiveLocations);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L560">graphql/BaseGraphQlParser.ts:560</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L560">graphql/BaseGraphQlParser.ts:560</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -630,7 +630,7 @@
 					<div class="tsd-signature tsd-kind-icon">Directive<wbr>Location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DirectiveLocation&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.ExecutableDirectiveLocation) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TypeSystemDirectiveLocation) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L579">graphql/BaseGraphQlParser.ts:579</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L579">graphql/BaseGraphQlParser.ts:579</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -667,7 +667,7 @@
 					<div class="tsd-signature tsd-kind-icon">Directive<wbr>Locations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;DirectiveLocations&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.CONSUME(graphQlTokenMap.Pipe));this.SUBRULE(this.DirectiveLocation);this.MANY(() &#x3D;&gt; {this.CONSUME1(graphQlTokenMap.Pipe);this.SUBRULE1(this.DirectiveLocation);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L570">graphql/BaseGraphQlParser.ts:570</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L570">graphql/BaseGraphQlParser.ts:570</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -704,7 +704,7 @@
 					<div class="tsd-signature tsd-kind-icon">Directives<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Directives&#x27;, (isConst: boolean) &#x3D;&gt; {this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.Directive, { ARGS: [isConst] }));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L248">graphql/BaseGraphQlParser.ts:248</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L248">graphql/BaseGraphQlParser.ts:248</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -741,7 +741,7 @@
 					<div class="tsd-signature tsd-kind-icon">Document<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Document&#x27;, () &#x3D;&gt; {this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.Definition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L44">graphql/BaseGraphQlParser.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L44">graphql/BaseGraphQlParser.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -778,7 +778,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enum<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;EnumTypeDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Enum);this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));this.OPTION2(() &#x3D;&gt; this.SUBRULE(this.EnumValuesDefinition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L490">graphql/BaseGraphQlParser.ts:490</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L490">graphql/BaseGraphQlParser.ts:490</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -815,7 +815,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enum<wbr>Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;EnumTypeExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.Enum);this.CONSUME(graphQlTokenMap.Name);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });this.OPTION(() &#x3D;&gt; this.SUBRULE(this.EnumValuesDefinition));},},{ ALT: () &#x3D;&gt; this.SUBRULE1(this.EnumValuesDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L514">graphql/BaseGraphQlParser.ts:514</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L514">graphql/BaseGraphQlParser.ts:514</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -852,7 +852,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enum<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;EnumValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.EnumValueToken);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L186">graphql/BaseGraphQlParser.ts:186</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L186">graphql/BaseGraphQlParser.ts:186</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -889,7 +889,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enum<wbr>Value<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;EnumValueDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.SUBRULE(this.EnumValue);this.OPTION1(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L506">graphql/BaseGraphQlParser.ts:506</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L506">graphql/BaseGraphQlParser.ts:506</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -926,7 +926,7 @@
 					<div class="tsd-signature tsd-kind-icon">Enum<wbr>Values<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;EnumValuesDefinition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LCurly);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.EnumValueDefinition));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L500">graphql/BaseGraphQlParser.ts:500</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L500">graphql/BaseGraphQlParser.ts:500</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -963,7 +963,7 @@
 					<div class="tsd-signature tsd-kind-icon">Executable<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ExecutableDefinition&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.OperationDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.FragmentDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L56">graphql/BaseGraphQlParser.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L56">graphql/BaseGraphQlParser.ts:56</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1000,7 +1000,7 @@
 					<div class="tsd-signature tsd-kind-icon">Executable<wbr>Directive<wbr>Location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ExecutableDirectiveLocation&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.QUERY) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.MUTATION) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.SUBSCRIPTION) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.FIELD) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.FRAGMENT_DEFINITION) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.FRAGMENT_SPREAD) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.INLINE_FRAGMENT) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L586">graphql/BaseGraphQlParser.ts:586</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L586">graphql/BaseGraphQlParser.ts:586</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1037,7 +1037,7 @@
 					<div class="tsd-signature tsd-kind-icon">Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Field&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Alias));this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt;this.SUBRULE(this.Arguments, { ARGS: [false /* isConst */] }));this.OPTION2(() &#x3D;&gt; this.SUBRULE(this.Directives));this.OPTION3(() &#x3D;&gt; this.SUBRULE(this.SelectionSet));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L100">graphql/BaseGraphQlParser.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L100">graphql/BaseGraphQlParser.ts:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1074,7 +1074,7 @@
 					<div class="tsd-signature tsd-kind-icon">Field<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FieldDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.ArgumentsDefinition));this.CONSUME(graphQlTokenMap.Colon);this.SUBRULE(this.Type);this.OPTION2(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L402">graphql/BaseGraphQlParser.ts:402</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L402">graphql/BaseGraphQlParser.ts:402</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1111,7 +1111,7 @@
 					<div class="tsd-signature tsd-kind-icon">Fields<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FieldsDefinition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LCurly);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.FieldDefinition));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L396">graphql/BaseGraphQlParser.ts:396</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L396">graphql/BaseGraphQlParser.ts:396</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1148,7 +1148,7 @@
 					<div class="tsd-signature tsd-kind-icon">Float<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FloatValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.FloatValueToken);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L170">graphql/BaseGraphQlParser.ts:170</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L170">graphql/BaseGraphQlParser.ts:170</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1185,7 +1185,7 @@
 					<div class="tsd-signature tsd-kind-icon">Fragment<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FragmentDefinition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Fragment);this.CONSUME(graphQlTokenMap.FragmentName);this.SUBRULE(this.TypeCondition);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Directives));this.SUBRULE(this.SelectionSet);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L139">graphql/BaseGraphQlParser.ts:139</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L139">graphql/BaseGraphQlParser.ts:139</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1222,7 +1222,7 @@
 					<div class="tsd-signature tsd-kind-icon">Fragment<wbr>Spread<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;FragmentSpread&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Spread);this.CONSUME(graphQlTokenMap.FragmentName);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Directives));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L126">graphql/BaseGraphQlParser.ts:126</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L126">graphql/BaseGraphQlParser.ts:126</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1259,7 +1259,7 @@
 					<div class="tsd-signature tsd-kind-icon">Implements<wbr>Interfaces<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ImplementsInterfaces&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Implements);this.OPTION(() &#x3D;&gt; this.CONSUME(graphQlTokenMap.Amp));this.SUBRULE(this.NamedType);this.MANY(() &#x3D;&gt; {this.CONSUME1(graphQlTokenMap.Amp);this.SUBRULE1(this.NamedType);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L386">graphql/BaseGraphQlParser.ts:386</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L386">graphql/BaseGraphQlParser.ts:386</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1296,7 +1296,7 @@
 					<div class="tsd-signature tsd-kind-icon">Inline<wbr>Fragment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InlineFragment&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Spread);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.TypeCondition));this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.Directives));this.SUBRULE(this.SelectionSet);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L132">graphql/BaseGraphQlParser.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L132">graphql/BaseGraphQlParser.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1333,7 +1333,7 @@
 					<div class="tsd-signature tsd-kind-icon">Input<wbr>Fields<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InputFieldsDefinition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LCurly);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.InputValueDefinition));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L539">graphql/BaseGraphQlParser.ts:539</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L539">graphql/BaseGraphQlParser.ts:539</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1370,7 +1370,7 @@
 					<div class="tsd-signature tsd-kind-icon">Input<wbr>Object<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InputObjectTypeDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Input);this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));this.OPTION2(() &#x3D;&gt; this.SUBRULE(this.InputFieldsDefinition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L529">graphql/BaseGraphQlParser.ts:529</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L529">graphql/BaseGraphQlParser.ts:529</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1407,7 +1407,7 @@
 					<div class="tsd-signature tsd-kind-icon">Input<wbr>Object<wbr>Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InputObjectTypeExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.Input);this.CONSUME(graphQlTokenMap.Name);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });this.OPTION(() &#x3D;&gt; this.SUBRULE1(this.InputFieldsDefinition));},},{ ALT: () &#x3D;&gt; this.SUBRULE(this.InputFieldsDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L545">graphql/BaseGraphQlParser.ts:545</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L545">graphql/BaseGraphQlParser.ts:545</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1444,7 +1444,7 @@
 					<div class="tsd-signature tsd-kind-icon">Input<wbr>Value<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InputValueDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Name);this.CONSUME(graphQlTokenMap.Colon);this.SUBRULE(this.Type);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.DefaultValue));this.OPTION2(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L419">graphql/BaseGraphQlParser.ts:419</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L419">graphql/BaseGraphQlParser.ts:419</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1481,7 +1481,7 @@
 					<div class="tsd-signature tsd-kind-icon">Int<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;IntValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.IntValueToken);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L166">graphql/BaseGraphQlParser.ts:166</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L166">graphql/BaseGraphQlParser.ts:166</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1518,7 +1518,7 @@
 					<div class="tsd-signature tsd-kind-icon">Interface<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InterfaceTypeDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Interface);this.CONSUME(graphQlTokenMap.Name);this.OPTION2(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));this.OPTION3(() &#x3D;&gt; this.SUBRULE(this.FieldsDefinition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L430">graphql/BaseGraphQlParser.ts:430</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L430">graphql/BaseGraphQlParser.ts:430</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1555,7 +1555,7 @@
 					<div class="tsd-signature tsd-kind-icon">Interface<wbr>Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;InterfaceTypeExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.Interface);this.CONSUME(graphQlTokenMap.Name);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });this.OPTION(() &#x3D;&gt; this.SUBRULE(this.FieldsDefinition));},},{ ALT: () &#x3D;&gt; this.SUBRULE1(this.FieldsDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L440">graphql/BaseGraphQlParser.ts:440</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L440">graphql/BaseGraphQlParser.ts:440</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1592,7 +1592,7 @@
 					<div class="tsd-signature tsd-kind-icon">List<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ListType&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LBracket);this.SUBRULE(this.Type);this.CONSUME(graphQlTokenMap.RBracket);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L242">graphql/BaseGraphQlParser.ts:242</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L242">graphql/BaseGraphQlParser.ts:242</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1629,7 +1629,7 @@
 					<div class="tsd-signature tsd-kind-icon">List<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ListValue&#x27;, (isConst: boolean) &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LBracket);this.MANY(() &#x3D;&gt; this.SUBRULE(this.Value, { ARGS: [isConst] }));this.CONSUME(graphQlTokenMap.RBracket);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L190">graphql/BaseGraphQlParser.ts:190</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L190">graphql/BaseGraphQlParser.ts:190</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1666,7 +1666,7 @@
 					<div class="tsd-signature tsd-kind-icon">Named<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NamedType&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Name);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L238">graphql/BaseGraphQlParser.ts:238</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L238">graphql/BaseGraphQlParser.ts:238</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1703,7 +1703,7 @@
 					<div class="tsd-signature tsd-kind-icon">Null<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;NullValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.NullValueToken);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L182">graphql/BaseGraphQlParser.ts:182</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L182">graphql/BaseGraphQlParser.ts:182</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1740,7 +1740,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectField&#x27;, (isConst: boolean) &#x3D;&gt; {this.SUBRULE(this.Alias);this.SUBRULE(this.Value, { ARGS: [isConst] });})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L202">graphql/BaseGraphQlParser.ts:202</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L202">graphql/BaseGraphQlParser.ts:202</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1777,7 +1777,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectTypeDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.TypeToken);this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.ImplementsInterfaces));this.OPTION2(() &#x3D;&gt;this.SUBRULE1(this.Directives, { ARGS: [true /* isConst */] }));this.OPTION3(() &#x3D;&gt; this.SUBRULE(this.FieldsDefinition));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L351">graphql/BaseGraphQlParser.ts:351</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L351">graphql/BaseGraphQlParser.ts:351</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1814,7 +1814,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectTypeExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.TypeToken);this.CONSUME(graphQlTokenMap.Name);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.ImplementsInterfaces);this.OPTION(() &#x3D;&gt;this.SUBRULE1(this.Directives, { ARGS: [true /* isConst */] }));this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.FieldsDefinition));},},{ALT: () &#x3D;&gt; {this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });this.OPTION2(() &#x3D;&gt; this.SUBRULE1(this.FieldsDefinition));},},{ ALT: () &#x3D;&gt; this.SUBRULE2(this.FieldsDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L362">graphql/BaseGraphQlParser.ts:362</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L362">graphql/BaseGraphQlParser.ts:362</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1851,7 +1851,7 @@
 					<div class="tsd-signature tsd-kind-icon">Object<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ObjectValue&#x27;, (isConst: boolean) &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LCurly);this.MANY(() &#x3D;&gt; this.SUBRULE(this.ObjectField, { ARGS: [isConst] }));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L196">graphql/BaseGraphQlParser.ts:196</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L196">graphql/BaseGraphQlParser.ts:196</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1888,7 +1888,7 @@
 					<div class="tsd-signature tsd-kind-icon">Operation<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OperationDefinition&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.SelectionSet) },{ALT: () &#x3D;&gt; {this.SUBRULE(this.OperationType);this.OPTION(() &#x3D;&gt; this.CONSUME(graphQlTokenMap.Name));this.OPTION1(() &#x3D;&gt; this.SUBRULE(this.VariableDefinitions));this.OPTION2(() &#x3D;&gt; this.SUBRULE(this.Directives));this.SUBRULE1(this.SelectionSet);},},]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L63">graphql/BaseGraphQlParser.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L63">graphql/BaseGraphQlParser.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1925,7 +1925,7 @@
 					<div class="tsd-signature tsd-kind-icon">Operation<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OperationType&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.Query) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.Mutation) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.Subscription) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L78">graphql/BaseGraphQlParser.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L78">graphql/BaseGraphQlParser.ts:78</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1962,7 +1962,7 @@
 					<div class="tsd-signature tsd-kind-icon">Operation<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OperationTypeDefinition&#x27;, () &#x3D;&gt; {this.SUBRULE(this.OperationType);this.CONSUME(graphQlTokenMap.Colon);this.SUBRULE(this.NamedType);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L303">graphql/BaseGraphQlParser.ts:303</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L303">graphql/BaseGraphQlParser.ts:303</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -1999,7 +1999,7 @@
 					<div class="tsd-signature tsd-kind-icon">Operation<wbr>Type<wbr>Definition<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;OperationTypeDefinitionList&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LCurly);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.OperationTypeDefinition));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L297">graphql/BaseGraphQlParser.ts:297</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L297">graphql/BaseGraphQlParser.ts:297</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2036,7 +2036,7 @@
 					<div class="tsd-signature tsd-kind-icon">Scalar<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ScalarTypeDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Scalar);this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L335">graphql/BaseGraphQlParser.ts:335</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L335">graphql/BaseGraphQlParser.ts:335</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2073,7 +2073,7 @@
 					<div class="tsd-signature tsd-kind-icon">Scalar<wbr>Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;ScalarTypeExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.Scalar);this.CONSUME(graphQlTokenMap.Name);this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L344">graphql/BaseGraphQlParser.ts:344</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L344">graphql/BaseGraphQlParser.ts:344</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2110,7 +2110,7 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SchemaDefinition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Schema);this.OPTION(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));this.CONSUME(graphQlTokenMap.LCurly);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.OperationTypeDefinition));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L273">graphql/BaseGraphQlParser.ts:273</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L273">graphql/BaseGraphQlParser.ts:273</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2147,7 +2147,7 @@
 					<div class="tsd-signature tsd-kind-icon">Schema<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SchemaExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.Schema);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });this.OPTION(() &#x3D;&gt; this.SUBRULE1(this.OperationTypeDefinitionList));},},{ ALT: () &#x3D;&gt; this.SUBRULE(this.OperationTypeDefinitionList) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L283">graphql/BaseGraphQlParser.ts:283</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L283">graphql/BaseGraphQlParser.ts:283</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2184,7 +2184,7 @@
 					<div class="tsd-signature tsd-kind-icon">Selection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Selection&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.Field) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InlineFragment) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.FragmentSpread) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L92">graphql/BaseGraphQlParser.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L92">graphql/BaseGraphQlParser.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2221,7 +2221,7 @@
 					<div class="tsd-signature tsd-kind-icon">Selection<wbr>Set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;SelectionSet&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LCurly);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.Selection));this.CONSUME(graphQlTokenMap.RCurly);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L86">graphql/BaseGraphQlParser.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L86">graphql/BaseGraphQlParser.ts:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2258,7 +2258,7 @@
 					<div class="tsd-signature tsd-kind-icon">String<wbr>Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;StringValue&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.StringValueToken);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L174">graphql/BaseGraphQlParser.ts:174</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L174">graphql/BaseGraphQlParser.ts:174</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2295,7 +2295,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Type&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.NamedType) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ListType) },]);this.OPTION(() &#x3D;&gt; this.CONSUME(graphQlTokenMap.Bang));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L230">graphql/BaseGraphQlParser.ts:230</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L230">graphql/BaseGraphQlParser.ts:230</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2332,7 +2332,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Condition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TypeCondition&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.On);this.SUBRULE(this.NamedType);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L147">graphql/BaseGraphQlParser.ts:147</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L147">graphql/BaseGraphQlParser.ts:147</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2369,7 +2369,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TypeDefinition&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.ScalarTypeDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ObjectTypeDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InterfaceTypeDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.UnionTypeDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.EnumTypeDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InputObjectTypeDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L313">graphql/BaseGraphQlParser.ts:313</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L313">graphql/BaseGraphQlParser.ts:313</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2406,7 +2406,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TypeExtension&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.ScalarTypeExtension) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ObjectTypeExtension) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InterfaceTypeExtension) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.UnionTypeExtension) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.EnumTypeExtension) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.InputObjectTypeExtension) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L324">graphql/BaseGraphQlParser.ts:324</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L324">graphql/BaseGraphQlParser.ts:324</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2443,7 +2443,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>System<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TypeSystemDefinition&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.SchemaDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TypeDefinition) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.DirectiveDefinition) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L258">graphql/BaseGraphQlParser.ts:258</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L258">graphql/BaseGraphQlParser.ts:258</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2480,7 +2480,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>System<wbr>Directive<wbr>Location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TypeSystemDirectiveLocation&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.SCHEMA) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.SCALAR) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.OBJECT) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.FIELD_DEFINITION) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.ARGUMENT_DEFINITION) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.INTERFACE) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.UNION) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.ENUM) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.ENUM_VALUE) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.INPUT_OBJECT) },{ ALT: () &#x3D;&gt; this.CONSUME(graphQlTokenMap.INPUT_FIELD_DEFINITION) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L598">graphql/BaseGraphQlParser.ts:598</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L598">graphql/BaseGraphQlParser.ts:598</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2517,7 +2517,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>System<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;TypeSystemExtension&#x27;, () &#x3D;&gt; {this.OR([{ ALT: () &#x3D;&gt; this.SUBRULE(this.SchemaExtension) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.TypeExtension) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L266">graphql/BaseGraphQlParser.ts:266</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L266">graphql/BaseGraphQlParser.ts:266</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2554,7 +2554,7 @@
 					<div class="tsd-signature tsd-kind-icon">Union<wbr>Member<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;UnionMemberTypes&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Equals);this.OPTION(() &#x3D;&gt; this.CONSUME(graphQlTokenMap.Pipe));this.SUBRULE(this.NamedType);this.MANY(() &#x3D;&gt; {this.CONSUME1(graphQlTokenMap.Pipe);this.SUBRULE1(this.NamedType);});})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L465">graphql/BaseGraphQlParser.ts:465</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L465">graphql/BaseGraphQlParser.ts:465</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2591,7 +2591,7 @@
 					<div class="tsd-signature tsd-kind-icon">Union<wbr>Type<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;UnionTypeDefinition&#x27;, () &#x3D;&gt; {this.OPTION(() &#x3D;&gt; this.SUBRULE(this.Description));this.CONSUME(graphQlTokenMap.Union);this.CONSUME(graphQlTokenMap.Name);this.OPTION1(() &#x3D;&gt;this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] }));this.OPTION2(() &#x3D;&gt; this.SUBRULE(this.UnionMemberTypes));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L455">graphql/BaseGraphQlParser.ts:455</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L455">graphql/BaseGraphQlParser.ts:455</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2628,7 +2628,7 @@
 					<div class="tsd-signature tsd-kind-icon">Union<wbr>Type<wbr>Extension<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;UnionTypeExtension&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Extend);this.CONSUME(graphQlTokenMap.Union);this.CONSUME(graphQlTokenMap.Name);this.OR([{ALT: () &#x3D;&gt; {this.SUBRULE(this.Directives, { ARGS: [true /* isConst */] });this.OPTION(() &#x3D;&gt; this.SUBRULE(this.UnionMemberTypes));},},{ ALT: () &#x3D;&gt; this.SUBRULE1(this.UnionMemberTypes) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L475">graphql/BaseGraphQlParser.ts:475</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L475">graphql/BaseGraphQlParser.ts:475</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2665,7 +2665,7 @@
 					<div class="tsd-signature tsd-kind-icon">Value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Value&#x27;, (isConst: boolean) &#x3D;&gt; {this.OR([{ GATE: () &#x3D;&gt; !isConst, ALT: () &#x3D;&gt; this.SUBRULE(this.Variable) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.IntValue) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.FloatValue) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.StringValue) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.BooleanValue) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.NullValue) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.EnumValue) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ListValue, { ARGS: [isConst] }) },{ ALT: () &#x3D;&gt; this.SUBRULE(this.ObjectValue, { ARGS: [isConst] }) },]);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L152">graphql/BaseGraphQlParser.ts:152</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L152">graphql/BaseGraphQlParser.ts:152</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2702,7 +2702,7 @@
 					<div class="tsd-signature tsd-kind-icon">Variable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;Variable&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.Dollar);this.CONSUME(graphQlTokenMap.Name);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L220">graphql/BaseGraphQlParser.ts:220</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L220">graphql/BaseGraphQlParser.ts:220</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2739,7 +2739,7 @@
 					<div class="tsd-signature tsd-kind-icon">Variable<wbr>Definition<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VariableDefinition&#x27;, () &#x3D;&gt; {this.SUBRULE(this.Variable);this.CONSUME(graphQlTokenMap.Colon);this.SUBRULE(this.Type);this.OPTION(() &#x3D;&gt; this.SUBRULE(this.DefaultValue));})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L213">graphql/BaseGraphQlParser.ts:213</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L213">graphql/BaseGraphQlParser.ts:213</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2776,7 +2776,7 @@
 					<div class="tsd-signature tsd-kind-icon">Variable<wbr>Definitions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;this.RULE(&#x27;VariableDefinitions&#x27;, () &#x3D;&gt; {this.CONSUME(graphQlTokenMap.LParen);this.AT_LEAST_ONE(() &#x3D;&gt; this.SUBRULE(this.VariableDefinition));this.CONSUME(graphQlTokenMap.RParen);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L207">graphql/BaseGraphQlParser.ts:207</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L207">graphql/BaseGraphQlParser.ts:207</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -2835,7 +2835,7 @@
 					<div class="tsd-signature tsd-kind-icon">lexer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Lexer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L13">graphql/BaseGraphQlParser.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L13">graphql/BaseGraphQlParser.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -3829,7 +3829,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L18">graphql/BaseGraphQlParser.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L18">graphql/BaseGraphQlParser.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -3935,7 +3935,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/13d7a1f/src/graphql/BaseGraphQlParser.ts#L15">graphql/BaseGraphQlParser.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/stardog-union/millan/blob/a508082/src/graphql/BaseGraphQlParser.ts#L15">graphql/BaseGraphQlParser.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
