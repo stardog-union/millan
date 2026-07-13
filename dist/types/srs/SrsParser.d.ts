@@ -1,4 +1,4 @@
-import { Lexer, IToken, IRecognitionException, IParserConfig } from 'chevrotain';
+import { Lexer, IToken, IParserConfig } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
 import { ModeString } from '../helpers/chevrotain/types';
 export declare class SrsParser extends TurtleParser {
@@ -16,14 +16,10 @@ export declare class SrsParser extends TurtleParser {
         [key: string]: boolean;
     }) => void;
     tokenize: (document: string) => IToken[];
-    parse: (document: string, mode?: ModeString) => {
-        errors: IRecognitionException[];
-        semanticErrors: IRecognitionException[];
-        cst: any;
-    };
-    SrsDoc: (idxInCallingRule?: number, ...args: any[]) => any;
-    RuleDoc: (idxInCallingRule?: number, ...args: any[]) => any;
-    RuleClause: (idxInCallingRule?: number, ...args: any[]) => any;
-    IfClause: (idxInCallingRule?: number, ...args: any[]) => any;
-    ThenClause: (idxInCallingRule?: number, ...args: any[]) => any;
+    parse: (document: string, mode?: ModeString) => ReturnType<TurtleParser["parse"]>;
+    SrsDoc: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    RuleDoc: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    RuleClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    IfClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    ThenClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
 }

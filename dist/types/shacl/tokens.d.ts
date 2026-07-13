@@ -23,10 +23,10 @@ declare const localNamesByCategory: {
     AnyLiteralTakingPredicate: ["minExclusive", "minInclusive", "maxExclusive", "maxInclusive"];
     other: ["Shape", "NodeShape", "PropertyShape", "targetNode", "message", "path", "alternativePath", "inversePath", "zeroOrMorePath", "oneOrMorePath", "zeroOrOnePath", "nodeKind", "languageIn", "and", "or", "xone", "ignoredProperties", "hasValue", "in", "select", "ask"];
 };
-declare type LocalName = {
+type LocalName = {
     [K in keyof typeof localNamesByCategory]: typeof localNamesByCategory[K] extends (infer T)[] ? T : never;
 }[keyof typeof localNamesByCategory];
-declare type TokenMap = {
+type TokenMap = {
     [K in LocalName]: TokenType;
 };
 export declare const getShaclTokenMap: (prefixes: {

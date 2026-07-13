@@ -1,24 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
+    "target": "ES2017",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "stripInternal": true,
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./dist/types",
-    "lib": ["es2016"],
     "baseUrl": ".",
     "paths": {
       "*": [
         "src/*"
-      ],
+      ]
     }
   },
   "include": [

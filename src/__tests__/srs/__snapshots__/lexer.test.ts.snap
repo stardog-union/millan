@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`srs lexer correctly parses Turtle prefixes with patterns matching SRS patterns 1`] = `
-Array [
-  Object {
+[
+  {
     "endColumn": 13,
     "endLine": 2,
     "endOffset": 13,
@@ -10,18 +10,18 @@ Array [
     "startColumn": 7,
     "startLine": 2,
     "startOffset": 7,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /@prefix/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "TTL_PREFIX",
       "tokenTypeIdx": 188,
     },
     "tokenTypeIdx": 188,
   },
-  Object {
+  {
     "endColumn": 19,
     "endLine": 2,
     "endOffset": 19,
@@ -29,27 +29,27 @@ Array [
     "startColumn": 15,
     "startLine": 2,
     "startOffset": 15,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
-      "LONGER_ALT": Object {
-        "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
+      "LONGER_ALT": {
+        "CATEGORIES": [],
         "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-        "categoryMatches": Array [],
-        "categoryMatchesMap": Object {},
+        "categoryMatches": [],
+        "categoryMatchesMap": {},
         "isParent": false,
         "tokenName": "PNAME_LN",
         "tokenTypeIdx": 4,
       },
       "PATTERN": /\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_NS",
       "tokenTypeIdx": 20,
     },
     "tokenTypeIdx": 20,
   },
-  Object {
+  {
     "endColumn": 43,
     "endLine": 2,
     "endOffset": 43,
@@ -57,19 +57,19 @@ Array [
     "startColumn": 21,
     "startLine": 2,
     "startOffset": 21,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "LINE_BREAKS": false,
       "PATTERN": [Function],
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "IRIREF",
       "tokenTypeIdx": 201,
     },
     "tokenTypeIdx": 201,
   },
-  Object {
+  {
     "endColumn": 44,
     "endLine": 2,
     "endOffset": 44,
@@ -77,18 +77,18 @@ Array [
     "startColumn": 44,
     "startLine": 2,
     "startOffset": 44,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": ".",
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "Period",
       "tokenTypeIdx": 161,
     },
     "tokenTypeIdx": 161,
   },
-  Object {
+  {
     "endColumn": 15,
     "endLine": 4,
     "endOffset": 61,
@@ -96,18 +96,18 @@ Array [
     "startColumn": 7,
     "startLine": 4,
     "startOffset": 53,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_LN",
       "tokenTypeIdx": 4,
     },
     "tokenTypeIdx": 4,
   },
-  Object {
+  {
     "endColumn": 17,
     "endLine": 4,
     "endOffset": 63,
@@ -115,27 +115,27 @@ Array [
     "startColumn": 17,
     "startLine": 4,
     "startOffset": 63,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
-      "LONGER_ALT": Object {
-        "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
+      "LONGER_ALT": {
+        "CATEGORIES": [],
         "PATTERN": /\\\\w\\+/i,
-        "categoryMatches": Array [],
-        "categoryMatchesMap": Object {},
+        "categoryMatches": [],
+        "categoryMatchesMap": {},
         "isParent": false,
         "tokenName": "UNKNOWN",
         "tokenTypeIdx": 25,
       },
       "PATTERN": /a/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "A",
       "tokenTypeIdx": 38,
     },
     "tokenTypeIdx": 38,
   },
-  Object {
+  {
     "endColumn": 24,
     "endLine": 4,
     "endOffset": 70,
@@ -143,18 +143,18 @@ Array [
     "startColumn": 19,
     "startLine": 4,
     "startOffset": 65,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_LN",
       "tokenTypeIdx": 4,
     },
     "tokenTypeIdx": 4,
   },
-  Object {
+  {
     "endColumn": 26,
     "endLine": 4,
     "endOffset": 72,
@@ -162,18 +162,18 @@ Array [
     "startColumn": 26,
     "startLine": 4,
     "startOffset": 72,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": ".",
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "Period",
       "tokenTypeIdx": 161,
     },
     "tokenTypeIdx": 161,
   },
-  Object {
+  {
     "endColumn": 10,
     "endLine": 6,
     "endOffset": 84,
@@ -181,18 +181,18 @@ Array [
     "startColumn": 7,
     "startLine": 6,
     "startOffset": 81,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /rule/i,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "Rule",
       "tokenTypeIdx": 208,
     },
     "tokenTypeIdx": 208,
   },
-  Object {
+  {
     "endColumn": 18,
     "endLine": 6,
     "endOffset": 92,
@@ -200,18 +200,18 @@ Array [
     "startColumn": 12,
     "startLine": 6,
     "startOffset": 86,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_LN",
       "tokenTypeIdx": 4,
     },
     "tokenTypeIdx": 4,
   },
-  Object {
+  {
     "endColumn": 8,
     "endLine": 7,
     "endOffset": 101,
@@ -219,19 +219,19 @@ Array [
     "startColumn": 7,
     "startLine": 7,
     "startOffset": 100,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /if/i,
       "PUSH_MODE": "ifclause",
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "If",
       "tokenTypeIdx": 209,
     },
     "tokenTypeIdx": 209,
   },
-  Object {
+  {
     "endColumn": 7,
     "endLine": 9,
     "endOffset": 141,
@@ -241,20 +241,20 @@ Array [
     "startColumn": 10,
     "startLine": 7,
     "startOffset": 103,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "LINE_BREAKS": true,
       "PATTERN": [Function],
       "POP_MODE": true,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "GroupGraphPattern",
       "tokenTypeIdx": 212,
     },
     "tokenTypeIdx": 212,
   },
-  Object {
+  {
     "endColumn": 10,
     "endLine": 10,
     "endOffset": 152,
@@ -262,19 +262,19 @@ Array [
     "startColumn": 7,
     "startLine": 10,
     "startOffset": 149,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /then/i,
       "PUSH_MODE": "thenclause",
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "Then",
       "tokenTypeIdx": 210,
     },
     "tokenTypeIdx": 210,
   },
-  Object {
+  {
     "endColumn": 12,
     "endLine": 10,
     "endOffset": 154,
@@ -282,18 +282,18 @@ Array [
     "startColumn": 12,
     "startLine": 10,
     "startOffset": 154,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": "{",
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "LCurly",
       "tokenTypeIdx": 155,
     },
     "tokenTypeIdx": 155,
   },
-  Object {
+  {
     "endColumn": 6,
     "endLine": 12,
     "endOffset": 194,
@@ -302,19 +302,19 @@ Array [
     "startColumn": 9,
     "startLine": 11,
     "startOffset": 164,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "LINE_BREAKS": true,
       "PATTERN": /\\[\\^\\{\\}\\]\\+/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "TriplesBlock",
       "tokenTypeIdx": 213,
     },
     "tokenTypeIdx": 213,
   },
-  Object {
+  {
     "endColumn": 7,
     "endLine": 12,
     "endOffset": 195,
@@ -322,19 +322,19 @@ Array [
     "startColumn": 7,
     "startLine": 12,
     "startOffset": 195,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": "}",
       "POP_MODE": true,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "EndThen",
       "tokenTypeIdx": 211,
     },
     "tokenTypeIdx": 211,
   },
-  Object {
+  {
     "endColumn": 16,
     "endLine": 14,
     "endOffset": 213,
@@ -342,18 +342,18 @@ Array [
     "startColumn": 7,
     "startLine": 14,
     "startOffset": 204,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_LN",
       "tokenTypeIdx": 4,
     },
     "tokenTypeIdx": 4,
   },
-  Object {
+  {
     "endColumn": 31,
     "endLine": 14,
     "endOffset": 228,
@@ -361,18 +361,18 @@ Array [
     "startColumn": 18,
     "startLine": 14,
     "startOffset": 215,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_LN",
       "tokenTypeIdx": 4,
     },
     "tokenTypeIdx": 4,
   },
-  Object {
+  {
     "endColumn": 38,
     "endLine": 14,
     "endOffset": 235,
@@ -380,18 +380,18 @@ Array [
     "startColumn": 33,
     "startLine": 14,
     "startOffset": 230,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": /\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\)\\*\\)\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\)\\?\\)\\)\\?\\)\\(:\\)\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(:\\)\\|\\(\\\\d\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\(\\(\\(\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(\\\\\\.\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\*\\)\\(\\(\\(\\(\\[A-Za-z\\\\u00C0-\\\\u00D6\\\\u00D8-\\\\u00F6\\\\u00F8-\\\\u02FF\\\\u0370-\\\\u037D\\\\u037F-\\\\u1FFF\\\\u200C-\\\\u200D\\\\u2070-\\\\u218F\\\\u2C00-\\\\u2FEF\\\\u3001-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFFD\\]\\|\\[\\\\uD800-\\\\uDBFF\\]\\[\\\\uDC00-\\\\uDFFF\\]\\)\\|\\(_\\)\\)\\|\\(-\\)\\|\\(\\\\d\\)\\|\\(\\\\u00b7\\)\\|\\(\\[\\\\u0300-\\\\u036f\\]\\)\\|\\(\\[\\\\u203f-\\\\u2040\\]\\)\\)\\|\\(:\\)\\|\\(\\(\\(%\\)\\(\\[0-9A-Fa-f\\]\\)\\(\\[0-9A-Fa-f\\]\\)\\)\\|\\(\\\\\\\\\\[_~\\.\\\\-!\\\\\\$&'\\(\\)\\*\\+,=\\\\/\\?#@%;\\]\\)\\)\\)\\)\\?\\)\\)/,
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "PNAME_LN",
       "tokenTypeIdx": 4,
     },
     "tokenTypeIdx": 4,
   },
-  Object {
+  {
     "endColumn": 40,
     "endLine": 14,
     "endOffset": 237,
@@ -399,11 +399,11 @@ Array [
     "startColumn": 40,
     "startLine": 14,
     "startOffset": 237,
-    "tokenType": Object {
-      "CATEGORIES": Array [],
+    "tokenType": {
+      "CATEGORIES": [],
       "PATTERN": ".",
-      "categoryMatches": Array [],
-      "categoryMatchesMap": Object {},
+      "categoryMatches": [],
+      "categoryMatchesMap": {},
       "isParent": false,
       "tokenName": "Period",
       "tokenTypeIdx": 161,

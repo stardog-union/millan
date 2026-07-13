@@ -124,7 +124,7 @@ describe('SHACL parser', () => {
     expect(errors.length).toBeGreaterThan(0);
   });
 
-  it('parses all w3c SHACL tests without errors', async (done) => {
+  it('parses all w3c SHACL tests without errors', async () => {
     const allFileContents = await getAllFileContents();
     const filesWithErrors = [];
 
@@ -141,11 +141,9 @@ describe('SHACL parser', () => {
     });
 
     if (filesWithErrors.length) {
-      done.fail(
+      throw new Error(
         `The following files caused parse errors: ${filesWithErrors.join(', ')}`
       );
-    } else {
-      done();
     }
   });
 

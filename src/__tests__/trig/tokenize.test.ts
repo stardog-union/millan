@@ -78,7 +78,7 @@ describe('trig tokenizer', () => {
       expect(result.errors).toHaveLength(0);
     });
   });
-  it('produces no errors when tokenizing the w3 trig test suite', async (done) => {
+  it('produces no errors when tokenizing the w3 trig test suite', async () => {
     const pathName = resolve(__dirname, 'fixtures', 'tests-trig-w3c-20140218');
     const files = (await readDirAsync(pathName)).filter((fileName) => {
       const ext = extname(fileName);
@@ -98,6 +98,5 @@ describe('trig tokenizer', () => {
         }
       })
     );
-    done();
   });
 });

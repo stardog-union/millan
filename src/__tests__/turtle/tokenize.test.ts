@@ -66,7 +66,7 @@ describe('turtle tokenizer', () => {
       expect(result.errors).toHaveLength(0);
     });
   });
-  it('produces no errors when tokenizing the w3 turtle test suite', async (done) => {
+  it('produces no errors when tokenizing the w3 turtle test suite', async () => {
     const pathName = resolve(__dirname, 'fixtures', 'tests-ttl-w3c-20131121');
     const files = (await readDirAsync(pathName)).filter((fileName) => {
       const ext = extname(fileName);
@@ -89,6 +89,5 @@ describe('turtle tokenizer', () => {
         }
       })
     );
-    done();
   });
 });
