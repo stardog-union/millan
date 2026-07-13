@@ -11,4 +11,3 @@ export const parse = (doc: string, rule: Function) => {
   const cst = rule.bind(parser)();
   return cst;
 };
-``;

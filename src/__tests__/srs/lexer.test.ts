@@ -13,7 +13,7 @@ describe('srs lexer', () => {
     const thenToken = tokens.find(
       (token) => token.tokenType.tokenName === 'Then'
     );
-    expect(thenToken).toBeTruthy;
+    expect(thenToken).toBeTruthy();
     expect(thenToken.image).toBe('THEN');
   });
 
