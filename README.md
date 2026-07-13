@@ -266,8 +266,10 @@ Check out our comprehensive [API docs](https://stardog-union.github.io/millan/) 
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) 8+.
-- [Yarn](https://yarnpkg.com/en/) 1.0.0+.
+- [Node.js](https://nodejs.org/) 20+.
+- [Yarn](https://yarnpkg.com/) 4 (vendored in the repo via `yarnPath`, so any
+  yarn binary -- including a `corepack`-provided one -- will delegate to the
+  right version automatically).
 
 ### Installing
 
@@ -287,7 +289,7 @@ changes, you will want to run our test scripts (run by Jest), like so:
 yarn test
 ```
 
-Stylistic conventions and formatting are enforced via `tslint` and `prettier`,
+Stylistic conventions and formatting are enforced via `eslint` and `prettier`,
 which means you don't really need to worry about those things yourself
 (both the linter and `prettier` will check and format your code automatically
 on any commit). If you'd like to force `prettier` to format your code (a la

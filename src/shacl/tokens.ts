@@ -240,42 +240,45 @@ type TokenMap = { [K in LocalName]: TokenType };
 export const getShaclTokenMap: (prefixes: {
   shacl: string;
   xsd: string;
-}) => TokenMap = memoize((prefixes: { shacl: string; xsd: string }) => {
-  const prefixWithShacl = makePrefixer(prefixes.shacl);
-  const prefixWithXsd = makePrefixer(prefixes.xsd);
+}) => TokenMap = memoize(
+  (prefixes: { shacl: string; xsd: string }): TokenMap => {
+    const prefixWithShacl = makePrefixer(prefixes.shacl);
+    const prefixWithXsd = makePrefixer(prefixes.xsd);
 
-  // Add the prefixed local names to the SHACL token map now that we know the
-  // prefixes.
-  const shaclTokenMap = localNames.reduce((tokenMap, localName) => {
-    const tokenName = `SHACL_${localName}`;
-    const prefixedTokenName = `${tokenName}_prefixed`;
+    // Add the prefixed local names to the SHACL token map now that we know the
+    // prefixes.
+    const shaclTokenMap = localNames.reduce((tokenMap, localName) => {
+      const tokenName = `SHACL_${localName}`;
+      const prefixedTokenName = `${tokenName}_prefixed`;
 
-    return {
-      ...tokenMap,
-      [prefixedTokenName]: createToken({
-        name: prefixedTokenName,
-        pattern: prefixWithShacl(localName),
-        categories: [tokenMap[tokenName], turtleTokenMap.PNAME_LN],
-      }),
-    };
-  }, shaclUnprefixedTokenMap);
+      return {
+        ...tokenMap,
+        [prefixedTokenName]: createToken({
+          name: prefixedTokenName,
+          pattern: prefixWithShacl(localName),
+          categories: [tokenMap[tokenName], turtleTokenMap.PNAME_LN],
+        }),
+      };
+    }, shaclUnprefixedTokenMap);
 
-  // Add the prefixed local names to the XSD token map now that we know the
-  // prefixes.
-  return xsdLocalNames.reduce((tokenMap, localName) => {
-    const tokenName = `SHACL_xsd_${localName}`;
-    const prefixedTokenName = `${tokenName}_prefixed`;
+    // Add the prefixed local names to the XSD token map now that we know the
+    // prefixes.
+    return xsdLocalNames.reduce((tokenMap, localName) => {
+      const tokenName = `SHACL_xsd_${localName}`;
+      const prefixedTokenName = `${tokenName}_prefixed`;
 
-    return {
-      ...tokenMap,
-      [prefixedTokenName]: createToken({
-        name: prefixedTokenName,
-        pattern: `${prefixWithXsd(localName)}`,
-        categories: [tokenMap[tokenName], turtleTokenMap.PNAME_LN],
-      }),
-    };
-  }, shaclTokenMap);
-}, isDeepEqual);
+      return {
+        ...tokenMap,
+        [prefixedTokenName]: createToken({
+          name: prefixedTokenName,
+          pattern: `${prefixWithXsd(localName)}`,
+          categories: [tokenMap[tokenName], turtleTokenMap.PNAME_LN],
+        }),
+      };
+    }, shaclTokenMap) as TokenMap;
+  },
+  isDeepEqual
+);
 
 // Get the index of PNAME_NS and IRIREF so that we can re-use existing Turtle
 // tokens but ensure that our special SHACL/XSD tokens are inserted at the

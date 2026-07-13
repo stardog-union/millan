@@ -56,55 +56,46 @@
   ],
   "dependencies": {
     "chevrotain": "^11",
-    "escape-string-regexp": "^2.0.0",
-    "lodash.isequal": "^4.5.0"
+    "escape-string-regexp": "^4",
+    "lodash.isequal": "^4.5.0",
+    "memoize-one": "^6"
   },
   "devDependencies": {
     "@types/jest": "^29",
     "@types/node": "^24",
-    "chalk": "^2.4.1",
-    "del": "^3.0.0",
     "eslint": "^9",
     "eslint-config-prettier": "^10",
     "fork-ts-checker-webpack-plugin": "^9",
-    "husky": "^0.14.3",
+    "husky": "^9",
     "jest": "^29",
-    "lint-staged": "^8.1.0",
-    "memoize-one": "^5.0.0",
-    "npm-run-all": "^4.1.5",
+    "lint-staged": "^16",
     "prettier": "^3",
-    "rimraf": "^2.6.3",
+    "rimraf": "^6",
     "terser-webpack-plugin": "^5",
     "ts-jest": "^29",
     "ts-loader": "^9",
-    "typedoc": "^0.13.0",
+    "typedoc": "^0.28",
     "typescript": "^5.9",
     "typescript-eslint": "^8",
-    "watch": "^1.0.2",
     "webpack": "^5",
     "webpack-cli": "^6"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
-    "precommit": "lint-staged",
+    "prepare": "husky",
     "lint": "eslint src",
     "test": "yarn lint && jest",
     "bundle": "webpack",
-    "build": "rimraf ./dist && run-s test bundle types",
+    "build": "rimraf ./dist && yarn test && yarn bundle && yarn types",
     "dev": "webpack -w",
     "format": "prettier --write 'src/**/*.[tj]s'",
-    "docs": "rimraf ./docs && typedoc --exclude '__tests__/**/*' --target ES5  --mode file --out ./docs ./src",
+    "docs": "rimraf ./docs && typedoc --out ./docs src/index.ts",
     "types": "tsc --emitDeclarationOnly"
   },
   "lint-staged": {
-    "linters": {
-      "src/**/*.[tj]s": [
-        "prettier --write",
-        "git add"
-      ]
-    }
+    "src/**/*.[tj]s": "prettier --write"
   },
   "repository": {
     "type": "git",

@@ -19,4 +19,4 @@ export interface ISemanticError extends Pick<IRecognitionException, Exclude<keyo
 export type ModeString = 'stardog' | 'standard';
 type Lit = string | number | boolean | undefined | null | void | symbol | {};
 export declare const getAsTypedTuple: <T extends Lit[]>(...args: T) => T;
-export { IToken, CstNode, TokenType };
+export type { IToken, CstNode, TokenType };

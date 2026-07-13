@@ -35,5 +35,6 @@ export type ModeString = 'stardog' | 'standard';
 type Lit = string | number | boolean | undefined | null | void | symbol | {};
 export const getAsTypedTuple = <T extends Lit[]>(...args: T): T => args;
 
-// exported for convenience
-export { IToken, CstNode, TokenType };
+// exported for convenience (type-only: these have no runtime value in
+// chevrotain 11's ESM build)
+export type { IToken, CstNode, TokenType };
