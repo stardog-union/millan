@@ -99,10 +99,8 @@ export class SrsParser extends TurtleParser {
     this.input = this.lexer.tokenize(document).tokens;
 
     const cst = this.SrsDoc(0, [mode]);
-    const {
-      groupGraphPatterns,
-      triplesBlocks,
-    } = this.getSparqlRulesFromVisitor(cst);
+    const { groupGraphPatterns, triplesBlocks } =
+      this.getSparqlRulesFromVisitor(cst);
     // Pull visitor errors
     const errors: IRecognitionException[] = [
       ...this.errors,

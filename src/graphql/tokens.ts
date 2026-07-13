@@ -8,7 +8,8 @@ const INTEGER_PART_PATTERN = /\-?(?:0|[1-9][0-9]*)/;
 const EXPONENT_PART_PATTERN = /[eE][+-]?[0-9]+/;
 const ESCAPED_CHARACTER_PATTERN = /\\["\\/bfnrt]/;
 const ESCAPED_UNICODE_PATTERN = /\\u[0-9A-Fa-f]{4}/;
-const STRING_SOURCE_CHARACTER_PATTERN = /[\u0009\u0020\u0021\u0023-\u005B\u005D-\uFFFF]/; // source character, but no '"' or '\' or line terminators
+const STRING_SOURCE_CHARACTER_PATTERN =
+  /[\u0009\u0020\u0021\u0023-\u005B\u005D-\uFFFF]/; // source character, but no '"' or '\' or line terminators
 const STRING_CHARACTER_PATTERN = regex.and(
   /"/,
   regex.many(

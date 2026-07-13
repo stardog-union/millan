@@ -22,9 +22,9 @@ const getAllGoodFixtures = () =>
   readDirAsync(GOOD_FIXTURES_DIR).then((filenames) =>
     Promise.all(
       filenames.map((filename) =>
-        readFileAsync(
-          path.join(GOOD_FIXTURES_DIR, filename)
-        ).then((fileContents) => ({ filename, fileContents }))
+        readFileAsync(path.join(GOOD_FIXTURES_DIR, filename)).then(
+          (fileContents) => ({ filename, fileContents })
+        )
       )
     )
   );
@@ -35,9 +35,9 @@ const getAllBadStandardFixtures = () =>
       filenames
         .filter((filename) => !filename.includes('stardog'))
         .map((filename) =>
-          readFileAsync(
-            path.join(BAD_FIXTURES_DIR, filename)
-          ).then((fileContents) => ({ filename, fileContents }))
+          readFileAsync(path.join(BAD_FIXTURES_DIR, filename)).then(
+            (fileContents) => ({ filename, fileContents })
+          )
         )
     )
   );
@@ -48,9 +48,9 @@ const getAllBadStardogFixtures = () =>
       filenames
         .filter((filename) => filename.includes('stardog'))
         .map((filename) =>
-          readFileAsync(
-            path.join(BAD_FIXTURES_DIR, filename)
-          ).then((fileContents) => ({ filename, fileContents }))
+          readFileAsync(path.join(BAD_FIXTURES_DIR, filename)).then(
+            (fileContents) => ({ filename, fileContents })
+          )
         )
     )
   );

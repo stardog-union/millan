@@ -44,8 +44,10 @@ export const unescapedStringLiteralQuote = /^"([^"\\\r\n]+)"/; // non-empty stri
 export const unescapedStringLiteralSingleQuote = /^'([^'\\\r\n]+)'/;
 export const stringLiteralQuote = /^"((?:[^"\\\r\n]|\\.)*)"(?=[^"])/;
 export const stringLiteralSingleQuote = /^'((?:[^'\\\r\n]|\\.)*)'(?=[^'])/;
-export const stringLiteralLongQuote = /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
-export const stringLiteralLongSingleQuote = /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
+export const stringLiteralLongQuote =
+  /^"""([^"\\]*(?:(?:\\.|"(?!""))[^"\\]*)*)"""/;
+export const stringLiteralLongSingleQuote =
+  /^'''([^'\\]*(?:(?:\\.|'(?!''))[^'\\]*)*)'''/;
 
 export const illegalIriChars = /[\x00-\x20<>\\"\{\}\|\^\`]/;
 export const escapedIri = /^<((?:[^ <>{}\\]|\\[uU])+)>[ \t]*/;

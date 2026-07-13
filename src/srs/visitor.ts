@@ -79,9 +79,10 @@ export const getSparqlSrsVisitor = (
     }: {
       tokenStore: SparqlSrsVisitorItem[];
       originalTokenContext: IToken[];
-      subParserRule: (
-        document: string
-      ) => { errors: IRecognitionException[]; cst: any };
+      subParserRule: (document: string) => {
+        errors: IRecognitionException[];
+        cst: any;
+      };
     }) => {
       const [originalToken] = originalTokenContext;
 
@@ -102,9 +103,10 @@ export const getSparqlSrsVisitor = (
 
     private $getPlaceholderTokenReplacement = (
       originalToken: IToken,
-      subParserRule: (
-        document: string
-      ) => { errors: IRecognitionException[]; cst: any }
+      subParserRule: (document: string) => {
+        errors: IRecognitionException[];
+        cst: any;
+      }
     ) => {
       // Because we are replacing tokens by delegating the parsing of parts
       // of the original document to sub-parsers, we add some empty padding to

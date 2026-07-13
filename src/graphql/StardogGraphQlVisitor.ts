@@ -223,9 +223,8 @@ function validateSuppliedArgumentsForDirective(
     stardogGraphQlErrors: [],
     sparqlErrors: [],
   };
-  const allowedArgumentTokenTypes = getArgumentTokenTypesForDirectiveNameToken(
-    directiveNameToken
-  );
+  const allowedArgumentTokenTypes =
+    getArgumentTokenTypesForDirectiveNameToken(directiveNameToken);
   const directiveImage = directiveNameToken.tokenType.PATTERN;
 
   validateDirectiveArguments({
@@ -263,8 +262,10 @@ export const getStardogGraphQlVisitor = (
 ): IStardogGraphQlVisitor => {
   const stardogSparqlParser = new StardogSparqlParser(); // for parsing embedded SPARQL;
 
-  class StardogGraphQlVisitor extends BaseVisitor
-    implements IStardogGraphQlVisitor {
+  class StardogGraphQlVisitor
+    extends BaseVisitor
+    implements IStardogGraphQlVisitor
+  {
     private sparqlErrors: IRecognitionException[] = [];
     private stardogGraphQlErrors: IRecognitionException[] = [];
 

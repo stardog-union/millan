@@ -114,7 +114,8 @@ function getCustomErrorRuleStack(
     if (earlyAbortTest(stackUnwindingPointer)) {
       return [];
     }
-    stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+    stackUnwindingPointer =
+      stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
   }
 
   // Now start adding all found rules to the stack as we move upward.
@@ -123,7 +124,8 @@ function getCustomErrorRuleStack(
     if (earlyAbortTest(stackUnwindingPointer)) {
       return [];
     }
-    stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+    stackUnwindingPointer =
+      stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
   }
 
   // If the rule stack of the sub-parser doesn't get all the way up to the
@@ -144,7 +146,8 @@ function getCustomErrorRuleStack(
         return [];
       }
     }
-    stackUnwindingPointer = stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
+    stackUnwindingPointer =
+      stackUnwindingPointer.parentCtx as CstNodeTraverseContext;
   }
 
   return ['SrsDoc', ...ruleStack];

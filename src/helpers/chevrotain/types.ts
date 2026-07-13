@@ -8,9 +8,10 @@ import {
 
 export interface IStardogParser {
   tokenize: (document: string) => IToken[];
-  parse: (
-    document: string
-  ) => { errors: IRecognitionException[]; cst: CstNode };
+  parse: (document: string) => {
+    errors: IRecognitionException[];
+    cst: CstNode;
+  };
 }
 
 export interface ITokensMap {
@@ -21,11 +22,10 @@ export interface CstNodeMap {
   [key: string]: CstNode[];
 }
 
-export interface ISemanticError
-  extends Pick<
-    IRecognitionException,
-    Exclude<keyof IRecognitionException, 'resyncedTokens' | 'context'>
-  > {
+export interface ISemanticError extends Pick<
+  IRecognitionException,
+  Exclude<keyof IRecognitionException, 'resyncedTokens' | 'context'>
+> {
   resyncedTokens?: IToken[];
   context?: IRecognizerContext;
 }

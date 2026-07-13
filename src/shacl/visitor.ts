@@ -12,10 +12,9 @@ export interface IShaclVisitor extends ICstVisitor<any, any> {
   triples(ctx: { [key: string]: CstNode | CstNode[] }): void;
   shaclShape(ctx: { [key: string]: CstNode | CstNode[] }): void;
   $resetState(): void;
-  $validateShapes(prefixes?: {
-    shacl?: string;
-    xsd?: string;
-  }): { validationErrors: any[] };
+  $validateShapes(prefixes?: { shacl?: string; xsd?: string }): {
+    validationErrors: any[];
+  };
 }
 
 interface ShaclVisitorTreeItem {
@@ -341,9 +340,8 @@ export const getShaclVisitor = (
       );
 
       Object.keys(shapesConsolidatedBySubject).forEach((subjectImage) => {
-        const { subjects, types, predicates } = shapesConsolidatedBySubject[
-          subjectImage
-        ];
+        const { subjects, types, predicates } =
+          shapesConsolidatedBySubject[subjectImage];
         let shapeType;
 
         types.forEach(({ type }) => {

@@ -221,9 +221,9 @@ const makePrefixer = (prefix: string) => (localName: string) =>
   `${prefix}:${localName}`;
 
 type LocalName = {
-  [K in keyof typeof localNamesByCategory]: typeof localNamesByCategory[K] extends (infer T)[]
-    ? T
-    : never;
+  [
+    K in keyof typeof localNamesByCategory
+  ]: (typeof localNamesByCategory)[K] extends (infer T)[] ? T : never;
 }[keyof typeof localNamesByCategory];
 
 type TokenMap = { [K in LocalName]: TokenType };

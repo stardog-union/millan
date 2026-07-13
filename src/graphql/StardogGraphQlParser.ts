@@ -14,7 +14,8 @@ export class StardogGraphQlParser extends BaseGraphQlParser {
   private visitCst = (cst: any) => {
     // To save resources while parsing, the visitor is a singleton.
     if (!this.stardogGraphQlVisitor) {
-      const BaseStardogGraphQlVisitor = this.getBaseCstVisitorConstructorWithDefaults();
+      const BaseStardogGraphQlVisitor =
+        this.getBaseCstVisitorConstructorWithDefaults();
       this.stardogGraphQlVisitor = getStardogGraphQlVisitor(
         BaseStardogGraphQlVisitor,
         this
