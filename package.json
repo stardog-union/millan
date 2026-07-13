@@ -114,5 +114,6 @@
   "bugs": {
     "url": "https://github.com/stardog-union/millan/issues"
   },
-  "homepage": "https://github.com/stardog-union/millan#readme"
+  "homepage": "https://github.com/stardog-union/millan#readme",
+  "packageManager": "yarn@4.17.1"
 }
