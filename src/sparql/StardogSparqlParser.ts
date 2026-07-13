@@ -1,13 +1,12 @@
 const { sparqlTokenMap, stardogSparqlTokens } = require('./tokens');
 import { BaseSparqlParser } from './BaseSparqlParser';
-import { Parser } from 'chevrotain';
 
 export class StardogSparqlParser extends BaseSparqlParser {
   constructor(options?, tokens = stardogSparqlTokens, shouldSkipAnalysis?) {
     super(options, tokens);
 
     if (!shouldSkipAnalysis) {
-      Parser.performSelfAnalysis(this);
+      this.performSelfAnalysis();
     }
   }
 
@@ -150,7 +149,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
   // Stardog does not allow embedded triples with object lists.
   PropertyListNotEmpty = this.OVERRIDE_RULE(
     'PropertyListNotEmpty',
-    (disallowEdgeProperties: boolean) => {
+    (disallowEdgeProperties?: boolean) => {
       this.SUBRULE(this.Verb);
       this.OR([
         {
@@ -237,7 +236,7 @@ export class StardogSparqlParser extends BaseSparqlParser {
   // Stardog does not allow embedded triples with paths or object lists.
   PropertyListPathNotEmpty = this.OVERRIDE_RULE(
     'PropertyListPathNotEmpty',
-    (disallowEdgeProperties: boolean) => {
+    (disallowEdgeProperties?: boolean) => {
       this.OR([
         {
           ALT: () => {

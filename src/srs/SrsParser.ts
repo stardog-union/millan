@@ -6,7 +6,6 @@ const {
   multiModeLexerDefinition,
 } = require('./tokens');
 import {
-  Parser,
   Lexer,
   IToken,
   IRecognitionException,
@@ -38,7 +37,6 @@ export class SrsParser extends TurtleParser {
   constructor(config?: Partial<IParserConfig>) {
     super(
       {
-        outputCst: true,
         recoveryEnabled: true,
         ...config,
       },
@@ -49,7 +47,7 @@ export class SrsParser extends TurtleParser {
 
     this.lexer = new Lexer(multiModeLexerDefinition);
 
-    Parser.performSelfAnalysis(this);
+    this.performSelfAnalysis();
   }
 
   private visitCst = (cst: any) => {
@@ -98,7 +96,7 @@ export class SrsParser extends TurtleParser {
     this.resetManagedState();
     this.input = this.lexer.tokenize(document).tokens;
 
-    const cst = this.SrsDoc(0, [mode]);
+    const cst = this.SrsDoc(mode);
     const { groupGraphPatterns, triplesBlocks } =
       this.getSparqlRulesFromVisitor(cst);
     // Pull visitor errors
@@ -118,7 +116,7 @@ export class SrsParser extends TurtleParser {
         return next();
       }
 
-      const currentTokenName = node.tokenType.tokenName;
+      const currentTokenName = node.tokenType.name;
 
       if (
         currentTokenName !== 'GroupGraphPattern' &&
@@ -185,7 +183,7 @@ export class SrsParser extends TurtleParser {
     };
   };
 
-  SrsDoc = this.RULE('SrsDoc', (mode: ModeString) => {
+  SrsDoc = this.RULE('SrsDoc', (mode?: ModeString) => {
     const allowEdgeProperties = mode === 'stardog';
     this.SUBRULE(this.turtleDoc, { ARGS: [mode] });
     this.MANY(() => {

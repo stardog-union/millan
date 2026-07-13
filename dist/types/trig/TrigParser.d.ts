@@ -4,11 +4,11 @@ import { ModeString } from '../helpers/chevrotain/types';
 export declare class TrigParser extends TurtleParser {
     constructor(config?: Partial<IParserConfig>, tokens?: any, lexerDefinition?: TokenType[] | IMultiModeLexerDefinition, performSelfAnalysis?: boolean);
     parse: (document: string, mode?: ModeString) => ReturnType<TurtleParser["parse"]>;
-    trigDoc: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    block: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    triplesOrGraph: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    triples2: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    wrappedGraph: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    triplesBlock: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    labelOrSubject: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    trigDoc: import("chevrotain").ParserMethod<[mode?: ModeString], import("chevrotain").CstNode>;
+    block: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
+    triplesOrGraph: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
+    triples2: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    wrappedGraph: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
+    triplesBlock: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
+    labelOrSubject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
 }

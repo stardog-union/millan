@@ -1,6 +1,6 @@
 const { sparqlTokenMap } = require('./tokens');
 import {
-  Parser,
+  CstParser,
   TokenType,
   IToken,
   Lexer,
@@ -15,7 +15,7 @@ function log(...args) {
   // console.log(...args);
 }
 
-export class BaseSparqlParser extends Parser implements IStardogParser {
+export class BaseSparqlParser extends CstParser implements IStardogParser {
   private lexer: Lexer;
 
   public tokenize = (document: string): IToken[] =>
@@ -57,7 +57,6 @@ export class BaseSparqlParser extends Parser implements IStardogParser {
   ) {
     super(tokenVocab, {
       recoveryEnabled: true,
-      outputCst: true,
       ...options.config,
     });
 

@@ -4,7 +4,7 @@ import {
   IToken,
   IRecognitionException,
   IParserConfig,
-  Parser,
+  tokenMatcher,
 } from 'chevrotain';
 import { getShaclVisitor } from 'shacl/visitor';
 const {
@@ -25,6 +25,26 @@ export class ShaclParser extends TurtleParser {
   private shaclTokenMap;
   private shaclVisitor: ReturnType<typeof getShaclVisitor>;
   protected lexer: Lexer;
+
+  // Token types that can begin a SHACL-specific predicateObjectList
+  // alternative when in predicate position.
+  private shaclPredicateStarters;
+  private shaclShapeTypes;
+
+  // Emulates chevrotain 4's alternation behavior for the SHACL-vs-generic-
+  // Turtle decision: chevrotain 4 effectively decided by the first token
+  // (choosing the SHACL alternative for any SHACL predicate token, even when
+  // the rest of the input doesn't fit, and relying on error recovery inside
+  // the SHACL sub-rules). chevrotain 7+ looks deeper by default and would
+  // otherwise route such input to the generic Turtle alternative, silently
+  // dropping the SHACL semantic validations.
+  private isShaclRuleNext = (): boolean =>
+    this.shaclPredicateStarters.some((tokenType) =>
+      tokenMatcher(this.LA(1), tokenType)
+    ) ||
+    this.shaclShapeTypes.some((tokenType) =>
+      tokenMatcher(this.LA(2), tokenType)
+    );
 
   // Some SHACL rules cannot be checked for violations during the first parse.
   // The visitor accepts the CST that results from parsing and checks
@@ -76,7 +96,6 @@ export class ShaclParser extends TurtleParser {
   ) {
     super(
       {
-        outputCst: true,
         recoveryEnabled: true,
         ...config,
       },
@@ -88,39 +107,78 @@ export class ShaclParser extends TurtleParser {
     this.prefixes = prefixes;
     this.lexer = new Lexer(getShaclTokenTypes(prefixes));
     this.shaclTokenMap = getShaclTokenMap(prefixes);
-    Parser.performSelfAnalysis(this);
+    this.shaclPredicateStarters = [
+      categoryTokenMap.ManyIriTakingPredicate,
+      categoryTokenMap.SingleIriTakingPredicate,
+      categoryTokenMap.IntTakingPredicate,
+      categoryTokenMap.StringLiteralQuoteTakingPredicate,
+      categoryTokenMap.LangStringTakingPredicate,
+      categoryTokenMap.BooleanTakingPredicate,
+      categoryTokenMap.AnyLiteralTakingPredicate,
+      categoryTokenMap.ShapeExpectingPredicate,
+      this.shaclTokenMap.SHACL_nodeKind,
+      this.shaclTokenMap.SHACL_targetNode,
+      this.shaclTokenMap.SHACL_path,
+      this.shaclTokenMap.SHACL_hasValue,
+      this.shaclTokenMap.SHACL_languageIn,
+      this.shaclTokenMap.SHACL_and,
+      this.shaclTokenMap.SHACL_or,
+      this.shaclTokenMap.SHACL_xone,
+      this.shaclTokenMap.SHACL_in,
+      this.shaclTokenMap.SHACL_ignoredProperties,
+    ];
+    this.shaclShapeTypes = [
+      this.shaclTokenMap.SHACL_Shape,
+      this.shaclTokenMap.SHACL_NodeShape,
+      this.shaclTokenMap.SHACL_PropertyShape,
+    ];
+    this.performSelfAnalysis();
   }
 
   predicateObjectList = this.OVERRIDE_RULE('predicateObjectList', () => {
-    this.OR([
-      {
-        ALT: () => {
-          this.SUBRULE(this.shaclRulePredicateObjectList);
+    // MAX_LOOKAHEAD 1 + IGNORE_AMBIGUITIES + explicit gates emulate
+    // chevrotain 4's first-token-based choice here; see isShaclRuleNext.
+    this.OR({
+      DEF: [
+        {
+          GATE: this.isShaclRuleNext,
+          ALT: () => {
+            this.SUBRULE(this.shaclRulePredicateObjectList);
+          },
         },
-      },
-      {
-        ALT: () => {
-          this.SUBRULE(this.verb);
-          this.SUBRULE(this.objectList);
+        {
+          GATE: () => !this.isShaclRuleNext(),
+          ALT: () => {
+            this.SUBRULE(this.verb);
+            this.SUBRULE(this.objectList);
+          },
         },
-      },
-    ]);
+      ],
+      MAX_LOOKAHEAD: 1,
+      IGNORE_AMBIGUITIES: true,
+    });
     this.MANY(() => {
       this.CONSUME(turtleTokenMap.Semicolon);
       this.OPTION(() => {
-        this.OR1([
-          {
-            ALT: () => {
-              this.SUBRULE1(this.shaclRulePredicateObjectList);
+        this.OR1({
+          DEF: [
+            {
+              GATE: this.isShaclRuleNext,
+              ALT: () => {
+                this.SUBRULE1(this.shaclRulePredicateObjectList);
+              },
             },
-          },
-          {
-            ALT: () => {
-              this.SUBRULE1(this.verb);
-              this.SUBRULE1(this.objectList);
+            {
+              GATE: () => !this.isShaclRuleNext(),
+              ALT: () => {
+                this.SUBRULE1(this.verb);
+                this.SUBRULE1(this.objectList);
+              },
             },
-          },
-        ]);
+          ],
+          MAX_LOOKAHEAD: 1,
+          IGNORE_AMBIGUITIES: true,
+        });
       });
     });
   });
@@ -128,35 +186,43 @@ export class ShaclParser extends TurtleParser {
   shaclRulePredicateObjectList = this.RULE(
     'shaclRulePredicateObjectList',
     () => {
-      this.OR([
-        {
-          ALT: () => this.SUBRULE(this.shaclPredicateIRI),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclNodeKind),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclTargetNode),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclPropertyPath),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclLiteralConstraint),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclListTakingConstraint),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclShapeExpectingConstraint),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclHasValueConstraint),
-        },
-        {
-          ALT: () => this.SUBRULE(this.shaclVerbShape),
-        },
-      ]);
+      // As in predicateObjectList above, decide by the first token (in
+      // document order) as chevrotain 4 did, so that a SHACL predicate
+      // followed by an ill-fitting object still parses down the SHACL
+      // alternative (with recovery) instead of failing outright.
+      this.OR({
+        MAX_LOOKAHEAD: 1,
+        IGNORE_AMBIGUITIES: true,
+        DEF: [
+          {
+            ALT: () => this.SUBRULE(this.shaclPredicateIRI),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclNodeKind),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclTargetNode),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclPropertyPath),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclLiteralConstraint),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclListTakingConstraint),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclShapeExpectingConstraint),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclHasValueConstraint),
+          },
+          {
+            ALT: () => this.SUBRULE(this.shaclVerbShape),
+          },
+        ],
+      });
     }
   );
 

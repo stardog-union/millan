@@ -1,6 +1,5 @@
 const { trigTokenMap, trigTokenTypes } = require('./tokens');
 import {
-  Parser,
   IRecognitionException,
   IParserConfig,
   TokenType,
@@ -18,7 +17,7 @@ export class TrigParser extends TurtleParser {
   ) {
     super(config, tokens, lexerDefinition, false);
     if (performSelfAnalysis) {
-      Parser.performSelfAnalysis(this);
+      this.performSelfAnalysis();
     }
   }
 
@@ -33,7 +32,7 @@ export class TrigParser extends TurtleParser {
     mode: ModeString = 'standard'
   ): ReturnType<TurtleParser['parse']> => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.trigDoc(0, [mode]);
+    const cst = this.trigDoc(mode);
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];
@@ -47,7 +46,7 @@ export class TrigParser extends TurtleParser {
     };
   };
 
-  trigDoc = this.RULE('trigDoc', (mode: ModeString) => {
+  trigDoc = this.RULE('trigDoc', (mode?: ModeString) => {
     const allowEdgeProperties = mode === 'stardog';
     this.MANY(() => {
       this.OR([
@@ -59,7 +58,7 @@ export class TrigParser extends TurtleParser {
     });
   });
 
-  block = this.RULE('block', (allowEdgeProperties: boolean) => {
+  block = this.RULE('block', (allowEdgeProperties?: boolean) => {
     this.OR([
       {
         ALT: () =>
@@ -82,7 +81,7 @@ export class TrigParser extends TurtleParser {
 
   triplesOrGraph = this.RULE(
     'triplesOrGraph',
-    (allowEdgeProperties: boolean) => {
+    (allowEdgeProperties?: boolean) => {
       let didParseEmbeddedTriplePattern = false;
 
       this.OR([
@@ -135,7 +134,7 @@ export class TrigParser extends TurtleParser {
     ]);
   });
 
-  wrappedGraph = this.RULE('wrappedGraph', (allowEdgeProperties: boolean) => {
+  wrappedGraph = this.RULE('wrappedGraph', (allowEdgeProperties?: boolean) => {
     this.CONSUME(trigTokenMap.LCurly);
     this.OPTION(() =>
       this.SUBRULE(this.triplesBlock, { ARGS: [allowEdgeProperties] })
@@ -143,7 +142,7 @@ export class TrigParser extends TurtleParser {
     this.CONSUME(trigTokenMap.RCurly);
   });
 
-  triplesBlock = this.RULE('triplesBlock', (allowEdgeProperties: boolean) => {
+  triplesBlock = this.RULE('triplesBlock', (allowEdgeProperties?: boolean) => {
     this.SUBRULE(this.triples, { ARGS: [allowEdgeProperties] });
     this.OPTION(() => {
       this.CONSUME(trigTokenMap.Period);

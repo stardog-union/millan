@@ -3,7 +3,7 @@ export declare class StardogGraphQlParser extends BaseGraphQlParser {
     private stardogGraphQlVisitor;
     constructor(options?: any);
     private visitCst;
-    parse: (document: string, entryRule?: (idxInCallingRule?: number, ...args: any[]) => void | any) => {
+    parse: (document: string, entryRule?: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>) => {
         errors: any[];
         cst: any;
     };

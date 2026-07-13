@@ -22,11 +22,11 @@ const defaultEarlyAbortTest = () => false;
 
 // Tokens that are allowed in SPARQL but not inside the `IfClause` of SRS.
 const disallowedSparqlTokenNameToRuleMap = {
-  [sparqlTokenMap.EXISTS.tokenName]: 'ExistsFunction',
-  [sparqlTokenMap.NOT_EXISTS.tokenName]: 'NotExistsFunction',
-  [sparqlTokenMap.NOW.tokenName]: 'BuiltInCall_NOW',
-  [sparqlTokenMap.LEmbed.tokenName]: 'LeftEmbed',
-  [sparqlTokenMap.REmbed.tokenName]: 'RightEmbed',
+  [sparqlTokenMap.EXISTS.name]: 'ExistsFunction',
+  [sparqlTokenMap.NOT_EXISTS.name]: 'NotExistsFunction',
+  [sparqlTokenMap.NOW.name]: 'BuiltInCall_NOW',
+  [sparqlTokenMap.LEmbed.name]: 'LeftEmbed',
+  [sparqlTokenMap.REmbed.name]: 'RightEmbed',
 };
 const disallowedSparqlTokenNames = Object.keys(
   disallowedSparqlTokenNameToRuleMap
@@ -48,7 +48,7 @@ const disallowedSparqlLiteralTokenNames = [
   sparqlTokenMap.STRING_LITERAL2,
   sparqlTokenMap.STRING_LITERAL_LONG1,
   sparqlTokenMap.STRING_LITERAL_LONG2,
-].map((token) => token.tokenName);
+].map((token) => token.name);
 
 // Helper functions for more "literate" code.
 const isCstNodeTraverseContext = (ctx): ctx is CstNodeTraverseContext =>
@@ -204,12 +204,12 @@ const getDisallowedTokenError = (
 ) =>
   getCustomIRecognitionException({
     name: 'DisallowedTokenError',
-    message: `Token ${node.tokenType.tokenName} cannot be used in Stardog Rules.`,
+    message: `Token ${node.tokenType.name} cannot be used in Stardog Rules.`,
     node,
     ruleStack: getCustomErrorRuleStack(
       parentCtx,
       fullCtx,
-      [disallowedSparqlTokenNameToRuleMap[node.tokenType.tokenName]],
+      [disallowedSparqlTokenNameToRuleMap[node.tokenType.name]],
       subParserRuleName
     ),
   });
@@ -293,7 +293,7 @@ const getDisallowedLiteralError = (
 
   return getCustomIRecognitionException({
     name: 'DisallowedLiteralError',
-    message: `Token ${node.tokenType.tokenName} (${node.image}) cannot be used as a subject inside of a ${errorContext} in Stardog Rules Syntax.`,
+    message: `Token ${node.tokenType.name} (${node.image}) cannot be used as a subject inside of a ${errorContext} in Stardog Rules Syntax.`,
     node,
     ruleStack: errorRuleStack,
   });
@@ -322,7 +322,7 @@ export function addIfClauseErrorsToErrors({
       return next();
     }
 
-    const { tokenName } = node.tokenType;
+    const { name: tokenName } = node.tokenType;
 
     if (disallowedSparqlTokenNames.some((name) => name === tokenName)) {
       errors.push(
@@ -336,7 +336,7 @@ export function addIfClauseErrorsToErrors({
 
     if (
       disallowedSparqlLiteralTokenNames.some(
-        (tokenName) => tokenName === node.tokenType.tokenName
+        (tokenName) => tokenName === node.tokenType.name
       )
     ) {
       const error = getDisallowedLiteralError(
@@ -393,11 +393,11 @@ export function addThenClauseErrorsToErrors({
       return next();
     }
 
-    const { tokenName } = node.tokenType;
+    const { name: tokenName } = node.tokenType;
 
     if (
       disallowedSparqlLiteralTokenNames.some(
-        (tokenName) => tokenName === node.tokenType.tokenName
+        (tokenName) => tokenName === node.tokenType.name
       )
     ) {
       const error = getDisallowedLiteralError(

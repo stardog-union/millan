@@ -1,6 +1,6 @@
 const { turtleTokenTypes, turtleTokenMap } = require('./tokens');
 import {
-  Parser,
+  CstParser,
   IParserConfig,
   Lexer,
   IToken,
@@ -10,7 +10,7 @@ import {
 } from 'chevrotain';
 import { IStardogParser, ModeString } from '../helpers/chevrotain/types';
 
-export class TurtleParser extends Parser implements IStardogParser {
+export class TurtleParser extends CstParser implements IStardogParser {
   protected lexer: Lexer;
 
   // Parsing Turtle requires that the parser keep a map of namespaces in state.
@@ -44,7 +44,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     cst: any;
   } => {
     this.input = this.lexer.tokenize(document).tokens;
-    const cst = this.turtleDoc(0, [mode]);
+    const cst = this.turtleDoc(mode);
     // Next two items are copied so that they can be returned/held after parse
     // state is cleared.
     const errors: IRecognitionException[] = [...this.errors];
@@ -65,25 +65,24 @@ export class TurtleParser extends Parser implements IStardogParser {
     performSelfAnalysis = true
   ) {
     super(tokens, {
-      outputCst: true,
       recoveryEnabled: true,
       ...config,
     });
     this.lexer = new Lexer(lexerDefinition);
 
     if (performSelfAnalysis) {
-      Parser.performSelfAnalysis(this);
+      this.performSelfAnalysis();
     }
   }
 
-  turtleDoc = this.RULE('turtleDoc', (mode: ModeString) => {
+  turtleDoc = this.RULE('turtleDoc', (mode?: ModeString) => {
     const allowEdgeProperties = mode === 'stardog';
     this.MANY(() =>
       this.SUBRULE(this.statement, { ARGS: [allowEdgeProperties] })
     );
   });
 
-  statement = this.RULE('statement', (allowEdgeProperties: boolean) => {
+  statement = this.RULE('statement', (allowEdgeProperties?: boolean) => {
     this.OR([
       { ALT: () => this.SUBRULE(this.directive) },
       {
@@ -109,9 +108,11 @@ export class TurtleParser extends Parser implements IStardogParser {
 
     const pnameNsToken = this.CONSUME(turtleTokenMap.PNAME_NS);
     const iriToken = this.CONSUME(turtleTokenMap.IRIREF);
-    const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
-    const iriImage = iriToken.image;
-    this.namespacesMap[pnameImageWithoutColon] = iriImage;
+    this.ACTION(() => {
+      const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
+      const iriImage = iriToken.image;
+      this.namespacesMap[pnameImageWithoutColon] = iriImage;
+    });
 
     this.CONSUME(turtleTokenMap.Period);
   });
@@ -131,16 +132,18 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.CONSUME(turtleTokenMap.PREFIX);
     const pnameNsToken = this.CONSUME(turtleTokenMap.PNAME_NS);
     const iriToken = this.CONSUME(turtleTokenMap.IRIREF);
-    const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
-    const iriImage = iriToken.image;
-    this.namespacesMap[pnameImageWithoutColon] = iriImage;
+    this.ACTION(() => {
+      const pnameImageWithoutColon = pnameNsToken.image.slice(0, -1);
+      const iriImage = iriToken.image;
+      this.namespacesMap[pnameImageWithoutColon] = iriImage;
+    });
   });
 
   // NOTE: Not part of Turtle spec. Part of Stardog's support for edge
   // properties/embedded triples/a subset of RDF*.
   // ALSO NOTE: Intentionally does not conform to the RDF* spec.
   // Stardog does not allow nesting of embedded triples.
-  triples = this.RULE('triples', (allowEdgeProperties: boolean) => {
+  triples = this.RULE('triples', (allowEdgeProperties?: boolean) => {
     this.OR([
       {
         ALT: () => {
@@ -188,7 +191,7 @@ export class TurtleParser extends Parser implements IStardogParser {
   // Stardog does not allow embedded triples with object lists.
   predicateObjectList = this.RULE(
     'predicateObjectList',
-    (allowEdgeProperties: boolean) => {
+    (allowEdgeProperties?: boolean) => {
       this.SUBRULE(this.verb);
       this.OR([
         {
@@ -247,7 +250,7 @@ export class TurtleParser extends Parser implements IStardogParser {
     this.SUBRULE(this.iri);
   });
 
-  objectList = this.RULE('objectList', (allowEdgeProperties: boolean) => {
+  objectList = this.RULE('objectList', (allowEdgeProperties?: boolean) => {
     this.SUBRULE(this.object, { ARGS: [allowEdgeProperties] });
     this.MANY(() => {
       this.CONSUME(turtleTokenMap.Comma);
@@ -272,14 +275,14 @@ export class TurtleParser extends Parser implements IStardogParser {
 
   blankNodePropertyList = this.RULE(
     'blankNodePropertyList',
-    (allowEdgeProperties: boolean) => {
+    (allowEdgeProperties?: boolean) => {
       this.CONSUME(turtleTokenMap.LBracket);
       this.SUBRULE(this.predicateObjectList, { ARGS: [allowEdgeProperties] });
       this.CONSUME(turtleTokenMap.RBracket);
     }
   );
 
-  object = this.RULE('object', (allowEdgeProperties: boolean) => {
+  object = this.RULE('object', (allowEdgeProperties?: boolean) => {
     this.OR([
       { ALT: () => this.SUBRULE(this.iri) },
       { ALT: () => this.SUBRULE(this.BlankNode) },
@@ -354,22 +357,27 @@ export class TurtleParser extends Parser implements IStardogParser {
       { ALT: () => this.CONSUME(turtleTokenMap.PNAME_LN) },
       { ALT: () => this.CONSUME(turtleTokenMap.PNAME_NS) },
     ]);
-    const pnameNsImage = prefixedNameToken.image.slice(
-      0,
-      prefixedNameToken.image.indexOf(':')
-    );
-    if (!(pnameNsImage in this.namespacesMap)) {
-      this.semanticErrors.push({
-        name: 'NoNamespacePrefixError',
-        message: 'A prefix was used for which there was no namespace defined.',
-        token: prefixedNameToken,
-        context: {
-          ruleStack: (<any>this).getHumanReadableRuleStack(),
-          ruleOccurrenceStack: [...(<any>this).RULE_OCCURRENCE_STACK],
-        },
-        resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
-      });
-    }
+    // ACTION so that this semantic check is skipped during chevrotain's
+    // grammar recording phase, when tokens are only dummies.
+    this.ACTION(() => {
+      const pnameNsImage = prefixedNameToken.image.slice(
+        0,
+        prefixedNameToken.image.indexOf(':')
+      );
+      if (!(pnameNsImage in this.namespacesMap)) {
+        this.semanticErrors.push({
+          name: 'NoNamespacePrefixError',
+          message:
+            'A prefix was used for which there was no namespace defined.',
+          token: prefixedNameToken,
+          context: {
+            ruleStack: (<any>this).getHumanReadableRuleStack(),
+            ruleOccurrenceStack: [...(<any>this).RULE_OCCURRENCE_STACK],
+          },
+          resyncedTokens: [], // these don't really make sense for semantic errors, since they don't cause the parser to resync
+        });
+      }
+    });
   });
 
   BlankNode = this.RULE('BlankNode', () => {

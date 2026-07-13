@@ -1,5 +1,5 @@
 const { smsTokenTypes, smsTokenMap } = require('./tokens');
-import { Parser, IRecognitionException, IParserConfig } from 'chevrotain';
+import { IRecognitionException, IParserConfig } from 'chevrotain';
 import { StardogSparqlParser } from '../sparql';
 
 export class SmsParser extends StardogSparqlParser {
@@ -16,7 +16,6 @@ export class SmsParser extends StardogSparqlParser {
   constructor(config?: Partial<IParserConfig>) {
     super(
       {
-        outputCst: true,
         recoveryEnabled: true,
         ...config,
       },
@@ -24,7 +23,7 @@ export class SmsParser extends StardogSparqlParser {
       true
     );
 
-    Parser.performSelfAnalysis(this);
+    this.performSelfAnalysis();
   }
 
   MappingDoc = this.RULE('MappingDoc', () => {

@@ -9,10 +9,8 @@ describe('srs lexer', () => {
     const { errors, tokens } = lexer.tokenize(fixtures.valid.basicIsolated);
     expect(errors).toHaveLength(0);
     expect(tokens[0].image).toBe('IF');
-    expect(tokens[0].tokenType.tokenName).toBe('If');
-    const thenToken = tokens.find(
-      (token) => token.tokenType.tokenName === 'Then'
-    );
+    expect(tokens[0].tokenType.name).toBe('If');
+    const thenToken = tokens.find((token) => token.tokenType.name === 'Then');
     expect(thenToken).toBeTruthy();
     expect(thenToken.image).toBe('THEN');
   });
@@ -21,20 +19,14 @@ describe('srs lexer', () => {
     const { errors, tokens } = lexer.tokenize(fixtures.valid.basic);
     expect(errors).toHaveLength(0);
     expect(tokens[0].image).toBe('@prefix');
-    expect(tokens[0].tokenType.tokenName).toBe('TTL_PREFIX');
-    expect(tokens.some((token) => token.tokenType.tokenName === 'If')).toBe(
-      true
-    );
-    expect(tokens.some((token) => token.tokenType.tokenName === 'Then')).toBe(
-      true
-    );
+    expect(tokens[0].tokenType.name).toBe('TTL_PREFIX');
+    expect(tokens.some((token) => token.tokenType.name === 'If')).toBe(true);
+    expect(tokens.some((token) => token.tokenType.name === 'Then')).toBe(true);
     expect(
-      tokens.filter(
-        (token) => token.tokenType.tokenName === 'GroupGraphPattern'
-      )
+      tokens.filter((token) => token.tokenType.name === 'GroupGraphPattern')
     ).toHaveLength(1);
     expect(
-      tokens.filter((token) => token.tokenType.tokenName === 'TriplesBlock')
+      tokens.filter((token) => token.tokenType.name === 'TriplesBlock')
     ).toHaveLength(1);
   });
 

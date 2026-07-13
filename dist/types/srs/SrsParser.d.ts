@@ -1,4 +1,4 @@
-import { Lexer, IToken, IParserConfig } from 'chevrotain';
+import { Lexer, IToken, IParserConfig, CstNode } from 'chevrotain';
 import { TurtleParser } from '../turtle/TurtleParser';
 import { ModeString } from '../helpers/chevrotain/types';
 export declare class SrsParser extends TurtleParser {
@@ -17,9 +17,9 @@ export declare class SrsParser extends TurtleParser {
     }) => void;
     tokenize: (document: string) => IToken[];
     parse: (document: string, mode?: ModeString) => ReturnType<TurtleParser["parse"]>;
-    SrsDoc: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    RuleDoc: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    RuleClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    IfClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    ThenClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    SrsDoc: import("chevrotain").ParserMethod<[mode?: ModeString], CstNode>;
+    RuleDoc: import("chevrotain").ParserMethod<[], CstNode>;
+    RuleClause: import("chevrotain").ParserMethod<[], CstNode>;
+    IfClause: import("chevrotain").ParserMethod<[], CstNode>;
+    ThenClause: import("chevrotain").ParserMethod<[], CstNode>;
 }

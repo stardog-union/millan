@@ -3,21 +3,21 @@ import { StardogSparqlParser } from '../sparql';
 export declare class SmsParser extends StardogSparqlParser {
     parse: (document: string) => {
         errors: IRecognitionException[];
-        cst: any;
+        cst: import("chevrotain").CstNode;
     };
     constructor(config?: Partial<IParserConfig>);
-    MappingDoc: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    MappingClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    MappingDecl: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    FromClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    JsonClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    GraphQlClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    SqlClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    CsvClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    ToClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    WhereClause: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    Bind: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    BindExpression: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    TemplateFunc: (idxInCallingRule?: number, ...args: any[]) => void | any;
-    Object: (idxInCallingRule?: number, ...args: any[]) => void | any;
+    MappingDoc: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    MappingClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    MappingDecl: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    FromClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    JsonClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    GraphQlClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    SqlClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    CsvClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    ToClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    WhereClause: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    Bind: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    BindExpression: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    TemplateFunc: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    Object: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
 }

@@ -428,6 +428,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chevrotain/cst-dts-gen@npm:11.2.0":
+  version: 11.2.0
+  resolution: "@chevrotain/cst-dts-gen@npm:11.2.0"
+  dependencies:
+    "@chevrotain/gast": "npm:11.2.0"
+    "@chevrotain/types": "npm:11.2.0"
+    lodash-es: "npm:4.17.23"
+  checksum: 10c0/a13238d0e05d9f8e057790f8587b2dc5df36ab60b6612f05207e3cbf8f3bbf966066abbf92bb4f9b7793bfa87e8710a00080b36cdfaaf2388a1d44f02e171632
+  languageName: node
+  linkType: hard
+
+"@chevrotain/gast@npm:11.2.0":
+  version: 11.2.0
+  resolution: "@chevrotain/gast@npm:11.2.0"
+  dependencies:
+    "@chevrotain/types": "npm:11.2.0"
+    lodash-es: "npm:4.17.23"
+  checksum: 10c0/15b19041d053f6bebaf2b0e010fb42c423fad7752d68ac8c36ba20816fb306f4918f3beba712b32bed65944d1bc161db1f8726f36f02d23171414a047977156e
+  languageName: node
+  linkType: hard
+
+"@chevrotain/regexp-to-ast@npm:11.2.0":
+  version: 11.2.0
+  resolution: "@chevrotain/regexp-to-ast@npm:11.2.0"
+  checksum: 10c0/eca45ea6d975afcaeec5c5a6645dfec34a481a1259458d08dfb22736cd0d11080db7fc82506895bf22f28413badaa4bc24a8a97e33f6904bc1a44e1d47405a13
+  languageName: node
+  linkType: hard
+
+"@chevrotain/types@npm:11.2.0":
+  version: 11.2.0
+  resolution: "@chevrotain/types@npm:11.2.0"
+  checksum: 10c0/6f69a220b81e0a5e2a3ae458364eada3aaa1cfc015506f2a29d455912b1107fef5e70600ac78189a5394e9d5f5089b0523896cc8a87742697e97379ece109ec5
+  languageName: node
+  linkType: hard
+
+"@chevrotain/utils@npm:11.2.0":
+  version: 11.2.0
+  resolution: "@chevrotain/utils@npm:11.2.0"
+  checksum: 10c0/6811c8fa0a517993512674ce69db1a6b26dcd82db9ba16a93005d2d4b015957532238d6781cba785d37f2f845837fd99f9ef16e1e257b7580f0f59f4f632de40
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.6.1":
   version: 0.6.3
   resolution: "@discoveryjs/json-ext@npm:0.6.3"
@@ -2077,12 +2119,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chevrotain@npm:4.7.0":
-  version: 4.7.0
-  resolution: "chevrotain@npm:4.7.0"
+"chevrotain@npm:^11":
+  version: 11.2.0
+  resolution: "chevrotain@npm:11.2.0"
   dependencies:
-    regexp-to-ast: "npm:0.4.0"
-  checksum: 10c0/71886f94a226941a1ef399735be22d6545d62c6eb3e38dd146d85c901c1ba2f1635a70c6480a07b6ce21528015897c57444f1fa27dd1ee825cb31581a6975d81
+    "@chevrotain/cst-dts-gen": "npm:11.2.0"
+    "@chevrotain/gast": "npm:11.2.0"
+    "@chevrotain/regexp-to-ast": "npm:11.2.0"
+    "@chevrotain/types": "npm:11.2.0"
+    "@chevrotain/utils": "npm:11.2.0"
+    lodash-es: "npm:4.17.23"
+  checksum: 10c0/247cb0061d35ba18e3ac87a021124882907f45f950255bb51262af46b8bb808233b292c2788455f771f2867d6a4309f16a08cfc497fbb3d164e1289486d10899
   languageName: node
   linkType: hard
 
@@ -4875,6 +4922,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash-es@npm:4.17.23":
+  version: 4.17.23
+  resolution: "lodash-es@npm:4.17.23"
+  checksum: 10c0/3150fb6660c14c7a6b5f23bd11597d884b140c0e862a17fdb415aaa5ef7741523182904a6b7929f04e5f60a11edb5a79499eb448734381c99ffb3c4734beeddd
+  languageName: node
+  linkType: hard
+
 "lodash.isequal@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.isequal@npm:4.5.0"
@@ -5075,7 +5129,7 @@ __metadata:
     "@types/jest": "npm:^29"
     "@types/node": "npm:^24"
     chalk: "npm:^2.4.1"
-    chevrotain: "npm:4.7.0"
+    chevrotain: "npm:^11"
     del: "npm:^3.0.0"
     escape-string-regexp: "npm:^2.0.0"
     eslint: "npm:^9"
@@ -5933,13 +5987,6 @@ __metadata:
     extend-shallow: "npm:^3.0.2"
     safe-regex: "npm:^1.1.0"
   checksum: 10c0/a0f8d6045f63b22e9759db10e248369c443b41cedd7dba0922d002b66c2734bc2aef0d98c4d45772d1f756245f4c5203856b88b9624bba2a58708858a8d485d6
-  languageName: node
-  linkType: hard
-
-"regexp-to-ast@npm:0.4.0":
-  version: 0.4.0
-  resolution: "regexp-to-ast@npm:0.4.0"
-  checksum: 10c0/56b7148be88ea553e648f5ebba486c951f4c044723e5e34360786c8b5cf0b2a2315b0f145143fb3afe1699b8e44d9586bd1a977693109f7d7ae230d62fa74b61
   languageName: node
   linkType: hard
 

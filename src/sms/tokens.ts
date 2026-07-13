@@ -52,8 +52,8 @@ export const smsTokenMap = {
       if (
         !secondToLastToken ||
         !lastToken ||
-        secondToLastToken.tokenType.tokenName !== smsTokenMap.Sql.tokenName ||
-        lastToken.tokenType.tokenName !== smsTokenMap.LCurly.tokenName
+        secondToLastToken.tokenType.name !== smsTokenMap.Sql.name ||
+        lastToken.tokenType.name !== smsTokenMap.LCurly.name
       ) {
         return null;
       }
@@ -72,10 +72,7 @@ export const smsTokenMap = {
     ) => {
       const [lastToken] = matchedTokensSoFar.slice(-1);
 
-      if (
-        !lastToken ||
-        lastToken.tokenType.tokenName !== smsTokenMap.Json.tokenName
-      ) {
+      if (!lastToken || lastToken.tokenType.name !== smsTokenMap.Json.name) {
         return null;
       }
 
@@ -102,9 +99,8 @@ export const smsTokenMap = {
       if (
         !secondToLastToken ||
         !lastToken ||
-        secondToLastToken.tokenType.tokenName !==
-          smsTokenMap.GraphQl.tokenName ||
-        lastToken.tokenType.tokenName !== smsTokenMap.LCurly.tokenName
+        secondToLastToken.tokenType.name !== smsTokenMap.GraphQl.name ||
+        lastToken.tokenType.name !== smsTokenMap.LCurly.name
       ) {
         return null;
       }

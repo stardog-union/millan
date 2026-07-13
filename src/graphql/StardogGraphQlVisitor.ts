@@ -225,7 +225,10 @@ function validateSuppliedArgumentsForDirective(
   };
   const allowedArgumentTokenTypes =
     getArgumentTokenTypesForDirectiveNameToken(directiveNameToken);
-  const directiveImage = directiveNameToken.tokenType.PATTERN;
+  // Stardog directive tokens always have string or RegExp patterns, but
+  // chevrotain 11's TokenPattern type also admits custom matcher functions.
+  const directiveImage = directiveNameToken.tokenType.PATTERN as
+    string | RegExp;
 
   validateDirectiveArguments({
     validatorOptions: {

@@ -1,16 +1,83 @@
 const { graphQlTokenMap } = require('./tokens');
 import {
-  Parser,
+  CstParser,
   TokenType,
   IToken,
   Lexer,
   IParserConfig,
   IRecognitionException,
+  NoViableAltException,
 } from 'chevrotain';
 import { IStardogParser } from '../helpers/chevrotain/types';
 
-export class BaseGraphQlParser extends Parser implements IStardogParser {
+export class BaseGraphQlParser extends CstParser implements IStardogParser {
   private lexer: Lexer;
+
+  // Guards against an infinite recursion in chevrotain 11's repetition
+  // recovery on this grammar: a stray token that appears in a repetition's
+  // computed FIRST set (e.g. a string, which can begin a Description) but
+  // that no alternative actually accepts causes tryInRepetitionRecovery to
+  // re-enter the repetition without consuming any input, recursing forever
+  // (chevrotain 4 recovered here by resyncing past the token). If a nested
+  // recovery attempt starts at the same input position as the one already
+  // in flight, no progress has been made and the attempt is abandoned so
+  // that normal resync recovery higher up the rule stack takes over.
+  // NOTE: chevrotain installs attemptInRepetitionRecovery as an *instance*
+  // property when recoveryEnabled is set (see initRecoverable), so these
+  // must be instance fields (initialized after super()) rather than
+  // prototype methods in order to actually intercept it.
+  private chevrotainAttemptInRepetitionRecovery = (this as any)
+    .attemptInRepetitionRecovery;
+  private repetitionRecoveryIdx = -1;
+  attemptInRepetitionRecovery = (...args: any[]): void => {
+    const currIdx = (this as any).currIdx;
+    if (currIdx === this.repetitionRecoveryIdx) {
+      // A recovery attempt is already in flight at this exact input
+      // position, so no input was consumed since then and retrying can
+      // only recurse forever.
+      return;
+    }
+    const savedIdx = this.repetitionRecoveryIdx;
+    this.repetitionRecoveryIdx = currIdx;
+    try {
+      this.chevrotainAttemptInRepetitionRecovery(...args);
+    } finally {
+      this.repetitionRecoveryIdx = savedIdx;
+    }
+  };
+
+  // chevrotain's default implementation enumerates every possible lookahead
+  // path of the failed alternation to include in the error message
+  // (getLookaheadPathsForOr); on this grammar that enumeration recurses
+  // without bound and overflows the stack (it did not in chevrotain 4). Build
+  // the same exception with a simpler message instead.
+  protected raiseNoAltException(
+    _occurrence: number,
+    errMsgTypes: string
+  ): void {
+    const previousToken = this.LA(0);
+    const actualToken = this.LA(1);
+    const errMsg =
+      errMsgTypes ||
+      `Expecting: one of the alternatives of <${(
+        this as any
+      ).getCurrRuleFullName()}> but found: '${actualToken.image}'`;
+    throw (this as any).SAVE_ERROR(
+      new NoViableAltException(errMsg, actualToken, previousToken)
+    );
+  }
+
+  // For the same reason as raiseNoAltException above, chevrotain 11's
+  // NextAfterTokenWalker recurses without bound on this grammar when
+  // computing the follow set for single-token-insertion recovery. Returning
+  // an empty follow set disables only that recovery strategy; resync
+  // recovery (the important one for error tolerance) is unaffected.
+  protected getFollowsForInRuleRecovery(
+    _tokType: TokenType,
+    _tokIdxInRule: number
+  ): TokenType[] {
+    return [];
+  }
 
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
@@ -34,7 +101,6 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
   ) {
     super(tokenVocab, {
       recoveryEnabled: true,
-      outputCst: true,
       ...options.config,
     });
 
@@ -112,13 +178,13 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
     this.CONSUME(graphQlTokenMap.Colon);
   });
 
-  Arguments = this.RULE('Arguments', (isConst: boolean) => {
+  Arguments = this.RULE('Arguments', (isConst?: boolean) => {
     this.CONSUME(graphQlTokenMap.LParen);
     this.AT_LEAST_ONE(() => this.SUBRULE(this.Argument, { ARGS: [isConst] }));
     this.CONSUME(graphQlTokenMap.RParen);
   });
 
-  Argument = this.RULE('Argument', (isConst: boolean) => {
+  Argument = this.RULE('Argument', (isConst?: boolean) => {
     this.SUBRULE(this.Alias);
     this.SUBRULE(this.Value, { ARGS: [isConst] });
   });
@@ -149,7 +215,7 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
     this.SUBRULE(this.NamedType);
   });
 
-  Value = this.RULE('Value', (isConst: boolean) => {
+  Value = this.RULE('Value', (isConst?: boolean) => {
     this.OR([
       { GATE: () => !isConst, ALT: () => this.SUBRULE(this.Variable) },
       { ALT: () => this.SUBRULE(this.IntValue) },
@@ -187,19 +253,19 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
     this.CONSUME(graphQlTokenMap.EnumValueToken);
   });
 
-  ListValue = this.RULE('ListValue', (isConst: boolean) => {
+  ListValue = this.RULE('ListValue', (isConst?: boolean) => {
     this.CONSUME(graphQlTokenMap.LBracket);
     this.MANY(() => this.SUBRULE(this.Value, { ARGS: [isConst] }));
     this.CONSUME(graphQlTokenMap.RBracket);
   });
 
-  ObjectValue = this.RULE('ObjectValue', (isConst: boolean) => {
+  ObjectValue = this.RULE('ObjectValue', (isConst?: boolean) => {
     this.CONSUME(graphQlTokenMap.LCurly);
     this.MANY(() => this.SUBRULE(this.ObjectField, { ARGS: [isConst] }));
     this.CONSUME(graphQlTokenMap.RCurly);
   });
 
-  ObjectField = this.RULE('ObjectField', (isConst: boolean) => {
+  ObjectField = this.RULE('ObjectField', (isConst?: boolean) => {
     this.SUBRULE(this.Alias);
     this.SUBRULE(this.Value, { ARGS: [isConst] });
   });
@@ -245,11 +311,11 @@ export class BaseGraphQlParser extends Parser implements IStardogParser {
     this.CONSUME(graphQlTokenMap.RBracket);
   });
 
-  Directives = this.RULE('Directives', (isConst: boolean) => {
+  Directives = this.RULE('Directives', (isConst?: boolean) => {
     this.AT_LEAST_ONE(() => this.SUBRULE(this.Directive, { ARGS: [isConst] }));
   });
 
-  Directive = this.RULE('Directive', (isConst: boolean) => {
+  Directive = this.RULE('Directive', (isConst?: boolean) => {
     this.CONSUME(graphQlTokenMap.At);
     this.CONSUME(graphQlTokenMap.Name);
     this.OPTION(() => this.SUBRULE(this.Arguments, { ARGS: [isConst] }));
