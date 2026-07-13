@@ -24,7 +24,7 @@ declare const localNamesByCategory: {
     other: ["Shape", "NodeShape", "PropertyShape", "targetNode", "message", "path", "alternativePath", "inversePath", "zeroOrMorePath", "oneOrMorePath", "zeroOrOnePath", "nodeKind", "languageIn", "and", "or", "xone", "ignoredProperties", "hasValue", "in", "select", "ask"];
 };
 type LocalName = {
-    [K in keyof typeof localNamesByCategory]: typeof localNamesByCategory[K] extends (infer T)[] ? T : never;
+    [K in keyof typeof localNamesByCategory]: (typeof localNamesByCategory)[K] extends (infer T)[] ? T : never;
 }[keyof typeof localNamesByCategory];
 type TokenMap = {
     [K in LocalName]: TokenType;
