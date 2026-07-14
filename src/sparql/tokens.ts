@@ -6,6 +6,7 @@ import { keywords } from './keywords';
 export const sparqlTokenMap = {
   IRIREF: terminals.IRIREF,
   LANGTAG: terminals.LANGTAG,
+  LANG_DIR: terminals.LANG_DIR,
   INTEGER: terminals.INTEGER,
   DECIMAL: terminals.DECIMAL,
   DOUBLE: terminals.DOUBLE,
@@ -166,6 +167,32 @@ export const sparqlTokenMap = {
     pattern: '>>',
   }),
 
+  // RDF 1.2 / SPARQL 1.2 punctuation (triple terms, reifiers, annotations):
+  LTripleTerm: createToken({
+    name: 'LTripleTerm',
+    pattern: '<<(',
+  }),
+
+  RTripleTerm: createToken({
+    name: 'RTripleTerm',
+    pattern: ')>>',
+  }),
+
+  LAnnotation: createToken({
+    name: 'LAnnotation',
+    pattern: '{|',
+  }),
+
+  RAnnotation: createToken({
+    name: 'RAnnotation',
+    pattern: '|}',
+  }),
+
+  Tilde: createToken({
+    name: 'Tilde',
+    pattern: '~',
+  }),
+
   SELECT: keywords.SELECT,
   CONSTRUCT: keywords.CONSTRUCT,
   DISTINCT: keywords.DISTINCT,
@@ -184,6 +211,16 @@ export const sparqlTokenMap = {
   BY: keywords.BY,
   BASE: keywords.BASE,
   PREFIX: keywords.PREFIX,
+  VERSION: keywords.VERSION,
+  LANGDIR: keywords.LANGDIR,
+  STRLANGDIR: keywords.STRLANGDIR,
+  hasLANG: keywords.hasLANG,
+  hasLANGDIR: keywords.hasLANGDIR,
+  isTRIPLE: keywords.isTRIPLE,
+  TRIPLE: keywords.TRIPLE,
+  SUBJECT: keywords.SUBJECT,
+  PREDICATE: keywords.PREDICATE,
+  OBJECT: keywords.OBJECT,
   DESCRIBE: keywords.DESCRIBE,
   ASK: keywords.ASK,
   FROM: keywords.FROM,
@@ -299,13 +336,19 @@ export const sparqlTokenMap = {
 export const baseTokens = [
   sparqlTokenMap.NIL,
   sparqlTokenMap.ANON,
+  // '{|' must be matched before '{', and '|}' before '|':
+  sparqlTokenMap.LAnnotation,
+  sparqlTokenMap.RAnnotation,
   sparqlTokenMap.LCurly,
   sparqlTokenMap.RCurly,
   sparqlTokenMap.LParen,
+  // ')>>'  must be matched before ')':
+  sparqlTokenMap.RTripleTerm,
   sparqlTokenMap.RParen,
+  sparqlTokenMap.Tilde,
   sparqlTokenMap.WhiteSpace,
   sparqlTokenMap.IRIREF,
-  sparqlTokenMap.LANGTAG,
+  sparqlTokenMap.LANG_DIR,
   sparqlTokenMap.DOUBLE,
   sparqlTokenMap.DECIMAL,
   sparqlTokenMap.INTEGER,
@@ -342,6 +385,7 @@ export const baseTokens = [
   sparqlTokenMap.PERCENT,
   sparqlTokenMap.BASE,
   sparqlTokenMap.PREFIX,
+  sparqlTokenMap.VERSION,
   sparqlTokenMap.DESCRIBE,
   sparqlTokenMap.ASK,
   sparqlTokenMap.FROM,
@@ -382,6 +426,8 @@ export const baseTokens = [
   sparqlTokenMap.UNION,
   sparqlTokenMap.FILTER,
   sparqlTokenMap.LANGMATCHES,
+  // LANGDIR must be matched before LANG:
+  sparqlTokenMap.LANGDIR,
   sparqlTokenMap.LANG,
   sparqlTokenMap.DATATYPE,
   sparqlTokenMap.BOUND,
@@ -421,6 +467,8 @@ export const baseTokens = [
   sparqlTokenMap.SHA512,
   sparqlTokenMap.COALESCE,
   sparqlTokenMap.IF,
+  // STRLANGDIR must be matched before STRLANG:
+  sparqlTokenMap.STRLANGDIR,
   sparqlTokenMap.STRLANG,
   sparqlTokenMap.STRDT,
   sparqlTokenMap.STR,
@@ -430,6 +478,14 @@ export const baseTokens = [
   sparqlTokenMap.isBLANK,
   sparqlTokenMap.isLITERAL,
   sparqlTokenMap.isNUMERIC,
+  // hasLANGDIR must be matched before hasLANG:
+  sparqlTokenMap.hasLANGDIR,
+  sparqlTokenMap.hasLANG,
+  sparqlTokenMap.isTRIPLE,
+  sparqlTokenMap.TRIPLE,
+  sparqlTokenMap.SUBJECT,
+  sparqlTokenMap.PREDICATE,
+  sparqlTokenMap.OBJECT,
   sparqlTokenMap.REGEX,
   sparqlTokenMap.SUBSTR,
   sparqlTokenMap.REPLACE,
@@ -459,6 +515,8 @@ export const baseTokens = [
   sparqlTokenMap.Equals,
   sparqlTokenMap.LessThanEquals,
   sparqlTokenMap.GreaterThanEquals,
+  // '<<(' must be matched before '<<':
+  sparqlTokenMap.LTripleTerm,
   sparqlTokenMap.LEmbed,
   sparqlTokenMap.REmbed,
   sparqlTokenMap.LessThan,

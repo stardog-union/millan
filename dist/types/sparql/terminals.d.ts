@@ -2,6 +2,7 @@ import { TokenType } from 'chevrotain';
 export declare const terminals: {
     IRIREF: TokenType;
     LANGTAG: TokenType;
+    LANG_DIR: TokenType;
     INTEGER: TokenType;
     DECIMAL: TokenType;
     DOUBLE: TokenType;

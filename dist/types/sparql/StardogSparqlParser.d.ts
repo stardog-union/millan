@@ -1,5 +1,6 @@
 import { BaseSparqlParser } from './BaseSparqlParser';
 export declare class StardogSparqlParser extends BaseSparqlParser {
+    protected supportsRdf12: boolean;
     constructor(options?: any, tokens?: any, shouldSkipAnalysis?: any);
     ValidateQuery: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     MultiGraphRef: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
@@ -15,6 +16,7 @@ export declare class StardogSparqlParser extends BaseSparqlParser {
     PropertyListNotEmpty: import("chevrotain").ParserMethod<[disallowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     EmbeddedPropertyList: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     Object: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    GraphNode: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     TriplesSameSubjectPath: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     PropertyListPathNotEmpty: import("chevrotain").ParserMethod<[disallowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     EmbeddedPropertyListPath: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;

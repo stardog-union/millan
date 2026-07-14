@@ -2,6 +2,7 @@ import { CstParser, TokenType, IToken, IParserConfig, IRecognitionException, Cst
 import { IStardogParser } from '../helpers/chevrotain/types';
 export declare class BaseSparqlParser extends CstParser implements IStardogParser {
     private lexer;
+    protected supportsRdf12: boolean;
     tokenize: (document: string) => IToken[];
     parse: (document: string, entryRule?: import("chevrotain").ParserMethod<[], CstNode>) => {
         errors: IRecognitionException[];
@@ -29,6 +30,8 @@ export declare class BaseSparqlParser extends CstParser implements IStardogParse
     MaxLength: import("chevrotain").ParserMethod<[], CstNode>;
     UpdateUnit: import("chevrotain").ParserMethod<[], CstNode>;
     Prologue: import("chevrotain").ParserMethod<[], CstNode>;
+    VersionDecl: import("chevrotain").ParserMethod<[], CstNode>;
+    VersionSpecifier: import("chevrotain").ParserMethod<[], CstNode>;
     BaseDecl: import("chevrotain").ParserMethod<[], CstNode>;
     PrefixDecl: import("chevrotain").ParserMethod<[], CstNode>;
     SelectQuery: import("chevrotain").ParserMethod<[], CstNode>;
@@ -219,4 +222,33 @@ export declare class BaseSparqlParser extends CstParser implements IStardogParse
     iri: import("chevrotain").ParserMethod<[], CstNode>;
     PrefixedName: import("chevrotain").ParserMethod<[], CstNode>;
     BlankNode: import("chevrotain").ParserMethod<[], CstNode>;
+    ReifiedTripleBlock: import("chevrotain").ParserMethod<[], CstNode>;
+    ReifiedTripleBlockPath: import("chevrotain").ParserMethod<[], CstNode>;
+    Reifier: import("chevrotain").ParserMethod<[], CstNode>;
+    VarOrReifierId: import("chevrotain").ParserMethod<[], CstNode>;
+    ReifiedTriple: import("chevrotain").ParserMethod<[], CstNode>;
+    ReifiedTripleSubject: import("chevrotain").ParserMethod<[], CstNode>;
+    ReifiedTripleObject: import("chevrotain").ParserMethod<[], CstNode>;
+    TripleTerm: import("chevrotain").ParserMethod<[], CstNode>;
+    TripleTermSubject: import("chevrotain").ParserMethod<[], CstNode>;
+    TripleTermObject: import("chevrotain").ParserMethod<[], CstNode>;
+    TripleTermData: import("chevrotain").ParserMethod<[], CstNode>;
+    TripleTermDataSubject: import("chevrotain").ParserMethod<[], CstNode>;
+    TripleTermDataObject: import("chevrotain").ParserMethod<[], CstNode>;
+    ExprTripleTerm: import("chevrotain").ParserMethod<[], CstNode>;
+    ExprTripleTermSubject: import("chevrotain").ParserMethod<[], CstNode>;
+    ExprTripleTermObject: import("chevrotain").ParserMethod<[], CstNode>;
+    Annotation: import("chevrotain").ParserMethod<[], CstNode>;
+    AnnotationPath: import("chevrotain").ParserMethod<[], CstNode>;
+    AnnotationBlock: import("chevrotain").ParserMethod<[], CstNode>;
+    AnnotationBlockPath: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_LANGDIR: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_STRLANGDIR: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_hasLANG: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_hasLANGDIR: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_isTRIPLE: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_TRIPLE: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_SUBJECT: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_PREDICATE: import("chevrotain").ParserMethod<[], CstNode>;
+    BuiltInCall_OBJECT: import("chevrotain").ParserMethod<[], CstNode>;
 }

@@ -2,6 +2,7 @@ import { TokenType } from 'chevrotain';
 export declare const sparqlTokenMap: {
     IRIREF: TokenType;
     LANGTAG: TokenType;
+    LANG_DIR: TokenType;
     INTEGER: TokenType;
     DECIMAL: TokenType;
     DOUBLE: TokenType;
@@ -54,6 +55,11 @@ export declare const sparqlTokenMap: {
     GreaterThanEquals: TokenType;
     LEmbed: TokenType;
     REmbed: TokenType;
+    LTripleTerm: TokenType;
+    RTripleTerm: TokenType;
+    LAnnotation: TokenType;
+    RAnnotation: TokenType;
+    Tilde: TokenType;
     SELECT: TokenType;
     CONSTRUCT: TokenType;
     DISTINCT: TokenType;
@@ -72,6 +78,16 @@ export declare const sparqlTokenMap: {
     BY: TokenType;
     BASE: TokenType;
     PREFIX: TokenType;
+    VERSION: TokenType;
+    LANGDIR: TokenType;
+    STRLANGDIR: TokenType;
+    hasLANG: TokenType;
+    hasLANGDIR: TokenType;
+    isTRIPLE: TokenType;
+    TRIPLE: TokenType;
+    SUBJECT: TokenType;
+    PREDICATE: TokenType;
+    OBJECT: TokenType;
     DESCRIBE: TokenType;
     ASK: TokenType;
     FROM: TokenType;

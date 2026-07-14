@@ -2,6 +2,11 @@ const { sparqlTokenMap, stardogSparqlTokens } = require('./tokens');
 import { BaseSparqlParser } from './BaseSparqlParser';
 
 export class StardogSparqlParser extends BaseSparqlParser {
+  // In the Stardog dialect, '<<'/'>>' introduce Stardog's embedded triple
+  // (edge property) syntax rather than SPARQL 1.2 reified triples, so the
+  // SPARQL 1.2 alternatives in BaseSparqlParser are disabled here.
+  protected supportsRdf12 = false;
+
   constructor(options?, tokens = stardogSparqlTokens, shouldSkipAnalysis?) {
     super(options, tokens);
 
@@ -204,6 +209,18 @@ export class StardogSparqlParser extends BaseSparqlParser {
       {
         ALT: () => this.SUBRULE(this.EmbeddedTriplePattern),
       },
+    ]);
+  });
+
+  // Restores the SPARQL 1.1 form of GraphNode: the SPARQL 1.2 ReifiedTriple
+  // alternative added in BaseSparqlParser starts with '<<', which is
+  // statically ambiguous with this dialect's EmbeddedTriplePattern (see the
+  // Object rule above), and this dialect doesn't support SPARQL 1.2 anyway
+  // (see supportsRdf12).
+  GraphNode = this.OVERRIDE_RULE('GraphNode', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.VarOrTerm) },
+      { ALT: () => this.SUBRULE(this.TriplesNode) },
     ]);
   });
 

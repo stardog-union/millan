@@ -1,11 +1,9 @@
 const { sparqlTokenMap } = require('../sparql/tokens');
 import { createToken, TokenType } from 'chevrotain';
 import { regex } from '../helpers/regex';
-import { createKeyword } from '../sparql/keywords';
 import {
   EXPONENT,
   ECHAR,
-  LANG_DIR,
   PLX,
   HEX,
   PN_CHARS_BASE,
@@ -59,33 +57,20 @@ export const turtleTokenMap = {
   LEmbed: sparqlTokenMap.LEmbed,
   REmbed: sparqlTokenMap.REmbed,
   // RDF 1.2 (https://www.w3.org/TR/rdf12-turtle/): triple terms, reifiers,
-  // and annotation blocks.
-  LTripleTerm: createToken({
-    name: 'LTripleTerm',
-    pattern: '<<(',
-  }),
-  RTripleTerm: createToken({
-    name: 'RTripleTerm',
-    pattern: ')>>',
-  }),
-  LAnnotation: createToken({
-    name: 'LAnnotation',
-    pattern: '{|',
-  }),
-  RAnnotation: createToken({
-    name: 'RAnnotation',
-    pattern: '|}',
-  }),
-  Tilde: createToken({
-    name: 'Tilde',
-    pattern: '~',
-  }),
+  // and annotation blocks. These token objects are shared with the SPARQL
+  // token module (like LEmbed/REmbed) because the SRS lexer mixes both
+  // vocabularies.
+  LTripleTerm: sparqlTokenMap.LTripleTerm,
+  RTripleTerm: sparqlTokenMap.RTripleTerm,
+  LAnnotation: sparqlTokenMap.LAnnotation,
+  RAnnotation: sparqlTokenMap.RAnnotation,
+  Tilde: sparqlTokenMap.Tilde,
   Comma: sparqlTokenMap.Comma,
   Semicolon: sparqlTokenMap.Semicolon,
   A: sparqlTokenMap.A,
   PREFIX: sparqlTokenMap.PREFIX,
   BASE: sparqlTokenMap.BASE,
-  VERSION: createKeyword({ name: 'VERSION' }),
+  VERSION: sparqlTokenMap.VERSION,
   PNAME_NS: sparqlTokenMap.PNAME_NS,
   PNAME_LN: sparqlTokenMap.PNAME_LN,
   BLANK_NODE_LABEL: sparqlTokenMap.BLANK_NODE_LABEL,
@@ -94,7 +79,7 @@ export const turtleTokenMap = {
   TTL_VERSION: createToken({ name: 'TTL_VERSION', pattern: /@version/ }),
   // RDF 1.2 language tag with optional base direction (replaces Turtle 1.1's
   // LANGTAG; matches a superset of it).
-  LANG_DIR: createToken({ name: 'LANG_DIR', pattern: LANG_DIR }),
+  LANG_DIR: sparqlTokenMap.LANG_DIR,
   INTEGER: createToken({
     name: 'INTEGER',
     pattern: regex.and(regex.option(/[+-]/), /\d+/),

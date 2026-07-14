@@ -18,6 +18,12 @@ function log(...args) {
 export class BaseSparqlParser extends CstParser implements IStardogParser {
   private lexer: Lexer;
 
+  // SPARQL 1.2 syntax (reified triples, triple terms, annotations; see
+  // https://www.w3.org/TR/sparql12-query/) is enabled by default and
+  // disabled in the Stardog dialect, where '<<'/'>>' belong to Stardog's
+  // own embedded-triple (edge property) syntax instead.
+  protected supportsRdf12 = true;
+
   public tokenize = (document: string): IToken[] =>
     this.lexer.tokenize(document).tokens;
 
@@ -132,8 +138,24 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
       this.OR([
         { ALT: () => this.SUBRULE(this.BaseDecl) },
         { ALT: () => this.SUBRULE(this.PrefixDecl) },
+        { ALT: () => this.SUBRULE(this.VersionDecl) },
       ])
     );
+  });
+
+  // SPARQL 1.2: https://www.w3.org/TR/sparql12-query/#rVersionDecl
+  VersionDecl = this.RULE('VersionDecl', () => {
+    log('VersionDecl');
+    this.CONSUME(sparqlTokenMap.VERSION);
+    this.SUBRULE(this.VersionSpecifier);
+  });
+
+  VersionSpecifier = this.RULE('VersionSpecifier', () => {
+    log('VersionSpecifier');
+    this.OR([
+      { ALT: () => this.CONSUME(sparqlTokenMap.STRING_LITERAL1) },
+      { ALT: () => this.CONSUME(sparqlTokenMap.STRING_LITERAL2) },
+    ]);
   });
 
   BaseDecl = this.RULE('BaseDecl', () => {
@@ -733,6 +755,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
       { ALT: () => this.SUBRULE(this.NumericLiteral) },
       { ALT: () => this.SUBRULE(this.BooleanLiteral) },
       { ALT: () => this.CONSUME(sparqlTokenMap.UNDEF) },
+      {
+        // SPARQL 1.2:
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.TripleTermData),
+      },
     ]);
   });
 
@@ -840,6 +867,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
           this.SUBRULE(this.PropertyList);
         },
       },
+      {
+        // SPARQL 1.2:
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.ReifiedTripleBlock),
+      },
     ]);
   });
 
@@ -880,6 +912,13 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
   Object = this.RULE('Object', () => {
     log('Object');
     this.SUBRULE(this.GraphNode);
+    // SPARQL 1.2: the Annotation node only appears in the CST when an
+    // annotation is present (Annotation is AT_LEAST_ONE wrapped in OPTION
+    // because a possibly-empty rule cannot be a chevrotain OPTION body).
+    this.OPTION({
+      GATE: () => this.supportsRdf12,
+      DEF: () => this.SUBRULE(this.Annotation),
+    });
   });
 
   TriplesSameSubjectPath = this.RULE('TriplesSameSubjectPath', () => {
@@ -896,6 +935,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
           this.SUBRULE(this.TriplesNodePath);
           this.SUBRULE(this.PropertyListPath);
         },
+      },
+      {
+        // SPARQL 1.2:
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.ReifiedTripleBlockPath),
       },
     ]);
   });
@@ -946,6 +990,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
   ObjectPath = this.RULE('ObjectPath', () => {
     log('ObjectPath');
     this.SUBRULE(this.GraphNodePath);
+    // SPARQL 1.2 (see Object above):
+    this.OPTION({
+      GATE: () => this.supportsRdf12,
+      DEF: () => this.SUBRULE(this.AnnotationPath),
+    });
   });
 
   Path = this.RULE('Path', () => {
@@ -1091,6 +1140,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
     this.OR([
       { ALT: () => this.SUBRULE(this.VarOrTerm) },
       { ALT: () => this.SUBRULE(this.TriplesNode) },
+      {
+        // SPARQL 1.2:
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.ReifiedTriple),
+      },
     ]);
   });
 
@@ -1099,6 +1153,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
     this.OR([
       { ALT: () => this.SUBRULE(this.VarOrTerm) },
       { ALT: () => this.SUBRULE(this.TriplesNodePath) },
+      {
+        // SPARQL 1.2:
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.ReifiedTriple),
+      },
     ]);
   });
 
@@ -1107,6 +1166,13 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
     this.OR([
       { ALT: () => this.SUBRULE(this.Var) },
       { ALT: () => this.SUBRULE(this.GraphTerm) },
+      {
+        // SPARQL 1.2 inlines GraphTerm's alternatives into VarOrTerm and
+        // adds TripleTerm; GraphTerm is kept here for CST compatibility and
+        // TripleTerm added alongside it.
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.TripleTerm),
+      },
     ]);
   });
 
@@ -1300,6 +1366,11 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
       { ALT: () => this.SUBRULE(this.NumericLiteral) },
       { ALT: () => this.SUBRULE(this.BooleanLiteral) },
       { ALT: () => this.SUBRULE(this.Var) },
+      {
+        // SPARQL 1.2:
+        GATE: () => this.supportsRdf12,
+        ALT: () => this.SUBRULE(this.ExprTripleTerm),
+      },
     ]);
   });
 
@@ -1759,6 +1830,16 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
       { ALT: () => this.SUBRULE(this.RegexExpression) },
       { ALT: () => this.SUBRULE(this.ExistsFunction) },
       { ALT: () => this.SUBRULE(this.NotExistsFunction) },
+      // SPARQL 1.2 additions:
+      { ALT: () => this.SUBRULE(this.BuiltInCall_LANGDIR) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_STRLANGDIR) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_hasLANG) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_hasLANGDIR) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_isTRIPLE) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_TRIPLE) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_SUBJECT) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_PREDICATE) },
+      { ALT: () => this.SUBRULE(this.BuiltInCall_OBJECT) },
     ]);
   });
 
@@ -1914,7 +1995,9 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
     this.SUBRULE(this.String);
     this.OPTION(() =>
       this.OR([
-        { ALT: () => this.CONSUME(sparqlTokenMap.LANGTAG) },
+        // SPARQL 1.2: language tag with optional base direction; a
+        // superset of SPARQL 1.1's LANGTAG.
+        { ALT: () => this.CONSUME(sparqlTokenMap.LANG_DIR) },
         {
           ALT: () => {
             this.CONSUME(sparqlTokenMap.DoubleCaret);
@@ -2001,5 +2084,303 @@ export class BaseSparqlParser extends CstParser implements IStardogParser {
       { ALT: () => this.CONSUME(sparqlTokenMap.BLANK_NODE_LABEL) },
       { ALT: () => this.CONSUME(sparqlTokenMap.ANON) },
     ]);
+  });
+
+  // The following productions are new in SPARQL 1.2
+  // (https://www.w3.org/TR/sparql12-query/#grammar).
+
+  // [58] ReifiedTripleBlock ::= ReifiedTriple PropertyList
+  ReifiedTripleBlock = this.RULE('ReifiedTripleBlock', () => {
+    log('ReifiedTripleBlock');
+    this.SUBRULE(this.ReifiedTriple);
+    this.SUBRULE(this.PropertyList);
+  });
+
+  // [59] ReifiedTripleBlockPath ::= ReifiedTriple PropertyListPath
+  ReifiedTripleBlockPath = this.RULE('ReifiedTripleBlockPath', () => {
+    log('ReifiedTripleBlockPath');
+    this.SUBRULE(this.ReifiedTriple);
+    this.SUBRULE(this.PropertyListPath);
+  });
+
+  // [70] Reifier ::= '~' VarOrReifierId?
+  Reifier = this.RULE('Reifier', () => {
+    log('Reifier');
+    this.CONSUME(sparqlTokenMap.Tilde);
+    this.OPTION(() => this.SUBRULE(this.VarOrReifierId));
+  });
+
+  // [71] VarOrReifierId ::= Var | iri | BlankNode
+  VarOrReifierId = this.RULE('VarOrReifierId', () => {
+    log('VarOrReifierId');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+    ]);
+  });
+
+  // [116] ReifiedTriple ::= '<<' ReifiedTripleSubject Verb ReifiedTripleObject Reifier? '>>'
+  ReifiedTriple = this.RULE('ReifiedTriple', () => {
+    log('ReifiedTriple');
+    this.CONSUME(sparqlTokenMap.LEmbed);
+    this.SUBRULE(this.ReifiedTripleSubject);
+    this.SUBRULE(this.Verb);
+    this.SUBRULE(this.ReifiedTripleObject);
+    this.OPTION(() => this.SUBRULE(this.Reifier));
+    this.CONSUME(sparqlTokenMap.REmbed);
+  });
+
+  // [117] ReifiedTripleSubject ::= Var | iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | ReifiedTriple | TripleTerm
+  ReifiedTripleSubject = this.RULE('ReifiedTripleSubject', () => {
+    log('ReifiedTripleSubject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.ReifiedTriple) },
+      { ALT: () => this.SUBRULE(this.TripleTerm) },
+    ]);
+  });
+
+  // [118] ReifiedTripleObject ::= Var | iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | ReifiedTriple | TripleTerm
+  ReifiedTripleObject = this.RULE('ReifiedTripleObject', () => {
+    log('ReifiedTripleObject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.ReifiedTriple) },
+      { ALT: () => this.SUBRULE(this.TripleTerm) },
+    ]);
+  });
+
+  // [119] TripleTerm ::= '<<(' TripleTermSubject Verb TripleTermObject ')>>'
+  TripleTerm = this.RULE('TripleTerm', () => {
+    log('TripleTerm');
+    this.CONSUME(sparqlTokenMap.LTripleTerm);
+    this.SUBRULE(this.TripleTermSubject);
+    this.SUBRULE(this.Verb);
+    this.SUBRULE(this.TripleTermObject);
+    this.CONSUME(sparqlTokenMap.RTripleTerm);
+  });
+
+  // [120] TripleTermSubject ::= Var | iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | TripleTerm
+  TripleTermSubject = this.RULE('TripleTermSubject', () => {
+    log('TripleTermSubject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.TripleTerm) },
+    ]);
+  });
+
+  // [121] TripleTermObject ::= Var | iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | TripleTerm
+  TripleTermObject = this.RULE('TripleTermObject', () => {
+    log('TripleTermObject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.TripleTerm) },
+    ]);
+  });
+
+  // [122] TripleTermData ::= '<<(' TripleTermDataSubject ( iri | 'a' ) TripleTermDataObject ')>>'
+  TripleTermData = this.RULE('TripleTermData', () => {
+    log('TripleTermData');
+    this.CONSUME(sparqlTokenMap.LTripleTerm);
+    this.SUBRULE(this.TripleTermDataSubject);
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.CONSUME(sparqlTokenMap.A) },
+    ]);
+    this.SUBRULE(this.TripleTermDataObject);
+    this.CONSUME(sparqlTokenMap.RTripleTerm);
+  });
+
+  // [123] TripleTermDataSubject ::= iri
+  TripleTermDataSubject = this.RULE('TripleTermDataSubject', () => {
+    log('TripleTermDataSubject');
+    this.SUBRULE(this.iri);
+  });
+
+  // [124] TripleTermDataObject ::= iri | RDFLiteral | NumericLiteral | BooleanLiteral | TripleTermData
+  TripleTermDataObject = this.RULE('TripleTermDataObject', () => {
+    log('TripleTermDataObject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+      { ALT: () => this.SUBRULE(this.TripleTermData) },
+    ]);
+  });
+
+  // [137] ExprTripleTerm ::= '<<(' ExprTripleTermSubject Verb ExprTripleTermObject ')>>'
+  ExprTripleTerm = this.RULE('ExprTripleTerm', () => {
+    log('ExprTripleTerm');
+    this.CONSUME(sparqlTokenMap.LTripleTerm);
+    this.SUBRULE(this.ExprTripleTermSubject);
+    this.SUBRULE(this.Verb);
+    this.SUBRULE(this.ExprTripleTermObject);
+    this.CONSUME(sparqlTokenMap.RTripleTerm);
+  });
+
+  // [138] ExprTripleTermSubject ::= iri | Var
+  ExprTripleTermSubject = this.RULE('ExprTripleTermSubject', () => {
+    log('ExprTripleTermSubject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.Var) },
+    ]);
+  });
+
+  // [139] ExprTripleTermObject ::= iri | RDFLiteral | NumericLiteral | BooleanLiteral | Var | ExprTripleTerm
+  ExprTripleTermObject = this.RULE('ExprTripleTermObject', () => {
+    log('ExprTripleTermObject');
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.RDFLiteral) },
+      { ALT: () => this.SUBRULE(this.NumericLiteral) },
+      { ALT: () => this.SUBRULE(this.BooleanLiteral) },
+      { ALT: () => this.SUBRULE(this.Var) },
+      { ALT: () => this.SUBRULE(this.ExprTripleTerm) },
+    ]);
+  });
+
+  // [111] Annotation ::= ( Reifier | AnnotationBlock )*
+  // NOTE: the spec's Annotation can be empty; the CST omits the node
+  // entirely in that case (see Object), so this rule requires at least one
+  // reifier or annotation block.
+  Annotation = this.RULE('Annotation', () => {
+    log('Annotation');
+    this.AT_LEAST_ONE(() =>
+      this.OR([
+        { ALT: () => this.SUBRULE(this.Reifier) },
+        { ALT: () => this.SUBRULE(this.AnnotationBlock) },
+      ])
+    );
+  });
+
+  // [109] AnnotationPath ::= ( Reifier | AnnotationBlockPath )*
+  AnnotationPath = this.RULE('AnnotationPath', () => {
+    log('AnnotationPath');
+    this.AT_LEAST_ONE(() =>
+      this.OR([
+        { ALT: () => this.SUBRULE(this.Reifier) },
+        { ALT: () => this.SUBRULE(this.AnnotationBlockPath) },
+      ])
+    );
+  });
+
+  // [112] AnnotationBlock ::= '{|' PropertyListNotEmpty '|}'
+  AnnotationBlock = this.RULE('AnnotationBlock', () => {
+    log('AnnotationBlock');
+    this.CONSUME(sparqlTokenMap.LAnnotation);
+    this.SUBRULE(this.PropertyListNotEmpty);
+    this.CONSUME(sparqlTokenMap.RAnnotation);
+  });
+
+  // [110] AnnotationBlockPath ::= '{|' PropertyListPathNotEmpty '|}'
+  AnnotationBlockPath = this.RULE('AnnotationBlockPath', () => {
+    log('AnnotationBlockPath');
+    this.CONSUME(sparqlTokenMap.LAnnotation);
+    this.SUBRULE(this.PropertyListPathNotEmpty);
+    this.CONSUME(sparqlTokenMap.RAnnotation);
+  });
+
+  // SPARQL 1.2 built-in functions:
+  BuiltInCall_LANGDIR = this.RULE('BuiltInCall_LANGDIR', () => {
+    log('BuiltInCall_LANGDIR');
+    this.CONSUME(sparqlTokenMap.LANGDIR);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_STRLANGDIR = this.RULE('BuiltInCall_STRLANGDIR', () => {
+    log('BuiltInCall_STRLANGDIR');
+    this.CONSUME(sparqlTokenMap.STRLANGDIR);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.Comma);
+    this.SUBRULE1(this.Expression);
+    this.CONSUME1(sparqlTokenMap.Comma);
+    this.SUBRULE2(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_hasLANG = this.RULE('BuiltInCall_hasLANG', () => {
+    log('BuiltInCall_hasLANG');
+    this.CONSUME(sparqlTokenMap.hasLANG);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_hasLANGDIR = this.RULE('BuiltInCall_hasLANGDIR', () => {
+    log('BuiltInCall_hasLANGDIR');
+    this.CONSUME(sparqlTokenMap.hasLANGDIR);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_isTRIPLE = this.RULE('BuiltInCall_isTRIPLE', () => {
+    log('BuiltInCall_isTRIPLE');
+    this.CONSUME(sparqlTokenMap.isTRIPLE);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_TRIPLE = this.RULE('BuiltInCall_TRIPLE', () => {
+    log('BuiltInCall_TRIPLE');
+    this.CONSUME(sparqlTokenMap.TRIPLE);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.Comma);
+    this.SUBRULE1(this.Expression);
+    this.CONSUME1(sparqlTokenMap.Comma);
+    this.SUBRULE2(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_SUBJECT = this.RULE('BuiltInCall_SUBJECT', () => {
+    log('BuiltInCall_SUBJECT');
+    this.CONSUME(sparqlTokenMap.SUBJECT);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_PREDICATE = this.RULE('BuiltInCall_PREDICATE', () => {
+    log('BuiltInCall_PREDICATE');
+    this.CONSUME(sparqlTokenMap.PREDICATE);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
+  });
+
+  BuiltInCall_OBJECT = this.RULE('BuiltInCall_OBJECT', () => {
+    log('BuiltInCall_OBJECT');
+    this.CONSUME(sparqlTokenMap.OBJECT);
+    this.CONSUME(sparqlTokenMap.LParen);
+    this.SUBRULE(this.Expression);
+    this.CONSUME(sparqlTokenMap.RParen);
   });
 }

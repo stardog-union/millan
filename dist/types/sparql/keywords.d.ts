@@ -119,6 +119,16 @@ export declare const keywords: {
     SAMPLE: import("chevrotain").TokenType;
     GROUP_CONCAT: import("chevrotain").TokenType;
     SEPARATOR: import("chevrotain").TokenType;
+    VERSION: import("chevrotain").TokenType;
+    LANGDIR: import("chevrotain").TokenType;
+    STRLANGDIR: import("chevrotain").TokenType;
+    hasLANG: import("chevrotain").TokenType;
+    hasLANGDIR: import("chevrotain").TokenType;
+    isTRIPLE: import("chevrotain").TokenType;
+    TRIPLE: import("chevrotain").TokenType;
+    SUBJECT: import("chevrotain").TokenType;
+    PREDICATE: import("chevrotain").TokenType;
+    OBJECT: import("chevrotain").TokenType;
     TRUE: import("chevrotain").TokenType;
     FALSE: import("chevrotain").TokenType;
     IN: import("chevrotain").TokenType;

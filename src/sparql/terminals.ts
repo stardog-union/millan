@@ -6,6 +6,7 @@ import {
   PNAME_LN,
   IRIREF,
   LANGTAG,
+  LANG_DIR,
   INTEGER,
   DECIMAL,
   DOUBLE,
@@ -51,6 +52,13 @@ export const terminals = {
   LANGTAG: createToken({
     name: 'LANGTAG',
     pattern: LANGTAG,
+  }),
+
+  // RDF 1.2 language tag with optional base direction (e.g. "@en--ltr");
+  // matches a superset of LANGTAG.
+  LANG_DIR: createToken({
+    name: 'LANG_DIR',
+    pattern: LANG_DIR,
   }),
 
   INTEGER: createToken({
