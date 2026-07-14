@@ -112,8 +112,10 @@ and more:</p>
 <h2 id="contributing" class="tsd-anchor-link">Contributing<a href="#contributing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <h3 id="prerequisites" class="tsd-anchor-link">Prerequisites<a href="#prerequisites" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <ul>
-<li><a href="https://nodejs.org/">Node.js</a> 8+.</li>
-<li><a href="https://yarnpkg.com/en/">Yarn</a> 1.0.0+.</li>
+<li><a href="https://nodejs.org/">Node.js</a> 20+.</li>
+<li><a href="https://yarnpkg.com/">Yarn</a> 4 (vendored in the repo via <code>yarnPath</code>, so any
+yarn binary -- including a <code>corepack</code>-provided one -- will delegate to the
+right version automatically).</li>
 </ul>
 <h3 id="installing" class="tsd-anchor-link">Installing<a href="#installing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3>
 <p>After cloning the repo, in the project's root, run:</p>
@@ -127,7 +129,7 @@ changes, you will want to run our test scripts (run by Jest), like so:</p>
 <pre><code class="bash"><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-2">test</span>
 </code><button type="button">Copy</button></pre>
 
-<p>Stylistic conventions and formatting are enforced via <code>tslint</code> and <code>prettier</code>,
+<p>Stylistic conventions and formatting are enforced via <code>eslint</code> and <code>prettier</code>,
 which means you don't really need to worry about those things yourself
 (both the linter and <code>prettier</code> will check and format your code automatically
 on any commit). If you'd like to force <code>prettier</code> to format your code (a la
