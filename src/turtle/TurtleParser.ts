@@ -98,8 +98,10 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.OR([
       { ALT: () => this.SUBRULE(this.prefixID) },
       { ALT: () => this.SUBRULE(this.base) },
+      { ALT: () => this.SUBRULE(this.version) },
       { ALT: () => this.SUBRULE(this.sparqlPrefix) },
       { ALT: () => this.SUBRULE(this.sparqlBase) },
+      { ALT: () => this.SUBRULE(this.sparqlVersion) },
     ]);
   });
 
@@ -128,6 +130,27 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.CONSUME(turtleTokenMap.IRIREF);
   });
 
+  // RDF 1.2: https://www.w3.org/TR/rdf12-turtle/#grammar-production-version
+  version = this.RULE('version', () => {
+    this.CONSUME(turtleTokenMap.TTL_VERSION);
+    this.SUBRULE(this.VersionSpecifier);
+    this.CONSUME(turtleTokenMap.Period);
+  });
+
+  // RDF 1.2: https://www.w3.org/TR/rdf12-turtle/#grammar-production-sparqlVersion
+  sparqlVersion = this.RULE('sparqlVersion', () => {
+    this.CONSUME(turtleTokenMap.VERSION);
+    this.SUBRULE(this.VersionSpecifier);
+  });
+
+  // RDF 1.2: https://www.w3.org/TR/rdf12-turtle/#grammar-production-VersionSpecifier
+  VersionSpecifier = this.RULE('VersionSpecifier', () => {
+    this.OR([
+      { ALT: () => this.CONSUME(turtleTokenMap.STRING_LITERAL_QUOTE) },
+      { ALT: () => this.CONSUME(turtleTokenMap.STRING_LITERAL_SINGLE_QUOTE) },
+    ]);
+  });
+
   sparqlPrefix = this.RULE('sparqlPrefix', () => {
     this.CONSUME(turtleTokenMap.PREFIX);
     const pnameNsToken = this.CONSUME(turtleTokenMap.PNAME_NS);
@@ -147,7 +170,7 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.OR([
       {
         ALT: () => {
-          this.SUBRULE(this.subject);
+          this.SUBRULE(this.subject, { ARGS: [allowEdgeProperties] });
           this.SUBRULE1(this.predicateObjectList, {
             ARGS: [allowEdgeProperties],
           });
@@ -167,6 +190,23 @@ export class TurtleParser extends CstParser implements IStardogParser {
           });
           this.OPTION(() =>
             this.SUBRULE2(this.predicateObjectList, {
+              ARGS: [allowEdgeProperties],
+            })
+          );
+        },
+      },
+      {
+        // RDF 1.2 reified triple as subject. NOTE: `allowEdgeProperties`
+        // is three-state: true means stardog mode (where '<<' instead
+        // introduces Stardog's differently-shaped embedded triple pattern,
+        // above), false means standard mode (RDF 1.2), and undefined means
+        // a restricted nested context (e.g. inside a Stardog embedded
+        // triple pattern) where neither extension is allowed.
+        GATE: () => allowEdgeProperties === false,
+        ALT: () => {
+          this.SUBRULE(this.reifiedTriple);
+          this.OPTION1(() =>
+            this.SUBRULE3(this.predicateObjectList, {
               ARGS: [allowEdgeProperties],
             })
           );
@@ -238,11 +278,14 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.CONSUME(turtleTokenMap.RCurly);
   });
 
-  subject = this.RULE('subject', () => {
+  subject = this.RULE('subject', (allowEdgeProperties?: boolean) => {
     this.OR([
       { ALT: () => this.SUBRULE(this.iri) },
       { ALT: () => this.SUBRULE(this.BlankNode) },
-      { ALT: () => this.SUBRULE(this.collection) },
+      {
+        ALT: () =>
+          this.SUBRULE(this.collection, { ARGS: [allowEdgeProperties] }),
+      },
     ]);
   });
 
@@ -250,11 +293,24 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.SUBRULE(this.iri);
   });
 
+  // RDF 1.2: each object may be followed by an annotation (reifiers and/or
+  // annotation blocks). The annotation node is only present in the CST when
+  // an annotation actually appears, which is why `annotation` is
+  // AT_LEAST_ONE wrapped in OPTION here rather than MANY (a possibly-empty
+  // rule cannot be a chevrotain OPTION body).
   objectList = this.RULE('objectList', (allowEdgeProperties?: boolean) => {
     this.SUBRULE(this.object, { ARGS: [allowEdgeProperties] });
+    this.OPTION({
+      GATE: () => allowEdgeProperties === false,
+      DEF: () => this.SUBRULE(this.annotation),
+    });
     this.MANY(() => {
       this.CONSUME(turtleTokenMap.Comma);
       this.SUBRULE1(this.object, { ARGS: [allowEdgeProperties] });
+      this.OPTION1({
+        GATE: () => allowEdgeProperties === false,
+        DEF: () => this.SUBRULE1(this.annotation),
+      });
     });
   });
 
@@ -286,7 +342,10 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.OR([
       { ALT: () => this.SUBRULE(this.iri) },
       { ALT: () => this.SUBRULE(this.BlankNode) },
-      { ALT: () => this.SUBRULE(this.collection) },
+      {
+        ALT: () =>
+          this.SUBRULE(this.collection, { ARGS: [allowEdgeProperties] }),
+      },
       {
         ALT: () =>
           this.SUBRULE(this.blankNodePropertyList, {
@@ -294,12 +353,21 @@ export class TurtleParser extends CstParser implements IStardogParser {
           }),
       },
       { ALT: () => this.SUBRULE(this.literal) },
+      {
+        // RDF 1.2, standard mode only (see the note on `triples`):
+        GATE: () => allowEdgeProperties === false,
+        ALT: () => this.SUBRULE(this.tripleTerm),
+      },
+      {
+        GATE: () => allowEdgeProperties === false,
+        ALT: () => this.SUBRULE(this.reifiedTriple),
+      },
     ]);
   });
 
-  collection = this.RULE('collection', () => {
+  collection = this.RULE('collection', (allowEdgeProperties?: boolean) => {
     this.CONSUME(turtleTokenMap.LParen);
-    this.MANY(() => this.SUBRULE(this.object));
+    this.MANY(() => this.SUBRULE(this.object, { ARGS: [allowEdgeProperties] }));
     this.CONSUME(turtleTokenMap.RParen);
   });
 
@@ -315,7 +383,9 @@ export class TurtleParser extends CstParser implements IStardogParser {
     this.SUBRULE(this.String);
     this.OPTION(() => {
       this.OR([
-        { ALT: () => this.CONSUME(turtleTokenMap.LANGTAG) },
+        // RDF 1.2: LANG_DIR is a language tag with an optional base
+        // direction suffix (e.g. "@en--ltr"); a superset of 1.1's LANGTAG.
+        { ALT: () => this.CONSUME(turtleTokenMap.LANG_DIR) },
         {
           ALT: () => {
             this.CONSUME(turtleTokenMap.DoubleCaret);
@@ -385,5 +455,96 @@ export class TurtleParser extends CstParser implements IStardogParser {
       { ALT: () => this.CONSUME(turtleTokenMap.BLANK_NODE_LABEL) },
       { ALT: () => this.CONSUME(turtleTokenMap.ANON) },
     ]);
+  });
+
+  // The following productions are new in RDF 1.2:
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-reifier
+  reifier = this.RULE('reifier', () => {
+    this.CONSUME(turtleTokenMap.Tilde);
+    this.OPTION(() => {
+      this.OR([
+        { ALT: () => this.SUBRULE(this.iri) },
+        { ALT: () => this.SUBRULE(this.BlankNode) },
+      ]);
+    });
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-reifiedTriple
+  reifiedTriple = this.RULE('reifiedTriple', () => {
+    this.CONSUME(turtleTokenMap.LEmbed);
+    this.SUBRULE(this.rtSubject);
+    this.SUBRULE(this.verb);
+    this.SUBRULE(this.rtObject);
+    this.OPTION(() => this.SUBRULE(this.reifier));
+    this.CONSUME(turtleTokenMap.REmbed);
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-rtSubject
+  rtSubject = this.RULE('rtSubject', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.reifiedTriple) },
+    ]);
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-rtObject
+  rtObject = this.RULE('rtObject', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.literal) },
+      { ALT: () => this.SUBRULE(this.tripleTerm) },
+      { ALT: () => this.SUBRULE(this.reifiedTriple) },
+    ]);
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-tripleTerm
+  tripleTerm = this.RULE('tripleTerm', () => {
+    this.CONSUME(turtleTokenMap.LTripleTerm);
+    this.SUBRULE(this.ttSubject);
+    this.SUBRULE(this.verb);
+    this.SUBRULE(this.ttObject);
+    this.CONSUME(turtleTokenMap.RTripleTerm);
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-ttSubject
+  ttSubject = this.RULE('ttSubject', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+    ]);
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-ttObject
+  ttObject = this.RULE('ttObject', () => {
+    this.OR([
+      { ALT: () => this.SUBRULE(this.iri) },
+      { ALT: () => this.SUBRULE(this.BlankNode) },
+      { ALT: () => this.SUBRULE(this.literal) },
+      { ALT: () => this.SUBRULE(this.tripleTerm) },
+    ]);
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-annotation
+  // NOTE: the spec's `annotation` can be empty; the CST omits the node
+  // entirely in that case (see objectList), so this rule requires at least
+  // one reifier or annotation block.
+  annotation = this.RULE('annotation', () => {
+    this.AT_LEAST_ONE(() => {
+      this.OR([
+        { ALT: () => this.SUBRULE(this.reifier) },
+        { ALT: () => this.SUBRULE(this.annotationBlock) },
+      ]);
+    });
+  });
+
+  // https://www.w3.org/TR/rdf12-turtle/#grammar-production-annotationBlock
+  annotationBlock = this.RULE('annotationBlock', () => {
+    this.CONSUME(turtleTokenMap.LAnnotation);
+    // Annotation blocks only exist in standard (RDF 1.2) mode, so pass
+    // `false` explicitly to keep RDF 1.2 constructs available inside them.
+    this.SUBRULE(this.predicateObjectList, { ARGS: [false] });
+    this.CONSUME(turtleTokenMap.RAnnotation);
   });
 }

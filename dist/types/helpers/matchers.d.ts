@@ -3,6 +3,7 @@ export declare const CATCH_ALL_AT_LEAST_ONE: RegExp;
 export declare const IRIREF: RegExp;
 export declare const PN_CHARS_BASE: RegExp;
 export declare const LANGTAG: RegExp;
+export declare const LANG_DIR: RegExp;
 export declare const INTEGER: RegExp;
 export declare const DECIMAL: RegExp;
 export declare const EXPONENT: RegExp;

@@ -436,7 +436,7 @@ export class ShaclParser extends TurtleParser {
       this.OPTION(() => {
         this.OR([
           {
-            ALT: () => this.CONSUME(turtleTokenMap.LANGTAG),
+            ALT: () => this.CONSUME(turtleTokenMap.LANG_DIR),
           },
           {
             ALT: () => {
@@ -461,7 +461,7 @@ export class ShaclParser extends TurtleParser {
     this.OPTION(() => {
       this.OR([
         {
-          ALT: () => this.CONSUME(turtleTokenMap.LANGTAG),
+          ALT: () => this.CONSUME(turtleTokenMap.LANG_DIR),
         },
         {
           ALT: () => {

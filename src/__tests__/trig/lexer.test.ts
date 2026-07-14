@@ -250,15 +250,15 @@ describe('RDFLiteral', () => {
     expect(cst.children['DoubleCaret']).toHaveLength(1);
     expect(Object.keys(cst.children)).toHaveLength(3);
   });
-  it('parses a string followed by a LANGTAG', () => {
+  it('parses a string followed by a LANG_DIR', () => {
     const cst = parse('"fluorescent" @japanese', parser.RDFLiteral);
     expect(parser.errors).toHaveLength(0);
     expect(cst.name).toBe('RDFLiteral');
     expect(cst.children['String']).toHaveLength(1);
-    expect(cst.children['LANGTAG']).toHaveLength(1);
+    expect(cst.children['LANG_DIR']).toHaveLength(1);
     expect(Object.keys(cst.children)).toHaveLength(2);
   });
-  it('fails to parse only a LANGTAG', () => {
+  it('fails to parse only a LANG_DIR', () => {
     parse('@spanish', parser.RDFLiteral);
     expect(parser.errors).toHaveLength(1);
   });

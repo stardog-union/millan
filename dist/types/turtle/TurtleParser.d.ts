@@ -18,19 +18,22 @@ export declare class TurtleParser extends CstParser implements IStardogParser {
     prefixID: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     base: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     sparqlBase: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    version: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    sparqlVersion: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    VersionSpecifier: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     sparqlPrefix: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     triples: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     EmbeddedTriplePattern: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     predicateObjectList: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     EmbeddedPredicateObjectList: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
-    subject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    subject: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     predicate: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     objectList: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     verb: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     literal: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     blankNodePropertyList: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     object: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
-    collection: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    collection: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     NumericLiteral: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     RDFLiteral: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     BooleanLiteral: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
@@ -38,4 +41,13 @@ export declare class TurtleParser extends CstParser implements IStardogParser {
     iri: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     PrefixedName: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
     BlankNode: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    reifier: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    reifiedTriple: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    rtSubject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    rtObject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    tripleTerm: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    ttSubject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    ttObject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    annotation: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    annotationBlock: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
 }

@@ -1,9 +1,11 @@
 const { sparqlTokenMap } = require('../sparql/tokens');
 import { createToken, TokenType } from 'chevrotain';
 import { regex } from '../helpers/regex';
+import { createKeyword } from '../sparql/keywords';
 import {
   EXPONENT,
   ECHAR,
+  LANG_DIR,
   PLX,
   HEX,
   PN_CHARS_BASE,
@@ -56,17 +58,43 @@ export const turtleTokenMap = {
   DoubleCaret: sparqlTokenMap.DoubleCaret,
   LEmbed: sparqlTokenMap.LEmbed,
   REmbed: sparqlTokenMap.REmbed,
+  // RDF 1.2 (https://www.w3.org/TR/rdf12-turtle/): triple terms, reifiers,
+  // and annotation blocks.
+  LTripleTerm: createToken({
+    name: 'LTripleTerm',
+    pattern: '<<(',
+  }),
+  RTripleTerm: createToken({
+    name: 'RTripleTerm',
+    pattern: ')>>',
+  }),
+  LAnnotation: createToken({
+    name: 'LAnnotation',
+    pattern: '{|',
+  }),
+  RAnnotation: createToken({
+    name: 'RAnnotation',
+    pattern: '|}',
+  }),
+  Tilde: createToken({
+    name: 'Tilde',
+    pattern: '~',
+  }),
   Comma: sparqlTokenMap.Comma,
   Semicolon: sparqlTokenMap.Semicolon,
   A: sparqlTokenMap.A,
   PREFIX: sparqlTokenMap.PREFIX,
   BASE: sparqlTokenMap.BASE,
+  VERSION: createKeyword({ name: 'VERSION' }),
   PNAME_NS: sparqlTokenMap.PNAME_NS,
   PNAME_LN: sparqlTokenMap.PNAME_LN,
   BLANK_NODE_LABEL: sparqlTokenMap.BLANK_NODE_LABEL,
   TTL_BASE: createToken({ name: 'TTL_BASE', pattern: /@base/ }),
   TTL_PREFIX: createToken({ name: 'TTL_PREFIX', pattern: /@prefix/ }),
-  LANGTAG: sparqlTokenMap.LANGTAG,
+  TTL_VERSION: createToken({ name: 'TTL_VERSION', pattern: /@version/ }),
+  // RDF 1.2 language tag with optional base direction (replaces Turtle 1.1's
+  // LANGTAG; matches a superset of it).
+  LANG_DIR: createToken({ name: 'LANG_DIR', pattern: LANG_DIR }),
   INTEGER: createToken({
     name: 'INTEGER',
     pattern: regex.and(regex.option(/[+-]/), /\d+/),
@@ -215,10 +243,16 @@ export const turtleTokenTypes: TokenType[] = [
   sparqlTokenMap.ANON,
   sparqlTokenMap.LBracket,
   sparqlTokenMap.RBracket,
+  // '{|' must be matched before '{':
+  turtleTokenMap.LAnnotation,
+  turtleTokenMap.RAnnotation,
   sparqlTokenMap.LCurly,
   sparqlTokenMap.RCurly,
   sparqlTokenMap.LParen,
+  // ')>>' must be matched before ')':
+  turtleTokenMap.RTripleTerm,
   sparqlTokenMap.RParen,
+  turtleTokenMap.Tilde,
   sparqlTokenMap.WhiteSpace,
   turtleTokenMap.TRUE,
   turtleTokenMap.FALSE,
@@ -228,15 +262,20 @@ export const turtleTokenTypes: TokenType[] = [
   sparqlTokenMap.A,
   sparqlTokenMap.PREFIX,
   sparqlTokenMap.BASE,
+  turtleTokenMap.VERSION,
   sparqlTokenMap.PNAME_LN,
   sparqlTokenMap.BLANK_NODE_LABEL,
   turtleTokenMap.TTL_BASE,
   turtleTokenMap.TTL_PREFIX,
-  sparqlTokenMap.LANGTAG,
+  // '@version' must be matched before LANG_DIR:
+  turtleTokenMap.TTL_VERSION,
+  turtleTokenMap.LANG_DIR,
   turtleTokenMap.DOUBLE,
   turtleTokenMap.DECIMAL,
   sparqlTokenMap.Period,
   sparqlTokenMap.DoubleCaret,
+  // '<<(' must be matched before '<<':
+  turtleTokenMap.LTripleTerm,
   turtleTokenMap.LEmbed,
   turtleTokenMap.REmbed,
   turtleTokenMap.IRIREF,
