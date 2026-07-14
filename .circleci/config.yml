@@ -30,3 +30,9 @@ jobs:
       - run:
           name: Build bundles and type declarations
           command: yarn bundle && yarn types
+      - run:
+          name: Check that committed dist matches the source
+          # dist is committed alongside source changes (repo convention);
+          # this catches PRs whose dist was built from older source. The
+          # build is deterministic, so any diff means dist is stale.
+          command: git diff --stat --exit-code -- dist

@@ -1,4 +1,10 @@
-import { Quad, QuadTermValue, DefaultGraph, quadKey } from './terms';
+import {
+  Quad,
+  QuadTermValue,
+  DefaultGraph,
+  SourceLocation,
+  quadKey,
+} from './terms';
 
 // A quad container with multiset semantics: the same (term-wise) quad can be
 // asserted from several places in one or more documents, and every assertion
@@ -45,10 +51,18 @@ export class MillanDataset {
   }
 
   // All assertion sites of the given (term-wise) quad, in document order of
-  // insertion. Each returned Quad instance carries its own `source` and its
+  // insertion. Each returned Quad instance carries its own `source` (NOTE:
+  // ranges live on `occurrence.source`, not on the quad itself) and its
   // terms carry theirs.
   occurrences(quad: Quad): Quad[] {
     return [...(this.byKey.get(quadKey(quad)) || [])];
+  }
+
+  // Convenience for reporting: the source locations of every assertion of
+  // the given (term-wise) quad. Quads with no recorded source (none, for
+  // parser-emitted quads) are represented by undefined.
+  sourcesOf(quad: Quad): (SourceLocation | undefined)[] {
+    return this.occurrences(quad).map((occurrence) => occurrence.source);
   }
 
   match(

@@ -195,6 +195,41 @@ describe('rdfjs adapter', () => {
       ).toBe(true);
     });
 
+    it('never collides generated blank node labels with document labels', () => {
+      // The document uses the very labels the generator would otherwise
+      // produce first ('anon-0', 'anon-1'); the [ ... ] property list must
+      // get a distinct one.
+      const { dataset } = parse('_:anon-0 :p _:anon-1 .\n[ :q 1 ] :r :o .');
+      const subjects = new Set<string>();
+      dataset.forEach((quad) => {
+        if (quad.subject.termType === 'BlankNode') {
+          subjects.add(quad.subject.value);
+        }
+      });
+      expect(subjects.has('anon-0')).toBe(true);
+      const generated = [...subjects].filter(
+        (label) => label !== 'anon-0' && label !== 'anon-1'
+      );
+      expect(generated).toHaveLength(1);
+      // and the generated label collides with neither document label
+      expect(['anon-0', 'anon-1']).not.toContain(generated[0]);
+    });
+
+    it('exposes assertion-site locations via sourcesOf', () => {
+      const source = prologue + ':s :p :o . :s :p :o .';
+      const { dataset } = parseTurtleToRdfjs(source, {
+        sourceURL: 'http://example.com/d.ttl',
+      });
+      const [quad] = [...dataset];
+      const sites = dataset.sourcesOf(quad);
+      expect(sites).toHaveLength(2);
+      sites.forEach((site) => {
+        expect(typeof site.startOffset).toBe('number');
+        expect(site.sourceURL).toBe('http://example.com/d.ttl');
+      });
+      expect(sites[0].startOffset).not.toBe(sites[1].startOffset);
+    });
+
     it('emits blankNodePropertyList contents', () => {
       const { dataset } = parse('[ foaf:name "Nested" ] :p :o .');
       expect(dataset.size).toBe(2);

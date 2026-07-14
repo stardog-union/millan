@@ -17,6 +17,7 @@ export declare class CstToQuadsEmitter {
     private base;
     private sourceURL;
     private blankNodeCounter;
+    private documentBlankNodeLabels;
     private currentGraph;
     constructor(options?: EmitterOptions);
     emitTurtleDoc(cst: CstNode): {

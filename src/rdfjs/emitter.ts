@@ -110,6 +110,24 @@ const childrenInOrder = (node: CstNode): CstElement[] => {
 const firstChild = (node: CstNode, name: string): CstElement | undefined =>
   node.children[name] && node.children[name][0];
 
+// Collects every blank node label written in the document so that generated
+// labels (for ANON, property lists, collections, fresh reifiers) can never
+// collide with them.
+const collectBlankNodeLabels = (element: CstElement, labels: Set<string>) => {
+  if (!isCstNode(element)) {
+    const token = element as IToken;
+    if (token.tokenType && token.tokenType.name === 'BLANK_NODE_LABEL') {
+      labels.add(token.image.slice(2));
+    }
+    return;
+  }
+  Object.keys(element.children).forEach((key) => {
+    element.children[key].forEach((child) =>
+      collectBlankNodeLabels(child, labels)
+    );
+  });
+};
+
 // ---------------------------------------------------------------------------
 // IRI resolution (RFC 3986 section 5, simplified but covering the usual
 // Turtle cases: fragments, absolute paths, relative paths with dot-segment
@@ -188,6 +206,7 @@ export class CstToQuadsEmitter {
   private base: string | undefined;
   private sourceURL: string | undefined;
   private blankNodeCounter = 0;
+  private documentBlankNodeLabels: Set<string> = new Set();
   private currentGraph: QuadTermValue | DefaultGraph = defaultGraphInstance;
 
   constructor(options: EmitterOptions = {}) {
@@ -200,6 +219,7 @@ export class CstToQuadsEmitter {
     dataset: MillanDataset;
     errors: EmitterError[];
   } {
+    collectBlankNodeLabels(cst, this.documentBlankNodeLabels);
     (cst.children.statement || []).forEach((statement) =>
       this.statement(statement as CstNode)
     );
@@ -211,6 +231,7 @@ export class CstToQuadsEmitter {
     dataset: MillanDataset;
     errors: EmitterError[];
   } {
+    collectBlankNodeLabels(cst, this.documentBlankNodeLabels);
     // Directives and blocks interleave, and @base is positional, so process
     // in document order.
     childrenInOrder(cst).forEach((element) => {
@@ -240,12 +261,14 @@ export class CstToQuadsEmitter {
   }
 
   private freshBlankNode(range?: SourceRange): BlankNode {
-    // Generated labels use a prefix that is valid blank-node-label syntax but
-    // unlikely to collide with labels appearing in documents.
-    return new BlankNode(
-      `anon-${this.blankNodeCounter++}`,
-      range && this.locate(range)
-    );
+    // Generated labels skip any label that appears in the document (the CST
+    // is pre-scanned by the emit entry points), so they can never collide
+    // with document labels.
+    let label = `anon-${this.blankNodeCounter++}`;
+    while (this.documentBlankNodeLabels.has(label)) {
+      label = `anon-${this.blankNodeCounter++}`;
+    }
+    return new BlankNode(label, range && this.locate(range));
   }
 
   private addQuad(
