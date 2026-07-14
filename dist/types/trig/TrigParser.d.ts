@@ -7,7 +7,7 @@ export declare class TrigParser extends TurtleParser {
     trigDoc: import("chevrotain").ParserMethod<[mode?: ModeString], import("chevrotain").CstNode>;
     block: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     triplesOrGraph: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
-    triples2: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;
+    triples2: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     wrappedGraph: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     triplesBlock: import("chevrotain").ParserMethod<[allowEdgeProperties?: boolean], import("chevrotain").CstNode>;
     labelOrSubject: import("chevrotain").ParserMethod<[], import("chevrotain").CstNode>;

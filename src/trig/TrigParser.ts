@@ -68,7 +68,9 @@ export class TrigParser extends TurtleParser {
         ALT: () =>
           this.SUBRULE(this.wrappedGraph, { ARGS: [allowEdgeProperties] }),
       },
-      { ALT: () => this.SUBRULE(this.triples2) },
+      {
+        ALT: () => this.SUBRULE(this.triples2, { ARGS: [allowEdgeProperties] }),
+      },
       {
         ALT: () => {
           this.CONSUME(trigTokenMap.GRAPH);
@@ -83,6 +85,7 @@ export class TrigParser extends TurtleParser {
     'triplesOrGraph',
     (allowEdgeProperties?: boolean) => {
       let didParseEmbeddedTriplePattern = false;
+      let didParseReifiedTriple = false;
 
       this.OR([
         {
@@ -97,37 +100,71 @@ export class TrigParser extends TurtleParser {
               result.name === 'EmbeddedTriplePattern';
           },
         },
+        {
+          // RDF 1.2 (https://www.w3.org/TR/rdf12-trig/#grammar-production-triplesOrGraph):
+          // reified triple as subject; standard mode only (see TurtleParser's
+          // `triples` for the three-state mode explanation).
+          GATE: () => allowEdgeProperties === false,
+          ALT: () => {
+            const result = this.SUBRULE(this.reifiedTriple);
+            didParseReifiedTriple = result.name === 'reifiedTriple';
+          },
+        },
       ]);
       this.OR1([
         {
-          // embedded triple patterns cannot precede wrapped graphs
-          GATE: () => !didParseEmbeddedTriplePattern,
+          // embedded triple patterns and reified triples cannot precede
+          // wrapped graphs (they are not graph labels)
+          GATE: () => !didParseEmbeddedTriplePattern && !didParseReifiedTriple,
           ALT: () =>
             this.SUBRULE(this.wrappedGraph, { ARGS: [allowEdgeProperties] }),
         },
         {
+          GATE: () => !didParseReifiedTriple,
           ALT: () => {
-            this.SUBRULE(this.predicateObjectList);
+            this.SUBRULE(this.predicateObjectList, {
+              ARGS: [allowEdgeProperties],
+            });
             this.CONSUME(trigTokenMap.Period);
+          },
+        },
+        {
+          // After a reified triple the predicateObjectList is optional:
+          GATE: () => didParseReifiedTriple,
+          ALT: () => {
+            this.OPTION(() =>
+              this.SUBRULE1(this.predicateObjectList, {
+                ARGS: [allowEdgeProperties],
+              })
+            );
+            this.CONSUME1(trigTokenMap.Period);
           },
         },
       ]);
     }
   );
 
-  triples2 = this.RULE('triples2', () => {
+  triples2 = this.RULE('triples2', (allowEdgeProperties?: boolean) => {
     this.OR([
       {
         ALT: () => {
-          this.SUBRULE(this.blankNodePropertyList);
-          this.OPTION(() => this.SUBRULE(this.predicateObjectList));
+          this.SUBRULE(this.blankNodePropertyList, {
+            ARGS: [allowEdgeProperties],
+          });
+          this.OPTION(() =>
+            this.SUBRULE(this.predicateObjectList, {
+              ARGS: [allowEdgeProperties],
+            })
+          );
           this.CONSUME(trigTokenMap.Period);
         },
       },
       {
         ALT: () => {
-          this.SUBRULE(this.collection);
-          this.SUBRULE1(this.predicateObjectList);
+          this.SUBRULE(this.collection, { ARGS: [allowEdgeProperties] });
+          this.SUBRULE1(this.predicateObjectList, {
+            ARGS: [allowEdgeProperties],
+          });
           this.CONSUME1(trigTokenMap.Period);
         },
       },
