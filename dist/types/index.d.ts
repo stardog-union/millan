@@ -12,6 +12,7 @@ export * from './graphql/StardogGraphQlParser';
 export * from './graphql/utils';
 export * from './helpers/chevrotain/cst';
 export * from './helpers/chevrotain/types';
+export * as rdfjs from './rdfjs';
 declare const sparqlTokens: any;
 declare const turtleTokens: any;
 declare const srsTokens: any;
