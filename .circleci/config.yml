@@ -3,23 +3,30 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.9-stretch
+      - image: cimg/node:lts
     working_directory: ~/millan
     steps:
       - checkout
       - restore_cache:
           keys:
           # This branch if available
-          - dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          - dependency-cache-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           # Default branch if not
-          - dependency-cache-develop-{{ checksum "yarn.lock" }}
+          - dependency-cache-v2-develop-{{ checksum "yarn.lock" }}
       - run:
           name: Install node modules
-          command: yarn
+          # The repo vendors Yarn 4 via yarnPath, so the image's yarn
+          # delegates to the right version automatically. Yarn enables
+          # --immutable on CI by itself.
+          command: yarn install
       - save_cache:
-          key: dependency-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: dependency-cache-v2-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
           - ./node_modules
+          - ~/.yarn/berry/cache
       - run:
           name: Run tests
           command: yarn test
+      - run:
+          name: Build bundles and type declarations
+          command: yarn bundle && yarn types
